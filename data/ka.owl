@@ -1,0 +1,1284 @@
+<rdf:RDF
+    xmlns:rss="http://purl.org/rss/1.0/"
+    xmlns:jms="http://jena.hpl.hp.com/2003/08/jms#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#"
+    xmlns="http://protege.stanford.edu/plugins/owl/owl-library/ka.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="PaperLibrary">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KAMethodology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Activity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Event"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="InternetTool">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComputerSupport"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ModelingLanguage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KAMethodology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Methodology">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Validation_And_Verification"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Guideline">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KAMethodology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PSMnotations">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PSMs"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="V_And_V_Of_MAS">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Validation_And_Verification"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Validation_And_Verification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ResearchTopic"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Editor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComputerSupport"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ElicitationTool">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComputerSupport"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ResearchTopic">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#webpages"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#description"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#nationalFundingAgencies"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Organization"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#dateOfLastModification"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#authorOfOntology"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Researcher"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#name"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#projects"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Project"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#bibliographies"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#journals"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Journal"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#relatedTopics"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#ResearchTopic"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#internationalFundingAgencies"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Organization"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#researchers"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Researcher"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#approaches"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#products"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Product"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#applicationAreas"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#mailingLists"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#researchGroups"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ResearchGroup"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#events"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Event"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#subTopics"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#ResearchTopic"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ConferencePaper">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#lastPage"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#firstPage"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#conference"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Conference"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#proceedingsTitle"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Project">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#head"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Employee"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#product"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Product"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isAbout"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#ResearchTopic"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#projectInfo"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#carriedOutBy"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Organization"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#member"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Employee"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#financedBy"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Organization"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#title"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PSMLibrary">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComputerSupport"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EvaluationOfKA">
+    <rdfs:subClassOf rdf:resource="#ResearchTopic"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoftwareProject">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DevelopmentProject"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Conference">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#number"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#series"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Event"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SpecificationLanguage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KAMethodology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PSMlibraries">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PSMs"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ArticleInBook">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#lastPage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#firstPage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#book"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Book"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Article"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SpecificationLanguages">
+    <rdfs:subClassOf rdf:resource="#ResearchTopic"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Book">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#containsArticle"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#ArticleInBook"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#editor"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Person"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Publisher"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Organization"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Publication"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WebMediatedPSMSelection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PSMs"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AutomatedCodeGenerationFromSpecification">
+    <rdfs:subClassOf rdf:resource="#SpecificationLanguages"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdministrativeStaff">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Employee"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CaseBaseReasoning">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KAThroughMachineLearning"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Employee">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#headOfGroup"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ResearchGroup"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#headOf"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#affiliation"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Organization"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#worksAtProject"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Person"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PhDStudent">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#supervisor"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#AcademicStaff"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Student"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Researcher"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Meeting">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#date"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#participant"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Person"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#title"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Event"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Institute">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasParts"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ResearchGroup"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Organization"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TheoreticalFoundations">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Ontologies"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReinforcementLearning">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KAThroughMachineLearning"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Department">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasParts"/>
+        <owl:allValuesFrom rdf:resource="#Institute"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Organization"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Student">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#studiesAt"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#University"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Person"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Researcher">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#researchInterest"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#ResearchTopic"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#cooperatesWith"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Researcher"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#memberOf"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ResearchGroup"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AcademicStaff"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="KAThroughMachineLearning">
+    <rdfs:subClassOf rdf:resource="#ResearchTopic"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OnlinePublication">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#onlineVersionOf"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#type"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Publication"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="KnowledgeManagement">
+    <rdfs:subClassOf rdf:resource="#ResearchTopic"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Object">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#keyword"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PSMs">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Reuse"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Article">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Publication"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sysiphus_III_Experiment">
+    <rdfs:subClassOf rdf:resource="#PSMs"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Workshop">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#number"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#series"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Event"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LearningApprenticeSystems">
+    <rdfs:subClassOf rdf:resource="#KAThroughMachineLearning"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NLParser">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComputerSupport"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AnomalyRepairAndKnowledgeRevision">
+    <rdfs:subClassOf rdf:resource="#Validation_And_Verification"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AnomalyDetection">
+    <rdfs:subClassOf rdf:resource="#Validation_And_Verification"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Secretary">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#secretaryOf"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ResearchGroup"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#AdministrativeStaff"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoftwareReuse">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Reuse"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Event">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#atEvent"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Event"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#eventTitle"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#publication"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasParts"/>
+        <owl:allValuesFrom rdf:resource="#Event"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#orgCommittee"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Person"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#date"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#programCommittee"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Person"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#location"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KnowledgeDiscoveryInDatasets">
+    <rdfs:subClassOf rdf:resource="#KAThroughMachineLearning"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Verifier">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ComputerSupport"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AcademicStaff">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#publication"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#memberOfPC"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Event"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#editor"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#organizerOrChairOf"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Event"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#supervises"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#PhDStudent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Employee"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ComputerSupport">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Product"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TransformationTool">
+    <rdfs:subClassOf rdf:resource="#ComputerSupport"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ResearchProject">
+    <rdfs:subClassOf rdf:resource="#Project"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Abduction">
+    <rdfs:subClassOf rdf:resource="#KAThroughMachineLearning"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AutomatedPSMGeneration">
+    <rdfs:subClassOf rdf:resource="#PSMs"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Organization">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#develops"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Product"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#technicalReport"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#TechnicalReport"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#carriesOut"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#publishes"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#location"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#employs"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Person"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#finances"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#name"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="JournalArticle">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#journal"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Journal"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#lastPage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#firstPage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Article"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KnowledgeBasedRefinement">
+    <rdfs:subClassOf rdf:resource="#KAThroughMachineLearning"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SpecialIssueEvent">
+    <rdfs:subClassOf rdf:resource="#Event"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ImplementationEnvironment">
+    <rdfs:subClassOf rdf:resource="#ComputerSupport"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SpecialIssuePublication">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Journal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SupportToolsForFormalMethods">
+    <rdfs:subClassOf rdf:resource="#SpecificationLanguages"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Product">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#productName"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#productPublication"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Publication"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#productFAQ"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#productMailingList"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#developedBy"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Organization"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#productedBy"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Reuse">
+    <rdfs:subClassOf rdf:resource="#ResearchTopic"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PSM">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KAMethodology"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ExecutableSpecificationLanguages">
+    <rdfs:subClassOf rdf:resource="#SpecificationLanguages"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OntologyLibrary">
+    <rdfs:subClassOf rdf:resource="#ComputerSupport"/>
+  </owl:Class>
+  <owl:Class rdf:ID="University">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hasParts"/>
+        <owl:allValuesFrom rdf:resource="#Department"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#student"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Student"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Organization"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Ontologies">
+    <rdfs:subClassOf rdf:resource="#Reuse"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TechnicalStaff">
+    <rdfs:subClassOf rdf:resource="#AdministrativeStaff"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TechnicalReport">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#series"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#organization"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Organization"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#number"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Article"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Validator">
+    <rdfs:subClassOf rdf:resource="#ComputerSupport"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoftwareApplications">
+    <rdfs:subClassOf rdf:resource="#Ontologies"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PSMevaluation">
+    <rdfs:subClassOf rdf:resource="#PSMs"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ResearchGroup">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#member"/>
+        <owl:allValuesFrom rdf:resource="#Researcher"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#head"/>
+        <owl:allValuesFrom rdf:resource="#Employee"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Organization"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Publication">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#title"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#onlineVersion"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#OnlinePublication"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#describesProject"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Project"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#author"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Person"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#abstract"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#year"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WorkshopPaper">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#proceedingsTitle"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#lastPage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#firstPage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#workshop"
+           rdf:type="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <owl:allValuesFrom rdf:resource="#Workshop"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Article"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Formalisms">
+    <rdfs:subClassOf rdf:resource="#Validation_And_Verification"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Enterprise">
+    <rdfs:subClassOf rdf:resource="#Organization"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KAMethodology">
+    <rdfs:subClassOf rdf:resource="#Product"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Journal">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#containsArticle"/>
+        <owl:allValuesFrom rdf:resource="#JournalArticle"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#editor"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Person"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#volume"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <owl:onProperty rdf:resource="#number"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Publisher"/>
+        <owl:allValuesFrom rdf:resource="#Organization"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Publication"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DataMining">
+    <rdfs:subClassOf rdf:resource="#KAThroughMachineLearning"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Person">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#phone"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#firstName"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#lastName"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#address"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#name"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#email"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#photo"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#middleInitial"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onProperty rdf:resource="#fax"
+           rdf:type="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Lecturer">
+    <rdfs:subClassOf rdf:resource="#AcademicStaff"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DevelopmentProject">
+    <rdfs:subClassOf rdf:resource="#Project"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Methodologies">
+    <rdfs:subClassOf rdf:resource="#Ontologies"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KnowledgeElicitation">
+    <rdfs:subClassOf rdf:resource="#ResearchTopic"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SpecificationMethodology">
+    <rdfs:subClassOf rdf:resource="#SpecificationLanguages"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KAMethodologies">
+    <rdfs:subClassOf rdf:resource="#ResearchTopic"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SpecificationOfControlKnowledge">
+    <rdfs:subClassOf rdf:resource="#SpecificationLanguages"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CooperativeKnowledgeAcquisition">
+    <rdfs:subClassOf rdf:resource="#KAThroughMachineLearning"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Ontology">
+    <rdfs:subClassOf rdf:resource="#KAMethodology"/>
+  </owl:Class>
+</rdf:RDF>

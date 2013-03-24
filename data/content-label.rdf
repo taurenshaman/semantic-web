@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF[
+  <!ENTITY label "http://www.w3.org/2004/12/q/contentlabel#">
+]>
+<!--
+  -  Base RDF schema for content labelling vocabularies.
+  -  Last Updated: 2005/07/04
+ -->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns="http://www.w3.org/2004/12/q/contentlabel#"
+  xmlns:label="http://www.w3.org/2004/12/q/contentlabel#"
+  xml:base="http://www.w3.org/2004/12/q/contentlabel#">
+  <rdfs:Class rdf:ID="ContentLabel">
+    <rdfs:label xml:lang="en">Content Label</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The type of resource which provides a description of the
+      content of one or more resources. A label:ContentLabel consists of one or
+      more label:descriptor instances and zero or more label:hasModifier instances.
+    </rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Category">
+    <rdfs:label xml:lang="en">Category</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A labelling category groups together several descriptions about the same
+      kind of content. A label:category instance consists of one or more
+      label:descriptor instances.
+    </rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:ID="descriptor">
+    <rdfs:label xml:lang="en">descriptor</rdfs:label>
+    <rdfs:domain rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasDescriptor">
+    <rdfs:label xml:lang="en">has  Descriptor</rdfs:label>
+    <rdfs:domain rdf:resource="#Category" />
+    <rdfs:range rdf:resource="#descriptor" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="isMoreSevereThan">
+    <rdfs:label xml:lang="en">is More Severe Than</rdfs:label>
+    <rdfs:domain rdf:resource="#Category" />
+    <rdfs:range rdf:resource="#descriptor" />
+  </rdf:Property>
+  <!--
+    A contentLabel may have an associated modifier. The modifier specifies
+    the context(s) that apply to the labelled resource(s).
+  -->
+  <rdf:Property rdf:ID="hasModifier">
+    <rdfs:label xml:lang="en">has Modifier</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A contentLabel has an associated modifier. The modifier specifies
+      the context(s) that apply to the labelled resource(s).
+    </rdfs:comment>
+    <rdfs:domain rdf:resource="#ContentLabel" />
+    <rdfs:range rdf:resource="#Modifier" />
+  </rdf:Property>
+  <rdfs:Class rdf:ID="Modifier">
+    <rdfs:comment>A contextual modifier for a content label.</rdfs:comment>
+  </rdfs:Class>
+  <!--
+    A resource, or group of resources, may have several Content Labels associated with them via the different predicate arcs:
+    - hasDefaultLabel
+    - hasLabel
+    - hasFrequentScenes
+    - hasSeveralScenes
+    - hasOccasionalScenes
+    - hasSingleScene
+  -->
+  <rdf:Property rdf:ID="hasDefaultLabel">
+    <rdfs:label xml:lang="en">has Default Label</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A group of resources may have a default Content Label. Clients SHOULD override a default Content Label
+      if a specific label is identified for the same resource group.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasLabel">
+    <rdfs:label xml:lang="en">has Label</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A resource, or group of resources, has an associated Content Label. If the resource has a duration (such as a movie
+      or a game) then the description linked by hasLabel will apply throughout. The description may be augmented by
+      subsequent frequency modifers.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <!-- Analogous properties are provided for management information -->
+  <rdf:Property rdf:ID="hasDefaultManagementInfo">
+    <rdfs:label xml:lang="en">has Default Management Information</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A group of resources may have a default Management Information set. Clients SHOULD override default
+      management information if specific information is identified for the same resource group.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasManagementInfo">
+    <rdfs:label xml:lang="en">has Management Information</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A resource, or group of resources, has associated Management Information.
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <!-- Classification info can be supplied in the same way but note that these do NOT have a range of Content Label -->
+  <rdf:Property rdf:ID="hasDefaultClassification">
+    <rdfs:label xml:lang="en">has Default Classification</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A group of resources may have a default classification. Clients SHOULD override the default
+      classification if specific information is identified for the same resource group. This does NOT have a range of Content Label
+    </rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasClassification">
+    <rdfs:label xml:lang="en">has Classification</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A resource, or group of resources, has associated classification.
+    </rdfs:comment>
+  </rdf:Property>
+  <!--
+  Frequency modifiers. The following perform the same function as hasLabel in that they associate a content label with
+  a resource. However, these give information about the frequency with which the resource is applicable where this is less than
+  100% of the time. 
+  -->
+  <rdf:Property rdf:ID="hasFrequentScenes">
+    <rdfs:label xml:lang="en">has Frequent Scenes</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A resource such as a movie or game has frequent scenes described by the label linked by this property
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasSeveralScenes">
+    <rdfs:label xml:lang="en">has Several Scenes</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A resource such as a movie or game has several scenes described by the label linked by this property
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasOccasionalScenes">
+    <rdfs:label xml:lang="en">has Occasional Scenes</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A resource such as a movie or game has occasional scenes described by the label linked by this property
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="hasSingleScene">
+    <rdfs:label xml:lang="en">has Single Scene</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A resource such as a movie or game has a single scene described by the label linked by this property
+    </rdfs:comment>
+    <rdfs:range rdf:resource="#ContentLabel" />
+  </rdf:Property>
+  <!-- Rule section -->
+  <rdfs:Class rdf:ID="Ruleset">
+    <rdfs:label xml:lang="en">Ruleset</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The Ruleset Class contains the "global values" for the group. These include the host restrictions, the default descriptions
+      and the rules for identifying which URI has which label.
+    </rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:ID="hasHostRetsrictions">
+    <rdfs:label xml:lang="en">hasHostRestrictions</rdfs:label>
+    <rdfs:comment xml:lang="en">A property to link a Ruleset to a list of Hosts</rdfs:comment>
+    <rdfs:domain rdf:type="#Ruleset" />
+    <rdfs:range rdf:type="#Hosts" />
+  </rdf:Property>
+  <rdfs:Class rdf:ID="Hosts">
+    <rdfs:label xml:lang="en">Hosts</rdfs:label>
+    <rdfs:comment>A placeholder for a list of hosts for which labelling data is available</rdfs:comment>
+    <rdfs:subClassOf rdf:type="#Ruleset" />
+  </rdfs:Class>
+  <rdf:Property rdf:ID="hostRetsriction">
+    <rdfs:label xml:lang="en">A host for which descriptions may be applied</rdfs:label>
+    <rdfs:domain rdf:type="#Hosts" />
+    <rdfs:range rdf:type="xsd:string" />
+  </rdf:Property>
+  <rdfs:Class rdf:ID="UnionOf">
+    <rdfs:label xml:lang="en">Union Of (logical OR)</rdfs:label>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="IntersectionOf">
+    <rdfs:label xml:lang="en">Intersection Of (logical AND)</rdfs:label>
+  </rdfs:Class>
+  <rdf:Property rdf:ID="hasURI">
+    <rdfs:label xml:lang="en">has URI</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The hasURI property takes a string as its value. This string should be processed as a Perl5 Regular Expression
+    </rdfs:comment>
+    <rdfs:range rdf:type="xsd:string" />
+  </rdf:Property>
+  <!-- Label Authority -->
+  <rdf:Property rdf:ID="authorityFor">
+    <rdfs:label xml:lang="en">authority For</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      This is used in a description of the RDF instance itself, not the labelled resource. Its value is the namespace of
+      the labels about which information concerning the labelling organisation may be obtained. It should be paired with a
+      dc:creator property for this purpose.
+    </rdfs:comment>
+    <rdfs:range rdf:type="xsd:string" />
+  </rdf:Property>
+</rdf:RDF>

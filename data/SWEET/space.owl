@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:numerics="http://sweet.jpl.nasa.gov/ontology/numerics.owl#" 
+xmlns:earthrealm="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#" 
+xmlns:property="http://sweet.jpl.nasa.gov/ontology/property.owl#" 
+xmlns:units="http://sweet.jpl.nasa.gov/ontology/units.owl#" 
+xmlns="http://sweet.jpl.nasa.gov/ontology/space.owl#">
+<owl:Ontology rdf:about="">
+<!--
+<dc:title>
+Space</dc:title>
+<dc:date>
+1/27/2004 3:16:52 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+Space ontology</dc:subject>
+-->
+<owl:versionInfo>
+1.0</owl:versionInfo>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl"/>
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+<owl:Class rdf:ID="XCoordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#East"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HorizontalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Direction"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="East">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:hasValue rdf:resource="#coordinate_div1"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="PressureCoordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Down"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VerticalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="VerticalCoordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Up"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="Down">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:hasValue rdf:resource="#coordinate_div1"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Margin">
+<rdfs:subClassOf rdf:resource="#SpatialObject"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialObject">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="YCoordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#North"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HorizontalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="North">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:hasValue rdf:resource="#coordinate_1"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Downward">
+<owl:equivalentClass rdf:resource="#Down"/>
+</owl:Class>
+<owl:Class rdf:ID="Direction">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Vector_3D"/>
+</owl:Class>
+<owl:Class rdf:ID="Bearing">
+<owl:equivalentClass rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Sphere">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_3D"/>
+</owl:Class>
+<owl:Class rdf:ID="Up">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:hasValue rdf:resource="#coordinate_1"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Arc">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_1D"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#SpatialExtent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasValue"/>
+<owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="AdministrativeRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#isPartOf"/>
+<owl:someValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#PlanetEarth"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Region"/>
+</owl:Class>
+<owl:Class rdf:ID="Region">
+   <rdfs:subClassOf rdf:resource="#SpatialObject"/>
+   <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_2D"/>
+</owl:Class>
+<owl:Class rdf:ID="PoliticalDivision">
+<owl:equivalentClass rdf:resource="#AdministrativeBoundary"/>
+</owl:Class>
+<owl:Class rdf:ID="AdministrativeBoundary">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary"/>
+</owl:Class>
+<owl:Class rdf:ID="Barrier">
+<rdfs:subClassOf rdf:resource="#SpatialObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Obstruction">
+<rdfs:subClassOf rdf:resource="#Barrier"/>
+</owl:Class>
+<owl:Class rdf:ID="Profile"/>
+<owl:Class rdf:ID="Inclination"/>
+<owl:Class rdf:ID="Location">
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="CartesianCoordinates">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedCoordinateSystem"/>
+<owl:allValuesFrom rdf:resource="#CartesianCoordinateSystem"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:allValuesFrom rdf:resource="#XCoordinate"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:allValuesFrom rdf:resource="#YCoordinate"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:allValuesFrom rdf:resource="#ZCoordinate"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinates"/>
+</owl:Class>
+<owl:Class rdf:ID="ZCoordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Up"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VerticalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="HorizontalCoordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasNormal"/>
+<owl:allValuesFrom rdf:resource="#Up"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinate"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Surface">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_2D"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_2D">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Latitude">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#North"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HorizontalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="Axis">
+<owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="Base">
+<owl:equivalentClass rdf:resource="#Bottom"/>
+</owl:Class>
+<owl:Class rdf:ID="Bottom">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Down"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Maximum"/>
+</owl:Class>
+<owl:Class rdf:ID="Body">
+<rdfs:subClassOf rdf:resource="#SpatialObject"/>
+</owl:Class>
+<owl:Class rdf:ID="City">
+<rdfs:subClassOf rdf:resource="#AdministrativeRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="BoundingBox">
+   <rdfs:subClassOf rdf:resource="#Region"/>
+</owl:Class>
+<owl:Class rdf:ID="LatLonBox">
+   <rdfs:subClassOf rdf:resource="#BoundingBox"/>
+   <rdfs:subClassOf>
+      <owl:Restriction>
+         <owl:onProperty rdf:resource="#hasAssociatedCoordinateSystem"/>
+         <owl:allValuesFrom rdf:resource="#GeographicCoordinateSystem"/>
+      </owl:Restriction>
+   </rdfs:subClassOf>
+   <rdfs:subClassOf>
+      <owl:Restriction>
+         <owl:onProperty rdf:resource="#hasLatitudeInterval"/>
+         <owl:minCardinality>1</owl:minCardinality>
+      </owl:Restriction>
+   </rdfs:subClassOf>
+   <rdfs:subClassOf>
+      <owl:Restriction>
+         <owl:onProperty rdf:resource="#hasLongitudeInterval"/>
+         <owl:minCardinality>1</owl:minCardinality>
+      </owl:Restriction>
+   </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="Edge">
+<owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary"/>
+</owl:Class>
+<owl:Class rdf:ID="Grid"/>
+<owl:Class rdf:ID="West">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:hasValue rdf:resource="#coordinate_1"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Zone">
+<owl:equivalentClass rdf:resource="#Region"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_1D">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_3D">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Country">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Continent"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AdministrativeRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Southward">
+<owl:equivalentClass rdf:resource="#South"/>
+</owl:Class>
+<owl:Class rdf:ID="South">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:hasValue rdf:resource="#coordinate_0"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:hasValue rdf:resource="#coordinate_div1"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Center">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Azimuth">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="County">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#State"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AdministrativeRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="State">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Country"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AdministrativeRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Floor">
+<owl:equivalentClass rdf:resource="#Bottom"/>
+</owl:Class>
+<owl:Class rdf:ID="Geoid">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Surface"/>
+</owl:Class>
+<owl:Class rdf:ID="Layer">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_3D"/>
+</owl:Class>
+<owl:Class rdf:ID="Level">
+<owl:equivalentClass rdf:resource="#VerticalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="Orbit">
+<rdfs:subClassOf rdf:resource="#SpatialObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Sigma">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Up"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VerticalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="Slope">
+<rdfs:subClassOf rdf:resource="#SpatialObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Upper"/>
+<owl:Class rdf:ID="Horizon">
+<owl:equivalentClass rdf:resource="#Profile"/>
+</owl:Class>
+<owl:Class rdf:ID="VerticalProfile">
+<rdfs:subClassOf rdf:resource="#Profile"/>
+</owl:Class>
+<owl:Class rdf:ID="Stratigraphy">
+<rdfs:subClassOf rdf:resource="#VerticalProfile"/>
+</owl:Class>
+<owl:Class rdf:ID="StratigraphicSequence">
+<rdfs:subClassOf rdf:resource="#Stratigraphy"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialScale"/>
+<SpatialScale rdf:ID="Mesoscale">
+   <numerics:hasLowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#double">100</numerics:hasLowerBound>
+   <numerics:hasUpperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1000</numerics:hasUpperBound>
+   <numerics:hasUnit rdf:resource="#kilo_meter"/>
+</SpatialScale>
+<SpatialScale rdf:ID="SynopticScale">
+   <numerics:hasLowerBound rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1000</numerics:hasLowerBound>
+   <numerics:hasUpperBound rdf:datatype="http://www.w3.org/2001/XMLSchema#double">2500</numerics:hasUpperBound>
+   <numerics:hasUnit rdf:resource="#kilo_meter"/>
+</SpatialScale>
+<owl:Class rdf:ID="Province">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Country"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AdministrativeRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Top">
+<owl:equivalentClass>
+<owl:Class>
+<owl:intersectionOf rdf:parseType="Collection">
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Up"/>
+</owl:Restriction>
+</owl:intersectionOf>
+</owl:Class>
+</owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:ID="Eastward">
+<owl:equivalentClass rdf:resource="#East"/>
+</owl:Class>
+<owl:Class rdf:ID="Upward">
+<owl:equivalentClass rdf:resource="#Up"/>
+</owl:Class>
+<owl:Class rdf:ID="Meridian">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#North"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Arc"/>
+</owl:Class>
+<owl:Class rdf:ID="UpperLevel">
+<rdfs:subClassOf rdf:resource="#Level"/>
+</owl:Class>
+<owl:Class rdf:ID="Westward">
+<owl:equivalentClass rdf:resource="#West"/>
+</owl:Class>
+<owl:Class rdf:ID="Outgoing">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Incoming">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="R-Coordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Outside"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HorizontalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="Outside">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="S-Coordinate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#Up"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VerticalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="Longitude">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDirection"/>
+<owl:allValuesFrom rdf:resource="#East"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HorizontalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="AdministrativeDivision">
+<owl:equivalentClass rdf:resource="#AdministrativeBoundary"/>
+</owl:Class>
+<owl:Class rdf:ID="Position">
+<owl:equivalentClass rdf:resource="#Location"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaLevel">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Surface"/>
+</owl:Class>
+<owl:Class rdf:ID="Northward">
+<owl:equivalentClass rdf:resource="#North"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialReferenceSystem"/>
+<owl:Class rdf:ID="GeographicalCoordinates">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedCoordinateSystem"/>
+<owl:allValuesFrom rdf:resource="#GeographicCoordinateSystem"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:allValuesFrom rdf:resource="#Longitude"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:allValuesFrom rdf:resource="#Latitude"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinates"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Polygon">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject_2D"/>
+</owl:Class>
+<owl:Class rdf:ID="UniversalTraverseMercatorCoordinates">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedCoordinateSystem"/>
+<owl:allValuesFrom rdf:resource="#TraverseMercator"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinates"/>
+</owl:Class>
+<owl:Class rdf:ID="ZoneCode">
+<rdfs:subClassOf rdf:resource="#HorizontalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="AstronomicalCoordinateSystem">
+<rdfs:subClassOf rdf:resource="#GeographicCoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Attitude">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="ZenithAngle">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Declination">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="RightAscension">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="Relief">
+<rdfs:subClassOf rdf:resource="#SpatialObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Projection">
+<rdfs:subClassOf rdf:resource="#SpatialObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Shadow">
+<rdfs:subClassOf rdf:resource="#Projection"/>
+</owl:Class>
+<owl:Class rdf:ID="GeographicCoordinateSystem">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="LocalCoordinateSystem">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="LocalPlanarCoordinateSystem">
+<rdfs:subClassOf rdf:resource="#LocalCoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="GeodeticCoordinateSystem">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="CartesianCoordinateSystem">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="TraverseMercator">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="GeoReferenceInformation"/>
+<owl:Class rdf:ID="HybridHeight">
+<rdfs:subClassOf rdf:resource="#VerticalCoordinate"/>
+</owl:Class>
+<owl:Class rdf:ID="LatitudeInterval">
+   <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Interval"/>
+   <rdfs:subClassOf>
+      <owl:Restriction>
+         <owl:onProperty rdf:resource="#hasDirection"/>
+         <owl:allValuesFrom rdf:resource="#North"/>
+      </owl:Restriction>
+   </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="LongitudeInterval">
+   <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Interval"/>
+   <rdfs:subClassOf>
+      <owl:Restriction>
+         <owl:onProperty rdf:resource="#hasDirection"/>
+         <owl:allValuesFrom rdf:resource="#East"/>
+      </owl:Restriction>
+   </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="AlbersConicalEqualArea">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="AzimuthalEquidistant">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="EquidistantConic">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Equirectangular">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="GeneralVerticalNearSidedPespe">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Gnomic">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="TransverseMercator">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="LambertAzimuthalEqualArea">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="RotatedLaatitudeLongitude">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="LambertConformalConic">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Mercator">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="MillerCylindrical">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="ModifiedStereographic">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="ObliqueMercator">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="PolarStereographic">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Polyconic">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Robinson">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Sinusoidal">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="SpaceObliqueMercator">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Stereographic">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:ID="UniversalTraverseMercator">
+<rdfs:subClassOf rdf:resource="#TraverseMercator"/>
+</owl:Class>
+<owl:Class rdf:ID="VanDeGrinten">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#SimpleUnit">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#DerivedUnit"/>
+</owl:Class>
+<owl:Class rdf:ID="Radial">
+<rdfs:subClassOf rdf:resource="#Direction"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialExtentCategory">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#SpatialExtent"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="Big">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Size"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SizeCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="Small">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Size"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SizeCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="Shallow">
+<rdfs:subClassOf rdf:resource="#DepthCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="Deep">
+<rdfs:subClassOf rdf:resource="#DepthCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="Vicinity">
+<rdfs:subClassOf rdf:resource="#DistanceCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="SizeCategory">
+<rdfs:subClassOf rdf:resource="#SpatialExtentCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="DepthCategory">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Depth"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SpatialExtentCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="DistanceCategory">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Distance"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SpatialExtentCategory"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialDistribution"/>
+<owl:Class rdf:ID="Overcast">
+<rdfs:subClassOf rdf:resource="#SpatialDistribution"/>
+</owl:Class>
+<owl:Class rdf:ID="Broken">
+<rdfs:subClassOf rdf:resource="#SpatialDistribution"/>
+</owl:Class>
+<owl:Class rdf:ID="Patch">
+<rdfs:subClassOf rdf:resource="#SpatialDistribution"/>
+</owl:Class>
+<owl:DatatypeProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasValue">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+<owl:ObjectProperty rdf:ID="hasDirection">
+<rdfs:range rdf:resource="#Direction"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="above">
+<rdfs:domain rdf:resource="#VerticalCoordinate"/>
+<rdfs:range rdf:resource="#VerticalCoordinate"/>
+<rdfs:subPropertyOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#greaterThan"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="below">
+<owl:inverseOf rdf:resource="#above"/>
+<rdfs:domain rdf:resource="#VerticalCoordinate"/>
+<rdfs:range rdf:resource="#VerticalCoordinate"/>
+<rdfs:subPropertyOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#lessThan"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="isLayerLowerBoundaryOf"/>
+<owl:ObjectProperty rdf:ID="isLayerUpperBoundaryOf"/>
+<owl:ObjectProperty rdf:ID="under">
+<rdfs:subPropertyOf rdf:resource="#below"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="outside"/>
+<owl:ObjectProperty rdf:ID="hasComponent"/>
+<owl:ObjectProperty rdf:ID="hasLocation">
+<rdfs:range rdf:resource="#Location"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="contains"/>
+<owl:ObjectProperty rdf:ID="hasBoundary"/>
+<owl:ObjectProperty rdf:ID="inside">
+<rdfs:domain rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+<rdfs:subPropertyOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#greaterThan"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="adjacentTo"/>
+<owl:ObjectProperty rdf:ID="hasPart">
+<owl:inverseOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#isPartOf"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasCapital">
+<rdfs:domain rdf:resource="#AdministrativeRegion"/>
+<rdfs:range rdf:resource="#City"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasGeometricalObject">
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasSpatialObject">
+<rdfs:range rdf:resource="#SpatialObject"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasAssociatedQuantity">
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Quantity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasNormal">
+<rdfs:range rdf:resource="#Direction"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="isExpressedAsQuantity">
+<rdfs:domain rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinate"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Quantity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasAssociatedCoordinateSystem">
+<rdfs:domain rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Coordinates"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#CoordinateSystem"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasGeoReferenceInformation">
+<rdfs:domain rdf:resource="#LocalCoordinateSystem"/>
+<rdfs:range rdf:resource="#GeoReferenceInformation"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasLongitudeInterval">
+   <rdfs:domain rdf:resource="#SpatialObject"/>
+   <rdfs:range rdf:resource="#LongitudeInterval"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasLatitudeInterval">
+   <rdfs:domain rdf:resource="#SpatialObject"/>
+   <rdfs:range rdf:resource="#LatitudeInterval"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="northOf">
+<rdfs:domain rdf:resource="#HorizontalCoordinate"/>
+<rdfs:range rdf:resource="#HorizontalCoordinate"/>
+<rdfs:subPropertyOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#greaterThan"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="southOf">
+<rdfs:domain rdf:resource="#HorizontalCoordinate"/>
+<rdfs:range rdf:resource="#HorizontalCoordinate"/>
+<rdfs:subPropertyOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#lessThan"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="westOf">
+<rdfs:domain rdf:resource="#HorizontalCoordinate"/>
+<rdfs:range rdf:resource="#HorizontalCoordinate"/>
+<rdfs:subPropertyOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#lessThan"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="eastOf">
+<rdfs:domain rdf:resource="#HorizontalCoordinate"/>
+<rdfs:range rdf:resource="#HorizontalCoordinate"/>
+<rdfs:subPropertyOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#greaterThan"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#_1"/>
+<owl:ObjectProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#_2"/>
+<owl:ObjectProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#_3"/>
+<owl:ObjectProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#_4"/>
+<numerics:Coordinate rdf:ID="coordinate_0"/>
+<numerics:Coordinate rdf:ID="coordinate_1"/>
+<numerics:Coordinate rdf:ID="coordinate_div1"/>
+<units:Unit rdf:ID="kilo_meter"/>
+<units:SimpleUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#kilo_meter"/>
+</rdf:RDF>

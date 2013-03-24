@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://vocab.deri.ie/pdo">
+    <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
+    <dcterms:title xml:lang="en">Project Documents Ontology</dcterms:title>
+    <dcterms:title xml:lang="zh-CN">项目文档本体</dcterms:title>
+    <dcterms:description xml:lang="en">The Project Documents Ontology, described using W3C RDF Schema and the Web Ontology Language, models the inherent structure and concepts of various documents in a project-specific setting, like meeting minutes, status reports etc.</dcterms:description>
+    <dcterms:description xml:lang="zh-CN">项目文档本体使用W3C的RDF体系和网络本体语言进行描述，针对特定项目的设置，对不同文档的内在结构和文件进行了建模，比如会议分钟，状态报告等等。</dcterms:description>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-07-09</dcterms:modified>
+    <vann:preferredNamespaceUri>http://ontologies.smile.deri.ie/pdo#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>pdo</vann:preferredNamespacePrefix>
+    <foaf:homepage rdf:resource="http://vocab.deri.ie/pdo.html"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-07-09</dcterms:created>
+    <dcterms:publisher>http://vocab.deri.ie/pdo#DERI%2C%20NUI%20Galway</dcterms:publisher>
+    <dcterms:partOf rdf:resource="http://vocab.deri.ie"/>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+    <dc:creator rdf:resource="http://vocab.deri.ie/pdo#pravar"/>
+  </owl:Ontology>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/pdo#ttl">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/pdo.ttl</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/pdo#rdf">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/pdo.rdf</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <foaf:Person rdf:about="http://vocab.deri.ie/pdo#pravar">
+    <foaf:name>Pradeep Varma</foaf:name>
+    <foaf:homepage></foaf:homepage>
+    <foaf:mbox rdf:resource="mailto:pradeep.varma@deri.org"/>
+  </foaf:Person>
+
+  <dcterms:Agent rdf:about="http://vocab.deri.ie/pdo#DERI%2C%20NUI%20Galway">
+    <foaf:member rdf:resource="http://vocab.deri.ie/pdo#pravar"/>
+    <foaf:name>DERI, NUI Galway</foaf:name>
+    <foaf:homepage rdf:resource="http://deri.ie/"/>
+  </dcterms:Agent>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Absentee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Absentee</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">缺席人</rdfs:label>
+    <rdfs:comment xml:lang="en">Models the absentee role of a person in a meeting context.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在会议情景中，对缺席人角色进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#PersonRole"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#ActionItem">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">ActionItem</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">操作项目</rdfs:label>
+    <rdfs:comment xml:lang="en">Subclasses pdo:Artifact and models the structure of an action item/task</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">pdo:Artifact的子类，对操作项目/任务的结构进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Artefact"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#AgendaItem">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">AgendaItem</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">议程项</rdfs:label>
+    <rdfs:comment xml:lang="en">Subclasses pdo:Artifact and models the structure of an agenda item</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">pdo:Artifact的子类，对议程项目的结构进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Artefact"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Artefact">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Artefact</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">人工制品</rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract class for  any kind of information artifact which can be structured according to its sematics.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">根据相应语义，对任意信息制品进行构造的抽象类。</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Attendee">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Attendee</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">与会者</rdfs:label>
+    <rdfs:comment xml:lang="en">Models the attendee role of a person in a meeting context.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在会议情景中，对参会者角色进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#PersonRole"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Chair">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Chair</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主席</rdfs:label>
+    <rdfs:comment xml:lang="en">Models the chair role of a person in a meeting context.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在会议情景中，对主席角色进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#PersonRole"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Comment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Comment</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">评论</rdfs:label>
+    <rdfs:comment xml:lang="en">Models a comment made by a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">对人们作出的评论进行了建模。</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Document</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">文档</rdfs:label>
+    <rdfs:comment xml:lang="en">The base class for all kinds of electronic documents in a project-specific setting.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">特定项目设置中所有电子文档的基类。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#LeaveReport">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">LeaveReport</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">请假报告</rdfs:label>
+    <rdfs:comment xml:lang="en">Subclasses pdo:Artefact and models the structure of a leave report</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">pdo:Artefact的子类，对请假报告的结构进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#LeaveReport"/>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Report"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Meeting">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Meeting</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">会议</rdfs:label>
+    <rdfs:comment xml:lang="en">The class modelling the actual meeting which is the subject of a particular minutes document.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该类对实际的会议进行了建模，这会议是特定备忘录文档的主语。</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#MeetingMinutes">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Minutes</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">备忘录</rdfs:label>
+    <rdfs:comment xml:lang="en">The class modelling the structure and cotent of an electronic version of the minutes of a meetintg.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该类对电子版本的会议备忘录的结构和内容进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Document"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#PersonRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">PersonRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">人物角色</rdfs:label>
+    <rdfs:comment xml:lang="en">The abstract class modelling various roles taken by individuals during a particular context ( for example, the attendees, scribe etc in a meeting or the reporter in a status report.)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该抽象类对特定情境中的个体参与的大量角色进行了建模（比如，会议中的与会者、记录员等，或者在状态报告中的记者）。</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Poll">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Poll</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">投票</rdfs:label>
+    <rdfs:comment xml:lang="en">Subclasses pdo:Artifact and models the structure of a poll</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">pdo:Artifact的子类，对投票的结构进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Artefact"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#PollOption">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">PollOption</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">投票选项</rdfs:label>
+    <rdfs:comment xml:lang="en">Models an option in a poll. Each option is linked to a list of people who selected the option during the poll</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">对投票中的选项进行了建模。每个选项链接到了一组人，这些人在投票中选择了该选项。</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Presenter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Presenter</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主持人</rdfs:label>
+    <rdfs:comment xml:lang="en">Models the presenter role of a person in the context of an agenda item.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在议程项目的情境中，对主持人角色进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#PersonRole"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Publication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Publication</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">出版物</rdfs:label>
+    <rdfs:comment xml:lang="en">Subclasses pdo:Artifact and uses bibliography ontology to model the structure of a publication</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">pdo:Artifact的子类，使用书目本体对出版物的结构进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Artefact"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Report">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Report</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">报告</rdfs:label>
+    <rdfs:comment xml:lang="en">Subclasses pdo:Artefact and models the structure of a report.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">pdo:Artefact的子类，对报告的结构进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Artefact"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Reporter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Reporter</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">记者</rdfs:label>
+    <rdfs:comment xml:lang="en">Models the reporting role of a person in a status reporting context.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在状态报告情境中，对人物的报道角色进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#PersonRole"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#Scribe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">Scribe</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">记录员</rdfs:label>
+    <rdfs:comment xml:lang="en">Models the scribe role of a person in a meeting context.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在会议情境中，对人物的记录员角色进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#PersonRole"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#StatusReport">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">StatusReport</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">状态报告</rdfs:label>
+    <rdfs:comment xml:lang="en">The class modelling the structure and content of an electronic version of a status reports document</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该类对状态报告文档的电子版本的结构和内容进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Document"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://ontologies.smile.deri.ie/pdo#TravelReport">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">TravelReport</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">出差报告</rdfs:label>
+    <rdfs:comment xml:lang="en">Subclasses pdo:Artefact and models the structure of a travel report</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">pdo:Artefact的子类，对出差报告的结构进行了建模。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://ontologies.smile.deri.ie/pdo#Report"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#hasAlias">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">hasAlias</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">别名</rdfs:label>
+    <rdfs:comment xml:lang="en">A way to store different alias names of objects (used internally by the application)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">存储对象的不同别名的方式（由应用在内部使用）。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#hasCreationTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">hasCreationTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">创建时间</rdfs:label>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#ActionItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#hasDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">hasDescription</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">描述</rdfs:label>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#ActionItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#hasEndTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">hadEndTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">结束时间</rdfs:label>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#ActionItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#hasStartTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">hasStartTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">开始时间</rdfs:label>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#ActionItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#hasStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label xml:lang="en">hasStatus</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">状态</rdfs:label>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#ActionItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#contains">
+    <rdfs:label xml:lang="en">contains</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">包含</rdfs:label>
+    <rdfs:comment xml:lang="en">The property which links an artefact (for example, an agenda item , an action item, a travle report, etc ) to the document in which it is mentioned.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该属性链接了人工制品（比如，议程项目、操作项目、出差报告等等）和它所提及的文档。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#Document"/>
+    <rdfs:range rdf:resource="http://ontologies.smile.deri.ie/pdo#Artefact"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#isAssignedTo">
+    <rdfs:label xml:lang="en">isAssignedTo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">指派给</rdfs:label>
+    <rdfs:comment xml:lang="en">This property links a pdo:ActionItem object to a foaf:Person object who is reponsible for the action item</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该属性链接了pdo:ActionItem对象和foaf:Person对象。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#ActionItem"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://ontologies.smile.deri.ie/pdo#mentions">
+    <rdfs:label xml:lang="en">mentions</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">提及</rdfs:label>
+    <rdfs:comment xml:lang="en">The property which links an artefact (for example, an agenda item , an action item, a travle report, etc ) to the document in which it is mentioned.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该属性链接了人工制品（比如，议程项目、操作项目、出差报告等等）和它所提及的文档。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#Artefact"/>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#Comment"/>
+    <rdfs:domain rdf:resource="http://ontologies.smile.deri.ie/pdo#Document"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"/>
+  </rdf:Property>
+
+</rdf:RDF>

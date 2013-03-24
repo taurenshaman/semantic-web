@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY pmljbase "http://inferenceweb.stanford.edu/2006/06/pml-justification.owl">
+  <!ENTITY pmlj "http://inferenceweb.stanford.edu/2006/06/pml-justification.owl#">
+  <!ENTITY pmlp "http://inferenceweb.stanford.edu/2006/06/pml-provenance.owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY ds "http://inferenceweb.stanford.edu/2006/06/ds.owl#">  
+]>
+<rdf:RDF xml:base="&pmljbase;"
+         xmlns ="&pmlj;"
+         xmlns:pmlj ="&pmlj;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;">
+
+<!-- ******************************************************************** --> 
+<!-- Ontology Information -->
+<!-- ******************************************************************** --> 
+  <owl:Ontology rdf:about="">
+    <rdfs:label xml:lang="en">PML2 justification ontology</rdfs:label>
+    <rdfs:comment xml:lang="en">The justification part of PML2 ontology. It is a fundamental component of PML2 ontology.</rdfs:comment>
+    <owl:imports>
+      <owl:Ontology rdf:about="&pmlp;"/>
+    </owl:imports>
+    <owl:versionInfo xml:lang="en">version 2.0, Authors: Deborah L. McGuinness, Li Ding, Paulo Pinheiro da Silva, Alyssa Glass, and Cynthia Chang</owl:versionInfo>
+  </owl:Ontology>
+  
+
+<!--
+V2.1.1 (June 4)
+* fixed English typos in VariableMapping definition and some other places
+
+v2.1 (Feb 15)
+* rename hasAntecedent to hasAntecedentList, and add card<=1
+* keep prettynamemapping, move it to pmlp [DONE]
+moved prettynamemapping related classes/properties to  PMLP 
+
+v2.0 (Feb 10)
+* remove hasCreationDateTime (definition and restriction), replaced with one from pmlp
+* add PrettyNameMappingList
+* change the range of hasAntecedent to NodeSetList
+-->  
+
+<!-- ******************************************************************** --> 
+<!-- JustificationThing -->
+<!-- ******************************************************************** --> 
+  <owl:Class rdf:about="&pmlj;JustificationElement">
+	<rdfs:label xml:lang="en">Justification Element</rdfs:label>
+    <rdfs:comment xml:lang="en">A justification element functions like relation in relational algebra. It captures the complex relations that associate. </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasCreationDateTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>	
+  </owl:Class>
+
+
+  
+<!-- ******************************************************************** --> 
+<!-- NodeSet -->
+<!-- ******************************************************************** --> 
+  <owl:Class rdf:about="&pmlj;NodeSet">
+	<rdfs:label xml:lang="en">Node Set</rdfs:label>
+    <rdfs:comment xml:lang="en">A node set hosts a conclusion and a set of alternative inference steps each of which can justify the conclusion. The term ``node set'' is chosen because a node set captures a set of nodes (with inference steps) from one or many proof trees deriving the same conclusion. The URI  of a node set is its unique identifier, and every node set has exactly one URI.</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&pmlj;JustificationElement" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;isExplanationOf"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlj;hasConclusion"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <owl:ObjectProperty rdf:about="&pmlj;hasConclusion">
+	<rdfs:label xml:lang="en">conclusion</rdfs:label>
+    <rdfs:comment xml:lang="en">links to the conclusion of the present node set. The conclusion is the one after applied variable mapping of the node set's inference steps. The content/language/format of conclusion is the only information needed in comparing conclusions. </rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;NodeSet"/>
+    <rdfs:subPropertyOf rdf:resource="&pmlp;hasContent"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;isConsequentOf">
+	<rdfs:label xml:lang="en">because</rdfs:label>
+    <rdfs:comment xml:lang="en">links to an inference step that derives the conclusion of the present node set.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;NodeSet"/>
+    <rdfs:range rdf:resource="&pmlj;InferenceStep"/>
+  </owl:ObjectProperty>
+  
+
+  <owl:ObjectProperty rdf:about="&pmlj;isExplanationOf">
+	<rdfs:label xml:lang="en">explains</rdfs:label>
+    <rdfs:comment xml:lang="en">links to a node set (and its antecedents) that is explained by the present node set. This is used for connecting the orginal justifications to the NodeSet that abstracts this node set (and its antecedents).</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;NodeSet"/>
+    <rdfs:range rdf:resource="&pmlj;NodeSet"/>
+  </owl:ObjectProperty>
+
+
+
+  
+<!-- ******************************************************************** --> 
+<!-- Inference Step -->
+<!-- ******************************************************************** --> 
+  <owl:Class rdf:about="&pmlj;InferenceStep">
+	<rdfs:label xml:lang="en">Inference Step</rdfs:label>
+    <rdfs:comment xml:lang="en">An inference step represents a justification for the conclusion of the corresponding node set. Instances of inference step are usually anonymous as part of node set. For this reason, inference steps usually have no URIs. Moreover, an application should treat node set and its inference steps in whole.</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&pmlj;JustificationElement" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;hasIndex"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;hasSourceUsage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;hasInferenceRule"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;fromAnswerOrQuery"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;hasInferenceEngine"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;hasAntecedentList"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasAntecedentList">
+	<rdfs:label xml:lang="en">antecedent</rdfs:label>
+    <rdfs:comment xml:lang="en">The Antecedents of an inference step (i.e., the object of iw:hasAntecedent) is a collection of node sets each of whose conclusions is a premise of the application of the inference step's rule. The collection can contain any number of node sets including none. PML supports the order of premises in two folds:
+(i) The fact that the premises are ordered may be relevant for some rules such as ordered resolution that uses the order to match premises with the schemas of the associated rule. To this end, users may declare one iw:hasAntecedent that links to an instance of rdf:List, which is an ordered list of the antecedent node sets. 
+(II) For other rules such as modus Ponens, the order of the premises is irrelevant; therefore, Antecedents can be viewed as a bag of premises. To this end, users may declare multiple iw:hasAntecedent each of which links to an antecedent node set.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&pmlj;NodeSetList"/>
+  </owl:ObjectProperty>
+
+  <owl:Class rdf:about="&pmlj;NodeSetList">
+    <rdfs:label xml:lang="en"> List of NodeSet</rdfs:label>	
+    <rdfs:subClassOf rdf:resource="&ds;List"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="&pmlj;NodeSet"/>
+        <owl:onProperty rdf:resource="&ds;first"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="&pmlj;NodeSetList"/>
+        <owl:onProperty rdf:resource="&ds;rest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>    
+  
+  <owl:ObjectProperty rdf:about="&pmlj;hasInferenceEngine">
+	<rdfs:label xml:lang="en">inference engine</rdfs:label>
+    <rdfs:comment xml:lang="en">links to the inference engine that derives this inference step.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&pmlp;InferenceEngine"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasInferenceRule">
+	<rdfs:label xml:lang="en">inference rule</rdfs:label>
+    <rdfs:comment xml:lang="en">links to the inference rule that is used in deriving this inference step.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&pmlp;InferenceRule"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasSourceUsage">
+	<rdfs:label xml:lang="en">source usage</rdfs:label>
+    <rdfs:comment xml:lang="en">links to the source usage that is used in deriving this inference step.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&pmlp;SourceUsage"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasVariableMapping">
+	<rdfs:label xml:lang="en">variable mapping</rdfs:label>
+    <rdfs:comment xml:lang="en">Variable mapping captures the result (substitution) of unifying variables of premises/antecedents of a conclusion. Each VariableMapping of an inference step (i.e., the object of iw:hasVariableMapping) records the mapping from a 'variable'  to a 'term' (both variable and term are first logic concepts). Each variable mapping maps to one substitution. Note that variable mapping only captures string-replace alike substitution, we do not assume any understanding/parsing of the sentences mentioned in antecedents. In each inference step, the variable binding should be applied to the conclusions of corresponding antecedents. </rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&pmlj;Mapping"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasMetaBinding">
+	<rdfs:label xml:lang="en">meta binding</rdfs:label>
+    <rdfs:comment xml:lang="en">Given a formal representation of inference rule (e.g. PPDR), we may represent the structure of inference rule (i.e. we don't need to represent rules as an opaque one). Therefore, the inference engine might have a chance to capture how each-part of the inference rule may be mapped to some sentences. This mapping is metabinding.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&pmlj;Mapping"/>
+  </owl:ObjectProperty>
+
+  
+  <owl:ObjectProperty rdf:about="&pmlj;fromAnswerOrQuery">
+	<rdfs:label xml:lang="en">source-answer-or-query</rdfs:label>
+    <rdfs:comment xml:lang="en">abstract property modifying an inference step. It is use to impose the exclusion restriction on fromAnswer and fromQuery</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;fromAnswer">
+	<rdfs:label xml:lang="en">root-node-set</rdfs:label>
+    <rdfs:comment xml:lang="en">the root node set that answers the specific query but not necessarily the present nodeset that hosts this inference step.</rdfs:comment>
+    <rdfs:range rdf:resource="&pmlj;NodeSet"/>
+    <rdfs:subPropertyOf rdf:resource="&pmlj;fromAnswerOrQuery"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;fromQuery">
+	<rdfs:label xml:lang="en">source-query</rdfs:label>
+    <rdfs:comment xml:lang="en">the query that is answered by the present node set that hosts this inference step</rdfs:comment>
+    <rdfs:range rdf:resource="&pmlj;Query"/>
+    <rdfs:subPropertyOf rdf:resource="&pmlj;fromAnswerOrQuery"/>
+  </owl:ObjectProperty>
+  
+  
+
+  
+  <owl:DatatypeProperty rdf:about="&pmlj;hasIndex">
+	<rdfs:label xml:lang="en">index</rdfs:label>
+    <rdfs:comment xml:lang="en">the index of this inference step in the corresponding node set.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+  </owl:DatatypeProperty>
+    
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasDischarge">
+	<rdfs:label xml:lang="en">discharge</rdfs:label>
+    <rdfs:comment xml:lang="en">dismiss causal dependency from the conclusion of the present nodeset to an (recursive) antecedent nodeset of the present inference step. In particular, OR-elimination can only be implemented by hasDischarge</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;InferenceStep"/>
+    <rdfs:range rdf:resource="&pmlj;NodeSet"/>
+  </owl:ObjectProperty>
+
+  
+
+
+  
+<!-- ******************************************************************** --> 
+<!-- Query -->
+<!-- ******************************************************************** --> 
+  
+  <owl:Class rdf:about="&pmlj;Query">
+	<rdfs:label xml:lang="en">Query</rdfs:label>
+    <rdfs:comment xml:lang="en">A Query is a formal representation of user's question. For example, the content of the query can be '(type TonysSpecialty ?x)' which is encoded in KIF. An inference engine will take the query's content as input and find corresponding answers, each of which is a tree of node sets representing the proof traces obtained from the inference engine. </rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&pmlj;JustificationElement" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlj;isFromEngine"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasContent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasAnswer">
+	<rdfs:label xml:lang="en">answer</rdfs:label>
+    <rdfs:comment xml:lang="en">links to one of many alternative answers to this query.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;Query"/>
+    <rdfs:range rdf:resource="&pmlj;NodeSet"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="&pmlj;isFromEngine">
+	<rdfs:label xml:lang="en">answer-generator</rdfs:label>
+    <rdfs:domain rdf:resource="&pmlj;Query"/>
+    <rdfs:range rdf:resource="&pmlp;InferenceEngine"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlj;isQueryFor">
+	<rdfs:label xml:lang="en">query-for</rdfs:label>
+    <rdfs:domain rdf:resource="&pmlj;Query"/>
+    <rdfs:range rdf:resource="&pmlj;Question"/>
+  </owl:ObjectProperty>
+  
+  
+<!-- ******************************************************************** --> 
+<!-- Question -->
+<!-- ******************************************************************** --> 
+  
+  <owl:Class rdf:about="&pmlj;Question">
+	<rdfs:label xml:lang="en">Question</rdfs:label>
+    <rdfs:comment xml:lang="en">A Question refers to natural language version of a user's query. For example, a question can be "What is the type of Tony's Specialty?"  A question is usually additional information to an instance of Query as additional annotation.</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&pmlj;JustificationElement" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlj;hasAnswerPattern"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasContent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlj;hasAnswerPattern">
+	<rdfs:label xml:lang="en">answer pattern</rdfs:label>
+    <rdfs:comment xml:lang="en">Usually it is an English Pattern for the question. We may apply (string-replace) the variable mappings from the answer node set to generate the answer of the question. We may generate different queries for the same question, e.g. find Li's friends: I can (i) run JTP (KIF) to derive John's friends or (ii) query (SPARQL) a FOAF RDF database using foaf:knows. </rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;Question"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+    
+  
+  
+<!-- ******************************************************************** --> 
+<!-- mapping -->
+<!-- ******************************************************************** --> 
+  <owl:Class rdf:about="&pmlj;Mapping">
+	<rdfs:label xml:lang="en">Mapping</rdfs:label>
+    <rdfs:comment xml:lang="en">annotating things to be mapped. The mapping is represented from a literal string to another literal string. PML does not understand/parse the semantics of the string.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlj;mapFrom"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlj;mapTo"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlj;mapFrom">
+	<rdfs:label xml:lang="en">map-from</rdfs:label>
+    <rdfs:comment xml:lang="en">literal string to be replaced.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;Mapping"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlj;mapTo">
+	<rdfs:label xml:lang="en">map-to</rdfs:label>
+    <rdfs:comment xml:lang="en">literal string as the subsitutor.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlj;Mapping"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+  
+
+
+
+
+<!-- ******************************************************************** --> 
+<!-- extension of PML-P -->
+<!-- ******************************************************************** --> 
+  <owl:Class rdf:about="&pmlj;AbstractionRule">
+	<rdfs:label>Abstraction Rule</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&pmlp;MethodRule"/>
+  </owl:Class>  
+
+  <owl:ObjectProperty rdf:about="&pmlj;hasPatternNodeSet">
+	<rdfs:label>pattern</rdfs:label>
+    <rdfs:domain rdf:resource="&pmlj;AbstractionRule"/>
+    <rdfs:range rdf:resource="&pmlj;NodeSet"/>
+  </owl:ObjectProperty>
+
+  
+</rdf:RDF>

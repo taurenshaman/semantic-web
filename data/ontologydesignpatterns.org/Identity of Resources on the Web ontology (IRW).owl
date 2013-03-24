@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:ire="http://www.ontologydesignpatterns.org/cpont/ire.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ir="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"
+    xmlns="http://www.ontologydesignpatterns.org/ont/web/irw.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+  xml:base="http://www.ontologydesignpatterns.org/ont/web/irw.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:label>The Identity of Resources on the Web ontology (IRW).</rdfs:label>
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created by Valentina Presutti with support from Harry Halpin and Aldo Gangemi</owl:versionInfo>
+    <rdfs:comment>This ontology is an evolution of IRE ontology. It describes identification of resources on the Web, through the definition of relationships between resources and their representations on the Web. The requirement is to describe what can be identified by URIs and how this is handled e.g. in form of HTTP requests and reponds.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="SemanticWebURI">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="redirectsTo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>The subset of URI that identify typically analog things. In general they identify any resource but are not directly resolvable. They do not identify an accessible information resource.They act as a virtual delegate for exactly one resource, typically analog. They cause a re-direct or any other type of mechanism that makes the web server resolve another URI that is associated with a WebReource (see range of redirectTo)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >semantic web uri</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="URI"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#URI">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="hasURIString"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="identifies"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Resource"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >uri</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="InformationResource">
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#InformationRealization">
+        <rdfs:subClassOf>
+          <owl:Class rdf:ID="PhysicalEntityResource"/>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="#InformationResource"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >information resource</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WebRepresentation"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Nothing">
+        <owl:disjointWith>
+          <owl:Class rdf:about="#WebRepresentation"/>
+        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="#InformationResource"/>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#InformationObject">
+        <owl:equivalentClass rdf:resource="#InformationResource"/>
+        <rdfs:subClassOf>
+          <owl:Class rdf:about="#Resource"/>
+        </rdfs:subClassOf>
+      </rdf:Description>
+    </owl:equivalentClass>
+    <rdfs:comment>They are *about* something, this something can be everything (rdfs:Resource, owl:Thing, ire:Entity) including AnalogResource. Their essential characteristics can be conveyed in a single message. They can be associated with a URI, and can have a WebRepresentation, in this case they are called WebResource. They have some realization, for example: the text of Moby Dick is an InformationResource, a book containing the text of Moby Dick is one of its realization. The intuition behind the class InformationResource is the same behind the class ir:InformationRealization (cloned from Dolce Ultra Lite).</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Resource"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NonInformationResource"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#WebRepresentation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="isEncodedIn"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>The realization of a message encoding that 'goes on the wire' according to an interaction protocol (e.g. http) in order to resolve a Web accessible resource. Representation have neither a URL nor a URI, they are associated with the URL of the Web Resource they represent. Representation are disjoint with Web resources</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >awww representation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#InformationRealization"/>
+    <owl:disjointWith rdf:resource="http://www.w3.org/2002/07/owl#Nothing"/>
+    <owl:disjointWith rdf:resource="#InformationResource"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WebClient">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Resource"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >web client</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#NonInformationResource">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >non-information resources</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Resource"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isIdentifiedBy"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#SemanticWebURI"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#InformationResource"/>
+    <rdfs:comment>All Semantic Web resources that are not information resources. They include abstract, conceptual, and physical resources.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="WebServer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isResolutionOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Resource"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >web server</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="WebResource">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >web resource</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isIdentifiedBy"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#isRealizedBy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#WebRepresentation"/>
+        <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#isRealizedBy"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InformationResource"/>
+    <rdfs:comment>InformationResources that have at least one WebRepresentation and at least a URI. For example, a WebResource containing the text of Moby Dick and its WebRepresentation encoded in HTML in English language.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysicalEntityResource">
+    <rdfs:comment>Something that occupies its own space and has its own mass in the real world, and can have a "virtual delegate" on the Web. For example physical people, artifacts, places, bodies, chimical substances, biological entities, etc.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="AbstractResource"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#NonInformationResource"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="ConceptualResource"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >physical resource</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaType">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >media type</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Resource"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ConceptualResource">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >conceptual resource</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AbstractResource"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#NonInformationResource"/>
+    <rdfs:comment>Resources that are created in the social communication process. A conceptual resource does not exist if it's not in a social communication. For example: legal entities, political entities, social relations, concepts, etc.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#PhysicalEntityResource"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AbstractResource">
+    <rdfs:subClassOf rdf:resource="#NonInformationResource"/>
+    <owl:disjointWith rdf:resource="#ConceptualResource"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >abstract resource</rdfs:label>
+    <rdfs:comment>Abstract things. They are combinatorial spaces. They cannot be located in space-time. Examples are: the infinite set of integers, real numbers, formal entities, relations, functions, the infinite set of names that can be defined in namespaces.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#PhysicalEntityResource"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Resource">
+    <rdfs:comment>This class is meant to express the same intuition of rdfs:Resource but it is defined here in order to have OWL-DL compaibility. In an OWL Full version of this ontology we would have this class owl:equivalentClass rdfs:Resource.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >resource</rdfs:label>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#InformationResource"/>
+          <owl:Class rdf:about="#NonInformationResource"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="isLocationOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="locatedOn"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#WebRepresentation"/>
+    <rdfs:domain rdf:resource="#WebServer"/>
+    <rdfs:comment>A relation between a WebServer and a WebRepresentation. It indicates that a WebServer concretely can respond to an HTTP request with a particular Web Representation.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is location of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isTopicOf">
+    <rdfs:domain rdf:resource="#Resource"/>
+    <rdfs:range rdf:resource="#InformationResource"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isAbout"/>
+    </owl:inverseOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is topic of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isRequestedBy">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is requested by</rdfs:label>
+    <rdfs:domain rdf:resource="#URI"/>
+    <rdfs:range rdf:resource="#WebClient"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="requests"/>
+    </owl:inverseOf>
+    <rdfs:comment>WebClients that have requested a URI, like in typical HTTP GET requests.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isAbout">
+    <rdfs:domain rdf:resource="#InformationResource"/>
+    <rdfs:range rdf:resource="#Resource"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is about</rdfs:label>
+    <owl:inverseOf rdf:resource="#isTopicOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#requests">
+    <rdfs:range rdf:resource="#URI"/>
+    <rdfs:domain rdf:resource="#WebClient"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >requests</rdfs:label>
+    <rdfs:comment>Expresses the notion behind of a request operation of a web client, exempliﬁed by a typical HTTP GET request.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#isRequestedBy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#locatedOn">
+    <rdfs:comment>A relation between a WebRepresentation and a WebServer, indicating that the WebRepresentation can be obtained by e.g. an HTTP request to the WebServer.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#isLocationOf"/>
+    <rdfs:range rdf:resource="#WebServer"/>
+    <rdfs:domain rdf:resource="#WebRepresentation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >located on</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isReferencedBy">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="isAccessedBy"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#URI"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is referenced by</rdfs:label>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="refersTo"/>
+    </owl:inverseOf>
+    <rdfs:comment>The relation between a resource and the information resource that is about it.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Resource"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isAccessedBy">
+    <rdfs:range rdf:resource="#URI"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >requests</rdfs:label>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:ID="accesses"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#Resource"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isResolutionOf">
+    <rdfs:subPropertyOf rdf:resource="#isAccessedBy"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="resolvesTo"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#URI"/>
+    <rdfs:domain rdf:resource="#WebServer"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is resolution of</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#identifies">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#isIdentifiedBy"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#URI"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >identifies</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="#Resource"/>
+    <rdfs:comment>The relashionship between a URI and a resource. A URI identify only one resource, it acts as a "virtual" delegate for that resource on the Web. This is different from the refersTo relashionships. This latter holds between Resources, and it's not  functional. For example, http://www.example.com#me identifies only john, while john's homepage http://www.example.com/john.html refersTo me, the place where he works, his job, his personal interests, etc. If I want to describe John's characteristics e.g. his name, age, etc. on the Web, I will attach them to http://www.example.com#john. On the other hand, http://www.example.com/john.html identifies john's homepage, which is an information resource.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isIdentifiedBy">
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is identified by</rdfs:label>
+    <owl:inverseOf rdf:resource="#identifies"/>
+    <rdfs:range rdf:resource="#URI"/>
+    <rdfs:domain rdf:resource="#Resource"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#resolvesTo">
+    <owl:inverseOf rdf:resource="#isResolutionOf"/>
+    <rdfs:comment>Relates a URI to a concrete Web server, which currently is done by mapping a URI to an IP address or addresses.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >resolves to</rdfs:label>
+    <rdfs:domain rdf:resource="#URI"/>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#accesses"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#WebServer"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#redirectsTo">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >redirects to</rdfs:label>
+    <rdfs:domain rdf:resource="#URI"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#URI"/>
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="#WebResource"/>
+            <owl:onProperty rdf:resource="#identifies"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#accesses"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment>Redirections can be used outside the Semantic Web between just normal information resources, their domain and range says nothing about the type of resource. The only important aspect is that the reseource that is the destination of the redirection must be associated with a WebRepresentation, hence it must be a WebResource. This property can be used as top property for expressing special types of redirections e.g. TAG's 303 redirection or hash convention.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="encodes">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >encodes</rdfs:label>
+    <rdfs:range rdf:resource="#WebRepresentation"/>
+    <rdfs:domain rdf:resource="#MediaType"/>
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="#isEncodedIn"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#refersTo">
+    <rdfs:comment>The relation between a URI and the resources it refers to.</rdfs:comment>
+    <rdfs:domain rdf:resource="#URI"/>
+    <owl:inverseOf rdf:resource="#isReferencedBy"/>
+    <rdfs:range rdf:resource="#Resource"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >refers to</rdfs:label>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#accesses"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#hasURIString">
+    <rdfs:comment>The value of the URI, a string compliant with the URI specification.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:domain rdf:resource="#URI"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >has URI string value</rdfs:label>
+    <rdfs:comment>The name of this datatype property previously was "hasURI", but in this ontology a URI is modelled as a class, hence I though that it's better to clarify, even in the property name that it refers to the string value of a URI.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:about="#accesses">
+    <rdfs:domain rdf:resource="#URI"/>
+    <rdfs:comment>A causal connection from a resource to the thing identiﬁed.</rdfs:comment>
+    <rdfs:range rdf:resource="#Resource"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >accesses</rdfs:label>
+    <owl:inverseOf rdf:resource="#isAccessedBy"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:TransitiveProperty>
+  <owl:FunctionalProperty rdf:about="#isEncodedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >encoded in</rdfs:label>
+    <owl:inverseOf rdf:resource="#encodes"/>
+    <rdfs:domain rdf:resource="#WebRepresentation"/>
+    <rdfs:range rdf:resource="#MediaType"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid Composer -->

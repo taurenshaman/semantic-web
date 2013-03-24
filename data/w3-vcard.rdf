@@ -1,0 +1,1098 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY vcard "http://www.w3.org/2006/vcard/ns#" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+  <!ENTITY wgs "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+  <!ENTITY ns "http://www.w3.org/2006/vcard/ns#" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF xmlns="&vcard;"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:wgs="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:vcard="http://www.w3.org/2006/vcard/">
+  <owl:Ontology rdf:about="http://www.w3.org/2006/vcard/ns">
+    <dc:title xml:lang="en-US">An Ontology for vCards</dc:title>
+    <dc:title xml:lang="zh-CN"></dc:title>
+    <dc:description xml:lang="en-US">This ontology models and represents vCards in RDF using current best practices.</dc:description>
+    <dc:description xml:lang="zh-CN"></dc:description>
+    <dc:creator>Harry Halpin</dc:creator>
+    <dc:creator>Renato Iannella</dc:creator>
+    <dc:creator>Brian Suda</dc:creator>
+    <dc:creator>Norman Walsh</dc:creator>
+    <dc:date>2010-01-20</dc:date>
+    <rdfs:seeAlso>http://tools.ietf.org/html/rfc2426</rdfs:seeAlso>
+    <rdfs:seeAlso>http://www.w3.org/Submission/vcard-rdf/</rdfs:seeAlso>
+  </owl:Ontology>
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+  <owl:AnnotationProperty rdf:about="&dc;date"/>
+  <owl:AnnotationProperty rdf:about="&dc;title"/>
+  <owl:AnnotationProperty rdf:about="&dc;description"/>
+  <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+  <owl:AnnotationProperty rdf:about="&dc;creator"/>
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+  <!-- http://www.w3.org/2006/vcard/adr -->
+
+  <owl:ObjectProperty rdf:about="&vcard;adr">
+    <rdfs:label xml:lang="en-US">address</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A postal or street address of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:range rdf:resource="&vcard;Address"/>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/agent -->
+
+  <owl:ObjectProperty rdf:about="&vcard;agent">
+    <rdfs:label xml:lang="en-US">agent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A person that acts as one&#39;s agent</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:range rdf:resource="&vcard;VCard"/>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/email -->
+
+  <owl:ObjectProperty rdf:about="&vcard;email">
+    <rdfs:label xml:lang="en-US">email</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">An email address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/geo -->
+
+  <owl:ObjectProperty rdf:about="&vcard;geo">
+    <rdfs:label xml:lang="en-US">geographic location</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A geographic location associated with a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:range rdf:resource="&vcard;Location"/>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/key -->
+
+  <owl:ObjectProperty rdf:about="&vcard;key">
+    <rdfs:label xml:lang="en-US">key</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A key (e.g, PKI key) of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/logo -->
+
+  <owl:ObjectProperty rdf:about="&vcard;logo">
+    <rdfs:label xml:lang="en-US">logo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A logo associated with a person or their organization</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/n -->
+
+  <owl:ObjectProperty rdf:about="&vcard;n">
+    <rdfs:label xml:lang="en-US">name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The components of the name of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:range rdf:resource="&vcard;Name"/>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/org -->
+
+  <owl:ObjectProperty rdf:about="&vcard;org">
+    <rdfs:label xml:lang="en-US">organization</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">An organization associated with a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:range rdf:resource="&vcard;Organization"/>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/photo -->
+
+  <owl:ObjectProperty rdf:about="&vcard;photo">
+    <rdfs:label xml:lang="en-US">photo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A photograph of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/sound -->
+
+  <owl:ObjectProperty rdf:about="&vcard;sound">
+    <rdfs:label xml:lang="en-US">sound</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A sound (e.g., a greeting or pronounciation) of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/tel -->
+
+  <owl:ObjectProperty rdf:about="&vcard;tel">
+    <rdfs:label xml:lang="en-US">phone</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A telephone number of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/url -->
+
+  <owl:ObjectProperty rdf:about="&vcard;url">
+    <rdfs:label xml:lang="en-US">url</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A URL associated with a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- http://www.w3.org/2006/vcard/additional-name -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;additional-name">
+    <rdfs:label xml:lang="en-US">additional name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">An additional part of a person&#39;s name</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Name"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/bday -->
+
+
+  <owl:DatatypeProperty rdf:about="&vcard;bday">
+    <rdfs:label xml:lang="en-US">birthday</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The birthday of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&xsd;date"/>
+          <rdf:Description rdf:about="&xsd;dateTime"/>
+        </owl:unionOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.w3.org/2006/vcard/category -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;category">
+    <rdfs:label xml:lang="en-US">category</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A category of a vCard</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/class -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;class">
+    <rdfs:label xml:lang="en-US">class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A class (e.g., public, private, etc.) of a vCard</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/country-name -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;country-name">
+    <rdfs:label xml:lang="en-US">country</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The country of a postal address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/extended-address -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;extended-address">
+    <rdfs:label xml:lang="en-US">extended</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The extended address of a postal address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/family-name -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;family-name">
+    <rdfs:label xml:lang="en-US">family name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A family name part of a person&#39;s name</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Name"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/fn -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;fn">
+    <rdfs:label xml:lang="en-US">formatted name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A formatted name of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/given-name -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;given-name">
+    <rdfs:label xml:lang="en-US">given name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A given name part of a person&#39;s name</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Name"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/honorific-prefix -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;honorific-prefix">
+    <rdfs:label xml:lang="en-US">honorific prefix</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">An honorific prefix part of a person&#39;s name</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Name"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/honorific-suffix -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;honorific-suffix">
+    <rdfs:label xml:lang="en-US">honorific suffix</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">An honorific suffix part of a person&#39;s name</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Name"/>
+  </owl:DatatypeProperty>
+
+  <!-- http://www.w3.org/2006/vcard/latitude -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;latitude">
+    <rdfs:label xml:lang="en-US">geographic latitude</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The latitude of the location of the vCard object</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Location"/>
+    <rdfs:range rdf:resource="&xsd;float"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.w3.org/2006/vcard/label -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;label">
+    <rdfs:label xml:lang="en-US">address label</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The formatted version of a postal address (a string with embedded line breaks, punctuation, etc.)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+  <!-- http://www.w3.org/2006/vcard/longitude -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;longitude">
+    <rdfs:label xml:lang="en-US">geographic longitude</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The longitude of the location of the vCard object</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Location"/>
+    <rdfs:range rdf:resource="&xsd;float"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.w3.org/2006/vcard/locality -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;locality">
+    <rdfs:label xml:lang="en-US">locality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The locality (e.g., city) of a postal address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/mailer -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;mailer">
+    <rdfs:label xml:lang="en-US">mailer</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A mailer associated with a vCard</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/nickname -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;nickname">
+    <rdfs:label xml:lang="en-US">nickname</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The nickname of a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/note -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;note">
+    <rdfs:label xml:lang="en-US">notes</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Notes about a person on a vCard</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/organization-name -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;organization-name">
+    <rdfs:label xml:lang="en-US">name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The name of an organization</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Organization"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/organization-unit -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;organization-unit">
+    <rdfs:label xml:lang="en-US">unit</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The name of a unit within an organization</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Organization"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/post-office-box -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;post-office-box">
+    <rdfs:label xml:lang="en-US">P.O. Box</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The post office box of a postal address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/postal-code -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;postal-code">
+    <rdfs:label xml:lang="en-US">postal code</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The postal code (e.g., U.S. ZIP code) of a postal address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/prodid -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;prodid">
+    <rdfs:label xml:lang="en-US">prodid</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The Identifier for the product that created the vCard object</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/region -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;region">
+    <rdfs:label xml:lang="en-US">region</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The region (e.g., state or province) of a postal address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/rev -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;rev">
+    <rdfs:label xml:lang="en-US">revision</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The timestamp of a revision of a vCard</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&xsd;date"/>
+          <rdf:Description rdf:about="&xsd;dateTime"/>
+        </owl:unionOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/role -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;role">
+    <rdfs:label xml:lang="en-US">role</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A role a person plays within an organization</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/sort-string -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;sort-string">
+    <rdfs:label xml:lang="en-US">sort</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A version of a person&#39;s name suitable for collation</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/street-address -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;street-address">
+    <rdfs:label xml:lang="en-US">street</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">The street address of a postal address</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;Address"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/title -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;title">
+    <rdfs:label xml:lang="en-US">title</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A person&#39;s title</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/tz -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;tz">
+    <rdfs:label xml:lang="en-US">timezone</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A timezone associated with a person</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/uid -->
+
+  <owl:DatatypeProperty rdf:about="&vcard;uid">
+    <rdfs:label xml:lang="en-US">uid</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">A UID of a person&#39;s vCard</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="&vcard;VCard"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Address -->
+
+  <owl:Class rdf:about="&vcard;Address">
+    <rdfs:label xml:lang="en-US">vCard Address Class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;extended-address"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;locality"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;country-name"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;post-office-box"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;region"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;postal-code"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;street-address"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="&vcard;Email"/>
+    <owl:disjointWith rdf:resource="&vcard;Label"/>
+    <owl:disjointWith rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Resources that are vCard Addresses</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/BBS -->
+
+  <owl:Class rdf:about="&vcard;BBS">
+    <rdfs:label xml:lang="en-US">Bulletin Board System</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Bulletin Board System Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Car -->
+
+  <owl:Class rdf:about="&vcard;Car">
+    <rdfs:label xml:lang="en-US">Car Phone</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Car Telephone</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Cell -->
+
+  <owl:Class rdf:about="&vcard;Cell">
+    <rdfs:label xml:lang="en-US">Cellular Telephone</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Cellular or Mobile Telephone</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Dom -->
+
+  <owl:Class rdf:about="&vcard;Dom">
+    <rdfs:label xml:lang="en-US">Domestic</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&vcard;Address"/>
+          <rdf:Description rdf:about="&vcard;Label"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Information related to a Domestic Address or Label</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Email -->
+
+  <owl:Class rdf:about="&vcard;Email">
+    <rdfs:label xml:lang="en-US">Email</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <owl:disjointWith rdf:resource="&vcard;Label"/>
+    <owl:disjointWith rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Resources that are vCard Email Addresses</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Fax -->
+
+  <owl:Class rdf:about="&vcard;Fax">
+    <rdfs:label xml:lang="en-US">Fax</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Fax Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Home -->
+
+  <owl:Class rdf:about="&vcard;Home">
+    <rdfs:label xml:lang="en-US">Home</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&vcard;Address"/>
+          <rdf:Description rdf:about="&vcard;Label"/>
+          <rdf:Description rdf:about="&vcard;Tel"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Information related to a Home Address, Label, or Telephone</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/ISDN -->
+
+  <owl:Class rdf:about="&vcard;ISDN">
+    <rdfs:label xml:lang="en-US">ISDN</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">ISDN Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Internet -->
+
+  <owl:Class rdf:about="&vcard;Internet">
+    <rdfs:label xml:lang="en-US">Internet</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Email"/>
+    <rdfs:comment xml:lang="en-US">Internet Email</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Intl -->
+
+  <owl:Class rdf:about="&vcard;Intl">
+    <rdfs:label xml:lang="en-US">International</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&vcard;Address"/>
+          <rdf:Description rdf:about="&vcard;Label"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Information related to an International Address or Label</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Label -->
+
+  <owl:Class rdf:about="&vcard;Label">
+    <rdfs:label xml:lang="en-US">Label</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <owl:disjointWith rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Resources that are vCard Labels</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Location -->
+
+  <owl:Class rdf:about="&vcard;Location">
+    <rdfs:label xml:lang="en-US">vCard Geographic Location Class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Resources that are vCard geographic locations</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;latitude"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;longitude"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Modem -->
+
+  <owl:Class rdf:about="&vcard;Modem">
+    <rdfs:label xml:lang="en-US">Modem</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Modem Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Msg -->
+
+  <owl:Class rdf:about="&vcard;Msg">
+    <rdfs:label xml:lang="en-US">Voice Messenger</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Voice Message Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Name -->
+
+  <owl:Class rdf:about="&vcard;Name">
+    <rdfs:label xml:lang="en-US">vCard Name Class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;family-name"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;given-name"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;additional-name"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;honorific-suffix"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;honorific-prefix"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Resources that are vCard personal names</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Organization -->
+
+  <owl:Class rdf:about="&vcard;Organization">
+    <rdfs:label
+            >vCard Organization Class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;organization-unit"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&vcard;organization-name"/>
+        <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Resources that are vCard organizations</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/PCS -->
+
+  <owl:Class rdf:about="&vcard;PCS">
+    <rdfs:label xml:lang="en-US">Personal Communications Service</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Personal Communications Service</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Pager -->
+
+  <owl:Class rdf:about="&vcard;Pager">
+    <rdfs:label xml:lang="en-US">Pager Device</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Pager Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Parcel -->
+
+  <owl:Class rdf:about="&vcard;Parcel">
+    <rdfs:label xml:lang="en-US">Parcel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&vcard;Address"/>
+          <rdf:Description rdf:about="&vcard;Label"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Information related to a Parcel Address or Label</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Postal -->
+
+  <owl:Class rdf:about="&vcard;Postal">
+    <rdfs:label xml:lang="en-US">Postal</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&vcard;Address"/>
+          <rdf:Description rdf:about="&vcard;Label"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Information related to a Postal Address or Label</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Pref -->
+
+  <owl:Class rdf:about="&vcard;Pref">
+    <rdfs:label xml:lang="en-US">Preferred</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&vcard;Address"/>
+          <rdf:Description rdf:about="&vcard;Email"/>
+          <rdf:Description rdf:about="&vcard;Label"/>
+          <rdf:Description rdf:about="&vcard;Tel"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Information related to a Preferred Address, Email, Label, or Telephone</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Tel -->
+
+  <owl:Class rdf:about="&vcard;Tel">
+    <rdfs:comment xml:lang="en-US">Telephone</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en-US">Resources that are vCard Telephony communication mechanisms</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/VCard -->
+
+  <owl:Class rdf:about="&vcard;VCard">
+    <rdfs:label xml:lang="en-US">vCard Class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Resources that are vCards and the URIs that denote these vCards can also be the same URIs that denote people/orgs</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Video -->
+
+  <owl:Class rdf:about="&vcard;Video">
+    <rdfs:label xml:lang="en-US">Video</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Video Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Voice -->
+
+  <owl:Class rdf:about="&vcard;Voice">
+    <rdfs:label xml:lang="en-US">Voice</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Tel"/>
+    <rdfs:comment xml:lang="en-US">Voice Communications</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/Work -->
+
+  <owl:Class rdf:about="&vcard;Work">
+    <rdfs:label xml:lang="en-US">Work</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&vcard;Address"/>
+          <rdf:Description rdf:about="&vcard;Email"/>
+          <rdf:Description rdf:about="&vcard;Label"/>
+          <rdf:Description rdf:about="&vcard;Tel"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en-US">Information related to a Work Address, Label, or Telephone</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.w3.org/2006/vcard/X400 -->
+
+  <owl:Class rdf:about="&vcard;X400">
+    <rdfs:label xml:lang="en-US">X.400</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&vcard;Email"/>
+    <rdfs:comment xml:lang="en-US">X.400 Email</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+</rdf:RDF>

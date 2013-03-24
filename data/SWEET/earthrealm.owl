@@ -1,0 +1,1648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:substance="http://sweet.jpl.nasa.gov/ontology/substance.owl#" 
+xmlns:space="http://sweet.jpl.nasa.gov/ontology/space.owl#" 
+xmlns:numerics="http://sweet.jpl.nasa.gov/ontology/numerics.owl#" 
+xmlns:property="http://sweet.jpl.nasa.gov/ontology/property.owl#" 
+xmlns="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#">
+<owl:Ontology rdf:about="">
+<!--
+<dc:title>
+Earthrealm</dc:title>
+<dc:date>
+1/27/2004 2:59:58 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+</dc:subject>
+-->
+<owl:versionInfo>
+1.0</owl:versionInfo>
+<!-- <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/> -->
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl"/> 
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+<owl:Class rdf:ID="OceanRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Ocean"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasEcosystemType"/>
+<owl:allValuesFrom rdf:resource="#MarineEcosystem"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="TopographicalRegion">
+<rdfs:subClassOf rdf:resource="#SurfaceRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaSurfaceLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isAdjacentTo"/>
+<owl:allValuesFrom rdf:resource="#SeaSurface"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OceanLayer"/>
+<rdfs:subClassOf rdf:resource="#WaterSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="SolidEarth">
+   <owl:equivalentClass rdf:resource="#Geosphere"/>
+</owl:Class>
+<owl:Class rdf:ID="MarineEcosystem">
+<rdfs:subClassOf rdf:resource="#EcosystemType"/>
+</owl:Class>
+<owl:Class rdf:ID="UndergroundWater">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#LandSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LandWaterObject"/>
+</owl:Class>
+<owl:Class rdf:ID="SubsurfaceWater">
+<owl:equivalentClass rdf:resource="#UndergroundWater"/>
+</owl:Class>
+<owl:Class rdf:ID="LandWaterObject">
+<rdfs:subClassOf>
+<owl:Class>
+<owl:complementOf>
+<owl:Class rdf:about="#Ocean"/>
+</owl:complementOf>
+</owl:Class>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfWater"/>
+</owl:Class>
+<owl:Class rdf:ID="Ocean">
+<rdfs:subClassOf rdf:resource="#BodyOfWater"/>
+<rdfs:subClassOf>
+<owl:Class>
+<owl:complementOf>
+<owl:Class rdf:about="#LandWaterObject"/>
+</owl:complementOf>
+</owl:Class>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="LandSurfaceLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isAdjacentTo"/>
+<owl:allValuesFrom rdf:resource="#LandSurface"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CrustLayer"/>
+<rdfs:subClassOf rdf:resource="#PlanetarySurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="PermafrostZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:ID="ClimateZoneType">
+<rdfs:subClassOf rdf:resource="#RegionProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Magnetosphere">
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="AtmosphereLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Air"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Atmosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Layer"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaIceLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#OceanRegion"/>
+<owl:Class rdf:about="#SubsurfaceRegion"/>
+<owl:Class rdf:about="#CoastalRegion"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#IceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="LandIceLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#LandRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#IceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Nearshore">
+   <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#OceanRegion"/>
+      <owl:Class rdf:about="#CoastalRegion"/>
+   </owl:intersectionOf>
+</owl:Class>
+<owl:Class rdf:ID="CoastalRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#hasCommon2DBorderWith"/>
+<owl:someValuesFrom rdf:resource="#LandRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#hasCommon2DBorderWith"/>
+<owl:someValuesFrom rdf:resource="#OceanRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="IceLayer">
+<rdfs:subClassOf rdf:resource="#CryosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Air"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Cryosol"/>
+<owl:Class rdf:ID="SeaFloor">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerLowerBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#SeaFloorWaterLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#SeaFloorGroundLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#LayerBoundary"/>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#LayerBoundary">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaFloorWaterLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isAdjacentTo"/>
+<owl:allValuesFrom rdf:resource="#SeaFloor"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OceanLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaFloorGroundLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isAdjacentTo"/>
+<owl:allValuesFrom rdf:resource="#SeaFloor"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CrustLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="UpperMantle_flowing">
+<rdfs:subClassOf rdf:resource="#MantleLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="MantleLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#hasPart"/>
+<owl:allValuesFrom rdf:resource="#Mantle"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Seamount">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaFloorRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#SeaFloorGroundLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="RockGlacier">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#contains"/>
+<owl:allValuesFrom rdf:resource="#Rock_body"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Glacier"/>
+</owl:Class>
+<owl:Class rdf:ID="Glacier">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandRegion"/>
+<owl:Class rdf:about="#CoastalRegion"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfIce"/>
+</owl:Class>
+<owl:Class rdf:ID="LandRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandSurfaceLayer"/>
+<owl:Class rdf:about="#LandwaterSurfaceLayer"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasEcosystemType"/>
+<owl:allValuesFrom rdf:resource="#TerrestrialEcosystem"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Class>
+<owl:complementOf>
+<owl:Class rdf:about="#OceanRegion"/>
+</owl:complementOf>
+</owl:Class>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Rock_body">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Rock"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfGround"/>
+</owl:Class>
+<owl:Class rdf:ID="SubmarineCanyon">
+<rdfs:subClassOf rdf:resource="#Trench"/>
+</owl:Class>
+<owl:Class rdf:ID="Trench">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Estuary">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Farmland">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="TerrestrialEcosystem">
+<rdfs:subClassOf rdf:resource="#EcosystemType"/>
+</owl:Class>
+<owl:Class rdf:ID="PlanetarySurface">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerLowerBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#Atmosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#PlanetarySurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#LayerBoundary"/>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+</owl:Class>
+<owl:Class rdf:ID="Atmosphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+700000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GlobalPlanetaryLayers"/>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="PlanetarySurfaceLayer">
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Layer"/>
+</owl:Class>
+<owl:Class rdf:ID="Isopycnal">
+<rdfs:subClassOf rdf:resource="#PlanetarySurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Isobar">
+<rdfs:subClassOf rdf:resource="#PlanetarySurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="BodyOfGround">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ground_substance"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Geosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Body"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Rock"/>
+<owl:Class rdf:ID="AphoticZone">
+<rdfs:subClassOf rdf:resource="#OceanLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="OceanLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Ocean"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HydrosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="LakeLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Lake"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HydrosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="LithosphereLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Lithosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="GeosphereLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Geosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Layer"/>
+</owl:Class>
+<owl:Class rdf:ID="Lithosphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-150000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LithosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="SedimentLayer">
+<rdfs:subClassOf rdf:resource="#LakeLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Swamp">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="Wetland">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Geosphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GlobalPlanetaryLayers"/>
+<rdfs:subClassOf rdf:resource="#GeosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="CostalLandform">
+<rdfs:subClassOf rdf:resource="#GeomorphologicalRegionType"/>
+</owl:Class>
+<owl:Class rdf:ID="GeomorphologicalRegionType">
+<rdfs:subClassOf rdf:resource="#RegionProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="EarthRealm"/>
+<owl:Class rdf:ID="Littoral">
+<owl:equivalentClass rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="LandIce">
+<owl:equivalentClass rdf:resource="#LandIceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaIce">
+<owl:equivalentClass rdf:resource="#SeaIceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="PlanetaryStructure">
+<owl:equivalentClass rdf:resource="#EarthRealm"/>
+</owl:Class>
+<owl:Class rdf:ID="Benthic">
+<owl:equivalentClass rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#Layer"/>
+<owl:Class rdf:ID="BodyOfIce">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Cryosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Body"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+<owl:Class rdf:ID="Cryosphere">
+<rdfs:subClassOf rdf:resource="#GlobalPlanetaryLayers"/>
+<rdfs:subClassOf rdf:resource="#CryosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="WaterTable">
+<rdfs:subClassOf rdf:resource="#GroundWaterObjectBoundary"/>
+</owl:Class>
+<owl:Class rdf:ID="GroundWaterObjectBoundary">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#BodyBoundary"/>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary"/>
+</owl:Class>
+<owl:Class rdf:ID="LowerAtmosphere">
+<owl:equivalentClass rdf:resource="#Troposphere"/>
+</owl:Class>
+<owl:Class rdf:ID="UpperAtmosphere">
+<rdfs:subClassOf rdf:resource="#Atmosphere"/>
+</owl:Class>
+<owl:Class rdf:ID="Troposphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+12000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Tundra_Ecosystem">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="LandWaterSurface">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#LandwaterSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WaterSurface"/>
+</owl:Class>
+<owl:Class rdf:ID="WaterSurface">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#WaterSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#PlanetarySurface"/>
+</owl:Class>
+<owl:Class rdf:ID="LandwaterSurfaceLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isAdjacentTo"/>
+<owl:allValuesFrom rdf:resource="#LandWaterSurface"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WaterSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="MontaneForest">
+<rdfs:subClassOf rdf:resource="#Forest_Ecosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Forest_Ecosystem">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="FractureZone">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="FastIce">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#CoastalRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SeaIceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="DesertClimateZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:ID="TropicalClimateZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:ID="CrustLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Crust"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LithosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="OceanCrustLayer">
+<rdfs:subClassOf rdf:resource="#CrustLayer"/>
+<rdfs:subClassOf rdf:resource="#OceanLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Thermosphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+85000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+500000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Exosphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+500000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="MediterraneanClimateZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:ID="EcosystemType">
+<rdfs:subClassOf rdf:resource="#RegionProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="RegionProperty"/>
+<owl:Class rdf:ID="Crust">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-40000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CrustLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Mafic">
+   <rdfs:subClassOf rdf:resource="#Crust"/>
+</owl:Class>
+<owl:Class rdf:ID="Felsic">
+   <rdfs:subClassOf rdf:resource="#Crust"/>
+</owl:Class>
+<owl:Class rdf:ID="GlobalPlanetaryLayers">
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Layer"/>
+</owl:Class>
+<owl:Class rdf:ID="SeaSurface">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#SeaSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<owl:disjointWith rdf:resource="#LandSurface"/>
+<rdfs:subClassOf rdf:resource="#WaterSurface"/>
+</owl:Class>
+<owl:Class rdf:ID="RiftValley">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasGeomorphologicalType"/>
+<owl:allValuesFrom rdf:resource="#TectonicLandform"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="TectonicLandform">
+<rdfs:subClassOf rdf:resource="#GeomorphologicalRegionType"/>
+</owl:Class>
+<owl:Class rdf:ID="PackIce">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#OceanRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SeaIceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Aquifer">
+<rdfs:subClassOf rdf:resource="#UndergroundWater"/>
+</owl:Class>
+<owl:Class rdf:ID="WaterSurfaceLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isAdjacentTo"/>
+<owl:allValuesFrom rdf:resource="#WaterSurface"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#PlanetarySurfaceLayer"/>
+<rdfs:subClassOf rdf:resource="#HydrosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Island">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#surroundedBy_2D"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#OceanRegion"/>
+<owl:Class rdf:about="#LandwaterRegion"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LandRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="LandwaterRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:someValuesFrom rdf:resource="#LandwaterSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LandRegion"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#BodyBoundary">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Lagoon">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Litter">
+<rdfs:subClassOf rdf:resource="#LandSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Mantle">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-40000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-270000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Crust"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MantleLayer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Height"/>
+<owl:Class rdf:ID="AbyssalPlain">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Pycnocline">
+<rdfs:subClassOf rdf:resource="#OceanLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="IslandArc">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasGeomorphologicalType"/>
+<owl:allValuesFrom rdf:resource="#TectonicLandform"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Island"/>
+</owl:Class>
+<owl:Class rdf:ID="SkinLayer">
+<rdfs:subClassOf rdf:resource="#LandSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Plateau">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandSurfaceLayer"/>
+<owl:Class rdf:about="#Basin"/>
+<owl:Class rdf:about="#Catchment"/>
+<owl:Class rdf:about="#Dam"/>
+<owl:Class rdf:about="#Floodplain"/>
+<owl:Class rdf:about="#SeaFloorGroundLayer"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="SurfaceRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#PlanetarySurfaceLayer"/>
+<owl:Class rdf:about="#SeaFloorGroundLayer"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Region"/>
+</owl:Class>
+<owl:Class rdf:ID="Spring">
+<rdfs:subClassOf rdf:resource="#Stream"/>
+</owl:Class>
+<owl:Class rdf:ID="Cirque">
+<rdfs:subClassOf rdf:resource="#Basin"/>
+</owl:Class>
+<owl:Class rdf:ID="Stream">
+<rdfs:subClassOf rdf:resource="#SurfaceWater"/>
+</owl:Class>
+<owl:Class rdf:ID="SurfaceWater">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#surroundedBy_2D"/>
+<owl:allValuesFrom rdf:resource="#LandRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LandWaterObject"/>
+<rdfs:subClassOf rdf:resource="#LandwaterRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Polynya">
+<rdfs:subClassOf rdf:resource="#OceanRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="BodyOfWater">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Hydrosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Water"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Body"/>
+</owl:Class>
+<owl:Class rdf:ID="Tropopause">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerLowerBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#Stratosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#Troposphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayerBoundary"/>
+</owl:Class>
+<owl:Class rdf:ID="AtmosphereLayerBoundary">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#LayerBoundary"/>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+</owl:Class>
+<owl:Class rdf:ID="Stratosphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+12000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+50000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Shoreline">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Bedrock">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Rock"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CrustLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Benthos">
+<rdfs:subClassOf rdf:resource="#SeaFloorWaterLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="DeepOcean">
+<rdfs:subClassOf rdf:resource="#OceanRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Sea">
+<rdfs:subClassOf rdf:resource="#OceanRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="FluvialLandform">
+<rdfs:subClassOf rdf:resource="#GeomorphologicalRegionType"/>
+</owl:Class>
+<owl:Class rdf:ID="HydrosphereLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Hydrosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Water"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Layer"/>
+</owl:Class>
+<owl:Class rdf:ID="Hydrosphere">
+<rdfs:subClassOf rdf:resource="#GlobalPlanetaryLayers"/>
+<rdfs:subClassOf rdf:resource="#HydrosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Water"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Sediment"/>
+<owl:Class rdf:ID="TemperateClimateZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#Body"/>
+<owl:Class rdf:ID="ArcticClimateZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:ID="EolianLandform">
+<rdfs:subClassOf rdf:resource="#GeomorphologicalRegionType"/>
+</owl:Class>
+<owl:Class rdf:ID="CoralReef">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="CaveEcosystem">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="LandSurface">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#LandSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#PlanetarySurface"/>
+</owl:Class>
+<owl:Class rdf:ID="CoreLayer">
+<rdfs:subClassOf rdf:resource="#GeosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="HydrothermalVents">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="DemersalEcosystem">
+<rdfs:subClassOf rdf:resource="#MarineEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Mesopause">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerLowerBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#Thermosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#Mesosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayerBoundary"/>
+</owl:Class>
+<owl:Class rdf:ID="MiddleAtmosphere">
+   <owl:unionOf rdf:parseType="Collection">
+   <owl:Class rdf:about="#Stratosphere"/>
+   <owl:Class rdf:about="#Mesosphere"/>
+</owl:unionOf>
+</owl:Class>
+<owl:Class rdf:ID="Mesosphere">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+50000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+85000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ground_substance"/>
+<owl:Class rdf:ID="Permafrost">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#PermafrostZone"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Rock"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Soil"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CryosphereLayer"/>
+<rdfs:subClassOf rdf:resource="#CrustLayer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Soil"/>
+<owl:Class rdf:ID="CryosphereLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Cryosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Snow"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Layer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Snow"/>
+<owl:Class rdf:ID="Halocline">
+<rdfs:subClassOf rdf:resource="#OceanLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="PlanetEarth">
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Body"/>
+</owl:Class>
+<owl:Class rdf:ID="PhoticZone">
+<rdfs:subClassOf rdf:resource="#SeaSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Ionosphere">
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="F-Region">
+<rdfs:subClassOf rdf:resource="#Ionosphere"/>
+</owl:Class>
+<owl:Class rdf:ID="GlacialLandform">
+<rdfs:subClassOf rdf:resource="#GeomorphologicalRegionType"/>
+</owl:Class>
+<owl:Class rdf:ID="Beach">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Creek">
+<rdfs:subClassOf rdf:resource="#Stream"/>
+</owl:Class>
+<owl:Class rdf:ID="Delta">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Fjord">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Inlet">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Leads">
+<rdfs:subClassOf rdf:resource="#OceanRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Marsh">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+<rdfs:subClassOf rdf:resource="#WetlandRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="WetlandRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#LandwaterSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LandRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Plain">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandSurfaceLayer"/>
+<owl:Class rdf:ID="GroundSurfaceLayer">
+<owl:equivalentClass rdf:resource="#LandSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:about="#Groundwater"/>
+<owl:Class rdf:about="#VadoseZone">
+   <rdfs:subClassOf rdf:resource="#Groundwater"/>
+</owl:Class>
+<owl:Class rdf:about="#SeaFloorGroundLayer"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Ridge">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandSurfaceLayer"/>
+<owl:Class rdf:about="#SeaFloorGroundLayer"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="River">
+<rdfs:subClassOf rdf:resource="#Stream"/>
+</owl:Class>
+<owl:Class rdf:ID="Shoal">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Talik">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#PermafrostZone"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#CrustLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfGround"/>
+</owl:Class>
+<owl:Class rdf:ID="fiord">
+<owl:equivalentClass rdf:resource="#Fjord"/>
+</owl:Class>
+<owl:Class rdf:ID="Stratopause">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerLowerBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#Mesosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#Stratosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayerBoundary"/>
+</owl:Class>
+<owl:Class rdf:ID="LacustrineWetland">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="TerrrestrialWetland">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="Volcano">
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#Region"/>
+<owl:Class rdf:ID="LowerMantle">
+<rdfs:subClassOf rdf:resource="#MantleLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Moho">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerLowerBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#CrustLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isLayerUpperBoundaryOf"/>
+<owl:allValuesFrom rdf:resource="#MantleLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="BodyOfSeaIce">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#OceanRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfIce"/>
+</owl:Class>
+<owl:Class rdf:ID="SedimentaryStructure">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:someValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Sediment"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfGround"/>
+</owl:Class>
+<owl:Class rdf:ID="PelagicEcosystem">
+<rdfs:subClassOf rdf:resource="#MarineEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Grassland">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="BarrierIsland">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#CoastalRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Island"/>
+</owl:Class>
+<owl:Class rdf:ID="Thermocline">
+<rdfs:subClassOf rdf:resource="#OceanLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="ActiveLayer">
+<rdfs:subClassOf rdf:resource="#LandSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="SubtropicalClimateZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:ID="IceSheet">
+<rdfs:subClassOf rdf:resource="#BodyOfSeaIce"/>
+</owl:Class>
+<owl:Class rdf:ID="AgriculturalLands">
+<owl:equivalentClass rdf:resource="#Farmland"/>
+</owl:Class>
+<owl:Class rdf:ID="Cave">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandSurfaceLayer"/>
+<owl:Class rdf:about="#SeaFloorGroundLayer"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasEcosystemType"/>
+<owl:allValuesFrom rdf:resource="#CaveEcosystem"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Core">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-2890000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-6378000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CoreLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Dune">
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Lake">
+<rdfs:subClassOf rdf:resource="#SurfaceWater"/>
+</owl:Class>
+<owl:Class rdf:ID="Pond">
+<rdfs:subClassOf rdf:resource="#SurfaceWater"/>
+</owl:Class>
+<owl:Class rdf:ID="Land">
+<owl:equivalentClass rdf:resource="#LandRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="PeriglacialLandform">
+<rdfs:subClassOf rdf:resource="#GeomorphologicalRegionType"/>
+</owl:Class>
+<owl:Class rdf:ID="DepthHoarLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#DepthHoar"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SnowLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="SnowLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#primarySubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Snow"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CryosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#DepthHoar"/>
+<owl:Class rdf:ID="UpperMantle_rigid">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-150000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasUpperBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-40000</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MantleLayer"/>
+<rdfs:subClassOf rdf:resource="#LithosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Polygon"/>
+<owl:Class rdf:ID="AlpineClimateZone">
+<rdfs:subClassOf rdf:resource="#ClimateZoneType"/>
+</owl:Class>
+<owl:Class rdf:ID="OceanRidge">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="BoundaryLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasLowerBoundaryReferenceHeight"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TroposphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="TroposphereLayer">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#Troposphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Continent">
+<rdfs:subClassOf rdf:resource="#LandRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="MixedLayer">
+<rdfs:subClassOf rdf:resource="#SeaSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="MangroveForest">
+<rdfs:subClassOf rdf:resource="#Forest_Ecosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="MarineWetland">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="UrbanLand">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="InversionLayer">
+<rdfs:subClassOf rdf:resource="#TroposphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="EstuarineWetland">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="Watershed">
+   <rdfs:subClassOf rdf:resource="#LandRegion"/>
+   <owl:equivalentClass rdf:resource="#Basin"/>
+</owl:Class>
+<owl:Class rdf:ID="ContinentalMargin">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="IceCore">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandRegion"/>
+<owl:Class rdf:about="#CoastalRegion"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfIce"/>
+</owl:Class>
+<owl:Class rdf:ID="IceFloe">
+<rdfs:subClassOf rdf:resource="#BodyOfSeaIce"/>
+</owl:Class>
+<owl:Class rdf:ID="Iceberg">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#inside"/>
+<owl:allValuesFrom rdf:resource="#OceanRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#BodyOfIce"/>
+</owl:Class>
+<owl:Class rdf:ID="BenticEcosystem">
+<rdfs:subClassOf rdf:resource="#MarineEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="BorealForest">
+<rdfs:subClassOf rdf:resource="#Forest_Ecosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="Asthenosphere">
+<owl:equivalentClass rdf:resource="#UpperMantle_flowing"/>
+</owl:Class>
+<owl:Class rdf:ID="SnowField">
+<rdfs:subClassOf rdf:resource="#SnowLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Desert_Ecosystem">
+<rdfs:subClassOf rdf:resource="#TerrestrialEcosystem"/>
+</owl:Class>
+<owl:Class rdf:ID="RiparianWetland">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="Mountain">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#LandSurfaceLayer"/>
+<owl:Class rdf:about="#SeaFloorGroundLayer"/>
+</owl:unionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#TopographicalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="RockyCoast">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="Savanna">
+<rdfs:subClassOf rdf:resource="#Grassland"/>
+</owl:Class>
+<owl:Class rdf:ID="WaterChannel">
+<rdfs:subClassOf rdf:resource="#SurfaceWater"/>
+</owl:Class>
+<owl:Class rdf:ID="Peatland">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="Aeoliean">
+<owl:equivalentClass rdf:resource="#EolianLandform"/>
+</owl:Class>
+<owl:Class rdf:ID="SalineLake">
+<rdfs:subClassOf rdf:resource="#Lake"/>
+</owl:Class>
+<owl:Class rdf:ID="KarstLandform">
+<rdfs:subClassOf rdf:resource="#GeomorphologicalRegionType"/>
+</owl:Class>
+<owl:Class rdf:ID="SoilLayer">
+<rdfs:subClassOf rdf:resource="#LandSurfaceLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Biosphere">
+<rdfs:subClassOf rdf:resource="#GlobalPlanetaryLayers"/>
+</owl:Class>
+<owl:Class rdf:ID="IntertidalZone">
+<rdfs:subClassOf rdf:resource="#CoastalRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="AbyssalHill">
+<rdfs:subClassOf rdf:resource="#SeaFloorRegion"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#ChemicalSubstance"/>
+<owl:Class rdf:ID="DryLandRegion">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf"/>
+<owl:allValuesFrom rdf:resource="#LandSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LandRegion"/>
+</owl:Class>
+<owl:Class rdf:ID="PalustrineWetland">
+<rdfs:subClassOf rdf:resource="#Wetland"/>
+</owl:Class>
+<owl:Class rdf:ID="FreshwaterLake">
+<rdfs:subClassOf rdf:resource="#Lake"/>
+</owl:Class>
+<owl:Class rdf:ID="Land_WaterBoundary_2D">
+<rdfs:subClassOf rdf:resource="#EarthRealm"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary"/>
+</owl:Class>
+<owl:Class rdf:ID="UpperAir">
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:Class rdf:ID="Sky">
+<rdfs:subClassOf rdf:resource="#AtmosphereLayer"/>
+</owl:Class>
+<owl:DatatypeProperty rdf:ID="hasUpperBoundaryReferenceHeight">
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasLowerBoundaryReferenceHeight">
+</owl:DatatypeProperty>
+<owl:ObjectProperty rdf:ID="hasUpperBoundaryHeight">
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Height"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#surroundedBy_2D">
+<rdfs:domain rdf:resource="#SurfaceRegion"/>
+<rdfs:range rdf:resource="#SurfaceRegion"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasClimateZoneType">
+<rdfs:domain rdf:resource="#SurfaceRegion"/>
+<rdfs:range rdf:resource="#ClimateZoneType"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasLowerBoundaryHeight">
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Height"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#isLowerBoundaryOf">
+<rdfs:domain rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#LayerBoundary"/>
+<rdfs:range rdf:resource="#EarthRealm"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#haslowerBoundary">
+<rdfs:domain rdf:resource="#EarthRealm"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Boundary"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="coveredBySubstance_temporary">
+<rdfs:domain rdf:resource="#EarthRealm"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#ChemicalSubstance"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#isAdjacentTo">
+<rdfs:domain rdf:resource="#EarthRealm"/>
+<rdfs:range rdf:resource="#EarthRealm"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#inside">
+<rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+<rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#contains">
+<rdfs:domain rdf:resource="#EarthRealm"/>
+<rdfs:range rdf:resource="#EarthRealm"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasEcosystemType">
+<rdfs:domain rdf:resource="#SurfaceRegion"/>
+<rdfs:range rdf:resource="#EcosystemType"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#isPartOf">
+<rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+<rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="primarySubstance">
+<rdfs:domain rdf:resource="#EarthRealm"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#ChemicalSubstance"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#isUpperBoundaryOf">
+<rdfs:domain rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#LayerBoundary"/>
+<rdfs:range rdf:resource="#EarthRealm"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasGeomorphologicalType">
+<rdfs:domain rdf:resource="#SurfaceRegion"/>
+<rdfs:range rdf:resource="#GeomorphologicalRegionType"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#hasCommon2DBorderWith">
+<rdfs:domain rdf:resource="#SurfaceRegion"/>
+<rdfs:range rdf:resource="#SurfaceRegion"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#hasUpperBoundary">
+<rdfs:domain rdf:resource="#EarthRealm"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#LayerBoundary"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#hasRegionBoundary">
+<rdfs:domain rdf:resource="#SurfaceRegion"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Polygon"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#hasPart">
+<rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+<rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:ObjectProperty>
+</rdf:RDF>
+
+
+
+
+

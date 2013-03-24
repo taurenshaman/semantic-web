@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY xsd   "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY numerics  "http://sweet.jpl.nasa.gov/ontology/numerics.owl#" >
+  <!ENTITY units "http://sweet.jpl.nasa.gov/ontology/units.owl#" >
+  <!ENTITY time  "http://sweet.jpl.nasa.gov/ontology/time.owl#" >
+] >
+<rdf:RDF
+   xmlns:xsd="&xsd;"
+   xmlns:numerics="&numerics;"
+   xmlns:units="&units;"
+   xmlns="&time;"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <owl:Ontology rdf:about="">
+    <!--
+<dc:title>
+Time</dc:title>
+<dc:date>
+1/27/2004 3:14:58 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+Time ontology</dc:subject>
+-->
+    <rdfs:label xml:lang="en-US">Time Ontology</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间本体</rdfs:label>
+    <rdfs:comment xml:lang="en-US">by SWEET project</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">来自SWEET项目</rdfs:comment>
+    <owl:versionInfo>1.0</owl:versionInfo>
+    <owl:imports rdf:resource="&numerics;" />
+    <owl:imports rdf:resource="&units;" />
+  </owl:Ontology>
+  <owl:Class rdf:ID="TemporalObject">
+    <rdfs:label xml:lang="en-US">Temporal Object</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间对象</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#TemporalEntity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalEntity">
+    <rdfs:label xml:lang="en-US">Temporal Entity</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间实体</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Autumn">
+    <rdfs:label xml:lang="en-US">Autumn</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">秋天</rdfs:label>
+    <owl:equivalentClass rdf:resource="#Fall"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Fall">
+    <rdfs:label xml:lang="en-US">Fall</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">秋天</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Season"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalRelation">
+    <rdfs:label xml:lang="en-US">Temporal Relation</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间关系</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#TemporalEntity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Millennium">
+    <rdfs:label xml:lang="en-US">Millennium</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">千年</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Century">
+    <rdfs:label xml:lang="en-US">Century</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">世纪</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Decade">
+    <rdfs:label xml:lang="en-US">Decade</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">十年期</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Year">
+    <rdfs:label xml:lang="en-US">Year</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">年</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Season">
+    <rdfs:label xml:lang="en-US">Season</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">季节</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Month">
+    <rdfs:label xml:lang="en-US">Month</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">月</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Week">
+    <rdfs:label xml:lang="en-US">Week</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">周</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Day">
+    <rdfs:label xml:lang="en-US">Day</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">天</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Hour">
+    <rdfs:label xml:lang="en-US">Hour</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">小时</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Minute">
+    <rdfs:label xml:lang="en-US">Minute</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">分钟</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Second">
+    <rdfs:label xml:lang="en-US">Second</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">秒</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Delay">
+    <rdfs:label xml:lang="en-US">Delay</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">延迟</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="History">
+    <rdfs:label xml:lang="en-US">History</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">历史</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Duration">
+    <rdfs:label xml:lang="en-US">Duration</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">持续时间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#TemporalObject"/>
+    <rdfs:subClassOf rdf:resource="&numerics;Interval"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TimeInterval">
+    <rdfs:label xml:lang="en-US">Time Interval</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间间隔</rdfs:label>
+    <owl:equivalentClass rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Event">
+    <rdfs:label xml:lang="en-US">Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">事件</rdfs:label>
+    <owl:equivalentClass rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Occurrence">
+    <rdfs:label xml:lang="en-US">Occurrence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">发生</rdfs:label>
+    <owl:equivalentClass rdf:resource="#Event"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Spring">
+    <rdfs:label xml:lang="en-US">Spring</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">春天</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Season"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Summer">
+    <rdfs:label xml:lang="en-US">Summer</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">夏天</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Season"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Winter">
+    <rdfs:label xml:lang="en-US">Winter</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">冬天</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Season"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Beginning">
+    <rdfs:label xml:lang="en-US">Beginning</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">开始</rdfs:label>
+    <owl:equivalentClass rdf:resource="#Start"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Start">
+    <rdfs:label xml:lang="en-US">Start</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">开始</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#TemporalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UT">
+    <rdfs:label xml:lang="en-US">UT</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">通用时间</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="TemporalReference">
+    <rdfs:label xml:lang="en-US">Temporal Reference</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间参照</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="UniversalTime">
+    <rdfs:label xml:lang="en-US">Universal Time</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">通用时间</rdfs:label>
+    <owl:equivalentClass rdf:resource="#UT"/>
+    <rdfs:subClassOf rdf:resource="#TemporalReference"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Morning">
+    <rdfs:label xml:lang="en-US">Morning</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">早上</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Daytime"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Daytime">
+    <rdfs:label xml:lang="en-US">Daytime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">白天</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Instant">
+    <rdfs:label xml:lang="en-US">Instant</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">瞬间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#TemporalObject"/>
+    <rdfs:subClassOf rdf:resource="&numerics;Point"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Evening">
+    <rdfs:label xml:lang="en-US">Evening</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">黄昏</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Nighttime"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Nighttime">
+    <rdfs:label xml:lang="en-US">Nighttime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">夜间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Duration"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Period">
+    <rdfs:label xml:lang="en-US">Period</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间段</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#TemporalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="End">
+    <rdfs:label xml:lang="en-US">End</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">结束</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#TemporalRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Prehistoric">
+    <rdfs:label xml:lang="en-US">Prehistoric</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">史前</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Period"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CurrentTime">
+    <rdfs:label xml:lang="en-US">Current Time</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">当前时间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Instant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OLIGOCENE"/>
+  <owl:Class rdf:ID="TRIASSIC"/>
+  <owl:Class rdf:ID="ORDOVICIAN"/>
+  <owl:Class rdf:ID="NEOGENE"/>
+  <owl:Class rdf:ID="PLIOCENE"/>
+  <owl:Class rdf:ID="PRECAMBRIAN"/>
+  <owl:Class rdf:ID="PENNSYLVANIAN"/>
+  <owl:Class rdf:ID="ARCHAEAN"/>
+  <owl:Class rdf:ID="CARBONIFEROUS"/>
+  <owl:Class rdf:ID="MISSISSIPPIAN"/>
+  <owl:Class rdf:ID="TERTIARY"/>
+  <owl:Class rdf:ID="QUATERNARY"/>
+  <owl:Class rdf:ID="CENOZOIC"/>
+  <owl:Class rdf:ID="PERMIAN"/>
+  <owl:Class rdf:ID="HOLOCENE"/>
+  <owl:Class rdf:ID="MESOZOIC"/>
+  <owl:Class rdf:ID="CAMBRIAN"/>
+  <owl:Class rdf:ID="JURASSIC"/>
+  <owl:Class rdf:ID="PLEISTOCENE"/>
+  <owl:Class rdf:ID="PALEOCENE"/>
+  <owl:Class rdf:ID="PALEOGENE"/>
+  <owl:Class rdf:ID="PALEOZOIC"/>
+  <owl:Class rdf:ID="PROTEROZOIC"/>
+  <owl:Class rdf:ID="EOCENE"/>
+  <owl:Class rdf:ID="SILURIAN"/>
+  <owl:Class rdf:ID="CRETACEOUS"/>
+  <owl:Class rdf:ID="MIOCENE"/>
+  <owl:Class rdf:ID="DEVONIAN"/>
+  <owl:DatatypeProperty rdf:ID="numberOfYears">
+    <rdfs:label xml:lang="en-US">number of years</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">年的部分</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="fractionOfYear">
+    <rdfs:label xml:lang="en-US">fraction of year</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">年数</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:ID="after">
+    <rdfs:label xml:lang="en-US">after</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">之后</rdfs:label>
+    <owl:inverseOf rdf:resource="#before"/>
+    <rdfs:subPropertyOf rdf:resource="&numerics;greaterThan"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="before">
+    <rdfs:label xml:lang="en-US">before</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">之前</rdfs:label>
+    <owl:inverseOf rdf:resource="#after"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTemporalObject">
+    <rdfs:label xml:lang="en-US">has temporal object</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">时间对象</rdfs:label>
+    <rdfs:range rdf:resource="#TemporalObject"/>
+  </owl:ObjectProperty>
+</rdf:RDF>

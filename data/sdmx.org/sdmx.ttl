@@ -1,0 +1,157 @@
+@prefix rdf:            <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:            <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:            <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:           <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf:           <http://xmlns.com/foaf/0.1/> .
+@prefix sdmx:           <http://purl.org/linked-data/sdmx#> .
+@prefix dcterms:        <http://dublincore.org/documents/dcmi-terms/>.
+@prefix qb:             <http://purl.org/linked-data/cube#> .
+@prefix sdmx-concept:    <http://purl.org/linked-data/sdmx/2009/concept#> .
+
+<http://purl.org/linked-data/sdmx>
+    a owl:Ontology;
+    owl:versionInfo "0.3";
+    rdfs:label "SDMX-RDF vocabulary";
+	rdfs:label "SDMX-RDF词汇集"@zh-CN;
+    rdfs:comment "This vocabulary extends the data cube vocabulary to support publication of statistical data in RDF, using an information model based on SDMX";
+	rdfs:comment "这个词汇集试用了基于SDMX的信息模型，扩展了数据立方体（data cube）词汇集，支持以RDF格式发布统计数据。"@zh-CN;
+    dcterms:created "2010-02-05"^^xsd:date;
+    dcterms:modified "2010-07-22"^^xsd:date;
+    dcterms:title "Vocabulary for publishing SDMX statistical data in RDF"@en;
+	dcterms:title "使用RDF发布SDMX统计数据的词汇集"@zh-CN;;
+    dcterms:source <http://sdmx.org>;
+    dcterms:references <http://sdmx.org/?page_id=16#package>;
+    dcterms:contributor [foaf:mbox "richard@cyganiak.de"],
+                        [foaf:mbox "jeni@jenitennison.com"],
+                        [foaf:mbox "arofan.gregory@earthlink.net"],
+                        [foaf:mbox "ian@epimorphics.com"],
+                        [foaf:mbox "dave@epimorphics.com"];
+    .
+  
+# --- Note ---------------------------
+
+# In the revised structure, as developed at ODaF2010, the core representation
+# of multidimensional data is covered by a general purpose "data cube" vocabulary.
+
+# This SDMX-RDF vocabulary is now an extension to the Data Cube core to cover
+# notions specific to aggregate statistical information as modelled in SDMX.
+
+# The current version just covers the representation of Concept Roles.
+# Future work will develop the SDMX vocabulary in more detail, based upon 
+# the earlier SDMX-RDF draft.
+
+# --- DataStructureDefinitions ---------------------------
+
+sdmx:DataStructureDefinition a rdfs:Class, owl:Class;
+    rdfs:label "Data Structure Definition"@en;
+	rdfs:label "数据结构定义"@zh-CN;
+    rdfs:comment "A specialization of qb:DataStructureDefinition which additional constraints: if there are multiple measures then a MeasureDimensionProperty must be included in the DSD"@en;
+	rdfs:comment "表示qb:DataStructureDefinition的一个特化，并附加了一些额外的限制：如果存在多个测量，那么DSD中必须包含一个MeasureDimensionProperty。"@zh-CN;
+    rdfs:subClassOf qb:DataStructureDefinition ;
+    .
+    
+# --- Concepts ---------------------------
+            
+sdmx:CodeList a rdfs:Class, owl:Class;
+    rdfs:label "Concept scheme"@en;
+	rdfs:label "概念体系"@zh-CN;
+    rdfs:subClassOf skos:ConceptScheme;
+    .
+    
+sdmx:Concept a rdfs:Class, owl:Class;
+    rdfs:label "concept"@en;
+	rdfs:label "概念"@zh-CN;
+    rdfs:subClassOf skos:Concept;
+    rdfs:comment "Denotes an SDMX concept, used in the particular SDMX terminological sense, which is in principle narrower than skos:Concept";
+	rdfs:comment "代表了一个SDMX概念，用于特定的SDMX术语意义上，原则上它比skos:Concept狭窄。"@zh-CN;
+    .
+
+# --- Concept Roles ---------------------------
+            
+sdmx:ConceptRole a rdfs:Class, owl:Class;
+    rdfs:label "Concept role (abstract)"@en;
+	rdfs:label "概念角色（抽象）"@zh-CN;
+    rdfs:subClassOf sdmx:Concept;
+    rdfs:comment "Abstract superclass of classes denoting statistical roles which be played by concepts"@en;
+	rdfs:comment "表示由概念扮演统计角色的类的抽象超类。"@zh-CN;
+    .
+
+sdmx:FrequencyRole a rdfs:Class, owl:Class;
+    rdfs:label "Frequency property"@en;
+	rdfs:label "频率属性"@zh-CN;
+    rdfs:comment "concept for a dimension or attribute that plays the role of frequency"@en;
+	rdfs:comment "扮演频率角色的维度或特征的概念"@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+sdmx:CountRole a rdfs:Class, owl:Class;
+    rdfs:label "Count property"@en;
+	rdfs:label "计数属性"@zh-CN;
+    rdfs:comment "concept for a dimension or attribute that plays the role of an identifier where the identifier is taken from a known system of counts (e.g. the Nth current dataset update for a given day)"@en;
+	rdfs:comment ""@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+sdmx:EntityRole a rdfs:Class, owl:Class;
+    rdfs:label "Entity property"@en;
+	rdfs:label "实体属性"@zh-CN;
+    rdfs:comment "concept for a dimension or attribute that plays the role of the DataAttribute subject to whom the data refers (e.g. the reporting agent for primary reporting, the country for secondary reporting)"@en;
+	rdfs:comment ""@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+sdmx:TimeRole a rdfs:Class, owl:Class;
+    rdfs:label "Time property"@en;
+	rdfs:label "时间属性"@zh-CN;
+    rdfs:comment "concept for a dimension that specifies the time of the observation of the primaryMeasure"@en;
+	rdfs:comment ""@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+sdmx:MeasureTypeRole a rdfs:Class, owl:Class;
+    rdfs:label "Measure type property"@en;
+	rdfs:label "测量类型属性"@zh-CN;
+    rdfs:comment "concept for a dimension that plays the role of identifying a type of measure"@en;
+	rdfs:comment ""@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+sdmx:NonObsTimeRole a rdfs:Class, owl:Class;
+    rdfs:label "Non-observation time property"@en;
+	rdfs:label "非观察时间属性"@zh-CN;
+    rdfs:comment "concept for a dimension or attribute that plays the role of a date/time identifier in the KeyFamily which is not related to the time of the observation"@en;
+	rdfs:comment ""@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+sdmx:IdentityRole a rdfs:Class, owl:Class;
+    rdfs:label "Identity property"@en;
+	rdfs:label "标识属性"@zh-CN;
+    rdfs:comment "concept for a dimension or attribute that plays the role of an identifier which is taken from a known scheme of identifiers."@en;
+	rdfs:comment ""@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+sdmx:PrimaryMeasureRole a rdfs:Class, owl:Class;
+    rdfs:label "Primary measure property"@en;
+	rdfs:label "主要测量属性"@zh-CN;
+    rdfs:comment "concept for a measure that plays the role of the observation in a time series"@en;
+	rdfs:comment ""@zh-CN;
+    rdfs:subClassOf sdmx:ConceptRole;
+    .
+            
+# --- Linking to the reusable generic concepts from qb ---------------------------
+
+qb:measureType qb:concept sdmx:measureTypeConcept .
+
+sdmx:measureTypeConcept a sdmx:MeasureTypeRole, sdmx:ConceptRole, skos:Concept;
+    rdfs:label "measureType"@en;
+	rdfs:label "测量类型"@zh-CN;
+    rdfs:comment "The concept corresponding to the generic measure type dimension which indicates which measure is being denoted by the primary measure on an observation"@en;
+	rdfs:comment ""@zh-CN;
+    .
+
+# --- Support for round-tripping the primary measure ---------------------------
+            
+sdmx:primaryMeasure a rdf:Property, owl:ObjectProperty;
+    rdfs:label "primary measure"@en;
+	rdfs:label "主要测量"@zh-CN;
+    rdfs:comment "Indicates an additional component used as the primary measure within the SDMX data. In the case of multi-measure data sets the RDF representation uses the specific measure rather than a subsuming overall measure. This property records the subsuming primary measure (typically sdmx-measure:obsValue) to enable round tripping of this information."@en; 
+	rdfs:comment ""@zh-CN;
+    rdfs:domain sdmx:DataStructureDefinition;
+    rdfs:range  qb:MeasureProperty ;
+    .            

@@ -1,0 +1,1217 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/graph-rules.owl"
+    xml:base="http://ontology.dumontierlab.com/graph-rules.owl"
+    xmlns:temporal="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl#"
+    xmlns:p8="http://ontology.dumontierlab.com/graph-example-2.owl"
+    xmlns:p9="http://ontology.dumontierlab.com/graph-example-3.owl"
+    xmlns:p7="http://ontology.dumontierlab.com/graph-example-1.owl"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns:p2="http://ontology.dumontierlab.com/graph-example-time.owl"
+    xmlns:swrlx="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl#"
+    xmlns:p6="http://ontology.dumontierlab.com/unit-primitive"
+    xmlns:p4="http://ontology.dumontierlab.com/graph-example-unit.owl"
+    xmlns:swrlm="http://swrl.stanford.edu/ontologies/built-ins/3.4/swrlm.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:j.0="http://ontology.dumontierlab.com/"
+    xmlns:abox="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl#"
+    xmlns:p1="http://ontology.dumontierlab.com/time-interval-primitive"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:p3="http://ontology.dumontierlab.com/graph-example-sales.owl"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:p10="http://ontology.dumontierlab.com/graph-example-4.owl"
+    xmlns:p5="http://ontology.dumontierlab.com/annotation"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"	
+    xmlns:tbox="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl#">
+  <owl:Ontology rdf:about="http://dumontierlab.com/graph-rules.owl">
+	<owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0</owl:versionInfo>
+	<dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2007-12-01</dc:date>
+	<dc:description rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+		>Rules for processing graph knowledgebase.</dc:description>
+	<dc:publisher rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dumontier Lab</dc:publisher>
+	<dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+		>Rules for processing graph knowledgebase.</dc:title>
+	<dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+		>Michel Dumontier</dc:creator>
+	<dc:creator rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+		>Natalia Villanueva</dc:creator>
+	<dc:format rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+		>application/rdf+xml</dc:format>
+	<dc:language rdf:datatype="http://www.w3.org/2001/XMLSchema#string">en</dc:language>  
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl"/>
+    <owl:imports rdf:resource="http://ontology.dumontierlab.com/graph-example-2.owl"/>
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+    <owl:imports rdf:resource="http://ontology.dumontierlab.com/graph-example-4.owl"/>
+    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl"/>
+    <owl:imports rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owl"/>
+    <owl:imports rdf:resource="http://ontology.dumontierlab.com/graph-example-3.owl"/>
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl"/>
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl"/>
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.4/swrlm.owl"/>
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:about="http://ontology.dumontierlab.com/plateausAt">
+    <rdfs:range rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+    <rdfs:domain rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://ontology.dumontierlab.com/increasesTo">
+    <rdfs:range rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+    <rdfs:domain rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://ontology.dumontierlab.com/decreasesTo">
+    <rdfs:range rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+    <rdfs:domain rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+  </owl:ObjectProperty>
+  <swrl:Imp rdf:ID="Rule-3">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first>
+                  <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                </rdf:first>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first>
+                              <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+                            </rdf:first>
+                            <rdf:rest>
+                              <rdf:List>
+                                <rdf:first>
+                                  <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                                </rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                              </rdf:List>
+                            </rdf:rest>
+                          </rdf:List>
+                        </rdf:rest>
+                        <rdf:first>
+                          <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                        </rdf:first>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first>
+                      <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                    </rdf:first>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/plateausAt"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:ClassAtom>
+                <swrl:argument1>
+                  <swrl:Variable rdf:ID="s"/>
+                </swrl:argument1>
+                <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Series"/>
+              </swrl:ClassAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:argument1 rdf:resource="#s"/>
+                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:IndividualPropertyAtom>
+                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                        <swrl:argument2>
+                          <swrl:Variable rdf:ID="t"/>
+                        </swrl:argument2>
+                        <swrl:argument1 rdf:resource="#s"/>
+                      </swrl:IndividualPropertyAtom>
+                    </rdf:first>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:rest>
+                          <swrl:AtomList>
+                            <rdf:first>
+                              <swrl:IndividualPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                                <swrl:argument2>
+                                  <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                </swrl:argument2>
+                              </swrl:IndividualPropertyAtom>
+                            </rdf:first>
+                            <rdf:rest>
+                              <swrl:AtomList>
+                                <rdf:first>
+                                  <swrl:ClassAtom>
+                                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/ValueData"/>
+                                  </swrl:ClassAtom>
+                                </rdf:first>
+                                <rdf:rest>
+                                  <swrl:AtomList>
+                                    <rdf:rest>
+                                      <swrl:AtomList>
+                                        <rdf:first>
+                                          <swrl:ClassAtom>
+                                            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                          </swrl:ClassAtom>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                          <swrl:AtomList>
+                                            <rdf:rest>
+                                              <swrl:AtomList>
+                                                <rdf:first>
+                                                  <swrl:IndividualPropertyAtom>
+                                                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                                                    <swrl:argument1>
+                                                      <swrl:Variable rdf:ID="s2"/>
+                                                    </swrl:argument1>
+                                                  </swrl:IndividualPropertyAtom>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                  <swrl:AtomList>
+                                                    <rdf:first>
+                                                      <swrl:IndividualPropertyAtom>
+                                                        <swrl:argument1 rdf:resource="#s2"/>
+                                                        <swrl:argument2 rdf:resource="#t"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                                                      </swrl:IndividualPropertyAtom>
+                                                    </rdf:first>
+                                                    <rdf:rest>
+                                                      <swrl:AtomList>
+                                                        <rdf:rest>
+                                                          <swrl:AtomList>
+                                                            <rdf:rest>
+                                                              <swrl:AtomList>
+    <rdf:first>
+      <swrl:DatavaluedPropertyAtom>
+        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasValue"/>
+        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+        <swrl:argument1>
+          <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+        </swrl:argument1>
+      </swrl:DatavaluedPropertyAtom>
+    </rdf:first>
+    <rdf:rest>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#subtract"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >0</rdf:first>
+                      </rdf:List>
+                    </rdf:rest>
+                  </rdf:List>
+                </swrl:arguments>
+                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:argument2>
+                      <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlx1"/>
+                    </swrl:argument2>
+                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:IndividualPropertyAtom>
+                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                        <swrl:argument2>
+                          <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                        </swrl:argument2>
+                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx1"/>
+                      </swrl:IndividualPropertyAtom>
+                    </rdf:first>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:rest>
+                          <swrl:AtomList>
+                            <rdf:first>
+                              <swrl:IndividualPropertyAtom>
+                                <swrl:argument2>
+                                  <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                </swrl:argument2>
+                                <swrl:argument1>
+                                  <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlx2"/>
+                                </swrl:argument1>
+                                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                              </swrl:IndividualPropertyAtom>
+                            </rdf:first>
+                            <rdf:rest>
+                              <swrl:AtomList>
+                                <rdf:rest>
+                                  <swrl:AtomList>
+                                    <rdf:first>
+                                      <swrl:ClassAtom>
+                                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                        <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/TimeInterval"/>
+                                      </swrl:ClassAtom>
+                                    </rdf:first>
+                                    <rdf:rest>
+                                      <swrl:AtomList>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                        <rdf:first>
+                                          <swrl:IndividualPropertyAtom>
+                                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/isBefore"/>
+                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                          </swrl:IndividualPropertyAtom>
+                                        </rdf:first>
+                                      </swrl:AtomList>
+                                    </rdf:rest>
+                                  </swrl:AtomList>
+                                </rdf:rest>
+                                <rdf:first>
+                                  <swrl:ClassAtom>
+                                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                                    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/TimeInterval"/>
+                                  </swrl:ClassAtom>
+                                </rdf:first>
+                              </swrl:AtomList>
+                            </rdf:rest>
+                          </swrl:AtomList>
+                        </rdf:rest>
+                        <rdf:first>
+                          <swrl:IndividualPropertyAtom>
+                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx2"/>
+                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                          </swrl:IndividualPropertyAtom>
+                        </rdf:first>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </rdf:rest>                                               </swrl:AtomList>
+                                                            </rdf:rest>
+                                                            <rdf:first>
+                                                              <swrl:ClassAtom>
+    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/ValueData"/>
+    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+                                                              </swrl:ClassAtom>
+                                                            </rdf:first>
+                                                          </swrl:AtomList>
+                                                        </rdf:rest>
+                                                        <rdf:first>
+                                                          <swrl:IndividualPropertyAtom>
+                                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                                                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+                                                          </swrl:IndividualPropertyAtom>
+                                                        </rdf:first>
+                                                      </swrl:AtomList>
+                                                    </rdf:rest>
+                                                  </swrl:AtomList>
+                                                </rdf:rest>
+                                              </swrl:AtomList>
+                                            </rdf:rest>
+                                            <rdf:first>
+                                              <swrl:ClassAtom>
+                                                <swrl:argument1 rdf:resource="#s2"/>
+                                                <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Series"/>
+                                              </swrl:ClassAtom>
+                                            </rdf:first>
+                                          </swrl:AtomList>
+                                        </rdf:rest>
+                                      </swrl:AtomList>
+                                    </rdf:rest>
+                                    <rdf:first>
+                                      <swrl:DatavaluedPropertyAtom>
+                                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasValue"/>
+                                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                                      </swrl:DatavaluedPropertyAtom>
+                                    </rdf:first>
+                                  </swrl:AtomList>
+                                </rdf:rest>
+                              </swrl:AtomList>
+                            </rdf:rest>
+                          </swrl:AtomList>
+                        </rdf:rest>
+                        <rdf:first>
+                          <swrl:ClassAtom>
+                            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Sales"/>
+                            <swrl:argument1 rdf:resource="#t"/>
+                          </swrl:ClassAtom>
+                        </rdf:first>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:body>
+  </swrl:Imp>
+  <rdf:Description rdf:about="http://ontology.dumontierlab.com/billion_of_CAD">
+    <j.0:isTagOf>
+      <rdf:Description rdf:about="http://ontology.dumontierlab.com/graph-example-1.owl#Series1">
+        <j.0:hasTag>
+          <j.0:ServiceSales rdf:about="http://ontology.dumontierlab.com/serviceSales">
+            <j.0:isTagOf>
+              <rdf:Description rdf:about="http://ontology.dumontierlab.com/graph-example-4.owl#Series1">
+                <j.0:hasTag rdf:resource="http://ontology.dumontierlab.com/serviceSales"/>
+              </rdf:Description>
+            </j.0:isTagOf>
+            <j.0:isTagOf rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owl#Series1"/>
+          </j.0:ServiceSales>
+        </j.0:hasTag>
+      </rdf:Description>
+    </j.0:isTagOf>
+    <j.0:isTagOf>
+      <rdf:Description rdf:about="http://ontology.dumontierlab.com/graph-example-2.owl#Series1">
+        <j.0:hasTag>
+          <j.0:GoodsSales rdf:about="http://ontology.dumontierlab.com/goodsSales">
+            <j.0:isTagOf>
+              <rdf:Description rdf:about="http://ontology.dumontierlab.com/graph-example-3.owl#Series1">
+                <j.0:hasTag rdf:resource="http://ontology.dumontierlab.com/goodsSales"/>
+              </rdf:Description>
+            </j.0:isTagOf>
+            <j.0:isTagOf rdf:resource="http://ontology.dumontierlab.com/graph-example-2.owl#Series1"/>
+          </j.0:GoodsSales>
+        </j.0:hasTag>
+      </rdf:Description>
+    </j.0:isTagOf>
+    <j.0:isTagOf rdf:resource="http://ontology.dumontierlab.com/graph-example-3.owl#Series1"/>
+  </rdf:Description>
+  <j.0:ValueData rdf:ID="ValueData_1"/>
+  <swrl:Imp rdf:ID="Rule-2">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+                            <rdf:rest>
+                              <rdf:List>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                              </rdf:List>
+                            </rdf:rest>
+                          </rdf:List>
+                        </rdf:rest>
+                      </rdf:List>
+                    </rdf:rest>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/decreasesTo"/>
+                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:ClassAtom>
+                <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Series"/>
+                <swrl:argument1 rdf:resource="#s"/>
+              </swrl:ClassAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                    <swrl:argument1 rdf:resource="#s"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:first>
+                          <swrl:ClassAtom>
+                            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Sales"/>
+                            <swrl:argument1 rdf:resource="#t"/>
+                          </swrl:ClassAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                          <swrl:AtomList>
+                            <rdf:first>
+                              <swrl:IndividualPropertyAtom>
+                                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                              </swrl:IndividualPropertyAtom>
+                            </rdf:first>
+                            <rdf:rest>
+                              <swrl:AtomList>
+                                <rdf:rest>
+                                  <swrl:AtomList>
+                                    <rdf:first>
+                                      <swrl:DatavaluedPropertyAtom>
+                                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasValue"/>
+                                        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                      </swrl:DatavaluedPropertyAtom>
+                                    </rdf:first>
+                                    <rdf:rest>
+                                      <swrl:AtomList>
+                                        <rdf:rest>
+                                          <swrl:AtomList>
+                                            <rdf:rest>
+                                              <swrl:AtomList>
+                                                <rdf:rest>
+                                                  <swrl:AtomList>
+                                                    <rdf:rest>
+                                                      <swrl:AtomList>
+                                                        <rdf:rest>
+                                                          <swrl:AtomList>
+                                                            <rdf:rest>
+                                                              <swrl:AtomList>
+    <rdf:rest>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                      </rdf:List>
+                    </rdf:rest>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#subtract"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >0</rdf:first>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                  </rdf:List>
+                </swrl:arguments>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx1"/>
+                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:first>
+                          <swrl:IndividualPropertyAtom>
+                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx2"/>
+                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                          </swrl:IndividualPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                          <swrl:AtomList>
+                            <rdf:rest>
+                              <swrl:AtomList>
+                                <rdf:first>
+                                  <swrl:ClassAtom>
+                                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                                    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/TimeInterval"/>
+                                  </swrl:ClassAtom>
+                                </rdf:first>
+                                <rdf:rest>
+                                  <swrl:AtomList>
+                                    <rdf:rest>
+                                      <swrl:AtomList>
+                                        <rdf:first>
+                                          <swrl:IndividualPropertyAtom>
+                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/isBefore"/>
+                                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                          </swrl:IndividualPropertyAtom>
+                                        </rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                      </swrl:AtomList>
+                                    </rdf:rest>
+                                    <rdf:first>
+                                      <swrl:ClassAtom>
+                                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                        <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/TimeInterval"/>
+                                      </swrl:ClassAtom>
+                                    </rdf:first>
+                                  </swrl:AtomList>
+                                </rdf:rest>
+                              </swrl:AtomList>
+                            </rdf:rest>
+                            <rdf:first>
+                              <swrl:IndividualPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx2"/>
+                                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                              </swrl:IndividualPropertyAtom>
+                            </rdf:first>
+                          </swrl:AtomList>
+                        </rdf:rest>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                    <rdf:first>
+                      <swrl:IndividualPropertyAtom>
+                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx1"/>
+                        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                      </swrl:IndividualPropertyAtom>
+                    </rdf:first>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </rdf:rest>
+    <rdf:first>
+      <swrl:DatavaluedPropertyAtom>
+        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasValue"/>
+      </swrl:DatavaluedPropertyAtom>
+    </rdf:first>                                              </swrl:AtomList>
+                                                            </rdf:rest>
+                                                            <rdf:first>
+                                                              <swrl:ClassAtom>
+    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/ValueData"/>
+                                                              </swrl:ClassAtom>
+                                                            </rdf:first>
+                                                          </swrl:AtomList>
+                                                        </rdf:rest>
+                                                        <rdf:first>
+                                                          <swrl:IndividualPropertyAtom>
+                                                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                                                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+                                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                                          </swrl:IndividualPropertyAtom>
+                                                        </rdf:first>
+                                                      </swrl:AtomList>
+                                                    </rdf:rest>
+                                                    <rdf:first>
+                                                      <swrl:IndividualPropertyAtom>
+                                                        <swrl:argument2 rdf:resource="#t"/>
+                                                        <swrl:argument1 rdf:resource="#s2"/>
+                                                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                                                      </swrl:IndividualPropertyAtom>
+                                                    </rdf:first>
+                                                  </swrl:AtomList>
+                                                </rdf:rest>
+                                                <rdf:first>
+                                                  <swrl:IndividualPropertyAtom>
+                                                    <swrl:argument1 rdf:resource="#s2"/>
+                                                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                                                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                                  </swrl:IndividualPropertyAtom>
+                                                </rdf:first>
+                                              </swrl:AtomList>
+                                            </rdf:rest>
+                                            <rdf:first>
+                                              <swrl:ClassAtom>
+                                                <swrl:argument1 rdf:resource="#s2"/>
+                                                <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Series"/>
+                                              </swrl:ClassAtom>
+                                            </rdf:first>
+                                          </swrl:AtomList>
+                                        </rdf:rest>
+                                        <rdf:first>
+                                          <swrl:ClassAtom>
+                                            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                          </swrl:ClassAtom>
+                                        </rdf:first>
+                                      </swrl:AtomList>
+                                    </rdf:rest>
+                                  </swrl:AtomList>
+                                </rdf:rest>
+                                <rdf:first>
+                                  <swrl:ClassAtom>
+                                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/ValueData"/>
+                                  </swrl:ClassAtom>
+                                </rdf:first>
+                              </swrl:AtomList>
+                            </rdf:rest>
+                          </swrl:AtomList>
+                        </rdf:rest>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                    <rdf:first>
+                      <swrl:IndividualPropertyAtom>
+                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                        <swrl:argument2 rdf:resource="#t"/>
+                        <swrl:argument1 rdf:resource="#s"/>
+                      </swrl:IndividualPropertyAtom>
+                    </rdf:first>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:body>
+  </swrl:Imp>
+  <swrl:Imp rdf:ID="Rule-4">
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:IndividualPropertyAtom>
+            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/isBefore"/>
+            <swrl:argument2>
+              <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owly"/>
+            </swrl:argument2>
+            <swrl:argument1>
+              <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlx"/>
+            </swrl:argument1>
+          </swrl:IndividualPropertyAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:DifferentIndividualsAtom>
+                        <swrl:argument2>
+                          <swrl:Variable rdf:about="http://ontology.dumontierlab.com/graph-example-1.owlz"/>
+                        </swrl:argument2>
+                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx"/>
+                      </swrl:DifferentIndividualsAtom>
+                    </rdf:first>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:first>
+                          <swrl:DifferentIndividualsAtom>
+                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly"/>
+                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlz"/>
+                          </swrl:DifferentIndividualsAtom>
+                        </rdf:first>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                  </swrl:AtomList>
+                </rdf:rest>
+                <rdf:first>
+                  <swrl:DifferentIndividualsAtom>
+                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly"/>
+                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx"/>
+                  </swrl:DifferentIndividualsAtom>
+                </rdf:first>
+              </swrl:AtomList>
+            </rdf:rest>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/isBefore"/>
+                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlz"/>
+                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:body>
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:IndividualPropertyAtom>
+            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx"/>
+            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlz"/>
+            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/isBefore"/>
+          </swrl:IndividualPropertyAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlz"/>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx"/>
+                  </rdf:List>
+                </swrl:arguments>
+                <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:head>
+  </swrl:Imp>
+  <rdf:Description rdf:about="http://ontology.dumontierlab.com/million_of_CAD">
+    <j.0:isTagOf rdf:resource="http://ontology.dumontierlab.com/graph-example-4.owl#Series1"/>
+  </rdf:Description>
+  <swrl:Imp rdf:ID="Rule-1">
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:ClassAtom>
+                <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Series"/>
+                <swrl:argument1 rdf:resource="#s"/>
+              </swrl:ClassAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:argument1 rdf:resource="#s"/>
+                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:IndividualPropertyAtom>
+                        <swrl:argument2 rdf:resource="#t"/>
+                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                        <swrl:argument1 rdf:resource="#s"/>
+                      </swrl:IndividualPropertyAtom>
+                    </rdf:first>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:rest>
+                          <swrl:AtomList>
+                            <rdf:first>
+                              <swrl:IndividualPropertyAtom>
+                                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                              </swrl:IndividualPropertyAtom>
+                            </rdf:first>
+                            <rdf:rest>
+                              <swrl:AtomList>
+                                <rdf:first>
+                                  <swrl:ClassAtom>
+                                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/ValueData"/>
+                                  </swrl:ClassAtom>
+                                </rdf:first>
+                                <rdf:rest>
+                                  <swrl:AtomList>
+                                    <rdf:rest>
+                                      <swrl:AtomList>
+                                        <rdf:rest>
+                                          <swrl:AtomList>
+                                            <rdf:first>
+                                              <swrl:ClassAtom>
+                                                <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Series"/>
+                                                <swrl:argument1 rdf:resource="#s2"/>
+                                              </swrl:ClassAtom>
+                                            </rdf:first>
+                                            <rdf:rest>
+                                              <swrl:AtomList>
+                                                <rdf:rest>
+                                                  <swrl:AtomList>
+                                                    <rdf:first>
+                                                      <swrl:IndividualPropertyAtom>
+                                                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                                                        <swrl:argument2 rdf:resource="#t"/>
+                                                        <swrl:argument1 rdf:resource="#s2"/>
+                                                      </swrl:IndividualPropertyAtom>
+                                                    </rdf:first>
+                                                    <rdf:rest>
+                                                      <swrl:AtomList>
+                                                        <rdf:rest>
+                                                          <swrl:AtomList>
+                                                            <rdf:rest>
+                                                              <swrl:AtomList>
+    <rdf:rest>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#subtract"/>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >0</rdf:first>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                  </rdf:List>
+                </swrl:arguments>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx1"/>
+                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:IndividualPropertyAtom>
+                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx1"/>
+                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                      </swrl:IndividualPropertyAtom>
+                    </rdf:first>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:first>
+                          <swrl:IndividualPropertyAtom>
+                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx2"/>
+                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                          </swrl:IndividualPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                          <swrl:AtomList>
+                            <rdf:rest>
+                              <swrl:AtomList>
+                                <rdf:rest>
+                                  <swrl:AtomList>
+                                    <rdf:first>
+                                      <swrl:ClassAtom>
+                                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                        <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/TimeInterval"/>
+                                      </swrl:ClassAtom>
+                                    </rdf:first>
+                                    <rdf:rest>
+                                      <swrl:AtomList>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                        <rdf:first>
+                                          <swrl:IndividualPropertyAtom>
+                                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/isBefore"/>
+                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                          </swrl:IndividualPropertyAtom>
+                                        </rdf:first>
+                                      </swrl:AtomList>
+                                    </rdf:rest>
+                                  </swrl:AtomList>
+                                </rdf:rest>
+                                <rdf:first>
+                                  <swrl:ClassAtom>
+                                    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx1"/>
+                                    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/TimeInterval"/>
+                                  </swrl:ClassAtom>
+                                </rdf:first>
+                              </swrl:AtomList>
+                            </rdf:rest>
+                            <rdf:first>
+                              <swrl:IndividualPropertyAtom>
+                                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlxx2"/>
+                                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasTag"/>
+                                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlx2"/>
+                              </swrl:IndividualPropertyAtom>
+                            </rdf:first>
+                          </swrl:AtomList>
+                        </rdf:rest>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </rdf:rest>
+    <rdf:first>
+      <swrl:DatavaluedPropertyAtom>
+        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasValue"/>
+      </swrl:DatavaluedPropertyAtom>
+    </rdf:first>                                              </swrl:AtomList>
+                                                            </rdf:rest>
+                                                            <rdf:first>
+                                                              <swrl:ClassAtom>
+    <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+    <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/ValueData"/>
+                                                              </swrl:ClassAtom>
+                                                            </rdf:first>
+                                                          </swrl:AtomList>
+                                                        </rdf:rest>
+                                                        <rdf:first>
+                                                          <swrl:IndividualPropertyAtom>
+                                                            <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2"/>
+                                                            <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                                          </swrl:IndividualPropertyAtom>
+                                                        </rdf:first>
+                                                      </swrl:AtomList>
+                                                    </rdf:rest>
+                                                  </swrl:AtomList>
+                                                </rdf:rest>
+                                                <rdf:first>
+                                                  <swrl:IndividualPropertyAtom>
+                                                    <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasPart"/>
+                                                    <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                                    <swrl:argument1 rdf:resource="#s2"/>
+                                                  </swrl:IndividualPropertyAtom>
+                                                </rdf:first>
+                                              </swrl:AtomList>
+                                            </rdf:rest>
+                                          </swrl:AtomList>
+                                        </rdf:rest>
+                                        <rdf:first>
+                                          <swrl:ClassAtom>
+                                            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/DataPoint"/>
+                                            <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                                          </swrl:ClassAtom>
+                                        </rdf:first>
+                                      </swrl:AtomList>
+                                    </rdf:rest>
+                                    <rdf:first>
+                                      <swrl:DatavaluedPropertyAtom>
+                                        <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/hasValue"/>
+                                        <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1"/>
+                                        <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                                      </swrl:DatavaluedPropertyAtom>
+                                    </rdf:first>
+                                  </swrl:AtomList>
+                                </rdf:rest>
+                              </swrl:AtomList>
+                            </rdf:rest>
+                          </swrl:AtomList>
+                        </rdf:rest>
+                        <rdf:first>
+                          <swrl:ClassAtom>
+                            <swrl:classPredicate rdf:resource="http://ontology.dumontierlab.com/Sales"/>
+                            <swrl:argument1 rdf:resource="#t"/>
+                          </swrl:ClassAtom>
+                        </rdf:first>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                  </swrl:AtomList>
+                </rdf:rest>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:body>
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:argument2 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                <swrl:argument1 rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+                <swrl:propertyPredicate rdf:resource="http://ontology.dumontierlab.com/increasesTo"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly2value"/>
+                            <rdf:rest>
+                              <rdf:List>
+                                <rdf:rest>
+                                  <rdf:List>
+                                    <rdf:first rdf:resource="#t"/>
+                                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                  </rdf:List>
+                                </rdf:rest>
+                                <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owldify"/>
+                              </rdf:List>
+                            </rdf:rest>
+                          </rdf:List>
+                        </rdf:rest>
+                        <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp2"/>
+                      </rdf:List>
+                    </rdf:rest>
+                    <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owly1value"/>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first rdf:resource="http://ontology.dumontierlab.com/graph-example-1.owlp1"/>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:head>
+  </swrl:Imp>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4, Build 501)  http://protege.stanford.edu -->

@@ -1,0 +1,554 @@
+<rdf:RDF xmlns="http://gmpg.org/xfn/11"
+    xml:base="http://gmpg.org/xfn/11"
+    xmlns:xfn="http://gmpg.org/xfn/11"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="">
+    <dcterms:creator rdf:resource="http://richard.cyganiak.de/foaf.rdf#cygri"/>
+    <dcterms:description xml:lang="en">This is an RDFS and OWL vocabulary for expressing XFN microformat data in RDF. It defines a set of RDF properties that represent different social relationships between two people, like friend, co-worker or sweetheart. The relationship types are originally defined by the XFN microformat.</dcterms:description>
+    <dcterms:description xml:lang="zh-CN">这是使用RDF表达XFN微格式数据的RDFS和OWL词汇。 它定义了一系列的RDF属性，表达两个人（如朋友，同事或恋人）之间的社会关系。关系类型最初由XFN微格式定义。</dcterms:description>
+    <dcterms:hasFormat rdf:resource="http://gmpg.org/xfn/11/xfn.n3"/>
+    <dcterms:hasFormat rdf:resource="http://gmpg.org/xfn/11/xfn.rdf"/>
+    <dcterms:title xml:lang="en">XFN(XHTML Friends Network) in RDF: Vocabulary Specification</dcterms:title>
+    <dcterms:title xml:lang="zh-CN">XFN（XHTML好友网络）的RDF词汇集规范</dcterms:title>
+    <rdfs:seeAlso rdf:resource="http://gmpg.org/xfn/11"/>
+    <foaf:page rdf:resource="http://gmpg.org/xfn/11/guide"/>
+  </owl:Ontology>
+
+  <rdf:Property rdf:about="#acquaintance">
+    <rdfs:comment xml:lang="en">Someone who you have exchanged greetings and not much (if any) more — maybe a short conversation or two. Often symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">通常是对称属性。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">acquaintance</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">认识</rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#acquaintance-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone who you have exchanged greetings and not much (if any) more — maybe a short conversation or two. Often symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">acquaintance hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#child">
+    <rdfs:comment xml:lang="en">A person's genetic offspring, or someone that a person has adopted and takes care of. Inverse is parent.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">child</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="#kin"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+    <owl:inverseOf rdf:resource="#parent"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#child-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is your genetic offspring, or someone you have adopted and take care of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">child hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="#kin-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <owl:inverseOf rdf:resource="#parent-hyperlink"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#co-resident">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone you share a street address with. Symmetric and transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">co-resident</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#co-resident-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone you share a street address with. Symmetric and transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">co-resident hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#co-worker">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone a person works with, or works at the same organization as. Symmetric. Usually transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">co-worker</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#co-worker-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone a person works with, or works at the same organization as. Symmetric. Usually transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">co-worker hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#colleague">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone in the same field of study/activity. Symmetric. Often transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">colleague</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#colleague-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone in the same field of study/activity. Symmetric. Often transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">colleague hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#contact">
+    <rdfs:comment xml:lang="en">Someone you know how to get in touch with. Often symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">contact</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#contact-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone you know how to get in touch with. Often symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">contact hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#crush">
+    <rdfs:comment xml:lang="en">Someone you have a crush on. No inverse.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">crush</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#crush-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone you have a crush on. No inverse.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">crush hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#date">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone you are dating. Symmetric. Not transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#date-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone you are dating. Symmetric. Not transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">date hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#friend">
+    <rdfs:comment xml:lang="en">Someone you are a friend to. A compatriot, buddy, home(boy|girl) that you know. Often symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">friend</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#friend-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone you are a friend to. A compatriot, buddy, home(boy|girl) that you know. Often symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">friend hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#human-relationship">
+    <rdfs:comment xml:lang="en">A human relationship between two people. There are subproperties for expressing specific social relationships.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">human relationship</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#human-relationship-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. There are subproperties for expressing specific social relationships.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">human relationship hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/related"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#seeAlso"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#kin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A relative, someone you consider part of your extended family. Symmetric and typically transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">kin</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#kin-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is a relative, someone you consider part of your extended family. Symmetric and typically transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">kin hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#me">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A link to a different URI for yourself. Exclusive of all other XFN values. Required symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">me</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#sameAs"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#me-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates that the same person is responsible for both web pages. Exclusive of all other XFN relationships. Required symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">me hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#mePage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdfs:comment xml:lang="en">A page you are responsible for. Only a single person can be responsible for any one page.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">me page</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/creator"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/page"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#met">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone who you have actually met in person. Symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">met</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#met-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone who you have actually met in person. Symmetric.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">met hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#muse">
+    <rdfs:comment xml:lang="en">Someone who brings you inspiration. No inverse.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">muse</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#muse-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone who brings you inspiration. No inverse.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">muse hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#neighbor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone who lives nearby, perhaps only at an adjacent street address or doorway. Symmetric. Often transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">neighbor</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#neighbor-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone who lives nearby, perhaps only at an adjacent street address or doorway. Symmetric. Often transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">neighbor hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#parent">
+    <rdfs:comment xml:lang="en">You are the genetic offspring, or have been adopted and are taken care of by this person.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">parent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="#kin"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+    <owl:inverseOf rdf:resource="#child"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#parent-hyperlink">
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. You are the genetic offspring of the person responsible for the other page, or have been adopted and are taken care of by that person.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">parent hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="#kin-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <owl:inverseOf rdf:resource="#child-hyperlink"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#sibling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone a person shares a parent with. Symmetric. Usually transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">sibling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="#kin"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#sibling-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone you share a parent with. Symmetric. Usually transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">sibling hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="#kin-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#spouse">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone you are married to. Symmetric. Not transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">spouse</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="#kin"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#spouse-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone you are married to. Symmetric. Not transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">spouse hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="#kin-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#sweetheart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Someone with whom you are intimate and at least somewhat committed, typically exclusively. Symmetric. Not transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">sweetheart</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="#sweetheart-hyperlink">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A hyperlink that indicates a human relationship between the people responsible for two web pages. The person responsible for the other page is someone with whom you are intimate and at least somewhat committed, typically exclusively. Symmetric. Not transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://gmpg.org/xfn/11"/>
+    <rdfs:label xml:lang="en">sweetheart hyperlink</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:subPropertyOf rdf:resource="#human-relationship-hyperlink"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+  </rdf:Property>
+
+  <foaf:Document rdf:about="http://gmpg.org/xfn/11/guide">
+    <dcterms:description>A guide to using this vocabulary.</dcterms:description>
+    <dcterms:title>Expressing the XFN microformat in RDF (Guide)</dcterms:title>
+  </foaf:Document>
+
+  <foaf:Document rdf:about="http://gmpg.org/xfn/11">
+    <dcterms:description>Defines the XFN microformat.</dcterms:description>
+    <dcterms:title>XFN 1.1 relationships meta data profile</dcterms:title>
+  </foaf:Document>
+
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/homepage">
+    <rdfs:subPropertyOf rdf:resource="#mePage"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/knows">
+    <rdfs:subPropertyOf rdf:resource="#human-relationship"/>
+  </rdf:Description>
+</rdf:RDF>

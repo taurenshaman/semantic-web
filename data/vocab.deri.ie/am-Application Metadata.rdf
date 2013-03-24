@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://vocab.deri.ie/am">
+    <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
+    <dcterms:title>Application Metadata (AM) vocabulary</dcterms:title>
+    <dcterms:description>A vocabulary to describe (Web) applications, to be used together with DOAP.</dcterms:description>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-01-27</dcterms:modified>
+    <vann:preferredNamespaceUri>http://vocab.deri.ie/am#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>am</vann:preferredNamespacePrefix>
+    <foaf:homepage rdf:resource="http://vocab.deri.ie/am.html"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-01-27</dcterms:created>
+    <dcterms:publisher>http://vocab.deri.ie/am#LiDRC</dcterms:publisher>
+    <dcterms:partOf rdf:resource="http://vocab.deri.ie"/>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+    <dc:creator rdf:resource="http://vocab.deri.ie/am#Michael%20Hausenblas"/>
+  </owl:Ontology>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/am#ttl">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/am.ttl</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/am#rdf">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/am.rdf</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <foaf:Person rdf:about="http://vocab.deri.ie/am#Michael%20Hausenblas">
+    <foaf:name>Michael Hausenblas</foaf:name>
+    <foaf:homepage rdf:resource="http://sw-app.org/about.html"/>
+    <foaf:mbox rdf:resource="mailto:michael.hausenblas@deri.org"/>
+  </foaf:Person>
+
+  <dcterms:Agent rdf:about="http://vocab.deri.ie/am#LiDRC">
+    <foaf:member rdf:resource="http://vocab.deri.ie/am#Michael%20Hausenblas"/>
+    <foaf:name>LiDRC</foaf:name>
+    <foaf:homepage rdf:resource="http://linkeddata.deri.ie/"/>
+  </dcterms:Agent>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/am#Application">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>an application</rdfs:label>
+    <rdfs:comment>a piece of software (code+data), available on the Web or offline</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/am#WebApplication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>a web application</rdfs:label>
+    <rdfs:comment>an application that is deployed on the Web and accessible via a browser (a User Agent able to deal with HTML, CSS, Javascript, etc.)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/am#Application"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/am#uses">
+    <rdfs:label>uses</rdfs:label>
+    <rdfs:comment>an application uses certain software (as a library or service, etc.)</rdfs:comment>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/am#Application"/>
+  </rdf:Property>
+
+</rdf:RDF>

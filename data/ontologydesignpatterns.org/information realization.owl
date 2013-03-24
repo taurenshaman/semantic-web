@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY cpannotationschema "http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#" >
+    <!ENTITY informationrealization "http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"
+     xml:base="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:informationrealization="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"
+     xmlns:cpannotationschema="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl">
+        <rdfs:label rdf:datatype="&rdf;PlainLiteral">information realization</rdfs:label>
+        <owl:versionInfo rdf:datatype="&xsd;string">1.1 added rdfs:isDefinedBy for all named entities</owl:versionInfo>
+        <owl:versionInfo rdf:datatype="&xsd;string">Created by Aldo Gangemi and Valentina Presutti</owl:versionInfo>
+        <cpannotationschema:relatedCPs rdf:datatype="&xsd;string">It is specialized by multimedia data segment decomposition.</cpannotationschema:relatedCPs>
+        <cpannotationschema:scenarios rdf:datatype="&xsd;string">John Lennon’s biography I Me Mine has been realized in a limited 2000-copy edition.</cpannotationschema:scenarios>
+        <cpannotationschema:hasConsequences rdf:datatype="&xsd;string">This CP allows designers to model information objects and their realizations. This allows to reason about physical objects and the information they realize, by keeping them distinguished.</cpannotationschema:hasConsequences>
+        <cpannotationschema:hasIntent rdf:datatype="&xsd;string">To represent information objects and physical entities that realize them.</cpannotationschema:hasIntent>
+        <cpannotationschema:extractedFrom rdf:datatype="&rdf;PlainLiteral">http://www.ontologydesignpatterns.org/ont/dul/DUL.owl</cpannotationschema:extractedFrom>
+        <cpannotationschema:coversRequirements rdf:datatype="&rdf;PlainLiteral">what are the physical realizations of this information object?, what information objects are realized by this physical object?</cpannotationschema:coversRequirements>
+        <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&owl;versionInfo"/>
+    <owl:AnnotationProperty rdf:about="&cpannotationschema;hasConsequences"/>
+    <owl:AnnotationProperty rdf:about="&cpannotationschema;scenarios"/>
+    <owl:AnnotationProperty rdf:about="&cpannotationschema;extractedFrom"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;isDefinedBy"/>
+    <owl:AnnotationProperty rdf:about="&cpannotationschema;coversRequirements"/>
+    <owl:AnnotationProperty rdf:about="&cpannotationschema;hasIntent"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    <owl:AnnotationProperty rdf:about="&cpannotationschema;relatedCPs"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#isRealizedBy -->
+
+    <owl:ObjectProperty rdf:about="&informationrealization;isRealizedBy">
+        <rdfs:label xml:lang="en">is realized by</rdfs:label>
+        <rdfs:comment>A relation between an information realization and an information object, e.g. the paper copy of the Italian Constitution realizes the text of the Constitution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl"/>
+        <rdfs:domain rdf:resource="&informationrealization;InformationObject"/>
+        <rdfs:range rdf:resource="&informationrealization;InformationRealization"/>
+        <owl:inverseOf rdf:resource="&informationrealization;realizes"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#realizes -->
+
+    <owl:ObjectProperty rdf:about="&informationrealization;realizes">
+        <rdfs:label xml:lang="en">realizes</rdfs:label>
+        <rdfs:comment>A relation between an information realization and an information object, e.g. the paper copy of the Italian Constitution realizes the text of the Constitution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl"/>
+        <rdfs:range rdf:resource="&informationrealization;InformationObject"/>
+        <rdfs:domain rdf:resource="&informationrealization;InformationRealization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#InformationObject -->
+
+    <owl:Class rdf:about="&informationrealization;InformationObject">
+        <rdfs:label xml:lang="en">Information object</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&informationrealization;isRealizedBy"/>
+                <owl:allValuesFrom rdf:resource="&informationrealization;InformationRealization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&informationrealization;isRealizedBy"/>
+                <owl:someValuesFrom rdf:resource="&informationrealization;InformationRealization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&informationrealization;InformationRealization"/>
+        <rdfs:comment>A piece of information, such as a musical composition, a text, a word, a picture, independently from how it is concretely realized.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#InformationRealization -->
+
+    <owl:Class rdf:about="&informationrealization;InformationRealization">
+        <rdfs:label xml:lang="en">Information realization</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&informationrealization;realizes"/>
+                <owl:someValuesFrom rdf:resource="&informationrealization;InformationObject"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A concrete realization of an information object, e.g. the written document containing the text of a law.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.1.0.1602) http://owlapi.sourceforge.net -->
+

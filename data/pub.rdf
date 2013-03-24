@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+Pub ontology, 
+
+Originally from http://isx.com/~phaglic/horus/daml/onts/englishpubont.daml
+
+Modified by Gunnar AAstrand Grimnes to detach from propriatory horus 
+ontologies.
+
+version 1.2 
+
+-->
+<rdf:RDF xml:base="http://www.csd.abdn.ac.uk/research/AgentCities/ontologies/pubs#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:daml="http://www.daml.org/2001/03/daml+oil#" xmlns:beeront="http://www.csd.abdn.ac.uk/research/AgentCities/ontologies/beer#" xmlns="http://www.csd.abdn.ac.uk/research/AgentCities/ontologies/pubs#">
+  <!--	 xmlns:beeront="http://www.csd.abdn.ac.uk/research/AgentCities/ontologies/beer#"  -->
+  <!-- Opening times stuff nicked from restaurant ontology -->
+  <daml:Class rdf:ID="OpeningPeriod">
+    <rdfs:label>A set of days and times a pub is open</rdfs:label>
+    <rdfs:comment>Take from the agentcities restaurant ontology</rdfs:comment>
+  </daml:Class>
+  <daml:ObjectProperty rdf:ID="openingPeriods">
+    <rdfs:label>Opening periods for this pub</rdfs:label>
+    <rdfs:comment>As in agentcities#restaurant</rdfs:comment>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="#OpeningPeriod" />
+  </daml:ObjectProperty>
+  <daml:ObjectProperty rdf:ID="days">
+    <rdfs:domain rdf:resource="#OpeningPeriod" />
+    <rdfs:range rdf:resource="http://sf.us.agentcities.net/ontologies/calendar.daml#DayOfWeek" />
+  </daml:ObjectProperty>
+  <daml:DatatypeProperty rdf:ID="startHour">
+    <rdfs:domain rdf:resource="#TimePeriod" />
+    <rdfs:range rdf:resource="http://sf.us.agentcities.net/ontologies/calendar.daml#Time" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="stopHour">
+    <rdfs:domain rdf:resource="#TimePeriod" />
+    <rdfs:range rdf:resource="http://sf.us.agentcities.net/ontologies/calendar.daml#Time" />
+  </daml:DatatypeProperty>
+  <daml:Class rdf:ID="TimePeriod">
+    <rdfs:label>TimePeriod</rdfs:label>
+  </daml:Class>
+  <daml:ObjectProperty rdf:ID="periods">
+    <rdfs:label>periods</rdfs:label>
+    <rdfs:comment> property indicating a time-slot of periods</rdfs:comment>
+    <rdfs:domain rdf:resource="#OpeningPeriod" />
+    <rdfs:range rdf:resource="#TimePeriod" />
+  </daml:ObjectProperty>
+  <!-- Pub ontology: -->
+  <daml:Class rdf:ID="EnglishPub">
+    <rdfs:label>English Pub</rdfs:label>
+  </daml:Class>
+  <daml:Class rdf:ID="FreeHouse">
+    <rdfs:label>Free House</rdfs:label>
+    <daml:subClassOf rdf:resource="#EnglishPub" />
+  </daml:Class>
+  <daml:Class rdf:ID="PublicHouse">
+    <rdfs:label>Public House</rdfs:label>
+    <daml:subClassOf rdf:resource="#EnglishPub" />
+  </daml:Class>
+  <daml:Class rdf:ID="Proprietor">
+    <rdfs:label>Proprietor</rdfs:label>
+    <rdfs:comment>Hopefully this can later be subclass of the AgentCities contact ontology person concept</rdfs:comment>
+    <!--    <daml:subClassOf rdf:resource="http://horus.isx.com/onts/2001/12/deploy/horuspersonorgont.daml#Person"/> -->
+  </daml:Class>
+  <daml:ObjectProperty rdf:ID="servesBeer">
+    <rdfs:label>Serves Beer</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.csd.abdn.ac.uk/research/AgentCities/ontologies/beer#Beer" />
+  </daml:ObjectProperty>
+  <daml:ObjectProperty rdf:ID="affiliatedWith">
+    <rdfs:label>Affiliated With</rdfs:label>
+    <rdfs:domain rdf:resource="#PublicHouse" />
+    <rdfs:range rdf:resource="http://www.csd.abdn.ac.uk/research/AgentCities/ontologies/beer#Brewery" />
+  </daml:ObjectProperty>
+  <daml:ObjectProperty rdf:ID="ownedBy">
+    <rdfs:label>Owned By</rdfs:label>
+    <rdfs:domain rdf:resource="#FreeHouse" />
+    <rdfs:range rdf:resource="#Proprietor" />
+  </daml:ObjectProperty>
+  <daml:DatatypeProperty rdf:ID="pubName">
+    <rdfs:label>Pub Name</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#string" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="onLicense">
+    <rdfs:label>On Premises Consumption License</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#boolean" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="offLicense">
+    <rdfs:label>Off Premises Consumption License</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#boolean" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="telNumber">
+    <rdfs:label>Telephone Number</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#string" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="pubWebSite">
+    <rdfs:label>Pub Web Site</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#anyURI" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="location">
+    <rdfs:comment>
+      Added by Gunnar, should use AgentCities location ontology
+      later
+    </rdfs:comment>
+    <rdfs:label>The Address of the pub</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://sf.us.agentcities.net/ontologies/address.daml#Address" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="servesFood">
+    <rdfs:label>Is food available?</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#boolean" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="familyFriendly">
+    <rdfs:label>Are children allowed? Play area etc.</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#boolean" />
+  </daml:DatatypeProperty>
+  <daml:DatatypeProperty rdf:ID="liveEntertainment">
+    <rdfs:label>DJs, Bands etc.</rdfs:label>
+    <rdfs:domain rdf:resource="#EnglishPub" />
+    <rdfs:range rdf:resource="#LiveEntertainmentRegularity" />
+  </daml:DatatypeProperty>
+  <daml:Class rdf:ID="LiveEntertainmentRegularity" />
+  <LiveEntertainmentRegularity rdf:ID="Never" />
+  <LiveEntertainmentRegularity rdf:ID="Sometimes" />
+  <LiveEntertainmentRegularity rdf:ID="Often" />
+  <LiveEntertainmentRegularity rdf:ID="Always" />
+  <!--  <rdf:Description rdf:about="#Never">
+    <rdf:type rdf:resource="#LiveEntertainmentRegularity" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#Sometimes">
+    <rdf:type rdf:resource="#LiveEntertainmentRegularity" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#Often">
+    <rdf:type rdf:resource="#LiveEntertainmentRegularity" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#Always">
+    <rdf:type rdf:resource="#LiveEntertainmentRegularity" />
+  </rdf:Description>
+-->
+</rdf:RDF>

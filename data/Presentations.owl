@@ -1,0 +1,357 @@
+
+<rdf:RDF xmlns="http://www.w3.org/2004/08/Presentations.owl#"
+		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+		xmlns:owl="http://www.w3.org/2002/07/owl#"
+		xmlns:ical="http://www.w3.org/2002/12/cal/ical#"
+		xmlns:org="http://www.w3.org/2001/04/roadmap/org#"
+		xmlns:contact="http://www.w3.org/2000/10/swap/pim/contact#"
+		xmlns:dc="http://purl.org/dc/elements/1.1/"
+		xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+	<owl:Ontology rdf:about="">
+		<rdfs:label>Ontology used to manage presentations at W3C</rdfs:label>
+		<dc:creator>Ivan Herman</dc:creator>
+		<owl:versionInfo>$Id: Presentations.owl,v 1.7 2006/05/05 09:12:16 ivan Exp $</owl:versionInfo>
+		<dc:publisher>World Wide Web Consortium</dc:publisher>
+		<rdfs:comment>
+		2005-02-01: based on DanC's comment, I changed the usage of org:name to 
+		include a separate resource that can be used as a subject for this property. (The previous
+		usage misused org:name)
+		2005-05-02: added a dc:coverage property for a talk, used to indicate the end of an event if needed (currently used
+		for booth-s that are ran at an event)
+		</rdfs:comment>
+	</owl:Ontology>	
+	<!-- ==================================================================================================== -->
+	<owl:Class rdf:ID="Talk">
+		<rdfs:comment>Date of the presentation</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>This is used for the end date of an event (eg, for booth-s)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.org/dc/elements/1.1/coverage"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		
+		<rdfs:comment>A talk may have one or several presentors. In the latter case, the order of the presentors might be important, 
+		     hence the separation of the two cases (and that is the reason I did not want to use dc:creator)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="#OnePresenterTalk"/>
+					<owl:Class rdf:about="#MultiplePresenterTalk"/>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:subClassOf>
+		
+		<rdfs:comment>Title of the presentation, possibly in the original language. One would expect the cardinality to be exactly 
+		    one, but I found talks in the list that have no title (I am not sure we should accept those, b.t.w....)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdf:comment>This restriction is, in fact, only to emphasize the usage of the language term of DC. We can 'agree' that 
+			if there is no language property used, than the language is US English. Otherwise it should be set</rdf:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.org/dc/elements/1.1/language"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>Title of the presentation translated to English (in case the title is not in English). It is a pity, b.t.w., 
+		   that no such distinction exists in the Dublin Core. Oh well...
+           This is, admittingly, a bit awkward. What I would like here to have is to say: 'if the language tag is set, then the 
+		   cardinality of dc:title is '2', one of the dc:title must be in English, the other in the language set by 'dc:language'. 
+		   This is not expressable in OWL, I am not sure about SWRL or cwm either, but I would hope so. For the time being, I 
+		   therefore chose to separate the two into different properties.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#translatedTitle"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		
+		<rdfs:comment>Identify W3C Office organizing the event (if applicable, ie, the minimum cardinality is 0)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#office"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		
+		<rdfs:comment>Identify the activity, domain,etc relevant for the presentation. The object resource 
+		    should be such that the http://www.w3.org/2001/04/roadmap/org#name can be used on it to identify a W3C
+		    activity, group, etc.</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#w3cActivity"/>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:minCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://www.w3.org/2001/04/roadmap/org#name"/>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:minCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>Identify the type of talk (typically: tutorial, invited talk, etc)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#type"/>
+				<owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:minCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>URI of slides. In earlier versions there was a separate property here, but I realized
+		    that the dc:identifier is perfectly o.k. here!</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://purl.org/dc/elements/1.1/identifier"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>Event where the presentation takes place</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#event"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	
+	<!-- ================================================================================ -->
+	<owl:DeprecatedProperty rdf:ID="organization">
+		<rdfs:label>Identify 'organizational unit on behalf of which the presentation is made.</rdfs:label>
+		<rdfs:comment>The 'organizational unit' might be a WG or an activity, for example. At present, only
+		a string is required, at some point one might want to list allowable alternatives here...</rdfs:comment>
+		<rdfs:comment>The property below took its place... (this was defined as a datatype property, 
+		that was wrong...)</rdfs:comment>
+	</owl:DeprecatedProperty>
+	
+	<owl:ObjectProperty rdf:ID="w3cActivity">
+		<rdfs:label>Identify 'organizational unit on behalf of which the presentation is made.</rdfs:label>
+		<rdf:comment>The current scripts rely on an org:name to identify an activity</rdf:comment>
+		<rdfs:domain rdf:resource="#Talk"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/04/roadmap/org#Activity"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:ID="office">
+		<rdfs:label>Identify 'organizational unit on behalf of which the presentation is made.</rdfs:label>
+		<rdfs:comment>At present, only a string is required, at some point one might want to list allowable alternatives here...</rdfs:comment>
+		<rdfs:domain rdf:resource="#Talk"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<owl:ObjectProperty rdf:ID="event">
+		<rdfs:label>The event where the presentation takes place</rdfs:label>
+		<rdfs:domain rdf:resource="#Talk"/>
+		<rdfs:range rdf:resource="#Event"/>
+	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:ID="translatedTitle">
+		<rdfs:label>Title in English</rdfs:label>
+		<rdfs:domain rdf:resource="#Talk"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+	
+	<!-- It is really a pain that one cannot use the parseType="Collection" here... -->
+	<owl:DatatypeProperty rdf:ID="type">
+		<rdfs:label>Type of talk</rdfs:label>
+		<rdfs:comment>At some point a better classification of talk type might become necessary. For the time being, this reflects the usage of the system, and
+		we will see what comes up in practice.</rdfs:comment>
+		<rdfs:domain rdf:resource="#Talk"/>
+		<rdfs:range>
+			<owl:DataRange>
+				<rdf:oneOf>
+					<rdf:List>
+						<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">talk</rdf:first>
+						<rdf:rest>
+							<rdf:List>
+								<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">invited talk</rdf:first>
+								<rdf:rest>
+									<rdf:List>
+										<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">keynote</rdf:first>
+										<rdf:rest>
+											<rdf:List>
+												<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">tutorial</rdf:first>
+												<rdf:rest>
+													<rdf:List>
+														<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">state of the art report</rdf:first>
+														<rdf:rest>
+															<rdf:List>
+																<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lecture</rdf:first>
+																<rdf:rest>
+																	<rdf:List>
+																		<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">panel</rdf:first>
+																		<rdf:rest>
+																			<rdf:List>
+																				<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lunchtime talk</rdf:first>
+																				<rdf:rest>
+																					<rdf:List>
+																						<rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">run(s) a booth</rdf:first>
+																						<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+																					</rdf:List>
+																				</rdf:rest>
+																			</rdf:List>
+																		</rdf:rest>
+																	</rdf:List>
+																</rdf:rest>
+															</rdf:List>
+														</rdf:rest>
+													</rdf:List>
+												</rdf:rest>
+											</rdf:List>
+										</rdf:rest>
+									</rdf:List>
+								</rdf:rest>
+							</rdf:List>
+						</rdf:rest>
+					</rdf:List>
+				</rdf:oneOf>
+			</owl:DataRange>
+		</rdfs:range>
+	</owl:DatatypeProperty>
+	
+	
+	<!-- ============================================================================================== -->
+	
+	<owl:Class rdf:nodeID="OnePresenterTalk">
+		<rdfs:comment>The name of the Class tells it all...</rdfs:comment>
+		<owl:disjointWith rdf:resource="#MultiplePresenterTalk"/>
+		<rdfs:comment>There must be exactly one presenter</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#presenter"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>There must be *no* presenters(!)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>The case when there are more presenters</rdfs:comment>
+				<owl:onProperty rdf:resource="#presenters"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:nodeID="MultiplePresenterTalk">
+		<rdfs:comment>The name of the Class tells it all...</rdfs:comment>
+		<rdfs:comment>There must be *no* presenter(!)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#presenter"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:comment>There must be exactly one presenters(!)</rdfs:comment>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<rdfs:comment>The case when there are more presenters</rdfs:comment>
+				<owl:onProperty rdf:resource="#presenters"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:Class rdf:nodeID="ListOfPersons">
+		<rdfs:label>A list whose constituents *must* be persons</rdfs:label>
+		<rdfs:comment>Note that this Class specification, and the typing of rdf:nil below,
+		    make this OWL be non-DL (There must be no restriction imposed on rdfs properties in DL...)</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<!-- all the elements of the list are Persons -->
+				<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#first"/>
+				<owl:allValuesFrom rdf:resource="http://www.w3.org/2000/10/swap/pim/contact#Person"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<!-- all the sublists are also of the same type, or possibly nil -->
+				<owl:onProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"/>
+				<owl:allValuesFrom rdf:resource="#ListOfPersons"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil">
+		<rdf:comment>This type setting is necessary to close the lists and fufill the restriction on
+		    rdf:rest set in ListOfPersons...
+			This definitely kicks the ontology out of OWL DL, though...</rdf:comment>
+		<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+	</rdf:Description>
+	<owl:ObjectProperty rdf:ID="presenter">
+		<rdfs:label>Presentor</rdfs:label>
+		<rdfs:comment>A single presenter may refer to one person only</rdfs:comment>
+		<rdfs:domain rdf:resource="#OnePresenterTalk"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/pim/contact#Person"/>
+	</owl:ObjectProperty>
+	<owl:ObjectProperty rdf:ID="presenters">
+		<rdfs:label>Presenters is a list of Persons</rdfs:label>
+		<rdfs:domain rdf:resource="#MultiplePresenterTalk"/>
+		<rdfs:domain rdf:resource="#ListOfPersons"/>
+	</owl:ObjectProperty>
+	<owl:Class rdf:ID="Person">
+		<rdfs:comment>There was a previous version that imposed a restriction on Person and thereby
+		   created a subclass of contact:Person for the local Person. That was probably rubbish.
+		   To make potentially existing data sets o.k., I kept this one here, but it
+		   should be deprecated, in fact...</rdfs:comment>
+		<owl:equivalentClass rdf:resource="http://www.w3.org/2000/10/swap/pim/contact#Person"/>
+	</owl:Class>
+
+	<!-- ============================================================================================== -->
+	
+	<owl:Class rdf:ID="Event">
+		<rdfs:label>An event where a talk is presented, with an extra property that adds the title in English
+		(in case the original one is not)</rdfs:label>
+		<rdfs:comment>By defining an event to be subClass of ical:Vevent, the talks may be bound to
+		    calendaring some day...</rdfs:comment>
+		<rdfs:subClassOf rdf:resource="http://www.w3.org/2002/12/cal/ical#Vevent"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="#descriptionEnglish"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://www.w3.org/2001/vcard-rdf/3.0#Locality"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://www.w3.org/2001/vcard-rdf/3.0#Country"/>
+				<owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:cardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://www.w3.org/2002/12/cal/ical#description"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://www.w3.org/2002/12/cal/ical#organizer"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="http://www.w3.org/2002/12/cal/ical#url"/>
+				<owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</owl:maxCardinality>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+	</owl:Class>
+	<owl:DatatypeProperty rdf:ID="descriptionEnglish">
+		<rdfs:label>Event Title, strictly in English</rdfs:label>
+		<rdfs:domain rdf:resource="#Event"/>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+	</owl:DatatypeProperty>
+</rdf:RDF>

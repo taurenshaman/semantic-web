@@ -1,0 +1,1374 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY sioc "http://rdfs.org/sioc/ns#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY wgs84 "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+  <!ENTITY event "http://purl.org/NET/c4dm/event.owl#" >
+  <!ENTITY swc "http://data.semanticweb.org/ns/swc/ontology#" >
+]>
+<rdf:RDF xmlns="http://online-presence.net/opo/ns#"
+	xml:base="http://online-presence.net/opo/ns#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:sioc="http://rdfs.org/sioc/ns#"
+	xmlns:wgs84="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+	xmlns:swc="http://data.semanticweb.org/ns/swc/ontology#"
+>
+
+  <owl:Ontology rdf:about="http://online-presence.net/opo/ns#">
+    <dc:date rdf:datatype="&xsd;date">2010-07-01</dc:date>
+    <dc:creator rdf:datatype="&xsd;string">Milan Stankovic</dc:creator>
+    <owl:versionInfo>Revision 0.5.2</owl:versionInfo>
+    <dc:contributor>Jelena Jovanovic</dc:contributor>
+    <dc:contributor>Alexandre Passant</dc:contributor>
+    <dc:title xml:lang="en">OnlinePresence Ontology</dc:title>
+    <dc:title xml:lang="zh-CN">[在线状况]本体</dc:title>
+    <dc:description xml:lang="en">
+      Ontology for representing OnlinePresence.
+    </dc:description>
+    <dc:description xml:lang="zh-CN">用于描述[在线状况]的本体。</dc:description>
+    <rdfs:seeAlso
+			rdf:resource="http://online-presence.net/opo/spec/" />
+  </owl:Ontology>
+
+  <rdf:Description rdf:about="http://rdfs.org/sioc/ns#Item">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://rdfs.org/sioc/ns#UserAccount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Image">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://rdfs.org/sioc/ns#has_creator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://online-presence.net/opo/ns#">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://purl.org/NET/c4dm/event.owl#Event">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Group">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://data.semanticweb.org/ns/swc/ontology#OrganisedEvent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Person">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://online-presence.net/opo/ns#DoNotDistrub">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+  <owl:AnnotationProperty rdf:about="&dc;date"/>
+  <owl:AnnotationProperty rdf:about="&dc;title"/>
+  <owl:AnnotationProperty rdf:about="&dc;description"/>
+  <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+  <owl:AnnotationProperty rdf:about="&dc;creator"/>
+
+  <!-- 
+		///////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Object properties
+		//
+		///////////////////////////////////////////////////////////////////////////////////////
+	-->
+
+  <!-- http://online-presence.net/opo/ns#isPresenceComponentOf -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#isPresenceComponentOf">
+    <rdfs:label xml:lang="en">isPresenceComponentOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">是……的[在线状况要素]</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The OnlinePresence that has this OnlinePresenceComponent
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">含有这个[在线状况要素]的[在线状况]。</rdfs:comment>
+    <rdfs:range rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresenceComponent" />
+    <owl:inverseOf
+          rdf:resource="http://online-presence.net/opo/ns#hasPresenceComponent" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+  </owl:ObjectProperty>
+
+
+  <!-- http://online-presence.net/opo/ns#avatar -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#avatar">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:label xml:lang="en">avatar</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">头像</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The graphical representation of the Agent used to depict him
+      in online systems.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用来在在线系统描绘[代理]的图形化表示。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="&foaf;Image" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#currentLocation , added in 0.4-->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#currentLocation">
+    <rdfs:label xml:lang="en">currentLocation</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">当前位置</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      Current location of the Agent
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]的当前位置。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="&wgs84;SpatialThing" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#currentAction , added in 0.4-->
+
+  <owl:ObjectProperty
+  rdf:about="http://online-presence.net/opo/ns#currentAction">
+    <rdfs:label xml:lang="en">currentAction</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">当前行为</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      Current action performed by the Agent
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">当前[代理]所作出的行为。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="http://online-presence.net/opo/ns#Action" />
+  </owl:ObjectProperty>
+
+
+  <!-- http://online-presence.net/opo/ns#declaredBy -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#declaredBy">
+    <rdfs:label xml:lang="en">declaredBy</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">由……宣示</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent that declared the OnlinePresence
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]宣示的[在线状况]。</rdfs:comment>
+    <owl:inverseOf
+			rdf:resource="http://online-presence.net/opo/ns#declaresOnlinePresence" />
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="&foaf;Agent" />
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://online-presence.net/opo/ns#declaredOn -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#declaredOn">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:label xml:lang="en">declaredOn</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">宣示人</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The sioc:UserAccount account where the OnlinePresence was declared.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">宣示[在线状况]的sioc:UserAccount账户。</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="&sioc;has_creator"/>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="&sioc;UserAccount" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#publishedFrom -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#publishedFrom">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:label xml:lang="en">publishedFrom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">发布于</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The source from which the OnlinePresence is declared (e.g., a mobile device)
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">宣示[在线状况]的源（比如，一个手机设备）。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="http://online-presence.net/opo/ns#SourceOfPublishing" />
+  </owl:ObjectProperty>
+
+
+  <!-- http://online-presence.net/opo/ns#declaresOnlinePresence -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#declaresOnlinePresence">
+    <rdfs:label xml:lang="en">declaresOnlinePresence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">宣示</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The OnlinePresence declared by the Agent
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]所宣示的[在线状况]。</rdfs:comment>
+    <rdfs:range	rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <owl:inverseOf
+			rdf:resource="http://online-presence.net/opo/ns#declaredBy" />
+    <rdfs:domain rdf:resource="&foaf;Agent" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#hasPresenceComponent -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#hasPresenceComponent">
+    <rdfs:label xml:lang="en">hasOnlinePresence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">在线情况</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      OnlinePresenceComponent included in this OnlinePresence
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[在线状况]所包括的[在线状况要素]。</rdfs:comment>
+    <owl:inverseOf
+			rdf:resource="http://online-presence.net/opo/ns#isPresenceComponentOf" />
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range	rdf:resource="http://online-presence.net/opo/ns#OnlinePresenceComponent" />
+  </owl:ObjectProperty>
+
+
+  <!-- http://online-presence.net/opo/ns#hasStatusComponent -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#hasStatusComponent">
+    <rdfs:label xml:lang="en">hasStatusComponent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">状态要素</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      OnlineStatusComponent included in this OnlineStatus
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[在线状态]所包括的[在线状态要素]。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatus" />
+    <rdfs:range	rdf:resource="http://online-presence.net/opo/ns#OnlineStatusComponent" />
+    <owl:inverseOf
+			rdf:resource="http://online-presence.net/opo/ns#isStatusComponentOf" />
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://online-presence.net/opo/ns#isStatusComponentOf -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#isStatusComponentOf">
+    <rdfs:label xml:lang="en">isStatusComponentOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">是……的状态要素</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The OnlineStatus that includes this OnlineStatusComponent.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[在线状态要素]所包括的[在线状态]。</rdfs:comment>
+    <rdfs:range	rdf:resource="http://online-presence.net/opo/ns#OnlineStatus" />
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatusComponent" />
+    <owl:inverseOf
+			rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#sourceDescription -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#sourceDescription">
+    <rdfs:label xml:lang="en">sourceDescription</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">来源描述</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      the description of the SourceOfPublishing.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">关于[发布源]的描述。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SourceOfPublishing" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#customMessage -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#customMessage">
+    <rdfs:label xml:lang="en">customMessage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">自定义信息</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      A message associated with the OnlinePresence, often used in
+      chat programs and social networks as custom title as well as in microblogging as status message.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">与该[在线状况]关联的信息，通常和微博中的状态信息一样作为自定义标题用于聊天程序和社交网络。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range	rdf:resource="&sioc;Item" />
+
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#intendedFor  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#intendedFor">
+    <rdfs:label xml:lang="en">intendedFor</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">用于</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      A group of people belonging to a space for sharing online psresence data - the intended audience of presence information.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">属于一个在线状况数据（目标受众的状况）的空间的一组人。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#commonInterest  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#commonInterest">
+    <rdfs:label xml:lang="en">Common Interest</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">共同兴趣</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      An interst shared by people in the Sharing Space.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在[共享空间]的人分享的兴趣。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&foaf;Document" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#currentlyIn  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#currentlyIn">
+    <rdfs:label xml:lang="en">Currently In</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">当前位置</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The current location of people in the Sharing Space.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在[共享空间]的人的当前位置。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&wgs84;SpatialThing" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#basedNear  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#basedNear">
+    <rdfs:label xml:lang="en">Based Near</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">附近</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The location where members of the Sharing Space are based.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在[共享空间]的成员的位置。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&wgs84;SpatialThing" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#schoolHomepage  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#schoolHomepage">
+    <rdfs:label xml:lang="en">School Homepage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">学校主页</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The homepage of school attended by people in the Sharing Space.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在[共享空间]参与的人的学校主页。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&foaf;Document" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#workplaceHomepage  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#workplaceHomepage">
+    <rdfs:label xml:lang="en">Workplace Homepage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">工作主页</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The homepage of workplace of people in the Sharing Space.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在[共享空间]参与的人的工作主页。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&foaf;Document" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#attendedOrganisedEvent  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#attendedOrganisedEvent">
+    <rdfs:label xml:lang="en">Attended Organised Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">参与组织的事件</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The organised event attended by people in the Sharing Space.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在共享空间人们参与组织的事件。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&swc;OrganisedEvent" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#closestFriendsOf  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#closestFriendsOf">
+    <rdfs:label xml:lang="en">Closest Friends Of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的最好朋友</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Person who's closest friends belog to the Sharing Space.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">最好好朋友属于[共享空间]的人。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&foaf;Person" />
+  </owl:ObjectProperty>
+
+  <!-- http://online-presence.net/opo/ns#familyOf  added in 0.5 -->
+
+  <owl:ObjectProperty
+		rdf:about="http://online-presence.net/opo/ns#familyOf">
+    <rdfs:label xml:lang="en">Family Of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的家庭</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Person who's family members belog to the Sharing Space.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">家庭成员属于[共享空间]的人。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SharingSpace" />
+    <rdfs:range rdf:resource="&foaf;Person" />
+  </owl:ObjectProperty>
+
+
+  <!-- 
+		///////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Data properties
+		//
+		///////////////////////////////////////////////////////////////////////////////////////
+	-->
+
+
+
+
+
+
+
+  <!-- http://online-presence.net/opo/ns#duration -->
+
+  <owl:DatatypeProperty
+		rdf:about="http://online-presence.net/opo/ns#duration">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:label xml:lang="en">duration</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">持续时间</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The estimated duration of the OnlinePresence after the
+      startTime
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">开始时间之后[在线状况]的预计持续时间。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="&xsd;duration" />
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://online-presence.net/opo/ns#inactivityPeriod -->
+
+  <owl:DatatypeProperty
+		rdf:about="http://online-presence.net/opo/ns#inactivityPeriod">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:label xml:lang="en">inactivityPeriod</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不活跃时间</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      Period of inactivity on a certain service
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在某一服务上不活跃的时间段。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#Activity" />
+    <rdfs:range rdf:resource="&xsd;duration" />
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://online-presence.net/opo/ns#onlineStatusName -->
+
+  <owl:DatatypeProperty
+		rdf:about="http://online-presence.net/opo/ns#onlineStatusName">
+    <rdfs:label xml:lang="en">OnlineStatusName</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">在线状态名称</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      A name used by chat systems to distinguish their various
+      statuses.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">聊天系统所使用的用于区分不同状态的名称。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatus" />
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://online-presence.net/opo/ns#startTime -->
+
+  <owl:DatatypeProperty
+		rdf:about="http://online-presence.net/opo/ns#startTime">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:label xml:lang="en">startTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">开始时间</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The time when the OnlinePresence started
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[在线状况]开始的时间。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:range rdf:resource="&xsd;dateTime" />
+  </owl:DatatypeProperty>
+
+  <!-- http://online-presence.net/opo/ns#sourceName -->
+
+  <owl:DatatypeProperty
+		rdf:about="http://online-presence.net/opo/ns#sourceName">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:label xml:lang="en">sourceName</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">来源名称</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The name of the SourceOfPublishing.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[发布源]的名称。</rdfs:comment>
+    <rdfs:domain
+			rdf:resource="http://online-presence.net/opo/ns#SourceOfPublishing" />
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+
+
+  
+  
+
+  <!-- 
+		///////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Classes
+		//
+		///////////////////////////////////////////////////////////////////////////////////////
+	-->
+
+
+  <!-- http://online-presence.net/opo/ns#Action , added in 0.4-->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#Action">
+    <rdfs:label xml:lang="en">Action</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">行为</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&event;Event" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#SourceOfPublishing" />
+
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      An action currently performed by the Agent (e.g., listening to music, reading a book).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">由[代理]做出的行为（比如听音乐，读书等等）。</rdfs:comment>
+  </owl:Class>
+
+
+
+
+  <!-- http://online-presence.net/opo/ns#Activity -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#Activity">
+    <rdfs:label xml:lang="en">Activity</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">活跃</rdfs:label>
+    <rdfs:subClassOf
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatusComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Contactability" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Disturbability" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Visibility" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      OnlineStatusComponent used to represent the state of
+      Activity of the Agent (e.g., Active, Inactive,
+      ProlongedInactive).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该[在线状态要素]用来表示[代理]的[活跃]状态。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Contactability -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#Contactability">
+    <rdfs:label xml:lang="en">Contactability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">接触</rdfs:label>
+    <rdfs:subClassOf
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatusComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Disturbability" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Visibility" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Activity" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      OnlineStatusComponent used to represent the state of
+      contactability of an Agent. Contatctability relates to the
+      possiblity of other Agents to conatct the Agent freely or
+      only with regard to some conditions.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该[在线状态要素]用于表示[代理]的接触性的状态。[接触性]涉及了其他[代理]自由地或就某些条件联系到该[代理]的可能性。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Disturbability -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#Disturbability">
+    <rdfs:label xml:lang="en">Disturbability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">打扰</rdfs:label>
+    <rdfs:subClassOf
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatusComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Visibility" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Activity" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Contactability" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      OnlineStatusComponent used to represent the wish of an Agent
+      to be or not to be disturbed.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该[在线状态要素]用于表示[代理]允许或不想被打扰的意愿。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Findability -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#Findability">
+    <rdfs:label xml:lang="en">Findability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">查找</rdfs:label>
+    <rdfs:subClassOf
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresenceComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Notifiability" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatus" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The OnlinePresenceComponent used to represent the
+      possibility to find contact details of an Agent in a public
+      listing
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该[在线状况要素]用于表示在公共列表中找到联络信息的可能性。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Notifiability -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#Notifiability">
+    <rdfs:label xml:lang="en">Notifiability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">提醒</rdfs:label>
+    <rdfs:subClassOf
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresenceComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatus" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Findability" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The OnlinePresenceComponent used to represent the attitude
+      of an Agent towards interaction with applications i.e., the
+      possibility of applications to show notifications.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该[在线状况要素]用于表示[代理]面对应用交互的态度，比如，应用显示通知/提醒的可能性。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://online-presence.net/opo/ns#OnlinePresence -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#OnlinePresence">
+    <rdfs:label xml:lang="en">OnlinePresence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">在线情况</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;Thing" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty
+					rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+        <owl:onClass
+					rdf:resource="http://online-presence.net/opo/ns#Findability" />
+        <owl:maxCardinality
+					rdf:datatype="&xsd;nonNegativeInteger">
+          1
+        </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty
+					rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+        <owl:onClass
+					rdf:resource="http://online-presence.net/opo/ns#Notifiability" />
+        <owl:maxCardinality
+					rdf:datatype="&xsd;nonNegativeInteger">
+          1
+        </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty
+					rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+        <owl:onClass
+					rdf:resource="http://online-presence.net/opo/ns#OnlineStatus" />
+        <owl:maxCardinality
+					rdf:datatype="&xsd;nonNegativeInteger">
+          1
+        </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresenceComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Action" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#SourceOfPublishing" />
+
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      OnlinePresence, described in termes of various
+      OnlinePresenceComponents to represent the attitude of an
+      Agent towards interaction with other Agents and
+      Applications.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[在线状况]根据不同[在线状况要素]进行描述，表示了一个[代理]面对与其他[代理]和[应用]的交互的态度。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://online-presence.net/opo/ns#OnlinePresenceComponent -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#OnlinePresenceComponent">
+    <rdfs:label xml:lang="en">OnlinePresenceComponent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">在线情况要素</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;Thing" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <rdfs:comment xml:lang="en">
+      A component of OnlinePresence used to represent one of its
+      dimensions.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[在线状况]的一个要素，用于表示它的一个维度。</rdfs:comment>
+  </owl:Class>
+
+  <!-- http://online-presence.net/opo/ns#OnlineStatus -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#OnlineStatus">
+    <rdfs:label xml:lang="en">OnlineStatus</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">在线状态</rdfs:label>
+    <rdfs:subClassOf
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresenceComponent" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty
+					rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+        <owl:onClass
+					rdf:resource="http://online-presence.net/opo/ns#Notifiability" />
+        <owl:maxCardinality
+					rdf:datatype="&xsd;nonNegativeInteger">
+          1
+        </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty
+					rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+        <owl:onClass
+					rdf:resource="http://online-presence.net/opo/ns#Visibility" />
+        <owl:maxCardinality
+					rdf:datatype="&xsd;nonNegativeInteger">
+          1
+        </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty
+					rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+        <owl:onClass
+					rdf:resource="http://online-presence.net/opo/ns#Activity" />
+        <owl:maxCardinality
+					rdf:datatype="&xsd;nonNegativeInteger">
+          1
+        </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty
+					rdf:resource="http://online-presence.net/opo/ns#hasStatusComponent" />
+        <owl:onClass
+					rdf:resource="http://online-presence.net/opo/ns#Disturbability" />
+        <owl:maxCardinality
+					rdf:datatype="&xsd;nonNegativeInteger">
+          1
+        </owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatusComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Findability" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Notifiability" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The OnlinePresenceComponent used to represent the attitude
+      of an Agent towards the possibility of communication with
+      other Agents. The OnlineStatus is defined by its components.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[在线状况要素]用于表示一个[代理]面对和其他[代理]的可能沟通时，这个[代理]的态度。[在线状态]由它的组成要素定义。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://online-presence.net/opo/ns#OnlineStatusComponent -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#OnlineStatusComponent">
+    <rdfs:label xml:lang="en">OnlineStatusComponent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">在线状态要素</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;Thing" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatus" />
+    <rdfs:comment xml:lang="en">
+      The component of the OnlineStatus representing one of its
+      dimensions.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[在线状态]的要素表示了它的一个维度。</rdfs:comment>
+  </owl:Class>
+
+  <!-- http://online-presence.net/opo/ns#SourceOfPublishing , added in 0.4-->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#SourceOfPublishing">
+    <rdfs:label xml:lang="en">SourceOfPublishing</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">发布源</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;Thing" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#OnlinePresence" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Action" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The source that can publish Online Presence data.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">能够发布[在线状况]数据的源。</rdfs:comment>
+  </owl:Class>
+
+
+  <!-- http://online-presence.net/opo/ns#Visibility -->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#Visibility">
+    <rdfs:label xml:lang="en">Visibility</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf
+			rdf:resource="http://online-presence.net/opo/ns#OnlineStatusComponent" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Disturbability" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Activity" />
+    <owl:disjointWith
+			rdf:resource="http://online-presence.net/opo/ns#Contactability" />
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      OnlineStatusComponent used to represent the possiblity of
+      others to see the OnlineStatus of the Agent
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[在线状态要素]用于表示其它[代理]看见某[代理]的[在线状态]的可能性。</rdfs:comment>
+  </owl:Class>
+
+  <!-- http://online-presence.net/opo/ns#StatusMessage , added in 0.4-->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#StatusMessage">
+    <rdfs:label xml:lang="en">StatusMessage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">状态信息</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&sioc;Item" />
+    <rdfs:isDefinedBy	rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">A status message that cannot be commented on. </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">无法评论的状态信息。</rdfs:comment>
+  </owl:Class>
+
+  <!-- http://online-presence.net/opo/ns#SharingSpace , added in 0.4-->
+
+  <owl:Class
+		rdf:about="http://online-presence.net/opo/ns#SharingSpace">
+    <rdfs:label xml:lang="en">SharingSpace</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">共享空间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&foaf;Group" />
+    <rdfs:isDefinedBy	rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">A group of people belonging to a space for sharing online presence data - the intended audience of data.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">属于一个在线状况数据（目标受众的数据）的空间的一组人。</rdfs:comment>
+  </owl:Class>
+
+
+  <!-- 
+		///////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Individuals
+		//
+		///////////////////////////////////////////////////////////////////////////////////////
+	-->
+
+
+
+
+  <!-- http://online-presence.net/opo/ns#Active -->
+
+  <Activity rdf:about="http://online-presence.net/opo/ns#Active">
+    <rdfs:label xml:lang="en">Active</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">活跃的</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent is active on the system.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]在系统上是活跃的。</rdfs:comment>
+  </Activity>
+
+
+
+  <!-- http://online-presence.net/opo/ns#AllNotificationsPass -->
+
+  <Notifiability
+		rdf:about="http://online-presence.net/opo/ns#AllNotificationsPass">
+    <rdfs:label xml:lang="en">AllNotificationsPass</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">接收所有通知</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      Agent can receive notifications from applications
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]能够接收来自应用的通知。</rdfs:comment>
+  </Notifiability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Available -->
+
+  <Disturbability
+		rdf:about="http://online-presence.net/opo/ns#Available">
+    <rdfs:label xml:lang="en">Available</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">有空的</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The agent is not busy and therefore available for contatc by
+      other Agents.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]不忙，因此可以被其他[代理]联系。</rdfs:comment>
+  </Disturbability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#ConstrainedContactability -->
+
+  <Contactability
+		rdf:about="http://online-presence.net/opo/ns#ConstrainedContactability">
+    <rdfs:label xml:lang="en">ConstrainedContactability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">可联络性限制</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent cannot be contated by anyone on the Web, but the
+      contactability is controled by some rules/policies.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]无法被网络上的任何人联络到，但是可联络性由一些规则/策略控制。</rdfs:comment>
+  </Contactability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#ConstrainedFindability -->
+
+  <Findability
+		rdf:about="http://online-presence.net/opo/ns#ConstrainedFindability">
+    <rdfs:label xml:lang="en">ConstrainedFindability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">被查找限制</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent&#39;s contact details cannot be found by anyone on
+      the Web, but the findability is controled by some
+      rules/policies.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]无法被网络上的任何人找到联系信息，但是可查找性由一些规则/策略控制。</rdfs:comment>
+  </Findability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#DoNotDisturb -->
+
+  <Disturbability
+		rdf:about="http://online-presence.net/opo/ns#DoNotDisturb">
+    <rdfs:label xml:lang="en">DoNotDisturb</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">禁止打扰</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent is busy and does not want to be contacted by other
+      Agents.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]很忙，不想被其它[代理]联系到。</rdfs:comment>
+  </Disturbability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#FreelyContactable -->
+
+  <Contactability
+		rdf:about="http://online-presence.net/opo/ns#FreelyContactable">
+    <rdfs:label xml:lang="en">FreelyContactable</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">自由联络</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent can be contacted by anyone on the Web
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]能够被网络上的任何人联络到。</rdfs:comment>
+  </Contactability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Inactive -->
+
+  <Activity
+		rdf:about="http://online-presence.net/opo/ns#Inactive">
+    <rdfs:label xml:lang="en">Inactive</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不活跃的</rdfs:label>
+    <inactivityPeriod rdf:datatype="&xsd;duration">PT5M</inactivityPeriod>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent is inactive for at least 5 min.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]的不活跃时间在至少五分钟以内。</rdfs:comment>
+  </Activity>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Invisible -->
+
+  <Visibility
+		rdf:about="http://online-presence.net/opo/ns#Invisible">
+    <rdfs:label xml:lang="en">Invisible</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不可见</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent&#39;s OnlineStatus is not visible to other Agents
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]的[在线状态]对于其他[代理]不可见。</rdfs:comment>
+  </Visibility>
+
+
+
+  <!-- http://online-presence.net/opo/ns#NotificationsConstrained -->
+
+  <Notifiability
+		rdf:about="http://online-presence.net/opo/ns#NotificationsConstrained">
+    <rdfs:label xml:lang="en">NotificationsConstrained</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">通知限制</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The acceptance of notifications from applications is somehow
+      constrained (by using some rules or policies).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">以某种方式（通过使用一些规则或策略） 对接受来自应用程序的通知进行约束。</rdfs:comment>
+  </Notifiability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#NotificationsProhibited -->
+
+  <Notifiability
+		rdf:about="http://online-presence.net/opo/ns#NotificationsProhibited">
+    <rdfs:label xml:lang="en">NotificationsProhibited</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">禁止通知</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      Agent cannot receive any notification form applications
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]无法接收来自应用的通知。</rdfs:comment>
+  </Notifiability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#ProlongedInactive -->
+
+  <Activity
+		rdf:about="http://online-presence.net/opo/ns#ProlongedInactive">
+    <rdfs:label xml:lang="en">ProlongedInactive</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">长时间不活跃的</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <inactivityPeriod rdf:datatype="&xsd;duration">PT20M</inactivityPeriod>
+    <rdfs:comment xml:lang="en">
+      The Agent is inactive for at least 20 min.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]的不活跃时间超过二十分钟。</rdfs:comment>
+  </Activity>
+
+
+
+  <!-- http://online-presence.net/opo/ns#PubliclyFindable -->
+
+  <Findability
+		rdf:about="http://online-presence.net/opo/ns#PubliclyFindable">
+    <rdfs:label xml:lang="en">PubliclyFindable</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">公开可查找</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent&#39;s contact details canbe found by anyone on the
+      Web
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]的联系信息可被网络上的任何人找到。</rdfs:comment>
+  </Findability>
+
+
+
+  <!-- http://online-presence.net/opo/ns#Visible -->
+
+  <Visibility
+		rdf:about="http://online-presence.net/opo/ns#Visible">
+    <rdfs:label xml:lang="en">Visible</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">可见</rdfs:label>
+    <rdfs:isDefinedBy
+			rdf:resource="http://online-presence.net/opo/ns#" />
+    <rdfs:comment xml:lang="en">
+      The Agent&#39;s OnlineStatus is visible to other Agents
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[代理]的[在线状态]对于其他[代理]可见。</rdfs:comment>
+  </Visibility>
+
+
+
+  <!-- 
+		///////////////////////////////////////////////////////////////////////////////////////
+		//
+		// General axioms
+		//
+		///////////////////////////////////////////////////////////////////////////////////////
+	-->
+
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#PubliclyFindable" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#ConstrainedFindability" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#DoNotDistrub" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#Available" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#FreelyContactable" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#ConstrainedContactability" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#Active" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#ProlongedInactive" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#AllNotificationsPass" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#NotificationsConstrained" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#Active" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#Inactive" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#NotificationsProhibited" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#AllNotificationsPass" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#Visible" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#Invisible" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#Inactive" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#ProlongedInactive" />
+    </owl:distinctMembers>
+  </rdf:Description>
+  <rdf:Description>
+    <rdf:type rdf:resource="&owl;AllDifferent" />
+    <owl:distinctMembers rdf:parseType="Collection">
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#NotificationsProhibited" />
+      <rdf:Description
+				rdf:about="http://online-presence.net/opo/ns#NotificationsConstrained" />
+    </owl:distinctMembers>
+  </rdf:Description>
+</rdf:RDF>

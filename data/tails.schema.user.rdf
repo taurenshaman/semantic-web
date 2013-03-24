@@ -1,0 +1,110 @@
+﻿<!DOCTYPE rdf:RDF [
+  <!ENTITY schema  "http://schemas.talis.com/2005/user/schema#" >
+  <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY foaf  "http://xmlns.com/foaf/0.1/" >
+  <!ENTITY owl  "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY cc  "http://web.resource.org/cc/" >
+  <!ENTITY vocabid  "http://schemas.talis.com/2005/user/schema-20060627" >
+  <!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:dctype="http://purl.org/dc/dcmitype/"
+    xmlns:cc="http://web.resource.org/cc/"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://schemas.talis.com/2005/user/schema#" dc:date="2006-06-27">
+    <dc:title xml:lang="en">User Schema</dc:title>
+    <dc:title xml:lang="zh-CN">用户架构</dc:title>
+    <dc:identifier>&vocabid;</dc:identifier>
+    <dct:isVersionOf rdf:resource="&schema;"/>
+    <dc:creator>Ian Davis &lt;http://purl.org/NET/iand&gt;</dc:creator>
+    <dc:rights>Copyright © 2005 Talis Information Ltd.</dc:rights>
+    <vann:preferredNamespaceUri>&schema;</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>user</vann:preferredNamespacePrefix>
+
+    <dct:hasFormat>
+      <dctype:Text rdf:about="&vocabid;.html">
+        <dc:format>
+          <dct:IMT>
+            <rdf:value>text/html</rdf:value>
+            <rdfs:label xml:lang="en">HTML</rdfs:label>
+          </dct:IMT>
+        </dc:format>
+      </dctype:Text>
+    </dct:hasFormat>
+
+    <dct:hasFormat>
+      <dctype:Text rdf:about="&vocabid;.rdf">
+        <dc:format>
+          <dct:IMT>
+            <rdf:value>application/rdf+xml</rdf:value>
+            <rdfs:label xml:lang="en">RDF</rdfs:label>
+          </dct:IMT>
+        </dc:format>
+      </dctype:Text>
+    </dct:hasFormat>
+
+    <dct:issued>2006-06-27</dct:issued>
+  </owl:Ontology>
+
+  <owl:DatatypeProperty rdf:about="&schema;loginName">
+    <rdfs:label xml:lang="en">loginName</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">注册名</rdfs:label>
+    <skos:definition xml:lang="en">the string used by the user to identify themselves when logging in.</skos:definition>
+    <skos:definition xml:lang="zh-CN">当用户登录的时候，用于识别他们自己的字符串。</skos:definition>
+    <rdfs:domain rdf:resource="&schema;User"/>
+    <rdfs:isDefinedBy rdf:resource="&schema;"/>
+    <dct:issued>2006-06-27</dct:issued>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&schema;passwordSha1Hash">
+    <rdfs:label xml:lang="en">passwordSha1Hash</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">密码的SHA1</rdfs:label>
+    <skos:definition xml:lang="en">a SHA1 hash of the user's password</skos:definition>
+    <skos:definition xml:lang="zh-CN">用户密码的SHA1。</skos:definition>
+    <rdfs:domain rdf:resource="&schema;User"/>
+    <rdfs:isDefinedBy rdf:resource="&schema;"/>
+    <dct:issued>2006-06-27</dct:issued>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&schema;lastLoginTime">
+    <rdfs:label xml:lang="en">lastLoginTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">上一次登录时间</rdfs:label>
+    <skos:definition xml:lang="en">the time and date the user logged into the directory before the current session started.</skos:definition>
+    <skos:definition xml:lang="zh-CN">本次会话开始前用户登录的时间和日期。</skos:definition>
+    <rdfs:comment xml:lang="en">Must be in W3CDTF format. For example: "2005-12-01T12:12:26Z" </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">必须是W3CDTF格式，比如“2005-12-01T12:12:26Z”。</rdfs:comment>
+    <rdfs:domain rdf:resource="&schema;User"/>
+    <rdfs:isDefinedBy rdf:resource="&schema;"/>
+    <dct:issued>2006-06-27</dct:issued>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&schema;currentLoginTime">
+    <rdfs:label xml:lang="en">currentLoginTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">本次登录时间</rdfs:label>
+    <skos:definition xml:lang="en">the time and date the user logged into the directory to initiate this session.</skos:definition>
+    <skos:definition xml:lang="zh-CN">初始化本次会话时用户登录的时间和日期。</skos:definition>
+    <rdfs:comment xml:lang="en">Must be in W3CDTF format. For example: "2005-12-01T12:12:26Z" </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">必须是W3CDTF格式，比如“2005-12-01T12:12:26Z”。</rdfs:comment>
+    <rdfs:domain rdf:resource="&schema;User"/>
+    <rdfs:isDefinedBy rdf:resource="&schema;"/>
+    <dct:issued>2006-06-27</dct:issued>
+  </owl:DatatypeProperty>
+
+  <owl:Class rdf:about="&schema;User">
+    <rdfs:label xml:lang="en">User</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">用户</rdfs:label>
+    <skos:definition xml:lang="en">a registered user of the directory</skos:definition>
+    <skos:definition xml:lang="zh-CN">注册的用户。</skos:definition>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:isDefinedBy rdf:resource="&schema;"/>
+    <dct:issued>2006-06-27</dct:issued>
+  </owl:Class>
+
+
+</rdf:RDF>

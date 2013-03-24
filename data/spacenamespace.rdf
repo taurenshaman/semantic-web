@@ -1,0 +1,943 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:wn="http://xmlns.com/wordnet/1.6/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+  <owl:Ontology rdf:about="http://frot.org/space/0.1/">
+    <rdfs:label xml:lang="en-US">spacenamespace - a simple ontology for describing physical space.</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空间 - 一个简单的描述物理空间的本体</rdfs:label>
+    <rdfs:comment xml:lang="en-US">a simple vocabulary for describing physical spaces and the connections between them. see http://space.frot.org/ for an application, and http://frot.org/ontobot/ for work related to this ontology</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个用于描述物理空间和它们之间的连接的简单词汇集。</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Space">
+    <rdfs:label xml:lang="en-US">Space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Space" />
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing" />
+  </owl:Class>
+  <owl:Property rdf:about="http://frot.org/space/0.1/name">
+    <rdfs:label xml:lang="en-US">a name for a space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空间名称</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Name" />
+    <rdfs:domain rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Property>
+  <owl:Property rdf:about="http://chefmoz.org/rdf/elements/1.0/Address">
+    <rdfs:label xml:lang="en-US">Address</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">地址</rdfs:label>
+    <rdfs:domain rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/type">
+    <rdfs:label xml:lang="en-US">the type of a space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空间类型</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Type" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/os_x">
+    <rdfs:label xml:lang="en-US">the x coordinate of an ordnance survey grid reference</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">军事测量参考坐标网格的x坐标</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/os_y">
+    <rdfs:label xml:lang="en-US">the y coordinate of an ordnance survey grid reference</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">军事测量参考坐标网格的y坐标</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/postcode">
+    <rdfs:label xml:lang="en-US">a postal code for a space (UK)</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空间的邮编（英国）</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/connects">
+    <rdfs:label xml:lang="en-US">a connection from one space to another</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">连接</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Connects" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/contains">
+    <rdfs:label xml:lang="en-US">this space contains another</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">包含</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Contains" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/near">
+    <rdfs:label xml:lang="en-US">a space near to another space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">邻近</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Near" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/distance">
+    <rdfs:label xml:lang="en-US">a distance between one space and another</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">距离</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Distance" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/unit">
+    <rdfs:label xml:lang="en-US">a unit of distance between spaces</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">距离单位</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/dsg">
+    <rdfs:label xml:lang="en-US">a GEOnet DSG code for this space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">DSG码</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+  </owl:Property>
+  <owl:Property rdf:about="http://frot.org/space/0.1/fc">
+    <rdfs:label xml:lang="en-US">a GEOnet fc code for this space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">FC码</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://frot.org/space/0.1/" />
+  </owl:Property>
+  <!-- here are the GNS-derived, ontobot-arbitrated bits of the schema-->
+  <owl:Class rdf:about="http://frot.org/space/0.1/Populated_Area">
+    <rdfs:label xml:lang="en-US">a Populated Area</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">居住区</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Administrative_Area">
+    <rdfs:label xml:lang="en-US">an Administrative Area</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">行政区</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Transport_Infrastructure">
+    <rdfs:label xml:lang="en-US">a Transport Infrastructure</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">交通基础设施</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Spot_Feature">
+    <rdfs:label xml:lang="en-US">a Spot Feature</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">点</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Hypsographic">
+    <rdfs:label xml:lang="en-US">a Hypsographic spatial feature - e.g. water</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">有高度的区域</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Undersea">
+    <rdfs:label xml:lang="en-US">an underwater spatial feature</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">水下空间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Vegetation">
+    <rdfs:label xml:lang="en-US">Vegetation in the world</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">植被</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Hydrographic">
+    <rdfs:label xml:lang="en-US">Hydrographic features of space (territorial)</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">水文空间</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Locality_or_Area">
+    <rdfs:label xml:lang="en-US">a Locality or Area</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">地点或地区</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Mountain">
+    <rdfs:label xml:lang="en-US">a Mountain</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">山峰</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Rock">
+    <rdfs:label xml:lang="en-US">a Rock</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">岩石</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Populated_Place">
+    <rdfs:label xml:lang="en-US">a Populated Place</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">居民地</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Administrative_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cape">
+    <rdfs:label xml:lang="en-US">a Cape</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">海角</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Estate">
+    <rdfs:label xml:lang="en-US">an Estate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">房地产</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cliff">
+    <rdfs:label xml:lang="en-US">a Cliff</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Airfield">
+    <rdfs:label xml:lang="en-US">an Airfield</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Ruin">
+    <rdfs:label xml:lang="en-US">a Ruin</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Bay">
+    <rdfs:label xml:lang="en-US">a Bay</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Lake">
+    <rdfs:label xml:lang="en-US">a Lake</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Stream">
+    <rdfs:label xml:lang="en-US">a Stream</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Building">
+    <rdfs:label xml:lang="en-US">a Building</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Public_Building">
+    <rdfs:label xml:lang="en-US">a Public Building</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Recreational_Venue">
+    <rdfs:label xml:lang="en-US">a kind of Public Building intended for recreational purposes, like a cinema or club.</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Retail_Venue">
+    <rdfs:label xml:lang="en-US">a kind of Public Building intended for buying and selling things in</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Religious_Venue">
+    <rdfs:label xml:lang="en-US">a kind of Public Building intended for religious purposes, like a church or mosque.</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Food_Providing_Outlet">
+    <rdfs:label xml:lang="en-US">a space where food is provided</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Alcohol_Providing_Outlet">
+    <rdfs:label xml:lang="en-US">a space where alcohol is provided</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/First-order_Administrative_Division">
+    <rdfs:label xml:lang="en-US">a First-order Administrative Division</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Administrative_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Fishing_Area">
+    <rdfs:label xml:lang="en-US">a Fishing Area</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Harbor">
+    <rdfs:label xml:lang="en-US">a Harbor</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Railroad_Station">
+    <rdfs:label xml:lang="en-US">a Railroad Station</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Inlet">
+    <rdfs:label xml:lang="en-US">an Inlet</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Pass">
+    <rdfs:label xml:lang="en-US">a Pass</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Point">
+    <rdfs:label xml:lang="en-US">a Point</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Forest">
+    <rdfs:label xml:lang="en-US">a Forest</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Vegetation" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cove">
+    <rdfs:label xml:lang="en-US">a Cove</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Bank">
+    <rdfs:label xml:lang="en-US">a Bank</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Shop" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Valley">
+    <rdfs:label xml:lang="en-US">a Valley</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Hill">
+    <rdfs:label xml:lang="en-US">a Hill</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Island">
+    <rdfs:label xml:lang="en-US">an Island</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Section_Of_Populated">
+    <rdfs:label xml:lang="en-US">a Section Of Populated</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Shoal">
+    <rdfs:label xml:lang="en-US">a Shoal</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Second-order_Administrative_Division">
+    <rdfs:label xml:lang="en-US">a Second-order Administrative Division</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Administrative_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Ancient_Site">
+    <rdfs:label xml:lang="en-US">an Ancient Site</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Islands">
+    <rdfs:label xml:lang="en-US">an Islands</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Peninsula">
+    <rdfs:label xml:lang="en-US">a Peninsula</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Marsh(es)">
+    <rdfs:label xml:lang="en-US">a Marsh(es)</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Canal">
+    <rdfs:label xml:lang="en-US">a Canal</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Gap">
+    <rdfs:label xml:lang="en-US">a Gap</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/House">
+    <rdfs:label xml:lang="en-US">a House</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Reef">
+    <rdfs:label xml:lang="en-US">a Reef</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Strait">
+    <rdfs:label xml:lang="en-US">a Strait</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Headland">
+    <rdfs:label xml:lang="en-US">a Headland</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Oilfield">
+    <rdfs:label xml:lang="en-US">an Oilfield</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Channel">
+    <rdfs:label xml:lang="en-US">a Channel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Gasfield">
+    <rdfs:label xml:lang="en-US">a Gasfield</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Bridge">
+    <rdfs:label xml:lang="en-US">a Bridge</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Rocks">
+    <rdfs:label xml:lang="en-US">a Rocks</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Administrative_Division">
+    <rdfs:label xml:lang="en-US">an Administrative Division</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Administrative_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Reservoir">
+    <rdfs:label xml:lang="en-US">a Reservoir</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Moor">
+    <rdfs:label xml:lang="en-US">a Moor</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Region">
+    <rdfs:label xml:lang="en-US">a Region</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Area">
+    <rdfs:label xml:lang="en-US">an Area</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Marine_Channel">
+    <rdfs:label xml:lang="en-US">a Marine Channel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Heath">
+    <rdfs:label xml:lang="en-US">a Heath</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Vegetation" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Farm">
+    <rdfs:label xml:lang="en-US">a Farm</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Sound">
+    <rdfs:label xml:lang="en-US">a Sound</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Causeway">
+    <rdfs:label xml:lang="en-US">a Causeway</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Waterfall">
+    <rdfs:label xml:lang="en-US">a Waterfall</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Park">
+    <rdfs:label xml:lang="en-US">a Park</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Public_Space">
+    <rdfs:label xml:lang="en-US">a Public Space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Bar">
+    <rdfs:label xml:lang="en-US">a Bar</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Dock">
+    <rdfs:label xml:lang="en-US">a Dock</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Third-order_Administrative_Division">
+    <rdfs:label xml:lang="en-US">a Third-order Administrative Division</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Anchorage">
+    <rdfs:label xml:lang="en-US">an Anchorage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Trough">
+    <rdfs:label xml:lang="en-US">a Trough</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Undersea" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Estuary">
+    <rdfs:label xml:lang="en-US">an Estuary</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Plain">
+    <rdfs:label xml:lang="en-US">a Plain</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Mountains">
+    <rdfs:label xml:lang="en-US">a Mountains</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Hills">
+    <rdfs:label xml:lang="en-US">a Hills</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Tidal_Flat">
+    <rdfs:label xml:lang="en-US">a Tidal Flat</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Street">
+    <rdfs:label xml:lang="en-US">a Street</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Locality">
+    <rdfs:label xml:lang="en-US">a Locality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Gorge">
+    <rdfs:label xml:lang="en-US">a Gorge</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Ledge">
+    <rdfs:label xml:lang="en-US">a Ledge</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Undersea" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Reach">
+    <rdfs:label xml:lang="en-US">a Reach</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Overfalls">
+    <rdfs:label xml:lang="en-US">an Overfalls</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Promontory(-ies)">
+    <rdfs:label xml:lang="en-US">a Promontory(-ies)</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Camp">
+    <rdfs:label xml:lang="en-US">a Camp</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Current">
+    <rdfs:label xml:lang="en-US">a Current</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Port">
+    <rdfs:label xml:lang="en-US">a Port</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Road">
+    <rdfs:label xml:lang="en-US">a Road</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Arch">
+    <rdfs:label xml:lang="en-US">an Arch</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Gulf">
+    <rdfs:label xml:lang="en-US">a Gulf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Independent_Political_Entity">
+    <rdfs:label xml:lang="en-US">an Independent Political Entity</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Administrative_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Palace">
+    <rdfs:label xml:lang="en-US">a Palace</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Nature_Reserve">
+    <rdfs:label xml:lang="en-US">a Nature Reserve</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Castle">
+    <rdfs:label xml:lang="en-US">a Castle</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Peak">
+    <rdfs:label xml:lang="en-US">a Peak</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Parish">
+    <rdfs:label xml:lang="en-US">a Parish</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Administrative_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Upland">
+    <rdfs:label xml:lang="en-US">an Upland</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Bog">
+    <rdfs:label xml:lang="en-US">a Bog</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Beach">
+    <rdfs:label xml:lang="en-US">a Beach</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Deep">
+    <rdfs:label xml:lang="en-US">a Deep</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Undersea" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Roadstead">
+    <rdfs:label xml:lang="en-US">a Roadstead</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Railway">
+    <rdfs:label xml:lang="en-US">a Railway</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <owl:equivalentClass rdf:resource="http://opencyc.sourceforge.net/daml/cyc.daml#Railway" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Railway_Line">
+    <rdfs:label xml:lang="en-US">a Railway Line</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Railway" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Tube_Line">
+    <rdfs:label xml:lang="en-US">a Tube Line</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <owl:ObjectProperty></owl:ObjectProperty>
+    <owl:equivalentClass rdf:resource="http://opencyc.sourceforge.net/daml/cyc.daml#Subway" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Railway" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Ridge">
+    <rdfs:label xml:lang="en-US">a Ridge</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Slope">
+    <rdfs:label xml:lang="en-US">a Slope</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Sand_Area">
+    <rdfs:label xml:lang="en-US">a Sand Area</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Spit">
+    <rdfs:label xml:lang="en-US">a Spit</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Pier">
+    <rdfs:label xml:lang="en-US">a Pier</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Naval_Base">
+    <rdfs:label xml:lang="en-US">a Naval Base</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cave">
+    <rdfs:label xml:lang="en-US">a Cave</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Land-tied_Island">
+    <rdfs:label xml:lang="en-US">a Land-tied Island</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Lakes">
+    <rdfs:label xml:lang="en-US">a Lakes</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/River">
+    <rdfs:label xml:lang="en-US">a River</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Racetrack">
+    <rdfs:label xml:lang="en-US">a Racetrack</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Battlefield">
+    <rdfs:label xml:lang="en-US">a Battlefield</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Tower">
+    <rdfs:label xml:lang="en-US">a Tower</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Navigation_Channel">
+    <rdfs:label xml:lang="en-US">a Navigation Channel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Sea">
+    <rdfs:label xml:lang="en-US">a Sea</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Pool">
+    <rdfs:label xml:lang="en-US">a Pool</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Monument">
+    <rdfs:label xml:lang="en-US">a Monument</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Stream_Mouth">
+    <rdfs:label xml:lang="en-US">a Stream Mouth</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Country_House">
+    <rdfs:label xml:lang="en-US">a Country House</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Depression">
+    <rdfs:label xml:lang="en-US">a Depression</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Peaks">
+    <rdfs:label xml:lang="en-US">a Peaks</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hypsographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Garden">
+    <rdfs:label xml:lang="en-US">a Garden</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Church">
+    <rdfs:label xml:lang="en-US">a Church</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Religious_Venue" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Fort">
+    <rdfs:label xml:lang="en-US">a Fort</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Whirlpool">
+    <rdfs:label xml:lang="en-US">a Whirlpool</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Canalized_Stream">
+    <rdfs:label xml:lang="en-US">a Canalized Stream</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Hole">
+    <rdfs:label xml:lang="en-US">a Hole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Undersea" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Abandoned_Airfield">
+    <rdfs:label xml:lang="en-US">an Abandoned Airfield</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Lock">
+    <rdfs:label xml:lang="en-US">a Lock</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Lagoon">
+    <rdfs:label xml:lang="en-US">a Lagoon</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Railway_Station">
+    <rdfs:label xml:lang="en-US">a Railway Station</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Transport" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Public_Transport">
+    <rdfs:label xml:lang="en-US">Public Transport</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Tube_Station">
+    <rdfs:label xml:lang="en-US">a Tube Station</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <owl:equivalentClass rdf:resource="http://opencyc.sourceforge.net/daml/cyc.daml#SubwayStation" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Railway_Station" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Historical_Site">
+    <rdfs:label xml:lang="en-US">a Historical Site</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Narrows">
+    <rdfs:label xml:lang="en-US">a Narrows</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Ancient_Road">
+    <rdfs:label xml:lang="en-US">an Ancient Road</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Pond">
+    <rdfs:label xml:lang="en-US">a Pond</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Agricultural_Facility">
+    <rdfs:label xml:lang="en-US">an Agricultural Facility</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Tunnel">
+    <rdfs:label xml:lang="en-US">a Tunnel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Meadow">
+    <rdfs:label xml:lang="en-US">a Meadow</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Vegetation" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Sluice">
+    <rdfs:label xml:lang="en-US">a Sluice</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Lighthouse">
+    <rdfs:label xml:lang="en-US">a Lighthouse</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Section_Of_Stream">
+    <rdfs:label xml:lang="en-US">a Section Of Stream</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Hotel">
+    <rdfs:label xml:lang="en-US">a Hotel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Docking_Basin">
+    <rdfs:label xml:lang="en-US">a Docking Basin</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Hydrographic" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Clearing">
+    <rdfs:label xml:lang="en-US">a Clearing</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Locality_or_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cairn">
+    <rdfs:label xml:lang="en-US">a Cairn</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Spot_Feature" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Populated_Locality">
+    <rdfs:label xml:lang="en-US">a Populated Locality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Populated_Area" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Pub">
+    <rdfs:label xml:lang="en-US">a Pub</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Square">
+    <rdfs:label xml:lang="en-US">a Square</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Space" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Supermarket">
+    <rdfs:label xml:lang="en-US">a Supermarket</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Shop" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Shop">
+    <rdfs:label xml:lang="en-US">a Shop</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Space" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cinema">
+    <rdfs:label xml:lang="en-US">a Cinema</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Recreational_Venue" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Coffee_Shop">
+    <rdfs:label xml:lang="en-US">a Coffee Shop</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Forecourt">
+    <rdfs:label xml:lang="en-US">a Forecourt</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Hall">
+    <rdfs:label xml:lang="en-US">a Hall</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cathedral">
+    <rdfs:label xml:lang="en-US">a Cathedral</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Religious_Venue" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Cafe">
+    <rdfs:label xml:lang="en-US">a Cafe</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Food_Providing_Outlet" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Walk">
+    <rdfs:label xml:lang="en-US">a Walk</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Transport_Infrastructure" />
+  </owl:Class>
+  <owl:Class rdf:about="http://frot.org/space/0.1/Shopping_Centre">
+    <rdfs:label xml:lang="en-US">a Shopping Centre</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Public_Building" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Food_Providing_Outlet" />
+    <rdfs:subClassOf rdf:resource="http://frot.org/space/0.1/Retail_Venue" />
+  </owl:Class>
+</rdf:RDF>

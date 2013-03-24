@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY pmlj "http://inferenceweb.stanford.edu/2006/06/pml-justification.owl#">
+  <!ENTITY pmlp "http://inferenceweb.stanford.edu/2006/06/pml-provenance.owl#">
+  <!ENTITY pmlt "http://inferenceweb.stanford.edu/2006/06/pml-trust.owl#">
+  <!ENTITY pmltbase "http://inferenceweb.stanford.edu/2006/06/pml-trust.owl">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="&pmlt;"
+         xmlns:pmlj="&pmlj;"
+         xmlns:pmlp="&pmlp;"
+         xmlns:pmltbase="&pmltbase;"
+         xmlns:pmlt="&pmlt;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;">
+
+<!-- ******************************************************************** --> 
+<!-- Ontology Information -->
+<!-- ******************************************************************** --> 
+  <owl:Ontology rdf:about="">
+    <rdfs:label xml:lang="en">PML2 trust ontology</rdfs:label>
+    <rdfs:comment xml:lang="en">The trust part of PML2 ontology. It is a fundamental component of PML2 ontology.</rdfs:comment>
+    <owl:imports>
+      <owl:Ontology rdf:about="&pmlj;"/>
+    </owl:imports>
+    <owl:versionInfo xml:lang="en">version 2.0, Authors: Deborah L. McGuinness, Honglei Zeng,  Li Ding, Paulo Pinheiro da Silva, Alyssa Glass, and Cynthia Chang</owl:versionInfo>
+  </owl:Ontology>
+
+
+<!-- ******************************************************************** --> 
+<!-- basic concepts -->
+<!-- ******************************************************************** --> 
+
+  <owl:Class rdf:ID="BeliefElement">
+    <rdfs:label xml:lang="en">Belief</rdfs:label>
+    <rdfs:comment xml:lang="en">The abstract trust concept that associate from an agent to a piece of information. The belief relation shows an agents belief status on the specified information. The specific belief status (e.g. believes, disbelieves, ignorant) and corresponding value metrics are defined in the decendents of this class. </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#hasBelievingAgent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#hasBelievedInformation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="hasBelievingAgent">
+    <rdfs:label xml:lang="en">believedBy</rdfs:label>
+    <rdfs:comment xml:lang="en">the agent that hold the belief assertion.</rdfs:comment>
+    <rdfs:domain rdf:resource="#BeliefElement"/>
+    <rdfs:range rdf:resource="&pmlp;Agent"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:ID="hasBelievedInformation">
+    <rdfs:label xml:lang="en">believedIn</rdfs:label>
+    <rdfs:comment xml:lang="en">the information being believed in.</rdfs:comment>
+    <rdfs:domain rdf:resource="#BeliefElement"/>
+    <rdfs:range rdf:resource="&pmlp;Information"/>
+  </owl:ObjectProperty>
+  
+  
+<!-- ******************************************************************** --> 
+
+  <owl:Class rdf:ID="TrustElement">
+    <rdfs:label xml:lang="en">Trust</rdfs:label>
+    <rdfs:comment xml:lang="en">The abstract trust concept that associate from an agent to a source. The trust relation summarizes an agent's overall believes about information from the specified source. The specific trust metrics are defined in the decendents of this class.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#hasTrustor"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#hasTrustee"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="hasTrustor">
+    <rdfs:label xml:lang="en">trustor</rdfs:label>
+    <rdfs:comment xml:lang="en">the agent that hold the trust relation with the trustee.</rdfs:comment>
+    <rdfs:domain rdf:resource="#TrustElement"/>
+    <rdfs:range rdf:resource="&pmlp;Agent"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:ID="hasTrustee">
+    <rdfs:label xml:lang="en">trustee</rdfs:label>
+    <rdfs:comment xml:lang="en">the information source that is trusted in providing information.</rdfs:comment>
+    <rdfs:domain rdf:resource="#TrustElement"/>
+    <rdfs:range rdf:resource="&pmlp;Source"/>
+  </owl:ObjectProperty>
+
+
+<!-- ******************************************************************** --> 
+<!--  valuation metrics -->
+<!-- ******************************************************************** --> 
+
+  <owl:Class rdf:ID="FloatMetric">
+    <rdfs:label xml:lang="en">float metric</rdfs:label>
+    <rdfs:comment xml:lang="en">A specific valuation metric that is defined on [0,1] as float number. 0 means fully negative point, 0.5 means nutral point, and 1 means fully positive point.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#hasFloatValue"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+  <owl:DatatypeProperty rdf:about="#hasFloatValue">
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <rdfs:comment xml:lang="en">The value of the metric, and We may consider better datatype in future.</rdfs:comment>
+    <rdfs:domain rdf:resource="#FloatMetric"/>
+    <rdfs:range rdf:resource="&xsd;float"/>
+  </owl:DatatypeProperty>
+
+
+<!-- ******************************************************************** --> 
+<!--  belief  taxonomy -->
+<!-- ******************************************************************** --> 
+
+  <owl:Class rdf:ID="FloatBelief">
+    <rdfs:label xml:lang="en">Float Belief</rdfs:label>
+    <rdfs:comment xml:lang="en">An agent's overall belief on a piece of information quantified by a float value between 0 and 1. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#BeliefElement"/>
+    <rdfs:subClassOf rdf:resource="#FloatMetric"/>
+  </owl:Class>
+
+  
+<!-- ******************************************************************** --> 
+<!--  trust taxonomy -->
+<!-- ******************************************************************** --> 
+
+  <owl:Class rdf:ID="FloatTrust">
+    <rdfs:label xml:lang="en">Float trust</rdfs:label>
+    <rdfs:comment xml:lang="en">An agent's overall trust on an information source quantified by a float value between 0 and 1. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TrustElement"/>
+    <rdfs:subClassOf rdf:resource="#FloatMetric"/>
+  </owl:Class>
+  
+
+</rdf:RDF>
+<!--
+* rename trust relation to trust element
+* remove temporal dimension ( hasStartTime  hasEndTime ) of PML unless there are any needs.
+* remove domain(topic) dimension , because it is not needed yet.
+* rename hasTrustingParty => hasTrustor
+* rename hasTrustedParty => hasTrustee
+* remove Aggregated trust (no need)
+* add FloatTrustRelation , a dencendent of Trust Element with float([0,1]) trust value metric 
+
+
+feedback from honglei
+1. Belief vs. trust definition
+* the relation between belief and trust is analog to the relation between an observation and a summary. Their difference lies in the rdfs:range - 
+2. Re-naming terms
+3. Information: document fragments vs. source usage
+4. Similarity to SWAD and other ontologies
+5. Other features, such as start/end time, distribution, context etc.
+-->

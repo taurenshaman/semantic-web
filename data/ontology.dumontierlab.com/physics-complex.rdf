@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY span "http://www.ifomis.org/bfo/1.0/span#" >
+    <!ENTITY dl "http://ontology.dumontierlab.com/" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/physics-complex"
+     xml:base="http://ontology.dumontierlab.com/physics-complex"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dl="http://ontology.dumontierlab.com/"
+     xmlns:span="http://www.ifomis.org/bfo/1.0/span#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <dc:date rdf:datatype="&xsd;date">2007-10-01</dc:date>
+        <dc:publisher rdf:datatype="&xsd;string">Dumontier Lab</dc:publisher>
+        <dc:format rdf:datatype="&xsd;string"
+            >application/rdf+xml</dc:format>
+        <dc:creator rdf:datatype="&xsd;string"
+            >Michel Dumontier</dc:creator>
+        <dc:title rdf:datatype="&xsd;string"
+            >Physics Ontology (complex)</dc:title>
+        <dc:language rdf:datatype="&xsd;string">en</dc:language>
+        <owl:versionInfo rdf:datatype="&xsd;string">2.0</owl:versionInfo>
+        <dc:description rdf:datatype="&xsd;string"
+            >Complex class expressions for the physics ontology.</dc:description>
+        <owl:imports>
+            <owl:Ontology rdf:about="http://ontology.dumontierlab.com/nulo"/>
+        </owl:imports>
+        <owl:imports>
+            <owl:Ontology rdf:about="http://ontology.dumontierlab.com/physics-primitive"/>
+        </owl:imports>
+        <owl:imports>
+            <owl:Ontology rdf:about="http://ontology.dumontierlab.com/subatomic-particle-complex"/>
+        </owl:imports>
+    </owl:Ontology>
+    
+
+
+
+    <!-- Class: http://ontology.dumontierlab.com/physics-primitive#DoubleProtonEmission -->
+
+    <owl:Class rdf:about="&dl;DoubleProtonEmission">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="&dl;Proton"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;hasParticipant"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:cardinality>
+                <owl:valuesFrom rdf:resource="&dl;Proton"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+
+    <!-- Class: http://ontology.dumontierlab.com/physics-primitive#Force -->
+
+    <owl:Class rdf:about="&dl;Force">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="&span;Process"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- Class: http://ontology.dumontierlab.com/physics-primitive#GammaDecay -->
+
+    <owl:Class rdf:about="&dl;GammaDecay">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="&dl;Photon"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+
+    <!-- Class: http://ontology.dumontierlab.com/physics-primitive#InternalConversion -->
+
+    <owl:Class rdf:about="&dl;InternalConversion">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="&dl;Electron"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+    <!-- Class: http://ontology.dumontierlab.com/physics-primitive#NeutronEmission -->
+
+    <owl:Class rdf:about="&dl;NeutronEmission">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="&dl;Neutron"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- Class: http://ontology.dumontierlab.com/physics-primitive#NuclearReaction -->
+
+    <owl:Class rdf:about="&dl;NuclearReaction">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="&span;Process"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- Class: http://ontology.dumontierlab.com/physics-primitive#ProtonEmission -->
+
+    <owl:Class rdf:about="&dl;ProtonEmission">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;hasParticipant"/>
+                <owl:someValuesFrom rdf:resource="&dl;Proton"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //   OWL Annotation Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;language"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+</rdf:RDF>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://vocab.deri.ie/bp">
+    <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
+    <dcterms:title>Business Process Vocabulary</dcterms:title>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-12-19</dcterms:modified>
+    <vann:preferredNamespaceUri>http://vocab.deri.ie/bp#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>bp</vann:preferredNamespacePrefix>
+    <foaf:homepage rdf:resource="http://vocab.deri.ie/bp.html"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-10-04</dcterms:created>
+    <dcterms:partOf rdf:resource="http://vocab.deri.ie"/>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+    <dc:creator rdf:resource="http://vocab.deri.ie/bp#wasder"/>
+  </owl:Ontology>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/bp#ttl">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/bp.ttl</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/bp#rdf">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/bp.rdf</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <foaf:Person rdf:about="http://vocab.deri.ie/bp#wasder">
+    <foaf:name>Wassim Derguech</foaf:name>
+    <foaf:homepage></foaf:homepage>
+  </foaf:Person>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#Node">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Node</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#ProcessModel">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Process Model</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Task"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#EndEvent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>End Event</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#EventNode"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#StartEvent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Start Event</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#EventNode"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#Connector">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Connector</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#AndSplit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>And Split</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Gateway"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#AndJoin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>And Join</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Gateway"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#OrSplit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Or Split</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Gateway"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#OrJoin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Or Join</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Gateway"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#XorJoin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>XorJoin</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Gateway"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#XorSplit">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Xor Split</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Gateway"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#EventNode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Event Node</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Node"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#AtomicTask">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Atomic Task</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Task"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#Task">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Task</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Node"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/bp#Gateway">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Gateway</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/bp#Node"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/bp#hasCondition">
+    <rdfs:label>hasCondition</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/bp#Connector"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/bp#hasEvent">
+    <rdfs:label>hasEvent</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/bp#ProcessModel"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/bp#EventNode"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/bp#hasTask">
+    <rdfs:label>hasTask</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/bp#ProcessModel"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/bp#Task"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/bp#hasGateway">
+    <rdfs:label>hasGateway</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/bp#ProcessModel"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/bp#Gateway"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/bp#hasCapability">
+    <rdfs:label>hasCapability</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/bp#Task"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/bp#hasOut">
+    <rdfs:label>hasOut</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/bp#Connector"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/bp#Node"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/bp#hasIn">
+    <rdfs:label>hasIn</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/bp#Connector"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/bp#Node"/>
+  </rdf:Property>
+
+</rdf:RDF>

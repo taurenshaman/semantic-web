@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:prv="http://purl.org/ontology/prv/core#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:spin="http://spinrdf.org/spin#"
+   xmlns:status="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+   xml:base="http://purl.org/ontology/prv/core#">
+  <owl:Ontology rdf:about="http://purl.org/ontology/prv/core#">
+    <dc:creator rdf:resource="http://foaf.me/zazi#me"/>
+    <dc:creator rdf:resource="http://mud.cz/foaf.rdf#ojirio"/>
+    <dc:creator rdf:resource="http://richard.cyganiak.de/foaf.rdf#cygri"/>
+    <dc:creator rdf:resource="http://tobyinkster.co.uk/#i"/>
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-02-19T14:38:53+01:00</dc:date>
+    <dc:description xml:lang="en">
+      A vocabulary for describing the ontology design pattern of property reification. That means the semantic relation of
+      a "shortcut relation" (subject, predicate, object) with its detailed description of the relationship.
+    </dc:description>
+    <dc:description xml:lang="zh-CN"></dc:description>
+    <dc:title xml:lang="en">Property Reification Vocabulary</dc:title>
+    <dc:title xml:lang="zh-CN"></dc:title>
+    <vann:preferredNamespacePrefix>prv</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>http://purl.org/ontology/prv/core#</vann:preferredNamespaceUri>
+    <spin:imports rdf:resource="http://purl.org/ontology/prv/rules"/>
+    <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <owl:imports rdf:resource="http://purl.org/vocab/vann/"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.11</owl:versionInfo>
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://purl.org/ontology/prv/core#PropertyReification">
+    <rdfs:comment xml:lang="en">
+      The class, which describes the relations of a property reification. That means, its "shortcut relation", its
+      reification class, and the properties that are relating to the subject and object of the "shortcut relation".
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/prv/core#"/>
+    <rdfs:label xml:lang="en">Property Reification</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://purl.org/ontology/prv/core#object_property">
+    <rdfs:comment xml:lang="en">Relates to the property of the reification class, which relates to the object of the "shortcut relation".</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/prv/core#PropertyReification"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/prv/core#"/>
+    <rdfs:label xml:lang="en">has object property</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/prv/core#reification_class">
+    <rdfs:comment xml:lang="en">
+      Relates to the reification class, which can be related to the object and subject property to be able to associate the
+      object and subject of the "shortcut relation". The reification class should provide detailed descriptions of the relationship that is
+      described in a simple form by the "shortcut relation".
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/prv/core#PropertyReification"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/prv/core#"/>
+    <rdfs:label xml:lang="en">has reification class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/prv/core#reified">
+    <rdfs:comment xml:lang="en">This property relates an statement identifier of a shortcut relation with an instance of a reification class. Although, this is at the moment not really applicable, because it requires a notation for statement identifier as optional fourth element of a tuple; that means, triple + statement identifier.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/prv/core#"/>
+    <rdfs:label xml:lang="en">reified</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/prv/core#shortcut">
+    <rdfs:comment xml:lang="en">Relates to the property of the "shortcut relation" (its predicate).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/prv/core#PropertyReification"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/prv/core#"/>
+    <rdfs:label xml:lang="en">has shortcut</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/prv/core#shortcut_property">
+    <rdfs:comment xml:lang="en">
+      Relates to the property of the reification class,  which relates to the predicate of the "shortcut relation". So
+      that the specific property reification can be "verified" (the property of the prv:shortcut relation and this one associated by the
+      referred shortcut property should be equal).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/prv/core#PropertyReification"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/prv/core#"/>
+    <rdfs:label xml:lang="en">has shortcut property</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/prv/core#subject_property">
+    <rdfs:comment xml:lang="en">Relates to the property of the reification class, which relates to the subject of the "shortcut relation".</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/prv/core#PropertyReification"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/prv/core#"/>
+    <rdfs:label xml:lang="en">has subject property</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdf:Property>
+</rdf:RDF>

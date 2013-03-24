@@ -1,0 +1,175 @@
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <owl:Ontology
+      rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <dc:title xml:lang="en-US">The RDF Vocabulary (RDF)</dc:title>
+    <dc:title xml:lang="zh-CN">RDF词汇集</dc:title>
+    <dc:description xml:lang="en-US">This is the RDF Schema for the RDF vocabulary defined in the RDF namespace.</dc:description>
+    <dc:description xml:lang="zh-CN">这是在RDF命名空间中定义、针对RDF词汇集的RDF Schema。</dc:description>
+  </owl:Ontology>
+
+  <!-- Added by Ivan Herman, 2010-12-30, from here... -->
+  <rdfs:Datatype rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/TR/rdf-plain-literal/"/>
+    <rdfs:label xml:lang="en-US">PlainLiteral</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">纯文字值</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The class of plain (i.e. untyped) literal values.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">纯（如非类型）文字值的类。[需要更新]</rdfs:comment>
+  </rdfs:Datatype>
+  <!-- ... until here -->
+
+
+  <rdf:Property rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">type</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">类型</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The subject is an instance of a class.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主题是类的一个实例。[需要更新]</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+
+  <rdfs:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">Property</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">属性</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The class of RDF properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性的类。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">Statement</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">命题</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:comment xml:lang="en-US">The class of RDF statements.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">命题。</rdfs:comment>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">subject</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主语</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The subject of the subject RDF statement.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主语。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">predicate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">谓语</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The predicate of the subject RDF statement.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">谓语。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">object</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">宾语</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The object of the subject RDF statement.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">宾语。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+
+  <rdfs:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">Bag</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">无序容器</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The class of unordered containers.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">无序的容器。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Container"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">Seq</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">有序容器</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The class of ordered containers.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">有序的容器。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Container"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">Alt</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">多选一容器</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The class of containers of alternatives.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">多选一的容器。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Container"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#value">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">value</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">值</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Idiomatic property used for structured values.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用于结构化值的惯用属性。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+
+  <!-- the following are new additions, Nov 2002 -->
+
+  <rdfs:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">List</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">列表</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The class of RDF Lists.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">列表。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+
+  <rdf:List rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">nil</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空列表</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">空列表，里面没有项。如果列表的其余部分是空的，则该列表中没有更多的项。</rdfs:comment>
+  </rdf:List>
+
+  <rdf:Property rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#first">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">first</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">第一项</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The first item in the subject RDF list.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF列表的第一项。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#rest">
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">rest</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">剩余项列表</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The rest of the subject RDF list after the first item.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF列表中第一项之外的剩余项。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+  </rdf:Property>
+
+  <rdfs:Datatype rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <rdfs:label xml:lang="en-US">XMLLiteral</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">XML文字值</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The class of XML literal values.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">XML文字值。</rdfs:comment>
+  </rdfs:Datatype>
+
+  <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <rdfs:seeAlso rdf:resource="http://www.w3.org/2000/01/rdf-schema-more"/>
+  </rdf:Description>
+
+</rdf:RDF>
+

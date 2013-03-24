@@ -1,0 +1,68 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+  <owl:Ontology rdf:about="http://purl.org/net/schemas/book/">
+    <dc:title xml:lang="en-US">Reading list schema</dc:title>
+    <dc:title xml:lang="zh-CN">阅读列表架构</dc:title>
+    <dc:description xml:lang="en-US">A simple RDF vocabulary for capturing reading lists, etc</dc:description>
+    <dc:description xml:lang="zh-CN">一个用于描述阅读列表的简单RDF词汇集。</dc:description>
+  </owl:Ontology>
+  
+  <rdfs:Class rdf:about="http://purl.org/net/schemas/book/Book">
+    <rdfs:label xml:lang="en-US">Book</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">书籍</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Book" />
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/schemas/book/" />
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://purl.org/net/schemas/book/isbn" vs:term_status="unstable">
+    <rdfs:label xml:lang="en-US">isbn</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">ISBN</rdfs:label>
+    <rdfs:comment xml:lang="en-US">ISBN for a book. This is an inverse-functional-property and therefore assumes that ISBNs never get reused, this is guided by the ISBN specification.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">书的ISBN号。这是一个逆函数属性（InverseFunctionalProperty），因此假定该ISBN从未被重复使用过。由ISBN规范指导。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/schemas/book/Book" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/schemas/book/" />
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/identifier" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/schemas/book/reading" vs:term_status="unstable">
+    <rdfs:label xml:lang="en-US">reading</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">正在读</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Associates a person with a book that they're reading</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">（人）正在读（书）</rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:range rdf:resource="http://purl.org/net/schemas/book/Book" />
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/schemas/book/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/schemas/book/toRead" vs:term_status="unstable">
+    <rdfs:label xml:lang="en-US">toRead</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">想读</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Associates a person with a book that they're intending to read</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">（人）想读（书）</rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:range rdf:resource="http://purl.org/net/schemas/book/Book" />
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/schemas/book/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/schemas/book/read" vs:term_status="unstable">
+    <rdfs:label xml:lang="en-US">read</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">读过</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Associates a person with a book that they've already read</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">（人）读过（书）</rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:range rdf:resource="http://purl.org/net/schemas/book/Book" />
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/schemas/book/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/schemas/book/favourite" vs:term_status="unstable">
+    <rdfs:label xml:lang="en-US">favourite</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">喜欢</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Associates a person with a favourite book</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">（人）喜欢（书）</rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:range rdf:resource="http://purl.org/net/schemas/book/Book" />
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/schemas/book/" />
+  </rdf:Property>
+</rdf:RDF>

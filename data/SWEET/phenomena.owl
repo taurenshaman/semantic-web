@@ -1,0 +1,1459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:process="http://sweet.jpl.nasa.gov/ontology/process.owl#" 
+xmlns:space="http://sweet.jpl.nasa.gov/ontology/space.owl#" 
+xmlns:human_activities="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#" 
+xmlns:property="http://sweet.jpl.nasa.gov/ontology/property.owl#" 
+xmlns:phenomena="http://sweet.jpl.nasa.gov/ontology/phenomena.owl#" 
+xmlns:earthrealm="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#" 
+xmlns:substance="http://sweet.jpl.nasa.gov/ontology/substance.owl#" 
+xmlns:numerics="http://sweet.jpl.nasa.gov/ontology/numerics.owl#" 
+xmlns:units="http://sweet.jpl.nasa.gov/ontology/units.owl#" 
+xmlns="http://sweet.jpl.nasa.gov/ontology/phenomena.owl#">
+<owl:Ontology rdf:about="">
+<!--
+<dc:title>
+Phenomena</dc:title>
+<dc:date>
+1/27/2004 3:14:31 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+</dc:subject>
+-->
+<owl:versionInfo>
+1.0</owl:versionInfo>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl"/> 
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl"/> 
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+<owl:Class rdf:ID="Paleomagnetism">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Magnetism"/>
+</owl:Class>
+<owl:Class rdf:ID="Phenomena"/>
+<owl:Class rdf:ID="Hazard">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#MeteorologicalScale"/>
+<owl:Class rdf:ID="IsostaticRebound">
+<rdfs:subClassOf rdf:resource="#TectonicPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="TectonicPhenomena">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Crust"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Deformation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidEarthPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="HydrospherePhenomena">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Hydrosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="EarthSciencePhenomena">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="EcologicalPhenomena">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="ThermohalineCirculation">
+<rdfs:subClassOf rdf:resource="#OceanCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Upwelling">
+<rdfs:subClassOf rdf:resource="#OceanCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Wind-DrivenCirculation">
+<rdfs:subClassOf rdf:resource="#OceanCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="OceanCirculation">
+<rdfs:subClassOf rdf:resource="#OceanPhenomena"/>
+<rdfs:subClassOf rdf:resource="#Circulation"/>
+</owl:Class>
+<owl:Class rdf:ID="Balance">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Budget">
+<owl:equivalentClass rdf:resource="#Balance"/>
+</owl:Class>
+<owl:Class rdf:ID="Tornado">
+<rdfs:subClassOf rdf:resource="#AtmosphericCirculation"/>
+<rdfs:subClassOf rdf:resource="#Storm"/>
+</owl:Class>
+<owl:Class rdf:ID="Airglow">
+<rdfs:subClassOf rdf:resource="#AtmosphericPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Circulation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Motion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Transport"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="BarotropicCirculation">
+   <rdfs:subClassOf rdf:resource="#Circulation"/>
+</owl:Class>
+<owl:Class rdf:ID="ClearSky">
+   <rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="BaroclinicCirculation">
+   <rdfs:subClassOf rdf:resource="#Circulation"/>
+</owl:Class>
+<owl:Class rdf:ID="AtmosphericCirculation">
+<rdfs:subClassOf rdf:resource="#Circulation"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Air"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphericPhenomena"/>
+<rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="StormSurge">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#CoastalRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Flood"/>
+</owl:Class>
+<owl:Class rdf:ID="Flood">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#LandRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#LiquidWater"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HydrospherePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="SolidEarthPhenomena">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#SolidEarth"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="AntarcticOscillation">
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="GlobalOscillation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Pressure"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Temperature"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Atmosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Ocean"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Tsunami">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Earthquake"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OceanPhenomena"/>
+<owl:equivalentClass rdf:resource="#TidalWave"/>
+</owl:Class>
+<owl:Class rdf:ID="OceanPhenomena">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Ocean"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HydrospherePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="AirGlow">
+<rdfs:subClassOf rdf:resource="#AtmosphericLightEmission"/>
+</owl:Class>
+<owl:Class rdf:ID="AtmosphericLightEmission">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Luminescence"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphericPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Typhoon">
+<rdfs:subClassOf rdf:resource="#Cyclone"/>
+</owl:Class>
+<owl:Class rdf:ID="Cyclone">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasMaxCategory"/>
+<owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Rain"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Storm"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphericCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Aurora">
+<rdfs:subClassOf rdf:resource="#AtmosphericLightEmission"/>
+</owl:Class>
+<owl:Class rdf:ID="Cirrus">
+<rdfs:subClassOf rdf:resource="#Cloud"/>
+</owl:Class>
+<owl:Class rdf:ID="Cloud">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Atmosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Hydrosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#CloudCondensationNuclei"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Water"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Hydrometeor"/>
+</owl:Class>
+<owl:Class rdf:ID="ElNino">
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="PhysicalPhenomena">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="SeismicWave">
+<rdfs:subClassOf rdf:resource="#SeismicPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="SeismicPhenomena">
+<rdfs:subClassOf rdf:resource="#SolidEarthPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Rain">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#LiquidWater"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Precipitation"/>
+</owl:Class>
+<owl:Class rdf:ID="Snow">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#SolidWater"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Precipitation"/>
+</owl:Class>
+<owl:Class rdf:ID="PacificDecadalOscillation">
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="TidalCurrent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Tide"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OceanCurrent"/>
+</owl:Class>
+<owl:Class rdf:ID="OceanCurrent">
+<rdfs:subClassOf rdf:resource="#OceanCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="WeatherPhenomena">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Weather"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="LandSurfaceHeightChangeEvent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#LandSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="NeotectonicPhenomena">
+<rdfs:subClassOf rdf:resource="#TectonicPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Seiche">
+<rdfs:subClassOf rdf:resource="#OceanPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Squall">
+<rdfs:subClassOf rdf:resource="#Wind"/>
+</owl:Class>
+<owl:Class rdf:ID="Wind">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Speed"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphericCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Avalanche">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Snow"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Slide"/>
+</owl:Class>
+<owl:Class rdf:ID="Slide">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Transport"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#HazardousLevel"/>
+<owl:Class rdf:ID="SedimentFormation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Sediment"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#SeaFloor"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthMaterialDisplacement"/>
+</owl:Class>
+<owl:Class rdf:ID="EarthMaterialDisplacement">
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Precipitation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Troposphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Cloud"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Hydrometeor"/>
+</owl:Class>
+<owl:Class rdf:ID="Hydrometeor">
+<rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+<rdfs:subClassOf rdf:resource="#HydrospherePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Runoff">
+<rdfs:subClassOf rdf:resource="#HydrospherePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="ContinenetalDrift">
+<rdfs:subClassOf rdf:resource="#TectonicPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="PlateConvergence">
+<rdfs:subClassOf rdf:resource="#TectonicPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Madden-JulianOscillation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasTemporalExtent"/>
+<owl:hasValue rdf:resource="#years_20"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="Earthquake">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#SeismicWave"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SeismicPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="TidalWave"/>
+<owl:Class rdf:ID="VolcanicActivity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Volcano"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidEarthPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Diagenesis">
+<rdfs:subClassOf rdf:resource="#SedimentFormation"/>
+</owl:Class>
+<owl:Class rdf:ID="Bioturbation">
+<rdfs:subClassOf rdf:resource="#SedimentFormation"/>
+</owl:Class>
+<owl:Class rdf:ID="Infiltration">
+<rdfs:subClassOf rdf:resource="#LandWaterCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Intrusion">
+<rdfs:subClassOf rdf:resource="#LandWaterCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Parasitism">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Selection">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Migration">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Mutation">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Predation">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="SpeciesExtinction">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="NutrientCycling">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="PrimaryProduction">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="SpeciesRecruitment">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Post-breeding">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Scavenging">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Bioaccumulation">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="FeedingHabitat">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Survival">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="RangeChange">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Dominance">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Adaptation">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="SecondaryProduction">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Succession">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Herbivory">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Competition">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="DiurnalMovement">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Mutualism">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="BiogeochemicalCycle">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Biogeochemistry">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Toxicity">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Disease">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="EndangeredSpecies">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="FoodWebDynamics">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="TrophicDynamics">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="InvasiveSpecies">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="CommunityStructure">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="LifeHistory">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="PopulationDynamics">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="EnvironmentalImpact">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="LandWaterCirculation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#UndergroundWater"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Water"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Transport"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#HydrospherePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="PacificNorthAmericanPattern">
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="AtmosphericElectricityPhenomena">
+<rdfs:subClassOf rdf:resource="#AtmosphericPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="AtmosphericPhenomena">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Atmosphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Hurricane">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Wind"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Cyclone"/>
+</owl:Class>
+<owl:Class rdf:ID="GeothermalPhenomena">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#ThermalProcess"/>
+<rdfs:subClassOf rdf:resource="#SolidEarthPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="ElNinoSouthernOscillation">
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="Explosion">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="QuasiBiennialOscillation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasTemporalExtent"/>
+<owl:hasValue rdf:resource="#years_2"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#LinearExtent"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/process.owl#Transport"/>
+<owl:Class rdf:ID="Rainfall">
+<owl:equivalentClass rdf:resource="#Rain"/>
+</owl:Class>
+<owl:Class rdf:ID="Snowfall">
+<owl:equivalentClass rdf:resource="#Snow"/>
+</owl:Class>
+<owl:Class rdf:ID="ENSO">
+<owl:equivalentClass rdf:resource="#ElNinoSouthernOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="Eddy">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Ocean"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Geomagnetism"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Fire">
+<rdfs:subClassOf rdf:resource="#Phenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Gyre">
+<rdfs:subClassOf rdf:resource="#OceanCurrent"/>
+</owl:Class>
+<owl:Class rdf:ID="Hail">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Precipitation"/>
+</owl:Class>
+<owl:Class rdf:ID="Smog">
+<rdfs:subClassOf rdf:resource="#ObscurationPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Tide">
+<rdfs:subClassOf rdf:resource="#OceanPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="LongshoreCurrent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#CoastalRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OceanCurrent"/>
+</owl:Class>
+<owl:Class rdf:ID="Eruption">
+<rdfs:subClassOf rdf:resource="#VolcanicActivity"/>
+</owl:Class>
+<owl:Class rdf:ID="Front">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Pressure"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Temperature"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Jet">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Pressure"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OceanPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Frost">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Freezing"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ice"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Sleet">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#LiquidWater"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#IcePellet"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Precipitation"/>
+</owl:Class>
+<owl:Class rdf:ID="Storm">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Rain"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AtmosphericCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Swell">
+<rdfs:subClassOf rdf:resource="#OceanPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Lightning">
+<rdfs:subClassOf rdf:resource="#AtmosphericElectricityPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Percolation">
+<rdfs:subClassOf rdf:resource="#LandWaterCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Turbulence">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Fluctuation"/>
+</owl:Class>
+<owl:Class rdf:ID="Current"/>
+<owl:Class rdf:ID="Inundation">
+<owl:equivalentClass rdf:resource="#Flood"/>
+</owl:Class>
+<owl:Class rdf:ID="Compaction">
+<rdfs:subClassOf rdf:resource="#SedimentFormation"/>
+</owl:Class>
+<owl:Class rdf:ID="Weather">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#WeatherPhenomena"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Monsoon">
+<rdfs:subClassOf rdf:resource="#Wind"/>
+</owl:Class>
+<owl:Class rdf:ID="Dew">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#PlanetarySurface"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Water"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Condensation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#DewPoint"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Fog">
+<rdfs:subClassOf rdf:resource="#Stratiform"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#BoundaryLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Hydrometeor"/>
+</owl:Class>
+<owl:Class rdf:ID="PNA">
+<owl:equivalentClass rdf:resource="#PacificNorthAmericanPattern"/>
+</owl:Class>
+<owl:Class rdf:ID="Anticyclone">
+<rdfs:subClassOf rdf:resource="#AtmosphericCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Whiteout">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Visibility"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Snow"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ObscurationPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Desalinization">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#SubstanceConcentrationChangeProcess"/>
+</owl:Class>
+<owl:Class rdf:ID="Landslide">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#LandSurfaceLayer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Ground"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Slide"/>
+<rdfs:subClassOf rdf:resource="#EarthMaterialDisplacement"/>
+</owl:Class>
+<owl:Class rdf:ID="AcidRain">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#LiquidWater"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Acid"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Rain"/>
+</owl:Class>
+<owl:Class rdf:ID="ArcticOscillation">
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="SeismicSurfaceWave">
+<rdfs:subClassOf rdf:resource="#SeismicWave"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#EarthRealm"/>
+<owl:Class rdf:ID="FreezingRain">
+</owl:Class>
+<owl:Class rdf:ID="Drought">
+<rdfs:subClassOf rdf:resource="#ClimateAnomaly"/>
+</owl:Class>
+<owl:Class rdf:ID="Climate"/>
+<owl:Class rdf:ID="LocalClimate">
+<rdfs:subClassOf rdf:resource="#Climate"/>
+</owl:Class>
+<owl:Class rdf:ID="RegionalClimate">
+<rdfs:subClassOf rdf:resource="#Climate"/>
+</owl:Class>
+<owl:Class rdf:ID="GlobalClimate">
+<rdfs:subClassOf rdf:resource="#Climate"/>
+</owl:Class>
+<owl:Class rdf:ID="ClimateAnomaly">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Troposphere"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ClimateChange"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#PhysicalQuantity"/>
+<owl:Class rdf:ID="SouthernOscillation">
+<owl:equivalentClass rdf:resource="#ENSO"/>
+<rdfs:subClassOf rdf:resource="#GlobalOscillation"/>
+</owl:Class>
+<owl:Class rdf:ID="LittoralDrift">
+<owl:equivalentClass rdf:resource="#LongshoreCurrent"/>
+</owl:Class>
+<owl:Class rdf:ID="PlateDivergence">
+<rdfs:subClassOf rdf:resource="#TectonicPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="SurfBeat">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#CoastalRegion"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OceanPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Subsidence">
+<rdfs:subClassOf rdf:resource="#LandSurfaceHeightChangeEvent"/>
+</owl:Class>
+<owl:Class rdf:ID="Recharge">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedEarthRealm"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#Aquifer"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LandWaterCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="SurfaceWave">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Wave"/>
+</owl:Class>
+<owl:Class rdf:ID="Geomagnetism">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Magnetism"/>
+<rdfs:subClassOf rdf:resource="#SolidEarthPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Symbiosis">
+<rdfs:subClassOf rdf:resource="#EcologicalPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="LandDegradation">
+<rdfs:subClassOf rdf:resource="#LandSurfaceHeightChangeEvent"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Substance"/>
+<owl:Class rdf:ID="Erosion">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#MaterialDisintegration"/>
+</owl:Class>
+<owl:Class rdf:ID="Drainage">
+<rdfs:subClassOf rdf:resource="#LandWaterCirculation"/>
+</owl:Class>
+<owl:Class rdf:ID="Blizzard">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Cloud"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Snow"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Precipitation"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Time">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasValue"/>
+<owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#HumanActivity"/>
+<owl:Class rdf:ID="PhenomenaOrHumanActivity">
+<owl:equivalentClass>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Phenomena"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#HumanActivity"/>
+</owl:unionOf>
+</owl:Class>
+</owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:ID="Sublimation">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#StateOfMatterChangeEvent"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#TimeInterval">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasUpperLimit"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Time"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasLowerLimit"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Time"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="ClimateChange">
+<rdfs:subClassOf rdf:resource="#EarthSciencePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="GlobalWarming">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#GreenhouseEffect"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ClimateChange"/>
+</owl:Class>
+<owl:Class rdf:ID="WarmPool">
+<rdfs:subClassOf rdf:resource="#HydrospherePhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="GreenhouseEffect">
+<rdfs:subClassOf rdf:resource="#ClimateChange"/>
+</owl:Class>
+<owl:Class rdf:ID="Desertification">
+<rdfs:subClassOf rdf:resource="#ClimateChange"/>
+</owl:Class>
+<owl:Class rdf:ID="SandStorm">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Sand"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Storm"/>
+</owl:Class>
+<owl:Class rdf:ID="DustStorm">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Dust"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Storm"/>
+</owl:Class>
+<owl:Class rdf:ID="Shower">
+<rdfs:subClassOf rdf:resource="#Rain"/>
+</owl:Class>
+<owl:Class rdf:ID="WindGust">
+<rdfs:subClassOf rdf:resource="#Wind"/>
+</owl:Class>
+<owl:Class rdf:ID="Gust">
+<owl:equivalentClass rdf:resource="#WindGust"/>
+</owl:Class>
+<owl:Class rdf:ID="Haze">
+<rdfs:subClassOf rdf:resource="#ObscurationPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="ObscurationPhenomena">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Visibility"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="Smoke">
+<rdfs:subClassOf rdf:resource="#ObscurationPhenomena"/>
+</owl:Class>
+<owl:Class rdf:ID="FunnelCloud">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedProcess"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Rotation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Cloud"/>
+</owl:Class>
+<owl:Class rdf:ID="Cumulonimbus">
+<rdfs:subClassOf rdf:resource="#Cloud"/>
+</owl:Class>
+<owl:Class rdf:ID="Stratiform">
+<rdfs:subClassOf rdf:resource="#Cloud"/>
+</owl:Class>
+<owl:Class rdf:ID="Stratus">
+<rdfs:subClassOf rdf:resource="#Stratiform"/>
+</owl:Class>
+<owl:Class rdf:ID="Stratocumulus">
+<rdfs:subClassOf rdf:resource="#Stratiform"/>
+</owl:Class>
+<owl:Class rdf:ID="Altostratus">
+<rdfs:subClassOf rdf:resource="#Stratiform"/>
+</owl:Class>
+<owl:Class rdf:ID="Cirrostratus">
+<rdfs:subClassOf rdf:resource="#Stratiform"/>
+</owl:Class>
+<owl:Class rdf:ID="Thunderstorm">
+<rdfs:subClassOf rdf:resource="#Storm"/>
+</owl:Class>
+<owl:Class rdf:ID="Towering">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#hasDirection"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#VerticalCoordinate"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/process.owl#Motion"/>
+</owl:Class>
+<owl:Class rdf:ID="Blowing">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="#Wind"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="#DustOrSandOrSprayOrSnow"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WeatherPhenomena"/>
+<rdfs:comment>
+When dust, sand, snow, and/or spray is raised by the wind to a height of 6 feet or more</rdfs:comment>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Spray"/>
+<owl:Class rdf:ID="DustOrSandOrSprayOrSnow">
+<owl:equivalentClass>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Sand"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Spray"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Dust"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/substance.owl#Snow"/>
+</owl:unionOf>
+</owl:Class>
+</owl:equivalentClass>
+</owl:Class>
+<owl:DatatypeProperty rdf:ID="hasAssociatedDate">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="#EarthSciencePhenomena"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasAssociatedTimestamp">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasValue">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasMaxCategory">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="#Cyclone"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+<owl:ObjectProperty rdf:ID="hasAssociatedSubstance">
+<rdfs:domain rdf:resource="#Phenomena"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Substance"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasScale">
+<rdfs:domain rdf:resource="#EarthSciencePhenomena"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#MeteorologicalScale"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#hasLocation"/>
+<owl:ObjectProperty rdf:ID="hasAssociatedQuantity">
+<rdfs:domain rdf:resource="#Phenomena"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#PhysicalQuantity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasHazardousLevel">
+<rdfs:domain rdf:resource="#EarthSciencePhenomena"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#HazardousLevel"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasSpatialExtent">
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#LinearExtent"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasAssociatedEarthRealm">
+<rdfs:domain rdf:resource="#Phenomena"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/earthrealm.owl#EarthRealm"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasAssociatedPhenomena">
+<rdfs:domain rdf:resource="#Phenomena"/>
+<rdfs:range rdf:resource="#Phenomena"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasTemporalExtent">
+<rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Time"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasAssociatedProcess">
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasUnit"/>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasUpperLimit"/>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasLowerLimit"/>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#hasDirection"/>
+<phenomena:Wind rdf:ID="Wind259km_perHour">
+<phenomena:hasAssociatedQuantity rdf:resource="#Speed259km_perHour"/>
+</phenomena:Wind>
+<phenomena:Wind rdf:ID="Wind287km_perHour">
+<phenomena:hasAssociatedQuantity rdf:resource="#Speed287km_perHour"/>
+</phenomena:Wind>
+<phenomena:Wind rdf:ID="Wind268km_perHour">
+<phenomena:hasAssociatedQuantity rdf:resource="#Speed268km_perHour"/>
+</phenomena:Wind>
+<phenomena:Wind rdf:ID="Wind296km_perHour">
+<phenomena:hasAssociatedQuantity rdf:resource="#Speed296km_perHour"/>
+</phenomena:Wind>
+<phenomena:Wind rdf:ID="Wind306km_perHour">
+<phenomena:hasAssociatedQuantity rdf:resource="#Speed306km_perHour"/>
+</phenomena:Wind>
+<phenomena:Wind rdf:ID="Wind273km_perHour">
+<phenomena:hasAssociatedQuantity rdf:resource="#Speed273km_perHour"/>
+</phenomena:Wind>
+<phenomena:Hurricane rdf:ID="Isabel">
+<phenomena:hasAssociatedQuantity rdf:resource="#SEP_06-SEP_19_2003"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind259km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Mitch">
+<phenomena:hasAssociatedQuantity rdf:resource="#OCT_22-NOV_05_1998"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind287km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Hernan">
+<phenomena:hasAssociatedQuantity rdf:resource="#AUG_30-SEP_06_2002"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind259km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Kenna">
+<phenomena:hasAssociatedQuantity rdf:resource="#OCT_22-OCT_22_2002"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind268km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Gullermo">
+<phenomena:hasAssociatedQuantity rdf:resource="#JUL_30-AUG_15_1997"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind259km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Linda">
+<phenomena:hasAssociatedQuantity rdf:resource="#SEP_09-SEP_17_1997"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind296km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Allen">
+<phenomena:hasAssociatedQuantity rdf:resource="#AUG_04-AUG_11_1980"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind306km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Gilbert">
+<phenomena:hasAssociatedQuantity rdf:resource="#SEP_8-SEP_19_1988"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind296km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Hugo">
+<phenomena:hasAssociatedQuantity rdf:resource="#SEP_10-SEP_22_1989"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind259km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<phenomena:Hurricane rdf:ID="Andrew">
+<phenomena:hasAssociatedQuantity rdf:resource="#AUG_16-AUG_28_1992"/>
+<phenomena:hasAssociatedPhenomena rdf:resource="#Wind273km_perHour"/>
+<phenomena:hasMaxCategory rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+5</phenomena:hasMaxCategory>
+</phenomena:Hurricane>
+<property:Time rdf:ID="years_2">
+<numerics:hasUnit rdf:resource="#year"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+2</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="years_20">
+<numerics:hasUnit rdf:resource="#year"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+20</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="minute_1">
+<numerics:hasUnit rdf:resource="#minute"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_06_2003">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+2003-09-06</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_19_2003">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+2003-09-19</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="OCT_22_1998">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1998-10-22</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="NOV_05_1998">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1998-11-05</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="AUG_30_2002">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+2002-08-30</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_06_2002">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+2002-09-06</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="OCT_22_2002">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+2002-10-22</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="JUL_30_1997">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1997-07-30</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="AUG_15_1997">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1997-08-15</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_09_1997">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1997-09-09</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_17_1997">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1997-09-17</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="AUG_4_1980">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1980-08-04</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="AUG_11_1980">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1980-08-11</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_8_1988">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1988-09-08</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_19_1988">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1988-09-19</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_10_1989">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1989-09-10</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="SEP_22_1989">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1989-09-22</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="AUG_16_1992">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1992-08-16</numerics:hasValue>
+</property:Time>
+<property:Time rdf:ID="AUG_28_1992">
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+1992-08-28</numerics:hasValue>
+</property:Time>
+<units:SimpleUnit rdf:ID="year"/>
+<units:SimpleUnit rdf:ID="minute"/>
+<property:TimeInterval rdf:ID="AUG_27-SEP_08_2003"/>
+<property:TimeInterval rdf:ID="SEP_06-SEP_19_2003">
+<numerics:hasUpperLimit rdf:resource="#SEP_19_2003"/>
+<numerics:hasLowerLimit rdf:resource="#SEP_06_2003"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="OCT_22-NOV_05_1998">
+<numerics:hasUpperLimit rdf:resource="#NOV_05_1998"/>
+<numerics:hasLowerLimit rdf:resource="#OCT_22_1998"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="AUG_30-SEP_06_2002">
+<numerics:hasUpperLimit rdf:resource="#SEP_06_2002"/>
+<numerics:hasLowerLimit rdf:resource="#AUG_30_2002"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="OCT_22-OCT_22_2002">
+<numerics:hasUpperLimit rdf:resource="#OCT_22_2002"/>
+<numerics:hasLowerLimit rdf:resource="#OCT_22_2002"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="JUL_30-AUG_15_1997">
+<numerics:hasUpperLimit rdf:resource="#AUG_15_1997"/>
+<numerics:hasLowerLimit rdf:resource="#JUL_30_1997"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="SEP_09-SEP_17_1997">
+<numerics:hasUpperLimit rdf:resource="#SEP_17_1997"/>
+<numerics:hasLowerLimit rdf:resource="#SEP_09_1997"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="AUG_04-AUG_11_1980">
+<numerics:hasUpperLimit rdf:resource="#AUG_11_1980"/>
+<numerics:hasLowerLimit rdf:resource="#AUG_4_1980"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="SEP_8-SEP_19_1988">
+<numerics:hasUpperLimit rdf:resource="#SEP_19_1988"/>
+<numerics:hasLowerLimit rdf:resource="#SEP_8_1988"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="SEP_10-SEP_22_1989">
+<numerics:hasUpperLimit rdf:resource="#SEP_22_1989"/>
+<numerics:hasLowerLimit rdf:resource="#SEP_10_1989"/>
+</property:TimeInterval>
+<property:TimeInterval rdf:ID="AUG_16-AUG_28_1992">
+<numerics:hasUpperLimit rdf:resource="#AUG_28_1992"/>
+<numerics:hasLowerLimit rdf:resource="#AUG_16_1992"/>
+</property:TimeInterval>
+<property:Speed rdf:ID="Speed259km_perHour">
+<numerics:hasUnit rdf:resource="#kilo_meter_perHour"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+259</numerics:hasValue>
+</property:Speed>
+<property:Speed rdf:ID="Speed287km_perHour">
+<numerics:hasUnit rdf:resource="#kilo_meter_perHour"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+287</numerics:hasValue>
+</property:Speed>
+<property:Speed rdf:ID="Speed268km_perHour">
+<numerics:hasUnit rdf:resource="#kilo_meter_perHour"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+286</numerics:hasValue>
+</property:Speed>
+<property:Speed rdf:ID="Speed296km_perHour">
+<numerics:hasUnit rdf:resource="#kilo_meter_perHour"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+296</numerics:hasValue>
+</property:Speed>
+<property:Speed rdf:ID="Speed306km_perHour">
+<numerics:hasUnit rdf:resource="#kilo_meter_perHour"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+306</numerics:hasValue>
+</property:Speed>
+<property:Speed rdf:ID="Speed273km_perHour">
+<numerics:hasUnit rdf:resource="#kilo_meter_perHour"/>
+<numerics:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#date">
+273</numerics:hasValue>
+</property:Speed>
+<units:ComplexUnit rdf:ID="kilo_meter_perHour"/>
+</rdf:RDF>

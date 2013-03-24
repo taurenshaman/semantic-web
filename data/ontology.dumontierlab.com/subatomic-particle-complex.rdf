@@ -1,0 +1,863 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY snap "http://www.ifomis.org/bfo/1.0/snap#" >
+    <!ENTITY dl "http://ontology.dumontierlab.com/" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/subatomic-particle-complex"
+     xml:base="http://ontology.dumontierlab.com/subatomic-particle-complex"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:dl="http://ontology.dumontierlab.com/"
+     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo rdf:datatype="&xsd;string">2.0</owl:versionInfo>
+        <dc:title rdf:datatype="&xsd;string"
+            >Subatomic Particle Ontology (complex)</dc:title>
+        <dc:description rdf:datatype="&xsd;string"
+            >Complex class expressions for the subatomic particle ontology.</dc:description>
+        <dc:date rdf:datatype="&xsd;date">2007-10-01</dc:date>
+        <dc:creator rdf:datatype="&xsd;string"
+            >Michel Dumontier</dc:creator>
+        <dc:language rdf:datatype="&xsd;string">en</dc:language>
+        <dc:format rdf:datatype="&xsd;string"
+            >application/rdf+xml</dc:format>
+        <dc:publisher rdf:datatype="&xsd;string">Dumontier Lab</dc:publisher>
+        <owl:imports>
+            <owl:Ontology rdf:about="http://ontology.dumontierlab.com/nulo"/>
+        </owl:imports>
+        <owl:imports>
+            <owl:Ontology rdf:about="http://ontology.dumontierlab.com/subatomic-particle-primitive"/>
+        </owl:imports>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //   OWL Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+    <!-- Class: http://ontology.dumontierlab.com/subatomic-particle-primitive#BetaParticle -->
+
+    <owl:Class rdf:about="&dl;BetaParticle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="&dl;Electron"/>
+                    <owl:Class rdf:about="&dl;Positron"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+
+    <!-- Class: http://ontology.dumontierlab.com/subatomic-particle-primitive#CompositeParticle -->
+
+    <owl:Class rdf:about="&dl;CompositeParticle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="&dl;SubatomicParticle"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <owl:Class rdf:about="&dl;Fermion"/>
+                                    <owl:Class rdf:about="&dl;Boson"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+
+    <!-- Class: http://ontology.dumontierlab.com/subatomic-particle-primitive#Fermion -->
+
+    <owl:Class rdf:about="&dl;Fermion">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="&dl;Quark"/>
+                    <owl:Class rdf:about="&dl;Lepton"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+    
+
+
+    <!-- Class: http://ontology.dumontierlab.com/subatomic-particle-primitive#SubatomicParticle -->
+
+    <owl:Class rdf:about="&dl;SubatomicParticle">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="&snap;Object"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //   OWL Annotation Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;language"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////
+    //
+    //   OWL Axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class rdf:about="&dl;TopQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiproton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antineutron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antineutron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiproton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Graviton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;WBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;WBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Graviton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Electron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Tauon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Tauon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Electron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Pion">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BMeson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BMeson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Pion"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Neutron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Proton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Proton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Neutron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Kaon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BMeson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BMeson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Kaon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Positron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiauon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiauon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Positron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Hyperon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Proton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Proton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Hyperon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antineutrino">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antimuon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antimuon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antineutrino"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Boson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiparticle"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiparticle">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Boson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antilepton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antilepton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Muon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Tauon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Tauon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Muon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Electron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Muon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Muon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Electron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Pion">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Kaon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Kaon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Pion"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Neutrino">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Tauon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Tauon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Neutrino"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antifermion">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiboson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiboson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antifermion"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;JParticle">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Kaon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Kaon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;JParticle"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Graviton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Gluon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Gluon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Graviton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Muon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Neutrino"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Neutrino">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Muon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Electron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Neutrino"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Neutrino">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Electron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Pion">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;JParticle"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;JParticle">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Pion"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiauon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antineutrino"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antineutrino">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiauon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiauon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antimuon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antimuon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiauon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Photon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Gluon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Gluon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Photon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Photon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;ZBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;ZBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Photon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Quark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Lepton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Lepton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Quark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;WBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;ZBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;ZBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;WBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Fermion">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Boson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Boson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Fermion"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;ElementaryParticle">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CompositeParticle"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CompositeParticle">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;ElementaryParticle"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Fermion">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antiparticle"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antiparticle">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Fermion"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Graviton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Photon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Photon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Graviton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Photon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;WBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;WBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Photon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Gluon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;ZBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;ZBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Gluon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Graviton">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;ZBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;ZBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Graviton"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Positron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antimuon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antimuon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Positron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;CharmAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;CharmAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Positron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antineutrino"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antineutrino">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Positron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Meson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;GaugeBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;GaugeBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Meson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;JParticle">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BMeson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BMeson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;JParticle"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;TopAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;TopAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Gluon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;WBoson"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;WBoson">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Gluon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;UpAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;UpAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeQuark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownQuark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;StrangeAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;StrangeAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Hyperon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Neutron"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Neutron">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Hyperon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;DownAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;BottomAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;BottomAntiquark">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;DownAntiquark"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Baryon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Antibaryon"/>
+        </owl:disjointWith>
+    </owl:Class>
+    <owl:Class rdf:about="&dl;Antibaryon">
+        <owl:disjointWith>
+            <owl:Class rdf:about="&dl;Baryon"/>
+        </owl:disjointWith>
+    </owl:Class>
+</rdf:RDF>

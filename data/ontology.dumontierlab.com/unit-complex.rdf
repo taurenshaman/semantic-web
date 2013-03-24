@@ -1,0 +1,2719 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY owl2 "http://www.w3.org/2006/12/owl2#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY dl "http://ontology.dumontierlab.com/" >
+    <!ENTITY snap "http://www.ifomis.org/bfo/1.0/snap#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/unit-complex"
+     xml:base="http://ontology.dumontierlab.com/unit-complex"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dl="http://ontology.dumontierlab.com/"
+     xmlns:owl2="http://www.w3.org/2006/12/owl2#">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo rdf:datatype="&xsd;string">2.01</owl:versionInfo>
+        <dc:date rdf:datatype="&xsd;date">2008-08-21</dc:date>
+        <dc:description rdf:datatype="&xsd;string"
+            >Complex class descriptions for units.</dc:description>
+        <dc:publisher rdf:datatype="&xsd;string">Dumontier Lab</dc:publisher>
+        <dc:creator rdf:datatype="&xsd;string"
+            >Michel Dumontier</dc:creator>
+        <dc:creator rdf:datatype="&xsd;string">Mykola Konyk</dc:creator>
+        <dc:title rdf:datatype="&xsd;string"
+            >Unit Ontology (complex)</dc:title>
+        <dc:format rdf:datatype="&xsd;string"
+            >application/rdf+xml</dc:format>
+        <dc:language rdf:datatype="&xsd;string">en</dc:language>
+        <owl:imports rdf:resource="&dl;nulo"/>
+        <owl:imports rdf:resource="&dl;unit-primitive"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;language"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/derivesFrom -->
+
+    <owl:ObjectProperty rdf:about="&dl;derivesFrom"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasQuality -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasQuality"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasUnit -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasUnit">
+        <rdfs:subPropertyOf rdf:resource="&dl;hasQuality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isQualityOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isQualityOf"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isUnitOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isUnitOf">
+        <rdfs:subPropertyOf rdf:resource="&dl;isQualityOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isRaisedToPowerOf -->
+
+    <owl:DatatypeProperty rdf:about="&dl;isRaisedToPowerOf"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isScaledBy -->
+
+    <owl:DatatypeProperty rdf:about="&dl;isScaledBy"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isShiftedBy -->
+
+    <owl:DatatypeProperty rdf:about="&dl;isShiftedBy"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AbsorbedDoseRateUnit -->
+
+    <owl:Class rdf:about="&dl;AbsorbedDoseRateUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AbsorbedDoseUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AbsorbedDoseUnit -->
+
+    <owl:Class rdf:about="&dl;AbsorbedDoseUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AccelerationUnit -->
+
+    <owl:Class rdf:about="&dl;AccelerationUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AmountOfSubstanceConcentrationUnit -->
+
+    <owl:Class rdf:about="&dl;AmountOfSubstanceConcentrationUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeThree"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;VolumeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AmountOfSubstanceUnit -->
+
+    <owl:Class rdf:about="&dl;AmountOfSubstanceUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AngleUnit -->
+
+    <owl:Class rdf:about="&dl;AngleUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AngularAccelerationUnit -->
+
+    <owl:Class rdf:about="&dl;AngularAccelerationUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AngleUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AngularVelocityUnit -->
+
+    <owl:Class rdf:about="&dl;AngularVelocityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AngleUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AreaDensityUnit -->
+
+    <owl:Class rdf:about="&dl;AreaDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AreaUnit -->
+
+    <owl:Class rdf:about="&dl;AreaUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerPositiveTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AttoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;AttoScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-18</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CapacitanceUnit -->
+
+    <owl:Class rdf:about="&dl;CapacitanceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;PotentialDifferenceUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricChargeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CatalyticActivityUnit -->
+
+    <owl:Class rdf:about="&dl;CatalyticActivityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CatalyticConcentrationUnit -->
+
+    <owl:Class rdf:about="&dl;CatalyticConcentrationUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;CatalyticActivityUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeThree"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;VolumeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CentiScaledUnit -->
+
+    <owl:Class rdf:about="&dl;CentiScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-2</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ConcentrationUnit -->
+
+    <owl:Class rdf:about="&dl;ConcentrationUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ConductionUnit -->
+
+    <owl:Class rdf:about="&dl;ConductionUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CurrencyUnit -->
+
+    <owl:Class rdf:about="&dl;CurrencyUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DeciScaledUnit -->
+
+    <owl:Class rdf:about="&dl;DeciScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-1</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DekaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;DekaScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E1</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DensityUnit -->
+
+    <owl:Class rdf:about="&dl;DensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPower"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DerivedUnit -->
+
+    <owl:Class rdf:about="&dl;DerivedUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;Unit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DoseEquivalentUnit -->
+
+    <owl:Class rdf:about="&dl;DoseEquivalentUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DynamicViscosityUnit -->
+
+    <owl:Class rdf:about="&dl;DynamicViscosityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PressureUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricChargeDensityUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricChargeDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricChargeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeThree"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;VolumeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricChargeUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricChargeUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricCurrentUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricConductionUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricConductionUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;PotentialDifferenceUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricCurrentUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&dl;ThermalConductionUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricCurrentDensityUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricCurrentDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricCurrentUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricCurrentUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricCurrentUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricFieldStrengthUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricFieldStrengthUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PotentialDifferenceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricFluxDensityUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricFluxDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricChargeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricResistanceUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricResistanceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;ElectricCurrentUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PotentialDifferenceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectromagneticRadiationUnit -->
+
+    <owl:Class rdf:about="&dl;ElectromagneticRadiationUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EnergyDensityUnit -->
+
+    <owl:Class rdf:about="&dl;EnergyDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeThree"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;VolumeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EnergyUnit -->
+
+    <owl:Class rdf:about="&dl;EnergyUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ForceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EntropyUnit -->
+
+    <owl:Class rdf:about="&dl;EntropyUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TemperatureUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ExaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ExaScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E18</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ExposureUnit -->
+
+    <owl:Class rdf:about="&dl;ExposureUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricChargeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FemtoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;FemtoScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-15</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ForceUnit -->
+
+    <owl:Class rdf:about="&dl;ForceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FrequencyUnit -->
+
+    <owl:Class rdf:about="&dl;FrequencyUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GigaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;GigaScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E9</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HectoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;HectoScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E2</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IlluminanceUnit -->
+
+    <owl:Class rdf:about="&dl;IlluminanceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LuminousFluxUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/InductanceUnit -->
+
+    <owl:Class rdf:about="&dl;InductanceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;ElectricCurrentUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MagneticFluxUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/InformationUnit -->
+
+    <owl:Class rdf:about="&dl;InformationUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IrradianceUnit -->
+
+    <owl:Class rdf:about="&dl;IrradianceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PowerUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/KiloScaledUnit -->
+
+    <owl:Class rdf:about="&dl;KiloScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E3</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LengthUnit -->
+
+    <owl:Class rdf:about="&dl;LengthUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LinearDensityUnit -->
+
+    <owl:Class rdf:about="&dl;LinearDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LuminanceUnit -->
+
+    <owl:Class rdf:about="&dl;LuminanceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LuminousIntensityUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LuminousFluxUnit -->
+
+    <owl:Class rdf:about="&dl;LuminousFluxUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LuminousIntensityUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LuminousIntensityUnit -->
+
+    <owl:Class rdf:about="&dl;LuminousIntensityUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MagneticFieldStrengthUnit -->
+
+    <owl:Class rdf:about="&dl;MagneticFieldStrengthUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ElectricCurrentUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MagneticFluxDensityUnit -->
+
+    <owl:Class rdf:about="&dl;MagneticFluxDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MagneticFluxUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MagneticFluxUnit -->
+
+    <owl:Class rdf:about="&dl;MagneticFluxUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PotentialDifferenceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MassUnit -->
+
+    <owl:Class rdf:about="&dl;MassUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MegaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;MegaScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E6</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MicroScaledUnit -->
+
+    <owl:Class rdf:about="&dl;MicroScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-6</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MilliScaledUnit -->
+
+    <owl:Class rdf:about="&dl;MilliScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-3</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolalityUnit -->
+
+    <owl:Class rdf:about="&dl;MolalityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolarEnergyUnit -->
+
+    <owl:Class rdf:about="&dl;MolarEnergyUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolarEntropyUnit -->
+
+    <owl:Class rdf:about="&dl;MolarEntropyUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TemperatureUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolarMassUnit -->
+
+    <owl:Class rdf:about="&dl;MolarMassUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolecularMassUnit -->
+
+    <owl:Class rdf:about="&dl;MolecularMassUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MomentOfForceUnit -->
+
+    <owl:Class rdf:about="&dl;MomentOfForceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ForceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NanoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;NanoScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-9</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PartsPerNotationUnit -->
+
+    <owl:Class rdf:about="&dl;PartsPerNotationUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PermeabilityUnit -->
+
+    <owl:Class rdf:about="&dl;PermeabilityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;InductanceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PermittivityUnit -->
+
+    <owl:Class rdf:about="&dl;PermittivityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;CapacitanceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PetaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;PetaScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E15</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PicoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;PicoScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-12</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PlaneAngleUnit -->
+
+    <owl:Class rdf:about="&dl;PlaneAngleUnit">
+        <owl:disjointWith rdf:resource="&dl;SolidAngleUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PotentialDifferenceUnit -->
+
+    <owl:Class rdf:about="&dl;PotentialDifferenceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;ElectricCurrentUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PowerUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PowerUnit -->
+
+    <owl:Class rdf:about="&dl;PowerUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PressureUnit -->
+
+    <owl:Class rdf:about="&dl;PressureUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ForceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadianceUnit -->
+
+    <owl:Class rdf:about="&dl;RadianceUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;SolidAngleUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PowerUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadiantIntensityUnit -->
+
+    <owl:Class rdf:about="&dl;RadiantIntensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PowerUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;SolidAngleUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadiationUnit -->
+
+    <owl:Class rdf:about="&dl;RadiationUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadioactivityUnit -->
+
+    <owl:Class rdf:about="&dl;RadioactivityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;DerivedUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:someValuesFrom rdf:resource="&xsd;double"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ShiftedUnit -->
+
+    <owl:Class rdf:about="&dl;ShiftedUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;DerivedUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isShiftedBy"/>
+                        <owl:someValuesFrom rdf:resource="&xsd;double"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SolidAngleUnit -->
+
+    <owl:Class rdf:about="&dl;SolidAngleUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AreaUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeTwo"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SpecificEnergyUnit -->
+
+    <owl:Class rdf:about="&dl;SpecificEnergyUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SpecificEntropyUnit -->
+
+    <owl:Class rdf:about="&dl;SpecificEntropyUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TemperatureUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;EnergyUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SpecificVolumeUnit -->
+
+    <owl:Class rdf:about="&dl;SpecificVolumeUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;VolumeUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SurfaceTensionUnit -->
+
+    <owl:Class rdf:about="&dl;SurfaceTensionUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;ForceUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TemperatureUnit -->
+
+    <owl:Class rdf:about="&dl;TemperatureUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TeraScaledUnit -->
+
+    <owl:Class rdf:about="&dl;TeraScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E12</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ThermalConductionUnit -->
+
+    <owl:Class rdf:about="&dl;ThermalConductionUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TemperatureUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;PowerUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TimeUnit -->
+
+    <owl:Class rdf:about="&dl;TimeUnit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Unit -->
+
+    <owl:Class rdf:about="&dl;Unit"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPower -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPower">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;DerivedUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isRaisedToPowerOf"/>
+                        <owl:someValuesFrom rdf:resource="&xsd;double"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerNegativeOne -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerNegativeOne">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isRaisedToPowerOf"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">-1</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerNegativeThree -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerNegativeThree">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isRaisedToPowerOf"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">-3</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerNegativeTwo -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerNegativeTwo">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isRaisedToPowerOf"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">-2</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerPositiveOne -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerPositiveOne">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isRaisedToPowerOf"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">1</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerPositiveThree -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerPositiveThree">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isRaisedToPowerOf"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">3</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerPositiveTwo -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerPositiveTwo">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                        <owl:someValuesFrom rdf:resource="&dl;Unit"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isRaisedToPowerOf"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">2</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VelocityUnit -->
+
+    <owl:Class rdf:about="&dl;VelocityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;TimeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VolumeDensityUnit -->
+
+    <owl:Class rdf:about="&dl;VolumeDensityUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeThree"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;VolumeUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;MassUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VolumeUnit -->
+
+    <owl:Class rdf:about="&dl;VolumeUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerPositiveThree"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/WavenumberUnit -->
+
+    <owl:Class rdf:about="&dl;WavenumberUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;LengthUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YoctoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;YoctoScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-24</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YottaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;YottaScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E24</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZeptoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ZeptoScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E-21</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZettaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ZettaScaledUnit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&dl;ScaledUnit"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;isScaledBy"/>
+                        <owl:hasValue rdf:datatype="&xsd;double">10E21</owl:hasValue>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/pHUnit -->
+
+    <owl:Class rdf:about="&dl;pHUnit">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceConcentrationUnit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;UnitRaisedToPowerNegativeOne"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;derivesFrom"/>
+                                <owl:someValuesFrom rdf:resource="&dl;AmountOfSubstanceConcentrationUnit"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&dl;AbsorbedDoseRateUnit"/>
+            <rdf:Description rdf:about="&dl;AbsorbedDoseUnit"/>
+            <rdf:Description rdf:about="&dl;DoseEquivalentUnit"/>
+            <rdf:Description rdf:about="&dl;ExposureUnit"/>
+            <rdf:Description rdf:about="&dl;RadioactivityUnit"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&dl;AreaDensityUnit"/>
+            <rdf:Description rdf:about="&dl;LinearDensityUnit"/>
+            <rdf:Description rdf:about="&dl;VolumeDensityUnit"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&dl;AccelerationUnit"/>
+            <rdf:Description rdf:about="&dl;AmountOfSubstanceUnit"/>
+            <rdf:Description rdf:about="&dl;AngleUnit"/>
+            <rdf:Description rdf:about="&dl;AngularAccelerationUnit"/>
+            <rdf:Description rdf:about="&dl;AngularVelocityUnit"/>
+            <rdf:Description rdf:about="&dl;AreaUnit"/>
+            <rdf:Description rdf:about="&dl;CapacitanceUnit"/>
+            <rdf:Description rdf:about="&dl;CatalyticActivityUnit"/>
+            <rdf:Description rdf:about="&dl;ConcentrationUnit"/>
+            <rdf:Description rdf:about="&dl;ConductionUnit"/>
+            <rdf:Description rdf:about="&dl;CurrencyUnit"/>
+            <rdf:Description rdf:about="&dl;DensityUnit"/>
+            <rdf:Description rdf:about="&dl;DynamicViscosityUnit"/>
+            <rdf:Description rdf:about="&dl;ElectricChargeDensityUnit"/>
+            <rdf:Description rdf:about="&dl;ElectricChargeUnit"/>
+            <rdf:Description rdf:about="&dl;ElectricCurrentDensityUnit"/>
+            <rdf:Description rdf:about="&dl;ElectricCurrentUnit"/>
+            <rdf:Description rdf:about="&dl;ElectricFieldStrengthUnit"/>
+            <rdf:Description rdf:about="&dl;ElectricFluxDensityUnit"/>
+            <rdf:Description rdf:about="&dl;ElectricResistanceUnit"/>
+            <rdf:Description rdf:about="&dl;ElectromagneticRadiationUnit"/>
+            <rdf:Description rdf:about="&dl;EnergyDensityUnit"/>
+            <rdf:Description rdf:about="&dl;EnergyUnit"/>
+            <rdf:Description rdf:about="&dl;EntropyUnit"/>
+            <rdf:Description rdf:about="&dl;ForceUnit"/>
+            <rdf:Description rdf:about="&dl;FrequencyUnit"/>
+            <rdf:Description rdf:about="&dl;InductanceUnit"/>
+            <rdf:Description rdf:about="&dl;InformationUnit"/>
+            <rdf:Description rdf:about="&dl;LengthUnit"/>
+            <rdf:Description rdf:about="&dl;MagneticFieldStrengthUnit"/>
+            <rdf:Description rdf:about="&dl;MagneticFluxDensityUnit"/>
+            <rdf:Description rdf:about="&dl;MagneticFluxUnit"/>
+            <rdf:Description rdf:about="&dl;MassUnit"/>
+            <rdf:Description rdf:about="&dl;MolarEnergyUnit"/>
+            <rdf:Description rdf:about="&dl;MolarEntropyUnit"/>
+            <rdf:Description rdf:about="&dl;MolarMassUnit"/>
+            <rdf:Description rdf:about="&dl;MolecularMassUnit"/>
+            <rdf:Description rdf:about="&dl;MomentOfForceUnit"/>
+            <rdf:Description rdf:about="&dl;PermeabilityUnit"/>
+            <rdf:Description rdf:about="&dl;PermittivityUnit"/>
+            <rdf:Description rdf:about="&dl;PotentialDifferenceUnit"/>
+            <rdf:Description rdf:about="&dl;PowerUnit"/>
+            <rdf:Description rdf:about="&dl;PressureUnit"/>
+            <rdf:Description rdf:about="&dl;RadiationUnit"/>
+            <rdf:Description rdf:about="&dl;SpecificEnergyUnit"/>
+            <rdf:Description rdf:about="&dl;SpecificEntropyUnit"/>
+            <rdf:Description rdf:about="&dl;SpecificVolumeUnit"/>
+            <rdf:Description rdf:about="&dl;SurfaceTensionUnit"/>
+            <rdf:Description rdf:about="&dl;TemperatureUnit"/>
+            <rdf:Description rdf:about="&dl;TimeUnit"/>
+            <rdf:Description rdf:about="&dl;VelocityUnit"/>
+            <rdf:Description rdf:about="&dl;VolumeUnit"/>
+            <rdf:Description rdf:about="&dl;WavenumberUnit"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&dl;IlluminanceUnit"/>
+            <rdf:Description rdf:about="&dl;IrradianceUnit"/>
+            <rdf:Description rdf:about="&dl;LuminanceUnit"/>
+            <rdf:Description rdf:about="&dl;LuminousFluxUnit"/>
+            <rdf:Description rdf:about="&dl;LuminousIntensityUnit"/>
+            <rdf:Description rdf:about="&dl;RadianceUnit"/>
+            <rdf:Description rdf:about="&dl;RadiantIntensityUnit"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&dl;AmountOfSubstanceConcentrationUnit"/>
+            <rdf:Description rdf:about="&dl;CatalyticConcentrationUnit"/>
+            <rdf:Description rdf:about="&dl;MolalityUnit"/>
+            <rdf:Description rdf:about="&dl;PartsPerNotationUnit"/>
+            <rdf:Description rdf:about="&dl;pHUnit"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.962) http://owlapi.sourceforge.net -->
+

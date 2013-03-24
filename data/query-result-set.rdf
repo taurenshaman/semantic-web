@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF[
+  <!ENTITY rs 'http://jena.hpl.hp.com/2003/03/result-set#'>
+]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rs="&rs;">
+  <rdf:Description rdf:about="&rs;">
+    <dc:creator>Andy Seaborne</dc:creator>
+    <dc:subject xml:lang="en-US">query result set</dc:subject>
+    <dc:subject xml:lang="zh-CN">查询结果集</dc:subject>
+    <dc:publisher>SWAD-e</dc:publisher>
+    <dc:title xml:lang="en-US">Vocabulary for recording query result set</dc:title>
+    <dc:title xml:lang="zh-CN">记录查询结果集的词汇集</dc:title>
+    <dc:description xml:lang="en-US">Vocabulary for recording query result set</dc:description>
+    <dc:description xml:lang="zh-CN">记录查询结果集的词汇集</dc:description>
+    <dc:date>2003-03-12</dc:date>
+    <dc:format>RDF</dc:format>
+    <dc:identifier rdf:resource="&rs;" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology" />
+  </rdf:Description>
+  <!-- Classes -->
+  <rdf:Description rdf:about="&rs;ResultSet">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class" />
+    <rdfs:label xml:lang="en-US">Result Set</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">结果集</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Class of things that represent the result set</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">表示结果集的类</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="&rs;ResultSolution">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class" />
+    <rdfs:label xml:lang="en-US">Result Solution</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">结果解决方案</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Class of things that represent a row in the result table - one solution to the query</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">表示结果表中的一行的类--查询的一个解决方案</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="&rs;ResultBinding">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class" />
+    <rdfs:label xml:lang="en-US">Result Binding</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">结果绑定</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Class of things that represent a single (variable, value) pairing</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">表示单一（变量，值）对的类。</rdfs:comment>
+  </rdf:Description>
+  <!-- Properties -->
+  <rdf:Description rdf:about="&rs;solution">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
+    <rdfs:label xml:lang="en-US">solution</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">解决方案</rdfs:label>
+    <rdfs:domain rdf:resource="&rs;ResultSet" />
+    <rdfs:range rdf:resource="&rs;ResultSolution" />
+  </rdf:Description>
+  <rdf:Description rdf:about="&rs;size">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
+    <rdfs:label xml:lang="en-US">size</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">大小</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Number of rows in the result table</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">结果表中的行数</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#integer" />
+  </rdf:Description>
+  <rdf:Description rdf:about="&rs;resultVariable">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
+    <rdfs:domain rdf:resource="&rs;ResultSet" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#string" />
+    <rdfs:label xml:lang="en-US">result variable</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">结果变量</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Name of a variable used in the result set. Multivalued.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在结果集中用到的变量名。多值的。</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="&rs;binding">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
+    <rdfs:label xml:lang="en-US">binding</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">绑定</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Multi-occurrence property associating a result solution (row) resource to a single (variable, value) binding</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">多发属性将结果一个解决方案（行）资源关联到一个单一（变量，值）绑定上</rdfs:comment>
+    <rdfs:domain rdf:resource="&rs;ResultSolution" />
+    <rdfs:range rdf:resource="&rs;ResultBinding" />
+  </rdf:Description>
+  <rdf:Description rdf:about="&rs;variable">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
+    <rdfs:label xml:lang="en-US">variable</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">变量</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Variable name</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">变量名</rdfs:comment>
+    <rdfs:domain rdf:resource="&rs;ResultBinding" />
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
+  </rdf:Description>
+  <rdf:Description rdf:about="&rs;value">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
+    <rdfs:label xml:lang="en-US">value</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">值</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Variable name</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">变量的值</rdfs:comment>
+    <rdfs:domain rdf:resource="&rs;ResultBinding" />
+  </rdf:Description>
+  <!-- Distibuished value for "undefined" -->
+  <rdf:Description rdf:about="&rs;undef">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource" />
+    <rdfs:label xml:lang="en-US">undefined</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">未定义</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Resource representing the undefined value</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">资源表示未定义的值。</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>

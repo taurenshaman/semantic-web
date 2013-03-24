@@ -1,0 +1,180 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+<http://www.w3.org/ns/dcat>
+    a owl:Ontology;
+    rdfs:label "The data catalog vocabulary"@en-US;
+	rdfs:label "数据目录词汇集"@zh-CN;
+    rdfs:comment "DCAT is an RDF vocabulary designed to facilitate interoperability between data catalogs published on the Web."@en-US;
+	rdfs:comment "DCAT是一个RDF词汇表，用以促进在网络上公布的数据目录之间的互操作性。"@zh-CN;
+    dct:modified "2012-04-24"^^xsd:date;
+    .
+
+dcat:CatalogRecord a rdfs:Class, owl:Class;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "Catalog Record"@en-US;
+	rdfs:label "目录记录"@zh-CN;
+    rdfs:comment "A record in a data catalog, describing a single dataset"@en-US;
+	rdfs:comment "在数据目录中的一个记录，用以描述一个单一的数据集。"@zh-CN;
+	.
+
+dcat:Catalog a rdfs:Class, owl:Class;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "Catalog"@en-US;
+	rdfs:label "目录"@zh-CN;
+    rdfs:comment "A  curated collection of metadata about datasets"@en-US;
+	rdfs:comment "一个关于数据集的元数据集合。"@zh-CN;
+	.
+
+dcat:Dataset a rdfs:Class, owl:Class;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "Dataset"@en-US;
+	rdfs:label "数据集"@zh-CN;
+    rdfs:comment "A collection of data, published or curated by a single source, and available for access or download in one or more formats"@en-US;
+	rdfs:comment "一组数据，由单一源发布，并能以一种或多种格式访问或下载。"@zh-CN;
+    rdfs:subClassOf dctype:Dataset .
+
+dcat:Feed a rdfs:Class, owl:Class;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "Feed"@en-US;
+	rdfs:label "内容源"@zh-CN;
+    rdfs:comment "represents availability of a dataset as a feed"@en-US;
+	rdfs:comment "表示数据集作为数据源的可用性。"@zh-CN;
+    rdfs:subClassOf dcat:Distribution .
+
+dcat:WebService a rdfs:Class, owl:Class;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "Web Service"@en-US;
+	rdfs:label "Web服务"@zh-CN;
+    rdfs:comment "represents a web service that enables access to the data of a dataset"@en-US;
+	rdfs:comment "表示能够访问数据集中的数据的Web服务。"@zh-CN;
+    rdfs:subClassOf dcat:Distribution .
+
+dcat:Distribution a rdfs:Class, owl:Class;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "Distribution"@en-US;
+	rdfs:label "分发"@zh-CN;
+    rdfs:comment "represents a specific available form of a dataset. Each dataset might be available in different forms, these forms might represent different formats of the dataset, different endpoints,... Examples of Distribution include a downloadable CSV file, an XLS file representing the dataset, an RSS feed…"@en-US;
+	rdfs:comment "表示数据集的特定可用格式。每个数据集都可能是不同的形式，这些形式可能代表不同格式的数据集，不同的终端……分发的例子包括一个可下载的CSV文件，表示数据集的XLS文件，RSS数据源……"@zh-CN;
+	.
+
+dcat:Download a rdfs:Class, owl:Class;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "Download"@en-US;
+	rdfs:label "下载"@zh-CN;
+    rdfs:comment "represents a downloadable distribution of a dataset"@en-US;
+	rdfs:comment "表示可下载的数据集分发地址。"@zh-CN;
+    rdfs:subClassOf dcat:Distribution .
+
+dcat:themeTaxonomy a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "themes"@en-US;
+	rdfs:label "主题"@zh-CN;
+    rdfs:comment "the knowledge organization system (KOS) used to classify catalog's datasets"@en-US;
+	rdfs:comment "知识组织系统（KOS）用于分类目录的数据集。"@zh-CN;
+    rdfs:domain dcat:Catalog;
+    rdfs:range skos:ConceptScheme .
+
+dcat:dataset a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "dataset"@en-US;
+	rdfs:label "数据集"@zh-CN;
+    rdfs:comment "a dataset that is part of the catalog"@en-US;
+	rdfs:comment "一个数据集是目录的一部分。"@zh-CN;
+    rdfs:domain dcat:Catalog;
+    rdfs:range dcat:Dataset .
+
+dcat:distribution a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "distribution"@en-US;
+	rdfs:label "分发"@zh-CN;
+    rdfs:comment "connects a dataset to one of its available distributions"@en-US;
+	rdfs:comment "链接数据集和它的一个可用的分发地址。"@zh-CN;
+    rdfs:domain dcat:Dataset;
+    rdfs:range dcat:Distribution .
+
+dcat:dataQuality a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "data quality"@en-US;
+	rdfs:label "数据质量"@zh-CN;
+    rdfs:comment "describes the quality of data e.g. precision. This should not be used to describe the data collection characteristics, other more specialized statistical properties can be used instead."@en-US;
+	rdfs:comment "描述了数据质量，比如精度。这个不应该用来描述数据集合的特点，对这些特点可以使用其他更专门的统计属性。"@zh-CN;
+    rdfs:domain dcat:Dataset .
+
+dcat:theme a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "theme"@en-US;
+	rdfs:label "主题"@zh-CN;
+    rdfs:comment "the main category of the dataset. A dataset can have multiple themes"@en-US;
+	rdfs:comment "数据集的主要类别。一个数据集可以有多个主题。"@zh-CN;
+    rdfs:range skos:Concept;
+    rdfs:subPropertyOf dct:subject .
+
+dcat:dataDictionary a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "data dictionary"@en-US;
+	rdfs:label "数据字典"@zh-CN;
+    rdfs:comment "links a dataset to a dictionary that helps interpreting the data"@en-US;
+	rdfs:comment "连接一个数据集和字典，用以帮助解释这些数据。"@zh-CN;
+    rdfs:domain dcat:Dataset .
+
+dcat:granularity a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "granularity"@en-US;
+	rdfs:label "粒度"@zh-CN;
+    rdfs:comment "describes the level of granularity of data in a dataset. The granularity can be in time, place etc"@en-US;
+	rdfs:comment "描述数据集中数据的粒度水平。粒度可以在时间，地点等。"@zh-CN;
+    rdfs:domain dcat:Dataset .
+
+dcat:size a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "size"@en-US;
+	rdfs:label "大小"@zh-CN;
+    rdfs:comment "the size of a distribution"@en-US;
+	rdfs:comment "分发的大小。"@zh-CN;
+    rdfs:domain dcat:Distribution;
+    rdfs:subPropertyOf dct:extent .
+
+dcat:keyword a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "keyword"@en-US;
+	rdfs:label "关键字"@zh-CN;
+    rdfs:comment "a keyword or tag describing the dataset."@en-US;
+	rdfs:comment "描述数据集的关键字或标签。"@zh-CN;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf dct:subject .
+
+dcat:bytes a rdf:Property, owl:DatatypeProperty;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "size in bytes"@en-US;
+	rdfs:label "大小（以字节计）"@zh-CN;
+    rdfs:comment "describe size of resource in bytes"@en-US;
+	rdfs:comment "以字节为单位描述资源的大小。"@zh-CN;
+    rdfs:domain dcat:Distribution;
+    rdfs:range xsd:integer .
+
+dcat:record a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "record"@en-US;
+	rdfs:label "记录"@zh-CN;
+    rdfs:comment "links a catalog to its records"@en-US;
+	rdfs:comment "连接目录和它的记录。"@zh-CN;
+    rdfs:domain dcat:Catalog;
+    rdfs:range dcat:CatalogRecord .
+
+dcat:accessURL a rdf:Property;
+    rdfs:isDefinedBy <http://www.w3.org/ns/dcat>;
+    rdfs:label "access URL"@en-US;
+	rdfs:label "访问网址"@zh-CN;
+    rdfs:range rdfs:Resource;
+    rdfs:comment "points to the location of a distribution. This can be a direct download link, a link to an HTML page containing a link to the actual data, Feed, Web Service etc. the semantic is determined by its domain (Distribution, Feed, WebService, Download)"@en-US;
+	rdfs:comment "指向一个分发地址。它可以是直接下载链接，或指向一个HTML页面（包含了对实际数据、内容源或Web服务的链接）的链接。其语义取决于它的域（分发，内容源，Web服务，下载）。"@zh-CN;
+	.

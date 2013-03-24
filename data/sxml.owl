@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:sxml="http://topbraid.org/sxml#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://topbraid.org/sxml">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1.0.0</owl:versionInfo>
+    <owl:imports rdf:resource="http://www.topbraid.org/2007/05/composite.owl"/>
+    <rdfs:comment>An ontology describing XML documents (elements and their hierarchy).
+XML Documents have a root element. Attributes are represented as values of datatype properties that have a value for sxml:attribute. Future versions may also support object properties to resolve IDREF attributes. Elements are represented as instances of classes that have an sxml:element annotation.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Document">
+    <rdfs:label>Document</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Node"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TextNode">
+    <rdfs:label>Text Node</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Node"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Element">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Node"/>
+    </rdfs:subClassOf>
+    <rdfs:label>Element</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Node">
+    <rdfs:label>Node</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Comment">
+    <rdfs:subClassOf rdf:resource="#Node"/>
+    <rdfs:label>Comment</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="root">
+    <rdfs:domain rdf:resource="#Document"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.topbraid.org/2007/05/composite.owl#child"/>
+    <rdfs:comment>The root element of an XML document.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="text">
+    <rdfs:domain rdf:resource="#TextNode"/>
+    <rdfs:comment>The body of an XML TextNode.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >text</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:AnnotationProperty rdf:ID="attribute">
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment>The XML tag used to render an RDF property into an XML attribute. This must be a valid XML attribute name.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attribute</rdfs:label>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:ID="element">
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment>The XML tag used to render an element. This must be a valid XML tag string.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >element</rdfs:label>
+  </owl:AnnotationProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid Composer -->

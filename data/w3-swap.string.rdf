@@ -1,0 +1,242 @@
+<rdf:RDF xmlns="http://www.w3.org/2000/10/swap/string"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:s="http://www.w3.org/2000/01/rdf-schema#">
+
+  <rdf:Description rdf:about="">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:label xml:lang="en-US">String Processing Ontology</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">字符串处理本体</rdfs:label>
+    <rdfs:comment xml:lang="en-US">
+      This is an ontology for computable string functions.
+      It is implemented, for example, in CWM and Euler.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这是一个为可计算的字符串功能设计的本体。比如，在CWM和Euler中实现的。</rdfs:comment>
+  </rdf:Description>
+
+  <Class rdf:about="http://www.w3.org/2000/10/swap/string#String">
+    <rdfs:label xml:lang="en-US">string</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">字符串</rdfs:label>
+  </Class>
+
+  <owl:InverseFunctionalProperty rdf:about="http://www.w3.org/2000/10/swap/string#concat">
+    <rdfs:comment xml:lang="en-US">(obsolete - (was backwards!) - use: string:concatenation)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">已经弃用。用于向前兼容。请使用string:concatenation。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">is concatenation of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">连接</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <owl:inverse rdf:resource="http://www.w3.org/2000/10/swap/string#concatenation"/>
+  </owl:InverseFunctionalProperty>
+
+  <owl:FunctionalProperty rdf:about="http://www.w3.org/2000/10/swap/string#concatenation">
+    <rdfs:comment xml:lang="en-US">
+      The subject is a list of strings. The object is calculated as
+      a concatenation of those strings.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主语是一组字符串。宾语被计算为这些字符串的串联结果。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdfs:label xml:lang="en-US">is the concatenation of the strings in</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">连接</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </owl:FunctionalProperty>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#contains">
+    <rdfs:comment xml:lang="en-US">True iff the subject string contains the object string.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">如果主语字符串包含宾语字符串，则为真；否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">contains</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">包含</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#containsIgnoringCase">
+    <rdfs:comment xml:lang="en-US">
+      True iff the subject string contains the object string,
+      with the comparison done ignoring the difference between upper case and
+      lower case characters.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">如果主语字符串包含宾语字符串，则为真，否则为假。比较忽略大小写。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">contains</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">包含（忽略大小写）</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#endsWith">
+    <rdfs:comment xml:lang="en-US">True iff the subject string ends with the object string.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">如果主语字符串以宾语字符串作结尾，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">ends with</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">结尾为</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#equalIgnoringCase">
+    <rdfs:comment xml:lang="en-US">
+      True iff the subject string is the same as object string
+      ignoring differences between upper and lower case.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">比较主语字符串和宾语字符串，忽略大小写，如果等价，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">equals</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">等价</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <owl:FunctionalProperty rdf:about="http://www.w3.org/2000/10/swap/string#format">
+    <rdfs:comment xml:lang="en-US">
+      The subject is a list, whose first member is a format string,
+      and whose remaining members are arguments to the format string.
+      The formating string is in the style of python's % operator,
+      very similar to C's sprintf().
+      The object is calculated from the subject.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主语是一个列表，其第一个成员是格式字符串，剩下的成员是格式字符串的参数。格式化字符串在python是％操作符的风格，和C的sprintf()的非常相似。宾语是主语的计算结果。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    <rdfs:label xml:lang="en-US">is the string formatted function of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">格式化</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </owl:FunctionalProperty>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#greaterThan">
+    <rdfs:comment xml:lang="en-US">
+      True iff the string is greater than the object
+      when ordered according to Unicode(tm) code order.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">按转换为Unicode后的结果进行比较，如果主语字符串大于宾语字符串，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">is greater than</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">大于</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#lessThan">
+    <rdfs:comment xml:lang="en-US">
+      True iff the string is less than the object
+      when ordered according to Unicode(tm) code order.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">按转换为Unicode后的结果进行比较，如果主语字符串小于宾语字符串，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">is less than</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">小于</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#matches">
+    <rdfs:comment xml:lang="en-US">
+      The subject is a string;
+      the object is is a regular expression in the perl, python style.
+      It is true iff the string matches the regexp.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主语是字符串，宾语是perl/python中风格的正则表达式。如果主语字符串匹配正则表达式，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">matches</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">匹配</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#notEqualIgnoringCase">
+    <rdfs:comment xml:lang="en-US">
+      True iff the subject string is the NOT same as object string
+      ignoring differences between upper and lower case.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">比较主语字符串和宾语字符串，忽略大小写，如果不等价，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">not equal</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不等价</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#notGreaterThan">
+    <rdfs:comment xml:lang="en-US">
+      True iff the string is NOT greater than the object
+      when ordered according to Unicode(tm) code order.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">按转换为Unicode后的结果进行比较，如果主语字符串不大于宾语字符串，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">is not greater than</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不大于（小于或等于）</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#notLessThan">
+    <rdfs:comment xml:lang="en-US">
+      True iff the string is NOT less than the object
+      when ordered according to Unicode(tm) code order.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">按转换为Unicode后的结果进行比较，如果主语字符串不小于宾语字符串，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">is not less than</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不小于（大于或等于）</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#notMatches">
+    <rdfs:comment xml:lang="en-US">
+      The subject string;
+      the object is is a regular expression in the perl, python style.
+      It is true iff the string does NOT match the regexp.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主语是字符串，宾语是perl/python中风格的正则表达式。如果主语字符串不匹配正则表达式，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label>not matches</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不匹配</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#replace">
+    <rdfs:comment xml:lang="en-US">
+      A built-in for replacing characters or sub.
+      takes a list of 3 strings; the first is the
+      input data, the second the old and the third the new string.
+      The object is calculated as the rplaced string.
+      For example, ("fofof bar", "of", "baz") string:replace "fbazbaz bar"
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">内置的替换字符或子字符串，主语有三个字符串，第一个是输入数据，第二个是代替换的部分，第三个是要替换的新字符串。宾语是主语字符串被替换后的结果。比如，("fofof bar", "of", "baz") string:replace "fbazbaz bar"。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:label xml:lang="en-US">replace</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">替换</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#scrape">
+    <rdfs:comment xml:lang="en-US">
+      The subject is a list of two strings. The second string is
+      a regular expression in the perl, python style.
+      It must contain one group (a part in parentheses).  If the first string in the list matches
+      the regular expression, then the object is calculated as being the
+      part of the first string which matches the group.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主语是两个字符串，第一个是输入数据，第二个是perl/python风格的正则表达式，它必须包含一个组（圆括号中的一部分）。如果列表的第一个字符串匹配正则表达式，那么宾语就是将其中匹配的部分作为计算结果。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:label xml:lang="en-US">scrape</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">提取</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.w3.org/2000/10/swap/string#startsWith">
+    <rdfs:comment xml:lang="en-US">True iff the subject string starts with the object string.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">如果主语字符串以宾语字符串作开始，则为真，否则为假。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2000/10/swap/string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+    <rdfs:label xml:lang="en-US">starts with</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">开始于</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/swap/string#String"/>
+  </rdf:Property>
+</rdf:RDF>

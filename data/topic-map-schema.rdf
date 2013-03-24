@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+         xmlns:rdftm="http://psi.ontopia.net/rdf/#">
+
+  <!-- CLASSES -->
+
+  <rdfs:Class rdf:about="http://psi.ontopia.net/rdf/#TopicMapItem">
+    <rdfs:label xml:lang="en">topic map item</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主题地图项</rdfs:label>
+    <rdfs:comment xml:lang="en">A common superclass for all the classes defined in this schema. This class has no direct counterpart in the topic map model, and is only used in order to better express the RDF schema.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在这个架构中为所有类定义了一个共同的超类。这个类在主题地图模型中没有直接的对应物，仅用于为了更好地表达RDF架构。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://psi.ontopia.net/rdf/#Topic">
+    <rdfs:label xml:lang="en">topic</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主题</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF class corresponding to the topic map notion of a topic.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个RDF类，对应于主题的主题地图概念。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://psi.ontopia.net/rdf/#TopicMapItem"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://psi.ontopia.net/rdf/#BaseName">
+    <rdfs:label xml:lang="en">base name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">基本名称</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF class corresponding to the topic map notion of a base name.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://psi.ontopia.net/rdf/#TopicMapItem"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://psi.ontopia.net/rdf/#Variant">
+    <rdfs:label xml:lang="en">variant name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">变量名称</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF class corresponding to the topic map notion of a variant name.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://psi.ontopia.net/rdf/#TopicMapItem"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://psi.ontopia.net/rdf/#Occurrence">
+    <rdfs:label xml:lang="en">occurrence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF class corresponding to the topic map notion of an occurrence.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://psi.ontopia.net/rdf/#TopicMapItem"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://psi.ontopia.net/rdf/#Association">
+    <rdfs:label xml:lang="en">association</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">关联</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF class corresponding to the topic map notion of an association.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://psi.ontopia.net/rdf/#TopicMapItem"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://psi.ontopia.net/rdf/#AssociationRole">
+    <rdfs:label xml:lang="en">association role</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">关联角色</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF class corresponding to the topic map notion of an association role.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://psi.ontopia.net/rdf/#TopicMapItem"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdfs:Class>
+
+
+  <!-- PROPERTIES -->
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#subject-identifier">
+    <rdfs:label xml:lang="en">subject identifier</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主语标识</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property corresponding to the topic map notion of a subject identifier.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdf:type rdf:resource="http://www.daml.org/2001/03/daml+oil#UnambiguousProperty"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#subject-address">
+    <rdfs:label xml:lang="en">subject address</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property corresponding to the topic map notion of a subject address.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdf:type rdf:resource="http://www.daml.org/2001/03/daml+oil#UnambiguousProperty"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#base-name">
+    <rdfs:label xml:lang="en">base name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property associating the topic with its base names.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:range rdf:resource="http://psi.ontopia.net/rdf/#BaseName"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#occurrence">
+    <rdfs:label xml:lang="en">occurrence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property associating the topic with its occurrences.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:range rdf:resource="http://psi.ontopia.net/rdf/#Occurrence"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#source-locator">
+    <rdfs:label xml:lang="en">source locator</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property associating topic map items of all types with their source locators.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdf:type rdf:resource="http://www.daml.org/2001/03/daml+oil#UnambiguousProperty"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#TopicMapItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#scope">
+    <rdfs:label xml:lang="en">scope</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property corresponding to the topic map notion of scope.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#BaseName"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Variant"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Occurrence"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Association"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#value">
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">值</rdfs:label>
+    <rdfs:comment xml:lang="en">The string value of this base name, variant, or occurrence.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#BaseName"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Variant"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Occurrence"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#variants">
+    <rdfs:label xml:lang="en">variants</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">变量</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property associating the topic with its variants.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#BaseName"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#resource">
+    <rdfs:label xml:lang="en">resource</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">资源</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property that refers to the resource which is this variant or occurrence.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Variant"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Occurrence"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#occurrence-type">
+    <rdfs:label xml:lang="en">occurrence type</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property that refers to the topic that defines the type of this occurrence.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Occurrence"/>
+    <rdfs:range rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#association-type">
+    <rdfs:label xml:lang="en">association type</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">关联类型</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property that refers to the topic that defines the type of this association.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Association"/>
+    <rdfs:range rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#roles">
+    <rdfs:label xml:lang="en">association roles</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">关联角色</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property that connects the roles making up this association with the association.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#Association"/>
+    <rdfs:range rdf:resource="http://psi.ontopia.net/rdf/#AssociationRole"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#role-type">
+    <rdfs:label xml:lang="en">role type</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">角色类型</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property that refers to the topic that defines the type of this association role.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#AssociationRole"/>
+    <rdfs:range rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://psi.ontopia.net/rdf/#role-player">
+    <rdfs:label xml:lang="en">role playing topic</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">角色扮演的主题</rdfs:label>
+    <rdfs:comment xml:lang="en">An RDF property that refers to the topic playing this role in the association.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://psi.ontopia.net/rdf/#AssociationRole"/>
+    <rdfs:range rdf:resource="http://psi.ontopia.net/rdf/#Topic"/>
+    <rdfs:isDefinedBy rdf:resource="http://psi.ontopia.net/rdf/"/>
+  </rdf:Property>
+
+</rdf:RDF>

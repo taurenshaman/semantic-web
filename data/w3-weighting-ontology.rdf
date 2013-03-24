@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:rev="http://purl.org/stuff/rev#"
+   xmlns:scovo="http://purl.org/NET/scovo#"
+   xmlns:status="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+   xmlns:wo="http://purl.org/ontology/wo/core#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+   xml:base="http://purl.org/ontology/wo/core#">
+  <owl:Ontology rdf:about="http://purl.org/ontology/wo/core#">
+    <dc:creator rdf:resource="http://foaf.me/zazi#me"/>
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2010-09-14T11:40:52+01:00</dc:date>
+    <dc:description xml:lang="en">A vocabulary for describing weightings and their referenced scales.</dc:description>
+    <dc:description xml:lang="zh-CN">描述权重和引用的标尺的词汇集。</dc:description>
+    <dc:title xml:lang="en">Weighting Ontology</dc:title>
+    <dc:title xml:lang="zh-CN">权重本体</dc:title>
+    <vann:preferredNamespacePrefix>wo</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>http://purl.org/ontology/wo/core#</vann:preferredNamespaceUri>
+    <owl:imports rdf:resource="http://purl.org/NET/c4dm/event.owl"/>
+    <owl:imports rdf:resource="http://purl.org/NET/scovo"/>
+    <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <owl:imports rdf:resource="http://purl.org/stuff/rev"/>
+    <owl:imports rdf:resource="http://purl.org/vocab/vann/"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://purl.org/ontology/wo/core#Scale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">A concept for describing scales for weights.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">描述权重的标尺的概念。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">Scale</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">标尺</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/scovo#Dimension"/>
+    <status:term_status xml:lang="en">unstable</status:term_status>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://purl.org/ontology/wo/core#Weight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">A weight class to enable timestamped (etc.) weights.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">允许时间戳（等）的权重的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">Weight</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">权重</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/scovo#Item"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="http://purl.org/ontology/wo/core#weight_value"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://purl.org/ontology/wo/core#max_weight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment xml:lang="en">A maximum weight of a scale.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">标尺的最大权重。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/wo/core#Scale"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">has max weight</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最大权重</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/scovo#max"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/stuff/rev#maxRating"/>
+    <status:term_status xml:lang="en">unstable</status:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/wo/core#min_weight">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment xml:lang="en">A minimum weight of a scale.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">标尺的最小权重。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/wo/core#Scale"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">has min weight</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最小权重</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/scovo#min"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/stuff/rev#minRating"/>
+    <status:term_status xml:lang="en">unstable</status:term_status>
+  </rdf:Property>
+  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/wo/core#scale">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">A scale for the weighting of some relation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">某种关系的权重的标尺。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/wo/core#Weight"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">has scale</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">标尺</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/wo/core#Scale"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/scovo#dimension"/>
+    <status:term_status xml:lang="en">unstable</status:term_status>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://purl.org/ontology/wo/core#step_size">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">A predefined step size for weight of a specific scale.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">权重的特定标尺的预定义步长。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/wo/core#Scale"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">has step size</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">步长</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <status:term_status xml:lang="en">unstable</status:term_status>
+  </owl:FunctionalProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/wo/core#weight">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment xml:lang="en">The weight on some relation, e.g. a interest in a topic, or of an interest that is valid for a specific period of time or was raised up in a specific period of time.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">某种关系的权重，比如，对一个主题产生的兴趣，或者在某段时间内有效/提出的兴趣。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">has weight</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">权重</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/wo/core#Weight"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <status:term_status xml:lang="en">unstable</status:term_status>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://purl.org/ontology/wo/core#weight_value">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment xml:lang="en">The specific value of a weight.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">权重的特定值。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/wo/core#Weight"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/wo/core#"/>
+    <rdfs:label xml:lang="en">has weight value</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">权重值</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <status:term_status xml:lang="en">testing</status:term_status>
+  </rdf:Property>
+</rdf:RDF>

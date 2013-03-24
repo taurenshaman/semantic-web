@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY pmlp "http://inferenceweb.stanford.edu/2006/06/pml-provenance.owl#">
+  <!ENTITY pmlpbase "http://inferenceweb.stanford.edu/2006/06/pml-provenance.owl">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY ds "http://inferenceweb.stanford.edu/2006/06/ds.owl#">  
+]>
+
+<rdf:RDF xml:base="&pmlpbase;"
+         xmlns:owl="&owl;"
+         xmlns:pmlp="&pmlp;"
+	 xmlns:ds="&ds;"
+         xmlns ="&pmlp;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;">
+
+<!-- Ontology Information -->
+  <owl:Ontology rdf:about="">
+    <rdfs:comment xml:lang="en">The provenance part of PML2 ontology. It is a fundamental component of PML2 ontology.</rdfs:comment>
+    <rdfs:label xml:lang="en">PML2 provenance ontology</rdfs:label>
+    <owl:versionInfo xml:lang="en">version 2.0, Authors: Deborah L. McGuinness, Li Ding, Paulo Pinheiro da Silva, Alyssa Glass, and Cynthia Chang</owl:versionInfo>
+    <owl:imports>
+      <owl:Ontology rdf:about="&ds;"/>
+    </owl:imports>
+
+  </owl:Ontology>
+
+<!--
+V2.6.1a (May 23)
+* updated the error with hasEncoding and hasFormat
+
+V2.6.1 (May 9)
+* add Format as subclass IdentifiedThing and change it to the range of hasFormat
+* change problem hasInfoSourceUsage to hasReferenceSourceUsage
+
+v2.6 (April 4)
+* add a new property called hasInfoSourceUsage (domain: Information,  range:SourceUsage) card<=1
+  this will help us in conversion the following example in registry: the description of the inference rule GMP is obtained from a source, which is a publication "AI Textbook" (April 11)
+
+note: we replace hasYear, hasMonth, hasDay with hasPublicationDateTime because we want to keep consistency with other date time properties.
+  
+v2.5 (Mar 12)
+* add ds namespace prefix
+
+v2.4 (Feb 15)
+* add card<=1 for hasISBN [DONE]
+* keep prettynamemapping, move it to pmlp [DONE, TBD]
+   moved prettynamemapping related classes/properties to  PMLP  from pmlj
+   rename  hasPrettyNameMapping to hasPrettyNameMappingList, change its domain to Information (card<=1)
+   In the absence of hasPrettyNameMappingList, we use hasPrettyString of information, otherwise, we will render rawstring using prettyName mapping. 
+   Note hasPrettyString of information is a draft subsitution of hasPrettyNameMapping.
+
+
+v2.3 (Feb 10)
+ * Drop Axiom related concepts: two classes (Axiom; LanguageAxiomSet), and two properties (hasAxiom; forLanguage). They are legacy and not showing up in PML proofs. The corresponding data in IW registry will be archived and then removed after transition to PML2.
+ 
+ * Drop hasInstanceReference. It could be added by another ontology module
+ 
+ * add EmptyInformation as subclass of Information. Indicate that the conclusion of a justification is empty, no answer has been derived. In this case, the rawstring may contain some english message indicating no answer.
+  
+  * Add, no domain
+		hasCreationDateTime,  (<=1) on identified thing
+		hasModificationDateTime (>=0) on identified thing
+		hasOwner  (<=1) on identified thing
+ 
+  * Rename to hasExample to hasRuleExample, change domain to InferenceRule
+
+  * add hasPublicationDateTime  (<=1) to Publication
+  
+v2.2 (Jan 18)
+ * add an new property hasInstanceReference (type:ObjectProperty, domain:Information, range:n/a).
+   No cardinality restriction is required. It helps annotating the owl instance described by this information;
+   therefore, RDF browsers may feel easy to browse to the graph describing this instance without parsing rawString. This property only fits for information encoding RDF data. 
+
+v2.1
+ * change the domain of hasAuthorList to IdentifiedThing because artificially created thing may have authors
+ * add isMemberOf as the inverse of hasMember
+ * change from PersonList to AgentList because agent may also author something, e.g. automacially generated documents.
+ * switch from owls:List to our own list definition (add more cardinality restriction)
+ 
+ 
+ 
+-->  
+  
+  
+<!--*************************************************************************-->
+<!-- common properties-->
+<!--*************************************************************************-->
+
+  
+ <owl:ObjectProperty rdf:about="&pmlp;hasContent">
+    <rdfs:label xml:lang="en">content</rdfs:label>	
+    <rdfs:comment xml:lang="en"> This is a common concept that links to a piece of information. Currently, we focus on content of document, and inference rule.</rdfs:comment>
+    <rdfs:range rdf:resource="&pmlp;Information"/>
+ </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasOwner">
+    <rdfs:label xml:lang="en">owner</rdfs:label>	
+	<rdfs:comment xml:lang="en">the owner of a thing.</rdfs:comment>
+    <rdfs:range rdf:resource="&pmlp;Agent"/>
+  </owl:ObjectProperty>  
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasCreationDateTime">
+    <rdfs:label xml:lang="en">created</rdfs:label>	
+    <rdfs:comment xml:lang="en">When the artifact has been first created.</rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasModificationDateTime">
+    <rdfs:label xml:lang="en">last modified</rdfs:label>	
+    <rdfs:comment xml:lang="en">When the artifact has been modified.</rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasAuthorList">
+    <rdfs:label xml:lang="en">author(s)</rdfs:label>
+    <rdfs:comment xml:lang="en">A list of agents primarily responsible for making the artifact, for example, a person, an organization, or a software service. The AgentList enables an ordered list of agents; however, domain applications may optionally choose to ignore the order. We should be able to derive that each agent is the dc:creator of the artifact.</rdfs:comment>
+    <rdfs:range rdf:resource="&pmlp;AgentList"/>
+  </owl:ObjectProperty>
+  
+  <owl:Class rdf:about="&pmlp;AgentList">
+    <rdfs:label xml:lang="en"> List of Agents</rdfs:label>	
+    <rdfs:subClassOf rdf:resource="&ds;List"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="&pmlp;Agent"/>
+        <owl:onProperty rdf:resource="&ds;first"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="&pmlp;AgentList"/>
+        <owl:onProperty rdf:resource="&ds;rest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <!-- map to dcTerms:hasVersion -->
+  <owl:DatatypeProperty rdf:about="&pmlp;hasVersion">
+    <rdfs:label xml:lang="en">version</rdfs:label>	
+    <rdfs:comment xml:lang="en">the version number.</rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>  
+  
+<!--*************************************************************************-->
+<!-- identified thing -->
+<!--*************************************************************************-->
+
+  <owl:Class rdf:about="&pmlp;IdentifiedThing">
+    <rdfs:label xml:lang="en">Identified Thing</rdfs:label>	
+    <rdfs:comment xml:lang="en">The abstract root of provenance related concepts. It organizes a collection of common metadata about the referenced object, and it does not have any instance. </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasName"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasAuthorList"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasCreationDateTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasOwner"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+	<!-- map to rdfs:label -->  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasName">
+    <rdfs:label xml:lang="en">name</rdfs:label>	
+    <rdfs:comment xml:lang="en">the human readable label of the identified thing.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;IdentifiedThing"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- map to dc:description -->
+  <owl:ObjectProperty rdf:about="&pmlp;hasDescription">
+    <rdfs:label xml:lang="en">description</rdfs:label>	
+    <rdfs:comment xml:lang="en">The detailed description of the identified thing, e.g. a web page describing KIF language. An identified thing may have zero to many descriptions that could be written in different languages, format, and etc. </rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;IdentifiedThing"/>
+    <rdfs:range rdf:resource="&pmlp;Information"/>
+  </owl:ObjectProperty>
+
+<!--*************************************************************************-->
+<!-- Information -->
+<!--*************************************************************************-->
+
+
+  <owl:Class rdf:about="&pmlp;Information">
+    <rdfs:label xml:lang="en">Information</rdfs:label>	
+    <rdfs:comment xml:lang="en">A piece of information, e.g. a formula in logic languages, and an utterance/word/phrase/sentence/paragraph/article in natural language. It is used as a range of iw:hasContent. This class and two of its sub-classes enable users to specify four types of semantics  (i) Information Annotation - annotate just the format and language used by the content of information; (ii) Information With Content - additionally provide the content of information that is materialized as string without loading a web page; (iii) Information external - additionally provide the URL for fetching the content; and (iv) Information - with every thing including the content string and URL. The second semantics is especially useful when the content is short or mainly used locally. For example, when learning by instruction, the utterances used for learning can be stored within the PML document without being externally stored. By assigning URI reference to information, we can even use owl:sameAs to capture the equivalence of two pieces of information. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;IdentifiedThing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasLanguage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+    <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasFormat"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasURL"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasPrettyString"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasRawString"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasPrettyNameMappingList"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>	
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasReferenceSourceUsage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>	
+</owl:Class>
+
+
+  <!-- more than dc:language because we have language registered and include formal language-->
+  <owl:ObjectProperty rdf:about="&pmlp;hasLanguage">
+    <rdfs:label xml:lang="en">language</rdfs:label>	
+    <rdfs:comment xml:lang="en">it specifies the language used to encode information, e.g. "Tony's specialty is shellfish" is encoded in English. This property may also link to a registered formal language such as KIF.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&pmlp;Language"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasEncoding">
+    <rdfs:label xml:lang="en">encoding</rdfs:label>	
+    <rdfs:comment xml:lang="en">The content encoding, e.g. "base64". The value of this property helps applications determine the decoder of the raw string.	</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <!-- more than dc:format because we have format registered -->  
+  <owl:ObjectProperty rdf:about="&pmlp;hasFormat">
+    <rdfs:label xml:lang="en">format</rdfs:label>	
+    <rdfs:comment xml:lang="en">it specifies the format of information, e.g. "pdf", "ppt" (Power Point). It is mainly used to determine the appropriate application for process/display purpose.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&pmlp;Format"/>
+  </owl:ObjectProperty>
+
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasPrettyString">
+    <rdfs:label xml:lang="en">pretty-string</rdfs:label>	
+    <rdfs:comment xml:lang="en">the human friendly presentation of the information. Its format is text and it is usually written in English.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+  
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasRawString">
+    <rdfs:label xml:lang="en">raw-string</rdfs:label>	
+    <rdfs:comment xml:lang="en">materialized version of the content of information</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasURL">
+    <rdfs:label xml:lang="en">url</rdfs:label>	
+    <rdfs:comment xml:lang="en">The URL of a relevant web page.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>  
+  
+  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasMimetype">
+    <rdfs:label xml:lang="en">mime-type</rdfs:label>	
+    <rdfs:comment xml:lang="en">A well-defined string indicating the mime type of information content. Internet Media Types (MIME). see also http://www.iana.org/assignments/media-types/.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+  
+  
+<!-- 
+  <owl:ObjectProperty rdf:about="&pmlp;hasInstanceReference">
+    <rdfs:label xml:lang="en">about instance</rdfs:label>	
+    <rdfs:comment xml:lang="en">The reference (URI) of an OWL instance referred by this information. The semantics with this concept is to select all triples describing this instance's URI. If hasURL is also specified, we will load RDF graph from the url ; otherwise, we will use the current file to load RDF graph.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+  </owl:ObjectProperty>    
+-->  
+  
+  
+  <owl:ObjectProperty rdf:about="&pmlp;hasPrettyNameMappingList">
+	<rdfs:label xml:lang="en">pretty name mapping</rdfs:label>
+    <rdfs:comment xml:lang="en">The rendering instruction. UI tools may feed the PrettyNameMapping in sequence to string replace operation to get a pretty rendering of the conclusion of a NodeSet. It only applies to the conclusion of the node set.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&pmlp;PrettyNameMappingList"/>
+  </owl:ObjectProperty>  
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasReferenceSourceUsage">
+	<rdfs:label xml:lang="en">reference source usage</rdfs:label>
+    <rdfs:comment xml:lang="en">Explain how this information is obtained from a source: by whom, when, which source and which part of the source.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Information"/>
+    <rdfs:range rdf:resource="&pmlp;SourceUsage"/>
+  </owl:ObjectProperty>  
+
+<!-- format -->  
+  <owl:Class rdf:about="&pmlp;Format">
+    <rdfs:label xml:lang="en">Format</rdfs:label>	
+    <rdfs:comment xml:lang="en">A plan for the organization and arrangement of specified information. Examples: binary, text,  pdf, etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;IdentifiedThing"/>
+  </owl:Class>
+
+  
+<!-- langauge -->  
+  
+  <owl:Class rdf:about="&pmlp;Language">
+    <rdfs:label xml:lang="en">Language</rdfs:label>	
+    <rdfs:comment xml:lang="en">The language used to encode the raw string, e.g. English, Knowledge Interchange Format (KIF) , and N3. Languages are in general registered at the core IWRegistry.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;IdentifiedThing"/>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasEscapeCharacterSequence">
+    <rdfs:label xml:lang="en">escape character sequence</rdfs:label>	
+    <rdfs:comment xml:lang="en">The escape character used by a (formal) language (for parse use). It is used more like a comment indicator. This is used by InferenceML to embed metalangauge for proof checking (talk to Priyendra Deshwa).</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Language"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+    
+<!-- information with empty content -->
+  <owl:Class rdf:about="&pmlp;EmptyInformation">
+    <rdfs:label xml:lang="en">Empty Information</rdfs:label>	
+    <rdfs:comment xml:lang="en">An instance of information indicating no conclusion has been derived, i.e. empty set of statements. In this case, the rawstring may contain some english message indicating no answer. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Information"/>
+  </owl:Class>
+
+  
+<!--*************************************************************************-->
+<!-- source -->
+<!--*************************************************************************-->
+
+  <owl:Class rdf:about="&pmlp;Source">
+
+    <rdfs:label xml:lang="en">Source</rdfs:label>	
+    <rdfs:comment xml:lang="en">A source refers to the source of information. It is the place where we obtain information.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;IdentifiedThing"/>
+  </owl:Class>
+
+  
+  <!-- map to foaf:Agent -->
+  <owl:Class rdf:about="&pmlp;Agent">
+    <rdfs:label xml:lang="en">Agent</rdfs:label>	
+    <rdfs:comment xml:lang="en">actionalble entities.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Source"/>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="&pmlp;isMemberOf">
+    <rdfs:label xml:lang="en">member of</rdfs:label>	
+    <rdfs:comment xml:lang="en">An organization may have member agents such as persons and other organizations.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Agent"/>
+    <rdfs:range rdf:resource="&pmlp;Organization"/>
+    <owl:inverseOf rdf:resource="&pmlp;hasMember"/>
+
+  </owl:ObjectProperty>
+    
+  <owl:Class rdf:about="&pmlp;Organization">
+    <rdfs:label xml:lang="en">Organization</rdfs:label>	
+    <rdfs:comment xml:lang="en">A group of agents organized for a particular purpose, e.g., KSL, stanford.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Agent"/>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasMember">
+    <rdfs:label xml:lang="en">member</rdfs:label>	
+    <rdfs:comment xml:lang="en">An organization may have member agents such as persons and other organizations.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Organization"/>
+    <rdfs:range rdf:resource="&pmlp;Agent"/>
+  </owl:ObjectProperty>
+  
+  
+	<!-- map to foaf:Person -->
+  <owl:Class rdf:about="&pmlp;Person">
+    <rdfs:label xml:lang="en">Person</rdfs:label>	
+    <rdfs:comment xml:lang="en">A person</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Agent"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="&pmlp;Sensor">
+    <rdfs:label xml:lang="en">Sensor</rdfs:label>	
+    <rdfs:comment xml:lang="en">any device that receives a signal or stimulus (as heat or pressure or light or motion etc.) and records it. (WordNet)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Agent"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="&pmlp;Software">
+    <rdfs:label xml:lang="en">Software</rdfs:label>	
+    <rdfs:comment xml:lang="en">written programs or procedures or rules and associated documentation pertaining to the operation of a computer system and that are stored in read/write memory.(WordNet)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Agent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasVersion"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  
+  <owl:Class rdf:about="&pmlp;WebService">
+    <rdfs:label xml:lang="en">Web Service</rdfs:label>	
+    <rdfs:comment xml:lang="en">services implemented by software and available on the Web</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Software"/>
+  </owl:Class>
+
+
+	<!-- map to foaf:Document -->
+  <owl:Class rdf:about="&pmlp;Document">
+    <rdfs:label xml:lang="en">Document</rdfs:label>	
+    <rdfs:comment xml:lang="en">A physical information container that is not actionable. They function like database.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Source"/>
+    <owl:disjointWith rdf:resource="&pmlp;Agent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasContent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasVersion"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasAbstract"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+<!--	
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasYear"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>	
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasMonth"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasDay"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+-->
+  </owl:Class>
+
+	<!-- map to dc:publisher -->
+  <owl:ObjectProperty rdf:about="&pmlp;hasPublisher">
+    <rdfs:label xml:lang="en">publisher</rdfs:label>	
+    <rdfs:comment xml:lang="en">An agent responsible for making the document publicly available. see also http://purl.org/dc/elements/1.1/publisher.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Document"/>
+    <rdfs:range rdf:resource="&pmlp;Agent"/>
+  </owl:ObjectProperty>
+
+<!--  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasYear">
+    <rdfs:label xml:lang="en">year</rdfs:label>
+    <rdfs:domain rdf:resource="&pmlp;Document"/>
+    <rdfs:range rdf:resource="&xsd;gYear"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasMonth">
+    <rdfs:label xml:lang="en">month</rdfs:label>
+    <rdfs:domain rdf:resource="&pmlp;Document"/>
+    <rdfs:range rdf:resource="&xsd;gMonth"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasDay">
+    <rdfs:label xml:lang="en">day</rdfs:label>
+
+    <rdfs:domain rdf:resource="&pmlp;Document"/>
+    <rdfs:range rdf:resource="&xsd;gDay"/>
+  </owl:DatatypeProperty>
+-->
+  <owl:DatatypeProperty rdf:about="&pmlp;hasAbstract">
+    <rdfs:label xml:lang="en">abstract</rdfs:label>
+    <rdfs:comment xml:lang="en">The abstract of a document.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Document"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  
+  <owl:Class rdf:about="&pmlp;Ontology">
+    <rdfs:label xml:lang="en">Ontology</rdfs:label>
+    <rdfs:comment xml:lang="en">An Ontology is a document that describes a vocabulary of terms and their correlations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Document"/>
+  </owl:Class>
+
+  
+  <owl:Class rdf:about="&pmlp;Publication">
+    <rdfs:label xml:lang="en">Publication</rdfs:label>
+    <rdfs:comment xml:lang="en">If we have two versions of the same publication, we need to create two instances of Publication. A publication may have multiple ISBNs.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Document"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasISBN"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasPublicationDateTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasPublicationDateTime">
+    <rdfs:label xml:lang="en">published in</rdfs:label>	
+    <rdfs:comment xml:lang="en">When the publication is published.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Publication"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  	<!-- a special case of dc:identifier -->
+  <owl:DatatypeProperty rdf:about="&pmlp;hasISBN">
+    <rdfs:label xml:lang="en">isbn</rdfs:label>
+    <rdfs:comment xml:lang="en">The International Standard Book Number.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Publication"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- map to dcType:Dataset -->
+  <owl:Class rdf:about="&pmlp;Dataset">
+    <rdfs:label xml:lang="en">Dataset</rdfs:label>
+    <rdfs:comment xml:lang="en">A dataset is a collection of data document whose information is encoded in a defined structure (for example, lists, tables, and databases). see also http://purl.org/dc/dcmitype/Dataset.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Document"/>
+  </owl:Class>
+
+
+  <owl:Class rdf:about="&pmlp;Website">
+    <rdfs:label xml:lang="en">Website</rdfs:label>
+
+    <rdfs:comment xml:lang="en">Collection of files and related resources accessible through the World Wide Web and organized under a particular domain name. Typical files found at a Web site are HTML documents with their associated graphic image files (GIF, JPEG, etc.), scripted programs (in Perl, CGI, Java, etc.), and similar resources. The site's files are usually accessed through hypertext or hyperlinks embedded in other files. A Web site may consist of a single HTML file, or it may comprise hundreds or thousands of related files. A Web site's usual starting point or opening page, called a home page, usually functions as a table of contents or index, with links to other sections of the site. Web sites are hosted on one or more Web servers, which transfer files to client computers or other servers that request them using the HTTP protocol. Although the term ‘site’ implies a single physical location, the files and resources of a Web site may actually be spread among several servers in different geographic locations.(adapted from Britannica Concise Encyclopedia).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Document"/>
+<!--
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&pmlp;hasContent"/>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+-->
+  </owl:Class>
+  
+  
+ 
+  
+  <owl:Class rdf:about="&pmlp;DocumentFragment">
+    <rdfs:label xml:lang="en">Document Fragment</rdfs:label>
+    <rdfs:comment xml:lang="en">A fragment of document that can be used as source.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Source"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasDocument"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasDocument">
+    <rdfs:label xml:lang="en">document</rdfs:label>
+    <rdfs:comment xml:lang="en">A document fragment always depend on one source document, which is also the source.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;DocumentFragment"/>
+    <rdfs:range rdf:resource="&pmlp;Document"/>
+  </owl:ObjectProperty>  
+  
+  <owl:Class rdf:about="&pmlp;DocumentFragmentByOffset">
+    <rdfs:label xml:lang="en">Document Fragment by Offset</rdfs:label>
+    <rdfs:comment xml:lang="en">We may treat a document a one dimensional string, so we can mark a fragment with two offsets. We don't use byte because characters in text document may be multi-bytes.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;DocumentFragment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasFromOffset"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasToOffset"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasFromOffset">
+    <rdfs:label xml:lang="en">from-offset</rdfs:label>
+    <rdfs:comment xml:lang="en">The from offset of the fragment (inclusive, index based on 0).</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;DocumentFragmentByOffset"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasToOffset">
+    <rdfs:label xml:lang="en">to-offset</rdfs:label>
+    <rdfs:comment xml:lang="en">The to offset of the fragment (exclusive, index based on 0)</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;DocumentFragmentByOffset"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+  </owl:DatatypeProperty>
+
+  
+  <owl:Class rdf:about="&pmlp;DocumentFragmentByRowCol">
+    <rdfs:label xml:lang="en">Document Fragment by Row/Column</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&pmlp;DocumentFragment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasToRow"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasToCol"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasFromCol"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasFromRow"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasToRow">
+    <rdfs:label xml:lang="en">to-row</rdfs:label>
+    <rdfs:comment xml:lang="en">The to row of the fragment (inclusive, index based on 1)</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;DocumentFragmentByRowCol"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasToCol">
+    <rdfs:label xml:lang="en">to-column</rdfs:label>
+    <rdfs:comment xml:lang="en">The to column of the fragment (inclusive, index based on 1)</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;DocumentFragmentByRowCol"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasFromRow">
+    <rdfs:label xml:lang="en">from-row</rdfs:label>
+    <rdfs:comment xml:lang="en">The from row of the fragment (inclusive, index based on 1)</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;DocumentFragmentByRowCol"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasFromCol">
+    <rdfs:label xml:lang="en">from-column</rdfs:label>
+    <rdfs:comment xml:lang="en">The from column of the fragment (inclusive, index based on 1)</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;DocumentFragmentByRowCol"/>
+    <rdfs:range rdf:resource="&xsd;int"/>
+  </owl:DatatypeProperty>
+
+  
+
+  
+  <!-- source usage -->
+
+  <owl:Class rdf:about="&pmlp;SourceUsage">
+    <rdfs:label xml:lang="en">Source Usage</rdfs:label>
+    <rdfs:comment xml:lang="en">A usage of the source. It records an access of a source at a certain date time.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;IdentifiedThing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasSource"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasUsageDateTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasUsageQueryContent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasUsageDateTime">
+    <rdfs:label xml:lang="en">usage-datetime</rdfs:label>
+	<rdfs:comment xml:lang="en">the time stamp when the source usage occurred.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;SourceUsage"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasUsageQueryContent">
+    <rdfs:label xml:lang="en">query-content</rdfs:label>
+    <rdfs:comment xml:lang="en">The query content that leads to the source usage. e.g. the query part of a URL.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;SourceUsage"/>
+    <rdfs:subPropertyOf rdf:resource="&pmlp;hasContent"/>
+  </owl:ObjectProperty>
+ 
+  <!-- map to dc:source -->
+  <owl:ObjectProperty rdf:about="&pmlp;hasSource">
+    <rdfs:label xml:lang="en">source</rdfs:label>	
+    <rdfs:comment xml:lang="en">the source of the Source Usage, i.e. where does it come from.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;SourceUsage"/>
+    <rdfs:range rdf:resource="&pmlp;Source"/>
+  </owl:ObjectProperty>
+
+  
+  <owl:Class rdf:about="&pmlp;LearnedSourceUsage">
+
+    <rdfs:label xml:lang="en">Learned Source Usage</rdfs:label>
+    <rdfs:comment xml:lang="en">A special type of source usage. It records the modification of sources - the question that initiates the learning process, the duration of learning, the original source and current source used by learning.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;SourceUsage"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasDataCollectionStartDateTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasDataCollectionEndDateTime"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+
+  </owl:Class>  
+  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasDataCollectionStartDateTime">
+    <rdfs:label xml:lang="en">data-collection-start-datetime</rdfs:label>
+    <rdfs:comment xml:lang="en">the time stamp when data collection started</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;LearnedSourceUsage"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasDataCollectionEndDateTime">
+    <rdfs:label xml:lang="en">data-collection-end-datetime</rdfs:label>
+    <rdfs:comment xml:lang="en">the time stamp when data collection ended</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;LearnedSourceUsage"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+
+
+  
+  
+
+  
+  
+  
+<!--*************************************************************************-->
+<!-- Inference Related Concepts -->
+<!--*************************************************************************-->
+  
+ 
+  
+    
+  <owl:Class rdf:about="&pmlp;InferenceRule">
+    <rdfs:label xml:lang="en">Inference Rule</rdfs:label>
+    <rdfs:comment xml:lang="en">Inference rules are used to derive conclusions from premises.
+Inference Web divides inference rules into three classes: Primitive and Derived and Translation. 
+This is an abstract class without any direct instance. A primitive rule is an atomic rule with respect to an inference engine. An inference engine may support rules that it does not need to further decompose. Since a primitive rule is an inference engine dependent concept, we may find a rule is primitive to one inference engine but not to another engine. For example a `natural deduction reasoner R1 may define Modus Ponens as a primitive rule and another reasoner R2 may register Robinson's resolution rule as a primitive rule. The reasoner R2 may be able to derive a Modus Ponens rule using its primitive resolution rule. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;IdentifiedThing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasEnglishDescriptionTemplate"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasContent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>  
+  
+  <owl:DatatypeProperty rdf:about="&pmlp;hasEnglishDescriptionTemplate">
+    <rdfs:label xml:lang="en">english-description-template</rdfs:label>	
+	<rdfs:comment xml:lang="en">it is sub-property of rdfs:comment. It is also a simplified template for adding rule description template in English rather than using hasDescription.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;InferenceRule"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasRuleExample">
+    <rdfs:label xml:lang="en">rule example</rdfs:label>	
+	<rdfs:comment xml:lang="en">it is sub-property of rdfs:comment. It is used to provide an example to help users understand the referred entity.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;InferenceRule"/>
+    <rdfs:range rdf:resource="&pmlp;Information"/>
+  </owl:ObjectProperty>  
+
+  
+  <owl:Class rdf:about="&pmlp;DeclarativeRule">
+    <rdfs:label xml:lang="en">Declarative Rule</rdfs:label>
+    <rdfs:comment xml:lang="en">A declarative inference rule can be fully specified by patterns for premises and its conclusion.   For example, Modus Ponens, can be specified by the premise patterns ?A,  ?A -&amp;gt; ?B and the conclusion pattern ?B.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;InferenceRule"/>
+  </owl:Class>  
+  
+  <owl:Class rdf:about="&pmlp;MethodRule">
+    <rdfs:label xml:lang="en">Method Rule</rdfs:label>
+    <rdfs:comment xml:lang="en">A method inference rule, uses patterns for premises and its conclusions, and additionally contains a method that must be applied.  In addition, 
+the conclusion needs to be a valid output of the method, using the premises.  For example, procedural attachment is a common encoding form for method rules.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;InferenceRule"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="&pmlp;TranslationRule">
+    <rdfs:label xml:lang="en">Translation Rule</rdfs:label>
+    <rdfs:comment xml:lang="en">Translation rules are special kinds of inference rules which are used to translate expressions from one language to the other.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;MethodRule"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasToLanguage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasFromLanguage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <owl:ObjectProperty rdf:about="&pmlp;hasFromLanguage">
+
+    <rdfs:label xml:lang="en">from-language</rdfs:label>
+    <rdfs:comment xml:lang="en">language used by the source.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;TranslationRule"/>
+    <rdfs:range rdf:resource="&pmlp;Language"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasToLanguage">
+    <rdfs:label xml:lang="en">to-language</rdfs:label>
+    <rdfs:comment xml:lang="en">language used by the target.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;TranslationRule"/>
+    <rdfs:range rdf:resource="&pmlp;Language"/>
+  </owl:ObjectProperty>
+  
+
+  
+  
+
+<!--
+  <owl:Class rdf:about="&pmlp;Axiom">
+    <rdfs:label xml:lang="en">Axiom</rdfs:label>
+    <rdfs:comment xml:lang="en">Axiom is a concept in inference domain. Axioms are usually hard-encoded in a reasoner, such as those documented in the axiomatic semantics document for daml+oil (http://www.w3.org/TR/daml+oil-axioms). </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;IdentifiedThing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasContent"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  
+  <owl:Class rdf:about="&pmlp;LanguageAxiomSet">
+    <rdfs:label xml:lang="en">Language Axiom Set</rdfs:label>	
+    <rdfs:comment xml:lang="en">Language axiom set usually includes a set of language specific axioms that specify the semantics of the language.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Ontology"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasAxiom"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+        <owl:onProperty rdf:resource="&pmlp;forLanguage"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>  
+  
+  <owl:ObjectProperty rdf:about="&pmlp;forLanguage">
+    <rdfs:label xml:lang="en">for-language</rdfs:label>	
+    <rdfs:comment xml:lang="en">The present language axiom set is used  for the language.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;LanguageAxiomSet"/>
+    <rdfs:range rdf:resource="&pmlp;Language"/>
+  </owl:ObjectProperty>
+
+  
+  <owl:ObjectProperty rdf:about="&pmlp;hasAxiom">
+    <rdfs:label xml:lang="en">axiom</rdfs:label>	
+    <rdfs:comment xml:lang="en">The member axioms of this set.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;LanguageAxiomSet"/>
+    <rdfs:range rdf:resource="&pmlp;Axiom"/>
+  </owl:ObjectProperty>
+-->
+
+  <!-- sources that are used for describe inference -->
+  
+  <owl:Class rdf:about="&pmlp;InferenceEngine">
+    <rdfs:label xml:lang="en">Inference Engine</rdfs:label>	
+    <rdfs:comment xml:lang="en">An inference engine represents an engine that is able to produce a justification for a conclusion. Note that the phrase "inference engine" applies not only to reasoners but also to other systems like search engines which may justify their answers by direct assertion</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pmlp;Software"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasInferenceEngineRule"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>  
+  
+
+  <owl:ObjectProperty rdf:about="&pmlp;hasInferenceEngineRule">
+    <rdfs:label xml:lang="en">uses-inference-rule</rdfs:label>	
+    <rdfs:comment xml:lang="en">The inference rules used by the inference engine</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;InferenceEngine"/>
+    <rdfs:range rdf:resource="&pmlp;InferenceRule"/>
+  </owl:ObjectProperty>  
+  
+  <owl:ObjectProperty rdf:about="#usesInferenceEngine">
+    <rdfs:label xml:lang="en">uses-inference-engine</rdfs:label>	
+    <rdfs:comment xml:lang="en">The inference engine used by an agent</rdfs:comment>
+    <rdfs:domain rdf:resource="&pmlp;Agent"/>
+    <rdfs:range rdf:resource="&pmlp;InferenceEngine"/>
+  </owl:ObjectProperty>
+
+<!--*************************************************************************-->
+<!--  Rendering instructions  -->
+<!--*************************************************************************-->
+
+
+  <owl:Class rdf:about="&pmlp;PrettyNameMappingList">
+    <rdfs:label xml:lang="en"> List of PrettyNameMappings</rdfs:label>	
+    <rdfs:subClassOf rdf:resource="&ds;List"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="&pmlp;PrettyNameMapping"/>
+        <owl:onProperty rdf:resource="&ds;first"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="&pmlp;PrettyNameMappingList"/>
+        <owl:onProperty rdf:resource="&ds;rest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>  
+
+ <owl:Class rdf:about="&pmlp;PrettyNameMapping">
+    <rdfs:comment xml:lang="en">specially designed for pretty display purpose.</rdfs:comment>
+	<rdfs:label xml:lang="en">Pretty Name Mapping</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasReplacee"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&pmlp;hasShortPrettyName"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasReplacee">
+	<rdfs:label xml:lang="en">replacee</rdfs:label>
+    <rdfs:domain rdf:resource="&pmlp;PrettyNameMapping"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasPrettyName">
+	<rdfs:label xml:lang="en">pretty name</rdfs:label>
+    <rdfs:domain rdf:resource="&pmlp;PrettyNameMapping"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasShortPrettyName">
+	<rdfs:label xml:lang="en">short pretty name</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="&pmlp;hasPrettyName"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="&pmlp;hasLongPrettyName">
+	<rdfs:label xml:lang="en">long pretty name</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="&pmlp;hasPrettyName"/>
+  </owl:DatatypeProperty>
+  
+</rdf:RDF>

@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <owl:Ontology rdf:about="tag:govshare.info,2005:rdf/vote/" dc:date="Feb. 25, 2005">
+    <dc:title xml:lang="en-US">Vote vocabulary</dc:title>
+    <dc:title xml:lang="zh-CN">投票词汇集</dc:title>
+    <dc:description xml:lang="en-US">An ontology for votes.</dc:description>
+    <dc:description xml:lang="zh-CN">关于投票的本体。</dc:description>
+  </owl:Ontology>
+  <!-- CLASSES -->
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/Vote">
+    <rdfs:label xml:lang="en-US">Vote</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">投票</rdfs:label>
+    <rdfs:comment xml:lang="en-US">A vote in which agents cast choices.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">代理投给所选项的票。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/Ballot">
+    <rdfs:label xml:lang="en-US">Ballot</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">选票</rdfs:label>
+    <rdfs:comment xml:lang="en-US">A choice made by a voter in a Vote.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">投票人在投票中的选项。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/Option">
+    <rdfs:label xml:lang="en-US">Option</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">选项</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The parent class of all of the ballot options defined in this specification, although any resource can be used as an option.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">本规范中定义的所有投票选项的父类，尽管任何资源都可以用作一个选项。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <!-- OPTION SUBCLASSES -->
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/Aye">
+    <rdfs:label xml:lang="en-US">Aye</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">赞成</rdfs:label>
+    <rdfs:comment xml:lang="en-US">An Aye vote.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">赞成票。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="tag:govshare.info,2005:rdf/vote/Option" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/Nay">
+    <rdfs:label xml:lang="en-US">Nay</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">反对</rdfs:label>
+    <rdfs:comment xml:lang="en-US">A Nay vote.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">反对票。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="tag:govshare.info,2005:rdf/vote/Option" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/Abstention">
+    <rdfs:label xml:lang="en-US">Abstention</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">弃权</rdfs:label>
+    <rdfs:comment xml:lang="en-US">An 'abstain'-type choice, to be used when a voter cast a ballot with none of the customary options chosen.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个“弃权”类型的选择，用于当投票人投票时没有惯有选项以供选择的情况。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="tag:govshare.info,2005:rdf/vote/Option" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/NoVote">
+    <rdfs:label xml:lang="en-US">NoVote</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">未投票</rdfs:label>
+    <rdfs:comment xml:lang="en-US">An 'absent'-type option, to be used when a voter did not cast a Ballot but a positive record of the voter's inaction needs to be recorded.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个“缺席”类型的选择，用于当投票人没有投票而他的无作为需要被记录为一个积极记录时的情况。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="tag:govshare.info,2005:rdf/vote/Option" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <!-- VOTE TYPE SUBCLASSES -->
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/PluralityVote">
+    <rdfs:label xml:lang="en-US">Plurality Vote</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">多数票</rdfs:label>
+    <rdfs:comment xml:lang="en-US">A type of Vote in which the winner is the single option with the most number of votes.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">投票的一种类型，获胜者是获得最多票数的单一选项。。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/TwoThirdsVote">
+    <rdfs:label xml:lang="en-US">Two-Thirds Vote</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">三分之二选票</rdfs:label>
+    <rdfs:comment xml:lang="en-US">A type of Vote in which the default option wins unless two-thirds or more voters choose the alternative.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">投票的一种类型，默认是至少三分之二的选民支持的选项获胜。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <rdfs:Class rdf:about="tag:govshare.info,2005:rdf/vote/ApprovalVote">
+    <rdfs:label xml:lang="en-US">Approval Vote</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">赞成票</rdfs:label>
+    <rdfs:comment xml:lang="en-US">A type of Vote in which voters vote for as many options as they want, and the winner is the single option with the most number of votes.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">投票的一种类型，选民可以给他们希望的尽可能多的选项投票，而最终获胜者是最多票数的单一选项。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdfs:Class>
+  <!-- PROPERTIES -->
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/heldBy">
+    <rdfs:label xml:lang="en-US">heldBy</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">举办</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Indicates the organization that held the vote.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">指明举办投票的组织。</rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Organization" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/procedure">
+    <rdfs:label xml:lang="en-US">Procedure</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">程序</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Indicates the voting procedures, in natural language.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">使用自然语言表示的投票程序。</rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/threshold">
+    <rdfs:label xml:lang="en-US">Threshold</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">For a plurality vote, the threshold of votes needed for the plurality choice to be deemed a winner.  Valid values are any fraction expressed as an integer numerator, a slash, and an integer denominator.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/hasOption">
+    <rdfs:label xml:lang="en-US">hasOption</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Specifies that an option is available for voters in a Vote.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/default">
+    <rdfs:label xml:lang="en-US">default</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Specifies the default option in Votes that have such an option.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/winner">
+    <rdfs:label xml:lang="en-US">Winner</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Indicates the winning option(s) in a vote, if the winner is known.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/hasBallot">
+    <rdfs:label xml:lang="en-US">hasBallot</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Specifies that a Ballot was cast in a Vote.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Vote" />
+    <rdfs:range rdf:resource="tag:govshare.info,2005:rdf/vote/Ballot" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/voter">
+    <rdfs:label xml:lang="en-US">Voter</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Indicates the agent that cast the ballot.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Ballot" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+  <rdf:Property rdf:about="tag:govshare.info,2005:rdf/vote/option">
+    <rdfs:label xml:lang="en-US">Option</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en-US">Indicates the option chosen on a Ballot.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="tag:govshare.info,2005:rdf/vote/Ballot" />
+    <rdfs:isDefinedBy rdf:resource="tag:govshare.info,2005:rdf/vote/" />
+  </rdf:Property>
+</rdf:RDF>

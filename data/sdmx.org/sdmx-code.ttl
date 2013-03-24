@@ -1,0 +1,727 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix scovo:   <http://purl.org/NET/scovo#> .
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix vcard:   <http://www.w3.org/2006/vcard/ns#> .
+@prefix sdmx:    <http://purl.org/linked-data/sdmx#> .
+@prefix sdmx-concept:    <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension:  <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-attribute:  <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-measure:    <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-metadata:   <http://purl.org/linked-data/sdmx/2009/metadata#> .
+@prefix sdmx-code:       <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix sdmx-subject:    <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix dcterms:         <http://purl.org/dc/terms/>.
+@prefix qb:              <http://purl.org/linked-data/cube#> .
+
+# CL_CURRENCY
+sdmx-code:currency a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "code list for Currency (CURRENCY) - codelist scheme"@en;
+    rdfs:label "code list for Currency (CURRENCY) - codelist scheme"@en;
+    skos:notation "CL_CURRENCY";
+    skos:note """This code list provides code values for currencies."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:Currency .
+
+sdmx-code:Currency a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "code list for Currency (CURRENCY) - codelist class"@en;
+    rdfs:comment """This code list provides code values for currencies."""@en;
+    rdfs:seeAlso sdmx-code:currency .
+
+# CL_AREA
+sdmx-code:area a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "Code list for providing values to concepts such as 'Reference area' and/or 'Counterpart area' - codelist scheme"@en;
+    rdfs:label "Code list for providing values to concepts such as 'Reference area' and/or 'Counterpart area' - codelist scheme"@en;
+    skos:notation "CL_AREA";
+    skos:note """: This code list provides code values for geographical areas, defined as areas included within the borders of a country, region, group of countries, etc."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:Area .
+
+sdmx-code:Area a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Code list for providing values to concepts such as 'Reference area' and/or 'Counterpart area' - codelist class"@en;
+    rdfs:comment """: This code list provides code values for geographical areas, defined as areas included within the borders of a country, region, group of countries, etc."""@en;
+    rdfs:seeAlso sdmx-code:area .
+
+# CL_DECIMALS
+sdmx-code:decimals a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "Code list for Decimals (DECIMALS) - codelist scheme"@en;
+    rdfs:label "Code list for Decimals (DECIMALS) - codelist scheme"@en;
+    skos:notation "CL_DECIMALS";
+    skos:note """It provides a list of values showing the number of decimal digits used in the data."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:Decimals .
+
+sdmx-code:Decimals a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Code list for Decimals (DECIMALS) - codelist class"@en;
+    rdfs:comment """It provides a list of values showing the number of decimal digits used in the data."""@en;
+    rdfs:seeAlso sdmx-code:decimals .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-0> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Zero"@en ;
+    skos:notation "0" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-0> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-1> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "One"@en ;
+    skos:notation "1" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-1> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-2> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Two"@en ;
+    skos:notation "2" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-2> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-3> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Three"@en ;
+    skos:notation "3" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-3> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-4> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Four"@en ;
+    skos:notation "4" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-4> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-5> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Five"@en ;
+    skos:notation "5" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-5> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-6> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Six"@en ;
+    skos:notation "6" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-6> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-7> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Seven"@en ;
+    skos:notation "7" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-7> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-8> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Eight"@en ;
+    skos:notation "8" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-8> .
+
+<http://purl.org/linked-data/sdmx/2009/code#decimals-9> a skos:Concept, sdmx:Concept, sdmx-code:Decimals;
+    skos:topConceptOf sdmx-code:decimals;
+    skos:inScheme     sdmx-code:decimals;
+    skos:prefLabel "Nine"@en ;
+    skos:notation "9" ;
+    . 
+sdmx-code:decimals skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#decimals-9> .
+
+# CL_FREQ
+sdmx-code:freq a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "Code list for Frequency (FREQ) - codelist scheme"@en;
+    rdfs:label "Code list for Frequency (FREQ) - codelist scheme"@en;
+    skos:notation "CL_FREQ";
+    skos:note """It provides a list of values indicating the "frequency" of the data (e.g. monthly) and, thus, indirectly, also implying the type of "time reference" that could be used for identifying the data with respect time."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:Freq .
+
+sdmx-code:Freq a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Code list for Frequency (FREQ) - codelist class"@en;
+    rdfs:comment """It provides a list of values indicating the "frequency" of the data (e.g. monthly) and, thus, indirectly, also implying the type of "time reference" that could be used for identifying the data with respect time."""@en;
+    rdfs:seeAlso sdmx-code:freq .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-A> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Annual"@en ;
+    skos:notation "A" ;
+    skos:definition """It is typically used for annual data. This can also serve cases of multi-annual data (data that appear once every two, three or, possibly, five years).  Descriptive information on the multiannual characteristics (e.g. frequency of the series in practice and other methodological information can be provided at the dataflow level, as long as these characteristics are applicable for the entire dataflow)."""@en ; 
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-A> .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-B> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Daily - business week"@en ;
+    skos:notation "B" ;
+    skos:definition """Similar to "daily", however there are no observations for Saturday and Sunday (so, neither "missing values" nor "numeric values" should be provided for Saturday and Sunday). This treatment ("business") is one way to deal with such cases, but it is not the only option. Such a time series could alternatively be considered daily ("D"), thus, with missing values in the weekend."""@en ; 
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-B> .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-D> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Daily"@en ;
+    skos:notation "D" ;
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-D> .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-M> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Monthly"@en ;
+    skos:notation "M" ;
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-M> .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-N> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Minutely"@en ;
+    skos:notation "N" ;
+    skos:definition """While N denotes "minutely", usually, there may be no observations every minute (for several series the frequency is usually "irregular" within a day/days). And though observations may be sparse (not collected every minute), missing values do not need to be given for the minutes when no observations exist: in any case the time stamp determines when an observation is observed."""@en ; 
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-N> .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-Q> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Quarterly"@en ;
+    skos:notation "Q" ;
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-Q> .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-S> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Half Yearly, semester"@en ;
+    skos:notation "S" ;
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-S> .
+
+<http://purl.org/linked-data/sdmx/2009/code#freq-W> a skos:Concept, sdmx:Concept, sdmx-code:Freq;
+    skos:topConceptOf sdmx-code:freq;
+    skos:inScheme     sdmx-code:freq;
+    skos:prefLabel "Weekly"@en ;
+    skos:notation "W" ;
+    . 
+sdmx-code:freq skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#freq-W> .
+
+# CL_CONF_STATUS
+sdmx-code:confStatus a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "code list for Confidentiality Status (CONF_STATUS) - codelist scheme"@en;
+    rdfs:label "code list for Confidentiality Status (CONF_STATUS) - codelist scheme"@en;
+    skos:notation "CL_CONF_STATUS";
+    skos:note """this code list provides coded information about the sensitivity and confidentiality status of the data."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:ConfStatus .
+
+sdmx-code:ConfStatus a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "code list for Confidentiality Status (CONF_STATUS) - codelist class"@en;
+    rdfs:comment """this code list provides coded information about the sensitivity and confidentiality status of the data."""@en;
+    rdfs:seeAlso sdmx-code:confStatus .
+
+<http://purl.org/linked-data/sdmx/2009/code#confStatus-C> a skos:Concept, sdmx:Concept, sdmx-code:ConfStatus;
+    skos:topConceptOf sdmx-code:confStatus;
+    skos:inScheme     sdmx-code:confStatus;
+    skos:prefLabel "Confidential statistical information"@en ;
+    skos:notation "C" ;
+    skos:definition """Confidential statistical information (primary confidentiality) due to identifiable respondents.  Measures also should be taken to prevent not only direct access, but also indirect deduction or calculation by other users and parties, probably by considering and treating additional observations as "confidential" (secondary confidentiality management)."""@en ; 
+    . 
+sdmx-code:confStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#confStatus-C> .
+
+<http://purl.org/linked-data/sdmx/2009/code#confStatus-D> a skos:Concept, sdmx:Concept, sdmx-code:ConfStatus;
+    skos:topConceptOf sdmx-code:confStatus;
+    skos:inScheme     sdmx-code:confStatus;
+    skos:prefLabel "Secondary confidentiality set by the sender, not for publication"@en ;
+    skos:notation "D" ;
+    skos:definition """Used by the sender of the data to flag (beyond the confidential statistical information) one or more additional observations of the dataset so that the receiver knows that he/she should suppress these observations in subsequent stages of processing (especially, dissemination) in order to prevent third parties to indirectly deduct (e.g. through accounting identities or other formulas) the observations that are genuinely flagged with "C"."""@en ; 
+    . 
+sdmx-code:confStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#confStatus-D> .
+
+<http://purl.org/linked-data/sdmx/2009/code#confStatus-F> a skos:Concept, sdmx:Concept, sdmx-code:ConfStatus;
+    skos:topConceptOf sdmx-code:confStatus;
+    skos:inScheme     sdmx-code:confStatus;
+    skos:prefLabel "Free"@en ;
+    skos:notation "F" ;
+    skos:definition """It is used for observations for observations for which there are no special sensitivity considerations and which can be freely shared. Please note:
+In some institutional environments the term "unclassified" is used in a sense that still denotes implied restrictions in the circulation of information. If this is the case, this organisation may probably consider that "free" (value F) is not the appropriate corresponding tag for this kind of "unclassified" category and it may be that "non-publishable / restricted" (value N) may be more appropriate.
+The focus of this code is not to describe and anticipate all potential permissible uses (e.g. permission to re-disseminate). Thus, the use of "F" does not allow safe assumptions with respect to the permission to "re-disseminate" (freely or at a price) the received or accessed information (e.g. on web or paper), especially on a massive and regular basis (legal and copyright constraints may apply). Usually, source organisations provide information and guidance on re-dissemination issues, either on their websites or on their paper publications."""@en ; 
+    . 
+sdmx-code:confStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#confStatus-F> .
+
+<http://purl.org/linked-data/sdmx/2009/code#confStatus-N> a skos:Concept, sdmx:Concept, sdmx-code:ConfStatus;
+    skos:topConceptOf sdmx-code:confStatus;
+    skos:inScheme     sdmx-code:confStatus;
+    skos:prefLabel "Not for publication, restricted for internal use only"@en ;
+    skos:notation "N" ;
+    skos:definition """Used to denote observations that are restricted for internal use only within organisations."""@en ; 
+    . 
+sdmx-code:confStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#confStatus-N> .
+
+<http://purl.org/linked-data/sdmx/2009/code#confStatus-S> a skos:Concept, sdmx:Concept, sdmx-code:ConfStatus;
+    skos:topConceptOf sdmx-code:confStatus;
+    skos:inScheme     sdmx-code:confStatus;
+    skos:prefLabel "Secondary confidentiality set and managed by the receiver, not for publication"@en ;
+    skos:notation "S" ;
+    skos:definition """If senders do not manage the secondary confidentiality in their data and/or there are also other countries' data involved (with the intention to eventually compile a regional-wide aggregate that is going to be published), the value "S" is used by the receiver to flag additional suppressed observations (within sender's data and/or within the datasets of other senders) in subsequent stages of processing (especially, dissemination) in order to prevent third parties to indirectly deduct the observations that were genuinely flagged with "C" by the sender."""@en ; 
+    . 
+sdmx-code:confStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#confStatus-S> .
+
+# CL_OBS_STATUS
+sdmx-code:obsStatus a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "Observation status - codelist scheme"@en;
+    rdfs:label "Observation status - codelist scheme"@en;
+    skos:notation "CL_OBS_STATUS";
+    skos:note """This code list provides coded information about the "status" of an observation (with respect events such as the ones reflected in the codes composing the code list)."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:ObsStatus .
+
+sdmx-code:ObsStatus a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Observation status - codelist class"@en;
+    rdfs:comment """This code list provides coded information about the "status" of an observation (with respect events such as the ones reflected in the codes composing the code list)."""@en;
+    rdfs:seeAlso sdmx-code:obsStatus .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-A> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Normal"@en ;
+    skos:notation "A" ;
+    skos:definition """Normal is the default value (if no value is provided) and is used when no special coded qualification is assumed. Usually, in this case, it can be assumed that the source agency assigns sufficient confidence to the provided observation and/or the value is not expected to be dramatically revised."""@en ; 
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-A> .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-B> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Break"@en ;
+    skos:notation "B" ;
+    skos:definition """Break observations are characterised as such when different content exist or a different methodology has been applied to this observation as compared with the preceding one (the one given for the previous period)."""@en ; 
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-B> .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-E> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Estimated value"@en ;
+    skos:notation "E" ;
+    skos:definition """Observation obtained through an estimation methodology (e.g. to produce back-casts) or based on the use of a limited amount of data or ad hoc sampling and through additional calculations (e.g. to produce a value at an early stage of the production stage while not all data are available). It may also be used in case of experimental data (e.g. in the context of a pilot ahead of a full scale production process) or in case of data of (anticipated/assessed) low quality. If needed, additional (uncoded) information can be provided through (free text) "comments" at the observation level or at a higher level."""@en ; 
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-E> .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-F> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Forecast value"@en ;
+    skos:notation "F" ;
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-F> .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-I> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Imputed value (CCSA definition)"@en ;
+    skos:notation "I" ;
+    skos:definition """Observation imputed by international organisations to replace or fill gaps in national data series, in line with the recommendations of the Committee for the Coordination of Statistical Activities (CCSA)."""@en ; 
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-I> .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-M> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Missing value"@en ;
+    skos:notation "M" ;
+    skos:definition """Data can be missing due to various reasons:  data do not exist, are insignificant (or not collected because they are below a certain threshold), are unreliable, are not relevant for the period, or other reason not elsewhere specified."""@en ; 
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-M> .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-P> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Provisional value"@en ;
+    skos:notation "P" ;
+    skos:definition """An observation is characterised as "provisional" when the source agency - while it bases its calculations on its standard production methodology - considers that the data, almost certainly, are expected to be revised."""@en ; 
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-P> .
+
+<http://purl.org/linked-data/sdmx/2009/code#obsStatus-S> a skos:Concept, sdmx:Concept, sdmx-code:ObsStatus;
+    skos:topConceptOf sdmx-code:obsStatus;
+    skos:inScheme     sdmx-code:obsStatus;
+    skos:prefLabel "Strike"@en ;
+    skos:notation "S" ;
+    skos:definition """A known strike that occurred in the corresponding period that may have affected the observation or caused a missing value."""@en ; 
+    . 
+sdmx-code:obsStatus skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#obsStatus-S> .
+
+# CL_SEX
+sdmx-code:sex a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "Code list for Sex (SEX) - codelist scheme"@en;
+    rdfs:label "Code list for Sex (SEX) - codelist scheme"@en;
+    skos:notation "CL_SEX";
+    skos:note """This  code list provides the gender."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:Sex .
+
+sdmx-code:Sex a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Code list for Sex (SEX) - codelist class"@en;
+    rdfs:comment """This  code list provides the gender."""@en;
+    rdfs:seeAlso sdmx-code:sex .
+
+<http://purl.org/linked-data/sdmx/2009/code#sex-F> a skos:Concept, sdmx:Concept, sdmx-code:Sex;
+    skos:topConceptOf sdmx-code:sex;
+    skos:inScheme     sdmx-code:sex;
+    skos:prefLabel "Female"@en ;
+    skos:notation "F" ;
+    . 
+sdmx-code:sex skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#sex-F> .
+
+<http://purl.org/linked-data/sdmx/2009/code#sex-M> a skos:Concept, sdmx:Concept, sdmx-code:Sex;
+    skos:topConceptOf sdmx-code:sex;
+    skos:inScheme     sdmx-code:sex;
+    skos:prefLabel "Male"@en ;
+    skos:notation "M" ;
+    . 
+sdmx-code:sex skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#sex-M> .
+
+<http://purl.org/linked-data/sdmx/2009/code#sex-U> a skos:Concept, sdmx:Concept, sdmx-code:Sex;
+    skos:topConceptOf sdmx-code:sex;
+    skos:inScheme     sdmx-code:sex;
+    skos:prefLabel "Not specified or unknown"@en ;
+    skos:notation "U" ;
+    . 
+sdmx-code:sex skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#sex-U> .
+
+<http://purl.org/linked-data/sdmx/2009/code#sex-N> a skos:Concept, sdmx:Concept, sdmx-code:Sex;
+    skos:topConceptOf sdmx-code:sex;
+    skos:inScheme     sdmx-code:sex;
+    skos:prefLabel "Not applicable"@en ;
+    skos:notation "N" ;
+    . 
+sdmx-code:sex skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#sex-N> .
+
+<http://purl.org/linked-data/sdmx/2009/code#sex-T> a skos:Concept, sdmx:Concept, sdmx-code:Sex;
+    skos:topConceptOf sdmx-code:sex;
+    skos:inScheme     sdmx-code:sex;
+    skos:prefLabel "Total"@en ;
+    skos:notation "T" ;
+    . 
+sdmx-code:sex skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#sex-T> .
+
+# CL_TIME_FORMAT
+sdmx-code:timeFormat a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "Code list for the Time Format as written in the SDMX-EDI and SDMX-ML messages - codelist scheme"@en;
+    rdfs:label "Code list for the Time Format as written in the SDMX-EDI and SDMX-ML messages - codelist scheme"@en;
+    skos:notation "CL_TIME_FORMAT";
+    skos:note """These codes (based on the ISO 8601 standard) indicate the type of time references used in the data. The numeric codes below (203, 102,...,702) are used only in the SDMX-EDI messages; and the alphanumeric codes (P1D...PT1M) only in the SDMX-ML messages."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:TimeFormat .
+
+sdmx-code:TimeFormat a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "Code list for the Time Format as written in the SDMX-EDI and SDMX-ML messages - codelist class"@en;
+    rdfs:comment """These codes (based on the ISO 8601 standard) indicate the type of time references used in the data. The numeric codes below (203, 102,...,702) are used only in the SDMX-EDI messages; and the alphanumeric codes (P1D...PT1M) only in the SDMX-ML messages."""@en;
+    rdfs:seeAlso sdmx-code:timeFormat .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-102> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYMMDD"@en ;
+    skos:notation "102" ;
+    skos:definition """(for daily and business series)
+year/month/day"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-102> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-203> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYMMDDhhmm"@en ;
+    skos:notation "203" ;
+    skos:definition """(for series with freq. higher than daily)
+year/month/day/hours/minutes"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-203> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-602> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYY"@en ;
+    skos:notation "602" ;
+    skos:definition """(for annual series)
+year"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-602> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-604> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYS"@en ;
+    skos:notation "604" ;
+    skos:definition """(for half yearly series)
+year/semester"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-604> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-608> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYQ"@en ;
+    skos:notation "608" ;
+    skos:definition """(for quarterly series)
+year/quarter"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-608> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-610> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYMM"@en ;
+    skos:notation "610" ;
+    skos:definition """(for monthly series)
+year/month"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-610> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-616> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYWW"@en ;
+    skos:notation "616" ;
+    skos:definition """(for weekly series)
+year/ week"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-616> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-702> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYCCYY"@en ;
+    skos:notation "702" ;
+    skos:definition """(for annual series)
+from year to year"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-702> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-704> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYSCCYYS"@en ;
+    skos:notation "704" ;
+    skos:definition """(for half yearly series)
+from half-year to half-year"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-704> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-708> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYQCCYYQ"@en ;
+    skos:notation "708" ;
+    skos:definition """(for quarterly series)
+from year/quarter to year/quarter"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-708> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-710> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYMMCCYYMM"@en ;
+    skos:notation "710" ;
+    skos:definition """(for monthly series)
+from year/month to year/month"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-710> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-711> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYMMDDCCYYMMDD"@en ;
+    skos:notation "711" ;
+    skos:definition """(for daily and business series)
+from year/month/day to year/month/day"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-711> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-716> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYWWCCYYWW"@en ;
+    skos:notation "716" ;
+    skos:definition """(for weekly series)
+from year/week to year/week"""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-716> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-719> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "CCYYMMDDhhmmmCCYYMMDDhhmmm"@en ;
+    skos:notation "719" ;
+    skos:definition """(for series with freq. higher than daily)
+year/month/day/hours/minutes to year/month/day/hours/minutes."""@en ; 
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-719> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-P1D> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "Daily (or Business)"@en ;
+    skos:notation "P1D" ;
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-P1D> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-P1M> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "Monthly"@en ;
+    skos:notation "P1M" ;
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-P1M> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-P1Y> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "Annual"@en ;
+    skos:notation "P1Y" ;
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-P1Y> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-P3M> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "Quarterly"@en ;
+    skos:notation "P3M" ;
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-P3M> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-P6M> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "Half-yearly"@en ;
+    skos:notation "P6M" ;
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-P6M> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-P7D> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "Weekly"@en ;
+    skos:notation "P7D" ;
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-P7D> .
+
+<http://purl.org/linked-data/sdmx/2009/code#timeFormat-PT1M> a skos:Concept, sdmx:Concept, sdmx-code:TimeFormat;
+    skos:topConceptOf sdmx-code:timeFormat;
+    skos:inScheme     sdmx-code:timeFormat;
+    skos:prefLabel "Minutely"@en ;
+    skos:notation "PT1M" ;
+    . 
+sdmx-code:timeFormat skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#timeFormat-PT1M> .
+
+# CL_UNIT_MULT
+sdmx-code:unitMult a skos:ConceptScheme, sdmx:CodeList;
+    skos:prefLabel "code list for the Unit Multiplier (UNIT_MULT) - codelist scheme"@en;
+    rdfs:label "code list for the Unit Multiplier (UNIT_MULT) - codelist scheme"@en;
+    skos:notation "CL_UNIT_MULT";
+    skos:note """it provides code values for indicating the magnitude in the units of measurements."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/02_sdmx_cog_annex_2_cl_2009.pdf> ;
+    rdfs:seeAlso sdmx-code:UnitMult .
+
+sdmx-code:UnitMult a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "code list for the Unit Multiplier (UNIT_MULT) - codelist class"@en;
+    rdfs:comment """it provides code values for indicating the magnitude in the units of measurements."""@en;
+    rdfs:seeAlso sdmx-code:unitMult .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-0> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Units"@en ;
+    skos:notation "0" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-0> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-1> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Tens"@en ;
+    skos:notation "1" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-1> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-2> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Hundreds"@en ;
+    skos:notation "2" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-2> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-3> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Thousands"@en ;
+    skos:notation "3" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-3> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-4> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Tens of thousands"@en ;
+    skos:notation "4" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-4> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-6> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Millions"@en ;
+    skos:notation "6" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-6> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-9> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Billions"@en ;
+    skos:notation "9" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-9> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-12> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Trillions"@en ;
+    skos:notation "12" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-12> .
+
+<http://purl.org/linked-data/sdmx/2009/code#unitMult-15> a skos:Concept, sdmx:Concept, sdmx-code:UnitMult;
+    skos:topConceptOf sdmx-code:unitMult;
+    skos:inScheme     sdmx-code:unitMult;
+    skos:prefLabel "Quadrillions"@en ;
+    skos:notation "15" ;
+    . 
+sdmx-code:unitMult skos:hasTopConcept <http://purl.org/linked-data/sdmx/2009/code#unitMult-15> .
+

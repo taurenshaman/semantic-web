@@ -1,0 +1,371 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix scovo:   <http://purl.org/NET/scovo#> .
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix vcard:   <http://www.w3.org/2006/vcard/ns#> .
+@prefix sdmx:    <http://purl.org/linked-data/sdmx#> .
+@prefix sdmx-concept:    <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension:  <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-attribute:  <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-measure:    <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-metadata:   <http://purl.org/linked-data/sdmx/2009/metadata#> .
+@prefix sdmx-code:       <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix sdmx-subject:    <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix dcterms:         <http://purl.org/dc/terms/>.
+@prefix qb:              <http://purl.org/linked-data/cube#> .
+
+sdmx-subject:subjectMatterDomain a skos:ConceptScheme;
+    skos:prefLabel "SDMX Statistical Subject-Matter Domains - concept scheme"@en;
+    rdfs:label "SDMX Statistical Subject-Matter Domains"@en;
+    skos:note """The SDMX Content Guidelines for Statistical Subject-Matter Domains."""@en;
+    skos:definition <http://sdmx.org/wp-content/uploads/2009/01/03_sdmx_cog_annex_3_smd_2009.pdf> ;
+    rdfs:seeAlso sdmx-subject:SubjectMatterDomain .
+
+sdmx-subject:SubjectMatterDomain a rdfs:Class, owl:Class;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "SDMX Statistical Subject-Matter Domains - concept class"@en;
+    rdfs:comment """The SDMX Content Guidelines for Statistical Subject-Matter Domains."""@en;
+    rdfs:seeAlso sdmx-subject:subjectMatterDomain .
+
+sdmx-subject:1 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:topConceptOf sdmx-subject:subjectMatterDomain;
+    skos:prefLabel "Demographic and social statistics"@en ;
+    skos:notation "1" ;
+    skos:definition """Time-use - statistics on the use of time by individuals, often related to work-life balance (reconciling family responsibilities and paid work); unpaid work. 
+Excludes 
+- working time (1.2)"""@en . 
+sdmx-subject:subjectMatterDomain skos:hasTopConcept sdmx-subject:1 .
+
+sdmx-subject:1.1 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Population and migration"@en ;
+    skos:notation "1.1" ;
+    skos:definition """Population and migration - covers work in population and demographic statistics, topics like demography, vital statistics, population structures and growth, demographic projections, families and households (marriages, divorces, household size), migration, refugees and asylum seekers. 
+Excludes
+- causes of death (1.4)"""@en . 
+
+sdmx-subject:1.2 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Labour"@en ;
+    skos:notation "1.2" ;
+    skos:definition """Labour -  covers statistics on labour force, labour market, employment and unemployment; the more detailed topics include economically active population, labour conditions, health and safety at work (accidents at work, occupational injuries and diseases, work-related health problems), working time and other working conditions, strikes and lockouts, job vacancies, job creation. 
+Excludes 
+- migrant workers (1.1)
+- unemployment insurance and unemployment benefits (1.6)
+- trade union membership (1.10)
+- unpaid work (1.11)
+- statistics on earnings, wages and salaries (2.8)
+- labour cost (2.8)"""@en . 
+
+sdmx-subject:1.3 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Education"@en ;
+    skos:notation "1.3" ;
+    skos:definition """Education - includes educational participation, illiteracy, educational institutions and systems, human and financial resources invested in education, lifelong learning, vocational training and adult learning, impact of education, assessments of student performance, etc."""@en . 
+
+sdmx-subject:1.4 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Health"@en ;
+    skos:notation "1.4" ;
+    skos:definition """Health - covers the health and mortality related statistical activities, including topics like life expectancy, health status, health and safety, health determinants (including lifestyle, nutrition, smoking, alcohol abuse), health resources and expenditure, health care systems, morbidity and mortality (including infant and child mortality), hospital admission, causes of illness and death, specific diseases (e.g. AIDS), disabilities, pharmaceutical consumption and sales, health personnel, remuneration of health professions, environmental health status, health inequality, health accounts.
+Excludes 
+- work related health and safety (1.2) 
+- victimisation from criminal behaviour (1.8)
+- traffic accidents and injuries (2.4.4)"""@en . 
+
+sdmx-subject:1.5 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Income and consumption"@en ;
+    skos:notation "1.5" ;
+    skos:definition """Income and consumption - covers statistics on household income and expenditures from household viewpoint (all types of income and expenditure), including topics like distribution of incomes, in-kind income, income transfers received and paid, income- or expenditure-based measures of poverty, consumer protection, consumption patterns, consumer goods and durables, household wealth and debts.
+Excludes 
+- social protection schemes against various risks (1.6)
+- tax schemes (2.5)
+- poverty in a multidimensional sense (3.3.1) 
+- living conditions (3.3.1)
+- social inclusion/exclusion (3.3.1)"""@en . 
+
+sdmx-subject:1.6 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Social protection"@en ;
+    skos:notation "1.6" ;
+    skos:definition """Social protection - deals with statistics on measures to protect people against the risks of inadequate incomes associated with unemployment, ill health, invalidity, old age, parental responsibilities, or inadequate income following the loss of a spouse or parent, etc., includes statistics on pension beneficiaries, social security schemes, social protection expenditure, etc.
+Excludes 
+- insurance companies as economic actors (2.4.6)
+- pension funds as actors in financial markets(2.4.6)"""@en . 
+
+sdmx-subject:1.7 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Human settlements and housing"@en ;
+    skos:notation "1.7" ;
+    skos:definition """Human settlements and housing - covers statistical activities on housing, dwellings and human settlements
+Excludes 
+- rents (2.7)"""@en . 
+
+sdmx-subject:1.8 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Justice and crime"@en ;
+    skos:notation "1.8" ;
+    skos:definition """Justice and crime - activities including crime, convictions, operation of criminal justice systems, justice, safety, victims, clear-up rates, prison population, illicit drug production, trafficking and use, etc."""@en . 
+
+sdmx-subject:1.9 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Culture"@en ;
+    skos:notation "1.9" ;
+    skos:definition """Culture - statistics dealing with cultural activities in society, like theatre, cinemas, museums, libraries, mass media, book production, sports, etc., including expenditure and financing of culture."""@en . 
+
+sdmx-subject:1.10 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Political and other community activities"@en ;
+    skos:notation "1.10" ;
+    skos:definition """Political and other community activities - statistics on voting turnout, participation in political and other community activities, trade union membership, social dialogue, civil society, social capital, etc."""@en . 
+
+sdmx-subject:1.11 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:1;
+    skos:prefLabel "Time use"@en ;
+    skos:notation "1.11" ;
+    skos:definition """"""@en . 
+
+sdmx-subject:2 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:topConceptOf sdmx-subject:subjectMatterDomain;
+    skos:prefLabel "Economic statistics"@en ;
+    skos:notation "2" ;
+    skos:definition """"""@en . 
+sdmx-subject:subjectMatterDomain skos:hasTopConcept sdmx-subject:2 .
+
+sdmx-subject:2.1 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Macroeconomic statistics"@en ;
+    skos:notation "2.1" ;
+    skos:definition """Macroeconomic statistics - all activities that are dealing with economy wide statistics at macro level that go beyond, or are different from National Accounts, whether annual, quarterly or monthly. Examples are macroeconomic databases that combine national accounts and other macroeconomic indicators like Main Economic Indicators (OECD), Principal European Economic Indicators (Eurostat), etc. ; business tendency and consumer opinion surveys, economic growth, stability and structural adjustment, cyclical indicators, statistics for business cycle analysis.
+Excludes: 
+- methodology and frameworks of national accounts (2.2.)
+- collection and dissemination of national accounts and productivity data not linked to other macroeconomic statistics (2.2)"""@en . 
+
+sdmx-subject:2.2 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Economic accounts"@en ;
+    skos:notation "2.2" ;
+    skos:definition """Economic accounts - covers work on National Accounts in both current and constant prices, dealing with topics like implementation of the 1993 System National Accounts (1993 SNA), update of the 1993 SNA, European System of Accounts (ESA95), Gross Domestic Product (GDP), Gross National Income (GNI), non-observed and informal economy, measurement of capital, input-output tables, balance sheets, etc.
+Excludes 
+- agricultural economic accounts (in 2.4.1)
+- tourism satellite accounts (in 2.4.5)
+- detailed general government accounts (2.5)
+- financial accounts(2.5)
+- price statistics(2.7)
+- environmental accounts (3.1)"""@en . 
+
+sdmx-subject:2.3 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Business statistics"@en ;
+    skos:notation "2.3" ;
+    skos:definition """Business statistics - economy wide statistics on the activities of enterprises, covers work on economic statistics across different sectors (as opposed to 2.4 that deals with specific individual sectors), deals with topics like statistics on economic activities of enterprises, business demography, business investment, business services, demand for services, industrial performance, enterprises by size class, industrial production, commodities, structure of sales and services, outputs of the service industries, non-profit institutions.
+Excludes:
+- business tendency surveys (2.1)
+- international trade (2.6)
+- prices (2.7)
+- labour cost (2.8)
+- science and technology (2.9)
+- ICT (3.3.3)
+- activities of foreign affiliates and multinational companies (3.3.4)"""@en . 
+
+sdmx-subject:2.4 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Sectoral statistics"@en ;
+    skos:notation "2.4" ;
+    skos:definition """Sectoral statistics - statistical activities dealing with one of the specific branches of industry or services mentioned at the three digit level of the classification.
+Excludes: 
+- education (1.3) 
+- health (1.4)
+- social security (1.6)
+- culture (1.9)
+- statistics covering the whole industrial sector (2.3)
+- statistics covering the whole service or market service sector (2.3)
+- distributive trade (2.3)
+- government and public sector statistics (2.5)
+- research and development (2.9) 
+- telecommunication statistics (3.3.3)"""@en . 
+
+sdmx-subject:2.4.1 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2.4;
+    skos:prefLabel "Agriculture, forestry, fisheries"@en ;
+    skos:notation "2.4.1" ;
+    skos:definition """Agriculture, forestry, fisheries - includes all agriculture, forestry and fishery related statistics, e.g. agricultural monetary statistics (agricultural economic accounts), agricultural structures (farm structure), trade in agricultural products, agricultural labour input, crop and animal production, agricultural commodities, agro-industry statistics (including food production and safety), organic farming and organic food, government expenditure for agriculture, fishing and forestry, products source and use tables, forest and forest product statistics, forest resource assessment and forest fire, trade in forest products, fisheries.
+Excludes 
+- agricultural and similar prices (2.7)
+- rural development (3.2)"""@en . 
+
+sdmx-subject:2.4.2 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2.4;
+    skos:prefLabel "Energy"@en ;
+    skos:notation "2.4.2" ;
+    skos:definition """Energy - energy supply, energy use, energy balances, security of supply, energy markets, trade in energy, energy efficiency, renewable energy sources, government expenditure on energy.
+Excludes
+- energy prices (2.7)"""@en . 
+
+sdmx-subject:2.4.3 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2.4;
+    skos:prefLabel "Mining, manufacturing, construction"@en ;
+    skos:notation "2.4.3" ;
+    skos:definition """Mining, manufacturing, construction - statistics on specific industrial activities, e.g. steel, shipbuilding, and on construction, trade in specific products related to mining, manufacturing and construction.
+Excludes
+- prices of manufactured products (2.7)
+- construction prices (2.7)"""@en . 
+
+sdmx-subject:2.4.4 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2.4;
+    skos:prefLabel "Transport"@en ;
+    skos:notation "2.4.4" ;
+    skos:definition """Transport - covers statistics on all modes of transport (air, rail, road, inland waterways, sea), includes topics like transport infrastructure, equipment, traffic flows, personal mobility, safety, energy consumption, transport enterprises, passengers and freight transport, transport sector trends, road traffic accidents.
+Excludes
+- transport prices (2.7)"""@en . 
+
+sdmx-subject:2.4.5 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2.4;
+    skos:prefLabel "Tourism"@en ;
+    skos:notation "2.4.5" ;
+    skos:definition """Tourism - covers statistics regarding visitor activity (such as arrivals/departures, overnight stays, expenditures, purpose of the visit, etc.) associated to different forms of tourism (inbound, domestic and outbound), tourism industries activity and infrastructure, employment and tourism satellite accounts. 
+Excludes
+- prices for tourist services (2.7)
+- environmental impacts (3.1)"""@en . 
+
+sdmx-subject:2.4.6 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2.4;
+    skos:prefLabel "Banking, insurance, financial statistics"@en ;
+    skos:notation "2.4.6" ;
+    skos:definition """Banking, insurance, financial statistics - money, banking and financial market statistics, including financial accounts, money supply, interest rates, exchange rates, stock market indicators, securities, bank profitability, private sector insurance and pension fund statistics, Financial Soundness Indicators. 
+Excludes 
+- beneficiaries of private pension funds (1.6) 
+- financing of state pension and of other state social security schemes (2.5)"""@en . 
+
+sdmx-subject:2.5 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Government finance, fiscal and public sector statistics"@en ;
+    skos:notation "2.5" ;
+    skos:definition """Government finance, fiscal and public sector statistics - all statistics related to the government sector, including debt and deficit, revenue and expenditure, accounts of the government sector, central government, tax rates and revenues, tax and benefit systems, financing of state pension and other state social security schemes, public sector employment.
+Excludes 
+- government expenditure in specific areas, like health (1.4), education (1.3), research and development (2.9), etc."""@en . 
+
+sdmx-subject:2.6 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "International trade and balance of payments"@en ;
+    skos:notation "2.6" ;
+    skos:definition """International trade and balance of payments - deals with statistics on all cross-border transactions recorded in the balance of payments, includes topics like trade in goods and services, external positions and debt, foreign direct investment, foreign affiliated trade, tariffs, market access, foreign aid, development assistance, resource flows to developing countries.
+Excludes: 
+- trade in specific commodities/services mentioned in 2.4.1 to 2.4.5
+- multinational companies and activities of foreign affiliates (3.3.4)"""@en . 
+
+sdmx-subject:2.7 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Prices"@en ;
+    skos:notation "2.7" ;
+    skos:definition """Prices - covers any statistical activity dealing with prices, including Purchasing Power Parities (PPPs) and international comparisons of GDP, covers topics like Consumer Price Indices (CPI), inflation, Producer Price Indices (PPI), price indexes for specific products and services (e.g. Information and Communication Technology products). 
+Excludes 
+- interest rates (2.4.6)
+- wages (2.8"""@en . 
+
+sdmx-subject:2.8 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Labor cost"@en ;
+    skos:notation "2.8" ;
+    skos:definition """Labour cost - statistics activities on labour cost, earning and wages, both for structural and short-term statistics. 
+Excludes
+- wages as part of total income of private households (1.5)"""@en . 
+
+sdmx-subject:2.9 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:2;
+    skos:prefLabel "Science, technology and innovation"@en ;
+    skos:notation "2.9" ;
+    skos:definition """Science, technology and innovation - includes Research and Development (R&D), innovation, patents, human resources (in science, technology and innovation), high tech industries and knowledge based services, biotechnology, financing of R&D and innovation. 
+Excludes: 
+- information and communication technologies (ICTs) (3.3.3)"""@en . 
+
+sdmx-subject:3 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:topConceptOf sdmx-subject:subjectMatterDomain;
+    skos:prefLabel "Environment and multi-domain statistics"@en ;
+    skos:notation "3" ;
+    skos:definition """"""@en . 
+sdmx-subject:subjectMatterDomain skos:hasTopConcept sdmx-subject:3 .
+
+sdmx-subject:3.1 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3;
+    skos:prefLabel "Environment"@en ;
+    skos:notation "3.1" ;
+    skos:definition """Environment - includes topics like climate, climate change, biodiversity, environment and health, natural resources, soil, water, air, landscape, waste, environmental expenditure, expenditure for the protection of the environment, environmental accounts, agri-environmental indicators, environmental pressure, environmental impact of industry, transport, energy etc., environmental monitoring, material flow analysis, environmental decoupling indicators, pollution, ecosystems, land use and cover, environmental protection, nationally protected areas.
+Excludes
+- environment as part of sustainable development (3.3.6)"""@en . 
+
+sdmx-subject:3.2 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3;
+    skos:prefLabel "Regional and small area statistics"@en ;
+    skos:notation "3.2" ;
+    skos:definition """Regional and small area statistics - activities dealing with regional statistics and statistics referring to sub-national areas or areas based on administrative units, urban and rural statistics, rural development, regional accounts, regional typologies, and regional disparities."""@en . 
+
+sdmx-subject:3.3 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3;
+    skos:prefLabel "Multi-domain statistics and indicators"@en ;
+    skos:notation "3.3" ;
+    skos:definition """Multi-domain statistics and indicators - deals with conceptual or data work based on a specific thematic approach to outputs that cut across several economic, social or environmental subject areas; the two-digit-level of the classification covers activities dealing with such type of issues that are not explicitly mentioned at the three-digit level.
+Excludes: 
+- multi-domain statistics based on a regional approach (3.2)
+- yearbook type of compendia or similar products by international organisations not following a specific thematic approach (3.4)"""@en . 
+
+sdmx-subject:3.3.1 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3.3;
+    skos:prefLabel "Living conditions, poverty, and cross-cutting social issues"@en ;
+    skos:notation "3.3.1" ;
+    skos:definition """Living conditions, poverty and cross-cutting social issues - includes work on multidimensional methods to measure poverty, living conditions in the broad sense, social inclusion/exclusion, social indicators, and social situation.
+Excludes:
+- purely monetary approach to poverty (1.5)
+
+Excludes: 
+- multi-domain statistics based on a regional approach (3.2)
+- yearbook type of compendia or similar products by international organisations not following a specific thematic approach (3.4)"""@en . 
+
+sdmx-subject:3.3.2 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3.3;
+    skos:prefLabel "Gender and special population groups"@en ;
+    skos:notation "3.3.2" ;
+    skos:definition """Gender and special population groups - their living conditions and role in the society: comparisons men/women and situation of special population groups like children, youth, women, elderly, disabled, minority groups, etc."""@en . 
+
+sdmx-subject:3.3.3 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3.3;
+    skos:prefLabel "Information society"@en ;
+    skos:notation "3.3.3" ;
+    skos:definition """Information society - statistics allowing to assess the use and impact of information and communication technologies on society, includes access and use of ICTs (including Internet), ICT expenditure and investment, ICT infrastructure, telecommunication networks, electronic communications, e-government, electronic commerce, e-learning, broadband penetration, ICT services, communication tariffs, network infrastructure, revenues, expenses and investment of operators, Internet indicators, trade in telecommunications equipment."""@en . 
+
+sdmx-subject:3.3.4 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3.3;
+    skos:prefLabel "Globalisation"@en ;
+    skos:notation "3.3.4" ;
+    skos:definition """Globalisation - deals with measuring the economic activities of multinational companies, as well as with attempts to measure globalisation through a variety of components from other subject areas."""@en . 
+
+sdmx-subject:3.3.5 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3.3;
+    skos:prefLabel "Indicators related to the Millennium Development Goals"@en ;
+    skos:notation "3.3.5" ;
+    skos:definition """Indicators related to the Millennium Development Goals - work on sets of indicators to monitor the achievement of the Millennium Development Goals agreed upon at the UN Millennium Summit."""@en . 
+
+sdmx-subject:3.3.6 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3.3;
+    skos:prefLabel "Sustainable development"@en ;
+    skos:notation "3.3.6" ;
+    skos:definition """Sustainable development - work on indicators and frameworks to monitor the economic, social and environmental dimensions of sustainable development."""@en . 
+
+sdmx-subject:3.3.7 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3.3;
+    skos:prefLabel "Entrepreneurship"@en ;
+    skos:notation "3.3.7" ;
+    skos:definition """Entrepreneurship - the measurement of the determinants, performance and impact of entrepreneurial activities of people and organisations."""@en . 
+
+sdmx-subject:3.4 a skos:Concept, sdmx:Concept, sdmx-subject:SubjectMatterDomain;
+    skos:broader sdmx-subject:3;
+    skos:prefLabel "Yearbooks and similar compendia"@en ;
+    skos:notation "3.4" ;
+    skos:definition """Yearbooks and similar compendia - multi-domain statistical publications, databases and other data products without specific thematic or issue-oriented focus.
+Excludes:
+- Multi-domain statistical products based on specific thematic approaches, like sustainable development, MDGs etc. (under 3.3.1 to 3.3.5)"""@en . 
+

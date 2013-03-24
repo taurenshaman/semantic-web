@@ -1,0 +1,1076 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY owl2 "http://www.w3.org/2006/12/owl2#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY ontology "http://ontology.dumontierlab.com/" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY statistical-graph-primitive "http://ontology.dumontierlab.com/statistical-graph-primitive#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/statistical-graph-primitive"
+     xml:base="http://ontology.dumontierlab.com/statistical-graph-primitive"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:statistical-graph-primitive="&ontology;statistical-graph-primitive#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl2="http://www.w3.org/2006/12/owl2#"
+     xmlns:ontology="http://ontology.dumontierlab.com/">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo rdf:datatype="&xsd;string">2.2</owl:versionInfo>
+        <dc:date rdf:datatype="&xsd;date">2008-09-05</dc:date>
+        <dc:creator rdf:datatype="&xsd;string"
+            >Michel Dumontier</dc:creator>
+        <dc:subject rdf:datatype="&xsd;string">graph</dc:subject>
+        <dc:publisher rdf:datatype="&xsd;string"
+            >http://dumontierlab.com</dc:publisher>
+        <dc:format rdf:datatype="&xsd;string">rdf/xml</dc:format>
+        <dc:creator>Leo Ferres</dc:creator>
+        <dc:language>en</dc:language>
+        <dc:title
+            >Statistical Graph Ontology (primitive)</dc:title>
+        <dc:contributor
+            >Natalia Villanueva-Rosales</dc:contributor>
+        <dc:description
+            >An ontology of statistical graphs and their components.</dc:description>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;language"/>
+    <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+    <owl:AnnotationProperty rdf:about="&dc;subject"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasEndPoint -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasEndPoint">
+        <rdfs:label rdf:datatype="&xsd;string">has end point</rdfs:label>
+        <rdfs:range rdf:resource="&ontology;EndPoint"/>
+        <rdfs:subPropertyOf rdf:resource="&ontology;hasProperPart"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasPart -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasPart">
+        <rdfs:label>has part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasProperPart -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasProperPart">
+        <rdfs:label>has proper part</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ontology;hasPart"/>
+        <owl:inverseOf rdf:resource="&ontology;isProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasQuality -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasQuality">
+        <rdfs:label>has quality</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasSource -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasSource">
+        <rdfs:label>has source</rdfs:label>
+        <rdfs:comment
+            >The relation between an entity and its source of origin.</rdfs:comment>
+        <rdfs:range rdf:resource="&ontology;Source"/>
+        <rdfs:domain rdf:resource="&ontology;StatisticalGraph"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasStartPoint -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasStartPoint">
+        <rdfs:label rdf:datatype="&xsd;string">has start point</rdfs:label>
+        <rdfs:range rdf:resource="&ontology;StartPoint"/>
+        <rdfs:subPropertyOf rdf:resource="&ontology;hasProperPart"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasTag -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasTag">
+        <rdfs:label rdf:datatype="&xsd;string">has tag</rdfs:label>
+        <owl:inverseOf rdf:resource="&ontology;isTagOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasTitle -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasTitle">
+        <rdfs:label>has title</rdfs:label>
+        <rdfs:comment
+            >The relation between an entity and a title.</rdfs:comment>
+        <rdfs:range rdf:resource="&ontology;Title"/>
+        <owl:inverseOf rdf:resource="&ontology;isTitleOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isAfter -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isAfter">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <owl:inverseOf rdf:resource="&ontology;isBefore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isBefore -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isBefore">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isEndPointOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isEndPointOf">
+        <rdfs:label rdf:datatype="&xsd;string">is end point of</rdfs:label>
+        <rdfs:domain rdf:resource="&ontology;EndPoint"/>
+        <owl:inverseOf rdf:resource="&ontology;hasEndPoint"/>
+        <rdfs:subPropertyOf rdf:resource="&ontology;isProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isImmediatelyAfter -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isImmediatelyAfter">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isAfter"/>
+        <owl:inverseOf rdf:resource="&ontology;isImmediatelyBefore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isImmediatelyBefore -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isImmediatelyBefore">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isBefore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isPartOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isPartOf">
+        <rdfs:label>is part of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isProperPartOf">
+        <rdfs:label
+            >is proper part of</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&ontology;isPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isQualityOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isQualityOf">
+        <rdfs:label>is quality of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isStartPointOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isStartPointOf">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >is start point of</rdfs:label>
+        <rdfs:domain rdf:resource="&ontology;StartPoint"/>
+        <owl:inverseOf rdf:resource="&ontology;hasStartPoint"/>
+        <rdfs:subPropertyOf rdf:resource="&ontology;isProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isTagOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isTagOf">
+        <rdfs:label rdf:datatype="&xsd;string">is tag of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isTitleOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isTitleOf">
+        <rdfs:label>is title of</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasEnd -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;hasEnd">
+        <rdfs:label>has end</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasSlope -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;hasSlope">
+        <rdfs:label>has slope</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasStart -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;hasStart">
+        <rdfs:label>has start</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasStep -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;hasStep">
+        <rdfs:label>has step</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasSymbol -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;hasSymbol">
+        <rdfs:label>has symbol</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasValue -->
+
+    <owl:DatatypeProperty rdf:about="&ontology;hasValue">
+        <rdfs:label>has value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ArrowedLine -->
+
+    <owl:Class rdf:about="&ontology;ArrowedLine">
+        <rdfs:label>arrowed line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Axis -->
+
+    <owl:Class rdf:about="&ontology;Axis">
+        <rdfs:label>axis</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AxisTitle -->
+
+    <owl:Class rdf:about="&ontology;AxisTitle">
+        <rdfs:label>axis title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Title"/>
+        <rdfs:comment
+            >The title of an axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Bar -->
+
+    <owl:Class rdf:about="&ontology;Bar">
+        <rdfs:label>bar</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GeometricObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BarGraph -->
+
+    <owl:Class rdf:about="&ontology;BarGraph">
+        <rdfs:label>bar graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;StatisticalGraph"/>
+        <rdfs:comment
+            >A chart with rectangular bars of lengths proportional to that value that they represent. Bar charts are used for comparing two or more values.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CategoryAxis -->
+
+    <owl:Class rdf:about="&ontology;CategoryAxis">
+        <rdfs:label>category axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Axis"/>
+        <rdfs:comment
+            >An axis that uses non-numerical categories.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CategoryAxisTitle -->
+
+    <owl:Class rdf:about="&ontology;CategoryAxisTitle">
+        <rdfs:label
+            >category axis title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;AxisTitle"/>
+        <rdfs:comment
+            >The title of a category axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CategoryData -->
+
+    <owl:Class rdf:about="&ontology;CategoryData">
+        <rdfs:label>category data</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Data"/>
+        <rdfs:comment
+            >Categorical Data</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CoordinateAxis -->
+
+    <owl:Class rdf:about="&ontology;CoordinateAxis">
+        <rdfs:label>coordinate axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Axis"/>
+        <rdfs:comment
+            >An axis defined within a coordinate system.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Data -->
+
+    <owl:Class rdf:about="&ontology;Data">
+        <rdfs:label>data</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment
+            >Factual information.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DataPoint -->
+
+    <owl:Class rdf:about="&ontology;DataPoint">
+        <rdfs:label>data point</rdfs:label>
+        <rdfs:comment
+            >A point in space composed of data.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DecreasingLine -->
+
+    <owl:Class rdf:about="&ontology;DecreasingLine">
+        <rdfs:label>decreasing line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DoubleArrowedLine -->
+
+    <owl:Class rdf:about="&ontology;DoubleArrowedLine">
+        <rdfs:label
+            >double arrowed line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ArrowedLine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Dropline -->
+
+    <owl:Class rdf:about="&ontology;Dropline">
+        <rdfs:label>dropline</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EndPoint -->
+
+    <owl:Class rdf:about="&ontology;EndPoint">
+        <rdfs:label rdf:datatype="&xsd;string">end point</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Point"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A point that marks the end point of some geometric object</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Footnote -->
+
+    <owl:Class rdf:about="&ontology;Footnote">
+        <rdfs:label>footnote</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Note"/>
+        <rdfs:comment
+            >A note, typically at the bottom of a page, that provides additional information to a point within the main text.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GeometricObject -->
+
+    <owl:Class rdf:about="&ontology;GeometricObject">
+        <rdfs:label>geometic object</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GraphTitle -->
+
+    <owl:Class rdf:about="&ontology;GraphTitle">
+        <rdfs:label>graph title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Title"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Histogram -->
+
+    <owl:Class rdf:about="&ontology;Histogram">
+        <rdfs:label>histogram</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;BarGraph"/>
+        <rdfs:comment
+            >A graphical display of tabulated frequencies that shows the proportion of cases which fall into each of several categories. The area of the bar that denotes the value, not the height, a crucial distinction when the categories are not of uniform width (Lancaster, 1974). The categories are usually specified as non-overlapping intervals of some variable. The categories (bars) must be adjacent.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HorizontalLine -->
+
+    <owl:Class rdf:about="&ontology;HorizontalLine">
+        <rdfs:label>horizontal line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IncreasingLine -->
+
+    <owl:Class rdf:about="&ontology;IncreasingLine">
+        <rdfs:label>increasing line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Label -->
+
+    <owl:Class rdf:about="&ontology;Label">
+        <rdfs:label>label</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Text"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LeftValueAxis -->
+
+    <owl:Class rdf:about="&ontology;LeftValueAxis">
+        <rdfs:label>left value axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ValueAxis"/>
+        <rdfs:comment
+            >A value axis that is on the left of the plot.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LeftValueData -->
+
+    <owl:Class rdf:about="&ontology;LeftValueData">
+        <rdfs:label>left value data</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ValueData"/>
+        <rdfs:comment
+            >Value data part of the left value axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Legend -->
+
+    <owl:Class rdf:about="&ontology;Legend">
+        <rdfs:label>legend</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Line -->
+
+    <owl:Class rdf:about="&ontology;Line">
+        <rdfs:label>line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GeometricObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LineBarGraph -->
+
+    <owl:Class rdf:about="&ontology;LineBarGraph">
+        <rdfs:label>line bar graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;BarGraph"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LineGraph -->
+
+    <owl:Class rdf:about="&ontology;LineGraph">
+        <rdfs:label>line graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ScatterGraph"/>
+        <rdfs:comment
+            >A two-dimensional scatterplot of ordered observations where the observations are connected following their order.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LinearValueAxis -->
+
+    <owl:Class rdf:about="&ontology;LinearValueAxis">
+        <rdfs:label
+            >linear value axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ScaledValueAxis"/>
+        <rdfs:comment
+            >An axis that is linear in scale.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LogarithmicValueAxis -->
+
+    <owl:Class rdf:about="&ontology;LogarithmicValueAxis">
+        <rdfs:label
+            >logarithmic value axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ScaledValueAxis"/>
+        <rdfs:comment
+            >A value axis that is logarithmic in scale.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MajorTickMark -->
+
+    <owl:Class rdf:about="&ontology;MajorTickMark">
+        <rdfs:label>major tick mark</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;TickMark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MinorTickMark -->
+
+    <owl:Class rdf:about="&ontology;MinorTickMark">
+        <rdfs:label>minor tick mark</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;TickMark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Note -->
+
+    <owl:Class rdf:about="&ontology;Note">
+        <rdfs:label>note</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Text"/>
+        <rdfs:comment
+            >a comment or instruction</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PieGraph -->
+
+    <owl:Class rdf:about="&ontology;PieGraph">
+        <rdfs:label>pie graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;StatisticalGraph"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Plot -->
+
+    <owl:Class rdf:about="&ontology;Plot">
+        <rdfs:label>plot</rdfs:label>
+        <rdfs:comment
+            >The part of a graph between the set of axes (and their labels) that define it.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Point -->
+
+    <owl:Class rdf:about="&ontology;Point">
+        <rdfs:label>point</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GeometricObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryCategoryAxis -->
+
+    <owl:Class rdf:about="&ontology;PrimaryCategoryAxis">
+        <rdfs:label
+            >primary category axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;CategoryAxis"/>
+        <rdfs:comment
+            >A category axis that serves as the primary axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryCategoryData -->
+
+    <owl:Class rdf:about="&ontology;PrimaryCategoryData">
+        <rdfs:label
+            >primary category data</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;CategoryData"/>
+        <rdfs:comment
+            >Category data part of the primary category axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryGraphTitle -->
+
+    <owl:Class rdf:about="&ontology;PrimaryGraphTitle">
+        <rdfs:label
+            >primary graph title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GraphTitle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryTitle -->
+
+    <owl:Class rdf:about="&ontology;PrimaryTitle">
+        <rdfs:label>primary title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Title"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RightValueAxis -->
+
+    <owl:Class rdf:about="&ontology;RightValueAxis">
+        <rdfs:label
+            >right value axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ValueAxis"/>
+        <rdfs:comment
+            >A value axis that is on the right of a plot.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RightValueData -->
+
+    <owl:Class rdf:about="&ontology;RightValueData">
+        <rdfs:label
+            >right value data</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ValueData"/>
+        <rdfs:comment
+            >Value data part of the right value axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ScaledValueAxis -->
+
+    <owl:Class rdf:about="&ontology;ScaledValueAxis">
+        <rdfs:label>scaled axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ValueAxis"/>
+        <rdfs:comment
+            >An axis that has the quality of being scaled.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ScatterGraph -->
+
+    <owl:Class rdf:about="&ontology;ScatterGraph">
+        <rdfs:label>scatter graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;StatisticalGraph"/>
+        <rdfs:comment
+            >A graph to visually display and compare two sets of related quantitative, or numerical, data by displaying only finitely many points, each having a coordinate on each axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryCategoryAxis -->
+
+    <owl:Class rdf:about="&ontology;SecondaryCategoryAxis">
+        <rdfs:label
+            >secondary category axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;CategoryAxis"/>
+        <rdfs:comment
+            >A category axis that serves for the secondary categories.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryCategoryData -->
+
+    <owl:Class rdf:about="&ontology;SecondaryCategoryData">
+        <rdfs:label
+            >secondary category data</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;CategoryData"/>
+        <rdfs:comment
+            >Category data part of the secondary category axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryGraphTitle -->
+
+    <owl:Class rdf:about="&ontology;SecondaryGraphTitle">
+        <rdfs:label
+            >secondary graph title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;GraphTitle"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryTitle -->
+
+    <owl:Class rdf:about="&ontology;SecondaryTitle">
+        <rdfs:label>secondary title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Title"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SemiLogarithmicValueAxis -->
+
+    <owl:Class rdf:about="&ontology;SemiLogarithmicValueAxis">
+        <rdfs:label
+            >semi logarithmic value axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ScaledValueAxis"/>
+        <rdfs:comment
+            >A value axis that is semi-logarithmic in scale.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Series -->
+
+    <owl:Class rdf:about="&ontology;Series">
+        <rdfs:label>series</rdfs:label>
+        <rdfs:comment
+            >A series of data points.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SingleArrowedLine -->
+
+    <owl:Class rdf:about="&ontology;SingleArrowedLine">
+        <rdfs:label
+            >single arrowed line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;ArrowedLine"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Source -->
+
+    <owl:Class rdf:about="&ontology;Source">
+        <rdfs:label>source</rdfs:label>
+        <rdfs:comment
+            >The origin of the entity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StackedBarGraph -->
+
+    <owl:Class rdf:about="&ontology;StackedBarGraph">
+        <rdfs:label
+            >stacked bar graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;BarGraph"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StartPoint -->
+
+    <owl:Class rdf:about="&ontology;StartPoint">
+        <rdfs:label rdf:datatype="&xsd;string">start point</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Point"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A point that marks the start point of some geometric object</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StatisticalGraph -->
+
+    <owl:Class rdf:about="&ontology;StatisticalGraph">
+        <rdfs:label
+            >statistical graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Graph"/>
+        <rdfs:comment
+            >An information graphic that displays the relationship among tabular numeric data and/or functions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Text -->
+
+    <owl:Class rdf:about="&ontology;Text">
+        <rdfs:label>text</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TickMark -->
+
+    <owl:Class rdf:about="&ontology;TickMark">
+        <rdfs:label>tick mark</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Title -->
+
+    <owl:Class rdf:about="&ontology;Title">
+        <rdfs:label>title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Text"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Trendline -->
+
+    <owl:Class rdf:about="&ontology;Trendline">
+        <rdfs:label>trendline</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ValueAxis -->
+
+    <owl:Class rdf:about="&ontology;ValueAxis">
+        <rdfs:label>value axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Axis"/>
+        <rdfs:comment
+            >An axis that uses continuously varying numerical data.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ValueAxisTitle -->
+
+    <owl:Class rdf:about="&ontology;ValueAxisTitle">
+        <rdfs:label
+            >value axis title</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;AxisTitle"/>
+        <rdfs:comment
+            >The title of a value axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ValueData -->
+
+    <owl:Class rdf:about="&ontology;ValueData">
+        <rdfs:label>value data</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Data"/>
+        <rdfs:comment>Numerical Data</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VerticalLine -->
+
+    <owl:Class rdf:about="&ontology;VerticalLine">
+        <rdfs:label>vertical line</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/XAxis -->
+
+    <owl:Class rdf:about="&ontology;XAxis">
+        <rdfs:label>x axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;CoordinateAxis"/>
+        <rdfs:comment
+            >An axis that follows a horizonal line.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/XYPlot -->
+
+    <owl:Class rdf:about="&ontology;XYPlot">
+        <rdfs:label>XY plot</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;Plot"/>
+        <rdfs:comment
+            >A plot having an x and y axis.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YAxis -->
+
+    <owl:Class rdf:about="&ontology;YAxis">
+        <rdfs:label>y axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;CoordinateAxis"/>
+        <rdfs:comment
+            >An axis that follows a vertical line.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZAxis -->
+
+    <owl:Class rdf:about="&ontology;ZAxis">
+        <rdfs:label>z axis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;CoordinateAxis"/>
+        <rdfs:comment
+            >An axis that follows a line into and out of the plane of reference.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/statistical-graph-primitive#Graph -->
+
+    <owl:Class rdf:about="&ontology;Graph">
+        <rdfs:label>graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment
+            >The union of meanings for Graph includes a chart or diagram, a set of nodes and vertices, the set of values for a function.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/statistical-graph-primitive#HorizontalBarGraph -->
+
+    <owl:Class rdf:about="&ontology;HorizontalBarGraph">
+        <rdfs:label
+            >horizontal bar graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;BarGraph"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/statistical-graph-primitive#MaximumDatapoint -->
+
+    <owl:Class rdf:about="&ontology;MaximumDatapoint">
+        <rdfs:label
+            >maximum data point</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;DataPoint"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/statistical-graph-primitive#MinimumDatapoint -->
+
+    <owl:Class rdf:about="&ontology;MinimumDatapoint">
+        <rdfs:label
+            >minimum data point</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;DataPoint"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/statistical-graph-primitive#PlateauLine -->
+
+    <owl:Class rdf:about="&ontology;PlateauLine">
+        <rdfs:subClassOf rdf:resource="&ontology;Line"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/statistical-graph-primitive#VerticalBarGraph -->
+
+    <owl:Class rdf:about="&ontology;VerticalBarGraph">
+        <rdfs:label
+            >vertical bar graph</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&ontology;BarGraph"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>

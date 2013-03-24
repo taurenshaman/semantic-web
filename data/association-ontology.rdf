@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ao="http://purl.org/ontology/ao/core#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:event="http://purl.org/NET/c4dm/event.owl#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:rev="http://purl.org/stuff/rev#"
+   xmlns:sim="http://purl.org/ontology/similarity/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+   xml:base="http://purl.org/ontology/ao/core#">
+  <owl:Ontology rdf:about="http://purl.org/ontology/ao/core#">
+    <dc:creator rdf:resource="http://foaf.me/zazi#me"/>
+    <dc:creator rdf:resource="http://tobyinkster.co.uk/#i"/>
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2010-09-13T13:59:52+01:00</dc:date>
+    <dc:description xml:lang="en">The Association Ontology specification provides basic properties 
+for describing specific associations to something, e.g. a context, an occasion, a genre or a mood, and enables furthermore, a mechanism to 
+like/rate and feedback these associations in context to something on/ for the Semantic Web. This document contains a RDF description 
+of the Association Ontology.</dc:description>
+    <dc:description xml:lang="zh-CN">该文档包含了联系的本体的RDF描述。</dc:description>
+    <dc:title xml:lang="en">The Association Ontology</dc:title>
+    <dc:title xml:lang="zh-CN">联系的本体</dc:title>
+    <owl:imports rdf:resource="http://purl.org/NET/c4dm/event.owl"/>
+    <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://purl.org/ontology/similarity/"/>
+    <owl:imports rdf:resource="http://purl.org/stuff/rev"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://purl.org/ontology/ao/core#LikeableAssociation">
+    <rdfs:comment xml:lang="en">A likeable association. That means this association type is intended to be used for voting (ao:likeminded), 
+feedbacking (rev:Feedback), reviewing (e.g. rev:rating) an association statement (related by ao:included_association) in the 
+context of something.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">Likeable Association</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/similarity/Association"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/stuff/rev#Review"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </owl:Class>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#activity">
+    <rdfs:comment xml:lang="en">An activity, which is associated to an individual, e.g. dancing, sleeping, driving.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has activity</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/ao/core#context"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#application">
+    <rdfs:comment xml:lang="en">An application, which is associated to an individual, e.g. a music player to a music track it's currently playing back.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has application</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/ao/core#context"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#context">
+    <rdfs:comment xml:lang="en">A property to associate any environmental context to an individual, e.g. a location, a time or an activity. Hence, this property is intended that sub properties should be created from it.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has context</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#device">
+    <rdfs:comment xml:lang="en">A device, which is associated with an individual, e.g. a CD player with a CD it's currently playing back.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has device</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/ao/core#context"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#genre">
+    <rdfs:comment xml:lang="en">An genre of something.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has genre</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/subject"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/ao/core#included_association">
+    <rdfs:comment xml:lang="en">This property could be used to compose association statements or to reuse them, e.g. to make them likeable in a specific context.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/similarity/Association"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has included association</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/similarity/Association"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty>
+        <rdfs:label>is included association of</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/ao/core#likeminded">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Associates likeminded people to an association, which they like/ agree with.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/similarity/Association"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en" rdf:datatype="http://www.w3.org/2001/XMLSchema#string">has likeminded</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty>
+        <rdfs:label>is likeminded of</rdfs:label>
+      </owl:ObjectProperty>
+    </owl:inverseOf>
+    <vs:term_status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">testing</vs:term_status>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#location">
+    <rdfs:comment xml:lang="en">A location, which is associated to an individual, e.g. my house, my country, my current whereabouts.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has location</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/ao/core#context"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#mood">
+    <rdfs:comment xml:lang="en">A mood that should be created by something.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has mood</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/subject"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#occasion">
+    <rdfs:comment xml:lang="en">An occasion for which something was created.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has occassion</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/subject"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#time">
+    <rdfs:comment xml:lang="en">A time, which is associated to an individual, e.g. morning, afternoon, evening.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has time</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/ao/core#context"/>
+    <owl:equivalentProperty rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#used_application">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">An application that is related to an event, e.g. a iTunes to a play back event of a music track.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has used application</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/ao/core#application"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/ao/core#used_device">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">A device that is related to an event, e.g. a MP3 player to a play back event of a music track.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/ao/core#"/>
+    <rdfs:label xml:lang="en">has used device</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#factor"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/ao/core#device"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+</rdf:RDF>

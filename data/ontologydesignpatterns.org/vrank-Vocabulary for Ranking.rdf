@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://vocab.sti2.at/vrank">
+    <dcterms:title>Vocabulary for Ranking (vRank)</dcterms:title>
+    <dcterms:description>The Vocabulary for Ranking (vRank) is an RDF Schema vocabulary for materializing ranking computations.</dcterms:description>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-06-05</dcterms:modified>
+    <vann:preferredNamespaceUri>http://purl.org/voc/vrank#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>vrank</vann:preferredNamespacePrefix>
+    <foaf:homepage rdf:resource="http://vocab.sti2.at/vrank.html"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-06-05</dcterms:created>
+    <dcterms:publisher>http://vocab.sti2.at/vrank#STI%20Innsbruck</dcterms:publisher>
+    <dcterms:partOf rdf:resource="http://vocab.sti2.at"/>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+    <dc:creator rdf:resource="http://vocab.sti2.at/vrank#andtha"/>
+    <dc:creator rdf:resource="http://vocab.sti2.at/vrank#aroa"/>
+    <dc:creator rdf:resource="http://vocab.sti2.at/vrank#itoma"/>
+  </owl:Ontology>
+
+  <rdf:Description rdf:about="http://vocab.sti2.at/vrank#ttl">
+    <dcterms:FileFormat></dcterms:FileFormat>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://vocab.sti2.at/vrank#rdf">
+    <dcterms:FileFormat></dcterms:FileFormat>
+  </rdf:Description>
+
+  <foaf:Person rdf:about="http://vocab.sti2.at/vrank#andtha">
+    <foaf:name>Andreas Thalhammer</foaf:name>
+    <foaf:homepage></foaf:homepage>
+  </foaf:Person>
+
+  <dcterms:Agent rdf:about="http://vocab.sti2.at/vrank#STI%20Innsbruck">
+    <foaf:member rdf:resource="http://vocab.sti2.at/vrank#andtha"/>
+    <foaf:member rdf:resource="http://vocab.sti2.at/vrank#aroa"/>
+    <foaf:member rdf:resource="http://vocab.sti2.at/vrank#itoma"/>
+    <foaf:name>STI Innsbruck</foaf:name>
+    <foaf:homepage></foaf:homepage>
+  </dcterms:Agent>
+
+  <foaf:Person rdf:about="http://vocab.sti2.at/vrank#aroa">
+    <foaf:name>Antonio J. Roa-Valverde</foaf:name>
+    <foaf:homepage></foaf:homepage>
+  </foaf:Person>
+
+  <foaf:Person rdf:about="http://vocab.sti2.at/vrank#itoma">
+    <foaf:name>Ioan Toma</foaf:name>
+    <foaf:homepage></foaf:homepage>
+  </foaf:Person>
+
+  <rdfs:Class rdf:about="http://purl.org/voc/vrank#Rank">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>rank</rdfs:label>
+    <rdfs:comment>Represents a ranking score associated with an item.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://purl.org/voc/vrank#Algorithm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>algorithm</rdfs:label>
+    <rdfs:comment>A ranking algorithm used to compute the ranking scores associated with an item (vrank:Rank).</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://purl.org/voc/vrank#Feature">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>feature</rdfs:label>
+    <rdfs:comment>A feature of a vrank:Algorithm such as Granularity, RankingFactor, etc.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://purl.org/voc/vrank#Parameter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>parameter</rdfs:label>
+    <rdfs:comment>A parameter of a vrank:Algorithm such as number of iterations or damping factor.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#computedBy">
+    <rdfs:label>computed by</rdfs:label>
+    <rdfs:comment>A vrank:Rank is computed by an vrank:Algorithm.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Rank"/>
+    <rdfs:range rdf:resource="http://purl.org/voc/vrank#Algorithm"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#hasFeature">
+    <rdfs:label>has feature</rdfs:label>
+    <rdfs:comment>TODO.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Algorithm"/>
+    <rdfs:range rdf:resource="http://purl.org/voc/vrank#Feature"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#hasParameter">
+    <rdfs:label>has parameter</rdfs:label>
+    <rdfs:comment>TODO.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Algorithm"/>
+    <rdfs:range rdf:resource="http://purl.org/voc/vrank#Parameter"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#hasRank">
+    <rdfs:label>has rank</rdfs:label>
+    <rdfs:comment>A subject, property or object hasRank a vrank:Rank.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://purl.org/voc/vrank#Rank"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#hasName">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>has name</rdfs:label>
+    <rdfs:comment>A vrank:Algorithm has a name.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Algorithm"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#hasRankTimeStamp">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>has rank timestamp</rdfs:label>
+    <rdfs:comment>The time when a vrank:Rank was computed.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Rank"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#datetime"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#rankValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>has rank value</rdfs:label>
+    <rdfs:comment>The numerical value associated to a vrank:Rank.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Rank"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#paramId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>parameter id</rdfs:label>
+    <rdfs:comment>The id associated to a vrank:Parameter.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Parameter"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#paramValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>parameter value</rdfs:label>
+    <rdfs:comment>The value associated to a vrank:Parameter.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Parameter"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#featureId">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>feature id</rdfs:label>
+    <rdfs:comment>The id associated to a vrank:Feature.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Feature"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://purl.org/voc/vrank#featureValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:label>feature value</rdfs:label>
+    <rdfs:comment>The value associated to a vrank:Feature.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/voc/vrank#Feature"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+</rdf:RDF>

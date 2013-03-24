@@ -1,0 +1,155 @@
+﻿## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+# This was originally designed to deal with URL types from
+# Google's SocialGraph NodeMapper tool. (So please don't
+# remove any existing terms - I want to still be able to
+# cover that use case.) But it might serve as a good base
+# for new link types.
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+# This ontology.
+@prefix plink:    <http://buzzword.org.uk/rdf/personal-link-types#> .
+
+# Others.
+@prefix cc:       <http://creativecommons.org/ns#> .
+@prefix dc:       <http://purl.org/dc/terms/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix link:     <http://www.w3.org/2006/link#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix vs:       <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xhv:      <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+plink: 
+	a owl:Ontology ;
+	plink:edit <http://buzzword.org.uk/2010/n3edit/?wiki=plink> ; # edit this ontology!
+	rdfs:label "Personal Link Types"@en ;
+	rdfs:label "个人链接类型"@zh-CN ;
+	foaf:maker <http://tobyinkster.co.uk/#i> ;
+	dc:issued "2008-11-28"^^xsd:date ;
+	cc:license <http://creativecommons.org/licenses/by-sa/2.0/uk/deed.en_GB> ;
+	cc:attributionName "Toby Inkster et al" ;
+	cc:attributionURL plink: ; 
+	rdfs:seeAlso <http://code.google.com/apis/socialgraph/docs/attributes.html> .
+
+plink:profile
+	a owl:ObjectProperty ;
+	rdfs:label "profile"@en ;
+	rdfs:label "档案"@zh-CN ;
+	rdfs:comment "Indicates a document acting as a profile for a person. That is, one that contains a summary of that person's details."@en ;
+	rdfs:comment "指明作为个人档案的文档。它包括了一个人资料的概况。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:PersonalProfileDocument ;
+	rdfs:subPropertyOf foaf:isPrimaryTopicOf .
+
+plink:rss
+	a owl:ObjectProperty ;
+	rdfs:label "RSS feed"@en ;
+	rdfs:label "RSS订阅源"@zh-CN ;
+	rdfs:comment "Indicates that a document acts as an RSS feed of a person's thoughts, writing or activities."@en ;
+	rdfs:comment "指明作为一个人的思想、写作或行为的RSS订阅源的文档。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:Document ; 
+	rdfs:subPropertyOf foaf:page .
+
+plink:atom
+	a owl:ObjectProperty ;
+	rdfs:label "Atom feed"@en ;
+	rdfs:label "Atom订阅源"@zh-CN ;
+	rdfs:comment "Indicates that a document acts as an Atom feed of a person's thoughts, writing or activities."@en ;
+	rdfs:comment "指明作为一个人的思想、写作或行为的Atom订阅源的文档。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:Document ;
+	rdfs:subPropertyOf foaf:page .
+
+plink:foaf
+	a owl:ObjectProperty ;
+	rdfs:label "FOAF file"@en ;
+	rdfs:label "FOAF文件"@zh-CN ;
+	rdfs:comment "Indicates that a document provides machine-readable personal information on the subject."@en ;
+	rdfs:comment "指明对这个主语提供了机器可读的个人信息的文档。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:PersonalProfileDocument ;
+	rdfs:subPropertyOf foaf:isPrimaryTopicOf , rdfs:seeAlso .
+
+plink:photo
+	a owl:ObjectProperty ;
+	rdfs:label "photo"@en ;
+	rdfs:label "照片"@zh-CN ;
+	rdfs:comment "Indicates that the linked resource is a photograph of the subject."@en ;
+	rdfs:comment "May also be used to link to a document where the subject's photograph is the primary focus (e.g. a web page on Flickr)."@en ;
+	rdfs:comment "指明链接的资源是主语的照片。也可以用于将指向主语的照片作为主要焦点的文档（比如Flickr上面的网页）。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:Document ;
+	rdfs:subPropertyOf foaf:page .
+
+plink:blog
+	a owl:ObjectProperty ;
+	rdfs:label "blog"@en ;
+	rdfs:label "博客"@zh-CN ;
+	rdfs:comment "Indicates that the linked resource is the subject's online journal (web log)."@en ;
+	rdfs:comment "指明链接的资源是主语的在线日记（网络日志）。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:Document ;
+	owl:equivalentProperty foaf:weblog .
+
+plink:openid
+	a owl:ObjectProperty ;
+	rdfs:label "OpenID"@en ;
+	rdfs:label "OpenID"@zh-CN ;
+	rdfs:comment "Indicates that the linked resource is the subject's OpenID."@en ;
+	rdfs:comment "指明链接的资源是主语的OpenID。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:Document ;
+	owl:equivalentProperty foaf:openid .
+
+plink:content
+	a owl:ObjectProperty ;
+	rdfs:label "content"@en ;
+	rdfs:label "内容"@zh-CN ;
+	rdfs:comment "Some content (e.g. writings, photography) which the subject has made."@en ;
+	rdfs:comment "主语创作的一些内容（比如写作、照片等等）。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:Document ;
+	rdfs:subPropertyOf foaf:page , foaf:made .
+
+plink:addfriend
+	a owl:ObjectProperty ;
+	rdfs:label "add friend"@en ;
+	rdfs:label "添加好友"@zh-CN ;
+	rdfs:comment "At this URI, you may fill in a form or learn of a process that you may use to claim friendship to the subject."@en ;
+	rdfs:comment "在这个链接中，你可能要填一个表格或学习一个流程，以用于声明和这个主语的友谊。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range foaf:Document ;
+	rdfs:subPropertyOf foaf:page .
+
+# Yeah, this is a bit of an odd one out. It's for SGN mapper...
+plink:fn
+	a owl:DatatypeProperty ;
+	rdfs:label "formatted name"@en ;
+	rdfs:label "格式化名称"@zh-CN ;
+	rdfs:comment "Indicates that the literal is the subject's name."@en ;
+	rdfs:comment "指明文本是主语的名字。"@zh-CN ;
+	rdfs:domain foaf:Agent ;
+	rdfs:range rdfs:Literal ;
+	rdfs:subPropertyOf foaf:name .
+
+# Here's some new stuff, unrelated to SGN mapper...
+plink:edit
+	a owl:ObjectProperty ;
+	rdfs:label "edit page"@en ;
+	rdfs:label "编辑页面"@zh-CN ;
+	rdfs:comment "Indicates a web-based editor that may be used to alter the contents of the subject URI."@en ;
+	rdfs:comment "指明一个基于Web的编辑器，可能用于修改主语URI指向的内容。"@zh-CN ;
+	rdfs:domain foaf:Document ;
+	rdfs:range foaf:Document ;
+	rdfs:subPropertyOf rdfs:seeAlso .
+
+plink:guestbook
+	a owl:ObjectProperty .
+
+plink:wall
+	a owl:ObjectProperty .

@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:units="http://sweet.jpl.nasa.gov/ontology/units.owl#"
+xmlns="http://sweet.jpl.nasa.gov/ontology/units.owl#">
+<owl:Ontology rdf:about="">
+<!--
+<dc:title>
+Unit</dc:title>
+<dc:date>
+1/20/2004 7:38:10 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+</dc:subject>
+-->
+<owl:versionInfo>
+1.0</owl:versionInfo>
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+<owl:Class rdf:ID="Unit"/>
+<owl:Class rdf:ID="BaseUnit">
+<rdfs:subClassOf rdf:resource="#Unit"/>
+</owl:Class>
+<owl:Class rdf:ID="DerivedUnit">
+<rdfs:subClassOf rdf:resource="#Unit"/>
+</owl:Class>
+<owl:Class rdf:ID="UnitDerivedByRaisingToPower">
+<rdfs:subClassOf rdf:resource="#SimpleUnit"/>
+</owl:Class>
+<owl:Class rdf:ID="SimpleUnit">
+<rdfs:subClassOf rdf:resource="#DerivedUnit"/>
+</owl:Class>
+<owl:Class rdf:ID="ComplexUnit">
+<rdfs:subClassOf rdf:resource="#DerivedUnit"/>
+</owl:Class>
+<owl:Class rdf:ID="Prefix">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasValue"/>
+<owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSymbol"/>
+<owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="BaseUnitOrUnitDerivedtWithoutChangingOfDimension">
+<rdfs:comment>
+Class created for convenience</rdfs:comment>
+</owl:Class>
+<owl:Class>
+<owl:equivalentClass rdf:resource="#BaseUnitOrUnitDerivedtWithoutChangingOfDimension"/>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#BaseUnit"/>
+<owl:Class rdf:about="#UnitDerivedWithoutChangingOfDimension"/>
+</owl:unionOf>
+</owl:Class>
+<owl:Class rdf:ID="UnitDerivedByScaling">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasScalingNumber"/>
+<owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasPrefix"/>
+<owl:allValuesFrom rdf:resource="#Prefix"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#UnitDerivedWithoutChangingOfDimension"/>
+</owl:Class>
+<owl:Class rdf:ID="UnitDerivedByShifting">
+<rdfs:subClassOf rdf:resource="#UnitDerivedWithoutChangingOfDimension"/>
+</owl:Class>
+<owl:Class rdf:ID="UnitDerivedWithoutChangingOfDimension">
+<rdfs:subClassOf rdf:resource="#SimpleUnit"/>
+</owl:Class>
+<owl:Class>
+<owl:equivalentClass rdf:resource="#PrefixOrUnit"/>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Unit"/>
+<owl:Class rdf:about="#Prefix"/>
+</owl:unionOf>
+</owl:Class>
+<owl:Class rdf:ID="PrefixOrUnit"/>
+<owl:DatatypeProperty rdf:ID="hasValue">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="#Prefix"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasShiftingNumber">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="#UnitDerivedByShifting"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasScalingNumber">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="#UnitDerivedByScaling"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasSymbol">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="#PrefixOrUnit"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasPower">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:domain rdf:resource="#UnitDerivedByRaisingToPower"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+</owl:DatatypeProperty>
+<owl:ObjectProperty rdf:ID="hasPrefix">
+<rdfs:domain rdf:resource="#Unit"/>
+<rdfs:range rdf:resource="#Prefix"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="derivedFromUnit">
+<rdfs:domain rdf:resource="#SimpleUnit"/>
+<rdfs:range rdf:resource="#BaseUnitOrUnitDerivedtWithoutChangingOfDimension"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="productOf">
+<rdfs:domain rdf:resource="#ComplexUnit"/>
+<rdfs:range rdf:resource="#Unit"/>
+</owl:ObjectProperty>
+<units:Prefix rdf:ID="NoPrefix">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+1</units:hasValue>
+</units:Prefix>
+<units:BaseUnit rdf:ID="meter">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+m</units:hasSymbol>
+<owl:sameAs rdf:resource="#metre"/>
+</units:BaseUnit>
+<units:BaseUnit rdf:ID="ratio">
+</units:BaseUnit>
+<units:BaseUnit rdf:ID="second">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+s</units:hasSymbol>
+</units:BaseUnit>
+<units:BaseUnit rdf:ID="ampere">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+a</units:hasSymbol>
+</units:BaseUnit>
+<units:BaseUnit rdf:ID="mole">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+mol</units:hasSymbol>
+</units:BaseUnit>
+<units:BaseUnit rdf:ID="candela">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+cd</units:hasSymbol>
+</units:BaseUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="perMeter">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+1/m</units:hasSymbol>
+</units:UnitDerivedByRaisingToPower>
+<units:Prefix rdf:ID="kilo">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10e3</units:hasValue>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+k</units:hasSymbol>
+</units:Prefix>
+<units:UnitDerivedByRaisingToPower rdf:ID="perSecond">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perMole">
+<units:derivedFromUnit rdf:resource="#mole"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perAmper">
+<units:derivedFromUnit rdf:resource="#ampere"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perCandela">
+<units:derivedFromUnit rdf:resource="#candela"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByScaling rdf:ID="minute">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+60</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="hour">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+3600</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByShifting rdf:ID="degreeC">
+<units:derivedFromUnit rdf:resource="#kelvin"/>
+<units:hasShiftingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-273</units:hasShiftingNumber>
+</units:UnitDerivedByShifting>
+<units:BaseUnit rdf:ID="kelvin"/>
+<units:UnitDerivedByScaling rdf:ID="degreeCby1.8_interimInstance">
+<units:derivedFromUnit rdf:resource="#degreeC"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+1.8</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByShifting rdf:ID="degreeF">
+<units:derivedFromUnit rdf:resource="#degreeCby1.8_interimInstance"/>
+<units:hasShiftingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+32</units:hasShiftingNumber>
+</units:UnitDerivedByShifting>
+<units:ComplexUnit rdf:ID="kilo_meter_perHour">
+<units:productOf rdf:resource="#perHour"/>
+<units:productOf rdf:resource="#meter"/>
+<units:hasPrefix rdf:resource="#kilo"/>
+</units:ComplexUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="perHour">
+<units:derivedFromUnit rdf:resource="#hour"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:Prefix rdf:ID="mega">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10e6</units:hasValue>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+M</units:hasSymbol>
+</units:Prefix>
+<units:Prefix rdf:ID="giga">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10e9</units:hasValue>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+G</units:hasSymbol>
+</units:Prefix>
+<units:BaseUnit rdf:ID="metre"/>
+<units:Prefix rdf:ID="hecto">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10e2</units:hasValue>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+h</units:hasSymbol>
+</units:Prefix>
+<units:Prefix rdf:ID="deco">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10</units:hasValue>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+da</units:hasSymbol>
+</units:Prefix>
+<units:BaseUnit rdf:ID="dimensionlessUnit"/>
+<units:ComplexUnit rdf:ID="hertz">
+<units:productOf rdf:resource="#dimensionlessUnit"/>
+<units:productOf rdf:resource="#perSecond"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+Hz</units:hasSymbol>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="newton">
+<units:productOf rdf:resource="#meter"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+N</units:hasSymbol>
+<owl:sameAs rdf:resource="#kilogram_meter_perSecondSquare"/>
+</units:ComplexUnit>
+<units:BaseUnit rdf:ID="kilogram">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+kg</units:hasSymbol>
+</units:BaseUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="perKilogram">
+<units:derivedFromUnit rdf:resource="#kilogram"/>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perSecondSquare">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-2</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:ComplexUnit rdf:ID="pascal">
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perMeter"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+Pa</units:hasSymbol>
+<owl:sameAs rdf:resource="#kilogram_perMeter_perSecondSquare"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="joule">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+J</units:hasSymbol>
+<owl:sameAs rdf:resource="#kilogram_meterSquare_perSecondSquare"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="watt">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondToPower3"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="coulomb">
+<units:productOf rdf:resource="#second"/>
+<units:productOf rdf:resource="#ampere"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+C</units:hasSymbol>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="volt">
+<units:productOf rdf:resource="#perAmper"/>
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondToPower3"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+V</units:hasSymbol>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="farad">
+<units:productOf rdf:resource="#secondToPower4"/>
+<units:productOf rdf:resource="#amperSquare"/>
+<units:productOf rdf:resource="#perMeterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+F</units:hasSymbol>
+</units:ComplexUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="meterSquare">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+2</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perMeterSquare">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-2</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perSecondToPower3">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-3</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="secondSquare">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+2</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="secondToPower4">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+4</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="amperSquare">
+<units:derivedFromUnit rdf:resource="#ampere"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+2</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:ComplexUnit rdf:ID="ohm">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondToPower3"/>
+<units:productOf rdf:resource="#perAmperSquare"/>
+</units:ComplexUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="secondToPower3">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+3</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perAmperSquare">
+<units:derivedFromUnit rdf:resource="#ampere"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-2</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByScaling rdf:ID="percent">
+<units:derivedFromUnit rdf:resource="#ratio"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0.01</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="permil">
+<units:derivedFromUnit rdf:resource="#ratio"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0.001</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="ppm">
+<units:derivedFromUnit rdf:resource="#ratio"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0.000001</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="ppb">
+<units:derivedFromUnit rdf:resource="#ratio"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0.000000001</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="ppt">
+<units:derivedFromUnit rdf:resource="#ratio"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+0.000000000001</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:ComplexUnit rdf:ID="massPercent">
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#percent"/>
+<units:productOf rdf:resource="#perKilogram"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="siemens">
+<units:productOf rdf:resource="#secondToPower3"/>
+<units:productOf rdf:resource="#amperSquare"/>
+<units:productOf rdf:resource="#perMeterSquare"/>
+<units:productOf rdf:resource="#perKilogram"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="weber">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+<units:productOf rdf:resource="#perAmper"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="tesla">
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+<units:productOf rdf:resource="#perAmper"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="henry">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+<units:productOf rdf:resource="#perAmperSquare"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="lux">
+<units:productOf rdf:resource="#candela"/>
+<units:productOf rdf:resource="#meterSquare"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+Lx</units:hasSymbol>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="gray">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+Gy</units:hasSymbol>
+</units:ComplexUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="meterToPower3">
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+3</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:ComplexUnit rdf:ID="watt_perMeterSquare">
+<units:productOf rdf:resource="#watt"/>
+<units:productOf rdf:resource="#perMeterSquare"/>
+<owl:sameAs rdf:resource="#joul_perMeterSquare_perSecond"/>
+</units:ComplexUnit>
+<units:BaseUnit rdf:ID="radian">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+rad</units:hasSymbol>
+</units:BaseUnit>
+<units:BaseUnit rdf:ID="steradian">
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+sr</units:hasSymbol>
+</units:BaseUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="perSteradian">
+<units:derivedFromUnit rdf:resource="#steradian"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:UnitDerivedByRaisingToPower rdf:ID="perRadian">
+<units:derivedFromUnit rdf:resource="#radian"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:ComplexUnit rdf:ID="watt_perMeterSquare_perSteradian">
+<units:productOf rdf:resource="#watt"/>
+<units:productOf rdf:resource="#perMeterSquare"/>
+<units:productOf rdf:resource="#perSteradian"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="kilogram_meter_perSecond">
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perSecond"/>
+<units:productOf rdf:resource="#meter"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="meter_perSecondSquare">
+<units:productOf rdf:resource="#meter"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="pascal_perSecond">
+<units:productOf rdf:resource="#pascal"/>
+<units:productOf rdf:resource="#perSecond"/>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+pa/s</units:hasSymbol>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="meter_perSecond">
+<units:productOf rdf:resource="#meter"/>
+<units:productOf rdf:resource="#perSecond"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="meterToPower3_perSecond">
+<units:productOf rdf:resource="#meterToPower3"/>
+<units:productOf rdf:resource="#perSecond"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="perKilogram_meterSquare_perSecond_kelvin">
+<units:productOf rdf:resource="#perSecond"/>
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#perKilogram"/>
+<units:productOf rdf:resource="#kelvin"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="meterSquare_perSecond">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#perSecond"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="kilogram_meter_perSecondSquare"/>
+<units:ComplexUnit rdf:ID="kilogram_meterSquare_perSecondSquare"/>
+<units:ComplexUnit rdf:ID="kilogram_perMeter_perSecondSquare"/>
+<units:ComplexUnit rdf:ID="joule_perKilogram_perKelvin">
+<units:productOf rdf:resource="#perKelvin"/>
+<units:productOf rdf:resource="#joule"/>
+<units:productOf rdf:resource="#perKilogram"/>
+</units:ComplexUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="perKelvin">
+<units:derivedFromUnit rdf:resource="#kelvin"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-1</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:ComplexUnit rdf:ID="watt_perMeter_perKelvin">
+<units:productOf rdf:resource="#watt"/>
+<units:productOf rdf:resource="#perMeter"/>
+<units:productOf rdf:resource="#perKelvin"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="siemence_perMeter">
+<units:productOf rdf:resource="#siemens"/>
+<units:productOf rdf:resource="#perMeter"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="joule_perKilogram">
+<units:productOf rdf:resource="#perKilogram"/>
+<units:productOf rdf:resource="#joule"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="joul_perMeterSquare_perSecond">
+<units:productOf rdf:resource="#joule"/>
+<units:productOf rdf:resource="#perMeterSquare"/>
+<units:productOf rdf:resource="#perSecond"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="kilogram_perMeterToPower3">
+<units:productOf rdf:resource="#kilogram"/>
+<units:productOf rdf:resource="#perMeterToPower3"/>
+</units:ComplexUnit>
+<units:UnitDerivedByRaisingToPower rdf:ID="perMeterToPower3">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPower rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+-3</units:hasPower>
+</units:UnitDerivedByRaisingToPower>
+<units:ComplexUnit rdf:ID="kilogram_perMeterSquare">
+<units:productOf rdf:resource="#perMeterSquare"/>
+<units:productOf rdf:resource="#kilogram"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="meterSquare_perSecondSquare">
+<units:productOf rdf:resource="#meterSquare"/>
+<units:productOf rdf:resource="#perSecondSquare"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="perKilogram_mole">
+<units:productOf rdf:resource="#perKilogram"/>
+<units:productOf rdf:resource="#mole"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="pascal_second">
+<units:productOf rdf:resource="#pascal"/>
+<units:productOf rdf:resource="#second"/>
+</units:ComplexUnit>
+<units:ComplexUnit rdf:ID="dimensonlessUnit_perMeterSquare">
+<units:productOf rdf:resource="#perMeterSquare"/>
+<units:productOf rdf:resource="#dimensionlessUnit"/>
+</units:ComplexUnit>
+<units:Prefix rdf:ID="nano">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10E-9</units:hasValue>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+n</units:hasSymbol>
+</units:Prefix>
+<units:Prefix rdf:ID="milli">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10E-3</units:hasValue>
+<units:hasSymbol rdf:datatype="http://www.w3.org/2001/XMLSchema#string">
+m</units:hasSymbol>
+</units:Prefix>
+<units:Prefix rdf:ID="micro">
+<units:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+10E-6</units:hasValue>
+</units:Prefix>
+<units:UnitDerivedByScaling rdf:ID="kilo_meter">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPrefix rdf:resource="#kilo"/>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="nano_meter">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPrefix rdf:resource="#nano"/>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="micro_meter">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPrefix rdf:resource="#micro"/>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="milli_meter">
+<units:derivedFromUnit rdf:resource="#meter"/>
+<units:hasPrefix rdf:resource="#milli"/>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="week">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+604800</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="year">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+31556926</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:ComplexUnit rdf:ID="amper_perMeter">
+<units:productOf rdf:resource="#ampere"/>
+<units:productOf rdf:resource="#perMeter"/>
+</units:ComplexUnit>
+<units:UnitDerivedByScaling rdf:ID="century">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+3.1556926E09</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="decade">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+315569260</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+<units:UnitDerivedByScaling rdf:ID="millenium">
+<units:derivedFromUnit rdf:resource="#second"/>
+<units:hasScalingNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#double">
+3.1556926E10</units:hasScalingNumber>
+</units:UnitDerivedByScaling>
+</rdf:RDF>
+
+

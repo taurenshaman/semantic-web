@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY nt "http://ns.inria.fr/nicetag/2010/09/09/voc">
+  <!ENTITY sioc "http://rdfs.org/sioc/ns#">
+  <!ENTITY scot "http://scot-project.org/scot/ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+  <!ENTITY cc "http://creativecommons.org/ns#">
+  <!ENTITY irw "http://www.ontologydesignpatterns.org/ont/web/irw.owl#">
+  <!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/">
+]>
+
+<rdf:RDF xmlns:rdf ="&rdf;" xmlns:rdfs="&rdfs;" xmlns:owl="&owl;" xmlns:xs="&xsd;" xmlns:irw="&irw;" xmlns:foaf="&foaf;" xmlns:dc="&dc;" xmlns:skos="&skos;" xmlns:cc="&cc;" xmlns="&rdfs;" xml:base="&nt;" >
+
+  <owl:Ontology rdf:about="&nt;">
+    <owl:versionInfo>Version 0.5, 09 september 2010</owl:versionInfo>
+    <dc:title xml:lang="en">Nice Tag Ontology</dc:title>
+    <dc:description xml:lang="en">NiceTag Ontology is an ontology which describes as generally as possible tags or rather tag actions understood as a speech acts occurring on the Web</dc:description>
+    <dc:title xml:lang="fr">L'Ontologie Nice Tag</dc:title>
+    <dc:description xml:lang="fr">NiceTag est une ontologie décrivant le plus généralement possible les tags ou plutôt les actes de taguer comme des actes de langage survenant sur le Web</dc:description>
+    <dc:title xml:lang="it">L'ontologia Nice Tag</dc:title>
+    <dc:description xml:lang="it">NiceTag è un'ontologia che descrive nel modo più generale possibile le tag, o meglio le azioni di tagging, come atti linguistici nel Web</dc:description>
+    <dc:title xml:lang="es">La ontología Nice Tag</dc:title>
+    <dc:description xml:lang="es">NiceTag es una ontología que describe de la manera mas general posible las etiquetas, o mejor las acciones de etiquetado, como actos de habla en la Web</dc:description>
+    <dc:title xml:lang="nl">Nice Tag ontologie</dc:title>
+    <dc:description xml:lang="nl">NiceTag is een ontologie die zo algemeen mogelijk tags beschrijft, of meer precies de handeling van het taggen. NiceTag beschrijft de handeling van het taggen als een op het web plaats vindende taalhandeling.</dc:description>
+    <dc:title xml:lang="zh-CN">NiceTag本体</dc:title>
+    <dc:description xml:lang="zh-CN">NiceTag本体描述了一般化的标签，更确切地说将标签操作理解为发生在网络上的言语行为。</dc:description>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text"/>
+    <cc:attributionURL rdf:resource="http://ns.inria.fr/nicetag/"/>
+    <cc:licence rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/"/>
+  </owl:Ontology>
+
+  <!-- Classes for tag structure.-->
+
+  <owl:Class rdf:ID="AnnotatedResource">
+    <rdfs:label xml:lang="en">Annotated resource</rdfs:label>
+    <rdfs:label xml:lang="fr">Ressource annotée</rdfs:label>
+    <rdfs:label xml:lang="it">Risorsa annotata</rdfs:label>
+    <rdfs:label xml:lang="es">Recurso anotado</rdfs:label>
+    <rdfs:label xml:lang="nl">Bron met aantekeningen</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">注释资源</rdfs:label>
+    <rdfs:comment xml:lang="en">Used to represent the HTTP-accessible realization of an information resource on the Web. The equivalent of irw:WebRepresentation, the Annotated Resource is that which generally triggers the act of tagging. Being dereferenceable by definition, it also provides the address that will be bookmarked on delicious-like sites and work like an anchor for tags. This said, the resource being tagged is in no way limited to HTTP-accessible data (indeed, what supports an act of tagging may very well be what the Web representation represents, a non-information resource for example, instead of the Web representation itself).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour représenter la réalisation d'une ressource informationnelle accessible sur le Web via le protocole HTTP. La ressource annotée, consultable en ligne, est celle-là même qui déclenche généralement l'acte de taguer. En quoi d'ailleurs elle est l'équivalent de la classe irw:WebRepresentation. Etant par définition déréférençable, elle fournit également l'adresse qui servira d'ancrage aux tags par l'intermédiaire du signet, selon le modèle proposé par delicious. Par contraste, la ressource taguée n'est, quant à elle, aucunement limitée à des données accessibles sur le Web (ce qui est taguée peut bien se révéler ne pas être autre chose que ce que la représentation d'un ressource représente, une ressource non-informationnelle par exemple, plutôt que cette représentation elle-même).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usato per rappresentare la realizzazione di una risorsa informazionale accessibile sul Web mediante il protocollo HTTP. La risorsa annotata è quella che generalmente provaoca l'azione di tagging. Essendo per definizione dereferenziabile, fornisce anche l'indirizzo che sarà salvato su sistemi di bookmarking come delicious, e che avrà funzione di ancoraggio per le tag. In ogni caso, la risorsa taggata non è limitata a dati accessibili sul Web (ciò che è taggato può anche essere ciò che la rappresentazione Web di una risorsa rappresenta, per esempio una risorsa non-informazionale, piuttosto che la sua rappresentazione)</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usado para representar la realización de un recurso informacional accesible en la Web mediante el protocolo HTTP. El recurso anotado es aquel que generalmente provoca la acción de etiquetado. Siendo por definición dereferenciable, dota tambien de la dirección que quedarà guardada en sistemas de "bookmarking" como delicious, y que tendrà una función de anclaje para las etiqueta. De todas maneras, el recurso etiquetado no se limita a los datos accesibles en la Web (aquello que es etiquetado puede ser también lo que la representación Web de un recurso representa, por ejemplo un recurso no-informacional, en lugar de su representación)</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt om een via het HTTP protocol op het web toegankelijke informatiebron te representeren. De bron met annototies, online beschikbaar en gelijkwaardig aan een irw:WebRepresentation, is wat aanzet tot de taghandeling. Aangezien de bron via het web toegankelijk is, is het per definitie mogelijk om ernaar te verwijzen, dus de bron levert ook het adres dat gebookmarkt kan worden en als anker voor de tags dient. Echter, de bron die getagd wordt is op geen enkele wijze beperkt tot http-toegankelijke data (wat getagd wordt is hetgen waar de web-representatie voor staat, bijvoorbeeld een non-informatie bron, en niet de representatie zelf).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用来表示网络上信息资源的HTTP访问实现。等价于irw:WebRepresentation，[注释资源]一般触发标记的行为。</rdfs:comment>
+    <owl:equivalentClass rdf:resource="http://www.ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="TaggedResource">
+    <rdfs:label xml:lang="en">Tagged resource</rdfs:label>
+    <rdfs:label xml:lang="fr">Ressource taguée</rdfs:label>
+    <rdfs:label xml:lang="it">Risorsa taggata</rdfs:label>
+    <rdfs:label xml:lang="es">Recurso etiquetado</rdfs:label>
+    <rdfs:label xml:lang="nl">Getagde bron</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used to represent the resource being tagged. Equivalent of irw:Resource.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour représenter la ressource taguée. Equivalent de irw:Resource.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usato per rappresentare la risorsa taggata. Equivalente di irw:Resource.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usado para representar el recurso etiquetado. Equivalente a irw:Resource.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt als representatie van de bron die getagd wordt.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <owl:equivalentClass rdf:resource="http://www.ontologydesignpatterns.org/ont/web/irw.owl#Resource"/>
+  </owl:Class>
+
+  <rdf:Property rdf:ID="isRelatedTo">
+    <rdfs:label xml:lang="en">Is related to</rdfs:label>
+    <rdfs:label xml:lang="fr">Est relié à</rdfs:label>
+    <rdfs:label xml:lang="it">È connesso con</rdfs:label>
+    <rdfs:label xml:lang="es">Está relacionado con</rdfs:label>
+    <rdfs:label xml:lang="nl">Houdt verband met</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used to link a resource to a sign, which can itself, be of any type, provided its representation is HTTP accessible from a URI. NiceTag defines tags by means of a mere property linking two Resources; this said, the many distinctions found in IRW ontology give a more precise account of nt:TaggedResource (see in particular irw:Resource).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour lier une ressource à un signe qui, lui-même, peut être de n'importe quel type pourvu que sa représentation, identifiée par une URI, soit accessible via le protocole HTTP. NiceTag définit les tags au moyen d'une propriété qui relie deux Resource; toutefois, l'ontologie IRW permet de comprendre plus précisément la signification de nt:TaggedResource (en particulier la classe irw:Resource).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usato per associare una risorsa a un segno che può essere, di per sè, di qualsiasi tipo, purchè la sua rappresentazione, identificata da un URI, sia accessibile tramite il protocollo HTTP. NiceTag definisce le tag per mezzo di una proprietà che associa due risorse; l'ontologia IRW permette di comprendere più precisamente il significato di nt:TaggedResource (in particolare la classe irw:Resource).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usado para asociar un recurso a un signo que puede ser, en sí mismo, de qualquier tipo, con tal que su representación, identificada por un URI, sea accesible mediante el protocolo HTTP. NiceTag define las etiquetas por medio de una propiedad que asocia dos recursos; la ontologia IRW permite comprender con mas claridad el significaso de nt:taggedResources(en especiàl la clase irw:Resource).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt om een bron met een teken te verbinden. Dit teken kan om het even welk type zijn zolang de representatie toegankelijk is via een URI over HTTP. NiceTag definieert tags door een eigenschap die twee bronnen verbindt. Toch kunnen veel van de onderscheiden die te vinden zijn in de IRW ontologie gebruikt worden om een meer precies beeld te krijgen van nt:TaggedResource (in het bijzonder de klasse irw:Resource).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <owl:Class rdf:ID="PartOfWebRepresentation">
+    <subClassOf rdf:resource="http://ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+    <rdfs:label xml:lang="en">Part Of Web representation</rdfs:label>
+    <rdfs:label xml:lang="fr">Partie de la représentation d'une ressource sur le Web</rdfs:label>
+    <rdfs:label xml:lang="it">Parte della rappresentazione di una risorsa Web</rdfs:label>
+    <rdfs:label xml:lang="es">Parte de la representación de un recurso en la Web</rdfs:label>
+    <rdfs:label xml:lang="nl">Onderdeel van de representatie van een bron op het web</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used to represent the part of the Web representation resource being tagged after the "Point" TagAction is used.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour représenter la partie de la représentation d'une ressource qui est taguée lorsque qu'il est fait usage de l'acte de taguer "Pointer".</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usato per rappresentare la parte della rappresentazione di una risorsa Web quando si è fatto uso dell'atto di tagging "Point".</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usado para representar la parte de la representación de un recurso Web quando se ha hecho uso del acto de etiquetado "Point".</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt om het getagde deel van een web-representatie aan te geven wanneer gebruikt is gemaakt van de "Aanwijs" taghandeling.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="TagAction">
+    <subClassOf rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <subClassOf rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#OwnerTagAction" />
+      <owl:Class rdf:about="#VisitorTagAction" />
+    </owl:unionOf>
+    <rdfs:label xml:lang="en">Tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A super class to describe every tag action as modelled by a named graph according to RDF Graph model (RDFG).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Une super-classe qui permet de décrire et de modéliser les actes de taguer à l'aide d'un graphe nommé et au moyen du modèle de graphe RDF (RDFG).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Una super-classe che permette di descrivere e di modellare ogni azione di tagging con un named graph secondo il modello del grafo RDF (RDFG).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Una super-clase que permite describir y modelar cada acción de etiquetado utilizando un named graph según el modelo del grafo RDF (RDFG).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Een overkoepelende categorie die toestaat elke taghandeling te beschrijving als een gelabelde graaf binnen het RDF graph model (RDFG).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="OwnerTagAction">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Owner tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer d'un propriétaire</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging del proprietario</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado del propietario</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling eigenaar</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used to describe an act of tagging performed by the owner of the URI that identifies the tagged resource.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour décrire un acte de taguer accompli par le propriétaire de l'URI qui identifie la ressource taguée.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usato per descrivere un'azione di tagging svolta dal proprietario dell'URI che identifica la risorsa taggata.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usado para describir una acción de etiquetado realizada por el propietario del URI que identifica el recurso etiquetado.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft een taghandeling verricht door de eigenaar van de URI waarmee de getagde bron geïdentificeerd wordt.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="VisitorTagAction">
+    <subClassOf rdf:resource="#TagAction"/>
+    <owl:disjointWith rdf:resource="#OwnerTagAction" />
+    <rdfs:label xml:lang="en">Visitor tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer d'un visiteur</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging di un visitatore</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado de un visitante</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling bezoeker</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used to describe an act of tagging performed by a the person who browsed a Web representation.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour décrire l'acte de taguer accompli par une personne ayant eu accès à la représentation d'une ressource sur le Web.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usato per descrivere un'azione di tagging svolta da una persona che ha avuto accesso alla rappresentazione di una risorsa Web.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usado para describir una acción de etiquetado realizada por una persona que ha tenido acceso a la representación de un recurso en la Web.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft een taghandeling verricht door een bezoeker van de web-representatie van een bron.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <!-- ** subclasses of TagActions ** -->
+
+  <owl:Class rdf:ID="Assert">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Assert</rdfs:label>
+    <rdfs:label xml:lang="fr">Asserter</rdfs:label>
+    <rdfs:label xml:lang="it">Asserire</rdfs:label>
+    <rdfs:label xml:lang="es">Afirmar</rdfs:label>
+    <rdfs:label xml:lang="nl">Bevestigen</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes the action that is performed with a tag whenever it is used to assert anything about a resource.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit avec un tag dès lors que celui-ci est utilisé pour affirmer quoi que ce soit à propos d'une ressource.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che viene svolta con una tag quando questa è utilizzata per affermare qualcosa a proposito di una risorsa.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción realizada con una tag quando esta es usada para afirmar algo sobre un recurso.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt met een tag wanneer deze gebruikt wordt om iets over een bron te bevestigen.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ExpressFeelings">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Express feelings</rdfs:label>
+    <rdfs:label xml:lang="fr">Exprimer un ressenti</rdfs:label>
+    <rdfs:label xml:lang="it">Esprimere un sentimento</rdfs:label>
+    <rdfs:label xml:lang="es">Expresar un sentimiento</rdfs:label>
+    <rdfs:label xml:lang="nl">Gevoelens uitdrukken</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes the action that is performed with a tag whenever it is used to express a feeling, an emotion, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit avec un tag dès lors que celui-ci est utilisé pour exprimer un sentiment, une émotion, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che si compie con una tag quando questa è usata per esprimere un sentimento, un'emozione, ecc.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza con una etiqueta cuando es usada para expresar un sentimiento, una emoción, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt met een tag wanneer deze gebruikt wordt om een gevoel, emotie, etc. uit te drukken.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Evaluate">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Evaluate</rdfs:label>
+    <rdfs:label xml:lang="fr">Evaluer</rdfs:label>
+    <rdfs:label xml:lang="it">Valutare</rdfs:label>
+    <rdfs:label xml:lang="es">Evaluar</rdfs:label>
+    <rdfs:label xml:lang="nl">Beoordelen</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      Describes the action that is performed with a tag whenever it is used to give a notation, a mark of approval and disapproval, or,
+      more generally speaking, an evaluation.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit avec un tag dès lors que celui-ci est utilisé pour donner une note, marquer son approbation ou sa désapprobation ou, plus généralement, produirez une évaluation.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che si compie con una tag quando questa è usata per esprimere approvazione o disapprovazione, o, più in generale, una valutazione.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza con una etiqueta cuando es usada para expresar aprobación o desaprobación o, mas en general, una evaluación.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt met een tag wanneer deze gebruikt wordt om een klassering, een teken van goedkeuring of afkeuring, of meer algemeen een beoordeling te geven.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="GiveAccessRights">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Give access rights to</rdfs:label>
+    <rdfs:label xml:lang="fr">Accorder des droits d'accès à</rdfs:label>
+    <rdfs:label xml:lang="it">Accordare diritti di accesso a</rdfs:label>
+    <rdfs:label xml:lang="es">Acordar derechos de acceso a</rdfs:label>
+    <rdfs:label xml:lang="nl">Toegangsrechten verlenen aan</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes the action that is performed with a tag whenever it is used to define to whom access rights to a resource are granted or denied.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit avec un tag dès lors que celui-ci est utilisé pour définir les personnes auxquelles sont octroyés des droits d'accès à des ressource en ligne (permission ou refus).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che si compie con una tag quando questa è usata per definire a chi sono accordati o negati i diritti di accesso a una risorsa.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza con una etiqueta cuando es usada para definir a quien son concedidos o negados derechos de acceso a un recurso..</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt met een tag wanneer deze gebruikt wordt om vast te stellen aaan wie toegangsrechten tot een bron worden toegekend of ontzegd.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Point">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Point</rdfs:label>
+    <rdfs:label xml:lang="fr">Pointer</rdfs:label>
+    <rdfs:label xml:lang="it">Puntare</rdfs:label>
+    <rdfs:label xml:lang="es">Puntar</rdfs:label>
+    <rdfs:label xml:lang="nl">Aanwijzen</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      Describes the action that is performed with a tag whenever it is used to point to a specific part of a Web representation (the segment of a video,
+      a user-generated commentary to a newspaper article, etc.).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="fr">
+      Décrit l'action que l'on accomplit avec un tag dès lors que celui-ci est utilisé pour faire référence à une portion spécifique de la représentation
+      d'une ressource sur le Web (le segment d'une vidéo, un commentaire produit par les utilisateurs au pied d'un article, etc.).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che si compie con una tag quando questa è usata per fare riferimento a una parte specifica della rappresentazione di una risorsa Web (il segmento di un video, il commento generato dagli utenti a un articolo di un quotidiano, ecc.).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza con una etiqueta cuando es usada para referirse a una parte específica de un recurso Web (el segmento de un video, comentarios generados por los usuarios a un artículo de periódico).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt met een tag wanneer deze gebruikt wordt om naar een specifiek deel van een web-representatie te verwijzen (een segment van een video, een door een gebruiker gegenereerd commentaar bij een krantenartikel, etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="SetTask">
+    <subClassOf rdf:resource="#VisitorTagAction"/>
+    <rdfs:label xml:lang="en">Set task</rdfs:label>
+    <rdfs:label xml:lang="fr">Définir une tâche</rdfs:label>
+    <rdfs:label xml:lang="it">Definire un compito</rdfs:label>
+    <rdfs:label xml:lang="es">Definir una tarea</rdfs:label>
+    <rdfs:label xml:lang="nl">Taak definiëren</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes the action that is performed with a "todo" tag whenever it is used to create a task awaiting performance.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit avec un tag de type "àfaire" dès lors que celui-ci est utilisé pour définir une tâche attendant sa réalisation.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che si compie con una tag di tipo "dafare", quando questa è usata per creare un compito in attesa di realizzazione.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza con una etiqueta de tipo "quehacer" cuando es usada para crear una tarea en espera de realización.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt met een tag van het type “te doen” wanneer deze gebruikt wordt om een taak te maken in afwachting van haar realisatie.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Share">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Share</rdfs:label>
+    <rdfs:label xml:lang="fr">Partager</rdfs:label>
+    <rdfs:label xml:lang="it">Condividere</rdfs:label>
+    <rdfs:label xml:lang="es">Compartir</rdfs:label>
+    <rdfs:label xml:lang="nl">Delen</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes the action that is performed with a tag whenever it is used to share the representation of a WebResource on various services - Twitter or Delicious for instance - with the owner of a sioc:UserAccount (not necessarily a foaf:Person as it might be either a bot, a person or an institution whose representatives may well vary over time).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit avec un tag dès lors que celui-ci est utilisé pour partager une représentation d'une ressource sur le Web, notamment sur Delicious ou Twitter. Ce partage ne se fait pas nécessairement avec une autre personne mais plutôt avec le  titulaire d'un compte sur l'un ou l'autre de ces services (sioc:UserAccount, qui n'est pas nécessairement une foaf:Person étant donné qu'il peut s'agir aussi bien d'un robot, d'une personne ou encore d'une institution dont les représentants sont potentiellement amenés à varier au fil du temps).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che si compie con una tag quando questa è usata per condividere la rappresentazizone di una risorsa su uno specifico servizio Web, per esempio Delicious o Twitter, con il titolare di un account su tale servizio (sioc:UserAccount, che non è necessariamente una foaf:Person, ma può trattarsi anche di un robot, o di una istituzione i cui rappresentanti possono variare nel tempo).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza con una etiqueta cuando es usada para compartir la representación de un recurso  en un servicio Web, por ejemplo Delicious o Twitter, con el titular de una cuenta en este servicio (sioc:UserAccount, que no es necesariamente una foaf:Person, porqué puede ser también un robot o una institución cuyos representantes pueden variar en el tiempo.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt met een tag wanneer deze gebruikt wordt om de representatie van een bron op het web te delen met een gebruiker van een dienst als Twitter of Delicious. (sioc:UserAccount, wat niet per se een foaf:Person is aangezien het ook om een bot kan gaan of een instelling die met het verlopen van de tijd door verschillende personen vertegenwoordigd kan worden).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Aggregate">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Aggregate</rdfs:label>
+    <rdfs:label xml:lang="fr">Agréger</rdfs:label>
+    <rdfs:label xml:lang="it">Aggregare</rdfs:label>
+    <rdfs:label xml:lang="es">Agregar</rdfs:label>
+    <rdfs:label xml:lang="nl">Verzamelen</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes the action that is performed whenever resources are aggregated with a collectively defined tag.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit lorsque des ressources sont aggrégées autour d'un tag défini de manière collective.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che viene compiuta quando delle risorse sono aggregate attorno a una tag definita collettivamente.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza cuando se agregan unos recursos alrededor de una etiqueta definita colectivamente.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die verricht wordt wanneer bronnen worden bijeenverzameld onder een gezamenlijk gedefinieerde tag.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Ask">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Ask</rdfs:label>
+    <rdfs:label xml:lang="fr">Poser une question</rdfs:label>
+    <rdfs:label xml:lang="it">Porre una domanda</rdfs:label>
+    <rdfs:label xml:lang="es">Preguntar</rdfs:label>
+    <rdfs:label xml:lang="nl">Vraag stellen</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">提问</rdfs:label>
+    <rdfs:comment xml:lang="en">Describes the action that is performed with a tag by asking a question.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit l'action que l'on accomplit avec un tag dès lors que celui-ci est utilisé pour poser une question.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive l'azione che viene compiuta con una tag quando questa viene usata per porre una domanda.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe la acción que se realiza con una etiqueta cuando se usa para hacer una pregunta.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft de handeling die met de tag verricht wordt als het stellen van een vraag.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ManualTagAction">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Manual tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer manuel</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging manuale</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado manual</rdfs:label>
+    <rdfs:label xml:lang="nl">Handmatige taghandeling</rdfs:label>
+    <rdfs:label xml:lang="nl">Handmatige taghandeling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes tags as manually associated to a resource by a human.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit des tags associés manuellement à une ressource par un être humain.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive delle tag associate manualmente a una risorsa da un essere umano.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe etiquetas asociadas manualmente a un recurso por un ser humano.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft tags als handmatig met een bron geasssocieerd door een mens</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="AutoTagAction">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Auto tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer automatique</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging automatica</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado automática</rdfs:label>
+    <rdfs:label xml:lang="nl">Geautomatiseerde taghandeling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes tags as automatically generated and/or associated to a resource by a computer.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit des tags générés et/ou associés automatiquement à une ressource par une machine.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive delle tag generate e/o associate automaticamente a una risorsa da un computer.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe etiquetas generadas y/o asociadas manualmente a un recurso por un ordenador.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft tags als zijnde gegenereerd en/of automatisch met een bron geasoccieerd, door een computerprogramma.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="WebConceptTagAction">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Web concept tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer par concept Web</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging con Web concept</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado con Web concept</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling met webconcept</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes tagging involving Web concepts (such as geonames).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour décrire un taggage effectué à l'aide de concepts Web (tels que geonames).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usata per descrivere un'azioni di tagging effettuata con l'aiuto di un concetto Web (per esempio geonames).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usada para describir una acción de etiquetado realizada con la ayuda de un concepto Web (por ejemplo geonames).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt om taghandelingen te beschrijven waarbij gebruikt gemaakt woord van webconcepten (zoals geonames).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="SyntacticTagAction">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Syntactic Tag Action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer syntaxique</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging sintattica</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado sintáctica</rdfs:label>
+    <rdfs:label xml:lang="nl">Syntactische taghandeling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes tags whose labels are following a given syntax for improved precision and tractability.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit des tags dont les libellés mobilisent une certaine syntaxe pour accroître leur précision et leur capacité à être manipulés.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive delle tag il cui testo segue una sintassi determinata per ottenere maggiore precisione e trattabilità.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe etiquetas cuyo texto sigue una sintaxis determinada para una mayor precisión y tratabilidad.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft tags waarvan de labels van een bepaalde syntaxis gebruik maken om de precisie en manipuleerbaarheid te vergroten.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="MachineTagAction">
+    <subClassOf rdf:resource="#SyntacticTagAction"/>
+    <rdfs:label xml:lang="en">Machine tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer avec machine tag</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging con machine tag</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado con machine tag</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling met machinetag</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes tags whose labels are using the syntax of machine tags as implemented first in Flickr.com.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Décrit des tags dont les libellés mobilisent la syntaxe des machine tags telle qu'implémentée d'abord sur le site Flickr.com.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive delle tag il cui testo segue la sintassi delle machine tag come implementata su Flickr.com.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe etiquetas cuyo texto sigue la sintaxis de las machine tag como implementada en Flickr.com.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Beschrijft tags waarvan de labels gebruik maken van de machine-tag syntaxis, zoals voor het eerst geimplementeerd op flickr.com.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="N-TupleTagAction">
+    <subClassOf rdf:resource="#SyntacticTagAction"/>
+    <rdfs:label xml:lang="en">N-tuple tag action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer avec un tag à n-dimensions</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging con una tag n-dimensionale</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado con una etiqueta n-dimensional</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling met n-tuple</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes tagging involving N-tuple tags (double tags, triple tags, etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour décrire des actes de taguer impliquant des tags dont les libellés ont n-dimensions (double tags, triple tags, etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive azioni di tagging basate su tag n-dimensionali (doppie tag, triple tag, ecc.).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe acciones de etiquetado que incluyan etiquetas n-dimensionales (etiquetas dobles, triples, etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt om taghandelingen te beschrijven waarbij de labels meerdere (n) dimensies kunnen hebben (dubbele tags, driedubbele tags, etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="DisambiguatedTagAction">
+    <subClassOf rdf:resource="#TagAction"/>
+    <rdfs:label xml:lang="en">Disambiguate Tag Action</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer avec désambigüisation</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging con disambiguazione</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado con desambiguación</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling met gedisambigueerd teken</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used when the sign used to tag is disambiguated.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé lorsque le signe utilisé pour taguer est désambiguïsé.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Usato quando il segno usato per taggare è disambiguato.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Usado quando el signo usado para etiquetar es desambiguado.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt wanneer het teken waarmee getagd wordt gedesambigueerd is.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="N-TupleTagActionMTS">
+    <subClassOf rdf:resource="#N-TupleTagAction"/>
+    <subClassOf rdf:resource="#MachineTagAction"/>
+    <rdfs:label xml:lang="en">N-tuple tag action with machine tag syntax</rdfs:label>
+    <rdfs:label xml:lang="fr">Acte de taguer avec un tag à n-dimensions et syntaxe de machine tags</rdfs:label>
+    <rdfs:label xml:lang="it">Azione di tagging con una tag a n-dimensionale e sintassi delle machine tag</rdfs:label>
+    <rdfs:label xml:lang="es">Acción de etiquetado con una etiqueta n-dimensional y sintaxis de las machine tags</rdfs:label>
+    <rdfs:label xml:lang="nl">Taghandeling met een n-tuple met machinetag syntaxis</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Describes tagging involving N-tuple tags which follow machine tags typed syntax in acontext where Flickr-like APIs are lacking.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Utilisé pour décrire un acte de taguer impliquant des tags dont les libellés ont n-dimensions et suivent la syntaxe des machine tags mais dans un contexte où des APIs semblables à celle de Flickr font défaut.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Descrive azioni di tagging basate su tag n-dimensionali che seguono la sintassi delle machine tag, ma in un contesto dove mancano API simili a quelle di Flickr.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Describe acciones de etiquetado basadas en etiquetas n-dimensionales que siguen la sintaxis de las machine tag, pero en un contexto en el que faltan API parecidas a las de Flickr.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Wordt gebruikt om een taghandeling te beschrijven wanneer de labels meerdere dimensies hebben en machinetag syntaxis volgen, maar er geen Flickr-gelijkende API besachikbaar is.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <owl:sameAs rdf:resource="#MachineTagAction"/>
+  </owl:Class>
+
+  <!-- ** Tag collections : these classes are asides, not sub-classes of TagAction ** -->
+
+  <owl:Class rdf:ID="TagCollection">
+    <rdfs:label xml:lang="en">Tag collection</rdfs:label>
+    <rdfs:label xml:lang="fr">Collection de tags</rdfs:label>
+    <rdfs:label xml:lang="it">Collezione di tag</rdfs:label>
+    <rdfs:label xml:lang="es">Colección de etiquetas</rdfs:label>
+    <rdfs:label xml:lang="nl">Tagverzameling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Undefined collection of tags.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Une collection de tags ne répondant à aucune définition particulière.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Una generica collezione di tag.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Una genérica colección de etiquetas.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Een verzameling tags zonder verdere specifieke definitie.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CommunityTagCollection">
+    <rdfs:label xml:lang="en">Community tag collection</rdfs:label>
+    <rdfs:label xml:lang="fr">Collection de tags communautaire</rdfs:label>
+    <rdfs:label xml:lang="it">Collezione di tag comunitaria</rdfs:label>
+    <rdfs:label xml:lang="es">Colección de etiquetas comunitaria</rdfs:label>
+    <rdfs:label xml:lang="nl">Gemeenschapstagverzameling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <subClassOf rdf:resource="#TagCollection"/>
+    <rdfs:comment xml:lang="en">A collection of tags generated by the users of a given online community or Web service.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Une collection de tag constituée par les utilisateurs d'une communauté ou d'un service donnés.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Una collezione di tag generata dagli utenti di una comunità online o di un servizio Web dati.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Una colección de etiquetas generada por los usuarios de una comunidad en linea o de un servicio Web dados.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Een verzameling tags die gegenereerd is door een groep gebruikers van een gemeenschap of digitale dienst.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <owl:Class rdf:ID="PersonalTagCollection">
+    <rdfs:label xml:lang="en">Personal tag collection</rdfs:label>
+    <rdfs:label xml:lang="fr">Collection de tags personnelle</rdfs:label>
+    <rdfs:label xml:lang="it">Collezione di tag personale</rdfs:label>
+    <rdfs:label xml:lang="es">Colección de etiquetas personal</rdfs:label>
+    <rdfs:label xml:lang="nl">Persoonlijke tagverzameling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <subClassOf rdf:resource="#TagCollection"/>
+    <rdfs:comment xml:lang="en">A collection of tags generated by a single user.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Une collection de tags constituée par un utilisateur précis.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </owl:Class>
+
+  <!-- **** Properties **** -->
+
+  <rdf:Property rdf:ID="belongsToTagCollection">
+    <rdfs:label xml:lang="en">Belongs to tag collection</rdfs:label>
+    <rdfs:label xml:lang="fr">Appartient à une collection de tags</rdfs:label>
+    <rdfs:label xml:lang="it">Appartiene a una collezione di tag</rdfs:label>
+    <rdfs:label xml:lang="es">Pertenece a una colección de etiquetas</rdfs:label>
+    <rdfs:label xml:lang="nl">Behoort toe aan tagverzameling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <domain rdf:resource="#TagAction"/>
+    <range rdf:resource="#TagCollection"/>
+    <rdfs:comment xml:lang="en">Property used to link a single and well individuated TagAction to a TagCollection to account for the various levels of aggregation provided by common tagging applications. There exist different ways to aggregate tags (for instance, http://delicious.com/fabion_gandon/OWL gives a Web representation of all taggings of user "fabien_gandon" involving the tag labeled 'OWL' on delicious.com at time "t").</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété employée pour associer un acte de taguer singulier à une collection de tags. Ceci sert à rendre compte des multiples manières d'aggréger les tags offertes par les différents services existants (l'URI http://delicious.com/fabion_gandon/OWL permet par exemple d'accéder à une représentation de tous les actes de taguer accomplis par le titulaire du compte "fabien_gandon" où figure le libellé "OWL" sur delicious.com à un instant "t").</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata per associare una singola azione di tagging a una collezione di tag, con lo scopo di rendere conto dei vari livelli di aggregazione forniti dai servizi di tagging esistenti. Ci sono vari modi di aggregare delle tag (per esempio, http://delicious.com/fabion_gandon/OWL permette di accedere a una rappresentazione di tutte le azioni di tagging svolte dal titolare dell'account "fabien_gandon", nelle quali compare la tag "OWL" su del.icio.us.com in un istante "t").</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada para asociar una singola acción de etiquetado a una colección de etiquetas, con el objetivo de dar cuenta de los diferentes niveles de agregación proporcionados por los servicios de etiquetado existentes. Hay varias maneras de agregar la etiquetas (por ejemplo, http://delicious.com/fabion_gandon/OWL permite de acceder a una reppresentación de todas las acciones de etiquetado realizadas por el titular de la cuenta "fabien_gandon", en las cuales aparece la etiqueta "OWL" en del.icio.us.com en un instante "t").</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt om een enkelvoudige taghandeling te koppelen aan een tagverzameling, zo rekenschap gevende van de verschillende niveaus waarop veelgebruikte tagdiensten tags bijeenverzamelen (http://delicious.com/fabion_gandon/OWL bijvoorbeeld, geeft een webrepresentatie van alle taghandelingen van de gebruiker "fabian_gandon" waar op een moment "t" het label "OWL" is gebruikt).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- ** Sub-properties of nt:isRelatedTo ** -->
+
+  <!-- * Relations used with nt:Aggregate TagAction * -->
+
+  <rdf:Property rdf:ID="hasCommunitySign">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Has community sign</rdfs:label>
+    <rdfs:label xml:lang="fr">A pour signe collectif</rdfs:label>
+    <rdfs:label xml:lang="it">Ha segno collettivo</rdfs:label>
+    <rdfs:label xml:lang="es">Tiene signo colectivo</rdfs:label>
+    <rdfs:label xml:lang="nl">Heeft een gemeenschappelijk teken</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Corresponds to uses of collectively approved labels shared inside a community.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Correspond à des usages collectivement constitués de libellés choisis par une communauté.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Corrisponde all'uso di tag scelte da una comunità.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Corresponde al uso de etiquetas elegidas por una comunidad.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Komt overeen met collectief afgestemd gebruik van door een gemeenschap gekozen labels.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="hasPersonalSign">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Has personal sign</rdfs:label>
+    <rdfs:label xml:lang="fr">A pour signe personnel</rdfs:label>
+    <rdfs:label xml:lang="it">Ha segno personale</rdfs:label>
+    <rdfs:label xml:lang="es">Tiene signo personal</rdfs:label>
+    <rdfs:label xml:lang="nl">Heeft een persoonlijk teken</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Corresponds to uses of user-defined labels that can either serve to gather, categorize, distinguish resources or simply add structure to one's collection of tags.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Correspond à l'emploi de libellés définis par un utilisateur pour rassembler, catégoriser ou distinguer des ressources voire simplement structurer sa propre collection de tags.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Corrisponde all'uso di tag definite dall'utente che possono servire per raccogliere, categorizzare o distinguere risorse, oppure semplicemente per strutturare la propria collezione di tag.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Corresponde al uso de etiquetas definidas por el usuario, que pueden servir para recoger, categorizar o distinguir etiquetas, o para estructurar su propria colección de etiquetas .</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Komt overeen met het gebruik van persoonlijk gedefinieerde labels die tot doel hebben bronnen te verzamelen, categoriseren en onderscheiden, of die simpelweg een verzameling tags structureren.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with nt:ExpressFeeling TagAction * -->
+
+  <rdf:Property rdf:ID="makesMeFeel">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Makes me feel</rdfs:label>
+    <rdfs:label xml:lang="fr">Produit sur moi</rdfs:label>
+    <rdfs:label xml:lang="it">Mi suscita</rdfs:label>
+    <rdfs:label xml:lang="es">Me provoca</rdfs:label>
+    <rdfs:label xml:lang="nl">Maakt dat ik me voel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Property used to indicate that the label of a tag denotes/expresses an emotional reaction.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée pour indiquer que le libellé d'un tag dénote/exprime une réaction émotionnelle.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata per indicare che il contenuto di una tag denota/esprime una reazione emotiva.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada para indicar que el contenido de una etiqueta denota/expresa una reacción emocional.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt om aan te geven dat het label van een tag een emotionele reactie weergeeft of uitdrukt.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with nt:Evaluate TagAction * -->
+
+  <rdf:Property rdf:ID="isWorth">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Is worth</rdfs:label>
+    <rdfs:label xml:lang="fr">Vaut</rdfs:label>
+    <rdfs:label xml:lang="it">Ha valore</rdfs:label>
+    <rdfs:label xml:lang="es">Tiene valor</rdfs:label>
+    <rdfs:label xml:lang="nl">Is waaard</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Property used whenever a resource is evaluated, ranked, etc. thanks to a label ("***", "5/10", "0", "best", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée pour indiquer qu'une ressource est évaluée, classée, etc. à l'aide d'un libellé ("***", "5/10", "0", "le meilleur", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata per indicare che una risorsa è valutata, classificata, ecc. per mezzo del contenuto di una tag ("***", "5/10", "0", "best", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada para indicar que un recurso es evaluado, clasificado, etc., por medio del contenido de una etiqueta ("***", "5/10", "0", "best", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt op het moment dat een een bron wordt gewaardeerd, geklassificeerd met een label ("***", "5/10", "0", "het beste", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with nt:Assert TagAction * -->
+
+  <rdf:Property rdf:ID="isAbout">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Is about</rdfs:label>
+    <rdfs:label xml:lang="fr">A pour thème</rdfs:label>
+    <rdfs:label xml:lang="it">Ha come tema</rdfs:label>
+    <rdfs:label xml:lang="es">Tiene como tema</rdfs:label>
+    <rdfs:label xml:lang="nl">Betreft</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Property used when the label of a tag describes the topic of a resource.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisé pour indiquer que le libellé d'un tag décrit le thème d'une ressource.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata quando il contenuto di una tag descrive il tema di una risorsa.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada cuando el contenido de una etiqueta describe el tema de un recurso.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer het label van een tag het thema van een bron beschrijft.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="hasForMedium">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Has for medium</rdfs:label>
+    <rdfs:label xml:lang="fr">Est un medium de type</rdfs:label>
+    <rdfs:label xml:lang="it">È un medium di tipo</rdfs:label>
+    <rdfs:label xml:lang="es">Es un medium de tipo</rdfs:label>
+    <rdfs:label xml:lang="nl">Is het medium</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <domain rdf:resource="http://ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+    <rdfs:comment xml:lang="en">Property used when the label of a tag indicates the medium which an HTTP-accessible Web representation belongs to ("forum", "video", "photo", "Webpage", "Webservice", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée quand le libellé d'un tag indique de quel média la représentation de la ressource à laquelle on accède ressortit ("forum", "vidéo", "photo", "page Web", "Webservice", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata quando il contenuto di una tag indica il medium a cui appartiene la rappresentazione Web della risorsa a cui si accede ("forum", "vidéo", "photo", "pagina Web", "Webservice", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada cuando el contenido de una etiqueta indica el medium al que pertenece la representación Web del recurso al cual se accede ("forum", "video", "foto", "página Web", "Webservice", etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer het label van een tag aangeeft tot welk medium een via het web toegankelijke representatie behoort ("forum", "video", "foto", "webpagina", "webdienst", etc.)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="isRelevant">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Is relevant</rdfs:label>
+    <rdfs:label xml:lang="fr">Est pertinent</rdfs:label>
+    <rdfs:label xml:lang="it">È pertinente</rdfs:label>
+    <rdfs:label xml:lang="es">Es pertinente</rdfs:label>
+    <rdfs:label xml:lang="nl">Is relevant</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Property used to subsume "isRelevantToSb" and "isRelevantToSt".</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée pour subsumer "isRelevantToSb" et "isRelevantToSt".</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata per sussumere "isRelevantToSb" e "isRelevantToSt".</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada para subsumir "isRelevantToSb" y "isRelevantToSt".</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt om "isRelevantToSb" en "isRelevantToSt" onder één noemer te brengen.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="isRelevantToSb">
+    <subPropertyOf rdf:resource="#isRelevantTo"/>
+    <rdfs:label xml:lang="en">Is relevant to somebody</rdfs:label>
+    <rdfs:label xml:lang="fr">Est pertinent pour quelqu'un</rdfs:label>
+    <rdfs:label xml:lang="it">È pertinente a qualcuno</rdfs:label>
+    <rdfs:label xml:lang="es">Es pertinente para alguien</rdfs:label>
+    <rdfs:label xml:lang="nl">Is relevant voor iemand</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:comment xml:lang="en">Subproperty of 'is relevant to' used to link a resource to the person whom it may be relevant to. In other words, in such a way that no immediate formal link can be inferred between the two except from the point of view of a precise person in addition to the user who defined the said link.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Sous-propriété de 'isRelevantTo', utilisée pour associer une ressource à une personne de telle manière qu'aucun lien formel ne puisse être inféré entre les deux excepté du point de vue du destinataire et du destinateur du tag.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Sotto-proprietà di 'isRelevantTo' usata per associare una risorsa alla persona a cui può essere pertinente, in modo tale che nessun collegamento formale immediato possa essere inferito fra i due, eccetto dal punto  di vista del creatore di tale collegamento</rdfs:comment>
+    <rdfs:comment xml:lang="es">Sub-propriedad de 'isRelevantTo' usada para asociar un recurso a la persona para la que puede ser pertinente, de manera que ningun enlace formal inmediato pueda ser inferido entre los dos, excepto desde el punto de vista del creador de esa asociación.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Deeleigenschap van ‘isRelevantTo’, gebruikt om een verband tot stand te brengen tussen een bron en de persoon waar het betrekking tot kan hebben. In een zodanige vorm dat er geen onmiddelijke formele relatie tussen de twee afgeleid kan worden behalve vanuit het gezichtspunt van een specifiek persoon en de gebruiker die dit verband gelegd heeft.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="isRelevantToSt">
+    <subPropertyOf rdf:resource="#isRelevantTo"/>
+    <rdfs:label xml:lang="en">Is relevant to something</rdfs:label>
+    <rdfs:label xml:lang="fr">Est pertinent par rapport à quelque chose</rdfs:label>
+    <rdfs:label xml:lang="it">È pertinente a qualcosa</rdfs:label>
+    <rdfs:label xml:lang="es">Es pertinente para algo</rdfs:label>
+    <rdfs:label xml:lang="nl">Is relevant met betrekking tot iets</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Subproperty of 'is relevant to', used to link a resource to anything that it may be relevant to. In other words, in such a way that no immediate formal link can be inferrend between the two except from the point of view of the creator of the said link.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Sous-propriété de "isRelevantTo', utilisée pour lier quoi que ce soit à une ressource de telle manière qu'aucun lien immédiat formel ne puisse être inféré entre les deux excepté du point de vue du créateur d'un tel lien.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Sotto-proprietà di 'isRelevantTo' usata per associare una risorsa a qualsiasi cosa che possa essere pertinente, in modo che nessun collegamento formale immediato possa essere inferito fra i due, eccetto dal punto  di vista del creatore di tale collegamento.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Sub-propriedad de 'isRelevantTo' usada para asociar un recurso a qualquier cosa para la que pueda ser pertinente, de manera que ningun enlace formal inmediato pueda ser inferido entre los dos, excepto desde el punto de vista del creador de esa asociación.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Deeleigenschap van ‘isRelevantTo’, gebruikt om een verband te leggen tussen de bron en iets anders, waarbij geen formeel verband is vast te stellen behalve vanuit het gezichtspunt van degene die dit verband legt.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with nt:SetTask TagAction * -->
+
+  <rdf:Property rdf:ID="elicitsAction">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Elicits action</rdfs:label>
+    <rdfs:label xml:lang="fr">Suscite l'action</rdfs:label>
+    <rdfs:label xml:lang="it">Suscita l'azione</rdfs:label>
+    <rdfs:label xml:lang="es">Suscita la acción</rdfs:label>
+    <rdfs:label xml:lang="nl">Ontlokt de handeling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Property used when a resource elicits an action to be performed.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée quand une ressource suscite l'accomplissement d'une action.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata quando una risorsa suscita lo svolgimento di un'azione.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada cuando un recurso suscita la realización de una acción.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer een bron aanzet tot het verrichten van een handeling.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with nt:Share TagAction * -->
+
+  <rdf:Property rdf:ID="sentTo">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Sent to</rdfs:label>
+    <rdfs:label xml:lang="fr">Envoyé à</rdfs:label>
+    <rdfs:label xml:lang="it">Inviato a</rdfs:label>
+    <rdfs:label xml:lang="es">Enviado a</rdfs:label>
+    <rdfs:label xml:lang="nl">Verstuurd aan</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <domain rdf:resource="http://ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+    <range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:comment xml:lang="en">Property used when the label of a tag indicates to whom a resource was suggested (models existing features like delicious "for:-username" tags).</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée quand le libellé d'un tag indique à quel utilisateur une ressource a été suggérée (modélise des fonctionalités existantes telles que les tags "for:-username" sur Delicious).</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata quando il contenuto di una tag indica a quale utente una risorsa è stata suggerita (modellizza funzionalità esistenti come le tag "for:utente" in Delicious).</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada cuando el contenido de una etiqueta indica a que usuario un recurso ha sido sugerido (modeliza funcionalidades existentes como las etiquetas "for:usuario" en Delicious).</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer het label van een tag aangeeft aan wie de bron is voorgesteld (modelleert bestaande functionaliteit zoals de "for:-username" tags op Delicious).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="sentBy">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Sent by</rdfs:label>
+    <rdfs:label xml:lang="fr">Envoyé par</rdfs:label>
+    <rdfs:label xml:lang="it">Inviato da</rdfs:label>
+    <rdfs:label xml:lang="es">Enviado por</rdfs:label>
+    <rdfs:label xml:lang="nl">Verstuurd door</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <domain rdf:resource="http://ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+    <range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:comment xml:lang="en">Corresponds to uses of labels that indicate by whom a resource was suggested.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Correspond à l'utilisation de signes qui indiquent à qui une ressource a été suggérée.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Corrisponde all'uso di tagche indicano da chi è stata suggerita una risorsa.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Corresponde al uso de etiquetas que indican por quien ha sido sugerido un recurso.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Komt overeen met het gebruik van labels die aangeven door wie deze bron is voorgesteld.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with nt:GiveAccesRights TagAction * -->
+
+  <rdf:Property rdf:ID="canBeReadBy">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Can be read by</rdfs:label>
+    <rdfs:label xml:lang="fr">Peut être lu par</rdfs:label>
+    <rdfs:label xml:lang="it">Può essere letto da</rdfs:label>
+    <rdfs:label xml:lang="es">Puede ser leído por</rdfs:label>
+    <rdfs:label xml:lang="nl">Kan gelezen worden door</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <domain rdf:resource="http://ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+    <range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:comment xml:lang="en">Property used when the label of a tag indicates to whom access rights to the tagged resource are conferred.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Corresponds à l'utilisation de tags dont le libellé indique le destinataire auquel des droits d'accès définis sur une ressource donnée ont été octroyés.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Corrisponde all'uso di tag il cui contenuto indica il destinatario a cui vengono conferiti diritti di accesso a una risorsa.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Corresponde al uso de etiquetas cuyo contenido indica el destinatario al cual vienen conferidos derechos de acceso a un recurso.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer het label van een tag aangeeft aan wie toegangsrechten tot de getagde bron worden toegekend.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property rdf:ID="cannotBeReadBy">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Cannot be read by</rdfs:label>
+    <rdfs:label xml:lang="fr">Ne peut être lu par</rdfs:label>
+    <rdfs:label xml:lang="it">Non può essere letto da</rdfs:label>
+    <rdfs:label xml:lang="es">No puede ser leído por</rdfs:label>
+    <rdfs:label xml:lang="nl">Kan niet gelezen worden door</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <domain rdf:resource="http://ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+    <range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <rdfs:comment xml:lang="en">Property used when the label of a tag indicates to whom access right to the tagged resource are denied.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée quand le libellé d'un tag indique le destinataire auquel des droits d'accès définis sur une ressource donnée ont été déniés.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata quando il contenuto di una tag indica il destinatario a cui sono negati diritti di accesso a una risorsa.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada cuando el contenido de una etiqueta indica el destinatario al cual se han negado derechos de acceso a un  recurso.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer het label van een tag aangeeft aan wie de toegangsrechten tot de getagde bron worden ontzegd.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with the nt:Point TagAction * -->
+
+  <rdf:Property rdf:ID="hasPart">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Has part</rdfs:label>
+    <rdfs:label xml:lang="fr">A pour partie</rdfs:label>
+    <rdfs:label xml:lang="it">Ha come parte</rdfs:label>
+    <rdfs:label xml:lang="es">Tiene como parte</rdfs:label>
+    <rdfs:label xml:lang="nl">Heeft als deel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <domain rdf:resource="http://ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+    <range rdf:resource="#PartOfWebRepresentation"/>
+    <rdfs:comment xml:lang="en">Property used when the label of a tag indicates which part of a Web representation is being tagged.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée quand le libellé d'un tag indique quelle partie de la représentation d'une ressource sur le Web est taguée.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata quando il contenuto di una tag indica quale parte della rappresentazione di una risorsa su Web è taggata.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada cuando el contenido de una etiqueta indica que parte de la representación de un recurso en la Web ha sido etiquetada.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer het label van een tag aangeeft welk gedeelte van een web-representatie getagd wordt.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+
+  <!-- * Relation used with the nt:Ask TagAction * -->
+
+  <rdf:Property rdf:ID="raisesQuestionAbout">
+    <subPropertyOf rdf:resource="#isRelatedTo"/>
+    <rdfs:label xml:lang="en">Raises question about</rdfs:label>
+    <rdfs:label xml:lang="fr">Soulève une interrogation au sujet de</rdfs:label>
+    <rdfs:label xml:lang="it">Solleva una domanda su</rdfs:label>
+    <rdfs:label xml:lang="es">Plantea una cuestión sobre</rdfs:label>
+    <rdfs:label xml:lang="nl">Roept vragen op over</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Property used when the label of a tag indicates that a question is being asked.</rdfs:comment>
+    <rdfs:comment xml:lang="fr">Propriété utilisée quand le libellé d'un tag indique qu'une question est posée.</rdfs:comment>
+    <rdfs:comment xml:lang="it">Proprietà usata quando il contenuto di una tag indica che si sta ponendo una domanda.</rdfs:comment>
+    <rdfs:comment xml:lang="es">Propriedad usada cuando el contenido de una etiqueta indica que se esta planteando una pregunta.</rdfs:comment>
+    <rdfs:comment xml:lang="nl">Eigenschap die gebruikt wordt wanneer het label van een tag aangeeft dat een vraag gesteld wordt.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+</rdf:RDF>

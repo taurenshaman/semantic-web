@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:cmp="http://www.ontologydesignpatterns.org/cp/owl/componency.owl#"
+    xmlns:ti="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://www.ontologydesignpatterns.org/cpont/ire.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:odp="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#"
+    xmlns:ir="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#"
+    xmlns:irrl="http://www.ontologydesignpatterns.org/cp/owl/informationobjectsandrepresentationlanguages.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:sit="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#"
+  xml:base="http://www.ontologydesignpatterns.org/cpont/ire.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl"/>
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl"/>
+    <rdfs:comment>The Identity of Resources and Entity (IRE) ontology. This ontology represents the relation between the web resources and their content by means of the ProxyFor relation. Furthermore, it includes the concepts of Fragment of a web resource, SemanticWebResource, anchor, and Identifier. IRE is a semantic web contribution to the management of the identification of entities on the web. It distinguishes between a resource which is available on the web, its content, and the entity which is about. Moreover, IRE is built by composing and specializing reusable content ontology design patterns.</rdfs:comment>
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl"/>
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/componency.owl"/>
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl"/>
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl"/>
+    <owl:imports rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationobjectsandrepresentationlanguages.owl"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Created by Valentina Presutti</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="AbstractWebLocation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="hasURL"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>All possible locations of the combinatorial space identified by the world wide web.</rdfs:comment>
+    <rdfs:label xml:lang="en">abstract web location</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Fragment">
+    <rdfs:comment>A piece of a web resource e.g., a piece of text in a web page, a picture, etc. A fragment is not a web page.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WebResource"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#WebResource"/>
+        </owl:allValuesFrom>
+        <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/componency.owl#isComponentOf"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WebPage"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ProxyFor">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isSettingForEntity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>A relation between a web resource and the entity/ies it is about at a certain time.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isSettingForWebResource"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSettingForWebResource"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#WebResource"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="atTime"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SemanticWebResource">
+    <rdfs:comment>A web resource that relizes an information encoded with a formal language e.g., the foaf file of a person.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WebResource"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#realizes"/>
+        <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationobjectsandrepresentationlanguages.owl#FormalExpression"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#WebPage">
+    <rdfs:comment>A web page e.g., a personal home page, a Wikipedia article.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WebResource"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Fragment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ApproximateProxyFor">
+    <rdfs:comment>A proxy for relation involving a web resource which is about more than one entity at a certain time.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ProxyFor"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSettingForEntity"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ExactProxyFor">
+    <rdfs:comment>A proxy for relation involving a web resource that is about one and only one entity at a certain time. Such a web resource can only be a semantic web resource.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSettingForWebResource"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#SemanticWebResource"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSettingForEntity"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ProxyFor"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WebResource">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#realizes"/>
+        <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/intensionextension.owl#InformationObject"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/informationrealization.owl#InformationRealization"/>
+    <rdfs:comment>A resource that is published and available on the web.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="WebLocationOf">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSettingForWebResource"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isSettingForLocation"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSettingForLocation"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#AbstractWebLocation"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment>A relation between a web resource and the abstract web location/s is is assigned to at a certain time.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSettingForWebResource"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#WebResource"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#atTime"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#isSettingForLocation">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="locationHasSetting"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#AbstractWebLocation"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor"/>
+    <rdfs:comment>The abstract web location assigned at a web resource in a web location of situation.</rdfs:comment>
+    <rdfs:domain rdf:resource="#WebLocationOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="timeHasSetting">
+    <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+    <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#atTime"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isSettingForWebResource">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="webResourceHasSetting"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor"/>
+    <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+    <rdfs:range rdf:resource="#WebResource"/>
+    <rdfs:comment>A web resource invlved in a situation.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isSettingForEntity">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor"/>
+    <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+    <rdfs:comment>The entity involved in a situation.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="entityHasSetting">
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#webResourceHasSetting">
+    <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+    <rdfs:domain rdf:resource="#WebResource"/>
+    <owl:inverseOf rdf:resource="#isSettingForWebResource"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#atTime">
+    <owl:inverseOf rdf:resource="#timeHasSetting"/>
+    <rdfs:comment>The time at which a situation take place.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation"/>
+    <rdfs:range rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/timeinterval.owl#TimeInterval"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#locationHasSetting">
+    <rdfs:range rdf:resource="#WebLocationOf"/>
+    <rdfs:domain rdf:resource="#AbstractWebLocation"/>
+    <owl:inverseOf rdf:resource="#isSettingForLocation"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/situation.owl#hasSetting"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#hasURL">
+    <rdfs:comment>A unique resource locator associated to an abstract web location in terms of the URL standard.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:domain rdf:resource="#AbstractWebLocation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasAnchor">
+    <rdfs:domain rdf:resource="#Fragment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    <rdfs:comment>A property of a fragment that associate it with a URI e.g., In a HTML web page, the fragment is an &lt;a&gt; tag, and the value is the URL of the link that can be navigated by that fragment.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+
+<!-- Created with TopBraid Composer -->

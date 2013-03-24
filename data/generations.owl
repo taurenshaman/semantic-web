@@ -1,0 +1,387 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/generations.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.owl-ontologies.com/generations.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An example ontology created by Matthew Horridge</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Parent">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:ID="Person"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasChild"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="GrandFather">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasChild"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Person"/>
+                  <owl:Restriction>
+                    <owl:someValuesFrom rdf:resource="#Person"/>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:about="#hasChild"/>
+                    </owl:onProperty>
+                  </owl:Restriction>
+                </owl:intersectionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:ID="hasSex"/>
+            </owl:onProperty>
+            <owl:hasValue>
+              <Sex rdf:ID="MaleSex"/>
+            </owl:hasValue>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="GrandParent">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasChild"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Person"/>
+                  <owl:Restriction>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:about="#hasChild"/>
+                    </owl:onProperty>
+                    <owl:someValuesFrom rdf:resource="#Person"/>
+                  </owl:Restriction>
+                </owl:intersectionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="GrandMother">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasChild"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Person"/>
+                  <owl:Restriction>
+                    <owl:someValuesFrom rdf:resource="#Person"/>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:about="#hasChild"/>
+                    </owl:onProperty>
+                  </owl:Restriction>
+                </owl:intersectionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:hasValue>
+              <Sex rdf:ID="FemaleSex"/>
+            </owl:hasValue>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Son">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasParent"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#MaleSex"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Father">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="#MaleSex"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasChild"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Man">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="#MaleSex"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Woman">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="#FemaleSex"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Sister">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+            <owl:onProperty>
+              <owl:SymmetricProperty rdf:ID="hasSibling"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="#FemaleSex"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Sibling">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+            <owl:onProperty>
+              <owl:SymmetricProperty rdf:about="#hasSibling"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="OffSpring">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasParent"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Sex">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <Sex rdf:about="#MaleSex"/>
+          <Sex rdf:about="#FemaleSex"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Female">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#FemaleSex"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#hasSex"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Brother">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <owl:Restriction>
+                <owl:onProperty>
+                  <owl:SymmetricProperty rdf:about="#hasSibling"/>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="#Person"/>
+              </owl:Restriction>
+              <owl:Restriction>
+                <owl:hasValue rdf:resource="#MaleSex"/>
+                <owl:onProperty>
+                  <owl:FunctionalProperty rdf:about="#hasSex"/>
+                </owl:onProperty>
+              </owl:Restriction>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Mother">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Person"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasChild"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#FemaleSex"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Male">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:hasValue rdf:resource="#MaleSex"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#hasSex"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Daughter">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasParent"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Person"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#hasSex"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="#FemaleSex"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Person"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#hasParent">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasChild"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasChild">
+    <owl:inverseOf rdf:resource="#hasParent"/>
+  </owl:ObjectProperty>
+  <owl:SymmetricProperty rdf:about="#hasSibling">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:FunctionalProperty rdf:about="#hasSex">
+    <rdfs:range rdf:resource="#Sex"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <Person rdf:ID="Matthew">
+    <owl:sameAs>
+      <Person rdf:ID="Matt">
+        <hasParent>
+          <Person rdf:ID="Peter">
+            <hasSex rdf:resource="#MaleSex"/>
+            <hasChild rdf:resource="#Matt"/>
+            <hasParent>
+              <Person rdf:ID="William">
+                <hasSex rdf:resource="#MaleSex"/>
+                <hasChild rdf:resource="#Peter"/>
+              </Person>
+            </hasParent>
+          </Person>
+        </hasParent>
+        <hasSex rdf:resource="#MaleSex"/>
+        <hasSibling>
+          <Person rdf:ID="Gemma">
+            <hasSex rdf:resource="#FemaleSex"/>
+          </Person>
+        </hasSibling>
+        <owl:sameAs rdf:resource="#Matthew"/>
+      </Person>
+    </owl:sameAs>
+  </Person>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.3, Build 206)  http://protege.stanford.edu -->

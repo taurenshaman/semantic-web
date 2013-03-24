@@ -1,0 +1,104 @@
+<rdf:RDF
+  xmlns:rdf ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xml:base="http://www.daml.org/2001/10/html/zipcode-ont">
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>$Id: zipcode-ont.daml,v 1.4 2002/02/28 10:25:33 mdean Exp $</owl:versionInfo>
+  <rdfs:comment>United States Postal Service Zone Improvement Program (ZIP) Code Ontology</rdfs:comment>
+</owl:Ontology>
+
+<rdfs:Class rdf:ID="ZipCode">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#zip"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:cardinality="1">
+      <owl:onProperty rdf:resource="#zip"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#association"/>
+      <owl:allValuesFrom rdf:resource="#Association"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#defaultAssociation"/>
+      <owl:allValuesFrom rdf:resource="#Association"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:cardinality="1">
+      <owl:onProperty rdf:resource="#defaultAssociation"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdfs:Class>
+
+<rdfs:Class rdf:ID="Association">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#city"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:cardinality="1">
+      <owl:onProperty rdf:resource="#city"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#state"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:cardinality="1">
+      <owl:onProperty rdf:resource="#state"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#acceptable"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:cardinality="1">
+      <owl:onProperty rdf:resource="#acceptable"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#type"/>
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:cardinality="1">
+      <owl:onProperty rdf:resource="#type"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdfs:Class>
+
+<owl:ObjectProperty rdf:ID="association"/>
+<owl:ObjectProperty rdf:ID="defaultAssociation">
+  <rdfs:subPropertyOf rdf:resource="#association"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:ID="city"/>
+<owl:DatatypeProperty rdf:ID="state"/>
+<owl:DatatypeProperty rdf:ID="acceptable"/>
+<owl:DatatypeProperty rdf:ID="type"/>
+<owl:DatatypeProperty rdf:ID="zip"/>
+
+</rdf:RDF>
+
+
+

@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:property="http://sweet.jpl.nasa.gov/ontology/property.owl#" 
+xmlns:units="http://sweet.jpl.nasa.gov/ontology/units.owl#" 
+xmlns:space="http://sweet.jpl.nasa.gov/ontology/space.owl#" 
+xmlns="http://sweet.jpl.nasa.gov/ontology/numerics.owl#">
+<owl:Ontology rdf:about="">
+<!--
+<dc:title>
+Numerics16</dc:title>
+<dc:date>
+1/25/2004 3:16:22 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+Numerics ontology</dc:subject>
+-->
+<owl:versionInfo>
+1.0</owl:versionInfo>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl"/>
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+<owl:Class rdf:ID="ReferenceSystem"/>
+<owl:Class rdf:ID="VectorField">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Vector"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Field"/>
+</owl:Class>
+<owl:Class rdf:ID="Set">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#eachElementUnique"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">
+true</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#NumericalEntity"/>
+</owl:Class>
+<owl:Class rdf:ID="Matrix">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#eachElementHasType"/>
+<owl:allValuesFrom rdf:resource="#Array"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Seq"/>
+</owl:Class>
+<owl:Class rdf:ID="Tensor">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#eachElementHasType"/>
+<owl:allValuesFrom rdf:resource="#Matrix"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Seq"/>
+</owl:Class>
+<owl:Class rdf:ID="Minimum">
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="Subset">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Set"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SetOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Tendency">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#derivativeWithRespectTo"/>
+<owl:someValuesFrom>
+<owl:Class>
+<owl:intersectionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Variable"/>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Time"/>
+</owl:Restriction>
+</owl:intersectionOf>
+</owl:Class>
+</owl:someValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Field"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#PartialDerivative"/>
+</owl:Class>
+<owl:Class rdf:ID="Variable">
+<rdfs:subClassOf rdf:resource="#NumericalEntity"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Time"/>
+<owl:Class rdf:ID="PartialDerivative">
+<rdfs:subClassOf rdf:resource="#Derivative"/>
+</owl:Class>
+<owl:Class rdf:ID="Field">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Coordinates"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Function"/>
+</owl:Class>
+<owl:Class rdf:ID="Vector">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#eachElementHasType"/>
+<owl:allValuesFrom rdf:resource="#Scalar"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Array"/>
+</owl:Class>
+<owl:Class rdf:ID="Scalar">
+<rdfs:subClassOf rdf:resource="#NumericalEntity"/>
+</owl:Class>
+<owl:Class rdf:ID="Sphere">
+<rdfs:subClassOf rdf:resource="#GeometricalObject_3D"/>
+</owl:Class>
+<owl:Class rdf:ID="GeometricalObject_3D">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDimension"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+3</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="SetOperation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Set"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="LineIntegral">
+<rdfs:subClassOf rdf:resource="#Integral"/>
+</owl:Class>
+<owl:Class rdf:ID="Integral">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Function"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#integralOnInterval"/>
+<owl:allValuesFrom rdf:resource="#Interval"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#integralWithRespectTo"/>
+<owl:allValuesFrom rdf:resource="#Variable"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OperationOnFunction"/>
+</owl:Class>
+<owl:Class rdf:ID="Seq">
+   <owl:equivalentClass rdf:resource="#Sequence"/>
+   <owl:equivalentClass rdf:resource="#Order"/>
+   <rdfs:subClassOf rdf:resource="#NumericalEntity"/>
+</owl:Class>
+<owl:Class rdf:ID="Order"/>
+<owl:Class rdf:ID="Sequence"/>
+<owl:Class rdf:ID="ScalarFieldOperation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#ScalarField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OperationOnFunction"/>
+</owl:Class>
+<owl:Class rdf:ID="Threshold"/>
+<owl:Class rdf:ID="Operation"/>
+<owl:Class rdf:ID="ScalarField">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Scalar"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Field"/>
+</owl:Class>
+<owl:Class rdf:ID="NumericalEntity"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Area"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Size"/>
+<owl:Class rdf:ID="Hyperplane">
+<rdfs:subClassOf rdf:resource="#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="GeometricalObject">
+<rdfs:subClassOf rdf:resource="#NumericalEntity"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Velocity"/>
+<owl:Class rdf:ID="Curve">
+<rdfs:subClassOf rdf:resource="#GeometricalObject_1D"/>
+</owl:Class>
+<owl:Class rdf:ID="GeometricalObject_1D">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDimension"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+1</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Function">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasExpression"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="Coordinates">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#eachElementHasType"/>
+<owl:allValuesFrom rdf:resource="#Coordinate"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Array"/>
+</owl:Class>
+<owl:Class rdf:ID="Plane">
+<rdfs:subClassOf rdf:resource="#Surface"/>
+</owl:Class>
+<owl:Class rdf:ID="Surface">
+<rdfs:subClassOf rdf:resource="#GeometricalObject_2D"/>
+</owl:Class>
+<owl:Class rdf:ID="Point">
+<rdfs:subClassOf rdf:resource="#GeometricalObject_0D"/>
+</owl:Class>
+<owl:Class rdf:ID="FuzzyPoint">
+<rdfs:subClassOf rdf:resource="#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="GeometricalObject_0D">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDimension"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+0</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Ratio">
+<rdfs:subClassOf rdf:resource="#ScalarDivision"/>
+</owl:Class>
+<owl:Class rdf:ID="ScalarDivision">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Division"/>
+</owl:Class>
+<owl:Class rdf:ID="Shear">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Field"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Derivative"/>
+<rdfs:subClassOf rdf:resource="#VectorFieldOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Derivative">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Function"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#derivativeWithRespectTo"/>
+<owl:allValuesFrom rdf:resource="#Variable"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Function"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OperationOnFunction"/>
+</owl:Class>
+<owl:Class rdf:ID="VectorFieldOperation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#VectorField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OperationOnFunction"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Frequency"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#Unit"/>
+<owl:Class rdf:ID="ScalarMultiplication">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Scalar"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Multiplication"/>
+</owl:Class>
+<owl:Class rdf:ID="BinaryOperation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#OrderedPair"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="UnaryOperation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="ScalarSubtraction">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Subtraction"/>
+</owl:Class>
+<owl:Class rdf:ID="GeometricalObject_2D">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasDimension"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+2</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="Gradient">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#ScalarField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#VectorField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ScalarFieldOperation"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Volume"/>
+<owl:Class rdf:ID="ScalarSummation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Summation"/>
+</owl:Class>
+<owl:Class rdf:ID="Polyhedron">
+<rdfs:subClassOf rdf:resource="#GeometricalObject_3D"/>
+</owl:Class>
+<owl:Class rdf:ID="StatisticalOperation">
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="OrderedPair">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasArity"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+2</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Seq"/>
+</owl:Class>
+<owl:Class rdf:ID="SquareRoot">
+<rdfs:subClassOf rdf:resource="#UnaryOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="SquareOperator">
+<rdfs:subClassOf rdf:resource="#UnaryOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Half">
+<rdfs:subClassOf rdf:resource="#UnaryOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="SurfaceIntegral">
+<rdfs:subClassOf rdf:resource="#Integral"/>
+</owl:Class>
+<owl:Class rdf:ID="VectorSummation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Vector"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Summation"/>
+</owl:Class>
+<owl:Class rdf:ID="Interval">
+<rdfs:subClassOf rdf:resource="#NumericalEntity"/>
+</owl:Class>
+<owl:Class rdf:ID="Divergence">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#VectorField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#ScalarField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VectorFieldOperation"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#LinearExtent"/>
+<owl:Class rdf:ID="LapseRate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Field"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#ScalarField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#derivativeWithRespectTo"/>
+<owl:someValuesFrom>
+<owl:Class>
+<owl:intersectionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Variable"/>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Altitude"/>
+</owl:Restriction>
+</owl:intersectionOf>
+</owl:Class>
+</owl:someValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#PartialDerivative"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Altitude"/>
+<owl:Class rdf:ID="Quantity">
+<rdfs:subClassOf>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Vector"/>
+<owl:Class rdf:about="#Scalar"/>
+<owl:Class rdf:about="#Tensor"/>
+</owl:unionOf>
+</owl:Class>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="Anomaly">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Excess">
+<rdfs:subClassOf rdf:resource="#Anomaly"/>
+</owl:Class>
+<owl:Class rdf:ID="Deficit">
+<rdfs:subClassOf rdf:resource="#Anomaly"/>
+</owl:Class>
+<owl:Class rdf:ID="Average">
+<owl:equivalentClass rdf:resource="#Mean"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom>
+<owl:Class>
+<owl:intersectionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Seq"/>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#eachElementHasType"/>
+<owl:allValuesFrom rdf:resource="#Scalar"/>
+</owl:Restriction>
+</owl:intersectionOf>
+</owl:Class>
+</owl:allValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Scalar"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Convergence">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#VectorField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#ScalarField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VectorFieldOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Polygon">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasVertices"/>
+<owl:allValuesFrom rdf:resource="#Point"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GeometricalObject_2D"/>
+</owl:Class>
+<owl:Class rdf:ID="Vector_3D">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasArity"/>
+<owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">
+3</owl:hasValue>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Vector"/>
+</owl:Class>
+<owl:Class rdf:ID="Distribution">
+<rdfs:subClassOf rdf:resource="#Function"/>
+</owl:Class>
+<owl:Class rdf:ID="DotProduct">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Multiplication"/>
+</owl:Class>
+<owl:Class rdf:ID="Circulation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#VectorField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#LineIntegral"/>
+<rdfs:subClassOf rdf:resource="#VectorFieldOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Distribution_1D">
+<rdfs:subClassOf rdf:resource="#Distribution"/>
+</owl:Class>
+<owl:Class rdf:ID="Distribution_2D">
+<rdfs:subClassOf rdf:resource="#Distribution"/>
+</owl:Class>
+<owl:Class rdf:ID="Distribution_3D">
+<rdfs:subClassOf rdf:resource="#Distribution"/>
+</owl:Class>
+<owl:Class rdf:ID="Spectrum">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Frequency"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Distribution_1D"/>
+</owl:Class>
+<owl:Class rdf:ID="Boundary">
+<rdfs:subClassOf rdf:resource="#GeometricalObject"/>
+</owl:Class>
+<owl:Class rdf:ID="TensorField">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Tensor"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Field"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#Location"/>
+<owl:Class rdf:ID="VectorSubtraction">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Vector"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Subtraction"/>
+</owl:Class>
+<owl:Class rdf:ID="CrossProduct">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#Vector"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#VectorOrVariableOrOperation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Multiplication"/>
+</owl:Class>
+<owl:Class rdf:ID="Fraction">
+<rdfs:subClassOf rdf:resource="#ScalarDivision"/>
+</owl:Class>
+<owl:Class rdf:ID="Budget">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Circle">
+<rdfs:subClassOf rdf:resource="#GeometricalObject_2D"/>
+</owl:Class>
+<owl:Class rdf:ID="GreatCircle">
+<rdfs:subClassOf rdf:resource="#Circle"/>
+</owl:Class>
+<owl:Class rdf:ID="SmallCircle">
+<rdfs:subClassOf rdf:resource="#Circle"/>
+</owl:Class>
+<owl:Class rdf:ID="Curl">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#VectorField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VectorFieldOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Flux">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#ScalarField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#VectorField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SurfaceIntegral"/>
+<rdfs:subClassOf rdf:resource="#VectorFieldOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="DifferntialFlux">
+<rdfs:subClassOf rdf:resource="#Flux"/>
+</owl:Class>
+<owl:Class rdf:ID="Line">
+<rdfs:subClassOf rdf:resource="#Curve"/>
+</owl:Class>
+<owl:Class rdf:ID="Rate">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Field"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationOutput"/>
+<owl:allValuesFrom rdf:resource="#ScalarField"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#derivativeWithRespectTo"/>
+<owl:someValuesFrom>
+<owl:Class>
+<owl:intersectionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Variable"/>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#hasAssociatedQuantity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Time"/>
+</owl:Restriction>
+</owl:intersectionOf>
+</owl:Class>
+</owl:someValuesFrom>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#PartialDerivative"/>
+</owl:Class>
+<owl:Class rdf:ID="Maximum">
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="Array">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#eachElementHasType"/>
+<owl:allValuesFrom rdf:resource="#Scalar"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Seq"/>
+</owl:Class>
+<owl:Class rdf:ID="ArrayOrNill"/>
+<owl:Class rdf:ID="TensorOrNill"/>
+<owl:Class rdf:ID="ScalarOrVariableOrOperation">
+<owl:equivalentClass>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Operation"/>
+<owl:Class rdf:about="#Scalar"/>
+<owl:Class rdf:about="#Variable"/>
+</owl:unionOf>
+</owl:Class>
+</owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:ID="Logarithm">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasBase"/>
+<owl:allValuesFrom rdf:resource="#Scalar"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Function"/>
+</owl:Class>
+<owl:Class rdf:ID="OperationOnFunction">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasOperationInput"/>
+<owl:allValuesFrom rdf:resource="#Function"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Operation"/>
+</owl:Class>
+<owl:Class rdf:ID="VectorOrVariableOrOperation">
+<owl:equivalentClass>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#Vector"/>
+<owl:Class rdf:about="#Variable"/>
+<owl:Class rdf:about="#Operation"/>
+</owl:unionOf>
+</owl:Class>
+</owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:ID="Rectangle">
+<rdfs:subClassOf rdf:resource="#Polygon"/>
+</owl:Class>
+<owl:Class rdf:ID="Square">
+<rdfs:subClassOf rdf:resource="#Rectangle"/>
+</owl:Class>
+<owl:Class rdf:ID="Coordinate">
+<rdfs:subClassOf rdf:resource="#Scalar"/>
+</owl:Class>
+<owl:Class rdf:ID="CoordinateSystem">
+<rdfs:subClassOf rdf:resource="#NumericalEntity"/>
+</owl:Class>
+<owl:Class rdf:ID="NumericalEntityOrOperation">
+<owl:equivalentClass>
+<owl:Class>
+<owl:unionOf rdf:parseType="Collection">
+<owl:Class rdf:about="#NumericalEntity"/>
+<owl:Class rdf:about="#Operation"/>
+</owl:unionOf>
+</owl:Class>
+</owl:equivalentClass>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#Length"/>
+<owl:Class rdf:ID="Summation">
+<rdfs:subClassOf rdf:resource="#BinaryOperation"/>
+<owl:equivalentClass rdf:resource="#Sum"/>
+</owl:Class>
+<owl:Class rdf:ID="Sum"/>
+<owl:Class rdf:ID="Subtraction">
+<rdfs:subClassOf rdf:resource="#BinaryOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Multiplication">
+<rdfs:subClassOf rdf:resource="#BinaryOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Division">
+<rdfs:subClassOf rdf:resource="#BinaryOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Mean">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="StandardDeviation">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Variance">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Variation">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Skewness">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Percentile">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="StochasticProcess">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="Normalization">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+</owl:Class>
+<owl:Class rdf:ID="ProbabailityDensityFunction">
+<rdfs:subClassOf rdf:resource="#StatisticalOperation"/>
+<rdfs:subClassOf rdf:resource="#Function"/>
+</owl:Class>
+<owl:Class rdf:ID="FourierTransform">
+<rdfs:subClassOf rdf:resource="#OperationOnFunction"/>
+</owl:Class>
+<owl:Class rdf:ID="WaveletTransform">
+<rdfs:subClassOf rdf:resource="#OperationOnFunction"/>
+</owl:Class>
+<owl:Class rdf:ID="Peak">
+<rdfs:subClassOf rdf:resource="#Maximum"/>
+</owl:Class>
+<owl:DatatypeProperty rdf:ID="hasOrderNumber">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasArity">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasValue">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+   <rdfs:domain rdf:resource="#Scalar"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="eachElementUnique">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+<!--
+<rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#eq"/>
+-->
+<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasDimension">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+   <rdfs:domain rdf:resource="#GeometricalObject"/>
+   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="isOrdered">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasLowerBound">
+   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+   <owl:equivalentProperty rdf:resource="#lowerBound"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="hasUpperBound">
+   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+   <owl:equivalentProperty rdf:resource="#upperBound"/>
+</owl:DatatypeProperty>
+<owl:DatatypeProperty rdf:ID="lowerBound"/>
+<owl:DatatypeProperty rdf:ID="upperBound"/>
+<owl:DatatypeProperty rdf:ID="tolerance"/>
+<owl:DatatypeProperty rdf:ID="hasTolerance">
+   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+   <owl:equivalentProperty rdf:resource="#tolerance"/>
+</owl:DatatypeProperty>
+<owl:ObjectProperty rdf:ID="equalsInValue">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
+   <rdfs:domain rdf:resource="#NumericalEntity"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasLength">
+   <rdfs:domain rdf:resource="#GeometricalObject_1D"/>
+   <rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#LinearExtent"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="eachElementHasType">
+   <rdfs:domain rdf:resource="#Seq"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasVolume">
+   <rdfs:domain rdf:resource="#GeometricalObject_3D"/>
+   <rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Volume"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasUnit">
+   <rdfs:domain rdf:resource="#Quantity"/>
+   <rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#Unit"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="lessThan">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+   <owl:inverseOf rdf:resource="#greaterThanOrEqual"/>
+   <rdfs:domain rdf:resource="#NumericalEntity"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="greaterThan">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+   <owl:inverseOf rdf:resource="#lessThanOrEqual"/>
+   <rdfs:domain rdf:resource="#NumericalEntity"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="lessThanOrEqual">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+   <owl:inverseOf rdf:resource="#greaterThan"/>
+   <rdfs:domain rdf:resource="#NumericalEntity"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="greaterThanOrEqual">
+   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+   <owl:inverseOf rdf:resource="#lessThan"/>
+   <rdfs:domain rdf:resource="#NumericalEntity"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="fuzzyGreaterThan">
+   <rdfs:domain rdf:resource="#NumericalEntity"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="fuzzyLessThan">
+   <rdfs:domain rdf:resource="#NumericalEntity"/>
+   <rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="overlaps">
+   <rdfs:domain rdf:resource="#GeometricalObject"/>
+   <rdfs:range rdf:resource="#GeometricalObject"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasArea">
+   <rdfs:domain rdf:resource="#GeometricalObject_2D"/>
+   <rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Area"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasSize">
+   <rdfs:domain rdf:resource="#GeometricalObject"/>
+   <rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Size"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasDefaultUnit">
+<rdfs:domain rdf:resource="#Quantity"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#Unit"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="isSubsetOf">
+<rdfs:domain rdf:resource="#Set"/>
+<rdfs:range rdf:resource="#Set"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasMaximum">
+<rdfs:domain rdf:resource="#Seq"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="derivativeWithRespectTo">
+<rdfs:domain rdf:resource="#Derivative"/>
+<rdfs:range rdf:resource="#Quantity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasMinimum">
+<rdfs:domain rdf:resource="#Seq"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasOperationInput">
+<rdfs:domain rdf:resource="#Operation"/>
+<rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasOperationOutput">
+<rdfs:domain rdf:resource="#Operation"/>
+<rdfs:range rdf:resource="#NumericalEntity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasUpperLimit">
+<rdfs:domain rdf:resource="#Interval"/>
+<rdfs:range rdf:resource="#Scalar"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasLowerLimit">
+<rdfs:domain rdf:resource="#Interval"/>
+<rdfs:range rdf:resource="#Scalar"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasFirstOperand">
+<rdfs:domain rdf:resource="#BinaryOperation"/>
+<rdfs:range rdf:resource="#NumericalEntityOrOperation"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasSecondOperand">
+<rdfs:domain rdf:resource="#BinaryOperation"/>
+<rdfs:range rdf:resource="#NumericalEntityOrOperation"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasBase">
+<rdfs:domain rdf:resource="#Logarithm"/>
+<rdfs:range rdf:resource="#Scalar"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasExpression">
+<rdfs:domain rdf:resource="#Function"/>
+<rdfs:range rdf:resource="#ScalarOrVariableOrOperation"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="isPartOf"/>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/property.owl#hasAssociatedQuantity"/>
+<owl:ObjectProperty rdf:ID="integralWithRespectTo">
+<rdfs:domain rdf:resource="#Integral"/>
+<rdfs:range rdf:resource="#Variable"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="integralOnInterval">
+<rdfs:domain rdf:resource="#Integral"/>
+<rdfs:range rdf:resource="#Interval"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasVertices">
+<rdfs:domain rdf:resource="#Polygon"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasCoordinates">
+<rdfs:domain rdf:resource="#Point"/>
+<rdfs:range rdf:resource="#Coordinates"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasCenter">
+<rdfs:range rdf:resource="#Point"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasRadius">
+<rdfs:domain rdf:resource="#Circle"/>
+<rdfs:range rdf:resource="#Scalar"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasWidth">
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Length"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasHeight">
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/property.owl#Length"/>
+</owl:ObjectProperty>
+</rdf:RDF>
+

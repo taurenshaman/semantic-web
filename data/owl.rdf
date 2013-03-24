@@ -1,0 +1,833 @@
+<!-- This is the OWL 2 Namespace Document, sometimes
+     called the "owl.owl" file.
+
+     For some commentary about its creation, see
+     http://www.w3.org/2007/OWL/wiki/Owl2DotOwlDevel
+
+     This was created from the 16 Oct 2009 version of
+     that page, with the turtle-to-rdf/xml conversion
+     done by cwm, and the conversion to XML entity
+     references done by hand. The GRDDL triple and
+     namespace have also been added by hand
+
+     The real OWL 1 and OWL 2 namespace is:
+          http://www.w3.org/2002/07/owl#
+
+-->
+<!DOCTYPE rdf:RDF [
+
+  <!ENTITY location "http://www.w3.org/2002/07/owl" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+  <!ENTITY grddl "http://www.w3.org/2003/g/data-view#" >
+  <!ENTITY owl "&location;#" >
+
+]>
+<rdf:RDF
+    xml:base ="&location;"
+    xmlns:rdf ="&rdf;"
+    xmlns:rdfs="&rdfs;"
+    xmlns:xsd = "&xsd;"
+    xmlns:owl ="&owl;"
+    xmlns:dc = "&dc;"
+    xmlns:grddl = "&grddl;"
+    >
+
+  <owl:Ontology rdf:about="&location;">
+    <!-- Triple required by the GRDDL specification to handle OWL/XML syntaxes -->
+    <grddl:namespaceTransformation rdf:resource="http://dev.w3.org/cvsweb/2009/owl-grddl/owx2rdf.xsl"/>
+
+    <dc:title xml:lang="en-US">The OWL 2 Schema vocabulary (OWL 2)</dc:title>
+    <dc:title xml:lang="zh-CN">OWL 2 Schema词汇表(OWL 2)</dc:title>
+
+    <owl:versionIRI rdf:resource="&location;"/>
+
+    <owl:imports rdf:resource="http://www.w3.org/2000/01/rdf-schema" />
+
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/TR/owl2-rdf-based-semantics/" />
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/TR/owl2-syntax/" />
+    <rdfs:isDefinedBy rdf:resource="http://www.w3.org/TR/owl2-mapping-to-rdf/" />
+
+    <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-classes" />
+    <rdfs:seeAlso rdf:resource="http://www.w3.org/TR/owl2-rdf-based-semantics/#table-axiomatic-properties" />
+
+    <rdfs:comment xml:lang="en-US">
+      This ontology partially describes the built-in classes and
+      properties that together form the basis of the RDF/XML syntax of OWL 2.
+      The content of this ontology is based on Tables 6.1 and 6.2
+      in Section 6.4 of the OWL 2 RDF-Based Semantics specification,
+      available at http://www.w3.org/TR/owl2-rdf-based-semantics/.
+      Please note that those tables do not include the different annotations
+      (labels, comments and rdfs:isDefinedBy links) used in this file.
+      Also note that the descriptions provided in this ontology do not
+      provide a complete and correct formal description of either the syntax
+      or the semantics of the introduced terms (please see the OWL 2
+      recommendations for the complete and normative specifications).
+      Furthermore, the information provided by this ontology may be
+      misleading if not used with care. This ontology SHOULD NOT be imported
+      into OWL ontologies. Importing this file into an OWL 2 DL ontology
+      will cause it to become an OWL 2 Full ontology and may have other,
+      unexpected, consequences.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">
+      该本体部分介绍了内置的类和属性，它们共同构成了OWL 2的RDF/XML语法的基础。这个本体的内容基于《OWL2基于RDF的语义规范》（http://www.w3.org/TR/owl2-rdf-based-semantics/）。
+      请注意，这些表不包括这个文件中使用的不同标注（标签，评论和rdfs:isDefinedBy链接）。
+      还要注意，这个本体提供的描述，并不对相关术语的语法和语义提供完整和正确的形式化描述（请参阅完整和规范的OWL 2建议）。
+      此外，如果不谨慎使用，这个本体提供的信息可能会产生误导。
+      这个本体不应该被导入其它本体。将这个文件导入到OWL DL本体，将使其成为一个OWL Full本体，并可能有其他意想不到的后果。
+    </rdfs:comment>
+
+    <owl:versionInfo>$Date: 2009/11/15 10:54:12 $</owl:versionInfo>
+
+  </owl:Ontology>
+
+  <!-- Processed by Id: cwm.py,v 1.197 2007/12/13 15:38:39 syosi Exp -->
+
+  <rdfs:Class rdf:about="&owl;AllDifferent">
+    <rdfs:comment xml:lang="en-US">The class of collections of pairwise different individuals.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示成对不同的个体所组成的集合的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">AllDifferent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不同</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;AllDisjointClasses">
+    <rdfs:comment xml:lang="en-US">The class of collections of pairwise disjoint classes.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示成对不相交的类所组成的集合的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">AllDisjointClasses</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不相交类</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;AllDisjointProperties">
+    <rdfs:comment xml:lang="en-US">The class of collections of pairwise disjoint properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示成对不相交的属性所组成的集合的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">AllDisjointProperties</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不相交属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;Annotation">
+    <rdfs:comment xml:lang="en-US">The class of annotated annotations for which the RDF serialization consists of an annotated subject, predicate and object.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示注释的类：RDF序列有带注释的主谓宾组成。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">Annotation</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">注解</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;AnnotationProperty">
+    <rdfs:comment xml:lang="en-US">The class of annotation properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示注释属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">AnnotationProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">注解属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdf;Property"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;AsymmetricProperty">
+    <rdfs:comment xml:lang="en-US">The class of asymmetric properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示非对称属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">AsymmetricProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">非对称属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;ObjectProperty"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;Axiom">
+    <rdfs:comment xml:lang="en-US">The class of annotated axioms for which the RDF serialization consists of an annotated subject, predicate and object.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示公理的类：RDF序列有带注释的主谓宾组成。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">Axiom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">公理</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;Class">
+    <rdfs:comment xml:lang="en-US">The class of OWL classes.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示OWL类的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">Class</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">类</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Class"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;DataRange">
+    <rdfs:comment xml:lang="en-US">The class of OWL data ranges, which are special kinds of datatypes. Note: The use of the IRI owl:DataRange has been deprecated as of OWL 2. The IRI rdfs:Datatype SHOULD be used instead.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示数据值域的类，这些数据值域都是特定的数据类型。注意，在OWL 2中owl:DataRange是过时的，应该用rdfs:Datatype替代。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">DataRange</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">数据值域</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Datatype"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;DatatypeProperty">
+    <rdfs:comment xml:lang="en-US">The class of data properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示数据属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">DatatypeProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">数据类型属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdf;Property"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;DeprecatedClass">
+    <rdfs:comment xml:lang="en-US">The class of deprecated classes.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示过时的类的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">DeprecatedClass</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">过时的类</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Class"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;DeprecatedProperty">
+    <rdfs:comment xml:lang="en-US">The class of deprecated properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示过时的属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">DeprecatedProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">过时的属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdf;Property"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;FunctionalProperty">
+    <rdfs:comment xml:lang="en-US">The class of functional properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示函数属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">FunctionalProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">函数属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdf;Property"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;InverseFunctionalProperty">
+    <rdfs:comment xml:lang="en-US">The class of inverse-functional properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示逆函数属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">InverseFunctionalProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">逆函数属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;ObjectProperty"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;IrreflexiveProperty">
+    <rdfs:comment xml:lang="en-US">The class of irreflexive properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示非自反属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">IrreflexiveProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">非自反属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;ObjectProperty"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;NamedIndividual">
+    <rdfs:comment xml:lang="en-US">The class of named individuals.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示被命名个体的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">NamedIndividual</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">命名的个体</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;NegativePropertyAssertion">
+    <rdfs:comment xml:lang="en-US">The class of negative property assertions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示取反断言的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">NegativePropertyAssertion</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">取反属性断言</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+  </rdfs:Class>
+
+  <owl:Class rdf:about="&owl;Nothing">
+    <rdfs:comment xml:lang="en-US">This is the empty class.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL类。表示空类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">Nothing</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+  </owl:Class>
+
+  <rdfs:Class rdf:about="&owl;ObjectProperty">
+    <rdfs:comment xml:lang="en-US">The class of object properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示对象属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">ObjectProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">对象属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdf;Property"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;Ontology">
+    <rdfs:comment xml:lang="en-US">The class of ontologies.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示本体的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">Ontology</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">本体</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;OntologyProperty">
+    <rdfs:comment xml:lang="en-US">The class of ontology properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示本体属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">OntologyProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">本体属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&rdf;Property"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;ReflexiveProperty">
+    <rdfs:comment xml:lang="en-US">The class of reflexive properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示自反属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">ReflexiveProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">自反属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;ObjectProperty"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;Restriction">
+    <rdfs:comment xml:lang="en-US">The class of property restrictions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示属性约束的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">Restriction</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">约束</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;Class"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="&owl;SymmetricProperty">
+    <rdfs:comment xml:lang="en-US">The class of symmetric properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示对称属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">SymmetricProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">对称属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;ObjectProperty"/>
+  </rdfs:Class>
+
+  <owl:Class rdf:about="&owl;Thing">
+    <rdfs:comment xml:lang="en-US">The class of OWL individuals.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL类。表示OWL个体（individual）的类。--疑源文档有误</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">Thing</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">事物</rdfs:label>
+  </owl:Class>
+
+  <rdfs:Class rdf:about="&owl;TransitiveProperty">
+    <rdfs:comment xml:lang="en-US">The class of transitive properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDFS类。表示传递属性的类。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">TransitiveProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">传递属性</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&owl;ObjectProperty"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="&owl;allValuesFrom">
+    <rdfs:comment xml:lang="en-US">The property that determines the class that a universal property restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性确定了统一的属性约束所涉及的类。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">allValuesFrom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">allValuesFrom</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Class"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;annotatedProperty">
+    <rdfs:comment xml:lang="en-US">The property that determines the predicate of an annotated axiom or annotated annotation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性确定了annotated axiom或annotated annotation的谓语。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Resource"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">annotatedProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">annotatedProperty</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;annotatedSource">
+    <rdfs:comment xml:lang="en-US">The property that determines the subject of an annotated axiom or annotated annotation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性确定了annotated axiom或annotated annotation的主语。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Resource"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">annotatedSource</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">annotatedSource</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;annotatedTarget">
+    <rdfs:comment xml:lang="en-US">The property that determines the object of an annotated axiom or annotated annotation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性确定了annotated axiom或annotated annotation的宾语。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Resource"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">annotatedTarget</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">annotatedTarget</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;assertionProperty">
+    <rdfs:comment xml:lang="en-US">The property that determines the predicate of a negative property assertion.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性确定了取反属性断言的谓语。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;NegativePropertyAssertion"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">assertionProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">断言属性</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;Property"/>
+  </rdf:Property>
+
+  <owl:AnnotationProperty rdf:about="&owl;backwardCompatibleWith">
+    <rdf:type rdf:resource="&owl;OntologyProperty"/>
+    <rdfs:comment xml:lang="en-US">The annotation property that indicates that a given ontology is backward compatible with another ontology.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL注释属性。该属性指明了给定本体向后兼容于另一个本体。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Ontology"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">backwardCompatibleWith</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">向后兼容于</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Ontology"/>
+  </owl:AnnotationProperty>
+
+  <owl:DatatypeProperty rdf:about="&owl;bottomDataProperty">
+    <rdfs:comment xml:lang="en-US">The data property that does not relate any individual to any data value.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL数据属性。该属性不同任意个体有任意数据关系。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Thing"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">bottomDataProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">bottomDataProperty</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="&owl;bottomObjectProperty">
+    <rdfs:comment xml:lang="en-US">The object property that does not relate any two individuals.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL对象属性。该属性不涉及任意两个个体。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Thing"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">bottomObjectProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">bottomObjectProperty</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Thing"/>
+  </owl:ObjectProperty>
+
+  <rdf:Property rdf:about="&owl;cardinality">
+    <rdfs:comment xml:lang="en-US">The property that determines the cardinality of an exact cardinality restriction.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，一个确切的基数限制的基数。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">cardinality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">基数</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;complementOf">
+    <rdfs:comment xml:lang="en-US">The property that determines that a given class is the complement of another class.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，一个给定类是另一个类的补集。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">complementOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">补</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Class"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;datatypeComplementOf">
+    <rdfs:comment xml:lang="en-US">The property that determines that a given data range is the complement of another data range with respect to the data domain.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，一个给定数据值域是另一个数据值域的补集。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Datatype"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">datatypeComplementOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">数据类型补集</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Datatype"/>
+  </rdf:Property>
+
+  <owl:AnnotationProperty rdf:about="&owl;deprecated">
+    <rdfs:comment xml:lang="en-US">The annotation property that indicates that a given entity has been deprecated.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL注释属性。该属性指明一个给定的实体是过时的。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Resource"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">deprecated</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">过时的</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+  </owl:AnnotationProperty>
+
+  <rdf:Property rdf:about="&owl;differentFrom">
+    <rdfs:comment xml:lang="en-US">The property that determines that two given individuals are different.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，两个给定个体是不同的。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Thing"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">differentFrom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不同于</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Thing"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;disjointUnionOf">
+    <rdfs:comment xml:lang="en-US">The property that determines that a given class is equivalent to the disjoint union of a collection of other classes.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，一个给定类是其它类的不相交并集。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">disjointUnionOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不相交并集</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;disjointWith">
+    <rdfs:comment xml:lang="en-US">The property that determines that two given classes are disjoint.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，两个给定类是不相交的。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">disjointWith</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不相交于</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Class"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;distinctMembers">
+    <rdfs:comment xml:lang="en-US">The property that determines the collection of pairwise different individuals in a owl:AllDifferent axiom.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，owl:AllDifferent公理中的成对不同个体的集合。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;AllDifferent"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">distinctMembers</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">相异成员</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;equivalentClass">
+    <rdfs:comment xml:lang="en-US">The property that determines that two given classes are equivalent, and that is used to specify datatype definitions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性表明两个给定的类是等价的，用于指定数据类型的定义。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">equivalentClass</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">等价类</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Class"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;equivalentProperty">
+    <rdfs:comment xml:lang="en-US">The property that determines that two given properties are equivalent.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了表明两个给定的属性是等价的。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdf;Property"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">equivalentProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">等价属性</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;Property"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;hasKey">
+    <rdfs:comment xml:lang="en-US">The property that determines the collection of properties that jointly build a key.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性表明，属性集合共同决定一个键。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">hasKey</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">有键</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;hasSelf">
+    <rdfs:comment xml:lang="en-US">The property that determines the property that a self restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性指有自约束的属性。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">hasSelf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">hasSelf</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;hasValue">
+    <rdfs:comment xml:lang="en-US">The property that determines the individual that a has-value restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了拥有有值约束的个体。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">hasValue</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">有值</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+  </rdf:Property>
+
+  <owl:OntologyProperty rdf:about="&owl;imports">
+    <rdfs:comment xml:lang="en-US">The property that is used for importing other ontologies into a given ontology.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OW本体属性。该属性用于将其它本体导入到一个给定的本体。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Ontology"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">imports</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">导入</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Ontology"/>
+  </owl:OntologyProperty>
+
+  <owl:AnnotationProperty rdf:about="&owl;incompatibleWith">
+    <rdf:type rdf:resource="&owl;OntologyProperty"/>
+    <rdfs:comment xml:lang="en-US">The annotation property that indicates that a given ontology is incompatible with another ontology.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL注释属性。该属性指明给定本体与另一个本体不兼容。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Ontology"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">incompatibleWith</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">不兼容于</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Ontology"/>
+  </owl:AnnotationProperty>
+
+  <rdf:Property rdf:about="&owl;intersectionOf">
+    <rdfs:comment xml:lang="en-US">The property that determines the collection of classes or data ranges that build an intersection.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了类集合或数据值域的交集。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">intersectionOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">交</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;inverseOf">
+    <rdfs:comment xml:lang="en-US">The property that determines that two given properties are inverse.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了两个给定属性是相反的。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">inverseOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">逆</rdfs:label>
+    <rdfs:range rdf:resource="&owl;ObjectProperty"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;maxCardinality">
+    <rdfs:comment xml:lang="en-US">The property that determines the cardinality of a maximum cardinality restriction.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了最大基数约束的基数。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">maxCardinality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最大基数</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;maxQualifiedCardinality">
+    <rdfs:comment xml:lang="en-US">The property that determines the cardinality of a maximum qualified cardinality restriction.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了最大限定基数约束的基数。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">maxQualifiedCardinality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最大限定基数</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;members">
+    <rdfs:comment xml:lang="en-US">The property that determines the collection of members in either a owl:AllDifferent, owl:AllDisjointClasses or owl:AllDisjointProperties axiom.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，一个owl:AllDifferent、owl:AllDisjointClasses或owl:AllDisjointProperties公理中的成员集合。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Resource"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">members</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">成员</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;minCardinality">
+    <rdfs:comment xml:lang="en-US">The property that determines the cardinality of a minimum cardinality restriction.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了最小基数约束的基数。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">minCardinality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最小基数</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;minQualifiedCardinality">
+    <rdfs:comment xml:lang="en-US">The property that determines the cardinality of a minimum qualified cardinality restriction.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了最小限定基数约束的基数。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">minQualifiedCardinality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最小限定基数</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;onClass">
+    <rdfs:comment xml:lang="en-US">The property that determines the class that a qualified object cardinality restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该数据决定了，一个合格的对象基数约束涉及的类。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">onClass</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">onClass</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Class"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;onDataRange">
+    <rdfs:comment xml:lang="en-US">The property that determines the data range that a qualified data cardinality restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该数据决定了，一个合格的数据基数约束涉及的数据域。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">onDataRange</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">onDataRange</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Datatype"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;onDatatype">
+    <rdfs:comment xml:lang="en-US">The property that determines the datatype that a datatype restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，一个数据类型约束涉及的数据类型。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Datatype"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">onDatatype</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">onDatatype</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Datatype"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;oneOf">
+    <rdfs:comment xml:lang="en-US">The property that determines the collection of individuals or data values that build an enumeration.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了构建了枚举的个体集合或数据值。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">oneOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">oneOf</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;onProperties">
+    <rdfs:comment xml:lang="en-US">The property that determines the n-tuple of properties that a property restriction on an n-ary data range refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，N元数据涉及的属性约束的属性N元组。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">onProperties</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">onProperties</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;onProperty">
+    <rdfs:comment xml:lang="en-US">The property that determines the property that a property restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了一个属性约束涉及的属性。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">onProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">onProperty</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;Property"/>
+  </rdf:Property>
+
+  <owl:AnnotationProperty rdf:about="&owl;priorVersion">
+    <rdf:type rdf:resource="&owl;OntologyProperty"/>
+    <rdfs:comment xml:lang="en-US">The annotation property that indicates the predecessor ontology of a given ontology.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL注释属性。该属性指定了给定本体的上一版本的本体。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Ontology"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">priorVersion</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">上一版本</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Ontology"/>
+  </owl:AnnotationProperty>
+
+  <rdf:Property rdf:about="&owl;propertyChainAxiom">
+    <rdfs:comment xml:lang="en-US">The property that determines the n-tuple of properties that build a sub property chain of a given property.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，对给定属性建立子属性链的属性N元组。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">propertyChainAxiom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">属性链公理</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;propertyDisjointWith">
+    <rdfs:comment xml:lang="en-US">The property that determines that two given properties are disjoint.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了两个给定的属性是不相交的。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdf;Property"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">propertyDisjointWith</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">属性不相交于</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;Property"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;qualifiedCardinality">
+    <rdfs:comment xml:lang="en-US">The property that determines the cardinality of an exact qualified cardinality restriction.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了一个完全合格的基数限制的基数。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">qualifiedCardinality</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">限定基数</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;sameAs">
+    <rdfs:comment xml:lang="en-US">The property that determines that two given individuals are equal.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了两个个体是相等的。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Thing"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">sameAs</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">等于</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Thing"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;someValuesFrom">
+    <rdfs:comment xml:lang="en-US">The property that determines the class that an existential property restriction refers to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了存在属性约束涉及的类。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Restriction"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">someValuesFrom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">someValuesFrom</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Class"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;sourceIndividual">
+    <rdfs:comment xml:lang="en-US">The property that determines the subject of a negative property assertion.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了一个否定属性断言的主语。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;NegativePropertyAssertion"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">sourceIndividual</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">sourceIndividual</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Thing"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;targetIndividual">
+    <rdfs:comment xml:lang="en-US">The property that determines the object of a negative object property assertion.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了一个否定对象属性断言的宾语。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;NegativePropertyAssertion"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">targetIndividual</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">targetIndividual</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Thing"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="&owl;targetValue">
+    <rdfs:comment xml:lang="en-US">The property that determines the value of a negative data property assertion.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了一个否定数据属性断言的值。[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;NegativePropertyAssertion"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">targetValue</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">targetValue</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </rdf:Property>
+
+  <owl:DatatypeProperty rdf:about="&owl;topDataProperty">
+    <rdfs:comment xml:lang="en-US">The data property that relates every individual to every data value.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL数据属性。该属性将每个个体和每个数据值联系起来。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Thing"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">topDataProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">topDataProperty</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="&owl;topObjectProperty">
+    <rdfs:comment xml:lang="en-US">The object property that relates every two individuals.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL对象属性。该属性使每两个个体有联系？[需要更新]</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Thing"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">topObjectProperty</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">topObjectProperty</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Thing"/>
+  </owl:ObjectProperty>
+
+  <rdf:Property rdf:about="&owl;unionOf">
+    <rdfs:comment xml:lang="en-US">The property that determines the collection of classes or data ranges that build a union.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了，类集合或数据值域的并集。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Class"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">unionOf</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">并</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+
+  <owl:AnnotationProperty rdf:about="&owl;versionInfo">
+    <rdfs:comment xml:lang="en-US">The annotation property that provides version information for an ontology or another OWL construct.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL注释属性。该属性提供了一个本体或另一个OWL结构的版本信息。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Resource"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">versionInfo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">版本信息</rdfs:label>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+  </owl:AnnotationProperty>
+
+  <owl:OntologyProperty rdf:about="&owl;versionIRI">
+    <rdfs:comment xml:lang="en-US">The property that identifies the version IRI of an ontology.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">OWL本体属性。该属性指定了本体的版本IRI。</rdfs:comment>
+    <rdfs:domain rdf:resource="&owl;Ontology"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">versionIRI</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">版本IRI</rdfs:label>
+    <rdfs:range rdf:resource="&owl;Ontology"/>
+  </owl:OntologyProperty>
+
+  <rdf:Property rdf:about="&owl;withRestrictions">
+    <rdfs:comment xml:lang="en-US">The property that determines the collection of facet-value pairs that define a datatype restriction.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">RDF属性。该属性决定了facet-value对集合，这些对定义了数据类型约束。</rdfs:comment>
+    <rdfs:domain rdf:resource="&rdfs;Datatype"/>
+    <rdfs:isDefinedBy rdf:resource="&owl;"/>
+    <rdfs:label xml:lang="en-US">withRestrictions</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">约束</rdfs:label>
+    <rdfs:range rdf:resource="&rdf;List"/>
+  </rdf:Property>
+</rdf:RDF>

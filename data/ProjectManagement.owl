@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF[
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/">
+  <!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY pm "http://www.web-semantics.org/ns/pm#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="http://www.web-semantics.org/ns/pm"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:pm="http://www.web-semantics.org/ns/pm#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="">
+    <dc:creator>Benjamin Nowack</dc:creator>
+    <rdfs:label xml:lang="en">Project management</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A basic project management  and documentation vocabulary.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <owl:versionInfo>2004-11-11</owl:versionInfo>
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://xmlns.com/foaf/0.1/Project">
+    <rdfs:label xml:lang="en">Project</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Objective">
+    <rdfs:label xml:lang="en">Objective</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="UseCase" />
+  <rdfs:Class rdf:ID="Component">
+    <rdfs:label xml:lang="en">Component</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A project component</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class rdf:ID="Task" />
+  <rdfs:Class rdf:ID="Issue" />
+  <rdf:Property rdf:ID="description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A description of a project, objective, use case, component,
+      task, or issue.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+          <owl:Class rdf:about="#Issue" />
+          <owl:Class rdf:about="#UseCase" />
+          <owl:Class rdf:about="#Objective" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="homepage">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document" />
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/homepage" />
+    <rdfs:subPropertyOf rdf:resource="#subProject" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The name of a project, objective, use case, component, task,
+      or issue
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+          <owl:Class rdf:about="#Issue" />
+          <owl:Class rdf:about="#UseCase" />
+          <owl:Class rdf:about="#Objective" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string" />
+    </rdfs:range>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="participant">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">participant</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A project participant.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="subProject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">sub-project</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="addressesIssue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">addresses issue</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      An issue which is addressed by a task.
+
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Task" />
+    <rdfs:range rdf:resource="#Issue" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="blockingIssue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">blocking issue</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      An issue that blocks the completion of a component.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Component" />
+    <rdfs:range rdf:resource="#Issue" />
+    <rdfs:subPropertyOf rdf:resource="#relatedIssue" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="blocksComponent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">blocks component</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A component that is blocked by an issue.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Issue" />
+    <rdfs:range rdf:resource="#Component" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="completion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">completion</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The actual completion date of a Project, Task, or working on
+      a project component
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">
+      Hm, would it make senses to use it with UseCase and
+      Objective as well (e.g. for describing the date when a use
+      case was achieved)?
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="contact">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">contact</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A contact person.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Issue" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="decision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">decision</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A decision related to an issue.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Issue" />
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="decisionRationale">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">decision rationale</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The rationale concerning a solution of an issue.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Issue" />
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="enablesUseCase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">enables use case</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A component that enables the implementation of a use case.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Component" />
+    <rdfs:range rdf:resource="#UseCase" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="exemplifiedBy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">exemplified by</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A use case that exemplifies a project objective.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Objective" />
+    <rdfs:range rdf:resource="#UseCase" />
+    <owl:inverseOf rdf:resource="#exemplifies" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="exemplifies">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">exemplifies</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      An objective that is exemplified by a use case.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#UseCase" />
+    <rdfs:range rdf:resource="#Objective" />
+    <owl:inverseOf rdf:resource="#exemplifiedBy" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="leader">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">leader</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A project leader.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:subPropertyOf rdf:resource="#participant" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="logo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">logo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A project logo.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Image" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="plannedCompletion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">planned end date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The planned end date of a project, task, or working on a
+      project component
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="plannedStart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">planned start date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The planned start date of a project, task, or working on a
+      project component.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="previousTask">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">previous task</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A previous task which has to be completed before another
+      task can start.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Task" />
+    <rdfs:range rdf:resource="#Task" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="projComponent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">project component</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A component of a project.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <rdfs:range rdf:resource="#Component" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="projObjective">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">project objective</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">An objective of a project.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <rdfs:range rdf:resource="#Objective" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="projUseCase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">project use case</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A use case of a project.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <rdfs:range rdf:resource="#UseCase" />
+    <owl:inverseOf rdf:resource="#useCaseProject" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="raisesIssue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="relatedIssue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">related issue</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      An issue, related to a component or an issue.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Issue" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Issue" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="requiredComponent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">required component</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A component that is required for the implementation of a use
+      case, a related component, or the completion of a task.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+          <owl:Class rdf:about="#UseCase" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Component" />
+    <owl:inverseOf rdf:resource="#requiredCompFor" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="resolvedByTask">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">resolved by task</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A task that helped resolve an issue.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="servesComponent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">serves component</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A component which is served by the completion of a task.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Task" />
+    <rdfs:range rdf:resource="#Component" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="shortDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">short description</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A short description of a project, objective, use case,
+      component, task, or issue.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+          <owl:Class rdf:about="#Issue" />
+          <owl:Class rdf:about="#UseCase" />
+          <owl:Class rdf:about="#Objective" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="solution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">solution</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A solution for an issue.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Issue" />
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="start">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">start date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The actual start date of a project, task, or working on a
+      project component
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="status">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">status</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A status of a project, objective, use case, component, task,
+      or issue
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Project" />
+          <owl:Class rdf:about="#Component" />
+          <owl:Class rdf:about="#Task" />
+          <owl:Class rdf:about="#Issue" />
+          <owl:Class rdf:about="#UseCase" />
+          <owl:Class rdf:about="#Objective" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="subProjectOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">sub-project of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:ID="assignedTo">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">assigned to</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A person who is going to carry out a task.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Task" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="developer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">developer</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      An implementor of a component or use case.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:ID="requiredCompFor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">required component for</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A component, task, or use case that requires this component.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Component" />
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:resource="#Component" />
+          <owl:Class rdf:resource="#Task" />
+          <owl:Class rdf:resource="#UseCase" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <owl:inverseOf rdf:resource="#requiredComponent" />
+  </rdf:Property>
+  <rdf:Property rdf:ID="requirement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:label xml:lang="en">requirement</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      A technical requirement of a project component.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:domain rdf:resource="#Component" />
+    <rdfs:range>
+      <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#string" />
+    </rdfs:range>
+  </rdf:Property>
+  <rdf:Property rdf:ID="useCaseProject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:label xml:lang="en">
+      project related to this use case
+    </rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:domain rdf:resource="#UseCase" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Project" />
+    <owl:inverseOf rdf:resource="#projUseCase" />
+  </rdf:Property>
+</rdf:RDF>

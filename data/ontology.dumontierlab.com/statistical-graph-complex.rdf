@@ -1,0 +1,679 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY owl2 "http://www.w3.org/2006/12/owl2#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY ontology "http://ontology.dumontierlab.com/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/statistical-graph-complex"
+     xml:base="http://ontology.dumontierlab.com/statistical-graph-complex"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:ontology="http://ontology.dumontierlab.com/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:owl2="http://www.w3.org/2006/12/owl2#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <dc:date rdf:datatype="&xsd;date">2008-08-20</dc:date>
+        <dc:creator
+            >Michel Dumontier</dc:creator>
+        <dc:format>rdf/xml</dc:format>
+        <dc:contributor
+            >Natalia Villanueva-Rosales</dc:contributor>
+        <dc:title
+            >Statistical Graph Ontology (complex)</dc:title>
+        <dc:creator>Leo Ferres</dc:creator>
+        <owl:versionInfo>2.1</owl:versionInfo>
+        <dc:description
+            >Complex class expressions for reasoning about the statistical graph ontology.</dc:description>
+        <owl:imports rdf:resource="&ontology;bro"/>
+        <owl:imports rdf:resource="&ontology;statistical-graph-primitive"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasPart -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasPart"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasProperPart -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasProperPart"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasSource -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasSource">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isRelatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasTag -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasTag">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isRelatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasTitle -->
+
+    <owl:ObjectProperty rdf:about="&ontology;hasTitle">
+        <rdfs:subPropertyOf rdf:resource="&ontology;hasProperPart"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isAfter -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isAfter">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isRelatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isBefore -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isBefore">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isRelatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isPartOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isPartOf"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isProperPartOf"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isRelatedTo -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isRelatedTo"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isTagOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isTagOf">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isRelatedTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isTitleOf -->
+
+    <owl:ObjectProperty rdf:about="&ontology;isTitleOf">
+        <rdfs:subPropertyOf rdf:resource="&ontology;isProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Axis -->
+
+    <owl:Class rdf:about="&ontology;Axis"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AxisTitle -->
+
+    <owl:Class rdf:about="&ontology;AxisTitle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Title"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isTitleOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;Axis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Bar -->
+
+    <owl:Class rdf:about="&ontology;Bar">
+        <owl:disjointWith rdf:resource="&ontology;Line"/>
+        <owl:disjointWith rdf:resource="&ontology;Point"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/BarGraph -->
+
+    <owl:Class rdf:about="&ontology;BarGraph">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;StatisticalGraph"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;Bar"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CategoryAxis -->
+
+    <owl:Class rdf:about="&ontology;CategoryAxis">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Axis"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;CategoryData"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CategoryAxisTitle -->
+
+    <owl:Class rdf:about="&ontology;CategoryAxisTitle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Title"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isTitleOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;CategoryAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CategoryData -->
+
+    <owl:Class rdf:about="&ontology;CategoryData">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Data"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isProperPartOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;CategoryAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Data -->
+
+    <owl:Class rdf:about="&ontology;Data"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GraphTitle -->
+
+    <owl:Class rdf:about="&ontology;GraphTitle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Title"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isTitleOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;StatisticalGraph"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LeftValueAxis -->
+
+    <owl:Class rdf:about="&ontology;LeftValueAxis">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;ValueAxis"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;LeftValueData"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LeftValueData -->
+
+    <owl:Class rdf:about="&ontology;LeftValueData">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;ValueData"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isProperPartOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;LeftValueAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Line -->
+
+    <owl:Class rdf:about="&ontology;Line">
+        <owl:disjointWith rdf:resource="&ontology;Point"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LineBarGraph -->
+
+    <owl:Class rdf:about="&ontology;LineBarGraph">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;BarGraph"/>
+                    <rdf:Description rdf:about="&ontology;LineGraph"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LineGraph -->
+
+    <owl:Class rdf:about="&ontology;LineGraph">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;StatisticalGraph"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;Line"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MajorTickMark -->
+
+    <owl:Class rdf:about="&ontology;MajorTickMark">
+        <owl:disjointWith rdf:resource="&ontology;MinorTickMark"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MinorTickMark -->
+
+    <owl:Class rdf:about="&ontology;MinorTickMark"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Plot -->
+
+    <owl:Class rdf:about="&ontology;Plot"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Point -->
+
+    <owl:Class rdf:about="&ontology;Point"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryCategoryAxis -->
+
+    <owl:Class rdf:about="&ontology;PrimaryCategoryAxis"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryCategoryData -->
+
+    <owl:Class rdf:about="&ontology;PrimaryCategoryData">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;CategoryData"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isPartOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;PrimaryCategoryAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryGraphTitle -->
+
+    <owl:Class rdf:about="&ontology;PrimaryGraphTitle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;GraphTitle"/>
+                    <rdf:Description rdf:about="&ontology;PrimaryTitle"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PrimaryTitle -->
+
+    <owl:Class rdf:about="&ontology;PrimaryTitle"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RightValueAxis -->
+
+    <owl:Class rdf:about="&ontology;RightValueAxis">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;ValueAxis"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;RightValueData"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RightValueData -->
+
+    <owl:Class rdf:about="&ontology;RightValueData">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;ValueData"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isProperPartOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;RightValueAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryCategoryAxis -->
+
+    <owl:Class rdf:about="&ontology;SecondaryCategoryAxis"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryCategoryData -->
+
+    <owl:Class rdf:about="&ontology;SecondaryCategoryData">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;CategoryData"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isPartOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;SecondaryCategoryAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryGraphTitle -->
+
+    <owl:Class rdf:about="&ontology;SecondaryGraphTitle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;GraphTitle"/>
+                    <rdf:Description rdf:about="&ontology;SecondaryTitle"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SecondaryTitle -->
+
+    <owl:Class rdf:about="&ontology;SecondaryTitle"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/StatisticalGraph -->
+
+    <owl:Class rdf:about="&ontology;StatisticalGraph">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                <owl:onClass rdf:resource="&ontology;PrimaryTitle"/>
+                <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TickMark -->
+
+    <owl:Class rdf:about="&ontology;TickMark">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;MajorTickMark"/>
+                    <rdf:Description rdf:about="&ontology;MinorTickMark"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Title -->
+
+    <owl:Class rdf:about="&ontology;Title"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ValueAxis -->
+
+    <owl:Class rdf:about="&ontology;ValueAxis">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Axis"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;ValueData"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ValueAxisTitle -->
+
+    <owl:Class rdf:about="&ontology;ValueAxisTitle">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Title"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isTitleOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;ValueAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ValueData -->
+
+    <owl:Class rdf:about="&ontology;ValueData">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Data"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;isProperPartOf"/>
+                        <owl:someValuesFrom rdf:resource="&ontology;ValueAxis"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/XAxis -->
+
+    <owl:Class rdf:about="&ontology;XAxis">
+        <owl:disjointWith rdf:resource="&ontology;YAxis"/>
+        <owl:disjointWith rdf:resource="&ontology;ZAxis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/XYPlot -->
+
+    <owl:Class rdf:about="&ontology;XYPlot">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&ontology;Plot"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:onClass rdf:resource="&ontology;XAxis"/>
+                        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&ontology;hasProperPart"/>
+                        <owl:onClass rdf:resource="&ontology;YAxis"/>
+                        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YAxis -->
+
+    <owl:Class rdf:about="&ontology;YAxis">
+        <owl:disjointWith rdf:resource="&ontology;ZAxis"/>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZAxis -->
+
+    <owl:Class rdf:about="&ontology;ZAxis"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdfs:subPropertyOf rdf:resource="&ontology;hasTag"/>
+        <owl:propertyChain rdf:parseType="Collection">
+            <rdf:Description rdf:about="&ontology;hasPart"/>
+            <rdf:Description rdf:about="&ontology;hasTag"/>
+        </owl:propertyChain>
+    </rdf:Description>
+</rdf:RDF>

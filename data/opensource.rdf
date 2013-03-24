@@ -1,0 +1,110 @@
+<rdf:RDF xmlns="http://purl.org/net/xamde/ns/os#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:log="http://www.w3.org/2000/10/swap/log#" xmlns:os="http://purl.org/net/xamde/ns/os#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:s="http://www.schemaweb.info/schemas/meta/rdf/" xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#">
+  <owl:Ontology rdf:about="">
+    <dc:title xml:lang="en-gb">(Open Source) Software Vocabulary</dc:title>
+    <dc:title xml:lang="zh-CN">（开源）软件本体</dc:title>
+    <dc:description xml:lang="en-gb">Similiar to SourceForge-project pages but augmented with a few other details helpful in choosing between open source software packages</dc:description>
+    <dc:description xml:lang="zh-CN">类似于SourceForge项目的页面，但扩充了一些其他细节，这些细节有助于在开源软件包之间做出选择。</dc:description>
+    <dc:created>2003-12-31</dc:created>
+    <dc:modified>2004-01-04</dc:modified>
+    <owl:versionInfo>0.2</owl:versionInfo>
+    <s:contact>
+      <foaf:Person>
+        <rdfs:seeAlso rdf:resource="http://purl.org/net/xamde/foaf.rdf" />
+      </foaf:Person>
+    </s:contact>
+    <s:location rdf:resource="http://purl.org/net/xamde/ns/os/opensource.rdfs" />
+    <s:namespace>http://purl.org/net/xamde/ns/os#</s:namespace>
+    <rdfs:seeAlso rdf:resource="http://purl.org/net/xamde/ns/os/" />
+    <owl:imports rdf:resource="http://www.w3.org/2000/01/rdf-schema" />
+    <owl:imports rdf:resource="http://www.w3.org/2002/07/owl" />
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://purl.org/net/xamde/ns/os#Software">
+    <rdfs:comment xml:lang="en-gb">A system, tool, library or other software artefact that can be used.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个可用的系统、工具、库或其它软件制品。</rdfs:comment>
+    <rdfs:label xml:lang="en-gb">Software</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">软件</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#alternative">
+    <rdfs:comment xml:lang="en-gb">Alternative software packages that could be used instead of this one.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">可用于替代该软件的备选软件包。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">alternative</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">备选</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <vs:term_status>testing</vs:term_status>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/xamde/ns/os" />
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#rdf:Alt" />
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#creator">
+    <rdfs:comment xml:lang="en-gb">Author of the software package. Could use a string literal or a foaf:Person.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">软件包的作者，可以使用字符串文本或者foaf:Person。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">author</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">作者</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/creator" />
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#description">
+    <rdfs:comment xml:lang="en-gb">Description of the software package. Typically the first one or two sentences from the projects homepage.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">软件包的描述信息，通常是项目主页的第一句或前两句。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">description</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">描述</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/description" />
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#firstVersion">
+    <rdfs:comment xml:lang="en-gb">Date of the first public release.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">发布第一个版本的的日期。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">first version</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">第一个版本</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/dc/elements/1.1/date" />
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/issued" />
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#latestVersion">
+    <rdfs:comment xml:lang="en-gb">Date of the latest public release.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">发布最新版本的的日期。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">latest version</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最新版本</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/dc/elements/1.1/date" />
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#license">
+    <rdfs:comment xml:lang="en-gb">Software license, name or URL.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">软件许可，名称或网址。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">license</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">许可</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#programmingLanguage">
+    <rdfs:comment xml:lang="en-gb">The programming language(s) this software is written in.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该软件的开发语言。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">programming language</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">编程语言</rdfs:label>
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#title">
+    <rdfs:comment xml:lang="en-gb">Title or name of the software package.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">软件包的标题或名称。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">title</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">标题</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title" />
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/xamde/ns/os#topic">
+    <rdfs:comment xml:lang="en-gb">Topic from the trove software map. Probably another schema is needed for the map itself.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该软件示意图的主题，也可能是示意图本身所需要的另一个架构。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/xamde/ns/os#Software" />
+    <rdfs:label xml:lang="en-gb">topic</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主题</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/subject" />
+    <vs:term_status>testing</vs:term_status>
+  </rdf:Property>
+</rdf:RDF>

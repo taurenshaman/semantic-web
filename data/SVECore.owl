@@ -1,0 +1,509 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.uv.es/~agentes/SVECore#"
+  xml:base="http://www.uv.es/~agentes/SVECore">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="InterGroupSocialRelation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SocialRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MovableObject">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GraphicalEntity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Group"/>
+  <owl:Class rdf:about="#GraphicalEntity">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="posx"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="ry"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf 
+    rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="height"/>
+        </owl:onProperty>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="objectFree"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="posy"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="rx"/>
+        </owl:onProperty>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="posz"/>
+        </owl:onProperty>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="yaw"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Agent">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FilterClass"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GraphicalEntity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CountableContainer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="num"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Container"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="max"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ObjectContainer">
+    <rdfs:subClassOf rdf:resource="#CountableContainer"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ServiceContainer">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#num"/>
+        </owl:onProperty>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#CountableContainer"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="containsSubstance"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FrienshipRelation">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="favoursReceived"/>
+        </owl:onProperty>
+        <owl:maxCardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="favoursDone"/>
+        </owl:onProperty>
+        <owl:maxCardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AgentSocialRelation"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HeterogeneousObjectContainer">
+    <rdfs:subClassOf rdf:resource="#ObjectContainer"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Container">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="full"/>
+        </owl:onProperty>
+        <owl:maxCardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#GraphicalEntity"/>
+    <rdfs:subClassOf rdf:resource="#FilterClass"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="empty"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HomogeneousObjectContainer">
+    <rdfs:subClassOf rdf:resource="#ObjectContainer"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="currBaseObjects"/>
+        </owl:onProperty>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="objectBaseName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="numBaseObjects"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BaseObject">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality 
+        rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:ID="baseFree"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#FilterClass"/>
+    <rdfs:subClassOf rdf:resource="#GraphicalEntity"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Substance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NonGraphicalEntity"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GroupSocialRelation">
+    <rdfs:subClassOf rdf:resource="#SocialRelation"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UncountableContainer">
+    <rdfs:subClassOf rdf:resource="#Container"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AgentSocialRelation">
+    <rdfs:subClassOf rdf:resource="#SocialRelation"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="domainAgentSocialRelation">
+    <rdfs:range rdf:resource="#Agent"/>
+    <rdfs:domain rdf:resource="#AgentSocialRelation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="targetAgentSocialRelation">
+    <rdfs:domain rdf:resource="#AgentSocialRelation"/>
+    <rdfs:range rdf:resource="#Agent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="pickedBy">
+    <rdfs:domain rdf:resource="#MovableObject"/>
+    <rdfs:range rdf:resource="#Agent"/>
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:ID="senseDepends"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="domainGroupSocialRelation">
+    <rdfs:domain rdf:resource="#Agent"/>
+    <rdfs:range rdf:resource="#GroupSocialRelation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="domainInterGroupSocialRelation">
+    <rdfs:range rdf:resource="#InterGroupSocialRelation"/>
+    <rdfs:domain rdf:resource="#Group"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="in">
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#senseDepends"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#MovableObject"/>
+    <rdfs:range rdf:resource="#Container"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#containsSubstance">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ServiceContainer"/>
+          <owl:Class rdf:about="#UncountableContainer"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Substance"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="on">
+    <rdfs:subPropertyOf>
+      <owl:FunctionalProperty rdf:about="#senseDepends"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#BaseObject"/>
+    <rdfs:domain rdf:resource="#MovableObject"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="targetInterGroupSocialRelation">
+    <rdfs:range rdf:resource="#InterGroupSocialRelation"/>
+    <rdfs:domain rdf:resource="#Group"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="targetGroupSocialRelation">
+    <rdfs:domain rdf:resource="#Group"/>
+    <rdfs:range rdf:resource="#GroupSocialRelation"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#favoursReceived">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#FrienshipRelation"/>
+    <rdfs:subPropertyOf>
+      <owl:DatatypeProperty rdf:ID="socialProperty"/>
+    </rdfs:subPropertyOf>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#socialProperty">
+    <rdfs:domain rdf:resource="#SocialRelation"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="graphicalProperty"/>
+  <owl:DatatypeProperty rdf:about="#favoursDone">
+    <rdfs:subPropertyOf rdf:resource="#socialProperty"/>
+    <rdfs:domain rdf:resource="#FrienshipRelation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#objectBaseName">
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#HomogeneousObjectContainer"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="filterType">
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first 
+          rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >ALL</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first 
+            rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >NOTHING</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first 
+              rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >CLASSES-ONLY</rdf:first>
+              <rdf:rest 
+              rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#FilterClass"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#full">
+    <rdfs:domain rdf:resource="#Container"/>
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#posz">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+    <rdfs:subPropertyOf rdf:resource="#graphicalProperty"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#posy">
+    <rdfs:subPropertyOf rdf:resource="#graphicalProperty"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#numBaseObjects">
+    <rdfs:domain rdf:resource="#HomogeneousObjectContainer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#objectFree">
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#yaw">
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#graphicalProperty"/>
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#senseDepends">
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#FilterClass"/>
+    <rdfs:comment 
+    rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sensorial dependency</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#baseFree">
+    <rdfs:domain rdf:resource="#BaseObject"/>
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#currBaseObjects">
+    <rdfs:domain rdf:resource="#HomogeneousObjectContainer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#ry">
+    <rdfs:subPropertyOf rdf:resource="#graphicalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#rx">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+    <rdfs:subPropertyOf rdf:resource="#graphicalProperty"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="closed">
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#max">
+    <rdfs:domain rdf:resource="#CountableContainer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#num">
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#CountableContainer"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment 
+    rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of objects or services in the container</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#empty">
+    <rdfs:comment xml:lang="en">Number of objects or services in 
+    the container</rdfs:comment>
+    <rdfs:domain rdf:resource="#Container"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="typeObject">
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#HomogeneousObjectContainer"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#posx">
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#graphicalProperty"/>
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#height">
+    <rdfs:range 
+    rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#GraphicalEntity"/>
+    <rdf:type 
+    rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#graphicalProperty"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>

@@ -1,0 +1,1408 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY owl2 "http://www.w3.org/2006/12/owl2#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY dl "http://ontology.dumontierlab.com/" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/unit-primitive"
+     xml:base="http://ontology.dumontierlab.com/unit-primitive"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dl="http://ontology.dumontierlab.com/"
+     xmlns:owl2="http://www.w3.org/2006/12/owl2#">
+    <owl:Ontology rdf:about="">
+        <owl:versionInfo rdf:datatype="&xsd;string">2.0</owl:versionInfo>
+        <dc:date rdf:datatype="&xsd;date">2007-10-01</dc:date>
+        <dc:description rdf:datatype="&xsd;string"
+            >An ontology of measurement units.</dc:description>
+        <dc:publisher rdf:datatype="&xsd;string">Dumontier Lab</dc:publisher>
+        <dc:creator rdf:datatype="&xsd;string"
+            >Michel Dumontier</dc:creator>
+        <dc:creator rdf:datatype="&xsd;string">Mykola Konyk</dc:creator>
+        <dc:title rdf:datatype="&xsd;string"
+            >Unit Ontology (primitive)</dc:title>
+        <dc:format rdf:datatype="&xsd;string"
+            >application/rdf+xml</dc:format>
+        <dc:language rdf:datatype="&xsd;string">en</dc:language>
+        <owl:imports rdf:resource="&dl;annotation"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;language"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasUnit -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasUnit">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label rdf:datatype="&xsd;string">has unit</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A relation to specify the unit of some measurement.</rdfs:comment>
+        <rdfs:range rdf:resource="&dl;Unit"/>
+        <owl:inverseOf rdf:resource="&dl;isUnitOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isUnitOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isUnitOf">
+        <rdfs:label rdf:datatype="&xsd;string">is unit of</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A relation to specify the measurement using some unit.</rdfs:comment>
+        <rdfs:domain rdf:resource="&dl;Unit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isRaisedToPowerOf -->
+
+    <owl:DatatypeProperty rdf:about="&dl;isRaisedToPowerOf">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >is raised to the power of</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isScaledBy -->
+
+    <owl:DatatypeProperty rdf:about="&dl;isScaledBy">
+        <rdfs:label rdf:datatype="&xsd;string">is scaled by</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isShiftedBy -->
+
+    <owl:DatatypeProperty rdf:about="&dl;isShiftedBy">
+        <rdfs:label rdf:datatype="&xsd;string">is shifted by</rdfs:label>
+        <rdfs:range rdf:resource="&xsd;double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AbsorbedDoseRateUnit -->
+
+    <owl:Class rdf:about="&dl;AbsorbedDoseRateUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >absorbed dose rate unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;RadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for the absorbed dose rate.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AbsorbedDoseUnit -->
+
+    <owl:Class rdf:about="&dl;AbsorbedDoseUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >absorbed dose unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;RadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for absorbed dose.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AccelerationUnit -->
+
+    <owl:Class rdf:about="&dl;AccelerationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >acceleration unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for acceleration.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AmountOfSubstanceConcentrationUnit -->
+
+    <owl:Class rdf:about="&dl;AmountOfSubstanceConcentrationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >amount of substance concentration unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ConcentrationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for an amount of substance concentration.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AmountOfSubstanceUnit -->
+
+    <owl:Class rdf:about="&dl;AmountOfSubstanceUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >amount of substance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for the amount of substance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AngleUnit -->
+
+    <owl:Class rdf:about="&dl;AngleUnit">
+        <rdfs:label rdf:datatype="&xsd;string">angle unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for angle.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AngularAccelerationUnit -->
+
+    <owl:Class rdf:about="&dl;AngularAccelerationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >angular acceleration unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for angular acceleration unit.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AngularVelocityUnit -->
+
+    <owl:Class rdf:about="&dl;AngularVelocityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >angular velocity unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for angular velocity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AreaDensityUnit -->
+
+    <owl:Class rdf:about="&dl;AreaDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >area density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;DensityUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of area density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AreaUnit -->
+
+    <owl:Class rdf:about="&dl;AreaUnit">
+        <rdfs:label rdf:datatype="&xsd;string">area unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for area.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/AttoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;AttoScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >atto scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-18.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CapacitanceUnit -->
+
+    <owl:Class rdf:about="&dl;CapacitanceUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >capacitance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for capacitance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CatalyticActivityUnit -->
+
+    <owl:Class rdf:about="&dl;CatalyticActivityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >catalytic activity unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for catalytic activity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CatalyticConcentrationUnit -->
+
+    <owl:Class rdf:about="&dl;CatalyticConcentrationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >catalytic concentration unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ConcentrationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for catalytic concentration.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CentiScaledUnit -->
+
+    <owl:Class rdf:about="&dl;CentiScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >centi scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-2.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ConcentrationUnit -->
+
+    <owl:Class rdf:about="&dl;ConcentrationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >concentration unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of concentration.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ConductionUnit -->
+
+    <owl:Class rdf:about="&dl;ConductionUnit">
+        <rdfs:label rdf:datatype="&xsd;string">conduction unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of conduction.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/CurrencyUnit -->
+
+    <owl:Class rdf:about="&dl;CurrencyUnit">
+        <rdfs:label rdf:datatype="&xsd;string">currency unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A national or standard currency.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DeciScaledUnit -->
+
+    <owl:Class rdf:about="&dl;DeciScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >deci scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-1.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DekaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;DekaScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >deka scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^2.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DensityUnit -->
+
+    <owl:Class rdf:about="&dl;DensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string">density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DerivedUnit -->
+
+    <owl:Class rdf:about="&dl;DerivedUnit">
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A derived unit is one that is obtained by other units through a mathematical transformation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DoseEquivalentUnit -->
+
+    <owl:Class rdf:about="&dl;DoseEquivalentUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >dose equivalent unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;RadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for dose equivalence.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/DynamicViscosityUnit -->
+
+    <owl:Class rdf:about="&dl;DynamicViscosityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >dynamic viscosity unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for dynamic viscosity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricChargeDensityUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricChargeDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric charge density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric charge density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricChargeUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricChargeUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric charge unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric charge.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricConductionUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricConductionUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric conduction unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ConductionUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric conduction.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricCurrentDensityUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricCurrentDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric current density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric current density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricCurrentUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricCurrentUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric current unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric current.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricFieldStrengthUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricFieldStrengthUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric field strength unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric field strength.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricFluxDensityUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricFluxDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric flux density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric flux density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectricResistanceUnit -->
+
+    <owl:Class rdf:about="&dl;ElectricResistanceUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electric resistance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for electric resistance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ElectromagneticRadiationUnit -->
+
+    <owl:Class rdf:about="&dl;ElectromagneticRadiationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >electromagnetic radiation unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of electromagnetic radiation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EnergyDensityUnit -->
+
+    <owl:Class rdf:about="&dl;EnergyDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >energy density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for energy density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EnergyUnit -->
+
+    <owl:Class rdf:about="&dl;EnergyUnit">
+        <rdfs:label rdf:datatype="&xsd;string">energy unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for energy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/EntropyUnit -->
+
+    <owl:Class rdf:about="&dl;EntropyUnit">
+        <rdfs:label rdf:datatype="&xsd;string">entropy unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for entropy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ExaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ExaScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string">exa scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^18.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ExposureUnit -->
+
+    <owl:Class rdf:about="&dl;ExposureUnit">
+        <rdfs:label rdf:datatype="&xsd;string">exposure unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;RadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for radiation exposure.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FemtoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;FemtoScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >femto scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-15.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ForceUnit -->
+
+    <owl:Class rdf:about="&dl;ForceUnit">
+        <rdfs:label rdf:datatype="&xsd;string">force unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for force.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/FrequencyUnit -->
+
+    <owl:Class rdf:about="&dl;FrequencyUnit">
+        <rdfs:label rdf:datatype="&xsd;string">frequency unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for frequency.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/GigaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;GigaScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >giga scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^9.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/HectoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;HectoScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >hecto scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^2.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IlluminanceUnit -->
+
+    <owl:Class rdf:about="&dl;IlluminanceUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >illuminance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ElectromagneticRadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for illuminance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/InductanceUnit -->
+
+    <owl:Class rdf:about="&dl;InductanceUnit">
+        <rdfs:label rdf:datatype="&xsd;string">inductance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for inductance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/InformationUnit -->
+
+    <owl:Class rdf:about="&dl;InformationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >information unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of information.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/IrradianceUnit -->
+
+    <owl:Class rdf:about="&dl;IrradianceUnit">
+        <rdfs:label rdf:datatype="&xsd;string">irradiance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ElectromagneticRadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for irradiance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/KiloScaledUnit -->
+
+    <owl:Class rdf:about="&dl;KiloScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >kilo scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^3.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LengthUnit -->
+
+    <owl:Class rdf:about="&dl;LengthUnit">
+        <rdfs:label rdf:datatype="&xsd;string">length unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for length.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LinearDensityUnit -->
+
+    <owl:Class rdf:about="&dl;LinearDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >linear density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;DensityUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of linear density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LuminanceUnit -->
+
+    <owl:Class rdf:about="&dl;LuminanceUnit">
+        <rdfs:label rdf:datatype="&xsd;string">luminance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ElectromagneticRadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for luminance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LuminousFluxUnit -->
+
+    <owl:Class rdf:about="&dl;LuminousFluxUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >luminous flux unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ElectromagneticRadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for luminous flux.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/LuminousIntensityUnit -->
+
+    <owl:Class rdf:about="&dl;LuminousIntensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >luminous intensity unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ElectromagneticRadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for luminous intensity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MagneticFieldStrengthUnit -->
+
+    <owl:Class rdf:about="&dl;MagneticFieldStrengthUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >magnetic field strength</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for magnetic field strength.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MagneticFluxDensityUnit -->
+
+    <owl:Class rdf:about="&dl;MagneticFluxDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >magnetic flux density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for magnetic flux density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MagneticFluxUnit -->
+
+    <owl:Class rdf:about="&dl;MagneticFluxUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >magnetic flux unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for magnetic flux.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MassUnit -->
+
+    <owl:Class rdf:about="&dl;MassUnit">
+        <rdfs:label rdf:datatype="&xsd;string">mass unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for mass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MegaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;MegaScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >mega scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^6.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MicroScaledUnit -->
+
+    <owl:Class rdf:about="&dl;MicroScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >micro scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-6.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MilliScaledUnit -->
+
+    <owl:Class rdf:about="&dl;MilliScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >milli scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-3.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolalityUnit -->
+
+    <owl:Class rdf:about="&dl;MolalityUnit">
+        <rdfs:label rdf:datatype="&xsd;string">molality unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ConcentrationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of molality.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolarEnergyUnit -->
+
+    <owl:Class rdf:about="&dl;MolarEnergyUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >molar energy unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for molar energy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolarEntropyUnit -->
+
+    <owl:Class rdf:about="&dl;MolarEntropyUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >molar entropy unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for molar entropy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolarMassUnit -->
+
+    <owl:Class rdf:about="&dl;MolarMassUnit">
+        <rdfs:label rdf:datatype="&xsd;string">molar mass unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for molar mass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MolecularMassUnit -->
+
+    <owl:Class rdf:about="&dl;MolecularMassUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >molecular mass unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for molecular mass.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/MomentOfForceUnit -->
+
+    <owl:Class rdf:about="&dl;MomentOfForceUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >moment of force unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for moment of force.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/NanoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;NanoScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >nano scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-9.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PartsPerNotationUnit -->
+
+    <owl:Class rdf:about="&dl;PartsPerNotationUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >parts per notation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ConcentrationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of parts per notation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PermeabilityUnit -->
+
+    <owl:Class rdf:about="&dl;PermeabilityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >permeability unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for permeability.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PermittivityUnit -->
+
+    <owl:Class rdf:about="&dl;PermittivityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >permittivity unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for permittivity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PetaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;PetaScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >peta scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^15.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PicoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;PicoScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >pico scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-12.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PlaneAngleUnit -->
+
+    <owl:Class rdf:about="&dl;PlaneAngleUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >plane angle unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;AngleUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for plane angle.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PotentialDifferenceUnit -->
+
+    <owl:Class rdf:about="&dl;PotentialDifferenceUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >potential difference unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for potential difference.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PowerUnit -->
+
+    <owl:Class rdf:about="&dl;PowerUnit">
+        <rdfs:label rdf:datatype="&xsd;string">power unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for power.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/PressureUnit -->
+
+    <owl:Class rdf:about="&dl;PressureUnit">
+        <rdfs:label rdf:datatype="&xsd;string">pressure unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for pressure.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadianceUnit -->
+
+    <owl:Class rdf:about="&dl;RadianceUnit">
+        <rdfs:label rdf:datatype="&xsd;string">radiance unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ElectromagneticRadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for radiance.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadiantIntensityUnit -->
+
+    <owl:Class rdf:about="&dl;RadiantIntensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >radiant intensity unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ElectromagneticRadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for radiant intensity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadiationUnit -->
+
+    <owl:Class rdf:about="&dl;RadiationUnit">
+        <rdfs:label rdf:datatype="&xsd;string">radiation unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of radiation.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/RadioactivityUnit -->
+
+    <owl:Class rdf:about="&dl;RadioactivityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >radioactivity activity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;RadiationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for radioactive activity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string">scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;DerivedUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is scaled by some value.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ShiftedUnit -->
+
+    <owl:Class rdf:about="&dl;ShiftedUnit">
+        <rdfs:label rdf:datatype="&xsd;string">shifted unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;DerivedUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is shifted by some value.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SolidAngleUnit -->
+
+    <owl:Class rdf:about="&dl;SolidAngleUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >solid angle unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;AngleUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for solid angle.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SpecificEnergyUnit -->
+
+    <owl:Class rdf:about="&dl;SpecificEnergyUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >specific energy unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for specific energy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SpecificEntropyUnit -->
+
+    <owl:Class rdf:about="&dl;SpecificEntropyUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >specific entropy unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for specific entropy.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SpecificVolumeUnit -->
+
+    <owl:Class rdf:about="&dl;SpecificVolumeUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >specific volume unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for specific volume.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/SurfaceTensionUnit -->
+
+    <owl:Class rdf:about="&dl;SurfaceTensionUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >surface tension unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for surface tension.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TemperatureUnit -->
+
+    <owl:Class rdf:about="&dl;TemperatureUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >temperature unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for temperature.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TeraScaledUnit -->
+
+    <owl:Class rdf:about="&dl;TeraScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >tera scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^12.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ThermalConductionUnit -->
+
+    <owl:Class rdf:about="&dl;ThermalConductionUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >thermal conduction unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ConductionUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for thermal conduction.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/TimeUnit -->
+
+    <owl:Class rdf:about="&dl;TimeUnit">
+        <rdfs:label rdf:datatype="&xsd;string">time unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for time.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/Unit -->
+
+    <owl:Class rdf:about="&dl;Unit">
+        <rdfs:label rdf:datatype="&xsd;string">unit</rdfs:label>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit is a particular physical quantity, defined and adopted by convention, with which other particular quantities of the same kind are compared to express their value.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPower -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPower">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >unit raised to power</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;DerivedUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that raised to some power.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerNegativeOne -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerNegativeOne">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >unit raised to power of negative one</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;UnitRaisedToPower"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is raised to the power of -1.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerNegativeThree -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerNegativeThree">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >unit raised to power of negative three</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;UnitRaisedToPower"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is raised to a power -3.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerNegativeTwo -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerNegativeTwo">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >unit raised to power of negative two</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;UnitRaisedToPower"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is raised by power -2</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerPositiveOne -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerPositiveOne">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >unit raised to power of one</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;UnitRaisedToPower"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is raised to the power 1.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerPositiveThree -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerPositiveThree">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >unit raised to power of three</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;UnitRaisedToPower"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is raised to power 3.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/UnitRaisedToPowerPositiveTwo -->
+
+    <owl:Class rdf:about="&dl;UnitRaisedToPowerPositiveTwo">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >unit raised to power of two</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;UnitRaisedToPower"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit that is raised by power of 2.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VelocityUnit -->
+
+    <owl:Class rdf:about="&dl;VelocityUnit">
+        <rdfs:label rdf:datatype="&xsd;string">velocity unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for velocity.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VolumeDensityUnit -->
+
+    <owl:Class rdf:about="&dl;VolumeDensityUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >volume density unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;DensityUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for volume density.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/VolumeUnit -->
+
+    <owl:Class rdf:about="&dl;VolumeUnit">
+        <rdfs:label rdf:datatype="&xsd;string">volume unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for volume.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/WavenumberUnit -->
+
+    <owl:Class rdf:about="&dl;WavenumberUnit">
+        <rdfs:label rdf:datatype="&xsd;string">wavenumber unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;Unit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure for wavenumber.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YoctoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;YoctoScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >yocto scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-24.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/YottaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;YottaScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >yotta scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^24.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZeptoScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ZeptoScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >zepto scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^-21.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/ZettaScaledUnit -->
+
+    <owl:Class rdf:about="&dl;ZettaScaledUnit">
+        <rdfs:label rdf:datatype="&xsd;string"
+            >zetta scaled unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ScaledUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A unit scaled by 10^21.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/pHUnit -->
+
+    <owl:Class rdf:about="&dl;pHUnit">
+        <rdfs:label rdf:datatype="&xsd;string">pH unit</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&dl;ConcentrationUnit"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >A standard measure of pH.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>

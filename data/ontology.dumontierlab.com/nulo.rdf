@@ -1,0 +1,525 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY bfo "http://www.ifomis.org/bfo/1.0#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY snap "http://www.ifomis.org/bfo/1.0/snap#" >
+    <!ENTITY span "http://www.ifomis.org/bfo/1.0/span#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY dl "http://ontology.dumontierlab.com/" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/nulo"
+     xml:base="http://ontology.dumontierlab.com/nulo"
+     xmlns:dl="http://ontology.dumontierlab.com/"
+     xmlns:bfo="http://www.ifomis.org/bfo/1.0#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.0/snap#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:span="http://www.ifomis.org/bfo/1.0/span#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+        <dc:publisher rdf:datatype="&xsd;string">Dumontier Lab</dc:publisher>
+        <dc:date rdf:datatype="&xsd;date">2007-01-01</dc:date>
+        <dc:creator rdf:datatype="&xsd;string">Michel Dumontier</dc:creator>
+        <dc:description rdf:datatype="&xsd;string"
+            >Maps domain and range from the Basic Formal Ontology (BFO) to the Basic Relation Ontology (BRO)</dc:description>
+        <dc:language rdf:datatype="&xsd;string">en</dc:language>
+        <dc:title rdf:datatype="&xsd;string">New Upper Level Ontology (NULO)</dc:title>
+        <dc:format rdf:datatype="&xsd;string">application/rdf+xml</dc:format>
+	<owl:versionInfo rdf:datatype="&xsd;string">1.0</owl:versionInfo>
+        <owl:imports>
+            <owl:Ontology rdf:about="http://ontology.dumontierlab.com/bfo"/>
+        </owl:imports>
+        <owl:imports>
+            <owl:Ontology rdf:about="http://ontology.dumontierlab.com/bro"/>
+        </owl:imports>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;publisher"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;language"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/bearerOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;bearerOf">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;DependentContinuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/contains -->
+
+    <owl:ObjectProperty rdf:about="&dl;contains">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/derivativeOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;derivativeOf">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/derivesFrom -->
+
+    <owl:ObjectProperty rdf:about="&dl;derivesFrom">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/derivesInto -->
+
+    <owl:ObjectProperty rdf:about="&dl;derivesInto">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasAgent -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasAgent">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasDisposition -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasDisposition">
+        <rdfs:range rdf:resource="&snap;Disposition"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasFunction -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasFunction">
+        <rdfs:range rdf:resource="&snap;Function"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasImproperPart -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasImproperPart">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasIntegralPart -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasIntegralPart">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasPart -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasPart">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasParticipant">
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasProperPart -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasProperPart">
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasQuality -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasQuality">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;Quality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/hasRole -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasRole">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/immediatelyDerivesFrom -->
+
+    <owl:ObjectProperty rdf:about="&dl;immediatelyDerivesFrom">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/immediatelyDerivesInto -->
+
+    <owl:ObjectProperty rdf:about="&dl;immediatelyDerivesInto">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/immediatelyPrecededBy -->
+
+    <owl:ObjectProperty rdf:about="&dl;immediatelyPrecededBy">
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/immediatelyPrecedes -->
+
+    <owl:ObjectProperty rdf:about="&dl;immediatelyPrecedes">
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/immediatelyTransformsFrom -->
+
+    <owl:ObjectProperty rdf:about="&dl;immediatelyTransformsFrom">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/immediatelyTransformsInto -->
+
+    <owl:ObjectProperty rdf:about="&dl;immediatelyTransformsInto">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/inheresIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;inheresIn">
+        <rdfs:domain rdf:resource="&snap;DependentContinuant"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isAdjacentTo -->
+
+    <owl:ObjectProperty rdf:about="&dl;isAdjacentTo">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isAgentIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;isAgentIn">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isContainedIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;isContainedIn">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isDispositionOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isDispositionOf">
+        <rdfs:domain rdf:resource="&snap;Disposition"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isFunctionOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isFunctionOf">
+        <rdfs:domain rdf:resource="&snap;Function"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isImproperPartOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isImproperPartOf">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isIntegralPartOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isIntegralPartOf">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;isLocatedIn">
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isLocationOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isLocationOf">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isPartOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isPartOf">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isParticipantIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;isParticipantIn">
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isProperPartOf">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isQualityOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isQualityOf">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Quality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isRelatedTo -->
+
+    <owl:ObjectProperty rdf:about="&dl;isRelatedTo">
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isRoleOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isRoleOf">
+        <rdfs:domain rdf:resource="&snap;Role"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isSpatialLocationOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isSpatialLocationOf">
+        <rdfs:domain rdf:resource="&snap;SpatialRegion"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isSpatiallyLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;isSpatiallyLocatedIn">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;SpatialRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isSpatiallyRelatedTo -->
+
+    <owl:ObjectProperty rdf:about="&dl;isSpatiallyRelatedTo">
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isSpatioTemporalLocationOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isSpatioTemporalLocationOf">
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+        <rdfs:domain rdf:resource="&span;SpatiotemporalRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isSpatioTemporallyLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;isSpatioTemporallyLocatedIn">
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+        <rdfs:range rdf:resource="&span;SpatiotemporalRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isTemporalLocationOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;isTemporalLocationOf">
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+        <rdfs:domain rdf:resource="&span;TemporalRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isTemporallyLocatedIn -->
+
+    <owl:ObjectProperty rdf:about="&dl;isTemporallyLocatedIn">
+        <rdfs:range rdf:resource="&span;TemporalRegion"/>
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/isTemporallyRelatedTo -->
+
+    <owl:ObjectProperty rdf:about="&dl;isTemporallyRelatedTo">
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/precededBy -->
+
+    <owl:ObjectProperty rdf:about="&dl;precededBy">
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/precedes -->
+
+    <owl:ObjectProperty rdf:about="&dl;precedes">
+        <rdfs:domain rdf:resource="&span;Occurrent"/>
+        <rdfs:range rdf:resource="&span;Occurrent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/transformationOf -->
+
+    <owl:ObjectProperty rdf:about="&dl;transformationOf">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/transformsFrom -->
+
+    <owl:ObjectProperty rdf:about="&dl;transformsFrom">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/transformsInto -->
+
+    <owl:ObjectProperty rdf:about="&dl;transformsInto">
+        <rdfs:range rdf:resource="&snap;Continuant"/>
+        <rdfs:domain rdf:resource="&snap;Continuant"/>
+    </owl:ObjectProperty>
+
+</rdf:RDF>

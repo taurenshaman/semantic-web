@@ -1,0 +1,3075 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:j.0="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:p7="http://individual.utoronto.ca/hesham/Ontology/eCognosMain.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns="http://individual.utoronto.ca/hesham/Ontology#"
+  xml:base="http://individual.utoronto.ca/hesham/Ontology">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://protege.stanford.edu/plugins/owl/protege"/>
+    <owl:imports rdf:resource="http://individual.utoronto.ca/hesham/Ontology/eCognosMain.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="GasProductAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SectorProductModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SaturatedSoil">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SoilType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PipeJacking">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NonsteerableMethod"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InstallationMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Joints">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Storage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductFunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PlanningPhase">
+    <rdfs:subClassOf rdf:resource="#Phase"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AccessProduct">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Provide access to other infrastructure products. Examples include various types of junction boxes, manholes, and chambers. </rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasFunction"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Access"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FunctionalModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Economics">
+    <rdfs:subClassOf rdf:resource="#Domain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Driveway">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="StreetProducts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SprayedCoating">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RehabilitationMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DrySoil">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SoilType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SafetyAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DomainAttributeModality"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasDomain"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Safety"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PressureReducingValve">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Valve"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Mailbox">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StreetProducts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilReactivity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SoilProperties"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WatermainMaterialSelectionProcess">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Depth"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasNecessaryProductAttribute"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="SurroundingSoilAttributes"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasNecessaryProductAttribute"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DesignProcess"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NonPhysicalAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhysicalModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >less-tangible attributes that are less easy to measure or quantify.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SoilProperties">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SurroundingSoilAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#FunctionalModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A classification of products based on eight main 'generic' functions that any product must attain.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ProductModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="InternalSleeving">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SpotRepairMethods"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Delamination">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SurfaceDistress"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SocialImpact">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NonPhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SubjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductSustainabilityAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InheritableInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MunicipalProject">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GovernmentalModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ActualFlow">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The current flow rate being measured at an instant in time</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FlowAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PumpingProduct">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Pumping"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#FunctionalModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Irregular">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CrossSectionalShaps"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Circular">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CrossSectionalShaps"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Safety">
+    <rdfs:subClassOf rdf:resource="#Domain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StormWaterProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UtilityInfrastructureProduct"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Valve">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Devices"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ProtectionProduct"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ControlProduct"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sand">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CoarseGrainedSoil"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ChangableAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ChangeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EconomicAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomainAttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Telephonebooth">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StreetProducts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MeteredCustomers">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of meters per customer</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SystemLevelProduct">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isComposedOf"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="SubSystemLevelProduct"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CompositionalModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Is used to represent the highest level of infrastructure product aggregation. Examples include water distribution systems, storm water collection systems, and gas distribution systems.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ProceduralBestPractice">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BestPractice"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LocationAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InheritableInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductConstructionAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProvincialProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GovernmentalModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SecuritySystemEffeciency">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SafetyMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ElectricityMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Aesthetics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SocialPerformance"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OperatingCost">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CostAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Fitting">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BuisinessAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomainAttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SurroundingSoilAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InheritableInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductSustainabilityAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LongitudinalShape">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ShapeAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DesignPhase">
+    <rdfs:subClassOf rdf:resource="#Phase"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MicroTunneling">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InstallationMethod"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SteerableMethod"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ReplacementMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OperationalAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhaseAttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Peat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FineGrainedSoil"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#DesignProcess">
+    <rdfs:subClassOf rdf:resource="#Process"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FabricLiner">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CasingType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CoarseSand">
+    <rdfs:subClassOf rdf:resource="#Sand"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Diameter">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="DimensionAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MaximumAllowableFlow">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The maximum flow that can be allowed in a conduit</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FlowAttributes"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Rutting">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SurfaceDistress"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterQualityDegredation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EnviornemntalImpact"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RatedPressure">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PressureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RigidPipe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Pipe"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Trees">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LandscapeProdcuts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NonPhysicalMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LandUseImpact">
+    <rdfs:subClassOf rdf:resource="#SocialImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Slipping">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RehabilitationMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Strength">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the quality or state of being strong : capacity for exertion or endurance</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:ID="_DUMMY-FRAMES-METACLASS">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ConveyanceProduct">
+    <rdfs:subClassOf rdf:resource="#FunctionalModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Act as the direct carriers of the medium being supplied by infrastructure systems. Examples include gas lines, water lines, electricity cables, and fiber optic cables. </rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Transportation"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="VideoInspection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InspectionMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FrequesncyofServiceInteruptions">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Reliability"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DependancyAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="UniqueInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonPhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#OperatingCost"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Flow">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is the volume of fluid which passes through a given area per unit time.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ShapeAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UniqueInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductConstructionAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RegionalImpact">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductImpact"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Shrubs">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LandscapeProdcuts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Ellipsoidal">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CrossSectionalShaps"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MaintenanceMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DrainValve">
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Receptacles">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StreetProducts"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Litter boxes, transh cans, etc...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#CrossSectionalShaps">
+    <rdfs:subClassOf rdf:resource="#ShapeAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Length">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DimensionAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ConcreteDuct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CasingType"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductConstructionAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ConstructionAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ElectricityMetrics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ActualCost">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CostAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SoilType">
+    <rdfs:subClassOf rdf:resource="#SurroundingSoilAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PhysicalMetrics">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EngineeringMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ScopeModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Specifies the scope of an infrastructure product. Of interest are scopes related to geographic extents and governance.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ProductModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="StreetVendorLocations">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StreetProducts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EnviornmentalPerformance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SustainabilityMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DistributionLine">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Lines that distribute meduim within areas</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MainLine"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TransitShelters">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StreetProducts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NationalProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GeographicModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#FlowAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WaterProductAttributes"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="StormWaterProductAttributes"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WasteWaterProductAttributes"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InheritableInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Meter">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MeasuringProduct"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="VisualInspection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InspectionMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Wire">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MainStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CollapsableSoil">
+    <rdfs:subClassOf rdf:resource="#SoilType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ImpactExtent">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ImpactAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InspectionMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ActualPressure">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PressureAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ValveDensity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of valves / Km of network</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Access">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductFunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SurfaceDistress">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TranportationSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PhysicalMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PumpingInspection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >% of pumps inspected per year</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SurroundingTrafficAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SubSurfacePipe">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="SubSurface"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasLocation"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Pipe"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="CompositionalInfrastructureAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CompositionalAttributeModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These attributes are combined together in an aggregation relationship. Examples include cost and length for pipes. For example the cost of a transformer station is the sum of the cost of its constituent products and the length of a sewer line is the sum of the lengths of the pipes it is made up of.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Semi-RigidPipe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pipe"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilImpact">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EnviornemntalImpact"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Protection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductFunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SonarInspection">
+    <rdfs:subClassOf rdf:resource="#InspectionMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LocationQualityLevel">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes how accurate the location information is as per the ASCE 38-02 guideline. http://www.pubs.asce.org/</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CapacityFactor">
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="OperationalMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TelecommunicationProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UtilityInfrastructureProduct"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PhaseAttributeModality">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AttributeModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modality used to speicify the relavence of a products attribute to a particular life cycle phase</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SustainabilityMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MembraneClosingValve">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RotationClosingValve"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="LinearClosingValve"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ImpactonLocalEconomy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EconomicPerformance"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NonsteerableMethod">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TrenclessMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PressureAttribute">
+    <rdfs:subClassOf rdf:resource="#GasProductAttributes"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InheritableInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterProductAttributes"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ControlProduct">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Control"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Regulates the medium being supplied by the infrastructure system. Examples include gas valves, electric switches, and water control valves</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#FunctionalModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OpenCutMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sensor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CustomerCharges">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EconomicPerformance"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FlexibleJoint">
+    <rdfs:subClassOf rdf:resource="#Joints"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="RigidJoint"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="FlowMonitoring">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LeakDetectionMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ImpactDuration">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ImpactAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProfileInspectionMethod">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Used to measure pavement surface roughness</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#InspectionMethod"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductSustainabilityAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="SustainabilityAttribute"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Sustainability"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDomain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Tank">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="StorageProduct"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilDensity">
+    <rdfs:subClassOf rdf:resource="#SoilProperties"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Casing">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DestructiveTests">
+    <rdfs:subClassOf rdf:resource="#Tests"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FlangedJoint">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#RigidJoint"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="JunctionBox">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isSimilarTo"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Chamber"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#AccessProduct"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CleaningMethod">
+    <rdfs:subClassOf rdf:resource="#MaintenanceMethod"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysicalInfrastructureProductAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PhysicalAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ObjectiveAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PerceptionModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Attributes that have values that are usually not contested. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ImpactAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductImpact"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EmergencyEffeciency">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TranportationSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SafetyMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DropManhole">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="StraightManhole"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provide a vertical change in direction for the main structure</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Manhole"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProtectionValve">
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WetSoil">
+    <rdfs:subClassOf rdf:resource="#SoilType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="QualityofTreatedWater">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FederalProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GovernmentalModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SonicDetector">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LeakDetectionMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HydrantDensity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of hydrants / km of network</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ReplacementMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Control">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductFunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Flexibility">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >refers to the ability to easily bend an object or the ability to adapt to different circumstances. Flexibility is used as a term and measurement in many different sciences.
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Benches">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StreetProducts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MeasuringProduct">
+    <rdfs:subClassOf rdf:resource="#FunctionalModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Perform some sort of attribute measurement to other infrastructure products. Examples include electricity meters, flow measuring devices, pressure gauges, and thermometers. </rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Measuring"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Rectangular">
+    <rdfs:subClassOf rdf:resource="#CrossSectionalShaps"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductImpact">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Duct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BicycleStands">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#StreetProducts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InheritableInfrastructureAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CompositionalAttributeModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These attributes are inherited upwards in an aggregation relationship. Examples include surrounding soil and ownership. For example, the surrounding soil of an electricity cable will be the same for the electricity line that it belongs to.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#GovernmentalModality">
+    <rdfs:subClassOf rdf:resource="#ScopeModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RideQulaityComfort">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TranportationSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="QulaityofService"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#StreetProducts">
+    <rdfs:subClassOf rdf:resource="#PhysicalProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProductType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SafetyPerformance">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#SafetyMetrics"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasPerformanceMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PerformanceAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Curb">
+    <rdfs:subClassOf rdf:resource="#StreetProducts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ServicabilityPerformance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PerformanceAttributes"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPerformanceMeasure"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="ServicabilityMetrics"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FlexiblePipe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pipe"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Expandability">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonPhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UniqueInfrastructureAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InstallationMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NeighboorhoodLevelImpact">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InflowInfiltrationPercentage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#StorageProduct">
+    <rdfs:subClassOf rdf:resource="#FunctionalModality"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Storage"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Accumulate the medium being supplied by the infrastructure product. Examples include water tanks, capacitors, batteries, and gas storage facilities. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MaintenanceCost">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CostAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RehabilitationMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EconomicPerformance">
+    <rdfs:subClassOf rdf:resource="#SustainabilityMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CorrosionAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MaterialAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ConstructionPhase">
+    <rdfs:subClassOf rdf:resource="#Phase"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DesignFlow">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#FlowAttributes"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The flow for which a conduit was designed</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="IPDLite2_Class_22">
+    <rdfs:subClassOf rdf:resource="#Phase"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NonPressurizedPipe">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasAttribute"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:complementOf rdf:resource="#PressureAttribute"/>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Pipe"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PressurizedPipe"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#SafetyMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StateOfOperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InheritableInfrastructureAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductEconomicAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PhysicalInfrastructureProductAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InteruptionDuration">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Reliability"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CityLevelImpact">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EngineeringPerformance">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PerformanceAttributes"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPerformanceMeasure"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#EngineeringMetrics"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Chamber">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#AccessProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RatedFlow">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#FlowAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StrengthAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MaterialAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ConstructionImpact">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#ConstructionPhase"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasPhaseofIncorporation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ProductUse">
+    <rdfs:subClassOf rdf:resource="#PhysicalInfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InheritableInfrastructureAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EngineeringAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomainAttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LegalAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomainAttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SocialPerformance">
+    <rdfs:subClassOf rdf:resource="#SustainabilityMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#UniqueInfrastructureAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CompositionalAttributeModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >These attributes are not inherited upwards in an aggregation relationship. Examples include performance and location. For example, the performance of a water pipe will cannot be inherited upwards to indicate the performance of an entire water line.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="HumanAccessiblePipe">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="NonHumanAccessiblePipe"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pipe"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Straight">
+    <rdfs:subClassOf rdf:resource="#LongitudinalShape"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GeographicModality">
+    <rdfs:subClassOf rdf:resource="#ScopeModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SustainabilityPerformance">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPerformanceMeasure"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#SustainabilityMetrics"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PerformanceAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PerformanceAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SubjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEconomicAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#UniqueInfrastructureAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPerformanceMeasure"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Measure"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PhysicalInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReactiveSoil">
+    <rdfs:subClassOf rdf:resource="#SoilType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ShalowMahole">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Manhole"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class rdf:ID="Handhole"/>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="DeepManhole"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="AccidentRate">
+    <rdfs:subClassOf rdf:resource="#SafetyMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#TranportationSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PerceptionModality">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AttributeModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modality used to specify the different ways that an attribute is percieved from the percpective of an actor. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TerminalManhole">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Manhole"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="IntermediateMahole"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="OperationPhase">
+    <rdfs:subClassOf rdf:resource="#Phase"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Longitude">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TranportationSystemMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EngineeringMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ChangeModality">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AttributeModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the nature of attributes to change throughout the lifecycle of a product</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="HiddenCost">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CostAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AutomatedRoadAnalyzer">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Used to measure pavement surface distress</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#InspectionMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SubjectiveAttribute">
+    <rdfs:subClassOf rdf:resource="#PerceptionModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >attributes that can have more than one appraising value that depends on the point of view of the actor</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Lattitude">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Pump">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PumpingProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LocalProduct">
+    <rdfs:subClassOf rdf:resource="#GeographicModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PercentageofWaterReuse">
+    <rdfs:subClassOf rdf:resource="#EnviornmentalPerformance"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TrenclessMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:ID="_DUMMY-FRAMES-METASLOT">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HierarchicalModality">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ProductModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This dimension is intended to classify a generic infrastructure product based on the role it plays within the infrastructure network. A generic product is assumed to be either a main structure, supporting structure or device.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Depth">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Z-Coordinate"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#isSimilarTo"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MetallicPipe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pipe"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#NonHumanAccessiblePipe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Pipe"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#HumanAccessiblePipe"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilStrength">
+    <rdfs:subClassOf rdf:resource="#SoilProperties"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WasteWaterProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UtilityInfrastructureProduct"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IntendedUse">
+    <rdfs:subClassOf rdf:resource="#ProductUse"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Z-Coordinate">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PressurizedPipe">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#PressureAttribute"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasAttribute"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Pipe"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#NonPressurizedPipe"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OperationBestPractice">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BestPractice"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="InvertedLining">
+    <rdfs:subClassOf rdf:resource="#RehabilitationMethod"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CompositionalAttributeModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modality intended to capture the notion of aggregation and composition between product attributes.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Buisiness">
+    <rdfs:subClassOf rdf:resource="#Domain"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FineGrainedSoil">
+    <rdfs:subClassOf rdf:resource="#SoilType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectricityProductAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SectorProductModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="StorageTamkCleaning">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >% of Storage tanks cleaned per year</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilPermeability">
+    <rdfs:subClassOf rdf:resource="#SoilProperties"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PipeClass">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PressureAttribute"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The working pressure rating, including allowances for surges, of a specific pipe for use in water distribution systems. This term is used for cast-iron, ductile iron, asbestos–cement, and glass pipe, as well as some plastic pipe
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="HydroCleaning">
+    <rdfs:subClassOf rdf:resource="#CleaningMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DesignAttribute">
+    <rdfs:subClassOf rdf:resource="#PhaseAttributeModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="JunctionManhole">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Manhole"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >where more than two main structures intersect</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isConnectedTo"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >3</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NetworkInspection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >% of network inspected per year</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="KeyholeMethods">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SpotRepairMethods"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#RigidJoint">
+    <owl:disjointWith rdf:resource="#FlexibleJoint"/>
+    <rdfs:subClassOf rdf:resource="#Joints"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CasingType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InheritableInfrastructureAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PhysicalInfrastructureProductAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SubjectiveInfrastructureProductAttribute">
+    <rdfs:subClassOf rdf:resource="#SubjectiveAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DeepManhole">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Manhole"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ShalowMahole"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Silt">
+    <rdfs:subClassOf rdf:resource="#FineGrainedSoil"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Ownership">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="InfrastructureProductBusinessAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonPhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InheritableInfrastructureAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="_TEMPORARY-ITEMS"/>
+  <owl:Class rdf:about="#CostAttributes">
+    <rdfs:subClassOf rdf:resource="#CompositionalInfrastructureAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonPhysicalInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#SubjectiveInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductBusinessAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEconomicAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ImpoundingResevoirCapacity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of days of storage available</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AboveSurface">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FinancialPerformance">
+    <rdfs:subClassOf rdf:resource="#PerformanceAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PressureSustainingValve">
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MaterialType">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MaterialAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BioDiversityImpact">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EnviornemntalImpact"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Potholes">
+    <rdfs:subClassOf rdf:resource="#SurfaceDistress"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ComponentCondition">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasMethod"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#VisualInspection"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+    <rdfs:subClassOf rdf:resource="#PhysicalMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CheckValve">
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PavementSkidResistance">
+    <rdfs:subClassOf rdf:resource="#SafetyMetrics"/>
+    <rdfs:subClassOf rdf:resource="#TranportationSystemMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ControlValve">
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StreetLevelImpact">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InfrastructureProductSafetyAttribute">
+    <rdfs:subClassOf rdf:resource="#SafetyAttribute"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDomain"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Safety"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Transformer">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SubSystemLevelProduct">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This group encompasses all intermediate-level products that do not belong to the component level or system level groups.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CompositionalModality"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isComposedOf"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="ComponentLevelProduct"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#RotationClosingValve">
+    <owl:disjointWith rdf:resource="#MembraneClosingValve"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#LinearClosingValve"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pumping">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductFunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ResinInjection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SpotRepairMethods"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LeakageRate">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OperationalMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#StraightManhole">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provide no change in direction for the main structure</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Manhole"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#DropManhole"/>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="BendManhole"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="None">
+    <rdfs:subClassOf rdf:resource="#CasingType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterPhysicalQuality">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#QulaityofService"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ImpactSeverity">
+    <rdfs:subClassOf rdf:resource="#ImpactAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LaneMarkingVisibility">
+    <rdfs:subClassOf rdf:resource="#SafetyMetrics"/>
+    <rdfs:subClassOf rdf:resource="#TranportationSystemMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SpotRepairMethods">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="RepairMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GroundWaterReactivity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GroundWaterProperties"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PipePressureTest">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NonDestructiveTests"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="CoarseGravel">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Gravel"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Transportation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductFunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Swabbing">
+    <rdfs:subClassOf rdf:resource="#CleaningMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ServiceLine">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Lines that serve customers</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Line"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NeighboorhoodDisruption">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TranportationSystemMetrics"/>
+    <rdfs:subClassOf rdf:resource="#SocialPerformance"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PipeBursting">
+    <rdfs:subClassOf rdf:resource="#ReplacementMethod"/>
+  </owl:Class>
+  <owl:Class rdf:about="#NonPhysicalInfrastructureProductAttribute">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Metrics"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#NonPhysicalAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TransmissionLine">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MainLine"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Lines that transmit meduim from one point to the other</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#SustainabilityAttribute">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#DomainAttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Pressure">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >a : the action of a force against an opposing force b : the force or thrust exerted over a surface divided by its area </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Stress">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >constraining force or influence: as a : a force exerted when one body or body part presses on, pulls on, pushes against, or tends to compress or twist another body or body part; especially : the intensity of this mutual force commonly expressed in pounds per square inch </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pipe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MainStructures"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ConveyanceProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LevelofService">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OperationalMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TranportationSystemMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RunningCost">
+    <rdfs:subClassOf rdf:resource="#CostAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InfrastructureProductLegalAttribute">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Law"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDomain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#LegalAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ObjectiveInfrastructureProductAttribute">
+    <rdfs:subClassOf rdf:resource="#ObjectiveAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Vault">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TechnicalLosses">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#OperationalMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Square">
+    <rdfs:subClassOf rdf:resource="#CrossSectionalShaps"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MoistureDamage">
+    <rdfs:subClassOf rdf:resource="#SurfaceDistress"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LocatingProduct">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Tracing"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#FunctionalModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Used to identify the location of subsurface utilities. Examples include markers and tracer wires.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Redundancy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#NonPhysicalInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#SubjectiveInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#UniqueInfrastructureAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductSafetyAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FineSand">
+    <rdfs:subClassOf rdf:resource="#Sand"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FixedAttribute">
+    <rdfs:subClassOf rdf:resource="#ChangeModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OperationImpact">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPhaseofIncorporation"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#OperationPhase"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Newpaperboxes">
+    <rdfs:subClassOf rdf:resource="#StreetProducts"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Manhole">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isConnectedTo"/>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#MainStructures"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#AccessProduct"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#isConnectedTo"/>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#OperationalMetrics">
+    <rdfs:subClassOf rdf:resource="#EngineeringMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ProductModality">
+    <rdfs:subClassOf rdf:resource="#Modality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilMoistureContent">
+    <rdfs:subClassOf rdf:resource="#SoilProperties"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ConstructionAttribute">
+    <rdfs:subClassOf rdf:resource="#PhaseAttributeModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HorizontalDirectionalDrilling">
+    <rdfs:subClassOf rdf:resource="#InstallationMethod"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SteerableMethod"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Tracing">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductFunction"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GlandJoint">
+    <rdfs:subClassOf rdf:resource="#FlexibleJoint"/>
+  </owl:Class>
+  <owl:Class rdf:about="#RepairMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NonMetallicPipe">
+    <rdfs:subClassOf rdf:resource="#Pipe"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SurfacePipe">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="Surface"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasLocation"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Pipe"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Cracking">
+    <rdfs:subClassOf rdf:resource="#SurfaceDistress"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LeakDetectionMethod">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AbrasionAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MaterialAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="StreetArt">
+    <rdfs:subClassOf rdf:resource="#StreetProducts"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Reliability">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ServicabilityMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WeldedJoint">
+    <rdfs:subClassOf rdf:resource="#RigidJoint"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PublicComplaints">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#QulaityofService"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#TranportationSystemMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#QulaityofService">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ServicabilityMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#SubSurface">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AirReleaseValve">
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CathodicProtection">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MeterDensity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Number of meters / service connection</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductEconomicAttribute">
+    <rdfs:subClassOf rdf:resource="#EconomicAttribute"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDomain"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Economics"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#DimensionAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ObjectiveInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PhysicalInfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductConstructionAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FixedInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#UniqueInfrastructureAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Clearance">
+    <rdfs:subClassOf rdf:resource="#DimensionAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SteelCasing">
+    <rdfs:subClassOf rdf:resource="#CasingType"/>
+  </owl:Class>
+  <owl:Class rdf:about="#StormWaterProductAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SectorProductModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MainStructures">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describe those products act as the direct carriers of the medium being supplied by the infrastructure system. This grouping includes pipes, cables, and lines.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#HierarchicalModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Height">
+    <rdfs:subClassOf rdf:resource="#DimensionAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Curved">
+    <rdfs:subClassOf rdf:resource="#LongitudinalShape"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CoarseGrainedSoil">
+    <rdfs:subClassOf rdf:resource="#SoilType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UncasedCable">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#None"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasCasingType"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:ID="Cable"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="RunwayFrictionTest">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonDestructiveTests"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Pedestal">
+    <rdfs:subClassOf rdf:resource="#AccessProduct"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#SupportingStructures"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#WaterSystemMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DesignImpact">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#DesignPhase"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasPhaseofIncorporation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Clay">
+    <rdfs:subClassOf rdf:resource="#FineGrainedSoil"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ComponentLevelProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CompositionalModality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Fall at the far end of the spectrum and represent the lowest level of infrastructure product aggregation. In essence these products cannot be decomposed into any further products that lie within the taxonomy.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ReserveCapacityatPeakDemand">
+    <rdfs:subClassOf rdf:resource="#OperationalMetrics"/>
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Planterbox">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LandscapeProdcuts"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Entrances">
+    <rdfs:subClassOf rdf:resource="#StreetProducts"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EnviornemntalImpact">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductDesignAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#NonPhysicalInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ChangableInfrastructureProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InheritableInfrastructureAttribute"/>
+    <rdfs:subClassOf rdf:resource="#SubjectiveInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#InfrastructureProductOperationalAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductSustainabilityAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Gravel">
+    <rdfs:subClassOf rdf:resource="#CoarseGrainedSoil"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OperationalCapacity">
+    <rdfs:subClassOf rdf:resource="#OperationalMetrics"/>
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#IntermediateMahole">
+    <rdfs:subClassOf rdf:resource="#Manhole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >2</owl:minCardinality>
+        <owl:onProperty rdf:resource="#isConnectedTo"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#TerminalManhole"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HumanImpact">
+    <rdfs:subClassOf rdf:resource="#SocialImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NumberofLeakingPipes">
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf rdf:resource="#PhysicalMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SmokeTestMethod">
+    <rdfs:subClassOf rdf:resource="#LeakDetectionMethod"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LandscapeProdcuts">
+    <rdfs:subClassOf rdf:resource="#StreetProducts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ConductivityAttributes">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MaterialAttributes"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysicalModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modality used to differentiate between tangible and intangible product attributes</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AttributeModality"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#AttributeModality">
+    <rdfs:subClassOf rdf:resource="#Modality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ContractualBestPractice">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#BestPractice"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PressureAdequacy">
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf rdf:resource="#OperationalMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AirPollution">
+    <rdfs:subClassOf rdf:resource="#EnviornmentalPerformance"/>
+  </owl:Class>
+  <owl:Class rdf:ID="X-Coordinate">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Line">
+    <rdfs:subClassOf rdf:resource="#ConveyanceProduct"/>
+    <rdfs:subClassOf rdf:resource="#MainStructures"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HydrantInspection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >% of hydrants inspected per year</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SoilSettlement">
+    <rdfs:subClassOf rdf:resource="#SoilProperties"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AirPollutionImpact">
+    <rdfs:subClassOf rdf:resource="#EnviornemntalImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NonTechnicalLosses">
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+    <rdfs:subClassOf rdf:resource="#OperationalMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FineGravel">
+    <rdfs:subClassOf rdf:resource="#Gravel"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FixedInfrastructureProductAttribute">
+    <rdfs:subClassOf rdf:resource="#FixedAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LongTermImpact">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CasedCable">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#hasCasingType"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:complementOf rdf:resource="#None"/>
+              </owl:Class>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Cable"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Anti-TamperingDevice">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CompositionalModality">
+    <rdfs:subClassOf rdf:resource="#ProductModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modality intended to capture the notion of aggregation and composition between products. The relationship between the three levels of products is a composed-of relationship.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="GasProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UtilityInfrastructureProduct"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterBiologicalQuality">
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf rdf:resource="#QulaityofService"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RehabilitationCost">
+    <rdfs:subClassOf rdf:resource="#CostAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BestPractice">
+    <rdfs:subClassOf rdf:resource="#Process"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GroundWaterLevel">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GroundWaterProperties"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MainLine">
+    <rdfs:subClassOf rdf:resource="#Line"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductAttribute">
+    <rdfs:subClassOf rdf:resource="#Attribute"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasMeasure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Ductility">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is the physical property of being capable of sustaining large plastic deformations without fracture (in metals, such as being drawn into a wire). It is characterized by the material flowing under shear stress.
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SteerableMethod">
+    <rdfs:subClassOf rdf:resource="#TrenclessMethod"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Sustainability">
+    <rdfs:subClassOf rdf:resource="#Domain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterProduct">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#UtilityInfrastructureProduct"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ServicabilityMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SectorProductModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modality used to describe the relavence of a product attribute to a specifc sector product grouping</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#AttributeModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Spigot-SocketJoint">
+    <rdfs:subClassOf rdf:resource="#FlexibleJoint"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Law">
+    <rdfs:subClassOf rdf:resource="#Domain"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Y-Coordinate">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InjuryRates">
+    <rdfs:subClassOf rdf:resource="#SafetyMetrics"/>
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TelecommunicationProductAttributes">
+    <rdfs:subClassOf rdf:resource="#SectorProductModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BritishPendulumTest">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NonDestructiveTests"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Reactivity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >the rate at which a chemical substance tends to undergo a chemical reaction in time</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WasteWaterProductAttributes">
+    <rdfs:subClassOf rdf:resource="#SectorProductModality"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductEngineeringAttribute">
+    <rdfs:subClassOf rdf:resource="#EngineeringAttribute"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Engineering"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDomain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="ReplacementCost">
+    <rdfs:subClassOf rdf:resource="#CostAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:about="#NonDestructiveTests">
+    <rdfs:subClassOf rdf:resource="#Tests"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductOperationalAttribute">
+    <rdfs:subClassOf rdf:resource="#OperationalAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductFunction">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductOperationalAttribute"/>
+    <rdfs:subClassOf rdf:resource="#ObjectiveInfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#UniqueInfrastructureAttribute"/>
+    <rdfs:subClassOf rdf:resource="#PhysicalInfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductEngineeringAttribute"/>
+    <rdfs:subClassOf rdf:resource="#FixedInfrastructureProductAttribute"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GenericProductAttribute"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Engineering">
+    <rdfs:subClassOf rdf:resource="#Domain"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Handhole">
+    <owl:equivalentClass rdf:resource="#ShalowMahole"/>
+    <rdfs:subClassOf rdf:resource="#AccessProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HeavingSoil">
+    <rdfs:subClassOf rdf:resource="#SoilType"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GenericProductAttribute">
+    <rdfs:subClassOf rdf:resource="#SectorProductModality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CCTVInspection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Closed Circuit TV</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#InspectionMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="IPDLite2_Class_23">
+    <rdfs:subClassOf rdf:resource="#Phase"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SupportingStructures">
+    <rdfs:subClassOf rdf:resource="#HierarchicalModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Supporting structures and devices provide auxiliary roles in the network to main structures.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TracerWire">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FloatValve">
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sidewalk">
+    <rdfs:subClassOf rdf:resource="#StreetProducts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Bleeding">
+    <rdfs:subClassOf rdf:resource="#SurfaceDistress"/>
+  </owl:Class>
+  <owl:Class rdf:about="#WaterProductAttributes">
+    <rdfs:subClassOf rdf:resource="#SectorProductModality"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Measuring">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductFunction"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Switch">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Devices"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ControlProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Pavement">
+    <rdfs:subClassOf rdf:resource="#StreetProducts"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ExpansiveSoil">
+    <rdfs:subClassOf rdf:resource="#SoilType"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DesignBestPractice">
+    <rdfs:subClassOf rdf:resource="#BestPractice"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ActualUse">
+    <rdfs:subClassOf rdf:resource="#ProductUse"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductDesignAttribute">
+    <rdfs:subClassOf rdf:resource="#DesignAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InternationalProduct">
+    <rdfs:subClassOf rdf:resource="#GeographicModality"/>
+  </owl:Class>
+  <owl:Class rdf:about="#DomainAttributeModality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Modality used to relate an attribute to one or more 'domains' of knowledge.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#AttributeModality"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BendManhole">
+    <rdfs:subClassOf rdf:resource="#Manhole"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty rdf:resource="#isConnectedTo"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >provide a horizontal change in direction for the main structure</rdfs:comment>
+    <owl:disjointWith rdf:resource="#StraightManhole"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Thickness">
+    <rdfs:subClassOf rdf:resource="#DimensionAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CommunityImpact">
+    <rdfs:subClassOf rdf:resource="#SocialImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ShortTermImpact">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TotalCost">
+    <rdfs:subClassOf rdf:resource="#CostAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GroundWaterLevelOfContamination">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GroundWaterProperties"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ChangableInfrastructureProductAttribute">
+    <rdfs:subClassOf rdf:resource="#ChangableAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MeduimSand">
+    <rdfs:subClassOf rdf:resource="#Sand"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Area">
+    <rdfs:subClassOf rdf:resource="#DimensionAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="OperationalCapacity2">
+    <rdfs:subClassOf rdf:resource="#OperationalMetrics"/>
+    <rdfs:subClassOf rdf:resource="#ElectricityMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GroundWaterProperties">
+    <rdfs:subClassOf rdf:resource="#SurroundingSoilAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FrequencyofBreakdowns">
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf rdf:resource="#OperationalMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Surface">
+    <rdfs:subClassOf rdf:resource="#LocationAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TreePits">
+    <rdfs:subClassOf rdf:resource="#LandscapeProdcuts"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LinearClosingValve">
+    <owl:disjointWith rdf:resource="#MembraneClosingValve"/>
+    <rdfs:subClassOf rdf:resource="#Valve"/>
+    <owl:disjointWith rdf:resource="#RotationClosingValve"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HorizontalBoring">
+    <rdfs:subClassOf rdf:resource="#InstallationMethod"/>
+    <rdfs:subClassOf rdf:resource="#NonsteerableMethod"/>
+  </owl:Class>
+  <owl:Class rdf:ID="WaterChemicalQuality">
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf rdf:resource="#QulaityofService"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TechnologicalBestPractice">
+    <rdfs:subClassOf rdf:resource="#BestPractice"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HydrologicalImpact">
+    <rdfs:subClassOf rdf:resource="#EnviornemntalImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Raveling">
+    <rdfs:subClassOf rdf:resource="#SurfaceDistress"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PhysicalAttribute">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Tangible attributes that can be directly measured or quantified in an agreeable way.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#PhysicalModality"/>
+  </owl:Class>
+  <owl:Class rdf:about="#UtilityInfrastructureProduct">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ComponentLevelProduct"/>
+          <owl:Class rdf:about="#SubSystemLevelProduct"/>
+          <owl:Class rdf:about="#SystemLevelProduct"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#PhysicalProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Room">
+    <rdfs:subClassOf rdf:resource="#SupportingStructures"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SurfaceRoughness">
+    <rdfs:subClassOf rdf:resource="#PhysicalMetrics"/>
+    <rdfs:subClassOf rdf:resource="#TranportationSystemMetrics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CulturalImpact">
+    <rdfs:subClassOf rdf:resource="#SocialImpact"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ConstructionBestPractice">
+    <rdfs:subClassOf rdf:resource="#BestPractice"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RiskClassRating">
+    <rdfs:subClassOf rdf:resource="#WaterSystemMetrics"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WastewaterSystemMetrics"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Reliability"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectricityProduct">
+    <rdfs:subClassOf rdf:resource="#UtilityInfrastructureProduct"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CapitalCost">
+    <rdfs:subClassOf rdf:resource="#CostAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:about="#MaterialAttributes">
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductOperationalAttribute"/>
+    <rdfs:subClassOf rdf:resource="#FixedInfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#UniqueInfrastructureAttribute"/>
+    <rdfs:subClassOf rdf:resource="#ObjectiveInfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#PhysicalInfrastructureProductAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductConstructionAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductDesignAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductSustainabilityAttribute"/>
+    <rdfs:subClassOf rdf:resource="#InfrastructureProductEngineeringAttribute"/>
+  </owl:Class>
+  <owl:Class rdf:about="#InfrastructureProductBusinessAttribute">
+    <rdfs:subClassOf rdf:resource="#BuisinessAttribute"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Buisiness"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDomain"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="ElectricalConductivity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >is a measure of a material's ability to conduct an electric current</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Parameter"/>
+  </owl:Class>
+  <owl:Class rdf:ID="InitialCost">
+    <rdfs:subClassOf rdf:resource="#CostAttributes"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Cable">
+    <rdfs:subClassOf rdf:resource="#ConveyanceProduct"/>
+    <rdfs:subClassOf rdf:resource="#MainStructures"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ProtectionProduct">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Provide protection to other infrastructure products or to entities in the vicinity of the product. Examples include cathodic protections devices, concrete duct banks, ground point, relief valves, and manhole covers.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Protection"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFunction"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#FunctionalModality"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Devices">
+    <rdfs:subClassOf rdf:resource="#HierarchicalModality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Apparatus or gadgets used to measure, control or pump the meduim being conveyed by an infrastructure product.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WastewaterSystemMetrics">
+    <rdfs:subClassOf rdf:resource="#Metrics"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#hasDomain">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasAttribute"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="MitigatesImpact">
+    <rdfs:domain rdf:resource="#BestPractice"/>
+    <rdfs:range rdf:resource="#InfrastructureProductImpact"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasCasingType">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasAttribute"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="_REFERENCES">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+          <owl:Class rdf:about="#_DUMMY-FRAMES-METACLASS"/>
+          <owl:Class rdf:about="#_TEMPORARY-ITEMS"/>
+          <owl:Class rdf:about="#_DUMMY-FRAMES-METASLOT"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasFunction">
+    <rdfs:domain rdf:resource="#UtilityInfrastructureProduct"/>
+    <rdfs:range rdf:resource="#InfrastructureProductFunction"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasAttribute"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has"/>
+  <owl:ObjectProperty rdf:ID="hasImpactSource">
+    <rdfs:domain rdf:resource="#InfrastructureProductImpact"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#UtilityInfrastructureProduct"/>
+          <rdf:Description rdf:ID="Process"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAttribute">
+    <rdfs:subPropertyOf rdf:resource="#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasRepairMethod">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMethod"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMaterialType">
+    <rdfs:subPropertyOf rdf:resource="#hasAttribute"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasInspectionMethod">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMethod"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMitigatingBestPractice">
+    <rdfs:range rdf:resource="#BestPractice"/>
+    <rdfs:domain rdf:resource="#InfrastructureProductImpact"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isSimilarTo">
+    <owl:inverseOf rdf:resource="#isSimilarTo"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasType">
+    <rdfs:subPropertyOf rdf:resource="#hasAttribute"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasMeasure">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#InfrastructureProductAttribute"/>
+          <owl:Class rdf:about="#NonPhysicalInfrastructureProductAttribute"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Measure"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasNecessaryProductAttribute">
+    <rdfs:range rdf:resource="#InfrastructureProductAttribute"/>
+    <rdfs:domain rdf:resource="#DesignProcess"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasLocation">
+    <rdfs:subPropertyOf rdf:resource="#hasAttribute"/>
+    <rdfs:range rdf:resource="#LocationAttributes"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasInstallationMethod">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#hasMethod"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasMethod">
+    <rdfs:subPropertyOf rdf:resource="#has"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasImpactOn">
+    <rdfs:domain rdf:resource="#InfrastructureProductImpact"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasPerformanceMeasure">
+    <rdfs:subPropertyOf rdf:resource="#hasAttribute"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="ReducesImpactAttribute">
+    <rdfs:range rdf:resource="#ImpactAttribute"/>
+    <rdfs:domain rdf:resource="#BestPractice"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasPhaseofIncorporation">
+    <rdfs:range rdf:resource="#Phase"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#InfrastructureProductImpact"/>
+          <owl:Class rdf:about="#BestPractice"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasImpactExtent">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain rdf:resource="#InfrastructureProductImpact"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasIncorporationMethod">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >Contractual</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >Technological</rdf:first>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Procedural</rdf:first>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#BestPractice"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasImpactSeverity">
+    <rdfs:domain rdf:resource="#InfrastructureProductImpact"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasImpactDuration">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#InfrastructureProductImpact"/>
+  </owl:DatatypeProperty>
+  <ImpactExtent rdf:ID="ImpactExtent1"/>
+  <ImpactSeverity rdf:ID="ImpactSeverity1"/>
+  <InfrastructureProductImpact rdf:ID="Traffic_Impact_of_Construction_Activities">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Traffic Impact of Construction Activities</rdfs:comment>
+  </InfrastructureProductImpact>
+  <ConcreteDuct rdf:ID="ConcreteDuct_3"/>
+  <BestPractice rdf:ID="BP1">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Lane Renting</rdfs:comment>
+    <hasPhaseofIncorporation>
+      <ConstructionPhase rdf:ID="ConstructionPhase1"/>
+    </hasPhaseofIncorporation>
+    <ReducesImpactAttribute>
+      <ImpactDuration rdf:ID="ImapctDuration1"/>
+    </ReducesImpactAttribute>
+    <MitigatesImpact rdf:resource="#Traffic_Impact_of_Construction_Activities"/>
+    <hasIncorporationMethod rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Contractual</hasIncorporationMethod>
+  </BestPractice>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

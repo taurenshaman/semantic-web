@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://vocab.deri.ie/lmf">
+    <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
+    <dcterms:title>Lexical Markup Framework Ontology version 14</dcterms:title>
+    <dcterms:description>Specification of Lexical Markup Framework (ISO 24613 rev 14)</dcterms:description>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-03-12</dcterms:modified>
+    <vann:preferredNamespaceUri>http://www.lexinfo.net/lmf#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>lmf</vann:preferredNamespacePrefix>
+    <foaf:homepage rdf:resource="http://vocab.deri.ie/lmf.html"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-03-12</dcterms:created>
+    <dcterms:publisher>http://vocab.deri.ie/lmf#DERI%2C%20NUI%20Galway</dcterms:publisher>
+    <dcterms:partOf rdf:resource="http://vocab.deri.ie"/>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+    <dc:creator rdf:resource="http://vocab.deri.ie/lmf#tobwun"/>
+  </owl:Ontology>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/lmf#ttl">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/lmf.ttl</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/lmf#rdf">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/lmf.rdf</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <foaf:Person rdf:about="http://vocab.deri.ie/lmf#tobwun">
+    <foaf:name>Tobias Wunner</foaf:name>
+    <foaf:homepage rdf:resource="http://nlp.deri.ie/tobias"/>
+  </foaf:Person>
+
+  <dcterms:Agent rdf:about="http://vocab.deri.ie/lmf#DERI%2C%20NUI%20Galway">
+    <foaf:member rdf:resource="http://vocab.deri.ie/lmf#tobwun"/>
+    <foaf:name>DERI, NUI Galway</foaf:name>
+    <foaf:homepage rdf:resource="http://www.deri.ie/"/>
+  </dcterms:Agent>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#AffixAllomorph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AffixAllomorph</rdfs:label>
+    <rdfs:comment>Affix Allomorph is a generalization of the Form Representation class representing allomorphs of the canonical affix form in all scripts and representations. An Affix Allomorph is associated with Condition class instances that describe the phonological environment or other conditions (e.g. stem allomorph boundary) that resulted in the production of the allomorph.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#LMFClass">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LMFClass</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Affix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Affix</rdfs:label>
+    <rdfs:comment>Affix is a class representing an affix, that is a word form or morpheme that is qualified by a set of grammatical features and is required for analyzing or generating word forms. An Affix class manages one or more affix allomorphs through aggregate association with the Affix Allomorph class.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#StemRef">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StemRef</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#PredicativeRepresentation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PredicativeRepresentation</rdfs:label>
+    <rdfs:comment>Predicative Representation class is a class representing the link between the Sense and the Semantic Predicate classes.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Sense">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Sense</rdfs:label>
+    <rdfs:comment>Sense is a class representing one meaning of a lexical entry. The Sense class allows subclasses. The Sense class allows for hierarchical senses in that a sense may be more specific than another sense of the same lexical entry.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#MultilingualExternalRef">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MultilingualExternalRef</rdfs:label>
+    <rdfs:comment>Interlingual External Ref is a class representing the relationship between a Sense Axis instance and an external system. ???</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SenseAxis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SenseAxis</rdfs:label>
+    <rdfs:comment>Sense Axis is a class representing the relationship between different closely related senses in different languages and implements approach based on the interlingual pivot. The purpose is to describe the translation of lexemes from one language to another. Optionally, a Sense Axis may refer to an external knowledge representation system where the appropriate equivalent can be found.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Form">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Form</rdfs:label>
+    <rdfs:comment>Form class is an abstract class representing a lexeme, a morphological variant of a lexeme or a morph. The Form class manages one or more orthographical variants of the abstract Form as well as data categories that describe the attributes of the word form (e.g. lemma, pronunciation, syllabification). The Form class allows subclasses.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#LexicalEntry">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LexicalEntry</rdfs:label>
+    <rdfs:comment>Lexical Entry is a class representing a lexeme in a given language. The Lexical Entry is a container for managing the Form and Sense classes. Therefore, the Lexical Entry manages the relationship between the forms and their related senses. A Lexical Entry instance can contain one to many different forms, and can have from zero to many different senses. The Lexical Entry class does not allow subclasses.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#FormRepresentation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>FormRepresentation</rdfs:label>
+    <rdfs:comment>Form Representation is a class representing one variant orthography of a Form. When there is more than one variant orthography, the Form Representation class contains a Unicode string representing the Form as well as, if needed, the unique attribute-value pairs that describe the specific language, script, and orthography.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#Representation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Representation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Representation</rdfs:label>
+    <rdfs:comment>Representation is an abstract class representing a Unicode string as well as, if needed, the unique attribute-value pairs that describe the specific language, script, and orthography. The Representation class allows subclasses.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Definition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Definition</rdfs:label>
+    <rdfs:comment>Definition is a class representing a narrative description of a sense. It is displayed for human users to facilitate their understanding of the meaning of a Lexical Entry and is not meant to be processable by computer programs. A Sense instance can have zero to many definitions. Each Definition instance may be associated with zero to many Text Representation instances in order to manage the text definition in more than one language or script. The narrative description can be expressed in a different language and/or script than the one of the Lexical Entry instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SemanticPredicate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SemanticPredicate</rdfs:label>
+    <rdfs:comment>Semantic Predicate is a class representing an abstract meaning together with its association with the Semantic Argument class. A Semantic Predicate instance may be used to represent the common meaning between different senses that are not necessarily fully synonymous. These senses may be linked to Lexical Entry instances whose parts of speech are different. A Semantic Predicate instance may be typed by means of a relation to one or many Synset instances. A Semantic Predicate instance pertains to a given Lexicon instance.
+Example: In a Lexical Entry instance for to buy in the sense of &quot;to get something by paying money for it&quot;, a Semantic Predicate instance might be defined with two semantic arguments: one for the person who buys and one for what is bought. Another Lexical Entry instance could be recorded for buyer and linked to the same predicate.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Synset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Synset</rdfs:label>
+    <rdfs:comment>Synset is a class representing the set of shared meanings within the same language. Synset links synonyms forming a synonym set. A Synset instance can link senses of different Lexical Entry instances with the same part of speech.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Lexicon">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Lexicon</rdfs:label>
+    <rdfs:comment>Lexicon is a class containing all the lexical entries of a given language within the entire resource. A Lexicon instance must contain at least one lexical entry. The Lexicon class does not allow subclasses.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#TransferAxisRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TransferAxisRelation</rdfs:label>
+    <rdfs:comment>Transfer Axis Relation is a class representing the relationship between two Transfer Axis instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#ParadigmPattern">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ParadigmPattern</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#AffixSlot">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AffixSlot</rdfs:label>
+    <rdfs:comment>Affix Slot is a class referencing a set of affixes that attach to the same position relative to a stem through the Template Slot class. The set of affixes represents a subset of the affixes managed directly or indirectly by a Morphological Paradigm. An affix may be referenced by one or more Affix Slot class objects.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#dataCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>dataCategory</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Statement">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Statement</rdfs:label>
+    <rdfs:comment>Statement is a class representing a narrative description and refines or complements Definition. A Definition instance can have zero to many Statement instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#TransformCategory">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TransformCategory</rdfs:label>
+    <rdfs:comment>Transform Category is a class representing attributes that constrain or describe sets of features needed to manage morphological change.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#TransformSet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TransformSet</rdfs:label>
+    <rdfs:comment>Transform Set is a class representing the association between Process class and Grammatical Features class that further defines the scope or range of the managed pattern. Transform Set is in a zero to many aggregation with the Morphological Pattern.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Process">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Process</rdfs:label>
+    <rdfs:comment>Process is a class representing the rules or linguistic operations applied to one word form, affix, or stem, or combination of word forms, affixes and stems. A Process instance can be subtyped, e.g. processType='phonologicalOperation' and is in ordered aggregation with the Transform Set class.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#ExampleAxis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ExampleAxis</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#LexicalResource">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LexicalResource</rdfs:label>
+    <rdfs:comment>Lexical Resource is a class representing the entire resource. Lexical Resource occurs once and only once. The Lexical Resource instance is a container for one or more lexicons.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#MWEPattern">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MWEPattern</rdfs:label>
+    <rdfs:comment>MWE Pattern is a class representing a certain type of lexical combination phenomena. A pattern always refers to the List Of Components instances of the Lexical Entry instance. MWE Pattern shall not to be used for a Lexical Entry instance that is not associated with a List Of Components instance. An MWE Pattern instance is described using MWE Node instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#string">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>string</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#ConstrainSet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ConstrainSet</rdfs:label>
+    <rdfs:comment>Constraint Set is a class representing a group of constraints. Constraint Set class is associated to Lexicon class with a zero to many cardinality.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#GrammaticalFeatures">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>GrammaticalFeatures</rdfs:label>
+    <rdfs:comment>Grammatical Features is a class representing an unordered combination of grammatical features.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#StemOrRoot">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StemOrRoot</rdfs:label>
+    <rdfs:comment>Stem is a Form subclass representing a morph. The aggregation association between a Lexical Entry and a Stem is ordered. So, Stem class manages the sub-lexeme parts.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#WordForm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>WordForm</rdfs:label>
+    <rdfs:comment>Word Form is a Form subclass representing a form that a lexeme can take when used in a sentence or a phrase. So, Word Form class can manage simple lexemes, compounds and multi-word expressions.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#TargetTest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TargetTest</rdfs:label>
+    <rdfs:comment>Target Test is a class representing a condition that affects the translation with respect to the usage on the target language side.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#TransferAxis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TransferAxis</rdfs:label>
+    <rdfs:comment>Transfer Axis is a class representing multilingual transfer. A Transfer Axis instance links several Syntactic Behaviour instances pertaining to different languages.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#DerivedForm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DerivedForm</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#RelatedForm"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#RelatedForm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RelatedForm</rdfs:label>
+    <rdfs:comment>Related Form is a Form subclass representing a word form or a morph that can be related to the Lexical Entry in one of a variety of ways (e.g. derivation, root). The Related Form can be typed. There is no assumption that the Related Form is associated with the Sense class in the Lexical Entry.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SenseAxisRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SenseAxisRelation</rdfs:label>
+    <rdfs:comment>Sense Axis Relation is a class representing the relationship between two different Sense Axis instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Constraint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Constraint</rdfs:label>
+    <rdfs:comment>Constraint is a class representing one or several boolean expressions that must be respected in a given Lexicon instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#MWELex">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MWELex</rdfs:label>
+    <rdfs:comment>MWE Lex is a class representing a reference to a lexical component. The objective of the whole package being to provide a generic representation of MWE combinations within a given language, the components are not referenced directly but on the contrary, they are referenced by their respective ordering as specified in the List Of Component instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#MWENode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MWENode</rdfs:label>
+    <rdfs:comment>MWE Node is a class representing the details about the structure of the MWE. A Combiner instance can be linked with zero to many MWE Edge instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SynArgMap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynArgMap</rdfs:label>
+    <rdfs:comment>The SynArgMap is a class representing the relationship that maps various Syntactic Argument instances of the same Subcategorization Frame Set instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SubcategorizationFrameSet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SubcategorizationFrameSet</rdfs:label>
+    <rdfs:comment>Subcategorization Frame Set is a class representing a set of syntactic constructions and possibly the relationship between these constructions. A Subcategorization Frame Set can inherit relationships and attributes from another more generic Subcategorization Frame Set by means of a reflexive link. Therefore, it is possible to integrate a hierarchical structure of Subcategorization Frame Set instances. A Subcategorization Frame Set groups various syntactic constructions that appear frequently for certain sets of lexemes. The objective is to factorize syntactic descriptions and to maintain a minimum of syntactic behaviour instances in the lexicon.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#LogicalOperation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LogicalOperation</rdfs:label>
+    <rdfs:comment>Logical Operation is a class representing a boolean expression between Attribute Valuation instances and Constraint instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SenseRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SenseRelation</rdfs:label>
+    <rdfs:comment>Sense Relation is a class representing the oriented relationship between Senses instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#ReferredRoot">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ReferredRoot</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#RelatedForm"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#AffixTemplate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AffixTemplate</rdfs:label>
+    <rdfs:comment>Affix Template is a class managing a pattern of ordered affixes for inflectional, derivational, or agglutinative morphology indirectly through a Template Slot class. Affix Template attributes may describe the directionality of the affixes, the number of affixes in an ordered set, and any special conditions applicable to the affix pattern (e.g. optionality for specific slots).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SenseExample">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SenseExample</rdfs:label>
+    <rdfs:comment>Sense Example is a class used to illustrate the particular meaning of a Sense instance. A Sense can have zero to many examples.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#AttributeValuation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AttributeValuation</rdfs:label>
+    <rdfs:comment>Attribute Valuation is a class representing a pair between an attribute name of an LMF class and a value of this particular attribute.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#MWEEdge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MWEEdge</rdfs:label>
+    <rdfs:comment>MWE Edge is a class representing a smaller element of information as the MWE Node class. A MWE Edge instance may itself be associated recursively to a MWE Node instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#MonolingualExternalRef">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MonolingualExternalRef</rdfs:label>
+    <rdfs:comment>Monolingual External Ref is a class representing the relationship between a Sense or a Synset instance and an external system.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SubcategorizationFrame">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SubcategorizationFrame</rdfs:label>
+    <rdfs:comment>Subcategorization Frame is a class representing one syntactic construction. A Subcategorization Frame instance is shared by all Lexical Entry instances that have the same syntactic behaviour in the same language. A Subcategorization Frame can inherit relationships and attributes from another more generic Subcategorization Frame by means of a reflexive link. Therefore, it is possible to integrate a hierarchical structure of Subcategorization Frame instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#PredicateRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PredicateRelation</rdfs:label>
+    <rdfs:comment>Predicate Relation is a class representing the oriented relationship between instances of Semantic Predicate.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#TextRepresentation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TextRepresentation</rdfs:label>
+    <rdfs:comment>Text Representation is a class representing one textual content of Definition or Statement. When there is more than one variant orthography, the Text Representation class contains a Unicode string representing the textual content as well as the unique attribute-value pairs that describe the specific language, script, and orthography.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#Representation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Equivalent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Equivalent</rdfs:label>
+    <rdfs:comment>In a bilingual MRD, the Equivalent class represents the translation equivalent of the word form managed by the Lemma class. The Equivalent class is in a zero to many aggregate association with the Sense class, which allows the lexicon developer to omit the Equivalent class from a monolingual dictionary.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Context">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Context</rdfs:label>
+    <rdfs:comment>The Context class represents a text string that provides authentic context for the use of the word form managed by the Lemma. The Context class is in a zero to many aggregate association with the Sense class and may be associated with zero to many Text Representation classes which manage the representation of the translation equivalent in more than one script or orthography.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#ExampleAxisRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ExampleAxisRelation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#attVal">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>attVal</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#ListOfComponents">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ListOfComponents</rdfs:label>
+    <rdfs:comment>List Of Components is a class representing the aggregative aspect of a multiword expression. The List Of Components class is in a zero or one aggregate relationship with the Lexical Entry class. Each List Of Components instance should have at least two components.
+The mechanism can also be applied recursively, that is a multiword expression may be comprised of components that are themselves multiword expressions. List Of Components class is used in Morphological Pattern and MWE Pattern packages.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SyntacticBehaviour">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SyntacticBehaviour</rdfs:label>
+    <rdfs:comment>Syntactic Behaviour is a class representing one of the possible behaviours of a lexeme. The Syntactic Behaviour instance is attached to the Lexical Entry instance and optionally to the Sense instance. The presence in a given lexicon of one Syntactic Behaviour instance for a lexical entry means that this lexeme can have this behaviour in the language of the lexicon.
+Syntactic description is optional, so it is possible to describe morphology and semantics without any syntactic description. Lexical Entry, Syntactic Behaviour and Sense instances form a triangle representing Morphology, Syntax and Semantics.
+Detailed description of the syntactic behaviour of a lexical entry is defined by the Subcategorization Frame instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SynsetRelation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynsetRelation</rdfs:label>
+    <rdfs:comment>Synset Relation is a class representing the oriented relationship between Synset instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SyntacticArgument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SyntacticArgument</rdfs:label>
+    <rdfs:comment>Syntactic Argument is a class representing an argument of a given Subcategorization Frame. A Syntactic Argument can be linked recursively to a Subcategorization Frame instance in order to describe deeply complex arguments. Syntactic Argument allows the connection with a semantic argument by means of a SynSemArgMap instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#LexemProperty">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LexemProperty</rdfs:label>
+    <rdfs:comment>Lexeme Property is a class representing the central node of the Subcategorization Frame and is the class that refers to the current Lexical Entry instance. A Lexeme Property instance connected to a Subcategorization Frame instance is shared by all the lexemes that have the same syntactic behaviour.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Lemma">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Lemma</rdfs:label>
+    <rdfs:comment>Lemma is a Form subclass representing a word form chosen by convention to designate the Lexical Entry. The Lemma class is in a one to one aggregate association with the Lexical Entry that overrides the multiplicity inherited from the Form class. The lemma is usually equivalent to one of the inflected forms, the root or stem, or MWE, e.g. compound, idiomatic phrase. The convention for selecting the lemma can vary by language, language family, or editorial choice.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SourceTest">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SourceTest</rdfs:label>
+    <rdfs:comment>Source Test is a class representing a condition that affects the translation with respect to the usage on the source language side.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SemanticArgument">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SemanticArgument</rdfs:label>
+    <rdfs:comment>Semantic Argument is a class representing an argument of a given Semantic Predicate. A Semantic Argument instance may be typed by means of a relation to one or many Synset instances.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SynSemCorrespondence">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynSemCorrespondence</rdfs:label>
+    <rdfs:comment>SynSemCorrespondence is a class representing a set of SynSemArgMap instances for a given Subcategorization Frame instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SubjectField">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SubjectField</rdfs:label>
+    <rdfs:comment>Subject Field is a class representing a text string that provides domain or status information. Subject Field class is in a zero to many aggregate association with the Sense class. The Subject Field class allows for hierarchical senses in that a Subject Field instance may be more specific than another Subject Field instance of the same lexical entry.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#SynSemArgMap">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SynSemArgMap</rdfs:label>
+    <rdfs:comment>SynSemArgMap is a class representing the links between a semantic argument and a syntactic argument.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Component">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Component</rdfs:label>
+    <rdfs:comment>Component is a class representing a reference to a lexical entry for each lexical component aggregated in a List Of Components class.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#GlobalInformation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>GlobalInformation</rdfs:label>
+    <rdfs:comment>Global Information is a class representing administrative information and other general attributes. There is an aggregation relationship between the Lexical Resource class and the Global Information class in that the latter describes the administrative information and general attributes of the entire resource. The Global Information class does not allow subclasses.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://www.lexinfo.net/lmf#Condition">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Condition</rdfs:label>
+    <rdfs:comment>Condition is a class representing the conditions that determine or constrain the usage of a Process or Affix Allomorph instance.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#grammaticalGender">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>grammaticalGender</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#grammaticalGrade">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>grammaticalGrade</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#writtenForm">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>writtenForm</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#grammaticalTense">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>grammaticalTense</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#partOfSpeech">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>partOfSpeech</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#language">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>language</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Lexicon"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#grammaticalPerson">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>grammaticalPerson</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#grammaticalNumber">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>grammaticalNumber</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#order">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>order</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Component"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#grammaticalCase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>grammaticalCase</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Form"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#isPartOf">
+    <rdfs:label>isPartOf</rdfs:label>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#isAssociated">
+    <rdfs:label>isAssociated</rdfs:label>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#isAdorned">
+    <rdfs:label>isAdorned</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LMFClass"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#attVal"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#att">
+    <rdfs:label>att</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#attVal"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#dataCategory"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#val">
+    <rdfs:label>val</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#attVal"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasArgumentRelation">
+    <rdfs:label>hasArgumentRelation</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SemanticArgument"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasSyntacticArgument">
+    <rdfs:label>hasSyntacticArgument</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SubcategorizationFrame"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SyntacticArgument"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasSynSemCorrespondence">
+    <rdfs:label>hasSynSemCorrespondence</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Lexicon"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SynSemCorrespondence"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasLemma">
+    <rdfs:label>hasLemma</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#Lemma"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasSense">
+    <rdfs:label>hasSense</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#Sense"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasFormRepresentation">
+    <rdfs:label>hasFormRepresentation</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Lemma"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#FormRepresentation"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#subcatFrame">
+    <rdfs:label>subcatFrame</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SyntacticBehaviour"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SubcategorizationFrame"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasSyntacticBehaviour">
+    <rdfs:label>hasSyntacticBehaviour</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SyntacticBehaviour"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#predicativeRepresentation">
+    <rdfs:label>predicativeRepresentation</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SyntacticBehaviour"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#PredicativeRepresentation"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#synset">
+    <rdfs:label>synset</rdfs:label>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#Synset"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasLexicalEntry">
+    <rdfs:label>hasLexicalEntry</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Lexicon"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasListOfComponents">
+    <rdfs:label>hasListOfComponents</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#ListOfComponents"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasSynSemArgMap">
+    <rdfs:label>hasSynSemArgMap</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SynSemCorrespondence"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SynSemArgMap"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#synArg">
+    <rdfs:label>synArg</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SynSemCorrespondence"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SyntacticArgument"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasSemanticArgument">
+    <rdfs:label>hasSemanticArgument</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SemanticPredicate"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SemanticArgument"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#semArg">
+    <rdfs:label>semArg</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#SynSemArgMap"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SemanticArgument"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#synSemCorrespondence">
+    <rdfs:label>synSemCorrespondence</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#PredicativeRepresentation"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SynSemCorrespondence"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasLexicon">
+    <rdfs:label>hasLexicon</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LexicalResource"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#Lexicon"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#lexicalEntry">
+    <rdfs:label>lexicalEntry</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Component"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasComponent">
+    <rdfs:label>hasComponent</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#ListOfComponents"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#Component"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasWordForm">
+    <rdfs:label>hasWordForm</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#LexicalEntry"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#WordForm"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#predicate">
+    <rdfs:label>predicate</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#PredicativeRepresentation"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SemanticPredicate"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasSubcatFrame">
+    <rdfs:label>hasSubcatFrame</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Lexicon"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SubcategorizationFrame"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://www.lexinfo.net/lmf#hasPredicate">
+    <rdfs:label>hasPredicate</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.lexinfo.net/lmf#Lexicon"/>
+    <rdfs:range rdf:resource="http://www.lexinfo.net/lmf#SemanticPredicate"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.lexinfo.net/lmf#isAssociated"/>
+  </rdf:Property>
+
+</rdf:RDF>

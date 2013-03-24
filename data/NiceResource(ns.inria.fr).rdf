@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE rdf [
+<!ENTITY nr "http://ns.inria.fr/niceresource/2011/04/02/voc">
+<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+<!ENTITY cc "http://creativecommons.org/ns#">
+<!ENTITY irw "http://www.ontologydesignpatterns.org/ont/web/irw.owl#">
+<!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+<!ENTITY dc "http://purl.org/dc/elements/1.1">
+]>
+
+<rdf:RDF xmlns:rdf ="&rdf;" xmlns:rdfs="&rdfs;" xmlns:owl="&owl;" xmlns:xs="&xsd;" xmlns:irw="&irw;" xmlns:foaf="&foaf;" xmlns:dc="&dc;" xmlns:skos="&skos;" xmlns:cc="&cc;"
+  xmlns="&rdfs;"
+  xml:base="&nr;" >
+
+<owl:Ontology rdf:about="&nr;">
+ <owl:versionInfo>Version 0.1, 04 february 2011</owl:versionInfo>
+ <dc:title xml:lang="en">Nice Tag Ontology</dc:title>
+ <dc:description xml:lang="en">NiceResource Ontology is an ontology which describes  /////////////////////</dc:description>
+ <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text"/>
+ <cc:attributionURL rdf:resource="http://ns.inria.fr/niceresource/"/>
+ <cc:licence rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/"/>
+</owl:Ontology>
+
+<!-- Classes -->
+
+<owl:Class rdf:ID="ConnegedResource">
+ <rdfs:subClassOf>
+ <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+ </rdfs:subClassOf>
+ <label xml:lang="en">Conneged resource</label>
+ <label xml:lang="fr">Resource conneguée</label>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:Class>
+  
+<owl:Class rdf:ID="ResourceEntity">
+ <rdfs:subClassOf>
+ <owl:Class rdf:about="rdfs:resource"/>
+ </rdfs:subClassOf>
+ <label xml:lang="en"></label>
+ <label xml:lang="fr"></label>
+ <comment xml:lang="en">Anything a resource (nr:)identifies. Can be a resource, yet in 
+ most cases it will be something else. Corresponds to the philosophical notion "entity".</comment>
+ <comment xml:lang="fr"></comment>
+</owl:Class>
+  
+<owl:Class rdf:ID="HttpRepresentation">
+ <owl:equivalentClass>
+ <rdf:Description rdf:about="http://www.ontologydesignpatterns.org/ont/web/irw.owl#WebRepresentation"/>
+ </owl:equivalentClass>
+ <label xml:lang="en">Http representation</label>
+ <label xml:lang="fr">représentation Http</label>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:Class>
+  
+<!-- Properties -->
+
+<owl:ObjectProperty rdf:about="#possesses">
+<owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="isPossessedBy"/>
+ </owl:inverseOf>
+ <label xml:lang="en">possesses</label>
+ <label xml:lang="fr">possède</label>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+ 
+<owl:ObjectProperty rdf:about="#isPossessedBy">
+<owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="possesses"/>
+ </owl:inverseOf>
+ <label xml:lang="en">is possessed by</label>
+ <label xml:lang="fr">est possédé par</label>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty> 
+
+<owl:ObjectProperty rdf:about="#publishedBy">
+ <rdfs:subPropertyOf>
+ <owl:ObjectProperty rdf:about="#possesses"/>
+ </rdfs:subPropertyOf> 
+ <label xml:lang="en">published by</label>
+ <label xml:lang="fr">publié par</label>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+ 
+<owl:ObjectProperty rdf:about="#hasPublishingDate">
+ <rdfs:subPropertyOf>
+ <owl:ObjectProperty rdf:about="#possesses"/>
+ </rdfs:subPropertyOf> 
+ <label xml:lang="en">has publishing date</label>
+ <label xml:lang="fr">a pour date de publication</label>
+ <rdfs:range rdf:datatype="http://www.w3.org/2001/XMLSchema#date"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty> 
+
+<owl:ObjectProperty rdf:about="#described-RepresentedBy">
+ <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="describes-Represents"/>
+ </owl:inverseOf>
+ <label xml:lang="en">described or represented by</label>
+ <label xml:lang="fr">décrit ou représenté par</label>
+ <domain rdf:resource="#ResourceEntity"/>
+ <range rdf:resource="#HttpRepresentation"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty> 
+
+<owl:ObjectProperty rdf:about="#describes-Representes">
+ <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="described-RepresentedBy"/>
+ </owl:inverseOf>
+ <label xml:lang="en">describes or representes</label>
+ <label xml:lang="fr">décrit ou représente</label>
+ <domain rdf:resource="#HttpRepresentation"/>
+ <range rdf:resource="#ResourceEntity"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty> 
+
+<owl:ObjectProperty rdf:about="#moreSpecificThan">
+ <rdfs:subPropertyOf>
+ <owl:ObjectProperty rdf:about="#possesses"/>
+ </rdfs:subPropertyOf> 
+ <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="moreGenericThan"/>
+ </owl:inverseOf>
+ <label xml:lang="en">more specific than</label>
+ <label xml:lang="fr">plus spécifique que</label>
+ <domain rdf:resource="#connegedResource"/>
+ <range rdf:resource="#connegedResource"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+ 
+<owl:ObjectProperty rdf:about="#moreGenericThan">
+ <rdfs:subPropertyOf>
+ <owl:ObjectProperty rdf:about="#possesses"/>
+ </rdfs:subPropertyOf> 
+ <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="moreSpecificThan"/>
+ </owl:inverseOf>
+ <label xml:lang="en">more generic than</label>
+ <label xml:lang="fr">plus spécifique que</label>
+ <domain rdf:resource="#connegedResource"/>
+ <range rdf:resource="#connegedResource"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+ 
+<owl:ObjectProperty rdf:about="#identifies">
+ <rdfs:subPropertyOf>
+ <owl:ObjectProperty rdf:about="#possesses"/>
+ </rdfs:subPropertyOf> 
+  <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="identifiedBy"/>
+ </owl:inverseOf>
+ <label xml:lang="en">identifies</label>
+ <label xml:lang="fr">identifie</label>
+ <range rdf:resource="#ResourceEntity"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#identifiedBy">
+ <rdfs:subPropertyOf>
+ <owl:ObjectProperty rdf:about="#possesses"/>
+ </rdfs:subPropertyOf>
+  <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="identifies"/>
+ </owl:inverseOf>
+ <label xml:lang="en">identified by</label>
+ <label xml:lang="fr">identifié par</label>
+ <domain rdf:resource="#ResourceEntity"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+ 
+<owl:ObjectProperty rdf:about="#accordingToWhichWasGenerated">
+ <subPropertyOf rdf:resource="#possesses"/>
+ <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="generatedAccordingTo"/>
+ </owl:inverseOf>
+ <label xml:lang="en">generated according to</label>
+ <label xml:lang="fr">génèré en fonction de</label>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#generatedAccordingTo">
+ <subPropertyOf rdf:resource="#possesses"/>
+ <owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="accordingToWhichWasGenerated"/>
+ </owl:inverseOf>
+ <label xml:lang="en">is generated by</label>
+ <label xml:lang="fr">est généré par</label>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#encodes">
+<owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="isEncodedBy"/>
+ </owl:inverseOf>
+ <label xml:lang="en">encodes</label>
+ <label xml:lang="fr">encode</label>
+ <range rdf:resource="http://www.ontologydesignpatterns.org/ont/web/irw.owl#Resource"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isEncodedBy">
+<owl:inverseOf>
+ <owl:ObjectProperty rdf:ID="encodes"/>
+ </owl:inverseOf>
+ <label xml:lang="en">is encoded by</label>
+ <label xml:lang="fr">est encodé par</label>
+ <domain rdf:resource="http://www.ontologydesignpatterns.org/ont/web/irw.owl#Resource"/>
+ <comment xml:lang="en"></comment>
+ <comment xml:lang="fr"></comment>
+</owl:ObjectProperty>
+
+
+
+</rdf:RDF>

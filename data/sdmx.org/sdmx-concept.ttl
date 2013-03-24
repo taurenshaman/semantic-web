@@ -1,0 +1,1182 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix scovo:   <http://purl.org/NET/scovo#> .
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix vcard:   <http://www.w3.org/2006/vcard/ns#> .
+@prefix sdmx:    <http://purl.org/linked-data/sdmx#> .
+@prefix sdmx-concept:    <http://purl.org/linked-data/sdmx/2009/concept#> .
+@prefix sdmx-dimension:  <http://purl.org/linked-data/sdmx/2009/dimension#> .
+@prefix sdmx-attribute:  <http://purl.org/linked-data/sdmx/2009/attribute#> .
+@prefix sdmx-measure:    <http://purl.org/linked-data/sdmx/2009/measure#> .
+@prefix sdmx-metadata:   <http://purl.org/linked-data/sdmx/2009/metadata#> .
+@prefix sdmx-code:       <http://purl.org/linked-data/sdmx/2009/code#> .
+@prefix sdmx-subject:    <http://purl.org/linked-data/sdmx/2009/subject#> .
+@prefix dcterms:         <http://purl.org/dc/terms/>.
+@prefix qb:              <http://purl.org/linked-data/cube#> .
+
+sdmx-concept:cog a skos:ConceptScheme;
+    rdfs:label "Content Oriented Guidelines concept scheme"@en;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> .
+
+# ACCESSIBILITY
+sdmx-concept:accessibility a sdmx:Concept, skos:Concept ;
+    rdfs:label "Accessibility"@en ;
+    rdfs:comment """The ease and the conditions under which statistical information can be obtained."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ACCESSIBILITY";
+    skos:inScheme sdmx-concept:cog .
+
+# ACCURACY
+sdmx-concept:accuracy a sdmx:Concept, skos:Concept ;
+    rdfs:label "Accuracy"@en ;
+    rdfs:comment """Closeness of computations or estimates to the exact or true values that the statistics were intended to measure."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ACCURACY";
+    skos:inScheme sdmx-concept:cog .
+
+# ACCURACY_OVERALL
+sdmx-concept:accuracyOverall a sdmx:Concept, skos:Concept ;
+    rdfs:label "Accuracy - overall"@en ;
+    rdfs:comment """Assessment of accuracy, linked to a certain data set or domain, which is summarising the various components into one single measure."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ACCURACY_OVERALL";
+    skos:broader sdmx-concept:accuracy;
+    skos:inScheme sdmx-concept:cog .
+
+# NONSAMPLING_ERR
+sdmx-concept:nonsamplingErr a sdmx:Concept, skos:Concept ;
+    rdfs:label "Accuracy - nonsampling error"@en ;
+    rdfs:comment """Error in sample estimates which cannot be attributed to sampling fluctuations."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].NONSAMPLING_ERR";
+    skos:broader sdmx-concept:accuracy;
+    skos:inScheme sdmx-concept:cog .
+
+# SAMPLING_ERR
+sdmx-concept:samplingErr a sdmx:Concept, skos:Concept ;
+    rdfs:label "Accuracy - sampling error"@en ;
+    rdfs:comment """That part of the difference between a population value and an estimate thereof, derived from a random sample, which is due to the fact that only a subset of the population is enumerated."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].SAMPLING_ERR";
+    skos:broader sdmx-concept:accuracy;
+    skos:inScheme sdmx-concept:cog .
+
+# ADJUSTMENT
+sdmx-concept:adjustment a sdmx:Concept, skos:Concept ;
+    rdfs:label "Adjustment"@en ;
+    rdfs:comment """The set of procedures employed to modify statistical data to enable it to conform to national or international standards or to address data quality differences when compiling specific data sets."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ADJUSTMENT";
+    skos:inScheme sdmx-concept:cog .
+
+# ADJUST_CODED
+sdmx-concept:adjustCoded a sdmx:Concept, skos:Concept ;
+    rdfs:label "Adjustment - coded"@en ;
+    rdfs:comment """Type of adjustment used, represented by a code."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ADJUST_CODED";
+    skos:broader sdmx-concept:adjustment;
+    skos:inScheme sdmx-concept:cog .
+
+# ADJUST_DETAIL
+sdmx-concept:adjustDetail a sdmx:Concept, skos:Concept ;
+    rdfs:label "Adjustment - detail"@en ;
+    rdfs:comment """Textual description of the type of adjustment used."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ADJUST_DETAIL";
+    skos:broader sdmx-concept:adjustment;
+    skos:inScheme sdmx-concept:cog .
+
+# AGE
+sdmx-concept:age a sdmx:Concept, skos:Concept ;
+    rdfs:label "Age"@en ;
+    rdfs:comment """The length of time that a person has lived or a thing has existed."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].AGE";
+    skos:inScheme sdmx-concept:cog .
+
+# BASE_PER
+sdmx-concept:basePer a sdmx:Concept, skos:Concept ;
+    rdfs:label "Base Period"@en ;
+    rdfs:comment """The period of time used as the base of an index number, or to which a constant price series refers."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].BASE_PER";
+    skos:inScheme sdmx-concept:cog .
+
+# CIVIL_STATUS
+sdmx-concept:civilStatus a sdmx:Concept, skos:Concept ;
+    rdfs:label "Civil Status"@en ;
+    rdfs:comment """Legal, conjugal status of each individual in relation to the marriage laws or customs of the country."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CIVIL_STATUS";
+    skos:inScheme sdmx-concept:cog .
+
+# CLARITY
+sdmx-concept:clarity a sdmx:Concept, skos:Concept ;
+    rdfs:label "Clarity"@en ;
+    rdfs:comment """The extent to which easily comprehensible metadata are available, where these metadata are necessary to give a full understanding of statistical data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CLARITY";
+    skos:inScheme sdmx-concept:cog .
+
+# CLASS_SYSTEM
+sdmx-concept:classSystem a sdmx:Concept, skos:Concept ;
+    rdfs:label "Classification systems"@en ;
+    rdfs:comment """Arrangement or division of objects into groups based on characteristics which the objects have in common."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CLASS_SYSTEM";
+    skos:inScheme sdmx-concept:cog .
+
+# COHERENCE
+sdmx-concept:coherence a sdmx:Concept, skos:Concept ;
+    rdfs:label "Coherence"@en ;
+    rdfs:comment """Adequacy of statistics to be combined in different ways and for various uses."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COHERENCE";
+    skos:inScheme sdmx-concept:cog .
+
+# COHER_X_DOM
+sdmx-concept:coherXDom a sdmx:Concept, skos:Concept ;
+    rdfs:label "Coherence - cross domain"@en ;
+    rdfs:comment """Extent to which statistics are reconcilable with those obtained through other data sources or statistical domains."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COHER_X_DOM";
+    skos:broader sdmx-concept:coherence;
+    skos:inScheme sdmx-concept:cog .
+
+# COHER_INTERNAL
+sdmx-concept:coherInternal a sdmx:Concept, skos:Concept ;
+    rdfs:label "Coherence - Internal"@en ;
+    rdfs:comment """Extent to which statistics are consistent within a given data set."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COHER_INTERNAL";
+    skos:broader sdmx-concept:coherence;
+    skos:inScheme sdmx-concept:cog .
+
+# COMMENT
+sdmx-concept:comment a sdmx:Concept, skos:Concept ;
+    rdfs:label "Comment"@en ;
+    rdfs:comment """Supplementary descriptive text which can be attached to data or metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COMMENT";
+    skos:inScheme sdmx-concept:cog .
+
+# COMPARABILITY
+sdmx-concept:comparability a sdmx:Concept, skos:Concept ;
+    rdfs:label "Comparability"@en ;
+    rdfs:comment """The extent to which differences between statistics can be attributed to differences between the true values of the statistical characteristics."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COMPARABILITY";
+    skos:inScheme sdmx-concept:cog .
+
+# COMPAR_DOMAINS
+sdmx-concept:comparDomains a sdmx:Concept, skos:Concept ;
+    rdfs:label "Comparability - between domains"@en ;
+    rdfs:comment """Extent to which statistics are comparable between different statistical domains."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COMPAR_DOMAINS";
+    skos:broader sdmx-concept:comparability;
+    skos:inScheme sdmx-concept:cog .
+
+# COMPAR_GEO
+sdmx-concept:comparGeo a sdmx:Concept, skos:Concept ;
+    rdfs:label "Comparability - geographical"@en ;
+    rdfs:comment """Extent to which statistics are comparable between geographical areas."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COMPAR_GEO";
+    skos:broader sdmx-concept:comparability;
+    skos:inScheme sdmx-concept:cog .
+
+# COMPAR_TIME
+sdmx-concept:comparTime a sdmx:Concept, skos:Concept ;
+    rdfs:label "Comparability - over time"@en ;
+    rdfs:comment """Extent to which statistics are comparable or reconcilable over time."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COMPAR_TIME";
+    skos:broader sdmx-concept:comparability;
+    skos:inScheme sdmx-concept:cog .
+
+# COMPILING_ORG
+sdmx-concept:compilingOrg a sdmx:Concept, skos:Concept ;
+    rdfs:label "Compiling agency"@en ;
+    rdfs:comment """The organisation compiling the data being reported."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COMPILING_ORG";
+    skos:inScheme sdmx-concept:cog .
+
+# CONF
+sdmx-concept:conf a sdmx:Concept, skos:Concept ;
+    rdfs:label "Confidentiality"@en ;
+    rdfs:comment """A property of data indicating the extent to which their unauthorised disclosure could be prejudicial or harmful to the interest of the source or other relevant parties."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONF";
+    skos:inScheme sdmx-concept:cog .
+
+# CONF_DATA_TR
+sdmx-concept:confDataTr a sdmx:Concept, skos:Concept ;
+    rdfs:label "Confidentiality - data treatment"@en ;
+    rdfs:comment """Rules applied for treating the data set to ensure statistical confidentiality and prevent unauthorised disclosure."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONF_DATA_TR";
+    skos:broader sdmx-concept:conf;
+    skos:inScheme sdmx-concept:cog .
+
+# CONF_POLICY
+sdmx-concept:confPolicy a sdmx:Concept, skos:Concept ;
+    rdfs:label "Confidentiality - policy"@en ;
+    rdfs:comment """Legislative measures or other formal procedures which prevent unauthorised disclosure of data that identify a person or economic entity either directly or indirectly."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONF_POLICY";
+    skos:broader sdmx-concept:conf;
+    skos:inScheme sdmx-concept:cog .
+
+# CONF_STATUS
+sdmx-concept:confStatus a sdmx:Concept, skos:Concept ;
+    rdfs:label "Confidentiality - status"@en ;
+    rdfs:comment """Information about the confidentiality status of the object to which this attribute is attached."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONF_STATUS";
+    skos:broader sdmx-concept:conf;
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT
+sdmx-concept:contact a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact"@en ;
+    rdfs:comment """Individual or organisational contact points for the data or metadata, including information on how to reach the contact points."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT";
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT_EMAIL
+sdmx-concept:contactEmail a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact email address"@en ;
+    rdfs:comment """E-mail address of the contact points for the data or metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT_EMAIL";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT_FAX
+sdmx-concept:contactFax a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact fax number"@en ;
+    rdfs:comment """Fax number of the contact points for the data or metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT_FAX";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT_MAIL
+sdmx-concept:contactMail a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact mail address"@en ;
+    rdfs:comment """The postal address of the contact points for the data or metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT_MAIL";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT_NAME
+sdmx-concept:contactName a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact name"@en ;
+    rdfs:comment """The name of the contact points for the data or metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT_NAME";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT_ORGANISATION
+sdmx-concept:contactOrganisation a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact organisation"@en ;
+    rdfs:comment """The name of the organisation of the contact points for the data or metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT_ORGANISATION";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# ORGANISATION_UNIT
+sdmx-concept:organisationUnit a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact organization unit"@en ;
+    rdfs:comment """An addressable subdivision of an organization."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ORGANISATION_UNIT";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT_FUNCT
+sdmx-concept:contactFunct a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact person job title"@en ;
+    rdfs:comment """The area of technical responsibility of the contact, such as "methodology", "database management" or "dissemination"."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT_FUNCT";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# CONTACT_PHONE
+sdmx-concept:contactPhone a sdmx:Concept, skos:Concept ;
+    rdfs:label "Contact phone number"@en ;
+    rdfs:comment """The telephone number of the contact points for the data or metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CONTACT_PHONE";
+    skos:broader sdmx-concept:contact;
+    skos:inScheme sdmx-concept:cog .
+
+# COST_BURDEN
+sdmx-concept:costBurden a sdmx:Concept, skos:Concept ;
+    rdfs:label "Cost and Burden"@en ;
+    rdfs:comment """Costs associated with the collection and production of a statistical product and burden on respondents."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COST_BURDEN";
+    skos:inScheme sdmx-concept:cog .
+
+# COST_BURDEN_EFF
+sdmx-concept:costBurdenEff a sdmx:Concept, skos:Concept ;
+    rdfs:label "Cost and Burden - efficiency management"@en ;
+    rdfs:comment """Cost benefit analysis, effectiveness of execution of medium term statistical programs, and ensuring efficient use of resources."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COST_BURDEN_EFF";
+    skos:broader sdmx-concept:costBurden;
+    skos:inScheme sdmx-concept:cog .
+
+# COST_BURDEN_RES
+sdmx-concept:costBurdenRes a sdmx:Concept, skos:Concept ;
+    rdfs:label "Cost and Burden - resources"@en ;
+    rdfs:comment """Staff, facilities, computing resources, and financing to undertake statistical production."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COST_BURDEN_RES";
+    skos:broader sdmx-concept:costBurden;
+    skos:inScheme sdmx-concept:cog .
+
+# VIS_AREA
+sdmx-concept:visArea a sdmx:Concept, skos:Concept ;
+    rdfs:label "Counterpart Reference Area"@en ;
+    rdfs:comment """The secondary area, as opposed to reference area, to which the measured data is in relation."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].VIS_AREA";
+    skos:inScheme sdmx-concept:cog .
+
+# COVERAGE
+sdmx-concept:coverage a sdmx:Concept, skos:Concept ;
+    rdfs:label "Coverage"@en ;
+    rdfs:comment """The definition of the population that statistics aim to cover."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COVERAGE";
+    skos:inScheme sdmx-concept:cog .
+
+# COVERAGE_SECTOR
+sdmx-concept:coverageSector a sdmx:Concept, skos:Concept ;
+    rdfs:label "Coverage - sector"@en ;
+    rdfs:comment """Main economic or other sectors covered by the statistics."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COVERAGE_SECTOR";
+    skos:broader sdmx-concept:coverage;
+    skos:inScheme sdmx-concept:cog .
+
+# COVERAGE_TIME
+sdmx-concept:coverageTime a sdmx:Concept, skos:Concept ;
+    rdfs:label "Coverage- time"@en ;
+    rdfs:comment """The length of time for which data are available."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COVERAGE_TIME";
+    skos:broader sdmx-concept:coverage;
+    skos:inScheme sdmx-concept:cog .
+
+# CURRENCY
+sdmx-concept:currency a sdmx:Concept, skos:Concept ;
+    rdfs:label "Currency"@en ;
+    rdfs:comment """Monetary denomination of the object being measured."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].CURRENCY";
+    skos:inScheme sdmx-concept:cog .
+
+# COLL_METHOD
+sdmx-concept:collMethod a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Collection Method"@en ;
+    rdfs:comment """Systematic process of gathering data for official statistics."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COLL_METHOD";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_COMP
+sdmx-concept:dataComp a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Compilation"@en ;
+    rdfs:comment """Operations performed on data to derive new information according to a given set of rules."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_COMP";
+    skos:inScheme sdmx-concept:cog .
+
+# DISS_ORG
+sdmx-concept:dissOrg a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Dissemination Agency"@en ;
+    rdfs:comment """The organisation disseminating the data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DISS_ORG";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_EDITING
+sdmx-concept:dataEditing a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Editing"@en ;
+    rdfs:comment """Activity aimed at detecting and correcting errors, logical inconsistencies and suspicious data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_EDITING";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_PRES
+sdmx-concept:dataPres a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Presentation"@en ;
+    rdfs:comment """Description of the disseminated data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_PRES";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_DESCR
+sdmx-concept:dataDescr a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Presentation - data description"@en ;
+    rdfs:comment """Main characteristics of the data set described in an easily understandable manner, referring to the data and indicators disseminated."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_DESCR";
+    skos:broader sdmx-concept:dataPres;
+    skos:inScheme sdmx-concept:cog .
+
+# DISS_DET
+sdmx-concept:dissDet a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Presentation - disseminated detail"@en ;
+    rdfs:comment """Disseminated domain, measure, and time period breakdowns of statistics in the dataset."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DISS_DET";
+    skos:broader sdmx-concept:dataPres;
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_PROVIDER
+sdmx-concept:dataProvider a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Provider"@en ;
+    rdfs:comment """Organisation which produces data or metadata"""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_PROVIDER";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_REV
+sdmx-concept:dataRev a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Revision"@en ;
+    rdfs:comment """Any change in a value of a statistic released to the public."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_REV";
+    skos:inScheme sdmx-concept:cog .
+
+# REV_POLICY
+sdmx-concept:revPolicy a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Revision - policy"@en ;
+    rdfs:comment """Policy aimed at ensuring the transparency of disseminated data, whereby preliminary data are compiled that are later revised."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REV_POLICY";
+    skos:broader sdmx-concept:dataRev;
+    skos:inScheme sdmx-concept:cog .
+
+# REV_PRACTICE
+sdmx-concept:revPractice a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Revision - practice"@en ;
+    rdfs:comment """Information on the data revision practice."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REV_PRACTICE";
+    skos:broader sdmx-concept:dataRev;
+    skos:inScheme sdmx-concept:cog .
+
+# REV_STUDY
+sdmx-concept:revStudy a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Revision - studies"@en ;
+    rdfs:comment """Information about data revision studies and analyses."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REV_STUDY";
+    skos:broader sdmx-concept:dataRev;
+    skos:inScheme sdmx-concept:cog .
+
+# DSI
+sdmx-concept:dsi a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Set Identifier"@en ;
+    rdfs:comment """Sequence of characters identifying the data set with which it is associated."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DSI";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_UPDATE
+sdmx-concept:dataUpdate a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Update"@en ;
+    rdfs:comment """The date on which the data element was inserted or modified in the database."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_UPDATE";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_VALIDATION
+sdmx-concept:dataValidation a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Validation"@en ;
+    rdfs:comment """Process of monitoring the results of data compilation and ensuring the quality of the statistical results."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_VALIDATION";
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_VAL_INTER
+sdmx-concept:dataValInter a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Validation - intermediate"@en ;
+    rdfs:comment """Validation that intermediate calculations leading to statistical outputs have been correctly done."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_VAL_INTER";
+    skos:broader sdmx-concept:dataValidation;
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_VAL_OUTPUT
+sdmx-concept:dataValOutput a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Validation - output"@en ;
+    rdfs:comment """Assessment of discrepancies and other problems in statistical outputs."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_VAL_OUTPUT";
+    skos:broader sdmx-concept:dataValidation;
+    skos:inScheme sdmx-concept:cog .
+
+# DATA_VAL_SOURCE
+sdmx-concept:dataValSource a sdmx:Concept, skos:Concept ;
+    rdfs:label "Data Validation - source"@en ;
+    rdfs:comment """Assessment of discrepancies and other problems related to source data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DATA_VAL_SOURCE";
+    skos:broader sdmx-concept:dataValidation;
+    skos:inScheme sdmx-concept:cog .
+
+# DECIMALS
+sdmx-concept:decimals a sdmx:Concept, skos:Concept ;
+    rdfs:label "Decimals"@en ;
+    rdfs:comment """The number of digits of an observation to the right of a decimal point."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DECIMALS";
+    skos:inScheme sdmx-concept:cog .
+
+# DISS_FORMAT
+sdmx-concept:dissFormat a sdmx:Concept, skos:Concept ;
+    rdfs:label "Dissemination Format"@en ;
+    rdfs:comment """Media by which statistical data and metadata are disseminated."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DISS_FORMAT";
+    skos:inScheme sdmx-concept:cog .
+
+# MICRO_DAT_ACC
+sdmx-concept:microDatAcc a sdmx:Concept, skos:Concept ;
+    rdfs:label "Dissemination Format - mirco-data access"@en ;
+    rdfs:comment """Information on whether micro-data are also disseminated."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].MICRO_DAT_ACC";
+    skos:broader sdmx-concept:dissFormat;
+    skos:inScheme sdmx-concept:cog .
+
+# NEWS_REL
+sdmx-concept:newsRel a sdmx:Concept, skos:Concept ;
+    rdfs:label "Dissemination Format - news release"@en ;
+    rdfs:comment """Regular or ad-hoc press releases linked to the data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].NEWS_REL";
+    skos:broader sdmx-concept:dissFormat;
+    skos:inScheme sdmx-concept:cog .
+
+# ONLINE_DB
+sdmx-concept:onlineDb a sdmx:Concept, skos:Concept ;
+    rdfs:label "Dissemination Format - online database"@en ;
+    rdfs:comment """Information about on-line databases in which the disseminated data can be accessed."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ONLINE_DB";
+    skos:broader sdmx-concept:dissFormat;
+    skos:inScheme sdmx-concept:cog .
+
+# DISS_OTHER
+sdmx-concept:dissOther a sdmx:Concept, skos:Concept ;
+    rdfs:label "Dissemination Format - other"@en ;
+    rdfs:comment """References to the most important other data dissemination done."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DISS_OTHER";
+    skos:broader sdmx-concept:dissFormat;
+    skos:inScheme sdmx-concept:cog .
+
+# PUBLICATIONS
+sdmx-concept:publications a sdmx:Concept, skos:Concept ;
+    rdfs:label "Dissemination Format - publications"@en ;
+    rdfs:comment """Regular or ad-hoc publications in which the data are made available to the public."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].PUBLICATIONS";
+    skos:broader sdmx-concept:dissFormat;
+    skos:inScheme sdmx-concept:cog .
+
+# DOC_METHOD
+sdmx-concept:docMethod a sdmx:Concept, skos:Concept ;
+    rdfs:label "Documentation on methodology"@en ;
+    rdfs:comment """Descriptive text and references to methodological documents available."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].DOC_METHOD";
+    skos:inScheme sdmx-concept:cog .
+
+# ADV_NOTICE
+sdmx-concept:advNotice a sdmx:Concept, skos:Concept ;
+    rdfs:label "Documentation on methodology - advance notice"@en ;
+    rdfs:comment """Policy on notifying the public of changes in methodology, indicating whether the public is notified before a methodological change affects disseminated data and, if so, how long before."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0]. ADV_NOTICE";
+    skos:broader sdmx-concept:docMethod;
+    skos:inScheme sdmx-concept:cog .
+
+# EDUCATION_LEV
+sdmx-concept:educationLev a sdmx:Concept, skos:Concept ;
+    rdfs:label "Education Level"@en ;
+    rdfs:comment """The highest level of an educational programme the person has successfully completed."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].EDUCATION_LEV";
+    skos:inScheme sdmx-concept:cog .
+
+# EMBARGO_TIME
+sdmx-concept:embargoTime a sdmx:Concept, skos:Concept ;
+    rdfs:label "Embargo Time"@en ;
+    rdfs:comment """The exact time at which the data could be made available to the public."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].EMBARGO_TIME";
+    skos:inScheme sdmx-concept:cog .
+
+# FREQ
+sdmx-concept:freq a sdmx:Concept, skos:Concept ;
+    rdfs:label "Frequency"@en ;
+    rdfs:comment """The time interval at which observations occur over a given time period."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].FREQ";
+    skos:inScheme sdmx-concept:cog .
+
+# FREQ_DETAIL
+sdmx-concept:freqDetail a sdmx:Concept, skos:Concept ;
+    rdfs:label "Frequency Detail"@en ;
+    rdfs:comment """A further specification of the frequency to include more detailed information about the type of frequency and frequencies not commonly used."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].FREQ_DETAIL";
+    skos:broader sdmx-concept:freq;
+    skos:inScheme sdmx-concept:cog .
+
+# FREQ_COLL
+sdmx-concept:freqColl a sdmx:Concept, skos:Concept ;
+    rdfs:label "Frequency of data collection"@en ;
+    rdfs:comment """Frequency with which the source data are collected."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].FREQ_COLL";
+    skos:broader sdmx-concept:freq;
+    skos:inScheme sdmx-concept:cog .
+
+# FREQ_DISS
+sdmx-concept:freqDiss a sdmx:Concept, skos:Concept ;
+    rdfs:label "Frequency of dissemination"@en ;
+    rdfs:comment """The time interval at which the statistics are disseminated over a given time period."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].FREQ_DISS";
+    skos:broader sdmx-concept:freq;
+    skos:inScheme sdmx-concept:cog .
+
+# GROSS_NET
+sdmx-concept:grossNet a sdmx:Concept, skos:Concept ;
+    rdfs:label "Grossing/Netting"@en ;
+    rdfs:comment """Form of consolidation used in presenting the data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].GROSS_NET";
+    skos:inScheme sdmx-concept:cog .
+
+# IND_TYPE
+sdmx-concept:indType a sdmx:Concept, skos:Concept ;
+    rdfs:label "Index Type"@en ;
+    rdfs:comment """The type of index number used in the statistical production process."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].IND_TYPE";
+    skos:inScheme sdmx-concept:cog .
+
+# INST_MANDATE
+sdmx-concept:instMandate a sdmx:Concept, skos:Concept ;
+    rdfs:label "Institutional Mandate"@en ;
+    rdfs:comment """Set of rules or other formal set of instructions assigning responsibility as well as the authority to an organisation for the collection, processing, and dissemination of statistics."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].INST_MANDATE";
+    skos:inScheme sdmx-concept:cog .
+
+# INST_MAN_SHAR
+sdmx-concept:instManShar a sdmx:Concept, skos:Concept ;
+    rdfs:label "Institutional Mandate - data sharing"@en ;
+    rdfs:comment """Arrangements or procedures for data sharing and coordination between data producing agencies."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].INST_MAN_SHAR";
+    skos:broader sdmx-concept:instMandate;
+    skos:inScheme sdmx-concept:cog .
+
+# INST_MAN_LA_OA
+sdmx-concept:instManLaOa a sdmx:Concept, skos:Concept ;
+    rdfs:label "Institutional Mandate - legal acts and other agreements."@en ;
+    rdfs:comment """Legal acts or other formal or informal agreements that assign responsibility as well as the authority to an agency for the collection, processing, and dissemination of statistics."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].INST_MAN_LA_OA";
+    skos:broader sdmx-concept:instMandate;
+    skos:inScheme sdmx-concept:cog .
+
+# I_M_RES_REL
+sdmx-concept:iMResRel a sdmx:Concept, skos:Concept ;
+    rdfs:label "Institutional Mandate - respondent relations."@en ;
+    rdfs:comment """Measures to encourage statistical reporting and/or to sanction non-reporting."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].I_M_RES_REL";
+    skos:broader sdmx-concept:instMandate;
+    skos:inScheme sdmx-concept:cog .
+
+# M_AGENCY
+sdmx-concept:mAgency a sdmx:Concept, skos:Concept ;
+    rdfs:label "Maintenance Agency"@en ;
+    rdfs:comment """The organisation or other expert body that maintains a domain-specific data or metadata structure definition."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].M_AGENCY";
+    skos:inScheme sdmx-concept:cog .
+
+# META_UPDATE
+sdmx-concept:metaUpdate a sdmx:Concept, skos:Concept ;
+    rdfs:label "Metadata Update"@en ;
+    rdfs:comment """The date on which the metadata element was inserted or modified in the database."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].META_UPDATE";
+    skos:inScheme sdmx-concept:cog .
+
+# META_CERTIFIED
+sdmx-concept:metaCertified a sdmx:Concept, skos:Concept ;
+    rdfs:label "Metadata Update - last certified"@en ;
+    rdfs:comment """Date of the latest certification provided by the domain manager to confirm that the metadata posted are still up-to-date, even if the content has not been amended."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].META_CERTIFIED";
+    skos:broader sdmx-concept:metaUpdate;
+    skos:inScheme sdmx-concept:cog .
+
+# META_POSTED
+sdmx-concept:metaPosted a sdmx:Concept, skos:Concept ;
+    rdfs:label "Metadata Update - last posted"@en ;
+    rdfs:comment """Date of the latest dissemination of the metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].META_POSTED";
+    skos:broader sdmx-concept:metaUpdate;
+    skos:inScheme sdmx-concept:cog .
+
+# META_LAST_UPDATE
+sdmx-concept:metaLastUpdate a sdmx:Concept, skos:Concept ;
+    rdfs:label "Metadata Update - last update"@en ;
+    rdfs:comment """Date of last update of the content of the metadata."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].META_LAST_UPD";
+    skos:broader sdmx-concept:metaUpdate;
+    skos:inScheme sdmx-concept:cog .
+
+# OBS_VALUE
+sdmx-concept:obsValue a sdmx:Concept, skos:Concept ;
+    rdfs:label "Observation"@en ;
+    rdfs:comment """The value of a particular variable at a particular period."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0]. OBS_VALUE";
+    skos:inScheme sdmx-concept:cog .
+
+# OBS_PRE_BREAK
+sdmx-concept:obsPreBreak a sdmx:Concept, skos:Concept ;
+    rdfs:label "Observation Pre-break Value"@en ;
+    rdfs:comment """The observation, at a time series break period, that was calculated using the old methodology."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].OBS_PRE_BREAK";
+    skos:inScheme sdmx-concept:cog .
+
+# OBS_STATUS
+sdmx-concept:obsStatus a sdmx:Concept, skos:Concept ;
+    rdfs:label "Observation Status"@en ;
+    rdfs:comment """Information on the quality of a value or an unusual or missing value."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].OBS_STATUS";
+    skos:inScheme sdmx-concept:cog .
+
+# OCCUPATION
+sdmx-concept:occupation a sdmx:Concept, skos:Concept ;
+    rdfs:label "Occupation"@en ;
+    rdfs:comment """Job or position held by an individual who performs a set of tasks and duties."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].OCCUPATION";
+    skos:inScheme sdmx-concept:cog .
+
+# ORIG_DATA_ID
+sdmx-concept:origDataId a sdmx:Concept, skos:Concept ;
+    rdfs:label "Original Data Identifier"@en ;
+    rdfs:comment """The data identifier as found in the originating database."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].ORIG_DATA_ID";
+    skos:inScheme sdmx-concept:cog .
+
+# PROF
+sdmx-concept:prof a sdmx:Concept, skos:Concept ;
+    rdfs:label "Professionalism"@en ;
+    rdfs:comment """The standard, skill and ability suitable for producing statistics of good quality."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].PROF";
+    skos:inScheme sdmx-concept:cog .
+
+# PROF_COND
+sdmx-concept:profCond a sdmx:Concept, skos:Concept ;
+    rdfs:label "Professionalism - code of conduct"@en ;
+    rdfs:comment """Provision for assuring the qualifications of staff and allowing staff to perform their functions without intervention motivated by non-statistical objectives."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].PROF_COND";
+    skos:broader sdmx-concept:prof;
+    skos:inScheme sdmx-concept:cog .
+
+# PROF_IMP
+sdmx-concept:profImp a sdmx:Concept, skos:Concept ;
+    rdfs:label "Professionalism - impartiality"@en ;
+    rdfs:comment """Description of the elements providing assurances that statistics are produced on an impartial basis."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].PROF_IMP";
+    skos:broader sdmx-concept:prof;
+    skos:inScheme sdmx-concept:cog .
+
+# PROF_METH
+sdmx-concept:profMeth a sdmx:Concept, skos:Concept ;
+    rdfs:label "Professionalism - methodology"@en ;
+    rdfs:comment """Describes the elements providing assurances that the choices of sources and statistical techniques as well as decisions about dissemination are informed solely by statistical considerations."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].PROF_METH";
+    skos:broader sdmx-concept:prof;
+    skos:inScheme sdmx-concept:cog .
+
+# PROF_STAT_COM
+sdmx-concept:profStatCom a sdmx:Concept, skos:Concept ;
+    rdfs:label "Professionalism - statistical commentary"@en ;
+    rdfs:comment """Describes the elements providing assurances that the statistical entity is entitled to comment on erroneous interpretation and misuse of statistics."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].PROF_STAT_COM";
+    skos:broader sdmx-concept:prof;
+    skos:inScheme sdmx-concept:cog .
+
+# PUNCTUALITY
+sdmx-concept:punctuality a sdmx:Concept, skos:Concept ;
+    rdfs:label "Punctuality"@en ;
+    rdfs:comment """Time lag between the actual delivery of the data and the target date when it should have been delivered."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].PUNCTUALITY";
+    skos:inScheme sdmx-concept:cog .
+
+# QUALITY_MGMNT
+sdmx-concept:qualityMgmnt a sdmx:Concept, skos:Concept ;
+    rdfs:label "Quality Management"@en ;
+    rdfs:comment """Systems and frameworks in place within an organisation to manage the quality of statistical products and processes."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].QUALITY_MGMNT";
+    skos:inScheme sdmx-concept:cog .
+
+# QUALITY_ASSMNT
+sdmx-concept:qualityAssmnt a sdmx:Concept, skos:Concept ;
+    rdfs:label "Quality Management - assessment"@en ;
+    rdfs:comment """Overall assessment of data quality, based on standard quality criteria."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].QUALITY_ASSMNT";
+    skos:broader sdmx-concept:qualityMgmnt;
+    skos:inScheme sdmx-concept:cog .
+
+# QUALITY_ASSURE
+sdmx-concept:qualityAssure a sdmx:Concept, skos:Concept ;
+    rdfs:label "Quality Management - assurance"@en ;
+    rdfs:comment """Guidelines focusing on quality in general and dealing with quality of statistical programmes, including measures for ensuring the efficient use of resources."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].QUALITY_ASSURE";
+    skos:broader sdmx-concept:qualityMgmnt;
+    skos:inScheme sdmx-concept:cog .
+
+# QUALITY_DOC
+sdmx-concept:qualityDoc a sdmx:Concept, skos:Concept ;
+    rdfs:label "Quality Management - documentation"@en ;
+    rdfs:comment """Documentation on procedures applied for quality management and quality assessment."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].QUALITY_DOC";
+    skos:broader sdmx-concept:qualityMgmnt;
+    skos:inScheme sdmx-concept:cog .
+
+# RECORDING
+sdmx-concept:recording a sdmx:Concept, skos:Concept ;
+    rdfs:label "Recording Basis"@en ;
+    rdfs:comment """Processes and standards employed in calculating statistical aggregates."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].RECORDING";
+    skos:inScheme sdmx-concept:cog .
+
+# REF_AREA
+sdmx-concept:refArea a sdmx:Concept, skos:Concept ;
+    rdfs:label "Reference Area"@en ;
+    rdfs:comment """The country or geographic area to which the measured statistical phenomenon relates."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REF_AREA";
+    skos:inScheme sdmx-concept:cog .
+
+# REF_PERIOD
+sdmx-concept:refPeriod a sdmx:Concept, skos:Concept ;
+    rdfs:label "Reference Period"@en ;
+    rdfs:comment """The period of time or point in time to which the measured observation is intended to refer."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REF_PERIOD";
+    skos:inScheme sdmx-concept:cog .
+
+# REF_PER_WGTS
+sdmx-concept:refPerWgts a sdmx:Concept, skos:Concept ;
+    rdfs:label "Reference Period - weights"@en ;
+    rdfs:comment """Dates or periods to which the observations used to compile the weights refer."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REF_PER_WGTS";
+    skos:broader sdmx-concept:refPeriod;
+    skos:inScheme sdmx-concept:cog .
+
+# REL_POLICY
+sdmx-concept:relPolicy a sdmx:Concept, skos:Concept ;
+    rdfs:label "Release Policy"@en ;
+    rdfs:comment """Rules for disseminating statistical data to interested parties."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REL_POLICY";
+    skos:inScheme sdmx-concept:cog .
+
+# REL_POL_LEG_ACTS
+sdmx-concept:relPolLegActs a sdmx:Concept, skos:Concept ;
+    rdfs:label "Release Policy - legal acts and other agreements"@en ;
+    rdfs:comment """Legal acts and other agreements pertaining to data access."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REL_POL_LEG_ACTS";
+    skos:broader sdmx-concept:relPolicy;
+    skos:inScheme sdmx-concept:cog .
+
+# REL_COMMENT
+sdmx-concept:relComment a sdmx:Concept, skos:Concept ;
+    rdfs:label "Release Policy - policy commentary"@en ;
+    rdfs:comment """Legal acts and other agreements pertaining to data access."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REL_COMMENT";
+    skos:broader sdmx-concept:relPolicy;
+    skos:inScheme sdmx-concept:cog .
+
+# REL_CAL_POLICY
+sdmx-concept:relCalPolicy a sdmx:Concept, skos:Concept ;
+    rdfs:label "Release Policy - release calendar"@en ;
+    rdfs:comment """The schedule of statistical release dates."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REL_CAL_POLICY";
+    skos:broader sdmx-concept:relPolicy;
+    skos:inScheme sdmx-concept:cog .
+
+# REL_CAL_ACCESS
+sdmx-concept:relCalAccess a sdmx:Concept, skos:Concept ;
+    rdfs:label "Release Policy - release calendar access"@en ;
+    rdfs:comment """Access to the release calendar information."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REL_CAL_ACCESS";
+    skos:broader sdmx-concept:relPolicy;
+    skos:inScheme sdmx-concept:cog .
+
+# REL_POL_TRA
+sdmx-concept:relPolTra a sdmx:Concept, skos:Concept ;
+    rdfs:label "Release Policy - transparency"@en ;
+    rdfs:comment """Dissemination of the release policy to the public."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REL_POL_TRA";
+    skos:broader sdmx-concept:relPolicy;
+    skos:inScheme sdmx-concept:cog .
+
+# REL_POL_US_AC
+sdmx-concept:relPolUsAc a sdmx:Concept, skos:Concept ;
+    rdfs:label "Release Policy - user access"@en ;
+    rdfs:comment """The policy for release of the data to users, the scope of dissemination (eg, to the public, to selected users), how users are informed that the data are being released, and whether the policy provides determines the dissemination of statistical data to all users."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REL_POL_US_AC";
+    skos:broader sdmx-concept:relPolicy;
+    skos:inScheme sdmx-concept:cog .
+
+# RELEVANCE
+sdmx-concept:relevance a sdmx:Concept, skos:Concept ;
+    rdfs:label "Relevance"@en ;
+    rdfs:comment """The degree to which statistical information meets the real or perceived needs of clients."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].RELEVANCE";
+    skos:inScheme sdmx-concept:cog .
+
+# COMPLETENESS
+sdmx-concept:completeness a sdmx:Concept, skos:Concept ;
+    rdfs:label "Relevance - Completeness"@en ;
+    rdfs:comment """The extent to which all statistics that are needed are available."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].COMPLETENESS";
+    skos:broader sdmx-concept:relevance;
+    skos:inScheme sdmx-concept:cog .
+
+# USER_NEEDS
+sdmx-concept:userNeeds a sdmx:Concept, skos:Concept ;
+    rdfs:label "Relevance - user needs"@en ;
+    rdfs:comment """Description of users and their respective needs with respect to the statistical data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].USER_NEEDS";
+    skos:broader sdmx-concept:relevance;
+    skos:inScheme sdmx-concept:cog .
+
+# USER_SAT
+sdmx-concept:userSat a sdmx:Concept, skos:Concept ;
+    rdfs:label "Relevance - user satisifaction"@en ;
+    rdfs:comment """Measure to determine user satisfaction."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].USER_SAT";
+    skos:broader sdmx-concept:relevance;
+    skos:inScheme sdmx-concept:cog .
+
+# REP_AGENCY
+sdmx-concept:repAgency a sdmx:Concept, skos:Concept ;
+    rdfs:label "Reporting Agency"@en ;
+    rdfs:comment """The organisation that supplies the data for a given  instance of the statistics."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].REP_AGENCY";
+    skos:inScheme sdmx-concept:cog .
+
+# SAMPLING
+sdmx-concept:sampling a sdmx:Concept, skos:Concept ;
+    rdfs:label "Sampling"@en ;
+    rdfs:comment """The process of selecting a number of cases from all the cases in a particular group or universe."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].SAMPLING";
+    skos:inScheme sdmx-concept:cog .
+
+# SEX
+sdmx-concept:sex a sdmx:Concept, skos:Concept ;
+    rdfs:label "Sex"@en ;
+    rdfs:comment """The state of being male or female."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].SEX";
+    skos:inScheme sdmx-concept:cog .
+
+# SOURCE_TYPE
+sdmx-concept:sourceType a sdmx:Concept, skos:Concept ;
+    rdfs:label "Source Data"@en ;
+    rdfs:comment """Characteristics and components of the raw statistical data used for compiling statistical aggregates."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].SOURCE_TYPE";
+    skos:inScheme sdmx-concept:cog .
+
+# STAT_CONC_DEF
+sdmx-concept:statConcDef a sdmx:Concept, skos:Concept ;
+    rdfs:label "Statistical Concepts and Definitions"@en ;
+    rdfs:comment """Statistical characteristics of statistical observations."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].STAT_CONC_DEF";
+    skos:inScheme sdmx-concept:cog .
+
+# STAT_POP
+sdmx-concept:statPop a sdmx:Concept, skos:Concept ;
+    rdfs:label "Statistical Population"@en ;
+    rdfs:comment """The total membership or population or "universe" of a defined class of people, objects or events."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0]. STAT_POP";
+    skos:inScheme sdmx-concept:cog .
+
+# STAT_UNIT
+sdmx-concept:statUnit a sdmx:Concept, skos:Concept ;
+    rdfs:label "Statistical Unit"@en ;
+    rdfs:comment """Entity for which information is sought and for which statistics are ultimately compiled."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].STAT_UNIT";
+    skos:inScheme sdmx-concept:cog .
+
+# TIME_FORMAT
+sdmx-concept:timeFormat a sdmx:Concept, skos:Concept ;
+    rdfs:label "Time Format"@en ;
+    rdfs:comment """Technical format in which time is represented for the measured phenomenon."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].TIME_FORMAT";
+    skos:inScheme sdmx-concept:cog .
+
+# TIME_PERIOD
+sdmx-concept:timePeriod a sdmx:Concept, skos:Concept ;
+    rdfs:label "Time Period"@en ;
+    rdfs:comment """The period of time or point in time to which the measured observation refers."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].TIME_PERIOD";
+    skos:inScheme sdmx-concept:cog .
+
+# TIME_PER_COLLECT
+sdmx-concept:timePerCollect a sdmx:Concept, skos:Concept ;
+    rdfs:label "Time Period - collection"@en ;
+    rdfs:comment """Dates or periods during which the observations have been collected (such as middle, average or end of period) to compile the indicator for the target reference period."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].TIME_PER_COLLECT";
+    skos:broader sdmx-concept:timePeriod;
+    skos:inScheme sdmx-concept:cog .
+
+# TIMELINESS
+sdmx-concept:timeliness a sdmx:Concept, skos:Concept ;
+    rdfs:label "Timelinesst"@en ;
+    rdfs:comment """Length of time between data availability and the event or phenomenon they describe."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0]. TIMELINESS";
+    skos:inScheme sdmx-concept:cog .
+
+# TIME_OUTPUT
+sdmx-concept:timeOutput a sdmx:Concept, skos:Concept ;
+    rdfs:label "Timeliness - output"@en ;
+    rdfs:comment """The lapse of time between the end of a reference period and dissemination of the data."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0]. TIME_OUTPUT";
+    skos:broader sdmx-concept:timeliness;
+    skos:inScheme sdmx-concept:cog .
+
+# TIME_SOURCE
+sdmx-concept:timeSource a sdmx:Concept, skos:Concept ;
+    rdfs:label "Timeliness - source data"@en ;
+    rdfs:comment """The time between the end of a reference period and actual receipt of the data by the compiling agency."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].TIME_SOURCE";
+    skos:broader sdmx-concept:timeliness;
+    skos:inScheme sdmx-concept:cog .
+
+# TITLE
+sdmx-concept:title a sdmx:Concept, skos:Concept ;
+    rdfs:label "Title"@en ;
+    rdfs:comment """Textual label used as identification of a statistical object."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].TITLE";
+    skos:inScheme sdmx-concept:cog .
+
+# UNIT_MULT
+sdmx-concept:unitMult a sdmx:Concept, skos:Concept ;
+    rdfs:label "Unit Multiplier"@en ;
+    rdfs:comment """Exponent in base 10 specified so that multiplying the observation numeric values by 10^UNIT_MULT gives a value expressed in the UNIT."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].UNIT_MULT";
+    skos:inScheme sdmx-concept:cog .
+
+# UNIT_MEASURE
+sdmx-concept:unitMeasure a sdmx:Concept, skos:Concept ;
+    rdfs:label "Unit of Measure"@en ;
+    rdfs:comment """The unit in which the data values are measured."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].UNIT_MEASURE";
+    skos:inScheme sdmx-concept:cog .
+
+# UNIT_MEAS_DETAIL
+sdmx-concept:unitMeasDetail a sdmx:Concept, skos:Concept ;
+    rdfs:label "Unit of Measure Detail"@en ;
+    rdfs:comment """Additional textual information on the unit of measure."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].UNIT_MEAS_DETAIL";
+    skos:broader sdmx-concept:unitMeasure;
+    skos:inScheme sdmx-concept:cog .
+
+# VALUATION
+sdmx-concept:valuation a sdmx:Concept, skos:Concept ;
+    rdfs:label "Valuation"@en ;
+    rdfs:comment """The definition of the price per unit, for goods and services flows and asset stocks."""@en ;
+    rdfs:isDefinedBy <http://sdmx.org/wp-content/uploads/2009/01/01_sdmx_cog_annex_1_cdc_2009.pdf> ;
+    skos:notation "urn:sdmx:org.sdmx.infomodel.conceptscheme.Concept=SDMX:CROSS_DOMAIN_CONCEPTS[1.0].VALUATION";
+    skos:inScheme sdmx-concept:cog .
+
+### Binding of standard roles to the concepts ###
+
+sdmx-concept:freq a sdmx:FrequencyRole.
+
+sdmx-concept:refPeriod a sdmx:TimeRole.
+
+sdmx-concept:timePeriod a sdmx:TimeRole.
+
+sdmx-concept:obsValue a sdmx:PrimaryMeasureRole.
+

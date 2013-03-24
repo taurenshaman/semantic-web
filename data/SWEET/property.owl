@@ -1,0 +1,1441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:time="http://sweet.jpl.nasa.gov/ontology/time.owl#" 
+xmlns:numerics="http://sweet.jpl.nasa.gov/ontology/numerics.owl#" 
+xmlns:units="http://sweet.jpl.nasa.gov/ontology/units.owl#" 
+xmlns:human_activities="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#" 
+xmlns="http://sweet.jpl.nasa.gov/ontology/property.owl#">
+<owl:Ontology rdf:about="">
+<!--
+<dc:title>
+Property</dc:title>
+<dc:date>
+1/27/2004 3:15:44 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+Physical property</dc:subject>
+-->
+<owl:versionInfo>
+1.0</owl:versionInfo>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl"/>
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+<owl:Class rdf:ID="NorthPacificOscillationIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="Index">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Salinity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Salt"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MassConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="MassConcentration">
+<rdfs:subClassOf rdf:resource="#MassConcentrationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="BlockingIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="ExchangeCapacity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perKilogram_mole"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="SubstanceContent">
+<rdfs:subClassOf rdf:resource="#SubstanceConcentrationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SubstanceConcentration">
+<rdfs:subClassOf rdf:resource="#SubstanceConcentrationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Capacity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="HeatCapacity">
+<rdfs:subClassOf rdf:resource="#TemperatureRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#Capacity"/>
+</owl:Class>
+<owl:Class rdf:ID="BinaryProperty"/>
+<owl:Class rdf:ID="Dormant">
+<rdfs:subClassOf rdf:resource="#BinaryProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Extinct">
+<rdfs:subClassOf rdf:resource="#BinaryProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Active">
+<rdfs:subClassOf rdf:resource="#BinaryProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Open">
+<rdfs:subClassOf rdf:resource="#BinaryProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Closed">
+<rdfs:subClassOf rdf:resource="#BinaryProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="ExtinctionCoefficient">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perMeter"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Anisotropy">
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Radiation-MediumInteractionRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#IntensiveQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Frequency">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#hertz"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OscillationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="TimeRelatedQuantity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#second"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ExtensiveQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Altitude">
+<rdfs:subClassOf rdf:resource="#Height"/>
+</owl:Class>
+<owl:Class rdf:ID="Height">
+<rdfs:subClassOf rdf:resource="#VerticalExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="Topography">
+<rdfs:subClassOf rdf:resource="#Height"/>
+</owl:Class>
+<owl:Class rdf:ID="Description">
+<rdfs:subClassOf rdf:resource="#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Structure">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Microstructure">
+<rdfs:subClassOf rdf:resource="#Structure"/>
+</owl:Class>
+<owl:Class rdf:ID="FineStructure">
+<rdfs:subClassOf rdf:resource="#Structure"/>
+</owl:Class>
+<owl:Class rdf:ID="Distribution">
+<rdfs:subClassOf rdf:resource="#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Characteristics">
+<rdfs:subClassOf rdf:resource="#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Classification">
+<rdfs:subClassOf rdf:resource="#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Level">
+<rdfs:subClassOf rdf:resource="#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Spectrum">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Productivity">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Quality">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Value">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Pattern">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Roughness">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Exotic">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="State">
+<rdfs:subClassOf rdf:resource="#Description"/>
+</owl:Class>
+<owl:Class rdf:ID="Habitat">
+<rdfs:subClassOf rdf:resource="#SpatialRange"/>
+</owl:Class>
+<owl:Class rdf:ID="HydroPattern">
+<rdfs:subClassOf rdf:resource="#Pattern"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#hasAssociatedSubstance"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Water"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="SeaState">
+<rdfs:subClassOf rdf:resource="#State"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/space.owl#Direction">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Vector_3D"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#SunshineDuration">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TimeInterval"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TimeInterval">
+<rdfs:subClassOf rdf:resource="#TimeRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Interval"/>
+</owl:Class>
+<owl:Class rdf:ID="SubstanceConcentrationRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#CompositionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Elevation">
+<owl:equivalentClass rdf:resource="#Altitude"/>
+<rdfs:subClassOf rdf:resource="#Height"/>
+</owl:Class>
+<owl:Class rdf:ID="BarortopicStreamfunction">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meterToPower3_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Streamfunction"/>
+</owl:Class>
+<owl:Class rdf:ID="VelocityFieldRelatedProperty">
+<rdfs:subClassOf rdf:resource="#MotionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="MassConcentrationRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#MassRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#CompositionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="MassRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="CompositionRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="PhotolysisRate">
+<rdfs:subClassOf rdf:resource="#CompositionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="PotentialDensity">
+<rdfs:subClassOf rdf:resource="#Density"/>
+</owl:Class>
+<owl:Class rdf:ID="SigmaT">
+<rdfs:subClassOf rdf:resource="#Density"/>
+</owl:Class>
+<owl:Class rdf:ID="BulkDensity">
+<rdfs:subClassOf rdf:resource="#Density"/>
+</owl:Class>
+<owl:Class rdf:ID="Density">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_perMeterToPower3"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MassConcentrationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="EquivalentTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="TemperatureRelatedQuantity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#kelvin"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="StaticTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="Velocity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#hasDirection"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/space.owl#Direction"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MotionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="MotionRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="DifferentialPressure">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#Pressure"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#Pressure"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AerodynamicsRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#PressureRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#ScalarSubtraction"/>
+</owl:Class>
+<owl:Class rdf:ID="AerodynamicsRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#MotionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="PressureRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#IntensiveQuantity"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#ScalarSubtraction"/>
+<owl:Class rdf:ID="TotalElectronContent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit_perMeterSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SubstanceContent"/>
+</owl:Class>
+<owl:Class rdf:ID="Albedo">
+<owl:equivalentClass rdf:resource="#Reflectance"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="PhysicalQuantity">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="BiologicalQuantity">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="QualitativeMeasure"/>
+<owl:Class rdf:ID="Fertility">
+<rdfs:subClassOf rdf:resource="#BiologicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="ExtensiveQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="IntensiveQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialExtentRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#ExtensiveQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialExtent">
+<rdfs:subClassOf rdf:resource="#SpatialExtentRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Energy">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#joule"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EnergyRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="EnergyRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="HydrostaticPressure">
+<rdfs:subClassOf rdf:resource="#Pressure"/>
+</owl:Class>
+<owl:Class rdf:ID="Pressure">
+<rdfs:subClassOf rdf:resource="#PressureRelatedQuantity"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#pascal"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="TotalPressure">
+<rdfs:subClassOf rdf:resource="#Pressure"/>
+</owl:Class>
+<owl:Class rdf:ID="PartialPressure">
+<rdfs:subClassOf rdf:resource="#Pressure"/>
+</owl:Class>
+<owl:Class rdf:ID="AtmosphericPressure">
+<rdfs:subClassOf rdf:resource="#Pressure"/>
+</owl:Class>
+<owl:Class rdf:ID="Stability">
+<rdfs:subClassOf rdf:resource="#PressureRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Conductivity">
+<rdfs:subClassOf rdf:resource="#MediumProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="CoefficientOfExpansion">
+<rdfs:subClassOf rdf:resource="#MediumProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="PedersenConductivity">
+<rdfs:subClassOf rdf:resource="#Conductivity"/>
+</owl:Class>
+<owl:Class rdf:ID="HallConductivity">
+<rdfs:subClassOf rdf:resource="#Conductivity"/>
+</owl:Class>
+<owl:Class rdf:ID="ElectricityRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="MediumProperty">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="VerticalExtent">
+<rdfs:subClassOf rdf:resource="#LinearExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="pH">
+<rdfs:subClassOf rdf:resource="#ChemicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="ChemicalQuantity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="CropMoistureIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Ratio"/>
+<owl:Class rdf:ID="Length">
+<rdfs:subClassOf rdf:resource="#LinearExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="LinearExtent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SpatialExtentRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="RadiantEnergy">
+<rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+<owl:Class rdf:ID="Enthalpy">
+<rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+<owl:Class rdf:ID="StaticPressure">
+<rdfs:subClassOf rdf:resource="#Pressure"/>
+</owl:Class>
+<owl:Class rdf:ID="OpticalThickness">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="AngstromExponent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="HydraulicConductivity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidMaterialProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="SolidMaterialProperty">
+<rdfs:subClassOf rdf:resource="#MediumProperty"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#hasState"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Solid"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="FluidProperty">
+<rdfs:subClassOf rdf:resource="#MediumProperty"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#hasState"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/substance.owl#Fluid"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="WaterConcentration">
+<rdfs:subClassOf rdf:resource="#MassConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="LiquidWaterEquivalent">
+<rdfs:subClassOf rdf:resource="#WaterConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="Composition">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#CompositionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Stress">
+<rdfs:subClassOf rdf:resource="#PressureRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Shear">
+<rdfs:subClassOf rdf:resource="#PressureRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="PressureThickness">
+<rdfs:subClassOf rdf:resource="#PressureRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="DeicedTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="Radiance">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeterSquare_perSteradian"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ElectromagneticRadiationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="ElectromagneticRadiationRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Volume">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_toPower3"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SpatialExtentRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="PotentialEnergy">
+<rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+<owl:Class rdf:ID="Ceiling">
+<rdfs:subClassOf rdf:resource="#VerticalExtent"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Hydroperiod">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TimeInterval"/>
+</owl:Class>
+<owl:Class rdf:ID="MassContent">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_perMeterSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MassConcentrationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="WaterHoldingCapacity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidMaterialProperty"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Age">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TimeInterval"/>
+</owl:Class>
+<owl:Class rdf:ID="SpecificGravitationalPotentialEnergy">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#joule_perKilogram"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EnergyRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SpecificHeat">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#joule_perKilogram_perKelvin"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MediumProperty"/>
+<rdfs:subClassOf rdf:resource="#EnergyRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="BrightnessTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="GeotechnicalProperty">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SpatialRange">
+<rdfs:subClassOf rdf:resource="#SpatialExtentRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Color">
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Pigment">
+<rdfs:subClassOf rdf:resource="#Color"/>
+</owl:Class>
+<owl:Class rdf:ID="Depth">
+<rdfs:subClassOf rdf:resource="#VerticalExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="Bathymetry">
+<rdfs:subClassOf rdf:resource="#Depth"/>
+</owl:Class>
+<owl:Class rdf:ID="Noise">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeterSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AcousticRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="AcousticRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Omega">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#pascal_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MotionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Phase">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#radian"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OscillationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="OscillationRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Speed">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MotionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Acceleration">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecondSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MotionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Absorptance">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="DewPointDepression">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#DryBulbTemperature"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#DewPointTemperature"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#ScalarSubtraction"/>
+</owl:Class>
+<owl:Class rdf:ID="VirtualTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="VelocityPotential">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meterSquare_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VelocityFieldRelatedProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Divergence">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecondSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VelocityFieldRelatedProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Convergence">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecondSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VelocityFieldRelatedProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="FieldCapacity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Capacity"/>
+<rdfs:subClassOf rdf:resource="#WaterConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="Amplitude">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#OscillationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Alkalinity">
+<rdfs:subClassOf rdf:resource="#ChemicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Radioactivity">
+   <rdfs:subClassOf rdf:resource="#ChemicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Radioactive">
+   <owl:equivalentClass rdf:resource="#Radioactivity"/>
+</owl:Class>
+<owl:Class rdf:ID="StageHeight">
+<rdfs:subClassOf rdf:resource="#Height"/>
+</owl:Class>
+<owl:Class rdf:ID="DissolvedConcentration">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_perMeterToPower3"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MassConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="Vorticity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VelocityFieldRelatedProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="MeridionalOvertuningStreamfunction">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meterToPower3_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Streamfunction"/>
+</owl:Class>
+<owl:Class rdf:ID="AbsoluteVorticity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Vorticity"/>
+</owl:Class>
+<owl:Class rdf:ID="KineticEnergy">
+<rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+<owl:Class rdf:ID="Inductance">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#henry"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ElectromagneticFieldRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="ElectromagneticFieldRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Plasticity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidMaterialProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="SpecificHumidity">
+<rdfs:subClassOf rdf:resource="#Humidity"/>
+</owl:Class>
+<owl:Class rdf:ID="Moisture">
+</owl:Class>
+<owl:Class rdf:ID="Humidity">
+<rdfs:subClassOf rdf:resource="#Moisture"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#WaterConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="Precipitable">
+<rdfs:subClassOf rdf:resource="#WaterConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="SecchiDepth">
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#Depth"/>
+</owl:Class>
+<owl:Class rdf:ID="StandardizedPrecipitationIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="EquivalentThickness">
+<rdfs:subClassOf rdf:resource="#Thickness"/>
+</owl:Class>
+<owl:Class rdf:ID="Thickness">
+<rdfs:subClassOf rdf:resource="#LinearExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="BruntVaisalaFrequency">
+<rdfs:subClassOf rdf:resource="#Frequency"/>
+</owl:Class>
+<owl:Class rdf:ID="ExnerFunction">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="BarometricAltitude">
+<rdfs:subClassOf rdf:resource="#Altitude"/>
+</owl:Class>
+<owl:Class rdf:ID="Bioavailability">
+<rdfs:subClassOf rdf:resource="#BiologicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Biomass">
+<rdfs:subClassOf rdf:resource="#BiologicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Health">
+<rdfs:subClassOf rdf:resource="#BiologicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="OxygenDemand">
+<rdfs:subClassOf rdf:resource="#BiologicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Momentum">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_meter_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MotionRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#MassRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="ThermalDiffusivity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meterSquare_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MediumProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="KaplanSstIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="Temperature">
+<rdfs:subClassOf rdf:resource="#TemperatureRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="DewPointTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="DewPoint">
+<owl:equivalentClass rdf:resource="#DewPointTemperature"/>
+</owl:Class>
+<owl:Class rdf:ID="OpticalDepth">
+<owl:equivalentClass rdf:resource="#OpticalThickness"/>
+</owl:Class>
+<owl:Class rdf:ID="Extent">
+<owl:equivalentClass rdf:resource="#LinearExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="Dissipation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#joul_perMeterSquare_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EnergyRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="ErtelPotentialVorticity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perKilogram_meterSquare_perSecond_kelvin"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Vorticity"/>
+</owl:Class>
+<owl:Class rdf:ID="CirculationIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="NorthAtlanticOscillationIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="Irradiance">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeterSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ElectromagneticRadiationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Reflectance">
+<owl:equivalentClass rdf:resource="#Albedo"/>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="F10.7">
+   <rdfs:subClassOf rdf:resource="#Irradiance"/>
+</owl:Class>
+<owl:Class rdf:ID="ThermalConductivity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeter_perKelvin"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MediumProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="PseudoEquivalentPotentialTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="PotentialTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="HeatEnergy">
+<owl:equivalentClass rdf:resource="#Heat"/>
+</owl:Class>
+<owl:Class rdf:ID="Heat">
+<rdfs:subClassOf rdf:resource="#Energy"/>
+</owl:Class>
+<owl:Class rdf:ID="Rainfall">
+<rdfs:subClassOf rdf:resource="#VerticalExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="CommonSenseClimateIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="RelativeHumidity">
+<rdfs:subClassOf rdf:resource="#Humidity"/>
+</owl:Class>
+<owl:Class rdf:ID="MoleFraction">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SubstanceConcentrationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="FireWeatherIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="GravitationalRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SaturationDeficit">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_perMeterToPower3"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MassConcentration"/>
+</owl:Class>
+<owl:Class rdf:ID="Distance">
+<rdfs:subClassOf rdf:resource="#LinearExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="Fetch">
+<rdfs:subClassOf rdf:resource="#Distance"/>
+</owl:Class>
+<owl:Class rdf:ID="SignificantHeight">
+<rdfs:subClassOf rdf:resource="#Height"/>
+</owl:Class>
+<owl:Class rdf:ID="SurfaceMoistureIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="Transmittance">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="GeomagneticIndex">
+   <rdfs:subClassOf rdf:resource="#MagnetismRelatedQuantity"/>
+   <rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="Kp">
+   <rdfs:subClassOf rdf:resource="#GeomagneticIndex"/>
+</owl:Class>
+<owl:Class rdf:ID="Emissivity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ElectromagneticRadiationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="AmbientNoise">
+<rdfs:subClassOf rdf:resource="#Noise"/>
+</owl:Class>
+<owl:Class rdf:ID="Porosity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidMaterialProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="DynamicViscosity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#pascal_second"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#FluidProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="KinematicViscosity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meterSquare_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#FluidProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="BowenRatio">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasFirstOperand"/>
+<owl:allValuesFrom rdf:resource="#SensibleHeat"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasSecondOperand"/>
+<owl:allValuesFrom rdf:resource="#LatentHeat"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#RadiationBalanceRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Ratio"/>
+</owl:Class>
+<owl:Class rdf:ID="RadiationBalanceRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#ElectromagneticRadiationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="PseudoEquivalentTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="HumidityIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="PotentialVorticity">
+<rdfs:subClassOf rdf:resource="#Vorticity"/>
+</owl:Class>
+<owl:Class rdf:ID="Texture">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidMaterialProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Consistence">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SolidMaterialProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="RelativeVorticity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Vorticity"/>
+</owl:Class>
+<owl:Class rdf:ID="ElectricPotential">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#watt"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ElectricityRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="TotalTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="CloudForcing">
+<rdfs:subClassOf rdf:resource="#RadiativeForcing"/>
+</owl:Class>
+<owl:Class rdf:ID="RadiativeForcing">
+<rdfs:subClassOf rdf:resource="#RadiationBalanceRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeterSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="Force">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#newton"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="CoriolisParameter">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="SolarRadiation">
+<rdfs:subClassOf rdf:resource="#RadiativeForcing"/>
+</owl:Class>
+<owl:Class rdf:ID="Reflectivity">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="ForestFireDangerIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="CrossSection">
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#Area"/>
+</owl:Class>
+<owl:Class rdf:ID="GeopotentialHeight">
+<rdfs:subClassOf rdf:resource="#GravitationalRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#Height"/>
+</owl:Class>
+<owl:Class rdf:ID="GravityForce">
+<rdfs:subClassOf rdf:resource="#GravitationalRelatedQuantity"/>
+<rdfs:subClassOf rdf:resource="#Force"/>
+</owl:Class>
+<owl:Class rdf:ID="ScaleHeight">
+   <rdfs:subClassOf rdf:resource="#Height"/>
+</owl:Class>
+<owl:Class rdf:ID="Geopotential">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meterSquare_perSecondSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#GravitationalRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Turbidity">
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Visibility">
+<rdfs:subClassOf rdf:resource="#Radiation-MediumInteractionRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SpecificPotentialEnergy">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#joule_perKilogram"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#EnergyRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="SensibleHeat">
+<rdfs:subClassOf rdf:resource="#Heat"/>
+</owl:Class>
+<owl:Class rdf:ID="Area">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_square"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#SpatialExtentRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Mass">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#MassRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Size">
+<rdfs:subClassOf rdf:resource="#LinearExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="Comminution">
+<rdfs:subClassOf rdf:resource="#Size"/>
+</owl:Class>
+<owl:Class rdf:ID="LatentHeat">
+<rdfs:subClassOf rdf:resource="#Heat"/>
+</owl:Class>
+<owl:Class rdf:ID="DragCoefficient">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#AerodynamicsRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="WindChill">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+<!--
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/phenomena.owl#hasAssociatedPhenomena"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/phenomena.owl#Wind"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+-->
+</owl:Class>
+<owl:Class rdf:ID="WindIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="BenthicIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="DegreeDay">
+<rdfs:subClassOf rdf:resource="#TemperatureRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="WetBulbTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#ComplexUnit"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+<owl:Class rdf:ID="Streamfunction">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#meterToPower3_perSecond"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#VelocityFieldRelatedProperty"/>
+</owl:Class>
+<owl:Class rdf:ID="Wavelength">
+<rdfs:subClassOf rdf:resource="#LinearExtent"/>
+</owl:Class>
+<owl:Class rdf:ID="EathquakeMagnitude">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:ID="Yield">
+</owl:Class>
+<owl:Class rdf:ID="Type">
+</owl:Class>
+<owl:Class rdf:ID="Count">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Population">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasObjectOfCount"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#Human"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Count"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#Human"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Interval"/>
+<owl:Class rdf:ID="Time">
+<rdfs:subClassOf rdf:resource="#TimeRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="DryBulbTemperature">
+<rdfs:subClassOf rdf:resource="#Temperature"/>
+</owl:Class>
+<owl:Class rdf:ID="Impedance">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="MagnetismRelatedQuantity">
+<rdfs:subClassOf rdf:resource="#PhysicalQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="MagneticInduction">
+<rdfs:subClassOf rdf:resource="#MagnetismRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="FieldStrength"/>
+<owl:Class rdf:ID="Quantity"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Field"/>
+<owl:Class rdf:ID="ElectricField">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Field"/>
+<rdfs:subClassOf rdf:resource="#ElectricityRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="GravityField">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Field"/>
+<rdfs:subClassOf rdf:resource="#GravitationalRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="MagneticField">
+<rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Field"/>
+<rdfs:subClassOf rdf:resource="#MagnetismRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="GeoMagneticField">
+<rdfs:subClassOf rdf:resource="#MagneticField"/>
+</owl:Class>
+<owl:Class rdf:ID="Brightness">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#candella_perMeterSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ElectromagneticRadiationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="Insolation">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit"/>
+<owl:hasValue rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeterSquare"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#ElectromagneticRadiationRelatedQuantity"/>
+</owl:Class>
+<owl:Class rdf:ID="LeafAreaIndex">
+<rdfs:subClassOf rdf:resource="#Index"/>
+</owl:Class>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#BaseUnit"/>
+<owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#UnitDerivedByRaisingToPower"/>
+<owl:DatatypeProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasValue">
+<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+</owl:DatatypeProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasDefaultUnit">
+<rdfs:domain rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+<rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#ComplexUnit"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasUnit">
+<rdfs:domain rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#Quantity"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="hasObjectOfCount">
+<rdfs:domain rdf:resource="#Count"/>
+<rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasFirstOperand"/>
+<owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#hasSecondOperand"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_toPower3"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeterSquare"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#hertz"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#pascal"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_meter_perSecond"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#pascal_perSecond"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecond"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meterToPower3_perSecond"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#perKilogram_meterSquare_perSecond_kelvin"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meterSquare_perSecond"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#joule_perKilogram_perKelvin"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#siemence_perMeter"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeter_perKelvin"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#joul_perMeterSquare_perSecond"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#joule"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#joule_perKilogram"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#watt_perMeterSquare_perSteradian"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_perMeterSquare"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram_perMeterToPower3"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meterSquare_perSecondSquare"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_perSecondSquare"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#henry"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#watt"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit_perMeterSquare"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#perKilogram_mole"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#amper_perMeter"/>
+<units:ComplexUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#candella_perMeterSquare"/>
+<units:BaseUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#kelvin"/>
+<units:BaseUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#second"/>
+<units:BaseUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meter"/>
+<units:BaseUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#dimensionlessUnit"/>
+<units:BaseUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#steradian"/>
+<units:BaseUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/numerics.owl#radian"/>
+<units:BaseUnit rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#kilogram"/>
+<units:UnitDerivedByRaisingToPower rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#meter_square"/>
+<units:UnitDerivedByRaisingToPower rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#perMeter"/>
+<units:UnitDerivedByRaisingToPower rdf:about="http://sweet.jpl.nasa.gov/ontology/units.owl#perSecond"/>
+</rdf:RDF>
+
+
+

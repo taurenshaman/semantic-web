@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:wot="http://xmlns.com/wot/0.1/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+>
+
+  <!-- OWL-DL Compliance statements -->
+  <!-- DC -->
+  <rdf:Description rdf:about="http://purl.org/dc/terms/date">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/title">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/description">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/subject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://purl.org/dc/terms/references">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <!-- FOAF -->
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/OnlineAccount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/Document">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/depiction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://xmlns.com/foaf/0.1/account">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+
+  <!-- SIOC Core Ontology -->
+  <owl:Ontology rdf:about="http://rdfs.org/sioc/ns#" rdf:type="http://www.w3.org/2002/07/owl#Thing">
+    <dcterms:title xml:lang="en">SIOC Core Ontology Namespace</dcterms:title>
+    <dcterms:title xml:lang="zh-CN">SIOC核心本体</dcterms:title>
+    <owl:versionInfo>Revision: 1.35</owl:versionInfo>
+    <dcterms:description xml:lang="en">
+      SIOC (Semantically-Interlinked Online Communities) is an ontology for describing the information in online communities.
+      This information can be used to export information from online communities and to link them together. The scope of the application areas that SIOC can be used for includes (and is not limited to) weblogs, message boards, mailing lists and chat channels.
+    </dcterms:description>
+    <dcterms:description xml:lang="zh-CN">SIOC（语义上相互关联的在线社区）是一个描述在线社区中的信息的本体。此信息可用于从网上社区导出信息，并将它们链接在一起。SIOC适用的应用领域范围，包括（不限于）网络日志，留言板，邮件列表和聊天频道。</dcterms:description>
+    <rdfs:seeAlso rdf:resource="http://rdfs.org/sioc/spec" rdfs:label="SIOC Core Ontology Specification"/>
+  </owl:Ontology>
+
+  <!-- Classes -->
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Community">
+    <rdfs:label xml:lang="en">Community</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">社区</rdfs:label>
+    <rdfs:comment xml:lang="en">Community is a high-level concept that defines an online community and what it consists of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">社区是一个高层次的概念，定义了一个在线社区，以及它是由什么组成的。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Container">
+    <rdfs:label xml:lang="en">Container</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">容器</rdfs:label>
+    <rdfs:comment xml:lang="en">An area in which content Items are contained.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">包含内容[条目]的区域。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Forum">
+    <rdfs:label xml:lang="en">Forum</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">论坛</rdfs:label>
+    <rdfs:comment xml:lang="en">A discussion area on which Posts or entries are made.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">产生[帖子]或条目的讨论区。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Item">
+    <rdfs:label xml:lang="en">Item</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">条目</rdfs:label>
+    <rdfs:comment xml:lang="en">An Item is something which can be in a Container.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">可以放到[容器]中的东西。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Post">
+    <rdfs:label xml:lang="en">Post</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">帖子</rdfs:label>
+    <rdfs:comment xml:lang="en">An article or message that can be posted to a Forum.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">发布到[论坛]的文章或信息。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Role">
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">角色</rdfs:label>
+    <rdfs:comment xml:lang="en">A Role is a function of a UserAccount within a scope of a particular Forum, Site, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[角色]是在特定[论坛]或[站点]的范围内[用户账户]的功能。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Space">
+    <rdfs:label xml:lang="en">Space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空间</rdfs:label>
+    <rdfs:comment xml:lang="en">A Space is a place where data resides, e.g. on a website, desktop, fileshare, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[空间]是数据存留的一个场所，比如在网站、桌面或文件共享上面。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Site">
+    <rdfs:label xml:lang="en">Site</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">站点</rdfs:label>
+    <rdfs:comment xml:lang="en">A Site can be the location of an online community or set of communities, with UserAccounts and Usergroups creating Items in a set of Containers. It can be thought of as a web-accessible data Space.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[站点]可以是一个或一组社区的位置，使用[用户账户]和[用户组]在一组[容器]中创建[条目]。它可以看作可以从网络访问的数据[空间]。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Thread">
+    <rdfs:label xml:lang="en">Thread</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主帖</rdfs:label>
+    <rdfs:comment xml:lang="en">A container for a series of threaded discussion Posts or Items.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用于一组主帖讨论的[帖子]或 [条目]。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#UserAccount">
+    <rdfs:label xml:lang="en">User Account</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">用户账户</rdfs:label>
+    <rdfs:comment xml:lang="en">A user account in an online community site.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在一个在线社区站点的用户账户。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://rdfs.org/sioc/ns#Usergroup">
+    <rdfs:label xml:lang="en">Usergroup</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">用户组</rdfs:label>
+    <rdfs:comment xml:lang="en">A set of UserAccounts whose owners have a common purpose or interest. Can be used for access control purposes.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">同组的用户账户拥有共同的目的或兴趣。可用于访问控制的目的。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+  </owl:Class>
+
+  <!-- Properties -->
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#about">
+    <rdfs:label xml:lang="en">about</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">关于</rdfs:label>
+    <rdfs:comment xml:lang="en">Specifies that this Item is about a particular resource, e.g. a Post describing a book, hotel, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">指明这个[条目]是关于特定资源的，比如描述书籍或酒店的[帖子]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#account_of">
+    <rdfs:label xml:lang="en">account of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">账户</rdfs:label>
+    <rdfs:comment xml:lang="en">Refers to the foaf:Agent or foaf:Person who owns this sioc:UserAccount.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">拥有sioc:UserAccount的foaf:Agent或foaf:Person。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:inverseOf rdf:resource="http://xmlns.com/foaf/0.1/account"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#addressed_to">
+    <rdfs:label xml:lang="en">addressed to</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">地址</rdfs:label>
+    <rdfs:comment xml:lang="en">Refers to who (e.g. a UserAccount, e-mail address, etc.) a particular Item is addressed to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">某特定条目定位的事物，比如用户账户、电子邮件地址等等。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <!-- @@todo: moving this property to the access module ? -->
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#administrator_of">
+    <rdfs:label xml:lang="en">administrator of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">管理员</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_administrator"/>
+    <rdfs:comment xml:lang="en">A Site that the UserAccount is an administrator of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该[用户账户]是某[站点]的管理员。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Site"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#attachment">
+    <rdfs:label xml:lang="en">attachment</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">附件</rdfs:label>
+    <rdfs:comment xml:lang="en">The URI of a file attached to an Item.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">某[条目]的附件的文件URI。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#avatar">
+    <rdfs:label xml:lang="en">avatar</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">头像</rdfs:label>
+    <rdfs:comment xml:lang="en">An image or depiction used to represent this UserAccount.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用于表示该[用户账户]的图片或缩略图。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/depiction"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#container_of">
+    <rdfs:label xml:lang="en">container of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">是……的容器</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_container"/>
+    <rdfs:comment xml:lang="en">An Item that this Container contains.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[容器]包含了[条目]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#content">
+    <rdfs:label xml:lang="en">content</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">内容</rdfs:label>
+    <rdfs:comment xml:lang="en">The content of the Item in plain text format.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[条目]的纯文本格式的内容。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#creator_of">
+    <rdfs:label xml:lang="en">creator of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">是……的创建者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_creator"/>
+    <rdfs:comment xml:lang="en">A resource that the UserAccount is a creator of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该[用户账户]创建了某个资源。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:TransitiveProperty rdf:about="http://rdfs.org/sioc/ns#earlier_version">
+    <rdfs:comment xml:lang="en">Links to a previous (older) revision of this Item or Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">链接到这个[条目]或[帖子]的旧版本。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:label xml:lang="en">earlier version</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">早期版本</rdfs:label>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#later_version"/>
+  </owl:TransitiveProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#email">
+    <rdfs:label xml:lang="en">email</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">电子邮件</rdfs:label>
+    <rdfs:comment xml:lang="en">An electronic mail address of the UserAccount.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[用户账户]的电子邮件地址。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#email_sha1">
+    <rdfs:label xml:lang="en">email sha1</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">电子邮件SHA1码</rdfs:label>
+    <rdfs:comment xml:lang="en">An electronic mail address of the UserAccount, encoded using SHA1.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[用户账户]的电子邮件地址的SHA1编码。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#embeds_knowledge">
+    <rdfs:label xml:lang="en">embeds knowledge</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">嵌入知识</rdfs:label>
+    <rdfs:comment xml:lang="en">This links Items to embedded statements, facts and structured content.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">它将[条目]连结到嵌入的语句，事实和结构化的内容。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#feed">
+    <rdfs:label xml:lang="en">feed</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">订阅源</rdfs:label>
+    <rdfs:comment xml:lang="en">A feed (e.g. RSS, Atom, etc.) pertaining to this resource (e.g. for a Forum, Site, UserAccount, etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个有关这个资源（如[论坛]、[站点]、[用户账户]等等）的订阅源（如RSS、Atom等等）。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#follows">
+    <rdfs:label xml:lang="en">follows</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">跟随</rdfs:label>
+    <rdfs:comment xml:lang="en">Indicates that one UserAccount follows another UserAccount (e.g. for microblog posts or other content item updates).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">表示一个[用户账户]跟随另一个[用户帐户]（比如微博状态或其他内容条目更新）。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <!-- @@todo: moving this property to the access module ? -->
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#function_of">
+    <rdfs:label xml:lang="en">function of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的职责</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_function"/>
+    <rdfs:comment xml:lang="en">A UserAccount that has this Role.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">拥有这个[角色]的[用户账户]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_administrator">
+    <rdfs:label xml:lang="en">has administrator</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">管理员</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#administrator_of"/>
+    <rdfs:comment xml:lang="en">A UserAccount that is an administrator of this Site.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[站点]的管理员。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Site"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_container">
+    <rdfs:label xml:lang="en">has container</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">容器</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#container_of"/>
+    <rdfs:comment xml:lang="en">The Container to which this Item belongs.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[条目]所属的[容器]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_creator">
+    <rdfs:label xml:lang="en">has creator</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">创建者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#creator_of"/>
+    <rdfs:comment xml:lang="en">This is the UserAccount that made this resource.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">创造这个资源的[用户账户]。</rdfs:comment>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_discussion">
+    <rdfs:comment xml:lang="en">The discussion that is related to this Item.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">和这个[条目]有关的讨论。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:label xml:lang="en">has discussion</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">讨论</rdfs:label>
+  </owl:ObjectProperty>
+
+  <!-- @@todo: moving this property to the access module ? -->
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_function">
+    <rdfs:label xml:lang="en">has function</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">职责</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#function_of"/>
+    <rdfs:comment xml:lang="en">A Role that this UserAccount has.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[用户账户]拥有的[角色]。</rdfs:comment>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_host">
+    <rdfs:label xml:lang="en">has 主站</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主办方</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#host_of"/>
+    <rdfs:comment xml:lang="en">The Site that hosts this Forum.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">部署了这个[论坛]的[站点]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Forum"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Site"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_member">
+    <rdfs:label xml:lang="en">has member</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">成员</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#member_of"/>
+    <rdfs:comment xml:lang="en">A UserAccount that is a member of this Usergroup.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[用户组]包含的成员。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <!-- @@todo: moving this property to the access module ? -->
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_moderator">
+    <rdfs:label xml:lang="en">has moderator</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">版主</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">A UserAccount that is a moderator of this Forum.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[论坛]拥有的版主。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Forum"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_modifier">
+    <rdfs:label xml:lang="en">has modifier</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">修改者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#modifier_of"/>
+    <rdfs:comment xml:lang="en">A UserAccount that modified this Item.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">修改了这个[条目]的[用户账户]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_owner">
+    <rdfs:label xml:lang="en">has owner</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">拥有者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#owner_of"/>
+    <rdfs:comment xml:lang="en">A UserAccount that this resource is owned by.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">拥有这个资源的[用户账户]。</rdfs:comment>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_parent">
+    <rdfs:label xml:lang="en">has parent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">下层</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#parent_of"/>
+    <rdfs:comment xml:lang="en">A Container or Forum that this Container or Forum is a child of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[容器]或[论坛]的下层[容器]或[论坛]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_reply">
+    <rdfs:label xml:lang="en">has reply</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">回复</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#reply_of"/>
+    <rdfs:subPropertyOf rdf:resource="http://rdfs.org/sioc/ns#related_to"/>
+    <rdfs:comment xml:lang="en">Points to an Item or Post that is a reply or response to this Item or Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[条目]或[帖子]的回复或回应。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <!-- @@todo: moving this property to the access module ? -->
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_scope">
+    <rdfs:label xml:lang="en">has scope</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">辖域</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#scope_of"/>
+    <rdfs:comment xml:lang="en">A resource that this Role applies to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[角色]应用到的[资源]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_space">
+    <rdfs:label xml:lang="en">has space</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">空间</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#space_of"/>
+    <rdfs:comment xml:lang="en">A data Space which this resource is a part of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个资源所属的数据[空间]。</rdfs:comment>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_subscriber">
+    <rdfs:label xml:lang="en">has subscriber</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">订阅者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#subscriber_of"/>
+    <rdfs:comment xml:lang="en">A UserAccount that is subscribed to this Container.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">订阅到这个[容器]的[用户账户]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:seeAlso rdf:resource="http://rdfs.org/sioc/ns#feed"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#has_usergroup">
+    <rdfs:label xml:lang="en">has usergroup</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">用户组</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#usergroup_of"/>
+    <rdfs:comment xml:lang="en">Points to a Usergroup that has certain access to this Space.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">指明对这个[空间]有特定访问权限的[用户组]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#host_of">
+    <rdfs:label xml:lang="en">host of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的主站</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_host"/>
+    <rdfs:comment xml:lang="en">A Forum that is hosted on this Site.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">部署到这个[站点]的[论坛]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Site"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Forum"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#id">
+    <rdfs:label xml:lang="en">id</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">id</rdfs:label>
+    <rdfs:comment xml:lang="en">An identifier of a SIOC concept instance. For example, a user ID. Must be unique for instances of each type of SIOC concept within the same site.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个SIOC概念实例的识别符。比如用户ID。在相同站点上对于么中类型的SIOC概念实例必须是唯一的。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#ip_address">
+    <rdfs:label xml:lang="en">ip address</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">IP地址</rdfs:label>
+    <rdfs:comment xml:lang="en">The IP address used when creating this Item. This can be associated with a creator. Some wiki articles list the IP addresses for the creator or modifiers when the usernames are absent.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">创建这个[条目]时的IP地址。这个可能被关联到一个创建者上。当空缺用户名的时候，一些维基文章会列出创建者或修改者的IP地址。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#last_activity_date">
+    <rdfs:label xml:lang="en">last activity date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">上一个行为时间</rdfs:label>
+    <rdfs:comment xml:lang="en">The date and time of the last activity associated with a SIOC concept instance, and expressed in ISO 8601 format. This could be due to a reply Post or Comment, a modification to an Item, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">和一个SIOC概念实例关联的上一个行为的日期和时间，使用ISO 8601格式表示。这个可以用于发布[帖子]或[评论]或对一个[条目]进行修改。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#last_item_date">
+    <rdfs:label xml:lang="en">last item date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">上一个条目时间</rdfs:label>
+    <rdfs:comment xml:lang="en">The date and time of the last Post (or Item) in a Forum (or a Container), in ISO 8601 format.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在一个[论坛]或[容器]中上一个[帖子]或[条目]的ISO 8601格式的日期和时间。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#last_reply_date">
+    <rdfs:label xml:lang="en">last reply date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">上一个回复时间</rdfs:label>
+    <rdfs:comment xml:lang="en">The date and time of the last reply Post or Comment, which could be associated with a starter Item or Post or with a Thread, and expressed in ISO 8601 format.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[帖子]或[评论]的上一个回复的日期和时间，使用ISO 8601格式表示，可能会将[主帖]关联到一个开始[条目]或[帖子]。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/date"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:TransitiveProperty rdf:about="http://rdfs.org/sioc/ns#later_version">
+    <rdfs:comment xml:lang="en">Links to a later (newer) revision of this Item or Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">链接到这个[条目]或[帖子]的较新版本上。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:label xml:lang="en">later version</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">较新版本</rdfs:label>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#earlier_version"/>
+  </owl:TransitiveProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#latest_version">
+    <rdfs:comment xml:lang="en">Links to the latest revision of this Item or Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">链接到这个[条目]或[帖子]的最新版本上。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:label xml:lang="en">latest version</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">最新版本</rdfs:label>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#link">
+    <rdfs:label xml:lang="en">link</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">链接</rdfs:label>
+    <rdfs:comment xml:lang="en">A URI of a document which contains this SIOC object.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">包含这个SIOC对象的文档的URI。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#links_to">
+    <rdfs:label xml:lang="en">links to</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">链接到</rdfs:label>
+    <rdfs:comment xml:lang="en">Links extracted from hyperlinks within a SIOC concept, e.g. Post or Site.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在一个SIOC概念（如[帖子]或[站点]）中从超链接提取的链接。</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/references"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#member_of">
+    <rdfs:label xml:lang="en">member of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的成员</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_member"/>
+    <rdfs:comment xml:lang="en">A Usergroup that this UserAccount is a member of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[用户账户]所属的[用户组]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#moderator_of">
+    <rdfs:label xml:lang="en">moderator of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的版主</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_moderator"/>
+    <rdfs:comment xml:lang="en">A Forum that a UserAccount is a moderator of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个[用户账户]当版主的[论坛]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Forum"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#modifier_of">
+    <rdfs:label xml:lang="en">modifier of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的修改者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_modifier"/>
+    <rdfs:comment xml:lang="en">An Item that this UserAccount has modified.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[用户账户]修改的[条目]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">名称</rdfs:label>
+    <rdfs:comment xml:lang="en">The name of a SIOC concept instance, e.g. a username for a UserAccount, group name for a Usergroup, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个SIOC概念实例的名称，比如一个[用户账户]的用户名，一个[用户组]的组名等等。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#next_by_date">
+    <rdfs:label xml:lang="en">next by date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">按日期排序下一条</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#previous_by_date"/>
+    <rdfs:comment xml:lang="en">Next Item or Post in a given Container sorted by date.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">给定[容器]中按日期排序的下一个[条目]或[帖子]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#next_version">
+    <rdfs:label xml:lang="en">next version</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">下一版本</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#previous_version"/>
+    <rdfs:comment xml:lang="en">Links to the next revision of this Item or Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">链接到这个[条目]或[帖子]的下一版本</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:subPropertyOf rdf:resource="http://rdfs.org/sioc/ns#later_version"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#note">
+    <rdfs:label xml:lang="en">note</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">注释</rdfs:label>
+    <rdfs:comment xml:lang="en">A note associated with this resource, for example, if it has been edited by a UserAccount.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">关联这个资源的注释，比如如果它曾被一个[用户账户]编辑。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#num_authors">
+    <rdfs:label xml:lang="en">num authors</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">作者数量</rdfs:label>
+    <rdfs:comment xml:lang="en">The number of unique authors (UserAccounts and unregistered posters) who have contributed to this Item, Thread, Post, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">合作创作这个[条目]、[帖子]等的唯一作者（[用户账户]和未注册的发帖人）的数目。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#num_items">
+    <rdfs:label xml:lang="en">num items</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">条目数量</rdfs:label>
+    <rdfs:comment xml:lang="en">The number of Posts (or Items) in a Forum (or a Container).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在一个[论坛]或[容器]中[条目]或[帖子]的回复的数量。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#num_replies">
+    <rdfs:label xml:lang="en">num replies</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">回复数量</rdfs:label>
+    <rdfs:comment xml:lang="en">The number of replies that this Item, Thread, Post, etc. has. Useful for when the reply structure is absent.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[条目]、[主帖]、[帖子]的回复的数量。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#num_threads">
+    <rdfs:label xml:lang="en">num threads</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主帖数量</rdfs:label>
+    <rdfs:comment xml:lang="en">The number of Threads (AKA discussion topics) in a Forum.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[论坛]中的[主帖]（也就是讨论的主题）的数量。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Forum"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#num_views">
+    <rdfs:label xml:lang="en">num views</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">访问量</rdfs:label>
+    <rdfs:comment xml:lang="en">The number of times this Item, Thread, UserAccount profile, etc. has been viewed.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[条目]、[用户账户]等被访问的次数。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#owner_of">
+    <rdfs:label xml:lang="en">owner of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的拥有者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_owner"/>
+    <rdfs:comment xml:lang="en">A resource owned by a particular UserAccount, for example, a weblog or image gallery.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">特定[用户账户]拥有的资源，比如博客，相册等等。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#parent_of">
+    <rdfs:label xml:lang="en">parent of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的上层</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_parent"/>
+    <rdfs:comment xml:lang="en">A child Container or Forum that this Container or Forum is a parent of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个[容器]或[论坛]的上层[容器]或[论坛]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#previous_by_date">
+    <rdfs:label xml:lang="en">previous by date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">旧版本（按日期排序）</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#next_by_date"/>
+    <rdfs:comment xml:lang="en">Previous Item or Post in a given Container sorted by date.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[条目]或[帖子]的旧版本在指定[容器]中按日期排序。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#previous_version">
+    <rdfs:label xml:lang="en">previous version</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">前一版本</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#next_version"/>
+    <rdfs:comment xml:lang="en">Links to the previous revision of this Item or Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">链接到该[条目]或[帖子]的前一版本</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:subPropertyOf rdf:resource="http://rdfs.org/sioc/ns#earlier_version"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#related_to">
+    <rdfs:label xml:lang="en">related to</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">相关</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Related Posts for this Post, perhaps determined implicitly from topics or references.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">与这个[帖子]关联的[帖子]，可能是主题中隐式关联或直接引用。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#reply_of">
+    <rdfs:label xml:lang="en">reply of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的回复</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_reply"/>
+    <rdfs:subPropertyOf rdf:resource="http://rdfs.org/sioc/ns#related_to"/>
+    <rdfs:comment xml:lang="en">Links to an Item or Post which this Item or Post is a reply to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">链接到一个作为回复的[条目]或[帖子]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <!-- @@todo: moving this property to the access module ? -->
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#scope_of">
+    <rdfs:label xml:lang="en">scope of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的辖域</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_scope"/>
+    <rdfs:comment xml:lang="en">A Role that has a scope of this resource.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个[角色]，它对这个资源具有辖域。</rdfs:comment>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:SymmetricProperty rdf:about="http://rdfs.org/sioc/ns#sibling">
+    <rdfs:label xml:lang="en">sibling</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">兄弟</rdfs:label>
+    <rdfs:comment xml:lang="en">An Item may have a sibling or a twin that exists in a different Container, but the siblings may differ in some small way (for example, language, category, etc.). The sibling of this Item should be self-describing (that is, it should contain all available information).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">某[条目]可能在不同的[容器]上存在一个兄弟，但是这两者可能在某些小地方有所不同（比如，语言、类别等等）。这个[条目]的兄弟应该是自描述的（也就是说，它应该包含所有可用的信息）。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:SymmetricProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#space_of">
+    <rdfs:label xml:lang="en">space of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的空间</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_space"/>
+    <rdfs:comment xml:lang="en">A resource which belongs to this data Space.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">属于这个数据[空间]的资源。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#subscriber_of">
+    <rdfs:label xml:lang="en">subscriber of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的订阅者</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_subscriber"/>
+    <rdfs:comment xml:lang="en">A Container that a UserAccount is subscribed to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[用户账户]被订阅到的[容器]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <rdfs:seeAlso rdf:resource="http://rdfs.org/sioc/ns#feed"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#topic">
+    <rdfs:label xml:lang="en">topic</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主题</rdfs:label>
+    <rdfs:comment xml:lang="en">A topic of interest, linking to the appropriate URI, e.g. in the Open Directory Project or of a SKOS category.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">所感兴趣的话题，连接到一个合适的URI，比如开放式目录项目或SKOS类别。</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/subject"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://rdfs.org/sioc/ns#usergroup_of">
+    <rdfs:label xml:lang="en">usergroup of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的用户组</rdfs:label>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_usergroup"/>
+    <rdfs:comment xml:lang="en">A Space that the Usergroup has access to.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[用户组]能够访问的[空间]。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+    <rdfs:range rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+  </owl:ObjectProperty>
+
+  <!-- Deprecated -->
+
+  <owl:DeprecatedClass rdf:about="http://rdfs.org/sioc/ns#User">
+    <rdfs:label xml:lang="en">User</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">用户</rdfs:label>
+    <rdfs:comment xml:lang="en">UserAccount is now preferred. This is a deprecated class for a User in an online community site.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该属性已经弃用，请改用sioc:UserAccount。</rdfs:comment>
+    <owl:equivalentClass rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/OnlineAccount"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Container"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Item"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Role"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Space"/>
+    <owl:disjointWith rdf:resource="http://rdfs.org/sioc/ns#Usergroup"/>
+    <owl:versionInfo>This class is deprecated. Use sioc:UserAccount from the SIOC ontology instead.</owl:versionInfo>
+  </owl:DeprecatedClass>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#title">
+    <rdfs:label xml:lang="en">title</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">标题</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">This is the title (subject line) of the Post. Note that for a Post within a threaded discussion that has no parents, it would detail the topic thread.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这是帖子的标题（主题行）。该属性已经弃用，请改用dcterms:title。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use dcterms:title from the Dublin Core ontology instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#content_encoded">
+    <rdfs:label xml:lang="en">content encoded</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">编码的内容</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">The encoded content of the Post, contained in CDATA areas.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">[帖子]的编码后的内容，包含在CDATA区域内。该属性已经弃用，请改用RSS 1.0定义的content:encoded。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use content:encoded from the RSS 1.0 content module instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#created_at">
+    <rdfs:label xml:lang="en">created at</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">创建于</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">When this was created, in ISO 8601 format.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">ISO 8601格式的创建时间。该属性已经弃用，请改用dcterms:created。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use dcterms:created from the Dublin Core ontology instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#description">
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">描述</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">The content of the Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">帖子的内容。该属性已经弃用，请改用sioc:content或其他方法（AtomOwl，RSS 1.0的content:encoded等等）</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use sioc:content or other methods (AtomOwl, content:encoded from RSS 1.0, etc.) instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#first_name">
+    <rdfs:label xml:lang="en">first name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">名字</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">First (real) name of this User. Synonyms include given name or christian name.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用户实名的名字。该属性已经弃用，请改用foaf:name或foaf:firstName。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use foaf:name or foaf:firstName from the FOAF vocabulary instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#group_of">
+    <rdfs:label xml:lang="en">group of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">组</rdfs:label>
+    <rdfs:comment xml:lang="en">Inverse of sioc:has_group.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">sioc:has_group的逆。该属性已经弃用，请改用sioc:usergroup_of。</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_group"/>
+    <owl:versionInfo>This property has been renamed. Use sioc:usergroup_of instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#has_group">
+    <rdfs:label xml:lang="en">has group</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">有组</rdfs:label>
+    <rdfs:comment xml:lang="en">Inverse of sioc:group_of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">sioc:group_of的逆。该属性已经弃用，请改用sioc:has_usergroup。</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#group_of"/>
+    <owl:versionInfo>This property has been renamed. Use sioc:has_usergroup instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#has_part">
+    <rdfs:label xml:lang="en">has part</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">有部分</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#part_of"/>
+    <rdfs:comment xml:lang="en">An resource that is a part of this subject.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该属性已经弃用，请改用dcterms:hasPart。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use dcterms:hasPart from the Dublin Core ontology instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#last_name">
+    <rdfs:label xml:lang="en">last name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">姓氏</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">Last (real) name of this user. Synonyms include surname or family name.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用户实名的姓氏。该属性已经弃用，请改用foaf:name或foaf:surname。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#UserAccount"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use foaf:name or foaf:surname from the FOAF vocabulary instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#modified_at">
+    <rdfs:label xml:lang="en">modified at</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">修改于</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">When this was modified, in ISO 8601 format.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">ISO 8601格式的修改时间。该属性已经弃用，请改用dcterms:modified。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use dcterms:modified from the Dublin Core ontology instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#part_of">
+    <rdfs:label xml:lang="en">part of</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">……的部分</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="http://rdfs.org/sioc/ns#has_part"/>
+    <rdfs:comment xml:lang="en">A resource that the subject is a part of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">主题所属的资源。该属性已经弃用，请改用dcterms:isPartOf。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use dcterms:isPartOf from the Dublin Core ontology instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#reference">
+    <rdfs:label xml:lang="en">reference</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">引用</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Links either created explicitly or extracted implicitly on the HTML level from the Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">已经重命名为sioc:links_to。显示创建或者从[帖子]的HTML层次隐式提取的链接。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>Renamed to sioc:links_to.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+  <owl:DeprecatedProperty rdf:about="http://rdfs.org/sioc/ns#subject">
+    <rdfs:label xml:lang="en">subject</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">主题</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">Keyword(s) describing subject of the Post.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">描述帖子主题的关键词。该属性已经弃用，请改用dcterms:subject（文本关键字）或sioc:topic（使用URI表示）。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://rdfs.org/sioc/ns#Post"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://rdfs.org/sioc/ns#"/>
+    <owl:versionInfo>This property is deprecated. Use dcterms:subject from the Dublin Core ontology for text keywords and sioc:topic if the subject can be represented by a URI instead.</owl:versionInfo>
+  </owl:DeprecatedProperty>
+
+</rdf:RDF>

@@ -1,0 +1,2515 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY swrl "http://www.w3.org/2003/11/swrl#" >
+    <!ENTITY owl2 "http://www.w3.org/2006/12/owl2#" >
+    <!ENTITY swrlx "http://www.w3.org/2003/11/swrlx#" >
+    <!ENTITY swrlb "http://www.w3.org/2003/11/swrlb#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.UniversityReferenceOntology.org/HERO#"
+     xml:base="http://www.UniversityReferenceOntology.org/HERO"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlx="http://www.w3.org/2003/11/swrlx#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl2="http://www.w3.org/2006/12/owl2#">
+    <owl:Ontology rdf:about="http://www.UniversityReferenceOntology.org/HERO">
+        <rdfs:label xml:lang="en">HERO_ONTOLOGY</rdfs:label>
+        <owl:versionInfo rdf:datatype="&xsd;dateTime">31/07/2012</owl:versionInfo>
+        <rdfs:comment xml:lang="en">HERO ONTOLOGY AUTHOR INFORMATION: 
+Name: LEILA ZEMMOUCHI-GHOMARI 
+EMAIL: l_zemmouchi@esi.dz
+FUNCTION: Researcher in ontology engineering field 
+INSTITUTION: ESI, www.esi.dz: national superior school of computer science, Algiers, Algeria. </rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">HERO stands for Higher Education Reference Ontology which aims to provide consensual knowledge about university domain
+</rdfs:isDefinedBy>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&owl;versionInfo"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;isDefinedBy"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AdministratorsACMembers -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AdministratorsACMembers">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdministrativeStaff"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherAssessmentCommittee"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AffiliatedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AffiliatedTo">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Laboratory"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AppointedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AppointedTo">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Assignment -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Assignment">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GivesGradeTo"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasGradeIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AwardedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AwardedBy">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#BelongsTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#BelongsTo">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ClassroomParticipation -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ClassroomParticipation">
+        <rdfs:isDefinedBy xml:lang="en">Discussion, questions, conversation. Students are expected to participate in class discussions, especially in seminar classes. This is often a very important factor in determining a student&#39;s grade.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GivesGradeTo"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasGradeIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ComposedOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ComposedOf">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Contains -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Contains">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Laboratory"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CooperatesWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CooperatesWith">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CooperatesWithGroup -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CooperatesWithGroup">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#EnrolledBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#EnrolledBy">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#EvolvesIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#EvolvesIn">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchWork"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FinalExamination -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#FinalExamination">
+        <rdfs:comment xml:lang="en">after completion of the course
+</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GivesGradeTo"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasGradeIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#GivesGradeTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#GivesGradeTo">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasAcademicStaff -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasAcademicStaff">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicStaff"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasAdministrativeStaff -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasAdministrativeStaff">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdministrativeStaff"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasBeen -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasBeen">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Alumni"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasDegree -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasDegree">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FacultyMember"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasDoctorate -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasDoctorate">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicStaff"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Doctorate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasGradeIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasGradeIn">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:comment rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseSyllabus"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasMaster -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasMaster">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Master"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HasMember -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HasMember">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FacultyMember"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HeadOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HeadOf">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Dean"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Faculty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Includes -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Includes">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FacultyMember"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GoverningBoard"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#IsEvaluatedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#IsEvaluatedBy">
+        <rdfs:comment xml:lang="en">The faculty member’s teaching is assessed through regularly administered questionnaires to students and sometimes through peer visits to the classroom. Highly rated teaching is
+essential but is generally not by itself sufficient for granting tenure
+Faculty appointments, renewal (and nonrenewal) of contracts, and advancement in rank usually are based on the recommendation of tenured department members. Those decisions often are reviewed by a faculty committee of a college or division, then reviewed by a university-wide committee, and finally forwarded to the appropriate executive officer. Final approval of these decisions varies by institutional type, tradition, and size. Many institutions require approval from the dean of the appropriate college or school.
+Others may refer such decisions to the governing board through their president.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherAssessmentCommittee"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#IsHiredBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#IsHiredBy">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment xml:lang="en">The hire is based on qualifications, experience, teaching record, service , research, and publications.
+The majority of teaching in colleges and universities is done by professors holding a doctoral degree or equivalent, sometimes these part-time instructors are professionals in the field or graduate students.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Faculty"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#IsMemberOfProject -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#IsMemberOfProject">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Project"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#IsTaughtBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#IsTaughtBy">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <owl:inverseOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teaches"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#IsTenuredBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#IsTenuredBy">
+        <rdfs:comment xml:lang="en">Tenure is an arrangement under which faculty members are given continuing appointments following a probationary period. A tenure review usually occurs in the sixth year of the faculty member’s service, when he or she is an assistant professor. Departmental colleagues conduct a thorough review of the assistant professor’s teaching, scholarly work, and service, and the department chair generally makes a recommendation to the dean and the provost. The final decision is often made by the board of trustees or governors based upon the recommendation of the president.
+part-time and non–tenure track faculty do not generally advise students, conduct research, or participate in faculty governance</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdministrativeStaff"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#LivesIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#LivesIn">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Campus"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#MidtermExamination -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#MidtermExamination">
+        <rdfs:comment xml:lang="en">Usually given during class time.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GivesGradeTo"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasGradeIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ObtainedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ObtainedBy">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Organizes -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Organizes">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Laboratory"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Seminar"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ParticipatesIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ParticipatesIn">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicStaff"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Seminar"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PayTuitionTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PayTuitionTo">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ProvidesFinancialAidTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ProvidesFinancialAidTo">
+        <rdfs:comment xml:lang="en">Depending on the institution and the grant program, financial aid may be restricted to tuition and fee payment or may extend to the entire cost of college attendance, including room and board, books, and personal expenditures.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ProvidesServicesAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ProvidesServicesAt">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Campus"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublishedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublishedBy">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Dissertation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#RequiredBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#RequiredBy">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Dissertation"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Doctorate"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentACMembers -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentACMembers">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherAssessmentCommittee"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudiesAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudiesAt">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SupervisedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SupervisedBy">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <owl:inverseOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Supervises"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Supervises -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Supervises">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TakesCourse -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TakesCourse">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherACMembers -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherACMembers">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherAssessmentCommittee"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Teaches -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Teaches">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#WorksIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#WorksIn">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Project"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#WorksWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#WorksWith">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Chair"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Registrar"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Writes -->
+
+    <owl:ObjectProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Writes">
+        <rdfs:range rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ACT -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ACT">
+        <rdfs:isDefinedBy xml:lang="en">The American College Testing (ACT) Program offers the ACT Assessment, an entrance examination comparable to the SAT. The ACT Assessment consists of four tests: English, mathematics, reading, and science reasoning</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdmissionTest"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AcademicAssistance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AcademicAssistance">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CampusService"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AcademicYearBeginningDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AcademicYearBeginningDate">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicYear"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AcademicYearEndingDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AcademicYearEndingDate">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicYear"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AdmissionTest -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AdmissionTest">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#UniversityEnrollmentConditions"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AdmissionTestScore -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AdmissionTestScore">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ACT"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#SAT"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TOEFL"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AssistantProfessor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AssistantProfessor">
+        <rdfs:isDefinedBy xml:lang="en">A candidate with an earned doctoral degree but little or no teaching experience in higher education is usually appointed to the faculty at the level of assistant professor.
+An assistant professor usually is given a three year contract for a probationary period; the contract may be renewed annually, usually for up to six years. At most four-year institutions, an individual on the tenure track may serve as assistant professor for no more than seven years.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherRank"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AssociateProfessor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#AssociateProfessor">
+        <rdfs:isDefinedBy xml:lang="en">After serving for a specified period (usually five to seven years) as assistant professor, the faculty member who has all the other qualifications (an earned doctorate, favorable annual teaching evaluations, evidence of contributions to the discipline, a record of service) may be recommended for promotion to the rank of associate professor. Consideration for tenure usually occurs at the same time. There is no limit to the number of years an individual may serve as associate professor</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AssistantProfessor"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#BaccalaureateCollege -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#BaccalaureateCollege">
+        <rdfs:comment xml:lang="en">Baccalaureate colleges comprise 13 percent  of American higher education institutions but, because they are all comparatively small, enroll only 6 percent of all students. they range from some of the wealthiest and most prestigious institutions, for which admission is highly competitive.</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">These institutions are primarily undergraduate colleges with major emphasis on baccalaureate programs.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#College"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#BookChapterNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#BookChapterNumber">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#BookChapter"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#BookISBN -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#BookISBN">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Book"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CampusService -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CampusService">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Campus"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#College -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#College">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Structural"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CommunityCollege -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CommunityCollege">
+        <rdfs:comment xml:lang="en">Characteristics of community colleges are:
+1.	They are far less costly than public or private four-year institutions.
+2.	They are “open enrollment” colleges, requiring only a high school diploma or the equivalent for admission. (Some programs within community colleges, however, are not open enrollment.)
+3.	The majority of attendees are part - time students.
+4.	Students are, on average, several years older than the average undergraduate student at bachelor’s degree institutions.
+5.	Many students who enroll have no intention of completing a degree.
+6.	Few two-year colleges have residential facilities, because most students commute from the surrounding area.</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">These institutions offer associate’s degree and certificate programs but, with few exceptions, award no baccalaureate degrees (This group includes community, junior, and technical colleges). This group includes institutions where, during the period studied, bachelor’s degrees represented less than 10 percent of all undergraduate awards.</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">Two-year institutions (commonly called community colleges) enroll the largest share of undergraduate students.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#College"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ConferenceTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ConferenceTitle">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ConferencePaper"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseCategory -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseCategory">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseClassHours -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseClassHours">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseCode">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseCreditsNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseCreditsNumber">
+        <rdfs:comment xml:lang="en">The American college curriculum consists of individual courses, each of which bears a specified number of credits.
+In general, the number of credits a course carries is determined by the number of class hours the course meets each week. Thus the typical course, bearing three hours of credit, meets for three 50-minute (or two 75- minute) “hours” each week over a 15-week semester.
+students enroll for an average of 15 credits (five courses) each semester
+Each course is considered to be worth a number of &quot;credits&quot; or &quot;credit hours&quot;. This number is roughly the same as the number of hours a student spends in a class for that course each week. A course is typically worth three to five credits. A full program at most schools is twelve or fifteen credit hours (four or five courses per term). International students are expected to enroll in a full program during each term.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseDescription">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseSyllabus"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseGradingSystem -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseGradingSystem">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseHandOut -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseHandOut">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseMaterial"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseLevel">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseMaterial -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseMaterial">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseObjectives -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseObjectives">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseSyllabus"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CoursePrerequisites -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CoursePrerequisites">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseRoom -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseRoom">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseSessionCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseSessionCode">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseSyllabus -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseSyllabus">
+        <rdfs:comment xml:lang="en">A course program is a Knowledge Grouping that represents a cohesive collection of educational material referred to by the owning organization as a program
+
+While the general course content and academic level must within the guidelines of the offering department, individual faculty members generally have a great deal of freedom in deciding how a course is taught.
+They choose which textbooks will be used and determine the syllabus
+</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseTextBook -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseTextBook">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseMaterial"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CourseTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CourseTitle">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#CriterionReferencedGrading -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#CriterionReferencedGrading">
+        <rdfs:isDefinedBy xml:lang="en">Criterion-referenced grading systems are based on a fixed numeric scale, usually equated to a letter mark, from which the faculty assign grades based on the individual performance of each student. The scale does not change regardless of the quality, or lack thereof, of the students. For example, in a class of 100 students there might be no one or any number of students who score high enough to achieve a grade of excellent, or who fail. Criterion-referenced systems might look like:
+A (Excellent) = 95-100 or 90-100
+B (Good)      = 85-95 or 80-90
+C (Fair)        = 75-85 or 70-80
+D (Poor)       = 65-75 or 60-70
+F (Failure)     = -65 or -60
+Criterion-referenced systems are often used in situations where the faculty are agreed as to a standard of performance but the quality of the students is unknown or uneven; where the work involves student collaboration or teamwork; and where there is no external driving factor such as needing to systematically reduce a pool of eligible students.
+In many situations, faculty may wish to indicate that certain students, despite achieving a specific score, demonstrated qualities that cause the faculty to believe that the grade by itself does not reflect the student&#39;s actual contribution or potential. In such cases they may attach plus or minus signs to the letter grade (examples: A+, A, A-, B+, B, B-, etc.) to refine their evaluation. These refinements can be important in calculating cumulative grades and awarding honors.
+It is noteworthy that many U.S. criterion-referenced grading systems use the principle of subtracting points from a defined perfect score, which is usually, but not always, set at 100.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseGradingSystem"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#DegreeDefense -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#DegreeDefense">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#DegreeThesis -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#DegreeThesis">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#DegreeYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#DegreeYear">
+        <rdfs:comment xml:lang="en">Associate degree: min 2 years, max 4 years
+Bachelor degree: min 4 years, max 5 years
+Master degree: min bachelor+1, max bachelor+2
+Doctorate degree: min master+3 years, max master+ 6 years</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#DepartmentID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#DepartmentID">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#DepartmentName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#DepartmentName">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#DoctoralResearchUniversity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#DoctoralResearchUniversity">
+        <rdfs:isDefinedBy xml:lang="en">These institutions typically offer a wide range of baccalaureate
+programs, and they are committed to graduate education through the doctorate
+Based on several variables including the number of advanced degrees granted and federal research funds received, research universities that have a significant level of research activity fall into two categories: RU/VH (Research Universities/very high research activity) and RU/H (Research Universities/high research activity).</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#University"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FacultyID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#FacultyID">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Faculty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FacultyName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#FacultyName">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Faculty"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Financial -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Financial">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#InstitutionType"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FoodService -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#FoodService">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CampusService"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FreshmanYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#FreshmanYear">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#StudentYearName"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FullProfessor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#FullProfessor">
+        <rdfs:label xml:lang="en">Professor</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="en">After serving for five to six years as an associate professor, the faculty member may be recommended for promotion to the rank of professor, the highest academic rank awarded to an individual. The professorship is not based solely on serving the required number of years in the preliminary ranks. Rather, it is bestowed by the college or university on a person whose teaching, scholarship, and service have had a significant impact on the development of the institution and the discipline.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AssociateProfessor"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FullTimeStudent -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#FullTimeStudent">
+        <rdfs:isDefinedBy xml:lang="en">this student category does not work, all his time is devoted to studies. the inverse category is parttime student.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#GoverningBoardDuration -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#GoverningBoardDuration">
+        <rdfs:comment xml:lang="en">The length of board members’ terms varies from three years to as long as 12 years</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GoverningBoard"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#GoverningBoardSize -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#GoverningBoardSize">
+        <rdfs:comment xml:lang="en">The average size of public boards is approximately 10 people and the average size among independent (private) institutions is 30.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GoverningBoard"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#GovernmentalImpactOnUniversity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#GovernmentalImpactOnUniversity">
+        <rdfs:comment xml:lang="en">The federal government does not exercise general control over
+U.S. higher education or serve as its primary funder. 
+Most institutions benefit indirectly from large federal programs of financial aid to students, designed to cover a portion of the tuition and living expenses of college attendance. Federal tax policies also play a significant role in federal support for higher education, especially with regard to private donations to colleges and universities. Income tax laws allow substantial tax deductions for contributions to educational and charitable organizations, making gifts both large and small to colleges and universities financially attractive as well as personally satisfying.
+Most community colleges, as public institutions, receive considerable support from their respective states.
+</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#GradingOnCurve -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#GradingOnCurve">
+        <rdfs:isDefinedBy xml:lang="en">Norm-referenced grading systems are based on a pre-established formula regarding the percentage or ratio of students within a whole class who will be assigned each grade or mark. The students, while they may work individually, are actually in competition to achieve a standard of performance that will classify them into the desired grade range.
+A (Excellent)         = Top 10 % of Class
+B (Good)              = Next 20 % of Class
+C (Average, Fair)   = Next 30 % of Class
+D (Poor, Pass)       = Next 20 % of Class
+F (Failure)             = Bottom 20 % of Class
+The underlying assumption in norm-referenced grading is that the students are roughly equal in ability, and the goal is to select the best performers in the group. Norm-referenced systems are most often used for screening selected student populations in conditions where it is known that not all students can advance due to limitations such as available places, jobs, or other controlling factors.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseGradingSystem"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HighResearchUniversity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HighResearchUniversity">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#DoctoralResearchUniversity"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HighSchoolDiploma -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#HighSchoolDiploma">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#UniversityEnrollmentConditions"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#IncomeAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#IncomeAmount">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#UniversityFinancialIncomes"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#IncomeType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#IncomeType">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#UniversityFinancialIncomes"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#InstitutionType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#InstitutionType">
+        <rdfs:isDefinedBy xml:lang="en">The possible criteria of classification can be:
+1.	By the highest degree granted 
+2.	The primary source of funding: public, independent or commonly known as private not-for-profit, or private for-profit.
+3.	By source of control—whether an institution is established by the state (referred to as public) or is an independent entity receiving a charter from the state (referred to as private).
+</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Institutional -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Institutional">
+        <rdfs:isDefinedBy xml:lang="en">Institutional accreditors set standards for and evaluate performance of institutions as a whole</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#UniversityAccreditation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Instructor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Instructor">
+        <rdfs:isDefinedBy xml:lang="en">Instructor usually is the starting rank for either a full-time, tenure-track faculty member without a PhD or a person without a PhD on a contract or term appointment. Instructors usually receive one-year contracts, renewable annually. In most cases, instructors are promoted to assistant professor upon completion of a PhD. At many colleges and universities, an instructor’s contract is not renewed if he or she is not promoted after the probationary period.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherRole"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Journal -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Journal">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#JournalArticle"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#JournalArticleVolume -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#JournalArticleVolume">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#JournalArticle"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#JuniorYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#JuniorYear">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FreshmanYear"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Lecture -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Lecture">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#LectureRoom -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#LectureRoom">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Lecture"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#LectureSchedule -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#LectureSchedule">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Lecture"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Lecturer -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Lecturer">
+        <rdfs:isDefinedBy xml:lang="en">A lecturer usually is a short-term or part-time faculty member who is appointed for a limited time in a specific discipline.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherRole"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#MajorFieldDegree -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#MajorFieldDegree">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#MasterCollege -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#MasterCollege">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#College"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#MastersUniversity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#MastersUniversity">
+        <rdfs:isDefinedBy xml:lang="en">These institutions typically offer a wide range of baccalaureate programs, and they are committed to graduate education through the master’s degree </rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#University"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#NonGradedEvaluation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#NonGradedEvaluation">
+        <rdfs:isDefinedBy xml:lang="en">A number of U.S. faculties, schools, and institutions do not assign numeric or letter grades as a matter of policy. This practice is usually based on a belief that grades introduce an inappropriate and distracting element of competition into the learning process, or that they are not as meaningful as measures of intellectual growth and development as are carefully crafted faculty evaluations. Many faculty, schools, and institutions that follow a no-grade policy will, if requested, produce grades or convert their student evaluations into formulae acceptable to authorities who require traditional measures of performance.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseGradingSystem"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PassFailSystem -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PassFailSystem">
+        <rdfs:isDefinedBy xml:lang="en">Some U.S. faculties, schools, and institutions use pass-fail grading systems, especially when the student work to be evaluated is highly subjective (as in the fine arts and music), there are no generally accepted standard gradations (as with independent studies), or the critical requirement is meeting a single satisfactory standard (as in some professional examinations and practica).</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseGradingSystem"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PrivateForProfit -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PrivateForProfit">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Financial"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PrivateNotForProfit -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PrivateNotForProfit">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Financial"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ProfessorEmeritus -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ProfessorEmeritus">
+        <rdfs:isDefinedBy xml:lang="en">Professor emeritus is an honorary title conferred upon an individual for long and distinguished service to the institution.
+It usually is awarded at the end of a faculty member’s full-time service or at retirement</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FullProfessor"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Public -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Public">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Financial"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationAbstract -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationAbstract">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationAuthors -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationAuthors">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationDate">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationKeywords -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationKeywords">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationPagesNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationPagesNumber">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationReviewers -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationReviewers">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationTitle -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationTitle">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PublicationURL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#PublicationURL">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Publisher -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Publisher">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearchGroupCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearchGroupCode">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearchGroupCompetencyDomain -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearchGroupCompetencyDomain">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearcherCompetencyDomain -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearcherCompetencyDomain">
+        <rdfs:comment xml:lang="en">Exemples: Software engineering, data mining, knowledge representation, logics, search engines, information retrieval…</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearcherEmail -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearcherEmail">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearcherEvaluation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearcherEvaluation">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearcherHomePageURL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearcherHomePageURL">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearcherMainArea -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearcherMainArea">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearcherName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearcherName">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearcherNationality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearcherNationality">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SAT -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SAT">
+        <rdfs:isDefinedBy xml:lang="en">The Scholastic Assessment Test (SAT) of the College Board is a three hour and 45-minute test, consisting of multiple-choice questions and a 25-minute essay. It is designed to measure critical thinking, mathematical reasoning, and writing skills.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdmissionTest"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SemesterSchedule -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SemesterSchedule">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Semester"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SeniorYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SeniorYear">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#JuniorYear"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SessionTiming -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SessionTiming">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseSessionCode"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SessionType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SessionType">
+        <rdfs:comment xml:lang="en">Students are affected to small sections during discussion sessions.</rdfs:comment>
+        <rdfs:comment xml:lang="en">example: discussion session</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Course"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CourseSessionCode"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SleepingService -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SleepingService">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CampusService"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SocialAssistance -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SocialAssistance">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#CampusService"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SophomoreYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SophomoreYear">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#SeniorYear"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Specialized -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Specialized">
+        <rdfs:isDefinedBy xml:lang="en">Specialized accreditors do the same for a program or unit within an institution. Specialized accrediting prevails in nearly all professional fields</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#UniversityAccreditation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SpecializedInstitution -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#SpecializedInstitution">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Structural"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Structural -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Structural">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#InstitutionType"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentCode">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentEmail -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentEmail">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentGrade -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentGrade">
+        <rdfs:comment xml:lang="en">Possible grade values:
+A+: 97-100
+A: 93-96
+A-: 90-92
+B+: 89-87
+B: 86-83
+B-: 82-80
+C+: 79-77
+C: 76-73
+C-: 72-70
+D+: 69-67
+D: 66-63
+D-: 62-60
+E, F: &lt;60%
+</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentLanguageProficiency -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentLanguageProficiency">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentMajorField -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentMajorField">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentMinorField -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentMinorField">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentName">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentNationality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentNationality">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentRecommandationLetter -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentRecommandationLetter">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentTuition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentTuition">
+        <rdfs:isDefinedBy xml:lang="en">Fee paid for instruction</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#StudentYearName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#StudentYearName">
+        <rdfs:comment xml:lang="en">The 4 year undergraduate program consists of:
+•	1st Year is called Freshman Year.
+•	2nd Year is called Sophomore Year.
+•	3rd Year is called Junior Year.
+•	4th Year is called Senior Year.
+</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#UndergraduateStudent"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TOEFL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TOEFL">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdmissionTest"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherCompetencyDomains -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherCompetencyDomains">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherEmail -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherEmail">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherEvaluation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherEvaluation">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherHomePageURL -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherHomePageURL">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&xsd;anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherName">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherNationality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherNationality">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherRank -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherRank">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherRecruitementYear -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherRecruitementYear">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherRole -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherRole">
+        <rdfs:comment xml:lang="en">Teachers are expected to (1) teach; (2) engage in research and scholarly or artistic activity; and (3) serve their campus, scholarly association, and local communities.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherTenure -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherTenure">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeachingAssistant -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeachingAssistant">
+        <rdfs:label xml:lang="en">Adjunct Assistant</rdfs:label>
+        <rdfs:label xml:lang="en">Assistant</rdfs:label>
+        <rdfs:isDefinedBy xml:lang="en">This title usually designates a part-time faculty member. Occasionally, it is given to a visiting professor, especially one from a university outside the United States, who is serving on
+The faculty for a limited time, usually a semester or a year.</rdfs:isDefinedBy>
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherRole"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TuitionOrigin -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#TuitionOrigin">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#StudentTuition"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Tutor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#Tutor">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherRole"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#University -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#University">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Structural"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#UniversityAccreditation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#UniversityAccreditation">
+        <rdfs:isDefinedBy xml:lang="en">Accreditation serves to ensure the quality of higher education institutions and academic programs to students, the higher education and business communities, and the general public. The accreditation process ensures that colleges and universities maintain academic standards appropriate for their
+Missions.
+</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">In the United States, the accreditation process has developed around voluntary, nongovernmental, and self-regulatory structures. It is decentralized and carried out by private, nonprofit accrediting organizations. Accrediting organizations are membership-based organizations of colleges and universities and are funded by membership dues.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#UniversityCurriculum -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#UniversityCurriculum">
+        <rdfs:isDefinedBy xml:lang="en">The undergraduate curriculum typically consists of two components: general education and the major field of study (the major).
+General education is delivered predominantly through either a core curriculum, in which all undergraduate students take the same courses, or an elective or distributive format, in which students choose courses from a pre-specified list representing a range of topics (such as science, mathematics, humanities, etc.). General education requirements typically constitute between one-quarter and one-half of a student’s courses, depending upon the institution and the student’s major. The other courses include those related to the major.
+</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#UniversityEnrollmentConditions -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#UniversityEnrollmentConditions">
+        <rdfs:comment xml:lang="en">Admissions criteria vary widely by type of institution. Higher education institutions establish admissions policies that are consistent with their missions. At some institutions, admission is competitive, based on students’ grades, test scores, letters of recommendation, language proficiency (for international students), community and leadership activities, and often an application essay. Institutions with selective admissions processes often require applications up to one year in advance of the enrollment period and delay decisions until the entire applicant group can be evaluated. They place varying degrees of importance on grades, examinations, and other factors</rdfs:comment>
+        <rdfs:comment xml:lang="en">International students seeking admission to an institution need to check immigration and English-language requirements in addition to the institution’s admission requirements.
+Most U.S. colleges require the Test of English as a Foreign
+Language (TOEFL), they also require scores on additional examinations for admission
+</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#UniversityFinancialIncomes -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#UniversityFinancialIncomes">
+        <rdfs:isDefinedBy xml:lang="en">The major sources of income include:
+1.	 tuition and fee payments from students and families (including financial aid provided by federal programs that students use to pay tuition); 
+2.	grants, 
+3.	contracts from federal, state, and local governments; 
+4.	endowments and private gifts; 
+5.	Sales and other services. 
+Some of these sources are more important to some types of institutions than to others.</rdfs:isDefinedBy>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#UniversityResearchRating -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#UniversityResearchRating">
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#VeryHighResearchUniversity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.UniversityReferenceOntology.org/HERO#VeryHighResearchUniversity">
+        <rdfs:subPropertyOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#DoctoralResearchUniversity"/>
+        <rdfs:domain rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AcademicStaff -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#AcademicStaff">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FacultyMember"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AcademicYear -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#AcademicYear">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:comment xml:lang="en">For most institutions, the academic year begins in late August or early September and ends in late April or sometime in May. Each institution sets its own calendar. 
+Most institutions are on the semester system: The academic year is divided into two semesters of 15 weeks each, plus a week for final examinations. The fall semester ends in mid-December, with the spring semester beginning sometime in January.
+Many institutions offer a summer session, consisting of two six-week sessions
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#AdministrativeStaff -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#AdministrativeStaff">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FacultyMember"/>
+        <rdfs:isDefinedBy xml:lang="en">Administrative staff are essentially administrators</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">The administrators are responsible for many areas as undergraduate and graduate programs, institutional budget and business affairs, student admissions, financial aid, residence hall supervision, international student advising…</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Alumni -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Alumni">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GoverningBoard"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ArticulationAgreement -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#ArticulationAgreement">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:isDefinedBy xml:lang="en">The transfer of credits from associate degree programs to bachelor’s degree programs are usually governed by what are called articulation agreements between institutions.  
+Articulation agreements specify what courses and other credited work in specific subjects done at a community college may be considered for acceptance at the bachelor’s degree level, as well as what standard of performance must be met in order for the presented credits to be accepted.  These agreements are negotiated between the institutions and their faculties.
+</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Associate -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Associate">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:comment xml:lang="en">Associate degrees may represent a terminal degree in a vocational field or may prepare students to complete a bachelor’s degree at a four-year institution.</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">The associate degree can be awarded in academic or professional subjects and also in terminal career and technical programs.  Credits earned in associate degree programs can be transferred to bachelor’s degree programs under certain conditions.  The transfer of credits from associate degree programs to bachelor’s degree programs are usually governed by what are called articulation agreements between institutions.  </rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Bachelor -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Bachelor">
+        <rdfs:label xml:lang="en">Baccalaureate degree</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:comment xml:lang="en">The bachelor’s degree is by far the most common type of degree awarded, preparing students for most jobs that require a college degree and for further graduate study</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">The bachelor’s degree is the degree that gives access to advanced studies.  U.S. bachelor’s degrees are usually planned to take 4 academic years of full-time study to complete.  However, many degrees take longer to complete, including those in engineering, architecture and other fields; and many bachelor’s degrees are completed in less than 4 years by highly qualified and motivated students.   Bachelor’s degrees may be awarded in academic or professional fields of study.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Book -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Book">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#BookChapter -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#BookChapter">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Book"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Campus -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Campus">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Location"/>
+        <rdfs:comment xml:lang="en">The U.S. collegiate experience is strongly shaped by a residential tradition. Most four-year colleges and universities provide housing for students during the academic year. These residence halls, in addition to providing food service and sleeping rooms, provide programming to students on a variety of topics, both academic and social, such as AIDS awareness, alcohol abuse, personal finance, and study skills. Colleges and universities additionally provide a range of student support services, including personal counseling, career placement and advising, recreation and physical fitness, child care, transportation, banking, health care, and tutoring. </rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">a field on which the buildings of a university are situated</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Chair -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Chair">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:isDefinedBy xml:lang="en">The department chair is concerned with the administration of instruction and represents the department’s academic, financial, and personnel interests. The chair serves as a liaison between the dean of a school or college or the chief academic officer and the department members. Among most chairs’ chief responsibilities, with the assistance of other tenured members of the department, are faculty recruitment, promotion and tenure, evaluations for reappointment, and salary increases. The chair works with the registrar to address the department’s teaching space needs, serves as a liaison with other units, develops relationships with students majoring in the department, and addresses teaching problems within the department.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ConferencePaper -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#ConferencePaper">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Course -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Course">
+        <rdfs:label xml:lang="en">Module</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ArticulationAgreement"/>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FallSemester"/>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#SpringSemester"/>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#SummerSession"/>
+        <rdfs:isDefinedBy xml:lang="en">A Course is a Knowledge Grouping that represents a cohesive collection of educational material referred to by the owning organization as a course</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Dean -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Dean">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TechnicalStaff"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasDegree"/>
+                <owl:hasValue rdf:resource="http://www.UniversityReferenceOntology.org/HERO#doctorate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">At universities with separate schools or colleges, these units usually are headed by a dean who reports to the chief academic officer and oversees the work of the departments that make up the school or college. Deans, especially those of large colleges or those who bring in considerable funding from external sources, may enjoy substantial autonomy.</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">Criteria to appoint a dean: variable such as :has PHD degree, has prior positions in faculty staff, average age (60 years old)…</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Degree -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Degree">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ObtainedBy"/>
+                <owl:hasValue rdf:resource="http://www.UniversityReferenceOntology.org/HERO#doctorate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">A degree is an award conferred by a college or university signifying that the recipient has satisfactorily completed a course of study</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Department -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Department">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Faculty"/>
+        <rdfs:isDefinedBy xml:lang="en">The basic unit of academic organization in most institutions is the department (e.g., chemistry, political science). Every department belongs to an academic field.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Diploma -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Diploma">
+        <rdfs:label xml:lang="en">Certificate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:isDefinedBy xml:lang="en">A certificate or a diploma is the result of a vocational program (post-secondary program but not higher education) mostly after 2 years duration program.</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">a vocational diploma does not lead to a bachelor degree; there is no articulation between vocational training and higher education programs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Dissertation -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Dissertation">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#DoctoralCommittee -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#DoctoralCommittee">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicStaff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Doctorate -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Doctorate">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasDegree"/>
+                <owl:allValuesFrom rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchMaster"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">The research doctorate, or the Doctor of Philosophy (Ph.D.) and its equivalent titles, represents the highest academic qualification in the U.S. education system</rdfs:isDefinedBy>
+        <rdfs:comment xml:lang="en">U.S. doctorates are structured programs of advanced study and supervised research.  Students admitted to doctoral programs must complete all qualifying graduate-level coursework and participate in doctoral seminars and colloquia.  No coursework is credited toward the doctoral program unless it is doctoral-level and part of the research seminar and colloquia preparation for advancement to candidacy.  Students who complete these preliminary requirements at a satisfactory level (usually an A average grade is required) must then pass written comprehensive examinations that cover their chosen research specialization plus two or more adjunct specialties, one of which is often in a related subject area.  Successful students who pass the examinations and receive the recommendation of the doctoral faculty are advanced to candidacy for the doctorate. 
+The doctoral candidate selects a doctoral dissertation advisor and doctoral committee (usually 2-5 senior faculty, frequently with at least one member from another subject area or university).  The advisor and committee approve the dissertation research proposal and are available to advise on the progress of the independent research program.  When the candidate and the advisor judge that the research is completed and the dissertation is finished, the candidate is scheduled for a public oral examination defending the dissertation.  At the conclusion of the oral defense, the dissertation committee votes on whether to award the doctorate and sign the dissertation, which is then published via university printing services and made available electronically for the academic community.  Many dissertations are later revised, edited, and published commercially as academic monographs.
+</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Faculty -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Faculty">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Role"/>
+        <rdfs:isDefinedBy xml:lang="en">Faculty is a group of people recognized by an organization as forming a cohesive group, in the context of the university it is the body of teachers and administrators.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FacultyMember -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#FacultyMember">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Faculty"/>
+        <rdfs:comment xml:lang="en">Nearly all faculty members are expected to engage in research</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">teachers and administrators</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#FallSemester -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#FallSemester">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Semester"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#GoverningBoard -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#GoverningBoard">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Role"/>
+        <rdfs:comment xml:lang="en">Members of public boards may be appointed by the governor, elected by voters, or chosen in part by the groups they represent, such as an institution’s alumni. Boards of private institutions usually are self-perpetuating, meaning that the board members themselves select new members as others’ terms expire.</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">the highest level of administration is the governing or policy-Making body. This body may be called a board of regents, directors, trustees, or governors.
+Generally, governing boards are responsible for appointing the president or chancellor (also known as the chief executive officer) of the institution and creating general, fiscal, and academic policy to ensure their institution’s effective and efficient operation</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Governor -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Governor">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GoverningBoard"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#GraduateStudent -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#GraduateStudent">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasMaster"/>
+                <owl:allValuesFrom rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Master"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Most institutions require completion of a bachelor’s degree for admission to graduate study. Some professional programs (e.g., law, medicine, dentistry, and social work) are pursued only at the post baccalaureate level</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization">
+        <rdfs:label xml:lang="en">University</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#JournalArticle -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#JournalArticle">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Laboratory -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Laboratory">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Contains"/>
+                <owl:onClass rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Location"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Location -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Location">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Master -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Master">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Degree"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasDegree"/>
+                <owl:allValuesFrom rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Bachelor"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:isDefinedBy xml:lang="en">The master’s degree is the first graduate-level qualification, or second cycle degree. Master’s degrees may be considered terminal professional degrees in some fields, or they may be considered as second degrees that may or may not lead to PhD studies. Master’s degrees generally take two years to complete, but the time period may be shorter or longer depending on how the degree program is structured, the degree requirements and the prior preparation of the student.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PostDoc -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#PostDoc">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#PostGraduateStudent"/>
+        <rdfs:isDefinedBy xml:lang="en">a scholar or researcher who is involved in academic study beyond the level of a doctoral degree</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#PostGraduateStudent -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#PostGraduateStudent">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HasDoctorate"/>
+                <owl:allValuesFrom rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Doctorate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ProfessionalMaster -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#ProfessionalMaster">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Master"/>
+        <rdfs:isDefinedBy xml:lang="en">PROFESSIONAL MASTER’S DEGREES
+May be structured as research degrees (as in engineering, for example), or they may be structured specifically to prepare students to work in an applied professional field at an advanced level (as with the MBA).  In the latter case, there is usually a specified set of course or seminar requirements, specific graded exercises, and a project or other requirement is substituted for the thesis.  Professional internships may also be required in supervised work settings.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Project -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Project">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchWork"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Publication -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Publication">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchWork"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Registrar -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Registrar">
+        <rdfs:label xml:lang="en">Administrator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Department"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#WorksWith"/>
+                <owl:hasValue rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Chair"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Administrator responsible for students records. He has to plan for the schedule of the semester/the year</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearchGroup -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup">
+        <rdfs:label xml:lang="en">ResearchTeam</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#WorksIn"/>
+                <owl:onClass rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Project"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Laboratory"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ComposedOf"/>
+                <owl:onClass rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">20</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ComposedOf"/>
+                <owl:onClass rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Research Group is a group of people recognized by an organization as forming a cohesive group referred to by the organization as a research group</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearchMaster -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearchMaster">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Master"/>
+        <rdfs:isDefinedBy xml:lang="en">RESEARCH MASTER’S DEGREES
+are generally research degrees that require the completion of required graduate-level courses and seminars, passing comprehensive examinations in the major subfield of research and usually one or more minor subfields, and the preparation and defense of a master’s thesis under faculty supervision.  Occasionally, such degrees may be awarded without thesis by substituting a major project or set of papers for the thesis.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#ResearchWork -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#ResearchWork">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+        <rdfs:isDefinedBy xml:lang="en">Faculty research work comprises a variety of related activities, including planning and performing studies and experiments, analyzing data, developing new models and theories, advising and supervising students at all academic levels as they conduct research, collaborating with research colleagues, and disseminating research results to the public by writing journal articles and conference papers, by presenting research at conferences and technical meetings, and by giving seminars and talks at diverse venues. In addition to these &quot;direct&quot; research activities, faculty researchers also undertake activities that enable and support their research projects, including managing personnel, purchasing equipment and laboratory supplies, and complying with institutional rules and State and Federal laws that govern research</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Researcher -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Researcher">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicStaff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Role -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Role">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Semester -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Semester">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicYear"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Seminar -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Seminar">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchWork"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SpringSemester -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#SpringSemester">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Semester"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Student -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Student">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#LivesIn"/>
+                <owl:someValuesFrom rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Campus"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SummerSession -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#SummerSession">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AcademicYear"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#SupportStaff -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#SupportStaff">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdministrativeStaff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Teacher -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#Teacher">
+        <rdfs:label xml:lang="en">Tutor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Researcher"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.UniversityReferenceOntology.org/HERO#IsEvaluatedBy"/>
+                <owl:allValuesFrom rdf:resource="http://www.UniversityReferenceOntology.org/HERO#TeacherAssessmentCommittee"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TeacherAssessmentCommittee -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#TeacherAssessmentCommittee">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#FacultyMember"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TechnicalReport -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#TechnicalReport">
+        <rdfs:label xml:lang="en">ResearchReport</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#TechnicalStaff -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#TechnicalStaff">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#AdministrativeStaff"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#UndergraduateStudent -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#UndergraduateStudent">
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Student"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#UniversityPresident -->
+
+    <owl:Class rdf:about="http://www.UniversityReferenceOntology.org/HERO#UniversityPresident">
+        <rdfs:label xml:lang="en">chancellor</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.UniversityReferenceOntology.org/HERO#GoverningBoard"/>
+        <rdfs:comment xml:lang="en">At most institutions, the president or chancellor is selected by and reports directly to the board</rdfs:comment>
+        <rdfs:isDefinedBy xml:lang="en">The president is the liaison between the board and the college or university community, He or she makes policy recommendations to the governing board, The president is responsible for providing overall leadership to the institution, managing its finances and budget, developing and executing the institution’s strategic plan, and establishing systems of accountability and performance, The president advocates for the institution’s needs and seeks support from legislative and other external audiences, meets with alumni and prospective students, develops relationships with corporations and community groups, and provides the public persona of the institution. An increasingly important expectation of the president is raising funds from private sources.</rdfs:isDefinedBy>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Chair -->
+
+    <owl:NamedIndividual rdf:about="http://www.UniversityReferenceOntology.org/HERO#Chair">
+        <rdfs:isDefinedBy xml:lang="en">The department chair is concerned with the administration of instruction and represents the department’s academic, financial, and personnel interests. The chair serves as a liaison between the dean of a school or college or the chief academic officer and the department members. Among most chairs’ chief responsibilities, with the assistance of other tenured members of the department, are faculty recruitment, promotion and tenure, evaluations for reappointment, and salary increases. The chair works with the registrar to address the department’s teaching space needs, serves as a liaison with other units, develops relationships with students majoring in the department, and addresses teaching problems within the department.</rdfs:isDefinedBy>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Ghomari -->
+
+    <owl:NamedIndividual rdf:about="http://www.UniversityReferenceOntology.org/HERO#Ghomari">
+        <rdf:type rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <TeacherRole rdf:datatype="&xsd;string">Lecturer</TeacherRole>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#Meziani -->
+
+    <owl:NamedIndividual rdf:about="http://www.UniversityReferenceOntology.org/HERO#Meziani">
+        <rdf:type rdf:resource="http://www.UniversityReferenceOntology.org/HERO#Teacher"/>
+        <TeacherRank rdf:datatype="&xsd;string">AssistantProfessor</TeacherRank>
+        <TeacherName rdf:datatype="&xsd;string">Meziani</TeacherName>
+        <Instructor rdf:datatype="&xsd;string">yes</Instructor>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#degree -->
+
+    <owl:NamedIndividual rdf:about="http://www.UniversityReferenceOntology.org/HERO#degree"/>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#doctorate -->
+
+    <owl:NamedIndividual rdf:about="http://www.UniversityReferenceOntology.org/HERO#doctorate"/>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#lmcs -->
+
+    <owl:NamedIndividual rdf:about="http://www.UniversityReferenceOntology.org/HERO#lmcs">
+        <rdf:type rdf:resource="http://www.UniversityReferenceOntology.org/HERO#ResearchGroup"/>
+        <ResearchGroupCode rdf:datatype="&xsd;string">001</ResearchGroupCode>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.UniversityReferenceOntology.org/HERO#umbb -->
+
+    <owl:NamedIndividual rdf:about="http://www.UniversityReferenceOntology.org/HERO#umbb">
+        <rdf:type rdf:resource="http://www.UniversityReferenceOntology.org/HERO#HigherEducationOrganization"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.0.1502) http://owlapi.sourceforge.net -->
+

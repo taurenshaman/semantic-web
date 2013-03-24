@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+	xmlns:cc="http://web.resource.org/cc/"
+	xmlns:dctype="http://purl.org/dc/dcmitype/"
+	xmlns:dct="http://purl.org/dc/terms/"
+	xmlns:vann="http://purl.org/vocab/vann/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/"
+	xmlns:participation="http://purl.org/vocab/participation/schema#"
+	>
+	<owl:Ontology rdf:about="" dc:date="2008-09-25">
+		<dc:title xml:lang="en">Participation Schema</dc:title>
+		<rdfs:comment xml:lang="en">The participation ontology is a simple model for describing the roles that people play within groups. It is intended that specific domains will create subclasses of roles within their own areas of expertise. The first of these is AIISO Roles (http://purl.org/vocab/aiiso-roles/schema)</rdfs:comment>
+		<dc:identifier>http://purl.org/vocab/participation/schema-20080925</dc:identifier>
+		<dct:isVersionOf rdf:resource="http://purl.org/vocab/participation/schema#"/>
+		<dc:creator>Rob Styles</dc:creator>
+		<dc:creator>Chris Wallace</dc:creator>
+		<dc:creator>Knud Moeller</dc:creator>
+		<dc:rights>Copyright © 2008 Rob Styles, Chris Wallace, Knud Moeller</dc:rights>
+		<vann:preferredNamespaceUri>http://purl.org/vocab/participation/schema#</vann:preferredNamespaceUri>
+		<vann:preferredNamespacePrefix>participation</vann:preferredNamespacePrefix>
+		<!--vann:example rdf:resource="schema-diagram.html" /-->
+		<vann:example rdf:resource="example-participation.html" />
+		<!--dct:replaces rdf:resource="http://purl.org/vocab/participation/schema-XXXXXXXX"/-->
+		<dct:hasFormat>
+			<dctype:Text rdf:about="http://purl.org/vocab/participation/schema-20080925.html">
+				<dc:format>
+					<dct:IMT>
+						<rdf:value>text/html</rdf:value>
+						<rdfs:label xml:lang="en">HTML</rdfs:label>
+					</dct:IMT>
+				</dc:format>
+			</dctype:Text>
+		</dct:hasFormat>
+		<dct:hasFormat>
+			<dctype:Text rdf:about="http://purl.org/vocab/participation/schema-20080925.rdf">
+				<dc:format>
+					<dct:IMT>
+						<rdf:value>application/rdf+xml</rdf:value>
+						<rdfs:label xml:lang="en">RDF</rdfs:label>
+					</dct:IMT>
+				</dc:format>
+			</dctype:Text>
+		</dct:hasFormat>
+		<dct:issued>2008-09-25</dct:issued>
+		<skos:historyNote rdf:value="First cut of the ontology published, initial concepts extracted from original conference ontology at http://data.semanticweb.org/ns/swc/ontology" dc:date="2008-09-25" dc:creator="Rob Styles"/>
+	</owl:Ontology>
+	<cc:Work rdf:about="">
+		<cc:license rdf:resource="http://creativecommons.org/licenses/by/2.0/uk/"/>
+	</cc:Work>
+	<cc:License rdf:about="http://creativecommons.org/licenses/by/2.0/uk/">
+		<cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+		<cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+		<cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+		<cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+		<cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+	</cc:License>
+	
+	<rdfs:Class rdf:about="#Role">
+		<rdfs:label xml:lang="en">Role</rdfs:label>
+		<rdfs:comment xml:lang="en">Roles describe the positions or functions we take up in participating in a group</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/participation/schema#"/>
+		<dct:issued>2008-09-25</dct:issued>
+	</rdfs:Class>
+
+	<rdf:Property rdf:about="#role">
+		<rdfs:label xml:lang="en">role</rdfs:label>
+		<rdfs:comment>connects groups that have a role to the instance of that role</rdfs:comment>
+		<rdfs:domain>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
+					<owl:Class rdf:about="http://xmlns.com/foaf/0.1/Group"/>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:domain>		
+		<rdfs:range rdf:resource="#Role"/>
+		<owl:inverseOf rdf:resource="#role_at"/>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/participation/schema#"/>
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="#role_at">
+		<rdfs:label xml:lang="en">role</rdfs:label>
+		<rdfs:comment>connects groups that have a role to the instance of that role</rdfs:comment>
+		<rdfs:range>
+			<owl:Class>
+				<owl:unionOf rdf:parseType="Collection">
+					<owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization"/>
+					<owl:Class rdf:about="http://xmlns.com/foaf/0.1/Group"/>
+				</owl:unionOf>
+			</owl:Class>
+		</rdfs:range>		
+		<rdfs:domain rdf:resource="#Role"/>
+		<owl:inverseOf rdf:resource="#role_at"/>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/participation/schema#"/>
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="#holder_of">
+		<rdfs:comment>specifies roles that an agent holds</rdfs:comment>
+		<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+		<rdf:range rdf:resource="#Role"/>
+		<owl:inverseOf rdf:resource="#holder"/>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/participation/schema#"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:about="#holder">
+		<rdfs:comment>specifies the holder of a role</rdfs:comment>
+		<rdf:domain rdf:resource="#Role"/>
+		<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+		<owl:inverseOf rdf:resource="#holder_of"/>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/participation/schema#"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:about="#startDate">
+		<rdfs:label xml:lang="en">startDate</rdfs:label>
+		<rdfs:comment>The date on which this agent started performing this role</rdfs:comment>
+		<rdfs:domain rdf:resource="#Role"/>
+		<rdfs:range rdf:resource="xsd:Date"/>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/participation/schema#"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:about="#endDate">
+		<rdfs:label xml:lang="en">endDate</rdfs:label>
+		<rdfs:comment>The date on which this agent stopped performing this role</rdfs:comment>
+		<rdfs:domain rdf:resource="#Role"/>
+		<rdfs:range rdf:resource="xsd:Date"/>
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/vocab/participation/schema#"/>
+	</rdf:Property>
+
+</rdf:RDF>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <rdfs:Resource rdf:about="http://fabl.net/vocabularies/geometry/1.1">
+    <dc:title>RDF Geometry Vocabulary</dc:title>
+    <dc:creator>Chris Goad cg@mapbureau.com</dc:creator>
+    <dc:date>2004-10-27</dc:date>
+    <rdfs:isDefinedBy rdf:resource="http://fabl.net/lib/geometry/1.1/revision2.fb" />
+    <rdfs:seeAlso rdf:resource="http://fabl.net/lib/geometry/1.1" />
+  </rdfs:Resource>
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/Shape">
+    <rdfs:comment>The class of all geometrical forms</rdfs:comment>
+  </rdfs:Class>
+  <owl:FunctionalProperty rdf:about="http://fabl.net/vocabularies/geometry/1.1/minDimension">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#int" />
+    <rdfs:comment>The minimum dimension of points in the extension of a Shape</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://fabl.net/vocabularies/geometry/1.1/maxDimension">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/10/XMLSchema#int" />
+    <rdfs:comment>The maximum dimension of points in the extension of a Shape</rdfs:comment>
+  </owl:FunctionalProperty>
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/x" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/y" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/z" />
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/Point">
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Shape" />
+  </rdfs:Class>
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/Transformation">
+    <rdfs:comment>The class of all functions with geom:Point as domain and range</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/elements" />
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/Group">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/elements" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/elements" />
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Shape" />
+    <rdfs:comment>A collection of geom:Shapes</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/Curve">
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Shape" />
+    <rdfs:comment>The range of a continuous function from a real interval to geom:Point</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/end0" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/end1" />
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/CurveSegment">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/end0" />
+        <owl:allValuesFrom rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Point" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/end0" />
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/end1" />
+        <owl:allValuesFrom rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Point" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/end1" />
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Curve" />
+    <rdfs:comment>A geom:Curve with distinct end points</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/ClosedCurve">
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Curve" />
+    <rdfs:comment>A one-dimensional loop of points</rdfs:comment>
+  </rdfs:Class>
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/LineSegment">
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/CurveSegment" />
+    <rdfs:comment>A straight line segment</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/points" />
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/Polyline">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/points" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/points" />
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Curve" />
+    <rdfs:comment>A piecewise linear curve</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/xmin" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/xmax" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/ymin" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/ymax" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/zmin" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/zmax" />
+  <rdfs:Class about="http://fabl.net/vocabularies/geometry/1.1/Box">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/xmin" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2000/10/XMLSchema#double" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/xmin" />
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/xmax" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2000/10/XMLSchema#double" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/xmax" />
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/ymin" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2000/10/XMLSchema#double" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/ymin" />
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/ymax" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2000/10/XMLSchema#double" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/ymax" />
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/zmin" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2000/10/XMLSchema#double" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/zmin" />
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/zmax" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2000/10/XMLSchema#double" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://fabl.net/vocabularies/geometry/1.1/zmax" />
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://fabl.net/vocabularies/geometry/1.1/Shape" />
+    <rdfs:comment>Points lying within specified bounds on coordinates</rdfs:comment>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/center" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/radius" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/boundary" />
+  <rdf:Property rdf:about="http://fabl.net/vocabularies/geometry/1.1/direction" />
+</rdf:RDF>

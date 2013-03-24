@@ -1,0 +1,61 @@
+<rdf:RDF xmlns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+	xml:base="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+	 xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+	xmlns:dc="http://purl.org/dc/elements/1.1/" 
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:foaf="http://xmlns.com/foaf/0.1/" 
+	xmlns:vann="http://purl.org/vocab/vann/"
+	xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#">
+
+
+<owl:Ontology rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns">
+  <dc:title xml:lang="en-US">SemWeb Vocab Status ontology</dc:title>
+  <dc:title xml:lang="zh-CN">语义网词汇集状态本体</dc:title>
+  <dc:description xml:lang="en-US">An RDF vocabulary for relating SW vocabulary terms to their status.</dc:description>
+  <dc:description xml:lang="zh-CN">用于关联语义网词汇集的术语和其状态的RDF词汇集</dc:description>
+  <rdfs:comment xml:lang="en-US">This vocabulary was created in the FOAF project, based on experience with FOAF, Dublin Core and other early RDF vocabularies. Deployment experience shows that changing namespace URIs is expensive and unrewarding, so this vocabulary provides terms to support in-place evolution of structured data vocabularies. By indicating status at the level of terms rather than vocabularies, dictionary-style, fine grained improvements become easier. Different organizations and parties can agree or disagree on the status of a vocabulary term; however the status published alongside the term may deserve special attention. Future work could include patterns for citing announcements and decisions, or using SKOS to decentralise the extension of the basic status levels.</rdfs:comment>
+  <rdfs:comment xml:lang="zh-CN">这个词汇集根据FOAF、Dublin Core和其它早期RDF词汇集的经验，创建于FOAF项目中。部署的经验表明，改变命名空间URI是昂贵的、收效甚微的，所以这个词汇集提供了术语，以支持结构化数据词汇集的演变。通过指定术语级别的状态而不是词汇集，字典式的，细粒度的改善会变得更加容易。不同的组织和当事人可以同意或反对的一个词汇集术语的状态；然而和术语一同发布的状态可能值得特别注意。今后的工作包括引用通知和决策，或使用的SKOS分散基本状态级别的扩展的模式。</rdfs:comment>
+  <dc:creator>Dan Brickley</dc:creator>
+	<dc:creator>Leigh Dodds</dc:creator>
+	<dc:creator>Libby Miller</dc:creator>
+	<dc:contributor>Pierre-Yves Vandenbussche</dc:contributor><!-- fixed and updated the schema file, thanks! -->
+	<dc:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-12-12</dc:modified>
+	<dc:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2003-06-01</dc:issued>
+	<vann:preferredNamespacePrefix>vs</vann:preferredNamespacePrefix>
+  <vann:preferredNamespaceUri>http://www.w3.org/2003/06/sw-vocab-status/ns#</vann:preferredNamespaceUri>
+</owl:Ontology>
+
+
+<rdf:Property rdf:about="#term_status">
+  <rdfs:label xml:lang="en-US">term status</rdfs:label>
+  <rdfs:label xml:lang="zh-CN">术语状态</rdfs:label>
+  <rdfs:comment xml:lang="en-US">the status of a vocabulary term, expressed as a short symbolic string; known values include 'unstable','testing', 'stable' and 'archaic'</rdfs:comment>
+  <rdfs:comment xml:lang="zh-CN">词汇集术语的状态，用很短的符号字符串表示；已知的值包括“不稳定的”，“测试中”，“稳定的”和“过时的”</rdfs:comment>
+  <vs:term_status>unstable</vs:term_status>
+  <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns#"/>
+</rdf:Property>
+
+
+<rdf:Property rdf:about="#moreinfo">
+  <rdfs:label xml:lang="en-US">more info</rdfs:label>
+  <rdfs:label xml:lang="zh-CN">更多信息</rdfs:label>
+  <rdfs:comment xml:lang="en-US">more information about the status etc of a term, typically human oriented</rdfs:comment>
+  <rdfs:comment xml:lang="zh-CN">关于这个术语的状态的更多信息，通常是人性化的</rdfs:comment>
+  <!-- like seeAlso, but for humans -->
+  <vs:term_status>unstable</vs:term_status>
+  <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns#"/>	
+</rdf:Property> 
+
+<rdf:Property rdf:about="#userdocs">
+  <rdfs:label xml:lang="en-US">user docs</rdfs:label>
+  <rdfs:label xml:lang="zh-CN">用户文档</rdfs:label>
+  <rdfs:comment xml:lang="en-US">human-oriented documentation, examples etc for use of this term</rdfs:comment>
+  <rdfs:comment xml:lang="zh-CN">人性化的文档，针对这个术语的使用的示例</rdfs:comment>
+  <!-- like seeAlso, but for humans -->
+  <vs:term_status>unstable</vs:term_status>
+  <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns#"/>	
+</rdf:Property> 
+
+
+</rdf:RDF>

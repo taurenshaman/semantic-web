@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY cc "http://web.resource.org/cc/" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+    <!ENTITY vocabid "http://purl.org/vocab/riro/gpt" >
+    <!ENTITY gpt "http://purl.org/vocab/riro/gpt#" >
+]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+  xmlns:owl="http://www.w3.org/2002/07/owl#" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:dct="http://purl.org/dc/terms/" 
+  xmlns:dctype="http://purl.org/dc/dcmitype/" 
+  xmlns:cc="http://web.resource.org/cc/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:gpt="http://purl.org/vocab/riro/gpt#"
+  xml:base="http://purl.org/vocab/riro/gpt">
+ <owl:Ontology rdf:about="" dc:date="2006-02-21">
+  <dc:title xml:lang="en">RDF Graph Patterns and Templates</dc:title>
+  <rdfs:comment xml:lang="en">
+   This vocabulary defines terms used to describe RDF Graph patterns 
+   and templates as used in RDF Query languages (e.g. SPARQL) and elsewhere.
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   The goal of the design is to model common parts of these languages
+   in RDF in a way that allows for the generation of the actual queries in their
+   native format. Note that only patterns and templates are modeled, not 
+   complete queries.
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   A basic pattern/template is a set of reified RDF statements (reification
+   is similar to the one built-in into RDF). Leaves of a reified triple
+   are URIs, literals (stand for themselves) or blank nodes (variables).
+   Variables have no names; blank nodes can be assigned nodeIDs and
+   shared in a normal RDF way.      
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   More complex patterns are built by joining and filtering simpler patterns.
+   Joining (cf. SPARQL UNION, regexp |) allows specification of alternative
+   patterns; filtering (cf. SPARQL FILTER) constrains the allowable binding of 
+   variables.  
+  </rdfs:comment>
+  <dc:identifier>&vocabid;</dc:identifier>
+  <dct:isVersionOf rdf:resource="&gpt;"/>
+  <dc:creator>Sergei Egorov &lt;esl@ariadnegenomics.com&gt;</dc:creator>
+  <dc:rights>Copyright © 2006 Sergei Egorov</dc:rights>
+  <dc:rights>OWL metadata &amp; format Copyright © 2005 Richard Newman and Ian Davis</dc:rights>
+  <vann:preferredNamespaceUri>&gpt;</vann:preferredNamespaceUri>
+  <vann:preferredNamespacePrefix>gpt</vann:preferredNamespacePrefix>
+
+  <dct:hasFormat>
+    <dctype:Text rdf:about="&vocabid;.html">
+     <dc:format>
+      <dct:IMT>
+       <rdf:value>text/html</rdf:value>
+       <rdfs:label xml:lang="en">HTML</rdfs:label>
+      </dct:IMT>
+     </dc:format>
+    </dctype:Text>
+  </dct:hasFormat>
+
+  <dct:hasFormat>
+    <dctype:Text rdf:about="&vocabid;.owl">
+     <dc:format>
+      <dct:IMT>
+       <rdf:value>application/rdf+xml</rdf:value>
+       <rdfs:label xml:lang="en">OWL</rdfs:label>
+      </dct:IMT>
+     </dc:format>
+    </dctype:Text>
+  </dct:hasFormat>
+
+ <skos:example rdf:resource="gpt-example.rdf"/>
+ <skos:example rdf:resource="gpt-example.ttl"/>
+
+ <dct:issued>2006-02-21</dct:issued>
+ <skos:changeNote rdf:value="Fixed rdf:Resource bug" dc:date="2007-02-21" dc:creator="Sergei Egorov"/>
+ <skos:changeNote rdf:value="Fixed cardinality type error" dc:date="2006-03-06" dc:creator="Sergei Egorov"/>
+ <skos:changeNote rdf:value="Added examples" dc:date="2006-02-26" dc:creator="Sergei Egorov"/>
+ <skos:changeNote rdf:value="Added OWL ontology metadata" dc:date="2006-02-21" dc:creator="Sergei Egorov"/>
+ <skos:historyNote rdf:value="First version" dc:date="2006-02-21" dc:creator="Sergei Egorov"/>
+
+ </owl:Ontology>
+
+ <cc:Work rdf:about="">
+   <cc:license rdf:resource="http://creativecommons.org/licenses/by/2.5/"/>
+ </cc:Work>
+ <cc:License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+   <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+   <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+   <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+   <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+   <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+ </cc:License>
+
+ <owl:ObjectProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+ <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/hasFormat"/>
+
+ <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/replaces"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/type"/>
+
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+
+ <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/changes"/>
+
+ <owl:DatatypeProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#value"/>
+
+ <owl:Class rdf:about="&cc;License"/>
+ <owl:Class rdf:about="&cc;Permission"/>
+ <owl:Class rdf:about="&cc;Requirement"/>
+ <owl:ObjectProperty rdf:about="&cc;permits"/>
+ <owl:ObjectProperty rdf:about="&cc;requires"/>
+ <owl:AnnotationProperty rdf:about="&cc;license"/>
+ <cc:Permission rdf:about="&cc;Reproduction"/>
+ <cc:Permission rdf:about="&cc;Distribution"/>
+ <cc:Requirement rdf:about="&cc;Notice"/>
+ <cc:Requirement rdf:about="&cc;Attribution"/>
+ <cc:Permission rdf:about="&cc;DerivativeWorks"/>
+  
+ <owl:Class rdf:about="&gpt;Statement">
+  <rdfs:label xml:lang="en">RDF Statement Pattern/Template</rdfs:label>
+  <skos:definition xml:lang="en">
+   A pattern or template for a single RDF Statement (triple).
+  </skos:definition >
+  <rdfs:comment xml:lang="en">
+   A member of this class describes a pattern that can be matched against
+   any RDF statement or a template that can be used to build such a statement
+   from its three components. A pattern matches if its subject, predicate, 
+   and object match the corresponding components of the statement.
+  </rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:DatatypeProperty rdf:about="&gpt;subject"/>
+      </owl:onProperty>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;predicate"/>
+      </owl:onProperty>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;object"/>
+      </owl:onProperty>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+  <skos:changeNote rdf:value="Added comment" dc:date="2006-02-12" dc:creator="Sergei Egorov"/>
+ </owl:Class>
+
+ <owl:ObjectProperty rdf:about="&gpt;subject">
+   <rdfs:label xml:lang="en">pattern for subject</rdfs:label>
+   <skos:definition xml:lang="en">
+    The pattern/template for the statement's subject.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;Statement"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:ObjectProperty rdf:about="&gpt;predicate">
+   <rdfs:label xml:lang="en">pattern for predicate</rdfs:label>
+   <skos:definition xml:lang="en">
+    The pattern/template for the statement's predicate.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;Statement"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:ObjectProperty rdf:about="&gpt;object">
+   <rdfs:label xml:lang="en">pattern for object</rdfs:label>
+   <skos:definition xml:lang="en">
+    The pattern/template for the statement's object.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;Statement"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:Class rdf:about="&gpt;Graph">
+  <rdfs:label xml:lang="en">RDF Graph Pattern/Template</rdfs:label>
+  <skos:definition xml:lang="en">A pattern/template for an RDF Graph.</skos:definition >
+  <rdfs:comment xml:lang="en">
+   A member of this class describes a pattern/template for an RDF graph. A graph pattern
+   is represented as a set of patterns/templates (one per RDF statement).
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   A graph pattern matches if all its statement patterns match some statements in the target 
+   graph (shared blank nodes should match the same RDF resource). The result of a match is a
+   set of solutions, each solution being a substitution providing replacement values for
+   all blank nodes in the pattern graph. Replacement values can be literals, URIs, or
+   other blank nodes.
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   The set is modeled as an RDF list to make it closed with the assumption that the
+   elements of the list are members of the set being modeled (cf. owl:oneOf). 
+   The graph pattern node and the list are connected with the gpt:allOf predicate.
+  </rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;allOf"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+  <skos:changeNote rdf:value="Added comment" dc:date="2006-02-21" dc:creator="Sergei Egorov"/>
+ </owl:Class>
+
+ <owl:ObjectProperty rdf:about="&gpt;allOf">
+   <rdfs:label xml:lang="en">members of a set</rdfs:label>
+   <skos:definition xml:lang="en">The set enumerated in a list form.</skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&rdfs;Resource"/>
+   <rdfs:range rdf:resource="&rdf;List"/>
+   <dct:issued>2006-02-21</dct:issued>
+   <skos:changeNote rdf:value="Fixed rdf:Resource bug" dc:date="2007-02-21" dc:creator="Sergei Egorov"/>
+ </owl:ObjectProperty>
+
+ <owl:Class rdf:about="&gpt;Union">
+  <rdfs:label xml:lang="en">Union of Patterns</rdfs:label>
+  <skos:definition xml:lang="en">A set of alternative patterns.</skos:definition >
+  <rdfs:comment xml:lang="en">
+   A member of this class describes pattern alternatives. A union pattern matches if any
+   of the alternative patterns match. Alternative patterns can be instances of gpt:Graph,
+   gpt:Filter, or another gpt:Union.
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   The set of alternatives is modeled as an RDF list to make it closed with assumption that 
+   the elements of the list are members of the set being modeled (cf. owl:oneOf). The union
+   pattern node and the list are connected with the gpt:allOf predicate.
+  </rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;allOf"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+  <skos:changeNote rdf:value="Added comment" dc:date="2006-02-21" dc:creator="Sergei Egorov"/>
+ </owl:Class>
+
+ <owl:Class rdf:about="&gpt;Filter">
+  <rdfs:label xml:lang="en">Filter Pattern</rdfs:label>
+  <skos:definition xml:lang="en">
+   A pattern with constraints on its variables.
+  </skos:definition >
+  <rdfs:comment xml:lang="en">
+   A member of this class describes a pattern with a boolean expression imposing
+   constraints on possible values of its variables. A filter pattern matches if its
+   base pattern matches and the filter expression evaluates to true for the given
+   solution (a set of values corresponding to the blank nodes in the graph patterns). 
+  </rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;onPattern"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;valueConstraint"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+  <skos:changeNote rdf:value="Added comment" dc:date="2006-02-21" dc:creator="Sergei Egorov"/>
+ </owl:Class>
+
+ <owl:ObjectProperty rdf:about="&gpt;onPattern">
+   <rdfs:label xml:lang="en">base pattern for filtering</rdfs:label>
+   <skos:definition xml:lang="en">
+    The pattern which variables are restricted.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;Filter"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:ObjectProperty rdf:about="&gpt;valueConstraint">
+   <rdfs:label xml:lang="en">value constraint expression</rdfs:label>
+   <skos:definition xml:lang="en">
+    The expression restricting values of variables.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;Filter"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:Class rdf:about="&gpt;ConstraintExpression">
+  <rdfs:label xml:lang="en">Value Constraint Expression</rdfs:label>
+  <skos:definition xml:lang="en">Any constraint expression.</skos:definition >
+  <rdfs:comment xml:lang="en">
+   This is the base class for all constraint expressions. Constraint expressions
+   are distinguished by their class; they have zero or more arguments as defined
+   by the corresponding class. The vocabulary of constraint expressions now covers
+   a very small subset of SPARQL FILTER expressions; more expressions will be added 
+   later (possibly in a separate namespace). 
+  </rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;onPattern"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;valueConstraint"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+  <skos:changeNote rdf:value="Added comment" dc:date="2006-02-21" dc:creator="Sergei Egorov"/>
+ </owl:Class>
+
+ <owl:ObjectProperty rdf:about="&gpt;arg1">
+   <rdfs:label xml:lang="en">first argument</rdfs:label>
+   <skos:definition xml:lang="en">
+    The first argument of a constraint expression.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;ConstraintExpression"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:ObjectProperty rdf:about="&gpt;arg2">
+   <rdfs:label xml:lang="en">second argument</rdfs:label>
+   <skos:definition xml:lang="en">
+    The second argument of a constraint expression.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;ConstraintExpression"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:ObjectProperty rdf:about="&gpt;arg3">
+   <skos:definition xml:lang="en">
+    The third argument of a constraint expression.
+   </skos:definition>
+   <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+   <rdfs:domain rdf:resource="&gpt;ConstraintExpression"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-02-21</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:Class rdf:about="&gpt;ISURI">
+  <rdfs:label xml:lang="en">isURI(A)</rdfs:label>
+  <skos:definition xml:lang="en">True if A is an IRI/URI.</skos:definition>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf rdf:resource="&gpt;ConstraintExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;arg1"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+ </owl:Class>
+
+ <owl:Class rdf:about="&gpt;ISBLANK">
+  <rdfs:label xml:lang="en">isBlank(A)</rdfs:label>
+  <skos:definition xml:lang="en">True if A is a blank node.</skos:definition>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf rdf:resource="&gpt;ConstraintExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;arg1"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+ </owl:Class>
+
+ <owl:Class rdf:about="&gpt;ISLITERAL">
+  <rdfs:label xml:lang="en">isLiteral(A)</rdfs:label>
+  <skos:definition xml:lang="en">True if A is a literal.</skos:definition>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf rdf:resource="&gpt;ConstraintExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;arg1"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+ </owl:Class>
+
+ <owl:Class rdf:about="&gpt;EQUAL">
+  <rdfs:label xml:lang="en">RDFterm-equal(A, B)</rdfs:label>
+  <skos:definition xml:lang="en">True if A and B are the same RDF terms.</skos:definition>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf rdf:resource="&gpt;ConstraintExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;arg1"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;arg2"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+ </owl:Class>
+
+ <owl:Class rdf:about="&gpt;OR">
+  <rdfs:label xml:lang="en">A || B</rdfs:label>
+  <skos:definition xml:lang="en">True if A or B are true.</skos:definition>
+  <rdfs:isDefinedBy rdf:resource="&gpt;"/>
+  <rdfs:subClassOf rdf:resource="&gpt;ConstraintExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;arg1"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&gpt;arg2"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-02-21</dct:issued>
+ </owl:Class>
+
+ <!-- to be continued...  -->
+
+</rdf:RDF>

@@ -1,0 +1,664 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.site.uottawa.ca/~mkhedr/Ontologies/Fuzzy#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xml:base="http://www.site.uottawa.ca/~mkhedr/Ontologies/Fuzzy">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment>
+      Slots: 72
+      Classes 85
+    </rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Branch">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Tree" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ConflictResolution" />
+  <owl:Class rdf:ID="Inductivefuzzy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FuzzyInference" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Possibility">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Hedges" />
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#TruthType" />
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Allpurpose" />
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="trapazoidal">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Continous" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Fuzzification">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FuzzyOperation" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MetaInfo" />
+  <owl:Class rdf:ID="yager">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#hasOmega" />
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Complement" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FuzzyMembershipFn" />
+  <owl:Class rdf:ID="Operation">
+    <rdfs:subClassOf rdf:resource="#FuzzyOperation" />
+  </owl:Class>
+  <owl:Class rdf:ID="parent">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isaLeaf" />
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Child" />
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasNodes" />
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Node" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MetaImport">
+    <rdfs:subClassOf rdf:resource="#MetaInfo" />
+  </owl:Class>
+  <owl:Class rdf:ID="Unqualified">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Conditional" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Tconorm">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FuzzyRule" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sugeno">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Complement" />
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#haslambda" />
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BaseOntology">
+    <rdfs:subClassOf rdf:resource="#MetaInfo" />
+  </owl:Class>
+  <owl:Class rdf:ID="Standard">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Complement" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sigmoid">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Guassian" />
+    </rdfs:subClassOf>
+    <rdfs:comment>its rule of mean and variance</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Defuzzification">
+    <rdfs:subClassOf rdf:resource="#FuzzyOperation" />
+  </owl:Class>
+  <owl:Class rdf:ID="Consequent">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Operation" />
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperationType" />
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Hedges">
+    <rdfs:subClassOf rdf:resource="#FuzzyOperation" />
+  </owl:Class>
+  <owl:Class rdf:ID="Conditional">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MinMax" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TruthType">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Allpurpose" />
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Possibility" />
+    <rdfs:subClassOf rdf:resource="#Hedges" />
+  </owl:Class>
+  <owl:Class rdf:ID="Guassian">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Continous" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Tree">
+    <rdfs:subClassOf rdf:resource="#Inductivefuzzy" />
+  </owl:Class>
+  <owl:Class rdf:ID="Allpurpose">
+    <owl:disjointWith rdf:resource="#Possibility" />
+    <rdfs:subClassOf rdf:resource="#Hedges" />
+    <owl:disjointWith rdf:resource="#TruthType" />
+  </owl:Class>
+  <owl:Class rdf:ID="Crisp">
+    <rdfs:subClassOf rdf:resource="#FuzzyMembershipFn" />
+  </owl:Class>
+  <owl:Class rdf:ID="FuzzyNumber">
+    <rdfs:comment>
+      hasmembershipvalue is used to provide a instance in the fuzzy term.
+      eg. of fuzzy number is app. 5
+    </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Tnorm">
+    <rdfs:subClassOf rdf:resource="#FuzzyRule" />
+  </owl:Class>
+  <owl:Class rdf:ID="Product">
+    <rdfs:subClassOf rdf:resource="#Tnorm" />
+  </owl:Class>
+  <owl:Class rdf:ID="Cylindrical">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FuzzyRelation" />
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Tnorm" />
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperationType" />
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Similar">
+    <rdfs:subClassOf rdf:resource="#Hedges" />
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FuzzyRelation" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Projection">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperationType" />
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Tconorm" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FuzzyRelation" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="FuzzyVariable">
+    <rdfs:comment>eg. of fuzzy variable is age, temp, ...</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FuzzyRelation">
+    <rdfs:subClassOf rdf:resource="#FuzzyOperation" />
+  </owl:Class>
+  <owl:Class rdf:ID="Max">
+    <rdfs:subClassOf rdf:resource="#Tconorm" />
+  </owl:Class>
+  <owl:Class rdf:ID="Antecedent">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Operation" />
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasOperationType" />
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Node">
+    <rdfs:subClassOf rdf:resource="#Inductivefuzzy" />
+  </owl:Class>
+  <owl:Class rdf:ID="Qualified">
+    <rdfs:subClassOf rdf:resource="#Conditional" />
+  </owl:Class>
+  <owl:Class rdf:ID="Child">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="#isaLeaf" />
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Node" />
+  </owl:Class>
+  <owl:Class rdf:ID="Continous">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Discrete" />
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#FuzzyMembershipFn" />
+  </owl:Class>
+  <owl:Class rdf:ID="FuzzyTerm">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FuzzySet" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Discrete">
+    <rdfs:subClassOf rdf:resource="#FuzzyMembershipFn" />
+    <owl:disjointWith rdf:resource="#Continous" />
+  </owl:Class>
+  <owl:Class rdf:ID="FuzzySet">
+    <rdfs:comment>eg. of fuzzyTerm is young, cold, near,...</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#FuzzyRule" />
+        <owl:onProperty>
+          <owl:TransitiveProperty rdf:about="#AggregationOf" />
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Min">
+    <rdfs:subClassOf rdf:resource="#Tnorm" />
+  </owl:Class>
+  <owl:Class rdf:ID="triangular">
+    <rdfs:subClassOf rdf:resource="#trapazoidal" />
+    <rdfs:comment>add the rule that center is equal to first and scnd point of trap.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MinMax">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FuzzyInference" />
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sum">
+    <rdfs:subClassOf rdf:resource="#Tconorm" />
+  </owl:Class>
+  <owl:Class rdf:ID="FuzzyInference">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasResolutionMethod" />
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#ConflictResolution" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Complement">
+    <rdfs:subClassOf rdf:resource="#FuzzyRule" />
+  </owl:Class>
+  <owl:Class rdf:ID="UserDefined">
+    <rdfs:subClassOf rdf:resource="#Continous" />
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="pointsTo">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:comment>used to relate this fuzzy variable with an external resource</rdfs:comment>
+    <rdfs:domain rdf:resource="#FuzzyVariable" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasFuzzyTerm">
+    <rdfs:comment>links the fuzzy variables to thier fuzzy linguistic terms</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#FuzzyNumber" />
+          <owl:Class rdf:about="#FuzzyVariable" />
+          <owl:Class rdf:about="#FuzzyRelation" />
+          <owl:Class rdf:about="#Hedges" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#FuzzySet" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="operatedUpon">
+    <rdfs:range rdf:resource="#FuzzyOperation" />
+    <rdfs:domain rdf:resource="#FuzzyMembershipFn" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasInferenceType">
+    <rdfs:comment>how to infere over rules, example using fuzzy trees or quantified-qualified process.</rdfs:comment>
+    <rdfs:range rdf:resource="#FuzzyInference" />
+    <rdfs:domain rdf:resource="#FuzzyRule" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasNodes">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Branch" />
+          <owl:Class rdf:about="#parent" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:comment>used to define the nodes of a given inference tree</rdfs:comment>
+    <rdfs:range rdf:resource="#Node" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="similarIn">
+    <rdfs:comment>(important) links an entity with another entity according to this functionality, example according to location of activity</rdfs:comment>
+    <rdfs:domain rdf:resource="#Similar" />
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAssociatedFuzzyTerm">
+    <rdfs:range rdf:resource="#FuzzySet" />
+    <rdfs:comment>links membership functions to its linguistic term. inverse ot hasmembershipfn.</rdfs:comment>
+    <rdfs:domain rdf:resource="#FuzzyMembershipFn" />
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasMemebrshipFn" />
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasConsequent">
+    <rdfs:range rdf:resource="#Consequent" />
+    <rdfs:comment>links a rule to its consequent part</rdfs:comment>
+    <rdfs:domain rdf:resource="#FuzzyRule" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasResolutionMethod">
+    <rdfs:range rdf:resource="#ConflictResolution" />
+    <rdfs:domain rdf:resource="#FuzzyInference" />
+    <rdfs:comment>for defining the method of resolving conflicts such as first come first choosen, prioirty, random, recently added...</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="similarTo">
+    <rdfs:comment>(important) it points to the other entity in the similarity example Room2</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:domain rdf:resource="#Similar" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasFuzzyVariable">
+    <rdfs:comment>if wieght (fuzzy variable) lessthan (operation) Fat (fuzzy value).</rdfs:comment>
+    <rdfs:range rdf:resource="#FuzzyVariable" />
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Antecedent" />
+          <owl:Class rdf:about="#Consequent" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="represents">
+    <rdfs:domain rdf:resource="#FuzzyRelation" />
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:comment>
+      to link situation ot enitity using fuzzy
+      ex desktop-khedr and degree of relation
+    </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasHedge">
+    <rdfs:range rdf:resource="#Hedges" />
+    <rdfs:domain rdf:resource="#Qualified" />
+    <rdfs:comment>used to increase the truth of  certain rule and in the process of inference</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasFuzzyValue">
+    <rdfs:comment>if wieght (fuzzy variable) lessthan (operation) Fat (fuzzy value).</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Antecedent" />
+          <owl:Class rdf:about="#Consequent" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasOperationType">
+    <rdfs:comment>used to compose the parts of the rule . example bigger, is, notequal,...</rdfs:comment>
+    <rdfs:range rdf:resource="#Operation" />
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Projection" />
+          <owl:Class rdf:about="#Cylindrical" />
+          <owl:Class rdf:about="#Antecedent" />
+          <owl:Class rdf:about="#Consequent" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAntecedent">
+    <rdfs:range rdf:resource="#Antecedent" />
+    <rdfs:comment>links a rule to its antecedent part</rdfs:comment>
+    <rdfs:domain rdf:resource="#FuzzyRule" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="degreeOfCertain">
+    <rdfs:comment>(recommended) used to decide the expected, measured or decided degree of certainty . used in most similarity measures found in other ontologies</rdfs:comment>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#FuzzyVariable" />
+          <owl:Class rdf:about="#FuzzyNumber" />
+          <owl:Class rdf:about="#FuzzyMembershipFn" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Similar" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMemebrshipFn">
+    <owl:inverseOf rdf:resource="#hasAssociatedFuzzyTerm" />
+    <rdfs:domain rdf:resource="#FuzzySet" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+    <rdfs:range rdf:resource="#FuzzyMembershipFn" />
+    <rdfs:comment>links a linguistic term to its membership funciton</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasHedgeFormula">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:comment>the hedge formula used , example x2, sqrt...</rdfs:comment>
+    <rdfs:domain rdf:resource="#Hedges" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasID">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:domain rdf:resource="#FuzzyRule" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isaLeaf">
+    <rdfs:domain rdf:resource="#Node" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:domain rdf:resource="#FuzzyNumber" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasScndpnt">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+    <rdfs:domain rdf:resource="#trapazoidal" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasCenter">
+    <rdfs:domain rdf:resource="#triangular" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasEndPoint">
+    <rdfs:domain rdf:resource="#Continous" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasCardinality">
+    <rdfs:domain rdf:resource="#FuzzySet" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="alphacutSupport">
+    <rdfs:comment>the alpha cut that can be used in defininf the fuzzy sets (optional)</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:domain rdf:resource="#FuzzySet" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasVariance">
+    <rdfs:domain rdf:resource="#Guassian" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasFuzzificationType">
+    <rdfs:domain rdf:resource="#Fuzzification" />
+    <owl:inverseOf>
+      <owl:DatatypeProperty rdf:about="#hasDefuzzificationType" />
+    </owl:inverseOf>
+    <rdfs:comment>method of fuzzification example singletone</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasStartPoint">
+    <rdfs:domain rdf:resource="#Continous" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasDefuzzificationType">
+    <rdfs:comment>how to defuzzify the results, example: centroid</rdfs:comment>
+    <rdfs:domain rdf:resource="#Defuzzification" />
+    <owl:inverseOf rdf:resource="#hasFuzzificationType" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasIFT_URL">
+    <rdfs:domain rdf:resource="#Inductivefuzzy" />
+    <rdfs:comment>URL that points to the location of the fuzzy tree XML file.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasName">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#FuzzySet" />
+          <owl:Class rdf:about="#FuzzyVariable" />
+          <owl:Class rdf:about="#Inductivefuzzy" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:comment>used to reference instances of sets, and inference trees</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasHeuristicType">
+    <rdfs:domain rdf:resource="#Tree" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:comment>example of heirestics are entroby and gainratio</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasMemebeshipValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+    <rdfs:comment>the corresponding value of the hasinputvalue</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Discrete" />
+          <owl:Class rdf:about="#UserDefined" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="haslambda">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+    <rdfs:domain rdf:resource="#Sugeno" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasInputValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:comment>descrete values for fuzzy membership function</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Discrete" />
+          <owl:Class rdf:about="#UserDefined" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasOmega">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+    <rdfs:domain rdf:resource="#yager" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasFirstpnt">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+    <rdfs:domain rdf:resource="#trapazoidal" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasHegeName">
+    <rdfs:domain rdf:resource="#Hedges" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:comment>name of the hedge example very, notquite</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasmean">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+    <rdfs:domain rdf:resource="#Guassian" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasNumberOfPoints">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Discrete" />
+          <owl:Class rdf:about="#UserDefined" />
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:ID="AggregationOf">
+    <rdfs:range rdf:resource="#FuzzyRule" />
+    <rdfs:domain rdf:resource="#FuzzySet" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
+    <rdfs:comment>needed to bundle a group of rules togther and apply the aggregation rule on them.</rdfs:comment>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:ID="hasImportOntology">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:domain rdf:resource="#MetaImport" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
+  </owl:TransitiveProperty>
+  <owl:SymmetricProperty rdf:ID="prefix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+    <rdfs:domain rdf:resource="#MetaImport" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:ID="hasAlternativeEntry">
+    <rdfs:comment>to be used either to load the onto from another location if  it is not available at current url OR to be used with the altentry in jena</rdfs:comment>
+    <rdfs:domain rdf:resource="#MetaInfo" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
+  </owl:SymmetricProperty>
+  <ConflictResolution rdf:ID="HighestScore" />
+  <FuzzyVariable rdf:ID="Time" />
+  <Operation rdf:ID="Multiplication" />
+  <rdf:Description>
+    <rdf:rest rdf:parseType="Collection">
+      <Operation rdf:ID="Bigger" />
+      <Operation rdf:ID="BiggerOrEqual" />
+      <Operation rdf:ID="Smaller" />
+      <Operation rdf:ID="Equal" />
+    </rdf:rest>
+    <rdf:first>
+      <Operation rdf:ID="SmallerOrEqual" />
+    </rdf:first>
+  </rdf:Description>
+  <BaseOntology rdf:ID="fuzzyBaseOnto">
+    <hasAlternativeEntry>file:///c:/Fuzzy.owl</hasAlternativeEntry>
+  </BaseOntology>
+  <ConflictResolution rdf:ID="RecentlyAdded" />
+  <MetaImport rdf:ID="testmeta2">
+    <hasAlternativeEntry>http://a.com/ont</hasAlternativeEntry>
+  </MetaImport>
+  <Consequent rdf:ID="conseq1" />
+  <ConflictResolution rdf:ID="MostFrequent" />
+  <ConflictResolution rdf:ID="Periority" />
+  <rdf:List rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+  <rdf:Description>
+    <rdf:first rdf:resource="#FuzzyNumber" />
+    <rdf:rest rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing" />
+    </rdf:rest>
+  </rdf:Description>
+  <Operation rdf:ID="Division" />
+  <Operation rdf:ID="Or" />
+  <FuzzyRule rdf:ID="Rule1" />
+  <Operation rdf:ID="Subtraction" />
+  <Operation rdf:ID="And" />
+  <Operation rdf:ID="Addition" />
+  <MetaImport rdf:ID="testmeta">
+    <hasAlternativeEntry>file:///c:/BravOntoCC.txt</hasAlternativeEntry>
+    <hasImportOntology>http://danahnada.bravehost.com/Ontologies/BravOntoCC.txt</hasImportOntology>
+    <prefix>montC</prefix>
+  </MetaImport>
+  <rdf:Description>
+    <rdf:rest rdf:parseType="Collection">
+      <Operation rdf:about="#Bigger" />
+      <Operation rdf:about="#BiggerOrEqual" />
+      <Operation rdf:about="#Smaller" />
+      <Operation rdf:about="#Equal" />
+    </rdf:rest>
+    <rdf:first rdf:resource="#SmallerOrEqual" />
+  </rdf:Description>
+</rdf:RDF>
+<!-- Created with Protege (with OWL Plugin 1.0, Build 72)  http://protege.stanford.edu -->

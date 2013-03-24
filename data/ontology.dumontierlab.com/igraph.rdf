@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY owl11 "http://www.w3.org/2006/12/owl11#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl11xml "http://www.w3.org/2006/12/owl11-xml#" >
+    <!ENTITY dl "http://ontology.dumontierlab.com/" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://ontology.dumontierlab.com/igraph"
+     xml:base="http://ontology.dumontierlab.com/igraph"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl11="http://www.w3.org/2006/12/owl11#"
+     xmlns:dl="http://ontology.dumontierlab.com/"
+     xmlns:owl11xml="http://www.w3.org/2006/12/owl11-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <dc:date rdf:datatype="&xsd;date">2007-10-01</dc:date>
+        <dc:title>iGraph ontology</dc:title>
+        <dc:description>Impose application-level restrictions the structure of a statistical graph.</dc:description>
+        <dc:contributor>Natalia Villanueva-Rosales</dc:contributor>
+        <owl:imports rdf:resource="http://ontology.dumontierlab.com/statistical-graph-primitive"/>
+        <dc:format>rdf/xml</dc:format>
+        <dc:creator>Leo Ferres</dc:creator>
+        <owl:versionInfo rdf:datatype="&xsd;string">2.0</owl:versionInfo>
+        <dc:creator>Michel Dumontier</dc:creator>
+    </owl:Ontology>
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;format"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#hasPart -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasPart"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#hasTitle -->
+
+    <owl:ObjectProperty rdf:about="&dl;hasTitle"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#isBefore -->
+
+    <owl:ObjectProperty rdf:about="&dl;isBefore"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="&dl;hasValue"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#hasEnd -->
+
+    <owl:DatatypeProperty rdf:about="&dl;hasEnd"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#hasStart -->
+
+    <owl:DatatypeProperty rdf:about="&dl;hasStart"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#hasStep -->
+
+    <owl:DatatypeProperty rdf:about="&dl;hasStep"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#CategoryData -->
+
+    <owl:Class rdf:about="&dl;CategoryData"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#DataPoint -->
+
+    <owl:Class rdf:about="&dl;DataPoint"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#Graph -->
+
+    <owl:Class rdf:about="&dl;Graph"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#Line -->
+
+    <owl:Class rdf:about="&dl;Line"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#LineGraph -->
+
+    <owl:Class rdf:about="&dl;LineGraph">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&dl;Graph"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="&dl;hasTitle"/>
+                                <owl:someValuesFrom rdf:resource="&dl;PrimaryTitle"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <owl:Class>
+                                        <owl:intersectionOf rdf:parseType="Collection">
+                                            <rdf:Description rdf:about="&dl;Plot"/>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                <owl:someValuesFrom>
+                                                    <owl:Class>
+                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                                <owl:someValuesFrom>
+                                                                    <owl:Class>
+                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                            <rdf:Description rdf:about="&dl;PrimaryCategoryAxis"/>
+                                                                            <owl:Restriction>
+                                                                                <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                                                <owl:someValuesFrom rdf:resource="&dl;CategoryData"/>
+                                                                            </owl:Restriction>
+                                                                        </owl:intersectionOf>
+                                                                    </owl:Class>
+                                                                </owl:someValuesFrom>
+                                                            </owl:Restriction>
+                                                            <rdf:Description rdf:about="&dl;XAxis"/>
+                                                        </owl:intersectionOf>
+                                                    </owl:Class>
+                                                </owl:someValuesFrom>
+                                            </owl:Restriction>
+                                        </owl:intersectionOf>
+                                    </owl:Class>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <rdf:Description rdf:about="&dl;YAxis"/>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Class>
+                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                    <owl:Restriction>
+                                                                        <owl:onProperty rdf:resource="&dl;hasStep"/>
+                                                                        <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                                                                    </owl:Restriction>
+                                                                    <owl:Restriction>
+                                                                        <owl:onProperty rdf:resource="&dl;hasEnd"/>
+                                                                        <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                                                                    </owl:Restriction>
+                                                                    <owl:Restriction>
+                                                                        <owl:onProperty rdf:resource="&dl;hasStart"/>
+                                                                        <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                                                                    </owl:Restriction>
+                                                                    <owl:Class>
+                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                            <owl:Restriction>
+                                                                                <owl:onProperty rdf:resource="&dl;hasTitle"/>
+                                                                                <owl:someValuesFrom rdf:resource="&dl;Title"/>
+                                                                            </owl:Restriction>
+                                                                            <rdf:Description rdf:about="&dl;ValueAxis"/>
+                                                                        </owl:intersectionOf>
+                                                                    </owl:Class>
+                                                                </owl:intersectionOf>
+                                                            </owl:Class>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                        <owl11:onClass rdf:resource="&dl;DataPoint"/>
+                                                        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+                                                    </owl:Restriction>
+                                                    <owl:Class>
+                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                            <owl:Restriction>
+                                                                <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                                <owl:someValuesFrom>
+                                                                    <owl:Class>
+                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                            <owl:Class>
+                                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                                    <owl:Restriction>
+                                                                                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                                                        <owl:someValuesFrom>
+                                                                                            <owl:Class>
+                                                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                                                    <owl:Class>
+                                                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                                                            <owl:Restriction>
+                                                                                                                <owl:onProperty rdf:resource="&dl;isBefore"/>
+                                                                                                                <owl:someValuesFrom rdf:resource="&dl;CategoryData"/>
+                                                                                                            </owl:Restriction>
+                                                                                                            <rdf:Description rdf:about="&dl;CategoryData"/>
+                                                                                                        </owl:intersectionOf>
+                                                                                                    </owl:Class>
+                                                                                                    <owl:Restriction>
+                                                                                                        <owl:onProperty rdf:resource="&dl;hasValue"/>
+                                                                                                        <owl:someValuesFrom rdf:resource="&xsd;string"/>
+                                                                                                    </owl:Restriction>
+                                                                                                </owl:intersectionOf>
+                                                                                            </owl:Class>
+                                                                                        </owl:someValuesFrom>
+                                                                                    </owl:Restriction>
+                                                                                    <rdf:Description rdf:about="&dl;DataPoint"/>
+                                                                                </owl:intersectionOf>
+                                                                            </owl:Class>
+                                                                            <owl:Restriction>
+                                                                                <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                                                                <owl:someValuesFrom>
+                                                                                    <owl:Class>
+                                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                                            <owl:Restriction>
+                                                                                                <owl:onProperty rdf:resource="&dl;hasValue"/>
+                                                                                                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                                                                                            </owl:Restriction>
+                                                                                            <rdf:Description rdf:about="&dl;ValueData"/>
+                                                                                        </owl:intersectionOf>
+                                                                                    </owl:Class>
+                                                                                </owl:someValuesFrom>
+                                                                            </owl:Restriction>
+                                                                        </owl:intersectionOf>
+                                                                    </owl:Class>
+                                                                </owl:someValuesFrom>
+                                                            </owl:Restriction>
+                                                            <rdf:Description rdf:about="&dl;Series"/>
+                                                        </owl:intersectionOf>
+                                                    </owl:Class>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="&dl;hasPart"/>
+                                        <owl:someValuesFrom rdf:resource="&dl;Line"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#Plot -->
+
+    <owl:Class rdf:about="&dl;Plot"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#PrimaryCategoryAxis -->
+
+    <owl:Class rdf:about="&dl;PrimaryCategoryAxis"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#PrimaryTitle -->
+
+    <owl:Class rdf:about="&dl;PrimaryTitle"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#Series -->
+
+    <owl:Class rdf:about="&dl;Series"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#Title -->
+
+    <owl:Class rdf:about="&dl;Title"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#ValueAxis -->
+
+    <owl:Class rdf:about="&dl;ValueAxis"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#ValueData -->
+
+    <owl:Class rdf:about="&dl;ValueData"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#XAxis -->
+
+    <owl:Class rdf:about="&dl;XAxis"/>
+    
+
+
+    <!-- http://ontology.dumontierlab.com/dl#YAxis -->
+
+    <owl:Class rdf:about="&dl;YAxis"/>
+</rdf:RDF>

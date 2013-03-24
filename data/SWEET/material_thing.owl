@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF 
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:owl="http://www.w3.org/2002/07/owl#" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+xmlns:biosphere="http://sweet.jpl.nasa.gov/ontology/biosphere.owl#" 
+xmlns:human_activities="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#" 
+xmlns="http://sweet.jpl.nasa.gov/ontology/material_thing.owl#">
+<owl:Ontology rdf:about="">
+<!--
+<dc:title>
+material_thing</dc:title>
+<dc:date>
+1/27/2004 3:27:10 PM</dc:date>
+<dc:creator>
+SWEET project</dc:creator>
+<dc:description>
+</dc:description>
+<dc:subject>
+Material thing ontology</dc:subject>
+-->
+<owl:versionInfo>
+1.0</owl:versionInfo>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/biosphere.owl"/>
+<owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl"/>
+</owl:Ontology>
+<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+<owl:Class rdf:ID="Electricity">
+<rdfs:subClassOf rdf:resource="#IndustrialProduct"/>
+</owl:Class>
+<owl:Class rdf:ID="IndustrialProduct">
+<rdfs:subClassOf rdf:resource="#Product"/>
+</owl:Class>
+<owl:Class rdf:ID="TransportationEquipment">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedActivity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#Transportation"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Equipment">
+<rdfs:subClassOf rdf:resource="#Infrastructure"/>
+</owl:Class>
+<owl:Class rdf:ID="MiningFacility">
+<rdfs:subClassOf rdf:resource="#Facility"/>
+</owl:Class>
+<owl:Class rdf:ID="Facility">
+<rdfs:subClassOf rdf:resource="#Infrastructure"/>
+</owl:Class>
+<owl:Class rdf:ID="Infrastructure"/>
+<owl:Class rdf:ID="Product"/>
+<owl:Class rdf:ID="MeteorologicalFacility">
+<rdfs:subClassOf rdf:resource="#Facility"/>
+</owl:Class>
+<owl:Class rdf:ID="PowerTransmissionFacility">
+<rdfs:subClassOf rdf:resource="#TransportationFacility"/>
+</owl:Class>
+<owl:Class rdf:ID="TransportationFacility">
+<rdfs:subClassOf rdf:resource="#Facility"/>
+</owl:Class>
+<owl:Class rdf:ID="Structure">
+<rdfs:subClassOf rdf:resource="#Facility"/>
+</owl:Class>
+<owl:Class rdf:ID="CommunicationEquipment">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedActivity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#Communications"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Radar">
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="NavigationEquipment">
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Instrument">
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="ProductionFacility">
+<rdfs:subClassOf>
+<owl:Restriction>
+<owl:onProperty rdf:resource="#hasAssociatedActivity"/>
+<owl:allValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/ontology/human_activities.owl#Production"/>
+</owl:Restriction>
+</rdfs:subClassOf>
+<rdfs:subClassOf rdf:resource="#Facility"/>
+</owl:Class>
+<owl:Class rdf:ID="ElectricityEquipment">
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="CommunicationFacility">
+<rdfs:subClassOf rdf:resource="#Facility"/>
+</owl:Class>
+<owl:Class rdf:ID="AgriculturalProductionFacility">
+<rdfs:subClassOf rdf:resource="#ProductionFacility"/>
+</owl:Class>
+<owl:Class rdf:ID="Fishery">
+<rdfs:subClassOf rdf:resource="#AgriculturalProductionFacility"/>
+</owl:Class>
+<owl:Class rdf:ID="Antenna">
+<rdfs:subClassOf rdf:resource="#CommunicationEquipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Buoy">
+<rdfs:subClassOf rdf:resource="#NavigationEquipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Farm">
+<rdfs:subClassOf rdf:resource="#AgriculturalProductionFacility"/>
+</owl:Class>
+<owl:Class rdf:ID="Mine">
+<rdfs:subClassOf rdf:resource="#MiningFacility"/>
+</owl:Class>
+<owl:Class rdf:ID="Building">
+<rdfs:subClassOf rdf:resource="#Structure"/>
+</owl:Class>
+<owl:Class rdf:ID="DopplerRadar">
+<rdfs:subClassOf rdf:resource="#Radar"/>
+</owl:Class>
+<owl:Class rdf:ID="Meteostation">
+<rdfs:subClassOf rdf:resource="#MeteorologicalFacility"/>
+</owl:Class>
+<owl:Class rdf:ID="Satellite">
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Dome">
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Sensor">
+<rdfs:subClassOf rdf:resource="#Instrument"/>
+</owl:Class>
+<owl:Class rdf:ID="Internet">
+<rdfs:subClassOf rdf:resource="#CommunicationFacility"/>
+</owl:Class>
+<owl:Class rdf:ID="Phone_mainline">
+<rdfs:subClassOf rdf:resource="#CommunicationEquipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Phone_mobile">
+<rdfs:subClassOf rdf:resource="#CommunicationEquipment"/>
+</owl:Class>
+<owl:Class rdf:ID="Computer">
+<rdfs:subClassOf rdf:resource="#Equipment"/>
+</owl:Class>
+<owl:ObjectProperty rdf:ID="hasAssociatedActivity"/>
+</rdf:RDF>
+

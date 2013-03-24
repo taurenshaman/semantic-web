@@ -1,0 +1,224 @@
+<?xml version='1.0'?>
+<!--OWL Language, version 08/2003-->
+<rdf:RDF
+    xmlns="http://www.nada.kth.se/~mehrana/Delegation.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:p1="http://www.daml.org/2003/01/periodictable/PeriodicTable#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:assert="http://www.owl-ontologies.com/assert.owl#"
+  xml:base="http://www.nada.kth.se/~mehrana/Delegation.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/assert.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Object"/>
+  <owl:Class rdf:ID="Constraints"/>
+  <owl:Class rdf:ID="delegationIdn">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Identifier"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NotBefore">
+    <rdfs:subClassOf rdf:resource="#Constraints"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Credential"/>
+  <owl:Class rdf:ID="URI">
+    <rdfs:subClassOf rdf:resource="#Identifier"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Subject"/>
+  <owl:Class rdf:ID="Capability">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Verb"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasVerb"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasObject"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Object"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Delegation"/>
+  <owl:Class rdf:ID="Name">
+    <rdfs:subClassOf rdf:resource="#Identifier"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UUID">
+    <rdfs:subClassOf rdf:resource="#Identifier"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DN">
+    <rdfs:subClassOf rdf:resource="#Identifier"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NotAfter">
+    <rdfs:subClassOf rdf:resource="#Constraints"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Delegator">
+    <assert:notEmpty rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >SELECT   ?Delegator  ?Capability 
+WHERE {  ?Delegator:hasA  ?Capability
+             }</assert:notEmpty>
+  </owl:Class>
+  <owl:Class rdf:ID="URL">
+    <rdfs:subClassOf rdf:resource="#Identifier"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ValidityInterval">
+    <rdfs:subClassOf rdf:resource="#Constraints"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="isOwned">
+    <rdfs:range rdf:resource="#Delegator"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasA"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#Capability"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="delegates">
+    <rdfs:range rdf:resource="#Delegation"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isDelegatedBy"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#Delegator"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isAuthorizedBy">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Capability"/>
+          <owl:Class rdf:about="#Delegation"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Credential"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="authorizes"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isApplicableTo">
+    <rdfs:range rdf:resource="#Capability"/>
+    <rdfs:domain rdf:resource="#Delegation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#authorizes">
+    <owl:inverseOf rdf:resource="#isAuthorizedBy"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Capability"/>
+          <owl:Class rdf:about="#Delegation"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#Credential"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isObjectOf">
+    <rdfs:domain rdf:resource="#Object"/>
+    <rdfs:range rdf:resource="#Capability"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#hasObject"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasA">
+    <rdfs:range rdf:resource="#Capability"/>
+    <owl:inverseOf rdf:resource="#isOwned"/>
+    <rdfs:domain rdf:resource="#Delegator"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasObject">
+    <owl:inverseOf rdf:resource="#isObjectOf"/>
+    <rdfs:range rdf:resource="#Object"/>
+    <rdfs:domain rdf:resource="#Capability"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDependency">
+    <rdfs:domain rdf:resource="#Capability"/>
+    <rdfs:range rdf:resource="#Capability"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isRestrictedBy"/>
+  <owl:ObjectProperty rdf:about="#isDelegatedBy">
+    <rdfs:domain rdf:resource="#Delegation"/>
+    <owl:inverseOf rdf:resource="#delegates"/>
+    <rdfs:range rdf:resource="#Delegator"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isIdentifiedBy">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Credential"/>
+          <owl:Class rdf:about="#Object"/>
+          <owl:Class rdf:about="#Subject"/>
+          <owl:Class rdf:about="#Delegation"/>
+          <owl:Class rdf:about="#Delegator"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#Identifier"/>
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:ID="identifies"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isDelegatableTo">
+    <rdfs:domain rdf:resource="#Delegation"/>
+    <rdfs:range rdf:resource="#Subject"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasVerb">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="isVerbOf"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#Capability"/>
+    <rdfs:range rdf:resource="#Verb"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#isVerbOf">
+    <owl:inverseOf rdf:resource="#hasVerb"/>
+    <rdfs:domain rdf:resource="#Verb"/>
+    <rdfs:range rdf:resource="#Capability"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isDelegatedTo">
+    <rdfs:domain rdf:resource="#Delegation"/>
+    <rdfs:range rdf:resource="#Subject"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="isValidNotAfter">
+    <rdfs:domain rdf:resource="#Delegation"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:subPropertyOf rdf:resource="#isRestrictedBy"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="EPR">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Identifier"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="hasValidityInterval">
+    <rdfs:domain rdf:resource="#Delegation"/>
+    <rdfs:subPropertyOf rdf:resource="#isRestrictedBy"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isValidNotBefore">
+    <rdfs:subPropertyOf rdf:resource="#isRestrictedBy"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Delegation"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:about="#identifies">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Identifier"/>
+    <owl:inverseOf rdf:resource="#isIdentifiedBy"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Credential"/>
+          <owl:Class rdf:about="#Object"/>
+          <owl:Class rdf:about="#Subject"/>
+          <owl:Class rdf:about="#Delegation"/>
+          <owl:Class rdf:about="#Delegator"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.2, Build 307)  http://protege.stanford.edu -->

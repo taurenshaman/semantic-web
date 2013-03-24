@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ao="http://purl.org/ontology/ao/core#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:olo="http://purl.org/ontology/olo/core#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:rec="http://purl.org/ontology/rec/core#"
+   xmlns:sim="http://purl.org/ontology/similarity/"
+   xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+   xml:base="http://purl.org/ontology/rec/core#">
+  <owl:Ontology rdf:about="http://purl.org/ontology/rec/core#">
+    <dc:creator rdf:resource="http://foaf.me/zazi#me"/>
+    <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2010-08-02T09:31:52+01:00</dc:date>
+    <dc:description xml:lang="en">
+      The Recommendation Ontology specification provides basic concepts and properties for describing recommendations on/ for the Semantic Web. This document contains a RDF description of the Recommendation Ontology.
+    </dc:description>
+    <dc:description xml:lang="zh-CN">推荐 本体规范为基于/针对语义网描述推荐，提供了基本的概念和属性。此文档包含了推荐本体的RDF描述。</dc:description>
+    <dc:title xml:lang="en">The Recommendation Ontology</dc:title>
+    <dc:title xml:lang="zh-CN">推荐本体</dc:title>
+    <owl:imports rdf:resource="http://purl.org/dc/elements/1.1/"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://purl.org/ontology/ao/core"/>
+    <owl:imports rdf:resource="http://purl.org/ontology/olo/core#"/>
+    <owl:imports rdf:resource="http://purl.org/ontology/similarity/"/>
+    <owl:imports rdf:resource="http://www.w3.org/2003/06/sw-vocab-status/ns"/>
+    <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</owl:versionInfo>
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://purl.org/ontology/rec/core#RankedRecommendation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:comment xml:lang="en">A ranked recommendation that includes an ordered list of recommendations.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">排名推荐包括一个推荐的有序列表。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">Ranked Recommendation</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">排名推荐</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/olo/core#OrderedList"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdfs:Class>
+  <owl:Class rdf:about="http://purl.org/ontology/rec/core#Recommendation">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:comment xml:lang="en">A recommendation of something for someone or a specific audience by a recommender.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">由一个推荐人向某人或特定受众针对某事物给出的推荐。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">Recommendation</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">推荐</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/ontology/ao/core#LikeableAssociation"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </owl:Class>
+  <rdf:Property rdf:about="http://purl.org/ontology/rec/core#for">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Relates a recommendation to someone or something.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个推荐所关联的某人或某事物。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">for</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">关联物</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <owl:inverseOf rdf:resource="http://purl.org/ontology/rec/core#recommendation"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/rec/core#ranked_recommendation_object">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">A ranked recommendation object in a ranked recommendation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">处于排名推荐中的对象。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/rec/core#RankedRecommendation"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">ranked recommendation object</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">排名推荐对象</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/olo/core#slot"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/rec/core#recommendation_object"/>
+    <vs:term_status xml:lang="en">testing</vs:term_status>
+  </rdf:Property>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/rec/core#recommendation">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment xml:lang="en">A recommendation for someone or something.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">针对某人或某事物的推荐。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">has recommendation</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">推荐</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/similarity/association"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://purl.org/ontology/rec/core#recommendation_audience">
+    <rdfs:comment xml:lang="en">An audience for a specific recommendation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">特定推荐的受众。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">has recommendation audience</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">受众人群</rdfs:label>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf>
+          <rdf:Description>
+            <rdf:first rdf:resource="http://purl.org/dc/terms/AgentClass"/>
+            <rdf:rest>
+              <rdf:Description>
+                <rdf:first rdf:resource="http://xmlns.com/foaf/0.1/Group"/>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              </rdf:Description>
+            </rdf:rest>
+          </rdf:Description>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/rec/core#recommendation_object">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment xml:lang="en">A recommendation object that is part of a specific recommendation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个推荐对象是一个特定推荐的一部分。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">has recommendation object</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">推荐对象</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/ontology/similarity/object"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.org/ontology/rec/core#recommended_in">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:comment xml:lang="en">A thing, which is recommended in a recommendation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">被推荐的事物（推荐对象）所处的推荐。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">recommended in</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">所属推荐</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <owl:inverseOf rdf:resource="http://purl.org/ontology/rec/core#recommendation_object"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="http://purl.org/ontology/rec/core#recommender">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">An agent, which provided/calculated this recommendation.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">提供或计算出推荐的代理。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">has recommender</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">推荐人</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/creator"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/ontology/rec/core#recommends">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">An agent recommends a recommendation to someone or a recommendation audience.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">代理向某人或一个受众给出的推荐。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/dc/terms/Agent"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/ontology/rec/core#"/>
+    <rdfs:label xml:lang="en">recommends</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">推荐</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/ontology/rec/core#Recommendation"/>
+    <owl:inverseOf rdf:resource="http://purl.org/ontology/rec/core#recommender"/>
+    <vs:term_status xml:lang="en">unstable</vs:term_status>
+  </rdf:Property>
+</rdf:RDF>

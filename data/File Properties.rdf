@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY dc  "http://purl.org/dc/elements/1.1/">
+  <!ENTITY dct "http://purl.org/dc/terms/">
+  <!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY wn  "http://xmlns.com/wordnet/1.6/">
+]>
+
+<rdf:RDF
+ xmlns:dc = "&dc;"
+ xmlns:dct = "&dct;"
+ xmlns:foaf = "&foaf;"
+ xmlns:owl = "&owl;"
+ xmlns:rdf = "&rdf;"
+ xmlns:rdfs = "&rdfs;"
+ xmlns = "&rdfs;"
+>
+
+  <owl:Ontology rdf:about="http://downlode.org/rdf/file-properties/schema">
+    <owl:versionInfo>1</owl:versionInfo>
+    <label xml:lang="en">File Properties Vocabulary</label>
+    <label xml:lang="zh-CN">文件属性词汇集</label>
+    <comment xml:lang="en">An OWL vocabulary for describing the properties of files.</comment>
+    <comment xml:lang="zh-CN">用于描述文件的属性的OWL词汇集。</comment>
+  </owl:Ontology>
+
+  <owl:Class rdf:about="http://downlode.org/rdf/file-properties/schema#File">
+    <label xml:lang="en">File</label>
+    <label xml:lang="zh-CN">文件</label>
+    <comment xml:lang="en">A file.</comment>
+    <comment xml:lang="zh-CN">一个文件。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <subClassOf rdf:resource="&foaf;Document" />
+    <owl:sameAs rdf:resource="&wn;File"  />
+  </owl:Class>
+
+  <owl:Class rdf:about="http://downlode.org/rdf/file-properties/schema#Checksum">
+    <label xml:lang="en">Checksum</label>
+    <label xml:lang="zh-CN">校验和</label>
+    <comment xml:lang="en">A checksum for a file.</comment>
+    <comment xml:lang="zh-CN">一个文件的校验和。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <owl:sameAs rdf:resource="&wn;Checksum" />
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="created">
+    <label xml:lang="en">Created</label>
+    <label xml:lang="zh-CN">创建时间</label>
+    <comment xml:lang="en">The date a file was created, preferably in W3CDTF.</comment>
+    <comment xml:lang="zh-CN">文件的创建时间，最好是基于W3CDTF。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <subPropertyOf rdf:resource="&dct;created" />
+    <domain rdf:resource="#File" />
+    <range rdf:resource="&rdfs;Literal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="modified">
+    <label xml:lang="en">Modified</label>
+    <label xml:lang="zh-CN">修改时间</label>
+    <comment xml:lang="en">The date a file was last modified, preferably in W3CDTF.</comment>
+    <comment xml:lang="zh-CN">文件的修改时间，最好是基于W3CDTF。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <subPropertyOf rdf:resource="&dct;modified" />
+    <domain rdf:resource="#File" />
+    <range rdf:resource="&rdfs;Literal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="size">
+    <label xml:lang="en">Size</label>
+    <label xml:lang="zh-CN">大小</label>
+    <comment xml:lang="en">The size of a file, in bytes.</comment>
+    <comment xml:lang="zh-CN">文件的大小，以字节为单位。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <domain rdf:resource="#File" />
+    <range rdf:resource="&rdfs;Literal" />
+    <subPropertyOf rdf:resource="&dc;title" />
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://downlode.org/rdf/file-properties/schema#checksum">
+    <label xml:lang="en">Checksum (property of having)</label>
+    <label xml:lang="zh-CN">校验和</label>
+    <comment xml:lang="en">Relates a file to a checksum it has.</comment>
+    <comment xml:lang="zh-CN">文件所拥有的校验和。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <domain rdf:resource="#File" />
+    <range rdf:resource="#Checksum" />
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="format">
+    <label xml:lang="en">Format</label>
+    <label xml:lang="zh-CN">格式</label>
+    <comment xml:lang="en">The format of a file. A sub-property of dc:format, this is recommended to be a content-type string.</comment>
+    <comment xml:lang="zh-CN">文件的格式。dc:format的子属性，建议是一个内容类型的字符串。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <subPropertyOf rdf:resource="&dc;format"  />
+    <domain rdf:resource="#File" />
+    <range rdf:resource="&rdfs;Literal" />
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="http://downlode.org/rdf/file-properties/schema#generator">
+    <label xml:lang="en">Creator</label>
+    <label xml:lang="zh-CN">创建者</label>
+    <comment xml:lang="en">Relates a thing to the thing that generated it.</comment>
+    <comment xml:lang="zh-CN">关联一个事物和创建这个事物的事物。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <range rdf:resource="&rdfs;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="http://downlode.org/rdf/file-properties/schema#checksumValue">
+    <label xml:lang="en">Checksum Value</label>
+    <label xml:lang="zh-CN">校验和值</label>
+    <comment xml:lang="en">The value of a checksum.</comment>
+    <comment xml:lang="zh-CN">校验和的值。</comment>
+    <isDefinedBy rdf:resource="http://downlode.org/rdf/file-properties/schema" />
+    <domain rdf:resource="#Checksum" />
+    <range rdf:resource="&rdfs;Literal" />
+  </owl:DatatypeProperty>
+
+</rdf:RDF>

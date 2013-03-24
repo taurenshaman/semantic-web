@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:common="http://purl.org/net/opmv/types/common#"
+   xmlns:cs="http://purl.org/vocab/changeset/schema#"
+   xmlns:dct="http://purl.org/dc/terms/"
+   xmlns:doap="http://usefulinc.com/ns/doap#"
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:http="http://www.w3.org/2006/http#"
+   xmlns:opmv="http://purl.org/net/opmv/ns#"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:void="http://rdfs.org/ns/void#"
+   xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://purl.org/net/opmv/types/common">
+    <dct:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-06</dct:created>
+    <dct:creator rdf:resource="http://www.jenitennison.com/#me"/>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-09-12</dct:modified>
+    <dct:title xml:lang="en">Common Specialisations for OPMV</dct:title>
+    <void:exampleResource rdf:resource="http://purl.org/net/opmv/types/common#Download"/>
+    <void:exampleResource rdf:resource="http://purl.org/net/opmv/types/common#usedData"/>
+    <void:exampleResource rdf:resource="http://purl.org/net/opmv/types/common#usedScript"/>
+    <void:vocabulary rdf:resource="http://purl.org/net/opmv/ns#"/>
+    <void:vocabulary rdf:resource="http://www.w3.org/2000/01/rdf-schema#"/>
+    <void:vocabulary rdf:resource="http://www.w3.org/2002/07/owl#"/>
+    <rdf:type rdf:resource="http://rdfs.org/ns/void#Dataset"/>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+    <rdfs:label xml:lang="en">Common Specialisations for OPMV</rdfs:label>
+  </owl:Ontology>
+  <rdfs:Class rdf:about="http://purl.org/net/opmv/types/common#Download">
+    <rdfs:comment xml:lang="en">The download of a file. The location that the file was downloaded from can be indicated through a common:downloadUri or (in more detail) a common:connection. The time at which the download occurred should be indicated through opmv:wasPerformedAt.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Download</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://purl.org/net/opmv/types/common#Zip">
+    <rdfs:comment xml:lang="en">The zipping of a collection of files. The files that are zipped should be indicated through common:usedData.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Zip</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://purl.org/net/opmv/types/common#Unzip">
+    <rdfs:comment xml:lang="en">The unzipping of an archive.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Unzip</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://purl.org/net/opmv/types/common#Edit">
+    <rdfs:comment xml:lang="en">The editing of a resource by a person.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Edit</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://purl.org/net/opmv/types/common#Program">
+    <rdfs:comment xml:lang="en">A computer program that performs some action (and is therefore an opmv:Agent), is controlled by someone and is an instantiation of some piece of software.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Program</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/opmv/ns#Agent"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://purl.org/net/opmv/types/common#Service">
+    <rdfs:comment xml:lang="en">An online service.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Service</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://purl.org/net/opmv/types/common#Program"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#usedData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">The data that was used in the execution of the process.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Used Data</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/net/opmv/ns#used"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#usedScript">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">The script that was used to drive the process.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Used Script</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/net/opmv/ns#used"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#isCachedResultOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">This indicates that the resource is a cached copy of the result of a download from some location at a particular time.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Cached Result Of</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/net/opmv/types/common#Download"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/net/opmv/ns#wasGeneratedBy"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#isCachedCopyOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">This indicates the resource that this is a cached copy of. Use opmv:wasGeneratedAt to indicate the time at which the copy was made.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Cached Copy Of</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/net/opmv/ns#Artifact"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/source"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/net/opmv/ns#wasDerivedFrom"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#operator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">The agent (usually but not always a foaf:Agent) that operates a program.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/types/common#Program"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Operator</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/net/opmv/ns#Agent"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#changeSet">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">A change set that describes the changes that were applied to an RDF graph through the process.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/ns#Process"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">ChangeSet</rdfs:label>
+    <rdfs:range rdf:resource="http://purl.org/vocab/changeset/schema#ChangeSet"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/net/opmv/ns#used"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#downloadUri">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment xml:lang="en">This property can be used as a simple way of providing the URI of the resource that has been downloaded. In the case of an HTTP download, it will be the Content-Location of the resource.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/types/common#Download"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Download URI</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#connection">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">This property can be used to describe in more detail an HTTP connection that was used to download a file.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/types/common#Download"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">HTTP Connection</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2006/http#Connection"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://purl.org/net/opmv/types/common#software">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">The software that was used to execute the program.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://purl.org/net/opmv/types/common#Program"/>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/net/opmv/types/common"/>
+    <rdfs:label xml:lang="en">Software</rdfs:label>
+    <rdfs:range rdf:resource="http://usefulinc.com/ns/doap#Version"/>
+  </rdf:Property>
+</rdf:RDF>
