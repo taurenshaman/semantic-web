@@ -1,17 +1,86 @@
-<?xml version="1.0"?><!DOCTYPE rdf:RDF[
-   <!ENTITY pso    "http://pervasive.semanticweb.org/ont/2004/01/">
-   <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-   <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema#">
-   <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#"> 
-   <!ENTITY owl    "http://www.w3.org/2002/07/owl#"> 
-   <!ENTITY tme    "http://pervasive.semanticweb.org/ont/2004/01/time#">
-   <!ENTITY sch    "http://pervasive.semanticweb.org/ont/2004/01/schedule#">
-   <!ENTITY per    "http://pervasive.semanticweb.org/ont/2004/01/person#">
-   <!ENTITY mtg    "http://pervasive.semanticweb.org/ont/2004/01/meeting#">
-   ]><!--
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF[
+  <!ENTITY pso    "http://pervasive.semanticweb.org/ont/2004/01/">
+  <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY owl    "http://www.w3.org/2002/07/owl#">
+  <!ENTITY tme    "http://pervasive.semanticweb.org/ont/2004/01/time#">
+  <!ENTITY sch    "http://pervasive.semanticweb.org/ont/2004/01/schedule#">
+  <!ENTITY per    "http://pervasive.semanticweb.org/ont/2004/01/person#">
+  <!ENTITY mtg    "http://pervasive.semanticweb.org/ont/2004/01/meeting#">
+]>
+<!--
     This ontology document is licensed under the Creative Commons
     Attribution License. To view a copy of this license, visit 
     http://creativecommons.org/licenses/by/1.0/ or send a letter to
     Creative Commons, 559 Nathan Abbott Way, Stanford, California
     94305, USA. 
---><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns="http://pervasive.semanticweb.org/ont/2004/01/meeting#" xml:base="http://pervasive.semanticweb.org/ont/2004/01/meeting"><owl:Ontology rdf:about="&pso;meeting"><owl:imports rdf:resource="&pso;time" /><owl:imports rdf:resource="&pso;schedule" /><owl:imports rdf:resource="&pso;person" /><owl:versionInfo>cvs:$Revision: 1.1 $, $Date: 2004/01/25 18:35:13 $</owl:versionInfo><rdfs:label>PERVASIVE-SO Meeting Ontology</rdfs:label><rdfs:comment></rdfs:comment></owl:Ontology><owl:Class rdf:ID="Meeting"><rdfs:label>Meeting</rdfs:label><rdfs:subClassOf rdf:resource="&tme;IntervalEvent" /><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#location" /><owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality></owl:Restriction></rdfs:subClassOf></owl:Class><owl:ObjectProperty rdf:ID="attendee"><rdfs:label>attendee</rdfs:label><rdfs:domain rdf:resource="#Meeting" /><rdfs:range rdf:resource="&per;Person" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="location"><rdfs:label>location</rdfs:label><rdfs:domain rdf:resource="#Meeting" /><!-- TODO: define range --><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="schedule"><rdfs:label>schedule</rdfs:label><owl:inverseOf rdf:resource="&sch;scheduleOf" /><rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty" /></owl:ObjectProperty><owl:Class rdf:ID="Talk"><rdfs:label>Talk</rdfs:label><rdfs:subClassOf rdf:resource="#Meeting" /><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#attendee" /><owl:someValuesFrom rdf:resource="#Speaker" /></owl:Restriction></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="TalkParticipant"><rdfs:label>TalkParticipant</rdfs:label><rdfs:subClassOf rdf:resource="&per;Person" /><owl:unionOf rdf:parseType="Collection"><owl:Class rdf:about="#Speaker" /><owl:Class rdf:about="#Audience" /><owl:Class rdf:about="#Organizer" /></owl:unionOf></owl:Class><owl:Class rdf:ID="Speaker"><rdfs:label>Speaker</rdfs:label><rdfs:subClassOf rdf:resource="&per;Person" /></owl:Class><owl:Class rdf:ID="Audience"><rdfs:label>Audience</rdfs:label><rdfs:subClassOf rdf:resource="&per;Person" /></owl:Class><owl:Class rdf:ID="Organizer"><rdfs:label>Organizer</rdfs:label><rdfs:subClassOf rdf:resource="&per;Person" /></owl:Class></rdf:RDF>
+-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns="http://pervasive.semanticweb.org/ont/2004/01/meeting#" xml:base="http://pervasive.semanticweb.org/ont/2004/01/meeting">
+  <owl:Ontology rdf:about="&pso;meeting">
+    <owl:imports rdf:resource="&pso;time" />
+    <owl:imports rdf:resource="&pso;schedule" />
+    <owl:imports rdf:resource="&pso;person" />
+    <owl:versionInfo>cvs:$Revision: 1.1 $, $Date: 2004/01/25 18:35:13 $</owl:versionInfo>
+    <rdfs:label>PERVASIVE-SO Meeting Ontology</rdfs:label>
+    <rdfs:comment></rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Meeting">
+    <rdfs:label>Meeting</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&tme;IntervalEvent" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#location" />
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="attendee">
+    <rdfs:label>attendee</rdfs:label>
+    <rdfs:domain rdf:resource="#Meeting" />
+    <rdfs:range rdf:resource="&per;Person" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="location">
+    <rdfs:label>location</rdfs:label>
+    <rdfs:domain rdf:resource="#Meeting" />
+    <!-- TODO: define range -->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="schedule">
+    <rdfs:label>schedule</rdfs:label>
+    <owl:inverseOf rdf:resource="&sch;scheduleOf" />
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty" />
+  </owl:ObjectProperty>
+  <owl:Class rdf:ID="Talk">
+    <rdfs:label>Talk</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Meeting" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#attendee" />
+        <owl:someValuesFrom rdf:resource="#Speaker" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TalkParticipant">
+    <rdfs:label>TalkParticipant</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&per;Person" />
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#Speaker" />
+      <owl:Class rdf:about="#Audience" />
+      <owl:Class rdf:about="#Organizer" />
+    </owl:unionOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Speaker">
+    <rdfs:label>Speaker</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&per;Person" />
+  </owl:Class>
+  <owl:Class rdf:ID="Audience">
+    <rdfs:label>Audience</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&per;Person" />
+  </owl:Class>
+  <owl:Class rdf:ID="Organizer">
+    <rdfs:label>Organizer</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&per;Person" />
+  </owl:Class>
+</rdf:RDF>

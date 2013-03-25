@@ -1,0 +1,135 @@
+<rdf:RDF xmlns="http://trust.mindswap.org/ont/trust.owl#"
+xmlns:owl="http://www.w3.org/2002/07/owl#"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+<owl:Ontology rdf:about="">
+<owl:versionInfo>v1.0</owl:versionInfo>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:ID="trust0">
+<rdfs:label>Trust level 0</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="trust10">
+<rdfs:label>Trust level 10</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+                <rdfs:range 
+rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust9">
+<rdfs:label>Trust level 9</rdfs:label> 
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust8">
+<rdfs:label>Trust level 8</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust7">   
+<rdfs:label>Trust level 7</rdfs:label>
+       
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust6">
+<rdfs:label>Trust level 6</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust5">
+        <rdfs:label>Trust level 5</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust4">
+<rdfs:label>Trust level 4</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust3">  
+<rdfs:label>Trust level 3</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust2">
+<rdfs:label>Trust level 2</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trust1">  
+<rdfs:label>Trust level 1</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trustsRegarding">
+<rdfs:label>Trusts Regarding</rdfs:label>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <rdfs:range rdf:resource="#TopicalTrust"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="TopicalTrust">
+<rdfs:label>Topical Trust</rdfs:label>
+        
+<rdfs:subClassOf>
+       <owl:Restriction>
+                <owl:onProperty rdf:resource="#trustValue"/>
+                <owl:cardinality>1</owl:cardinality>
+        </owl:Restriction>
+</rdfs:subClassOf>
+
+<rdfs:subClassOf>
+        <owl:Restriction>
+                <owl:onProperty rdf:resource="#trustSubject"/>
+                <owl:cardinality>1</owl:cardinality>
+        </owl:Restriction>
+</rdfs:subClassOf>   
+
+<rdfs:subClassOf>
+        <owl:Restriction>
+                <owl:onProperty rdf:resource="#trustedAgent"/>
+                <owl:cardinality>1</owl:cardinality>
+        </owl:Restriction>
+</rdfs:subClassOf>
+</owl:Class>
+        
+<owl:DatatypeProperty rdf:ID="trustValue">
+<rdfs:label>Trust Value</rdfs:label>
+        <rdfs:domain rdf:resource="#TopicalTrust"/>
+</owl:DatatypeProperty>  
+                
+<owl:ObjectProperty rdf:ID="trustSubject">
+<rdfs:label>Trust Subject</rdfs:label>
+        <rdfs:domain rdf:resource="#TopicalTrust"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trustedAgent">
+<rdfs:label>Trusted Agent</rdfs:label>
+        <rdfs:domain rdf:resource="#TopicalTrust"/> 
+       <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="trustedPerson">
+<rdfs:subPropertyOf rdf:resource="#trustedAgent"/>
+<rdfs:label>Trusted Person</rdfs:label>
+        <rdfs:domain rdf:resource="#TopicalTrust"/> 
+       <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+
+

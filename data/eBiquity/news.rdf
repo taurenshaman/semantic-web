@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+   <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#"> 
+   <!ENTITY owl  "http://www.w3.org/2002/07/owl#"> 
+   <!ENTITY news "http://ebiquity.umbc.edu/ontology/news.owl#">
+   <!ENTITY cc   "http://web.resource.org/cc/#">
+   ]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF  
+   xmlns:rdf  = "&rdf;"
+   xmlns:rdfs = "&rdfs;"
+   xmlns:owl  = "&owl;"
+   xmlns:xsd  = "&xsd;"
+   xmlns:cc   = "&cc;"
+   xmlns      = "&news;"
+   xml:base   = "&news;">
+  
+  <owl:Ontology rdf:about="&news;news">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity News Ontology</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="News">
+    <rdfs:label>News </rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#title"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#publishedOn"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#description"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#uri"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="title">
+    <rdfs:label>News Title</rdfs:label>
+    <rdfs:domain rdf:resource="#News"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="publishedOn">
+    <rdfs:label>News Published On Date and Time</rdfs:label>
+    <rdfs:domain rdf:resource="#News"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="description">
+    <rdfs:label>News Description</rdfs:label>
+    <rdfs:domain rdf:resource="#News"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="uri">
+    <rdfs:label>News URI</rdfs:label>
+    <rdfs:domain rdf:resource="#News"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
+
+
+

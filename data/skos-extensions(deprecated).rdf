@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+	<!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
+	<!ENTITY vs "http://www.w3.org/2003/06/sw-vocab-status/ns#">
+]>
+<rdf:RDF xml:base="http://www.w3.org/2004/02/skos/extensions" xmlns:rdf="&rdf;" xmlns:rdfs="&rdfs;" xmlns:dc="&dc;" xmlns:dct="&dct;" xmlns:owl="&owl;" xmlns:vs="&vs;" xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+	
+	<!-- 
+	This is the SKOS Extensions RDF Vocabulary.  
+		
+	This is an evolving RDF vocabulary - all modification are reported 
+	to the SKOS Changelog:
+	
+	http://esw.w3.org/mt/esw/archives/cat_skos_changelog.html
+	
+	To contribute to development of this vocabulary, subscribe to the 
+	public-esw-thes@w3.org mailing list.
+	
+	See also:
+	
+	SKOS Core home page: http://www.w3.org/2004/02/skos/core/
+	Mailing list archive: http://lists.w3.org/Archives/Public/public-esw-thes/
+	SkosDev wiki: http://esw.w3.org/topic/SkosDev
+	-->
+
+	<!-- Description of this schema -->
+	
+	<rdf:Description rdf:about="http://www.w3.org/2004/02/skos/extensions">
+		<dc:title>SKOS Extensions RDF Vocabulary</dc:title>
+		<dc:description>@@TODO</dc:description>
+		<dc:creator>Alistair Miles</dc:creator>
+		<dc:contributor>Members of the public-esw-thes@w3.org mailing list.</dc:contributor>
+		<dct:modified>2004-08-27</dct:modified>
+	</rdf:Description>
+	
+	<!-- Semantic relation property extensions -->
+	
+	<rdf:Property rdf:about="http://www.w3.org/2004/02/skos/extensions#broaderInstantive">
+		<rdfs:label xml:lang="en">broader (instantive)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment xml:lang="en">An extension of the 'skos:broader' property to specify an instantiation (instance of) relationship between two concepts.</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://www.w3.org/2004/02/skos/extensions#narrowerInstantive">
+		<rdfs:label xml:lang="en">narrower (instantive)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment xml:lang="en">This property is the inverse of the 'broaderInstantive' property.</rdfs:comment>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrower"/>
+		<owl:inverseOf rdf:resource="http://www.w3.org/2004/02/skos/extensions#broaderInstantive"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://www.w3.org/2004/02/skos/extensions#broaderGeneric">
+		<rdfs:label xml:lang="en">broader (generic)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment xml:lang="en">An extension of the 'broader' property to specify the class subsumption (sub-class/super-class) relationship between two concepts.</rdfs:comment>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>
+	
+	<rdf:Property rdf:ID="narrowerGeneric">
+		<rdfs:label xml:lang="en">narrower (generic)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment>This property is the inverse of the 'broaderGeneric' property.</rdfs:comment>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrower"/>
+		<owl:inverseOf rdf:resource="http://www.w3.org/2004/02/skos/extensions#broaderGeneric"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>
+	
+	<rdf:Property rdf:ID="broaderPartitive">
+		<rdfs:label xml:lang="en">broader (partitive)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment xml:lang="en">An extension of the 'broader' property to specify a partitive (part of) relationship between two concepts.</rdfs:comment>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#broader"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>
+	
+	<rdf:Property rdf:ID="narrowerPartitive">
+		<rdfs:label xml:lang="en">narrower (partitive)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment xml:lang="en">This property is the inverse of the 'broaderPartitive' property.</rdfs:comment>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#narrower"/>
+		<owl:inverseOf rdf:resource="http://www.w3.org/2004/02/skos/extensions#broaderPartitive"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="relatedPartOf">
+		<rdfs:label xml:lang="en">related (is part of)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment xml:lang="en">An extension of the 'related' property.  Use this property to express a partitive relationship between concepts, where it is desired that such a relationship be treated as associative (i.e. linking separate branches of a hierarchy) and NOT hierarchical.</rdfs:comment>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#related"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="relatedHasPart">
+		<rdfs:label xml:lang="en">related (has part)</rdfs:label>
+		<skos:definition xml:lang="en">@@TODO</skos:definition>
+		<rdfs:comment xml:lang="en">This property is the inverse of the 'relatedPartOf' property.</rdfs:comment>
+		<rdf:type rdf:resource="&owl;TransitiveProperty"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#related"/>
+		<owl:inverseOf rdf:resource="http://www.w3.org/2004/02/skos/extensions#relatedPartOf"/>
+		<rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/extensions"/>
+		<vs:term_status>unstable</vs:term_status>
+	</rdf:Property>	
+
+</rdf:RDF>

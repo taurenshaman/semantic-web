@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:d4="http://purl.org/net/d4#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xml:base="http://purl.org/net/d4">
+  <owl:Class rdf:about="#UnchangingThing">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:label xml:lang="en">Unchanging Thing</rdfs:label>
+    <rdfs:comment xml:lang="en">Something that has never and will never change with time.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="" />
+    <owl:disjointWith rdf:resource="#ChangingThing" />
+  </owl:Class>
+  <rdfs:Class rdf:about="#UnchangingThing" />
+  <owl:Class rdf:about="#ChangingThing">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+    <rdfs:label xml:lang="en">Changing Thing</rdfs:label>
+    <rdfs:comment xml:lang="en">Something that has changed or may change at some point in time.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="" />
+    <owl:disjointWith rdf:resource="#UnchangingThing" />
+  </owl:Class>
+  <rdfs:Class rdf:about="#ChangingThing" />
+  <owl:ObjectProperty rdf:about="#snapshot">
+    <rdfs:label xml:lang="en">snapshot</rdfs:label>
+    <rdfs:domain rdf:resource="#ChangingThing" />
+    <rdfs:range rdf:resource="#UnchangingThing" />
+    <rdfs:comment xml:lang="en">A snapshot of a changing thing, frozen at some instant in time.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="" />
+  </owl:ObjectProperty>
+  <rdf:Property rdf:about="#snapshot" />
+  <owl:Ontology rdf:about="">
+    <rdfs:label xml:lang="en">d4: The Fourth Dimension Ontology</rdfs:label>
+    <rdfs:comment xml:lang="en">This very simple ontology is intended to capture the most basic classes and properties required to differentiate between changing and unchanging things in the world.</rdfs:comment>
+    <d4:snapshot rdf:resource="http://purl.org/net/d4/ontology-2006-11-20" />
+  </owl:Ontology>
+  <d4:ChangingThing rdf:about="" />
+  <owl:Ontology rdf:about="http://purl.org/net/d4/ontology-2006-11-20">
+    <rdfs:label xml:lang="en">d4: The Fourth Dimension Ontology, 2006-11-20 'Time is on My Side' Edition</rdfs:label>
+    <rdfs:comment xml:lang="en">The initial version of the d4 ontology, published on 20 November 2006.</rdfs:comment>
+  </owl:Ontology>
+  <d4:UnchangingThing rdf:about="http://purl.org/net/d4/ontology-2006-11-20" />
+  <!-- 
+	
+	$Log: ontology-2006-11-20.owl,v $
+	Revision 1.3  2006/11/20 19:19:41  ajm65
+	Added mutual disjointness of changing and unchanging things.
+	
+	Revision 1.2  2006/11/20 17:05:02  ajm65
+	Minor tweak, added ontology type to snapshot of this.
+	
+	Revision 1.1  2006/11/20 16:55:27  ajm65
+	Initial revision, sanitised for protege.
+	
+	
+	 -->
+</rdf:RDF>

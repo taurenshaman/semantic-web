@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+
+<rdf:RDF xmlns="http://sw.deri.org/2005/04/wikipedia/wikiont.owl#"
+    xmlns:dcm="http://purl.org/dc/dcmitype/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xml:base="http://sw.deri.org/2005/04/wikipedia/wikiont.owl#">
+
+    <owl:DatatypeProperty rdf:about="http://jibbering.com/vocabs/image/#height">
+      <rdfs:comment>img_height</rdfs:comment>
+      <rdfs:label>height</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://jibbering.com/vocabs/image/#width">
+        <rdfs:comment>img_width</rdfs:comment>
+      <rdfs:label>width</rdfs:label>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/contributor">
+      <rdfs:comment>A contributor to an article (cur_user_text, img_user_text)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/creator">
+      <rdfs:comment>A creator of an article</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/date">
+        <rdfs:comment>cur_timestamp, img_timestamp</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/title">
+        <rdfs:comment>cur_title, img_name</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://rdfs.org/sioc/ns#views">
+        <rdfs:comment>cur_counter</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:Class rdf:ID="Article">
+        <rdfs:comment>Subject to be discussed</rdfs:comment>
+	<rdfs:label>Article</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="Category">
+      <rdfs:comment>A category in the category graph</rdfs:comment>
+        <rdfs:label>Category</rdfs:label>
+	<rdfs:subClassOf rdf:resource="http://sw.deri.org/2005/04/wikipedia/index.rdf#Article"/>
+    </owl:Class>
+
+    <owl:Class rdf:ID="Image">
+      <rdfs:comment>An image</rdfs:comment>
+      <rdfs:label>Image</rdfs:label>
+    </owl:Class>
+
+    <owl:Class rdf:ID="Stub">
+        <rdfs:comment>A stub is an article that have not recieved substantial attention.</rdfs:comment>
+        <rdfs:label>Stub</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sw.deri.org/2005/04/wikipedia/index.rdf#Article"/>
+    </owl:Class>
+
+    <owl:DatatypeProperty rdf:ID="contentType">
+        <rdfs:comment xmlns="http://www.w3.org/2000/01/rdf-schema#">img_type in rfc mime/content type format</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:ObjectProperty rdf:ID="link">
+        <rdfs:comment>connection between two things</rdfs:comment>
+        <rdfs:label>link</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="internalLink">
+        <rdfs:comment>A connection between two wiki articles</rdfs:comment>
+	<rdfs:label>internalLink</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://sw.deri.org/2005/04/wikipedia/link"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="externalLink">
+        <rdfs:comment>A connection between a wiki article and the outside world</rdfs:comment>
+	<rdfs:label>externalLink</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://sw.deri.org/2005/04/wikipedia/link"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="image">
+        <rdfs:comment>A connection between a wiki article and an image</rdfs:comment>
+	<rdfs:label>image</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://sw.deri.org/2005/04/wikipedia/link"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:ID="redirect">
+        <rdfs:comment>Redirect between two Articles (e.g. IBM to International_Business_Machines)</rdfs:comment>
+        <rdfs:label>redirect</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+    </owl:DatatypeProperty>
+
+    <!--
+    <owl:ObjectProperty rdf:ID="redirectsTo">
+        <rdfs:comment xmlns="http://www.w3.org/2000/01/rdf-schema#">Redirect between two Articles (e.g. IBM to International_Business_Machines); extracted out of cur_is_redirect and wiki markup</rdfs:comment>
+	<rdfs:domain rdf:resource="http://sw.deri.org/2005/04/wikipedia/index.rdf#Article"/>
+        <rdfs:label>redirects to</rdfs:label>
+        <rdfs:range rdf:resource="http://sw.deri.org/2005/04/wikipedia/index.rdf#Link"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#sameAs"/>
+    </owl:ObjectProperty>
+    -->
+
+    <owl:ObjectProperty rdf:ID="text">
+        <rdfs:comment>Text of page in Wiki markup</rdfs:comment>
+        <rdfs:label>text</rdfs:label>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2004/02/skos/core#narrower">
+        <rdfs:comment>for relating Categories</rdfs:comment>
+    </owl:ObjectProperty>
+</rdf:RDF>

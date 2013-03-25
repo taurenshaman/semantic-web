@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+   <!ENTITY schema "http://sw.nokia.com/schemas/general/VOC-1.0.rdf">
+   <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+   <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema">
+   <!ENTITY owl    "http://www.w3.org/2002/07/owl">
+   <!ENTITY dc     "http://purl.org/dc/elements/1.1">
+   <!ENTITY voc    "http://sw.nokia.com/VOC-1">
+]>
+
+<rdf:RDF
+   xml:base   ="&schema;"
+   xmlns:rdf  ="&rdf;#"
+   xmlns:rdfs ="&rdfs;#"
+   xmlns:owl  ="&owl;#"
+   xmlns:dc   ="&dc;/"
+   xmlns:voc  ="&voc;/"
+>
+
+<rdf:Description rdf:about="&schema;">
+   <dc:title>Definition of the Vocabulary for Vocabulary Definitions 1.0</dc:title>
+   <dc:creator>Patrick Stickler (patrick.stickler@nokia.com)</dc:creator>
+   <dc:publisher>Nokia</dc:publisher>
+   <dc:format>application/rdf+xml</dc:format>
+   <dc:rights>
+Copyright (C) 2000-2003 Nokia. All rights reserved.
+
+This document may be copied, published, and distributed, without restriction
+of any kind, provided it is not modified in any way.
+
+THIS DOCUMENT IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTY OF ANY KIND, 
+EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT
+THE DOCUMENT IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE 
+OR NON-INFRINGING. THE ENTIRE RISK AS TO THE QUALITY AND USABILITY OF THIS
+DOCUMENT IS WITH YOU. SHOULD THIS DOCUMENT PROVE DEFECTIVE IN ANY RESPECT, 
+YOU (NOT NOKIA, ITS LICENSORS OR AFFILIATES OR ANY OTHER CONTRIBUTOR) ASSUME
+THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION.
+   </dc:rights>
+</rdf:Description>
+
+<voc:Vocabulary rdf:about="&voc;">
+
+   <voc:term>
+      <rdfs:Class rdf:about="&voc;/Vocabulary">
+         <rdfs:label>Vocabulary</rdfs:label>
+         <rdfs:comment>
+A vocabulary is a set of terms.
+         </rdfs:comment>
+         <rdfs:subClassOf rdf:resource="&rdfs;#Container"/>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdfs:Class>
+   </voc:term>
+
+   <voc:term>
+      <rdfs:Class rdf:about="&voc;/Term">
+         <rdfs:label>Vocabulary Term</rdfs:label>
+         <rdfs:comment>
+A vocbulary term is a member of a vocabulary.
+         </rdfs:comment>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdfs:Class>
+   </voc:term>
+
+   <voc:term>
+      <rdfs:Class rdf:about="&voc;/Deprecated">
+         <rdfs:label>Deprecated</rdfs:label>
+         <rdfs:comment>
+Should no longer be used for new resource descriptions or applications.
+         </rdfs:comment>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdfs:Class>
+   </voc:term>
+
+   <voc:term>
+      <rdf:Property rdf:about="&voc;/vocabulary">
+         <rdfs:label>vocabulary</rdfs:label>
+         <rdfs:comment>
+Relates a vocabulary to a resource. If the subject is also a
+vocabulary, then terms belonging to the object vocabulary are
+considered to also belong to the subject vocabulary. If the
+subject is an RDF Class, then the object vocabulary is
+taken as relevant for describing instances of that class.
+         </rdfs:comment>
+         <rdf:type rdf:resource="&rdfs;#ContainerMembershipProperty"/>
+         <rdfs:subPropertyOf rdf:resource="&rdfs;#member"/>
+         <rdfs:range  rdf:resource="&voc;/Vocabulary"/>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdf:Property>
+   </voc:term>
+
+   <voc:term>
+      <rdf:Property rdf:about="&voc;/term">
+         <rdfs:label>term</rdfs:label>
+         <rdfs:comment>
+A term belonging to a vocabulary.
+         </rdfs:comment>
+         <rdf:type rdf:resource="&rdfs;#ContainerMembershipProperty"/>
+         <rdfs:subPropertyOf rdf:resource="&rdfs;#member"/>
+         <rdfs:domain rdf:resource="&voc;/Vocabulary"/>
+         <rdfs:range  rdf:resource="&voc;/Term"/>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdf:Property>
+   </voc:term>
+
+   <voc:term>
+      <rdf:Property rdf:about="&voc;/partOf">
+         <rdfs:label>part of</rdfs:label>
+         <rdfs:comment>
+A vocabulary to which a term or subvocabulary belongs.
+         </rdfs:comment>
+         <rdfs:range  rdf:resource="&voc;/Vocabulary"/>
+         <owl:inverseOf rdf:resource="&rdfs;#member"/>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdf:Property>
+   </voc:term>
+
+   <voc:term>
+      <rdf:Property rdf:about="&voc;/specializationOf">
+         <rdfs:label>specialization of</rdfs:label>
+         <rdfs:comment>
+The subject term is a specialization of the object term.
+         </rdfs:comment>
+         <rdfs:domain rdf:resource="&voc;/Term"/>
+         <rdfs:range  rdf:resource="&voc;/Term"/>
+         <owl:inverseOf rdf:resource="&voc;/generalizationOf"/>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdf:Property>
+   </voc:term>
+
+   <voc:term>
+      <rdf:Property rdf:about="&voc;/generalizationOf">
+         <rdfs:label>generalization of</rdfs:label>
+         <rdfs:comment>
+The subject term is a generalization of the object term.
+         </rdfs:comment>
+         <rdfs:domain rdf:resource="&voc;/Term"/>
+         <rdfs:range  rdf:resource="&voc;/Term"/>
+         <owl:inverseOf rdf:resource="&voc;/specializationOf"/>
+         <voc:partOf rdf:resource="&voc;"/>
+         <rdfs:isDefinedBy rdf:resource="&schema;"/>
+      </rdf:Property>
+   </voc:term>
+
+   <rdfs:isDefinedBy rdf:resource="&schema;"/>
+</voc:Vocabulary>
+
+</rdf:RDF>

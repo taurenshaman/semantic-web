@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <!ENTITY rdfs    "http://www.w3.org/2000/01/rdf-schema#">
+   <!ENTITY xsd     "http://www.w3.org/2001/XMLSchema#"> 
+   <!ENTITY owl     "http://www.w3.org/2002/07/owl#"> 
+   <!ENTITY contact "http://ebiquity.umbc.edu/ontology/contact.owl#">
+   <!ENTITY cc      "http://web.resource.org/cc/#">
+   ]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF  
+   xmlns:rdf  = "&rdf;"
+   xmlns:rdfs = "&rdfs;"
+   xmlns:owl  = "&owl;"
+   xmlns:xsd  = "&xsd;"
+   xmlns:cc   = "&cc;"
+   xmlns      = "&contact;"
+   xml:base   = "&contact;">
+  
+  <owl:Ontology rdf:about="&contact;contact">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity Contact Information Ontology</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="ContactInformation">
+    <rdfs:label>Contact Information</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#company"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#department"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#room"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#street"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#city"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#state"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#postalCode"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#country"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="company">
+    <rdfs:label>Contact Company</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="department">
+    <rdfs:label>Contact Department</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="room">
+    <rdfs:label>Contact Room</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="street">
+    <rdfs:label>Contact Street</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="city">
+    <rdfs:label>Contact City</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="state">
+    <rdfs:label>Contact State</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="postalCode">
+    <rdfs:label>Contact Postal Code</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="country">
+    <rdfs:label>Contact Country</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="phone">
+    <rdfs:label>Contact Phone</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="fax">
+    <rdfs:label>Contact Fax</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="email">
+    <rdfs:label>Contact Email</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="url">
+    <rdfs:label>Contact URL</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="blogURL">
+    <rdfs:label>Contact Blog URL</rdfs:label>
+    <rdfs:domain rdf:resource="#ContactInformation"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
+
+
+

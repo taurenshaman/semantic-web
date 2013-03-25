@@ -1,0 +1,522 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE owl [
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY cc "http://web.resource.org/cc/#">
+  <!ENTITY assert "http://ebiquity.umbc.edu/ontology/assertion.owl#">
+  <!ENTITY assoc "http://ebiquity.umbc.edu/ontology/association.owl#">
+  <!ENTITY contact "http://ebiquity.umbc.edu/ontology/contact.owl#">
+  <!ENTITY conference "http://ebiquity.umbc.edu/ontology/conference.owl#">
+  <!ENTITY event "http://ebiquity.umbc.edu/ontology/event.owl#">
+  <!ENTITY news "http://ebiquity.umbc.edu/ontology/news.owl#">
+  <!ENTITY person "http://ebiquity.umbc.edu/ontology/person.owl#">
+  <!ENTITY photo "http://ebiquity.umbc.edu/ontology/photo.owl#">
+  <!ENTITY project "http://ebiquity.umbc.edu/ontology/project.owl#">
+  <!ENTITY pub "http://ebiquity.umbc.edu/ontology/publication.owl#">
+  <!ENTITY research "http://ebiquity.umbc.edu/ontology/research.owl#">]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF 
+  xmlns:rdf = "&rdf;"
+  xmlns:rdfs = "&rdfs;"
+  xmlns:xsd = "&xsd;"
+  xmlns:owl = "&owl;"
+  xmlns:cc = "&cc;"
+  xmlns:assert = "&assert;"
+  xmlns = "&assert;"
+  xml:base = "&assert;"
+  xmlns:assoc = "&assoc;"
+  xmlns:contact = "&contact;"
+  xmlns:conference = "&conference;"
+  xmlns:event = "&event;"
+  xmlns:news = "&news;"
+  xmlns:person = "&person;"
+  xmlns:photo = "&photo;"
+  xmlns:project = "&project;"
+  xmlns:pub = "&pub;"
+  xmlns:research = "&research;">
+
+  <owl:Ontology rdf:about="&assert;assert">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity Assertion Ontology for Assocation Relationships</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:ObjectProperty rdf:ID="took">
+   <rdfs:label>(Person) took (Photo).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;takenBy" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&photo;Photo" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="takenBy">
+   <rdfs:label>(Photo) was taken by (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;takenBy" />
+   <rdfs:domain rdf:resource="&photo;Photo" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="shows">
+   <rdfs:label>(Photo) shows (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isShown" />
+   <rdfs:domain rdf:resource="&photo;Photo" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isShown">
+   <rdfs:label>(Person) is shown on (Photo).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isShown" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&photo;Photo" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="takenAtEvent">
+   <rdfs:label>(Photo) was taken at (Event).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;eventRecordedBy" />
+   <rdfs:domain rdf:resource="&photo;Photo" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="eventRecordedBy">
+   <rdfs:label>(Photo) was taken at (Event).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;eventRecordedBy" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&photo;Photo" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="seriesHostedBy">
+   <rdfs:label>(EventSeries) is hosted by (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;hostsSeries" />
+   <rdfs:domain rdf:resource="&event;EventSeries" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hostsSeries">
+   <rdfs:label>(Person) hosts (EventSeries).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;hostsSeries" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&event;EventSeries" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="takenAtSeries">
+   <rdfs:label>(Photo) was taken at (EventSeries).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;seriesRecordedBy" />
+   <rdfs:domain rdf:resource="&photo;Photo" />
+   <rdfs:range  rdf:resource="&event;EventSeries" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="seriesRecordedBy">
+   <rdfs:label>(Photo) was taken at (EventSeries).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;seriesRecordedBy" />
+   <rdfs:domain rdf:resource="&event;EventSeries" />
+   <rdfs:range  rdf:resource="&photo;Photo" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="eventAttendedBy">
+   <rdfs:label>(Person) attended (Event).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;attendedEvent" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="attendedEvent">
+   <rdfs:label>(Person) attended (Event).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;attendedEvent" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="takenAtConference">
+   <rdfs:label>(Photo) was taken at (Conference)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;conferenceHasPhoto" />
+   <rdfs:domain rdf:resource="&photo;Photo" />
+   <rdfs:range  rdf:resource="&conference;Conference" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="conferenceHasPhoto">
+   <rdfs:label>(Conference) has a photo (Photo)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;conferenceHasPhoto" />
+   <rdfs:domain rdf:resource="&conference;Conference" />
+   <rdfs:range  rdf:resource="&photo;Photo" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="attendedConference">
+   <rdfs:label>(Person) attended (Conference).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;conferenceAttendedBy" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&conference;Conference" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="conferenceAttendedBy">
+   <rdfs:label>(Conference) was attended by (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;conferenceAttendedBy" />
+   <rdfs:domain rdf:resource="&conference;Conference" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasDeveloper">
+   <rdfs:label>(Project) has developer (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;developerOf" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="developerOf">
+   <rdfs:label>(Person) is developer for (Project).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;developerOf" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPrincipalInvestigator">
+   <rdfs:label>(Project) has principal investigator (Person)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;principalInvestigatorOf" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="principalInvestigatorOf">
+   <rdfs:label>(Person) is principal investigator for (Project)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;principalInvestigatorOf" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasEventResource">
+   <rdfs:label>(Event) has (Resource).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isEventResourceFor" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isEventResourceFor">
+   <rdfs:label>(Event) has (Resource).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isEventResourceFor" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="eventPptSlides">
+   <rdfs:label>(Event) has PowerPoint slides (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;eventPptSlidesOf" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="eventPptSlidesOf">
+   <rdfs:label>(Resource) is the PowerPoint slides of (Event)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;eventPptSlidesOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasNewsPhoto">
+   <rdfs:label>(News) has (Photo)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isNewsPhotoOf" />
+   <rdfs:domain rdf:resource="&news;News" />
+   <rdfs:range  rdf:resource="&photo;Photo" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isNewsPhotoOf">
+   <rdfs:label>(Photo) depicts (News)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isNewsPhotoOf" />
+   <rdfs:domain rdf:resource="&photo;Photo" />
+   <rdfs:range  rdf:resource="&news;News" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasProjectResource">
+   <rdfs:label>(Project)project  has a resource (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;projectResourceOf" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="projectResourceOf">
+   <rdfs:label>(Project) is a resource of  (Resource) project</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;projectResourceOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPublicationDataset">
+   <rdfs:label>(Publication) has the dataset (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isPublicationDatasetOf" />
+   <rdfs:domain rdf:resource="&pub;Publication" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isPublicationDatasetOf">
+   <rdfs:label>(Resource) is a dataset for (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isPublicationDatasetOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Publication" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasResource">
+   <rdfs:label>has a resource</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isResourceOf" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isResourceOf">
+   <rdfs:label>is a resource of</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isResourceOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasResource">
+   <rdfs:label>(Publication) has resource (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isResourceofPublication" />
+   <rdfs:domain rdf:resource="&pub;Publication" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isResourceofPublication">
+   <rdfs:label>(Resource) is a resource of (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isResourceofPublication" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Publication" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="requires">
+   <rdfs:label>(Resource) depends on (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;supports" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="supports">
+   <rdfs:label>(Resource) supports (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;supports" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPoster">
+   <rdfs:label>(Event) used the poster (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;posterOf" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&pub;Publication" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="posterOf">
+   <rdfs:label>(Event) poster was used at (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;posterOf" />
+   <rdfs:domain rdf:resource="&pub;Publication" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasEvent">
+   <rdfs:label>(Project) has event (Event)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;EventOf" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="EventOf">
+   <rdfs:label>(Event) is an event of (Project)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;EventOf" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPublication">
+   <rdfs:label>(Event) has the associated publication (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isPublicationOf" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&pub;Publication" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isPublicationOf">
+   <rdfs:label>(Publication) is related to event (Event)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isPublicationOf" />
+   <rdfs:domain rdf:resource="&pub;Publication" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="Is Related to Outside Work">
+   <rdfs:label>(Project) Is Related to Outside Work (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;Outside Work is related to" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="Outside Work is related to">
+   <rdfs:label>(Resource) Outside Work is related to (Project)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;Outside Work is related to" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPreviousVersion">
+   <rdfs:label>(Resource) has previous version (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;hasNextVersion" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasNextVersion">
+   <rdfs:label>(Resource) has next version (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;hasNextVersion" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isDataSetOf">
+   <rdfs:label>(Resource) is a dataset of (Project)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;hasDataSet" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasDataSet">
+   <rdfs:label>(Project) has a dataset (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;hasDataSet" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasRelatedPublication">
+   <rdfs:label>(Project) has related publication (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isRelatedPublicationOf" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&pub;Publication" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isRelatedPublicationOf">
+   <rdfs:label>(Publication) is a related publication of project (Project)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isRelatedPublicationOf" />
+   <rdfs:domain rdf:resource="&pub;Publication" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="has photos">
+   <rdfs:label>(Event) has photos (Resource).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;are photos from" />
+   <rdfs:domain rdf:resource="&event;Event" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="are photos from">
+   <rdfs:label>(Resource) are photos from (Event).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;are photos from" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&event;Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasResource">
+   <rdfs:label>(News) has resource (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;associatedWith" />
+   <rdfs:domain rdf:resource="&news;News" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="associatedWith">
+   <rdfs:label>(Resource) is associated with news item (News)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;associatedWith" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&news;News" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasViz">
+   <rdfs:label>(Resource) has visualization (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isVizOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isVizOf">
+   <rdfs:label>(Resource) is a vizualization of (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isVizOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPresentation">
+   <rdfs:label>(Publication) has presentation (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;presentationOf" />
+   <rdfs:domain rdf:resource="&pub;Publication" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="presentationOf">
+   <rdfs:label>(Resource) is a presentation about (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;presentationOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Publication" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPresentation">
+   <rdfs:label>(Publication) has presentation (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;presentationOf" />
+   <rdfs:domain rdf:resource="&pub;Publication" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="presentationOf">
+   <rdfs:label>(Resource) is a presentation about (Publication)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;presentationOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&pub;Publication" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="advises">
+   <rdfs:label>(Person) advises (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;advisedBy" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="advisedBy">
+   <rdfs:label>(Person) is advised by (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;advisedBy" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="advisedBy">
+   <rdfs:label>(Person) is advised by (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;advises" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="advises">
+   <rdfs:label>(Person) advises (Person).</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;advises" />
+   <rdfs:domain rdf:resource="&person;Person" />
+   <rdfs:range  rdf:resource="&person;Person" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasGoogleGroup">
+   <rdfs:label>(Project) is the subject of the Google Group (Resource)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isGoogleGroupOf" />
+   <rdfs:domain rdf:resource="&project;Project" />
+   <rdfs:range  rdf:resource="&pub;Resource" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isGoogleGroupOf">
+   <rdfs:label>(Resource) is a Google Group about  (Project)</rdfs:label>
+   <owl:inverseOf rdf:resource="&assert;isGoogleGroupOf" />
+   <rdfs:domain rdf:resource="&pub;Resource" />
+   <rdfs:range  rdf:resource="&project;Project" />
+  </owl:ObjectProperty>
+
+
+  <rdf:Description rdf:about="">
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </rdf:Description>
+
+</rdf:RDF>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+	<!ENTITY dc "http://purl.org/dc/elements/1.1/">
+	<!ENTITY dct "http://purl.org/dc/terms/">
+]>
+<rdf:RDF xmlns:rdf="&rdf;" xmlns:rdfs="&rdfs;" xmlns:dc="&dc;" xmlns:dct="&dct;" xml:base="http://www.w3.org/2004/02/skos/mapping">
+	<!-- Description of this schema -->
+	<rdf:Description rdf:about="">
+		<dc:title>SKOS Mapping RDF Vocabulary</dc:title>
+		<dc:description>This vocabulary allows you to express information about how statements made using concepts from some conceptual scheme may be transformed into statements with concepts from a different scheme.  So for example it can be used for automated query transformation.  Or It could be used to create a virtual subject index for a collection in terms of an alternative classification system.</dc:description>
+		<dc:creator>Alistair Miles</dc:creator>
+		<rdfs:seeAlso rdf:resource="http://www.w3.org/2001/sw/Europe/reports/thes/8.4/"/>
+		<dct:modified>2004-08-16</dct:modified>
+	</rdf:Description>
+	<!-- Mapping relation properties -->
+	<rdf:Property rdf:ID="mappingRelation">
+		<rdfs:label>mapping-relation</rdfs:label>
+		<rdfs:comment>The super-property of all properties expressing information about how to create mappings between concepts frmo different conceptual schemes.</rdfs:comment>
+	</rdf:Property>
+	<rdf:Property rdf:ID="exactMatch">
+		<rdfs:label>has-exact-match</rdfs:label>
+		<rdfs:subPropertyOf rdf:resource="#mappingRelation"/>
+		<rdfs:comment>If two concepts are an 'exact-match' then the set of resources properly indexed against the first concept is identical to the set of resources properly indexed against the second.  Therefore the two concepts may be interchanged in queries and subject-based indexes.</rdfs:comment>
+	</rdf:Property>
+	<rdf:Property rdf:ID="broadMatch">
+		<rdfs:label>has-broad-match</rdfs:label>
+		<rdfs:subPropertyOf rdf:resource="#mappingRelation"/>
+		<rdfs:comment>If 'concept A has-broad-match concept B' then the set of resources properly indexed against concept A is a subset of the set of resources properly indexed against concept B.</rdfs:comment>
+	</rdf:Property>
+	<rdf:Property rdf:ID="narrowMatch">
+		<rdfs:label>has-narrow-match</rdfs:label>
+		<rdfs:subPropertyOf rdf:resource="#mappingRelation"/>
+		<rdfs:comment>If 'concept A has-narrow-match concept B' then the set of resources properly indexed against concept A is a superset of the set of resources properly indexed against concept B.</rdfs:comment>
+	</rdf:Property>
+	<rdf:Property rdf:ID="majorMatch">
+		<rdfs:label>has-major-match</rdfs:label>
+		<rdfs:subPropertyOf rdf:resource="#mappingRelation"/>
+		<rdfs:comment>If 'concept A has-major-match concept B' then the set of resources properly indexed against concept A shares more than 50% of its members with the set of resources properly indexed against concept B.</rdfs:comment>
+	</rdf:Property>
+	<rdf:Property rdf:ID="minorMatch">
+		<rdfs:label>has-minor-match</rdfs:label>
+		<rdfs:subPropertyOf rdf:resource="#mappingRelation"/>
+		<rdfs:comment>If 'concept A has-minor-match concept B' then the set of resources properly indexed against concept A shares less than 50% but greater than 0 of its members with the set of resources properly indexed against concept B.</rdfs:comment>
+	</rdf:Property>
+	<!-- Combination constructs -->
+	<rdfs:Class rdf:ID="AND">
+		<rdfs:label>AND</rdfs:label>
+		<rdfs:subClassOf rdf:resource="&rdf;Bag"/>
+		<rdfs:comment>This class is a shorthand for an intersection construct.  So the statement 'concept A has-exact-match AND (concept B, concept C)' implies that the set of resources properly indexed against concept A is identical to the intersection of the sets properly indexed against concepts B and C.  </rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="OR">
+		<rdfs:label>OR</rdfs:label>
+		<rdfs:subClassOf rdf:resource="&rdf;Bag"/>
+		<rdfs:comment>This class is a shorthand for a union construct.  So the statement 'concept A has-exact-match OR (concept B, concept C)' implies that the set of resources properly indexed against concept A is identical to the union of the sets properly indexed against concepts B and C.  </rdfs:comment>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="NOT">
+		<rdfs:label>NOT</rdfs:label>
+		<rdfs:subClassOf rdf:resource="&rdf;Bag"/>
+		<rdfs:comment>This class is a shorthand for a negation construct.  So the statement 'concept A has-exact-match AND (concept B, NOT (concept C))' implies that the set of resources properly indexed against concept A is identical to the intersection of the set properly indexed against concept B and the complement of the set properly indexed against concept C.</rdfs:comment>
+	</rdfs:Class>
+</rdf:RDF>

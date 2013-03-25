@@ -1,0 +1,806 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix : <http://purl.org/NET/c4dm/timeline.owl#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix daml: <http://www.daml.org/2001/03/daml+oil#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> . 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix time: <http://www.w3.org/2006/time#>.
+
+
+<http://purl.org/NET/c4dm/timeline.owl>
+    a owl:Ontology;
+    rdfs:label "The Timeline ontology";
+    rdfs:comment """
+    	Extends owl-time ontology (http://www.w3.org/2006/time) with  
+	support for several timelines, acting as a backbone to adress 
+	time interval/instants. 
+
+	Mainly designed with a multimedia use-case in mind.
+
+	Copyright (c) Yves Raimond, Samer Abdallah, Centre for Digital Music, Queen Mary, University of London
+	""";
+    foaf:maker <http://moustaki.org/foaf.rdf#moustaki>;
+    owl:imports <http://www.w3.org/2006/time-entry>, <http://www.w3.org/2006/time> . 
+
+# People
+<http://moustaki.org/foaf.rdf#moustaki> a foaf:Person.
+
+# Make this ontology OWL-DL
+foaf:Person a owl:Class.
+dc:description a owl:DatatypeProperty.
+dc:title a owl:DatatypeProperty.
+foaf:maker a owl:ObjectProperty.
+<http://purl.org/NET/c4dm/timeline.owl> a owl:Thing. # I really don't understand that one
+
+# Status of terms
+vs:term_status a owl:AnnotationProperty.
+
+###############################################
+# Part 1: Core terms defined by this ontology #
+###############################################
+
+:TimeLine
+    a owl:Class;
+    vs:term_status "stable";
+    rdfs:label "timeline";
+    rdfs:comment """Represents a linear and coherent piece of time -- can be either abstract (such as the one behind a score) or concrete (such as the universal time line).
+Two timelines can be mapped using timeline maps.""" .
+
+:Instant a owl:Class;
+	rdfs:label "instant";
+	vs:term_status "stable";
+	rdfs:comment "An instant (same as in OWL-Time)";
+	owl:equivalentClass time:Instant;
+	.
+
+:Interval a owl:Class;
+	rdfs:label "interval";
+	vs:term_status "stable";
+	rdfs:comment "An interval (same as in OWL-Time). Allen's relationships are defined in OWL-Time.";
+	owl:equivalentClass time:ProperInterval;
+	.
+
+:timeline
+    a owl:FunctionalProperty, owl:ObjectProperty;
+    rdfs:label "on timeline";
+    vs:term_status "stable";
+    rdfs:comment """
+	Relates an interval or an instant to the timeline on which it is defined.
+
+	The 29th of August, 2007 would be linked through this property to the universal timeline, whereas
+	\"from 2s to 5s on this particular signal\" would be defined on the signal' timeline.
+
+    """;
+    rdfs:range :TimeLine;
+    rdfs:domain [
+        a owl:Class;
+        owl:unionOf (
+            :Instant
+            :Interval
+        )
+    ] .
+
+:onTimeLine owl:equivalentProperty :timeline; a owl:ObjectProperty.
+
+:at
+    a owl:FunctionalProperty;
+    rdfs:label "at";
+    vs:term_status "stable";
+    rdfs:comment "refers to a point or an interval on the time line, through an explicit datatype";
+    rdfs:domain [
+        a owl:Class;
+        owl:unionOf (
+            :Interval
+            :Instant
+	)
+    ];
+    a owl:DatatypeProperty .
+
+:duration
+    rdfs:label "duration";
+    rdfs:comment "the duration of a time interval";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:domain :Interval .
+
+:end
+    rdfs:label "ends at";
+    rdfs:comment "refers to the end of a time interval, through an explicit datatype. time:hasEnd can be used as well, if you want to associate the end of the interval to an explicit time point resource";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:domain :Interval .
+
+:endsAt owl:equivalentProperty :end; a owl:DatatypeProperty. # Shortcut
+
+
+:start
+    rdfs:label "begins at";
+    rdfs:comment "refers to the beginning of a time interval, through an explicit datatype. time:hasBeginning can be used as well, if you want to associate the beginning of the interval to an explicit time point resource";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:domain :Interval .
+
+:beginsAt owl:equivalentProperty :start; a owl:DatatypeProperty. # Shortcut
+
+####################################
+# Part 1.5: equivalence statements #
+####################################
+
+:meets owl:equivalentProperty time:intervalMeets; a owl:ObjectProperty.
+:equals owl:equivalentProperty time:intervalEquals; a owl:ObjectProperty.
+:before owl:equivalentProperty time:intervalBefore; a owl:ObjectProperty.
+:meets owl:equivalentProperty time:intervalMeets; a owl:ObjectProperty.
+:overlaps owl:equivalentProperty time:intervalOverlaps; a owl:ObjectProperty.
+:starts owl:equivalentProperty time:intervalStarts ; a owl:ObjectProperty.
+:during owl:equivalentProperty time:intervalDuring; a owl:ObjectProperty.
+:finishes owl:equivalentProperty time:intervalFinishes; a owl:ObjectProperty.
+:after owl:equivalentProperty time:intervalAfter; a owl:ObjectProperty.
+:metBy owl:equivalentProperty time:intervalMetBy; a owl:ObjectProperty.
+:overlappedBy owl:equivalentProperty time:intervalOverlappedBy; a owl:ObjectProperty.
+:startedBy owl:equivalentProperty time:intervalStartedBy; a owl:ObjectProperty.
+:contains owl:equivalentProperty time:intervalContains; a owl:ObjectProperty.
+:finishedBy owl:equivalentProperty time:intervalFinishedBy; a owl:ObjectProperty.
+
+############################################################################
+# Part 2: Extra DL stuff, timeline taxonomies, coordinate systems handling #
+############################################################################
+
+
+:AbstractInterval
+    a owl:Class;
+    rdfs:label "abstract interval";
+    rdfs:comment """
+	An interval defined on an abstract time-line.
+    """;
+    vs:term_status "stable";
+    rdfs:subClassOf :Interval;
+    owl:equivalentClass [
+        a owl:Restriction;
+        owl:someValuesFrom :AbstractTimeLine;
+        owl:onProperty :timeline
+    ];
+    .
+
+:AbstractTimeLine
+    a owl:Class;
+    rdfs:label "abstract timeline";
+    rdfs:comment """
+    	Abstract time lines may be used as a backbone for Score, Works, ... 
+	This allows for TimeLine maps to relate works to a given 
+	performance (this part was played at this time).""";
+    vs:term_status "stable";
+    rdfs:subClassOf :TimeLine .
+
+:UTInstant
+    a owl:Class;
+    rdfs:label "instant on the universal timeline";
+    rdfs:comment "This concept expresses that an instant defined on the universal timeline must be associated to a dateTime value";
+    vs:term_status "stable";
+    rdfs:subClassOf [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :atDateTime
+    ];
+    owl:equivalentClass [
+        a owl:Class;
+        owl:intersectionOf (
+            [
+                a owl:Restriction;
+                owl:hasValue :universaltimeline;
+                owl:onProperty :timeline
+            ]
+            :Instant
+        )
+    ] .
+
+:atDateTime
+    rdfs:label "at date/time";
+    rdfs:comment "This property links an instant defined on the universal time line to an XSD date/time value";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:range xsd:dateTime;
+    rdfs:subPropertyOf :at .
+
+:universaltimeline
+    dc:title "the universal time line";
+    dc:description "The timeline one can addresss \"the 1st of July, 2007\"";
+    vs:term_status "stable";
+    a :PhysicalTimeLine;
+    rdfs:comment "this is the `universal' time line -- can adress time intervals on it using date/dateTime -- UTC".
+
+:UniformSamplingMap
+    a owl:Class;
+    rdfs:label "uniform sampling map";
+    vs:term_status "stable";
+    rdfs:subClassOf [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :sampleRate
+    ], [
+        a owl:Restriction;
+        owl:onProperty :rangeTimeLine;
+        owl:someValuesFrom :DiscreteTimeLine
+    ], [
+        a owl:Restriction;
+        owl:onProperty :domainTimeLine;
+        owl:someValuesFrom :RelativeTimeLine
+    ], :TimeLineMap;
+    rdfs:comment "Describe the relation between a continuous time-line and its sampled equivalent";
+    owl:disjointWith :UniformWindowingMap , :UniformSamplingWindowingMap .
+
+:sampleRate
+    a owl:FunctionalProperty;
+    rdfs:label "sample rate";
+    rdfs:comment "associates a sample rate value to a uniform sampling map";
+    vs:term_status "stable";
+    rdfs:range xsd:int;
+    a owl:DatatypeProperty;
+    rdfs:domain  [
+        a owl:Class;
+        owl:unionOf (:UniformSamplingMap :UniformSamplingWindowingMap)
+	].
+
+:rangeTimeLine
+    rdfs:label "range timeline";
+    rdfs:comment "associates a timeline map to its range timeline";
+    vs:term_status "stable";
+    a owl:FunctionalProperty;
+    rdfs:domain :TimeLineMap;
+    a owl:ObjectProperty;
+    rdfs:range :TimeLine .
+
+:DiscreteTimeLine
+    a owl:Class;
+    rdfs:label "discrete time line";
+    vs:term_status "stable";
+    rdfs:subClassOf :TimeLine;
+    rdfs:comment "A discrete time line (like the time line backing a digital signal";
+    owl:disjointWith :ContinuousTimeLine .
+
+:domainTimeLine
+    rdfs:label "domain timeline";
+    rdfs:comment "associates a timeline map to its domain timeline";
+    a owl:FunctionalProperty;
+    vs:term_status "stable";
+    rdfs:range :TimeLine;
+    rdfs:domain :TimeLineMap;
+    a owl:ObjectProperty .
+
+:RelativeTimeLine
+    rdfs:label "relative timeline";
+    vs:term_status "stable";
+    a owl:Class;
+    rdfs:subClassOf :ContinuousTimeLine;
+    rdfs:comment "Semi infinite time line...canonical coordinate system --> adressed through xsd:duration since the instant 0.";
+    owl:disjointWith :PhysicalTimeLine .
+
+:TimeLineMap
+    a owl:Class;
+    vs:term_status "stable";
+    rdfs:label "timeline map";
+    rdfs:comment "Allows to map two time lines together".
+
+:UniformWindowingMap
+    a owl:Class;
+    rdfs:label "uniform windowing map";
+    vs:term_status "stable";
+    rdfs:subClassOf [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :hopSize
+    ], [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :windowLength
+    ], :TimeLineMap, [
+        a owl:Restriction;
+        owl:onProperty :domainTimeLine;
+        owl:someValuesFrom :DiscreteTimeLine
+    ], [
+        a owl:Restriction;
+        owl:someValuesFrom :DiscreteTimeLine;
+        owl:onProperty :rangeTimeLine
+    ];
+    rdfs:comment "Describes the relation between a discrete time line and its windowed equivalent";
+    owl:disjointWith :UniformSamplingMap , :UniformSamplingWindowingMap.
+
+:UniformSamplingWindowingMap
+	a owl:Class;
+	rdfs:label "Uniform sampling and windowing map";
+	rdfs:comment "Describes the relation between a continuous time-line, and a time-line that corresponds to its sampled and windowed equivalent";
+	vs:term_status "stable";
+	rdfs:subClassOf [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :hopSize
+    ], [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :windowLength
+    ], [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :sampleRate
+    ], :TimeLineMap, [
+        a owl:Restriction;
+        owl:onProperty :domainTimeLine;
+        owl:someValuesFrom :ContinuousTimeLine
+    ], [
+        a owl:Restriction;
+        owl:someValuesFrom :DiscreteTimeLine;
+        owl:onProperty :rangeTimeLine
+    ];
+	owl:disjointWith :UniformSamplingMap, :UniformWindowingMap .
+
+:DiscreteInstant
+    a owl:Class;
+    rdfs:label "discrete instant";
+    rdfs:comment "An instant defined on a discrete timeline";
+    vs:term_status "stable";
+    owl:equivalentClass [
+        a owl:Class;
+        owl:intersectionOf (
+            [
+                a owl:Restriction;
+                owl:onProperty :timeline;
+                owl:someValuesFrom :DiscreteTimeLine
+            ]
+	    :Instant
+        )
+    ];
+    rdfs:subClassOf [
+        a owl:Restriction;
+        owl:onProperty :atInt;
+        owl:cardinality "1"^^xsd:int
+    ] .
+
+:atInt
+    a owl:DatatypeProperty;
+    rdfs:label "at (integer)";
+    rdfs:comment "A subproperty of :at, having as a specific range xsd:int";
+    vs:term_status "stable";
+    rdfs:range xsd:int;
+    rdfs:subPropertyOf :at .
+
+:ContinuousTimeLine
+    a owl:Class;
+    rdfs:label "continuous timeline";
+    rdfs:comment "A continuous timeline, like the universal one, or the one backing an analog signal";
+    vs:term_status "stable";
+    rdfs:subClassOf :TimeLine;
+    owl:disjointWith :DiscreteTimeLine;
+    owl:equivalentClass [
+        a owl:Class;
+        owl:unionOf (
+            :PhysicalTimeLine
+            :RelativeTimeLine
+        )
+    ] .
+
+:PhysicalTimeLine
+    a owl:Class;
+    rdfs:label "physical timeline";
+    rdfs:subClassOf :ContinuousTimeLine;
+    rdfs:comment "A \"physical\" time-line (the universal time line (UTC)) is an instance of this class. Other time zones consists in instances of this class as well, with a \"shifting\" time line map relating them to the universal time line map.";
+    vs:term_status "stable";
+    owl:disjointWith :RelativeTimeLine .
+
+:OriginMap
+    a owl:Class;
+    rdfs:label "origin map";
+    rdfs:comment "A timeline map linking a physical timeline to a relative one (originating at some point on the physical timeline)";
+    vs:term_status "stable";
+    rdfs:subClassOf [
+        a owl:Restriction;
+        owl:someValuesFrom :RelativeTimeLine;
+        owl:onProperty :rangeTimeLine
+    ], [
+        a owl:Restriction;
+        owl:someValuesFrom :PhysicalTimeLine;
+        owl:onProperty :domainTimeLine
+    ], :TimeLineMap .
+
+:DiscreteInterval
+    a owl:Class;
+    rdfs:label "discrete interval";
+    rdfs:comment "An interval defined on a discrete timeline, like the one backing a digital signal";
+    vs:term_status "stable";
+    rdfs:subClassOf [
+        a owl:Class;
+        owl:unionOf (
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:onProperty <http://www.w3.org/2006/time#hasBeginning>;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:onProperty <http://www.w3.org/2006/time#hasEnd>;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                )
+            ]
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty :beginsAtInt
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :endsAtInt;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                )
+            ]
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty :beginsAtInt
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :durationInt;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                )
+            ]
+        )
+    ];
+    owl:equivalentClass [
+        a owl:Class;
+        owl:intersectionOf (
+            [
+                a owl:Restriction;
+                owl:someValuesFrom :DiscreteTimeLine;
+                owl:onProperty :timeline
+            ]
+            :Interval
+        )
+    ] .
+
+:beginsAtInt
+    a owl:DatatypeProperty;
+    rdfs:label "begins at (integer)";
+    rdfs:comment "A subproperty of :beginsAt, having xsd:int as a range";
+    vs:term_status "stable";
+    rdfs:range xsd:int;
+    rdfs:subPropertyOf :start .
+
+:endsAtInt
+    a owl:DatatypeProperty;
+    rdfs:label "ends at (integer)";
+    rdfs:comment "A subproperty of :endsAt, having xsd:int as a range";
+    vs:term_status "stable";
+    rdfs:subPropertyOf :end;
+    rdfs:range xsd:int .
+
+:durationInt
+    rdfs:label "duration (integer)";
+    rdfs:comment "A subproperty of :duration, having xsd:int as a range";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:range xsd:int;
+    rdfs:subPropertyOf :duration .
+
+:RelativeInterval
+    a owl:Class;
+    rdfs:label "relative interval";
+    rdfs:comment "an interval defined on a relative timeline";
+    vs:term_status "stable";
+    rdfs:subClassOf [
+        a owl:Class;
+        owl:unionOf (
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty <http://www.w3.org/2006/time#hasBeginning>
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty <http://www.w3.org/2006/time#hasEnd>
+                    ]
+                )
+            ]
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :beginsAtDuration;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :durationXSD;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                )
+            ]
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty :beginsAtDuration
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :endsAtDuration;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                )
+            ]
+        )
+    ];
+    owl:equivalentClass [
+        a owl:Class;
+        owl:intersectionOf (
+            [
+                a owl:Restriction;
+                owl:someValuesFrom :RelativeTimeLine;
+                owl:onProperty :timeline
+            ]
+            :Interval
+        )
+    ] .
+
+:beginsAtDuration
+    rdfs:label "begins at (xsd:duration)";
+    a owl:DatatypeProperty;
+    rdfs:comment "A property enabling to adress a start time point P of an interval [P,E] through the duration of the interval [0,P] on a continuous timeline";
+    vs:term_status "stable";
+    rdfs:subPropertyOf :start;
+    rdfs:range xsd:duration .
+
+:durationXSD
+    rdfs:label "duration (xsd:duration)";
+    rdfs:comment "A subproperty of :duration, having xsd:duration as a range";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:range xsd:duration;
+    rdfs:subPropertyOf :duration .
+
+:endsAtDuration
+    rdfs:label "ends at (xsd:duration)";
+    a owl:DatatypeProperty;
+    rdfs:comment "A property enabling to adress an end time point P of an interval [S,P] through the duration of the interval [0,P] on a continuous timeline";
+    vs:term_status "stable";
+    rdfs:subPropertyOf :end;
+    rdfs:range xsd:duration .
+
+:ShiftMap
+    rdfs:comment "a map just shifting one timeline to another";
+    rdfs:label "shift map";
+    vs:term_status "stable";
+    a owl:Class;
+    rdfs:subClassOf :TimeLineMap .
+
+:UTInterval
+    rdfs:label "universal timeline interval";
+    rdfs:comment "an interval defined on the universal time line";
+    vs:term_status "stable";
+    a owl:Class;
+    owl:equivalentClass [
+        a owl:Class;
+        owl:intersectionOf (
+            [
+                a owl:Restriction;
+                owl:onProperty :timeline;
+                owl:hasValue :universaltimeline
+            ]
+            :Interval
+        )
+    ];
+    rdfs:subClassOf [
+        a owl:Class;
+        owl:unionOf (
+            [
+                a owl:Restriction;
+                owl:onProperty :atYear;
+                owl:cardinality "1"^^xsd:int
+            ]
+            [
+                a owl:Restriction;
+                owl:onProperty :atYearMonth;
+                owl:cardinality "1"^^xsd:int
+            ]
+            [
+                a owl:Restriction;
+                owl:cardinality "1"^^xsd:int;
+                owl:onProperty :atDate
+            ]
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :beginsAtDateTime;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty :durationXSD
+                    ]
+                )
+            ]
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty <http://www.w3.org/2006/time#hasBeginning>
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:cardinality "1"^^xsd:int;
+                        owl:onProperty <http://www.w3.org/2006/time#hasEnd>
+                    ]
+                )
+            ]
+            [
+                a owl:Class;
+                owl:intersectionOf (
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :beginsAtDateTime;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                    [
+                        a owl:Restriction;
+                        owl:onProperty :endsAtDateTime;
+                        owl:cardinality "1"^^xsd:int
+                    ]
+                )
+            ]
+        )
+    ] .
+
+:atYear
+    rdfs:label "at (year)";
+    rdfs:comment "A subproperty of :at, allowing to address a year (beginning of it for an instant, all of it for an interval)";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:subPropertyOf :at;
+    rdfs:range xsd:gYear .
+
+:atYearMonth
+    rdfs:label "at (year/month)";
+    rdfs:comment "A subproperty of :at, allowing to address a year/month (beginning of it for an instant, all of it for an interval)";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:subPropertyOf :at;
+    rdfs:range xsd:gYearMonth .
+
+:atDate
+    rdfs:label "at (date)";
+    rdfs:comment "A subproperty of :at, allowing to address a date (beginning of it for an instant, all of it for an interval)";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:subPropertyOf :at;
+    rdfs:range xsd:date .
+
+:beginsAtDateTime
+    rdfs:label "begins at (date/time)";
+    rdfs:comment "A subproperty of :beginsAt, allowing to address the beginning of an interval as a date/time";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:subPropertyOf :start;
+    rdfs:range xsd:dateTime .
+
+:endsAtDateTime
+    rdfs:label "ends at (date/time)";
+    rdfs:comment "A subproperty of :endsAt, allowing to address the end of an interval as a date/time";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:range xsd:dateTime;
+    rdfs:subPropertyOf :end .
+
+:hopSize
+    rdfs:label "hop size";
+    rdfs:comment "hop size, associated to a uniform windowing map";
+    vs:term_status "stable";
+    a owl:FunctionalProperty, owl:DatatypeProperty;
+    rdfs:range xsd:int;
+    rdfs:domain  [
+        a owl:Class;
+        owl:unionOf (:UniformWindowingMap :UniformSamplingWindowingMap)
+	] .
+
+:windowLength
+    rdfs:label "window length";
+    rdfs:comment "window length, associated to a uniform windowing map";
+    vs:term_status "stable";
+    a owl:FunctionalProperty, owl:DatatypeProperty;
+    rdfs:range xsd:int;
+    rdfs:domain  [
+        a owl:Class;
+        owl:unionOf (:UniformWindowingMap :UniformSamplingWindowingMap)
+	] .
+
+:RelativeInstant
+    rdfs:label "relative instant";
+    rdfs:comment "An instant defined on a relative timeline";
+    vs:term_status "stable";
+    a owl:Class;
+    rdfs:subClassOf [
+        a owl:Restriction;
+        owl:cardinality "1"^^xsd:int;
+        owl:onProperty :atDuration
+    ];
+    owl:equivalentClass [
+        a owl:Class;
+        owl:intersectionOf (
+            [
+                a owl:Restriction;
+                owl:someValuesFrom :RelativeTimeLine;
+                owl:onProperty :timeline
+            ]
+            :Instant
+        )
+    ] .
+
+:atDuration
+    rdfs:label "at (duration)";
+    a owl:DatatypeProperty;
+    rdfs:range xsd:duration;
+    vs:term_status "stable";
+    rdfs:subPropertyOf :at;
+    rdfs:comment "A property enabling to adress a time point P through the duration of the interval [0,P] on a continuous timeline" .
+
+:AbstractInstant
+    rdfs:label "abstract instant";
+    rdfs:comment "An instant defined on an abstract timeline";
+    vs:term_status "stable";
+    a owl:Class;
+    rdfs:subClassOf :Instant;
+    owl:equivalentClass [
+        a owl:Restriction;
+        owl:someValuesFrom :AbstractTimeLine;
+        owl:onProperty :timeline
+    ] .
+
+:atReal
+    rdfs:label "at (real)";
+    rdfs:comment "subproperty of :at, having xsd:float as a range";
+    vs:term_status "stable";
+    a owl:DatatypeProperty;
+    rdfs:range xsd:float;
+    rdfs:subPropertyOf :at .
+
+
+:delay
+    rdfs:label "delay";
+    rdfs:comment "associate a shift map to a particular delay";
+    vs:term_status "stable";
+    a owl:FunctionalProperty;
+    rdfs:domain :ShiftMap;
+    a owl:DatatypeProperty .
+
+:origin
+    rdfs:label "origin";
+    rdfs:comment "associate an origin map to its origin on the domain physical timeline";
+    vs:term_status "stable";
+    a owl:FunctionalProperty, owl:DatatypeProperty;
+    rdfs:range xsd:dateTime;
+    rdfs:domain :OriginMap .
+

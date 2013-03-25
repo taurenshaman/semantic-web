@@ -1,0 +1,611 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE rdf:RDF [
+	 <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	 <!ENTITY a 'http://protege.stanford.edu/system#'>
+	 <!ENTITY ns_1_6 'http://xmlns.com/wordnet/1.6/'>
+	 <!ENTITY cv_rdfs 'http://kaste.lv/~captsolo/semweb/resume/cv.rdfs#'>
+	 <!ENTITY cv_base 'http://kaste.lv/~captsolo/semweb/resume/base.rdfs#'>
+	 <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+]>
+
+<rdf:RDF xmlns:rdf="&rdf;"
+	 xmlns:a="&a;"
+	 xmlns:cv_rdfs="&cv_rdfs;"
+	 xmlns:cv_base="&cv_base;"
+	 xmlns:ns_1_6="&ns_1_6;"
+	 xmlns:rdfs="&rdfs;">
+
+<!-- RDF Schema for describing Curriculum Vitae (CV) = Resumes -->
+<!--           Copyright (c) 2002 by Uldis Bojars              -->
+
+<!-- This file contains the Resume RDF schema located          -->
+<!-- at "http://kaste.lv/~captsolo/semweb/resume/cv.rdfs".     -->
+
+<!-- Suggestions and comments are welcome  -->
+<!-- mailto: uldis.bojars_(at)_gmx.net     -->
+<!-- http://kaste.lv/~captsolo             -->
+
+<rdfs:Class rdf:about="&cv_rdfs;CV"
+	 rdfs:comment="CV subclass of WordNet Curriculum Vitae"
+	 rdfs:label="CV">
+	<rdfs:subClassOf rdf:resource="&ns_1_6;Curriculum_Vitae"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;aboutPerson"
+	 rdfs:label="aboutPerson">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&cv_rdfs;Person"/>
+</rdf:Property>
+
+<rdfs:Class rdf:about="&cv_rdfs;CV_Entry"
+	 rdfs:label="CV_Entry">
+	<rdfs:comment>Single entry of CV information. Type of CV information specified in subclasses</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+ 
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;hasWorkHistory"
+	 rdfs:label="hasWorkHistory">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&cv_rdfs;WorkHistory"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasEducation"
+	 rdfs:label="hasEducation">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&cv_rdfs;Education"/> 
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasCourse"
+	 rdfs:label="hasCourse">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&cv_rdfs;Course"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasSkill"
+	 rdfs:label="hasSkill">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/> 
+	<rdfs:range rdf:resource="&cv_rdfs;Skill"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasReference"
+	 rdfs:label="hasReference">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&cv_rdfs;Refernece"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasTarget"
+	 rdfs:label="hasTarget">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/> 
+	<rdfs:range rdf:resource="&cv_rdfs;Target"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasOtherInfo"
+	 rdfs:label="hasOtherInfo">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/> 
+	<rdfs:range rdf:resource="&cv_rdfs;OtherInfo"/>
+</rdf:Property>
+
+
+<!-- Person's information  -->
+<!-- N.B. Most of person's properties are vCard properties and not defined here -->
+
+<rdfs:Class rdf:about="&cv_rdfs;Person"
+	 rdfs:comment="CV subclass of WordNet person"
+	 rdfs:label="Person">
+	<rdfs:subClassOf rdf:resource="&ns_1_6;Person"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;gender"
+	 rdfs:label="gender">
+	<rdfs:comment>Gender property (man/woman)</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:range rdf:resource="&cv_base;SexProperty"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;birthPlace"
+	 rdfs:comment="Place of birth of the person."
+	 rdfs:label="birthPlace"> 
+	<rdfs:domain rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasCitizenship"
+	 rdfs:label="hasCitizenship"> 
+	<rdfs:comment>Person's citizenship.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:range rdf:resource="http://www.daml.org/2001/09/countries/countries.daml#"/>
+</rdf:Property>
+ 
+<rdf:Property rdf:about="&cv_rdfs;hasNationality"
+	 rdfs:comment="Person's nationality."
+	 rdfs:label="hasNationality">
+	<rdfs:domain rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;maritalStatus"
+	 rdfs:label="familyStatus">
+	<rdfs:comment>Indicates person's marital status.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:range rdf:resource="&cv_base;MaritalStatus"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;noOfChildren"
+	 rdfs:comment="Number of children the person has."
+	 rdfs:label="noOfChildren">
+	<rdfs:domain rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;hasDriversLicense"
+	 rdfs:label="hasDriversLicense">
+	<rdfs:comment>Indicates if the person has drivers license (for regular cars).</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:range rdf:resource="&cv_base;BooleanValue"/>
+</rdf:Property>
+
+
+<!-- Company classes and information  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;Organization"
+	 rdfs:comment="General class for organizations"
+	 rdfs:label="Organization">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&cv_rdfs;Company"
+	 rdfs:comment="A class for company information."
+	 rdfs:label="Company">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;Organization"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&cv_rdfs;EducationalOrg"
+	 rdfs:comment="Educational organization (university, ...)"
+	 rdfs:label="EducationalOrg">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;Organization"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;Name"
+	 rdfs:comment="Name of the company"
+	 rdfs:label="Name">
+	<rdfs:domain rdf:resource="&cv_rdfs;Organization"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;Country"
+	 rdfs:comment="Country where the company is located."
+	 rdfs:label="Country">
+	<rdfs:domain rdf:resource="&cv_rdfs;Organization"/>
+	<rdfs:range rdf:resource="http://www.daml.org/2001/09/countries/countries.daml#"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;Locality"
+	 rdfs:comment="Region / state of the company."
+	 rdfs:label="Locality">
+	<rdfs:domain rdf:resource="&cv_rdfs;Organization"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;Notes"
+	 rdfs:comment="Notes about the company."
+	 rdfs:label="Notes">
+	<rdfs:domain rdf:resource="&cv_rdfs;Organization"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;URL"
+	 rdfs:comment="Company home page"
+	 rdfs:label="URL">
+	<rdfs:domain rdf:resource="&cv_rdfs;Organization"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&cv_rdfs;Industry"
+	 rdfs:comment="Industry of the company"
+	 rdfs:label="Industry">
+	<rdfs:domain rdf:resource="&cv_rdfs;Company"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+
+<!-- Work history classes and information  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;WorkHistory"
+	 rdfs:comment="CV entry for work history"
+	 rdfs:label="WorkHistory">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;CV_Entry"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;employedIn"
+	 rdfs:comment="The company where the person is/was employed."
+	 rdfs:label="employedIn">
+	<rdfs:range rdf:resource="&cv_rdfs;Company"/>
+	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;startDate"
+	 rdfs:label="startDate">
+	<rdfs:comment>Start date of employment.
+Format: YYYY-MM-DD
+May containt only year or year and month.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;endDate"
+	 rdfs:label="endDate">
+	<rdfs:comment>End date of employment.
+Format: YYYY-MM-DD
+May containt only year or year and month.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/> 
+
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;jobTitle"
+	 rdfs:comment="Title in the company."
+	 rdfs:label="jobTitle">
+	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;jobDescription"
+	 rdfs:comment="Description of the job in company."
+	 rdfs:label="jobDescription">
+	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;careerLevel"
+	 rdfs:comment="Career level for the position in company."
+	 rdfs:label="careerLevel">
+ 	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&cv_base;CVCareerLevel"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;numSubordinates"
+	 rdfs:comment="Number of subordinates."
+	 rdfs:label="numSubordinates">
+	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;jobType"
+	 rdfs:comment="Type of the job: employee / contractor / intern"
+	 rdfs:label="jobType">
+	<rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&cv_base;CVJobType"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;isCurrent"
+	 rdfs:comment="Indicates if this is a current workplace."
+	 rdfs:label="isCurrent"> 
+      <rdfs:domain rdf:resource="&cv_rdfs;WorkHistory"/>
+	<rdfs:range rdf:resource="&cv_base;BooleanValue"/>
+</rdf:Property>
+
+
+<!-- Education record classes and properties  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;Education"
+	 rdfs:comment="CV entry for education"
+	 rdfs:label="Education">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;CV_Entry"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;studiedIn"
+	 rdfs:comment="Educational organization where person studied."
+	 rdfs:label="studiedIn">
+	<rdfs:domain rdf:resource="&cv_rdfs;Education"/>
+	<rdfs:range rdf:resource="&cv_rdfs;EducationalOrg"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&cv_rdfs;eduStartDate"
+	 rdfs:label="eduStartDate">
+	<rdfs:comment>Education start date (YYYY-MM-DD)
+May contain only year or year and month.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Education"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/> 
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;eduGradDate"
+	 rdfs:label="eduGradDate">
+	<rdfs:comment>Education end (graducation) date (YYYY-MM-DD)
+May contain only year or year and month.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Education"/> 
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;degreeType"
+	 rdfs:label="degreeType">
+	<rdfs:comment>Type (title) of the degree.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Education"/>
+	<rdfs:range rdf:resource="&cv_base;EduDegree"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;eduMajor"
+	 rdfs:comment="Major speciality graduated."
+	 rdfs:label="eduMajor">
+	<rdfs:domain rdf:resource="&cv_rdfs;Education"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;eduMinor"
+	 rdfs:comment="Minor speciality(-ies) graduated."
+	 rdfs:label="eduMinor">
+	<rdfs:domain rdf:resource="&cv_rdfs;Education"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;eduDescription"
+	 rdfs:comment="Description of the education info."
+	 rdfs:label="eduDescription">
+	<rdfs:domain rdf:resource="&cv_rdfs;Education"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+
+<!-- Courses and certifications record classes and properties  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;Course"
+	 rdfs:comment="CV entry for courses taken"
+	 rdfs:label="Course">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;CV_Entry"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;organizedBy"
+	 rdfs:label="organizedBy">
+	<rdfs:comment>Organization that organized courses and/or provided certification.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Course"/>
+	<rdfs:range rdf:resource="&cv_rdfs;Organization"/> 
+</rdf:Property>
+
+<rdf:Property rdf:about="&cv_rdfs;isCertification"
+	 rdfs:comment="Does this course entry include certification?"
+	 rdfs:label="isCertification">
+	<rdfs:domain rdf:resource="&cv_rdfs;Course"/>
+	<rdfs:range rdf:resource="&cv_base;BooleanValue"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&cv_rdfs;courseTitle"
+	 rdfs:comment="Title of the course taken or certification acquired."
+	 rdfs:label="courseTitle">
+	<rdfs:domain rdf:resource="&cv_rdfs;Course"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;courseDescription"
+	 rdfs:comment="Description of the course / certification."
+	 rdfs:label="courseDescription">
+	<rdfs:domain rdf:resource="&cv_rdfs;Course"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+ </rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;courseURL"
+	 rdfs:label="courseURL">
+	<rdfs:comment>Web page of the courses taken / certification acquired. May be pointer to certification transcript.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Course"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;courseStartDate"
+	 rdfs:comment="Start date of the course taken."
+	 rdfs:label="courseStartDate">
+	<rdfs:domain rdf:resource="&cv_rdfs;Course"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;courseFinishDate"
+	 rdfs:comment="Date when course was finished / certification acquired."
+	 rdfs:label="courseFinishDate">
+	<rdfs:domain rdf:resource="&cv_rdfs;Course"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+
+<!-- Skills record classes and properties  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;Skill"
+	 rdfs:label="Skill">
+	<rdfs:comment>CV entry for description of skills</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;CV_Entry"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;skillName"
+	 rdfs:comment="Name of the skill"
+	 rdfs:label="skillName">
+	<rdfs:domain rdf:resource="&cv_rdfs;Skill"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;skillLevel"
+	 rdfs:comment="Level of the skill (0..5)"
+	 rdfs:label="skillLevel">
+	<rdfs:domain rdf:resource="&cv_rdfs;Skill"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;skillLastUsed"
+	 rdfs:comment="Date when skill was last used."
+	 rdfs:label="skillLastUsed">
+	<rdfs:domain rdf:resource="&cv_rdfs;Skill"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;skillYearsExperience"
+	 rdfs:comment="Year of experience in this skill."
+	 rdfs:label="skillYearsExperience">
+	<rdfs:domain rdf:resource="&cv_rdfs;Skill"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdfs:Class rdf:about="&cv_rdfs;LanguageSkill"
+	 rdfs:label="LanguageSkill">
+	<rdfs:comment>Language skill.
+Contains 3 levels for skill: spoken, written, reading.
+Inherited skill level used for spoken.</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;Skill"/>
+</rdfs:Class>
+<rdf:Property rdf:about="&cv_rdfs;lngSkillLevelReading"
+	 rdfs:comment="Reading level of language skill. (0..5)"
+	 rdfs:label="lngSkillLevelReading">
+	<rdfs:domain rdf:resource="&cv_rdfs;languageSkill"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;lngSkillLevelWritten"
+	 rdfs:comment="Level of writing skills for language. (0..5)"
+	 rdfs:label="lngSkillLevelWritten">
+	<rdfs:domain rdf:resource="&cv_rdfs;languageSkill"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+
+<!-- References record classes and properties  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;Refernece"
+	 rdfs:comment="CV entry for references"
+	 rdfs:label="Refernece">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;CV_Entry"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&cv_rdfs;ProfessionalReference"
+	 rdfs:comment="Professional reference"
+	 rdfs:label="ProfessionalRefernece">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;Reference"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&cv_rdfs;PersonalReference"
+	 rdfs:comment="Personal reference"
+	 rdfs:label="PersonalRefernece">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;Reference"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;referenceBy"
+	 rdfs:comment="Points to a person who provides the reference."
+	 rdfs:label="referenceBy">
+	<rdfs:range rdf:resource="&cv_rdfs;Person"/>
+	<rdfs:domain rdf:resource="&cv_rdfs;Refernece"/>
+</rdf:Property> 
+
+
+<!-- Target job information classes and properties  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;Target"
+	 rdfs:label="Target">
+	<rdfs:comment>CV information for target of job application.
+(Single entry per CV. May be defined in the properties of CV class instead).</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;CV_Entry"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;targetCareerLevel"
+	 rdfs:label="targetCareerLevel">
+	<rdfs:comment>Target career level.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&cv_base;CVCareerLevel"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetCompanyDescription"
+	 rdfs:label="targetCompanyDescription"> 
+	<rdfs:comment>Description on the company where the candidate would like to work.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetCompanyIndustry"
+	 rdfs:comment="Industry of the company where the candidate would like to work."
+	 rdfs:label="targetCompanyIndustry">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetCompanySize"
+	 rdfs:comment="Size of the target company."
+	 rdfs:label="targetCompanySize">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetCountry"
+	 rdfs:label="targetCountry">
+	<rdfs:comment>Country where would like to work.
+</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="http://www.daml.org/2001/09/countries/countries.daml#"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetJobDescription"
+	 rdfs:comment="Description of the job applicant is seeking. Notes."
+	 rdfs:label="targetJobDescription">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetJobMode"
+	 rdfs:comment="Job mode: full-time / part-time"
+	 rdfs:label="targetJobMode">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&cv_base;CVJobMode"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetJobType"
+	 rdfs:label="targetJobType">
+	<rdfs:comment>Target job type.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&cv_base;CVJobType"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetSalary"
+	 a:maxCardinality="1"
+	 a:range="integer"
+	 rdfs:comment="Target salary"
+	 rdfs:label="targetSalary">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;targetSalaryCurrency"
+	 a:maxCardinality="1"
+	 rdfs:label="targetSalaryCurrency">
+	<rdfs:comment>Currency for target salary.</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&cv_rdfs;weeksNoticePeriod"
+	 rdfs:comment="Notice period in weeks when can start to work."
+	 rdfs:label="weeksNoticePeriod">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;conditionWillRelocate"
+	 rdfs:comment="Is candidate willing to relocate?"
+	 rdfs:label="conditionWillRelocate">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&cv_base;BooleanValue"/>
+</rdf:Property> 
+<rdf:Property rdf:about="&cv_rdfs;conditionWillTravel"
+	 rdfs:comment="Is candidate willing to travel?"
+	 rdfs:label="conditionWillTravel">
+	<rdfs:domain rdf:resource="&cv_rdfs;Target"/>
+	<rdfs:range rdf:resource="&cv_base;BooleanValue"/>
+</rdf:Property>
+
+
+<!-- Other information record classes and properties  -->
+
+<rdfs:Class rdf:about="&cv_rdfs;OtherInfo"
+	 rdfs:comment="Other information in CV"
+	 rdfs:label="OtherInfo">
+	<rdfs:subClassOf rdf:resource="&cv_rdfs;CV_Entry"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&cv_rdfs;otherInfoType"
+	 rdfs:label="otherInfoType">
+	<rdfs:comment>Type of other CV information (interests / awards / accomplishments / point of view / membership / social activities / other)</rdfs:comment>
+	<rdfs:domain rdf:resource="&cv_rdfs;OtherInfo"/>
+	<rdfs:range rdf:resource="&cv_base;OtherCVInfoType"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;otherInfoDescription"
+	 rdfs:comment="Description - content of misc CV information."
+	 rdfs:label="otherInfoDescription">
+	<rdfs:domain rdf:resource="&cv_rdfs;OtherInfo"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+
+<!-- Special information -->
+<!--   assigned directly to CV class -->
+
+<rdf:Property rdf:about="&cv_rdfs;lastUpdate"
+	 rdfs:comment="Date when the information in CV was last updated." 
+	 rdfs:label="lastUpdate">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;cvTitle"
+	 rdfs:comment="CV title."
+	 rdfs:label="cvTitle">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;cvDescription"
+	 rdfs:comment="Text describing what the person wants to accomplish by this CV; what is s/he looking for; ..."
+	 rdfs:label="cvDescription">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;cvCopyright"
+	 rdfs:comment="Copyright notice - who owns rights to CV, how may it be used, other legal info."
+	 rdfs:label="cvCopyright">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;cvIsConfidential"
+	 rdfs:comment="If the CV is confidential and may be used by receiving party only."
+	 rdfs:label="cvIsConfidential">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&cv_rdfs;cvIsActive"
+	 rdfs:comment="If the CV is active and the person is actively looking for job opportunities."
+	 rdfs:label="cvIsActive">
+	<rdfs:domain rdf:resource="&cv_rdfs;CV"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+</rdf:RDF>

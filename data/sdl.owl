@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY cc "http://web.resource.org/cc/" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+    <!ENTITY vocabid "http://purl.org/vocab/riro/sdl" >
+    <!ENTITY sdl "http://purl.org/vocab/riro/sdl#" >
+    <!ENTITY gpt "http://purl.org/vocab/riro/gpt#" >
+]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+  xmlns:owl="http://www.w3.org/2002/07/owl#" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:dct="http://purl.org/dc/terms/" 
+  xmlns:dctype="http://purl.org/dc/dcmitype/" 
+  xmlns:cc="http://web.resource.org/cc/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:sdl="http://purl.org/vocab/riro/sdl#"
+  xmlns:gpt="http://purl.org/vocab/riro/gpt#"
+  xml:base="http://purl.org/vocab/riro/sdl">
+ <owl:Ontology rdf:about="" dc:date="2006-02-21">
+  <dc:title xml:lang="en">RDF-in/RDF-out (RIRO) Service Descriptions</dc:title>
+  <rdfs:comment xml:lang="en">
+   This vocabulary defines terms used to describe RIRO services. A RIRO
+   service is characterised by its connection point, its command name and
+   description, its input pattern, and its output template. RIRO Service
+   Description contains all the information needed to use the service.
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   The description is built as a set of properties of the connection point 
+   resource (a node which URI is the URL of the service).
+  </rdfs:comment>
+  <rdfs:comment xml:lang="en">
+   Input patterns and output templates are described using the accompanying
+   RDF Graph Patterns and Templates vocabulary (http://purl.org/vocab/riro/gpt).
+  </rdfs:comment>
+  <dc:identifier>&vocabid;</dc:identifier>
+  <dct:isVersionOf rdf:resource="&sdl;"/>
+  <dc:creator>Sergei Egorov &lt;esl@ariadnegenomics.com&gt;</dc:creator>
+  <dc:rights>Copyright © 2006 Sergei Egorov</dc:rights>
+  <dc:rights>OWL metadata &amp; format Copyright © 2005 Richard Newman and Ian Davis</dc:rights>
+  <vann:preferredNamespaceUri>&sdl;</vann:preferredNamespaceUri>
+  <vann:preferredNamespacePrefix>sdl</vann:preferredNamespacePrefix>
+
+  <dct:hasFormat>
+    <dctype:Text rdf:about="&vocabid;.html">
+     <dc:format>
+      <dct:IMT>
+       <rdf:value>text/html</rdf:value>
+       <rdfs:label xml:lang="en">HTML</rdfs:label>
+      </dct:IMT>
+     </dc:format>
+    </dctype:Text>
+  </dct:hasFormat>
+
+  <dct:hasFormat>
+    <dctype:Text rdf:about="&vocabid;.owl">
+     <dc:format>
+      <dct:IMT>
+       <rdf:value>application/rdf+xml</rdf:value>
+       <rdfs:label xml:lang="en">OWL</rdfs:label>
+      </dct:IMT>
+     </dc:format>
+    </dctype:Text>
+  </dct:hasFormat>
+
+ <skos:example rdf:resource="sdl-example.rdf"/>
+ <skos:example rdf:resource="sdl-example.ttl"/>
+
+ <dct:issued>2006-03-05</dct:issued>
+ <skos:historyNote rdf:value="First version" dc:date="2006-03-05" dc:creator="Sergei Egorov"/>
+
+ </owl:Ontology>
+
+ <cc:Work rdf:about="">
+   <cc:license rdf:resource="http://creativecommons.org/licenses/by/2.5/"/>
+ </cc:Work>
+ <cc:License rdf:about="http://creativecommons.org/licenses/by/2.5/">
+   <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+   <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+   <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+   <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+   <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+ </cc:License>
+
+ <owl:ObjectProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+ <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/hasFormat"/>
+
+ <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/replaces"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/type"/>
+
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+ <owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+
+ <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+ <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/changes"/>
+
+ <owl:DatatypeProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#value"/>
+
+ <owl:Class rdf:about="&cc;License"/>
+ <owl:Class rdf:about="&cc;Permission"/>
+ <owl:Class rdf:about="&cc;Requirement"/>
+ <owl:ObjectProperty rdf:about="&cc;permits"/>
+ <owl:ObjectProperty rdf:about="&cc;requires"/>
+ <owl:AnnotationProperty rdf:about="&cc;license"/>
+ <cc:Permission rdf:about="&cc;Reproduction"/>
+ <cc:Permission rdf:about="&cc;Distribution"/>
+ <cc:Requirement rdf:about="&cc;Notice"/>
+ <cc:Requirement rdf:about="&cc;Attribution"/>
+ <cc:Permission rdf:about="&cc;DerivativeWorks"/>
+  
+ <owl:Class rdf:about="&sdl;RIROService">
+  <rdfs:label xml:lang="en">RIRO Service</rdfs:label>
+  <skos:definition xml:lang="en">
+   A RDF-in/RDF-out (RIRO) Service.
+  </skos:definition >
+  <rdfs:comment xml:lang="en">
+   A member of this class is a service supporting the RIRO protocol.
+   As a rule, a member of this class is assigned a URI; if so, the 
+   URI is interpreted as URL of the service's connection point.
+  </rdfs:comment>
+  <rdfs:isDefinedBy rdf:resource="&sdl;"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:DatatypeProperty rdf:about="&sdl;commandName"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:DatatypeProperty rdf:about="&sdl;commandDescription"/>
+      </owl:onProperty>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:DatatypeProperty rdf:about="&sdl;fileUnder"/>
+      </owl:onProperty>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&sdl;inputPattern"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:ObjectProperty rdf:about="&sdl;outputTemplate"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty>
+        <owl:DatatypeProperty rdf:about="&sdl;method"/>
+      </owl:onProperty>
+      <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+      <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <dct:issued>2006-03-05</dct:issued>
+  <skos:changeNote rdf:value="Added comment" dc:date="2006-03-05" dc:creator="Sergei Egorov"/>
+ </owl:Class>
+
+ <owl:DatatypeProperty rdf:about="&sdl;commandName">
+   <rdfs:label xml:lang="en">command name</rdfs:label>
+   <skos:definition xml:lang="en">
+    The name of the command to invoke the service.
+   </skos:definition>
+   <rdfs:comment xml:lang="en">
+    Please supply short and descriptive name, suitable for use in
+    menus, command lists etc. Recommended length is 10-40 characters.
+   </rdfs:comment>
+   <rdfs:comment xml:lang="en">
+    Example: 'Resolve LSRN to Record, URLs'. 
+   </rdfs:comment>
+   <rdfs:comment xml:lang="en">
+    This property is required.
+   </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="&sdl;"/>
+   <rdfs:domain rdf:resource="&sdl;RIROService"/>
+   <rdfs:range rdf:resource="&xsd;string"/>
+   <dct:issued>2006-03-05</dct:issued>
+ </owl:DatatypeProperty>
+
+ <owl:DatatypeProperty rdf:about="&sdl;commandDescription">
+   <rdfs:label xml:lang="en">command description</rdfs:label>
+   <skos:definition xml:lang="en">
+    The description of the command to invoke the service.
+   </skos:definition>
+   <rdfs:comment xml:lang="en">
+    Please keep the description brief - no longer than 25-30 words. The
+    description should be suitable for use in tooltips, help texts etc.
+   </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="&sdl;"/>
+   <rdfs:domain rdf:resource="&sdl;RIROService"/>
+   <rdfs:range rdf:resource="&xsd;string"/>
+   <dct:issued>2006-03-05</dct:issued>
+ </owl:DatatypeProperty>
+
+ <owl:DatatypeProperty rdf:about="&sdl;fileUnder">
+   <rdfs:label xml:lang="en">file under</rdfs:label>
+   <skos:definition xml:lang="en">
+    The category/subcategory of the command to invoke the service.
+   </skos:definition>
+   <rdfs:comment xml:lang="en">
+    This property allows one to group related services together. The
+    format of the property is category/subcategory/subsubcategory/...,
+    similar to the convention used in the Open Directory Project
+    (dmoz.org). Category names should follow the conventions for
+    command names (10-40 characters, capitalized).
+   </rdfs:comment>
+   <rdfs:comment xml:lang="en">
+    Example: 'Related/Journal Articles'
+   </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="&sdl;"/>
+   <rdfs:domain rdf:resource="&sdl;RIROService"/>
+   <rdfs:range rdf:resource="&xsd;string"/>
+   <dct:issued>2006-03-05</dct:issued>
+ </owl:DatatypeProperty>
+ 
+<owl:ObjectProperty rdf:about="&sdl;inputPattern">
+   <rdfs:label xml:lang="en">input pattern</rdfs:label>
+   <skos:definition xml:lang="en">
+    The pattern matching proper input graphs.
+   </skos:definition>
+   <rdfs:comment xml:lang="en">
+    Graph patterns should be expressed via the
+    RDF Graph Patterns and Templates vocabulary
+    (http://purl.org/vocab/riro/gpt).
+   </rdfs:comment>
+   <rdfs:comment xml:lang="en">
+    This property is required.
+   </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="&sdl;"/>
+   <rdfs:domain rdf:resource="&sdl;RIROService"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-03-06</dct:issued>
+ </owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&sdl;outputTemplate">
+   <rdfs:label xml:lang="en">output template</rdfs:label>
+   <skos:definition xml:lang="en">
+    The template for output graphs produced by the service.
+   </skos:definition>
+   <rdfs:comment xml:lang="en">
+    Graph patterns should be expressed via the
+    RDF Graph Patterns and Templates vocabulary
+    (http://purl.org/vocab/riro/gpt).
+   </rdfs:comment>
+   <rdfs:comment xml:lang="en">
+    The input pattern and output template can share blank nodes.
+    In real calls, the query and the reply graph will also share
+    corresponding blank nodes by reusing nodeIDs; the reply is
+    considered to be in the same nodeID namespace as the query. 
+   </rdfs:comment>
+   <rdfs:comment xml:lang="en">
+    This property is required.
+   </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="&sdl;"/>
+   <rdfs:domain rdf:resource="&sdl;RIROService"/>
+   <rdfs:range rdf:resource="&rdfs;Resource"/>
+   <dct:issued>2006-03-06</dct:issued>
+ </owl:ObjectProperty>
+
+ <owl:DatatypeProperty rdf:about="&sdl;method">
+   <rdfs:label xml:lang="en">HTTP method</rdfs:label>
+   <skos:definition xml:lang="en">
+    Query method ('get' or 'post').
+   </skos:definition>
+   <rdfs:comment xml:lang="en">
+    If the query method is 'get', the service is assumed
+    to be idempotent (the query will have no side effects). 
+   </rdfs:comment>
+   <rdfs:comment xml:lang="en">
+    This property is required.
+   </rdfs:comment>
+   <rdfs:isDefinedBy rdf:resource="&sdl;"/>
+   <rdfs:domain rdf:resource="&sdl;RIROService"/>
+   <rdfs:range>
+     <owl:DataRange>
+       <owl:oneOf>
+         <rdf:List>
+           <rdf:first rdf:datatype="&xsd;string">get</rdf:first>
+           <rdf:rest>
+             <rdf:List>
+               <rdf:first rdf:datatype="&xsd;string">post</rdf:first>
+               <rdf:rest rdf:resource="&rdf;nil" />
+             </rdf:List>
+           </rdf:rest>
+         </rdf:List>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+   <dct:issued>2006-03-06</dct:issued>
+ </owl:DatatypeProperty>
+
+</rdf:RDF>

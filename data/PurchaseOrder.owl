@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns="http://www.purl.org/net/ontology/order.owl#"
+  xml:base="http://www.purl.org/net/ontology/order.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo>order.owl, 2005-05</owl:versionInfo>
+    <rdfs:label>PurchaseOrder Ontology</rdfs:label>
+    <rdfs:comment>This OWL version by David Aumueller</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Agent">
+    <!--<rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>-->
+    <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+  </owl:Class>
+  <owl:Class rdf:ID="Person">
+    <!--<rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>-->
+    <owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:subClassOf rdf:resource="#Agent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Address"/>
+  <owl:Class rdf:ID="PurchasedItem"/>
+  <owl:Class rdf:ID="ItemsCollection"/>
+  <owl:Class rdf:ID="Shipper">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Organization"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Organization">
+    <rdfs:subClassOf rdf:resource="#Agent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PurchaseOrder"/>
+  <owl:Class rdf:ID="Personnel">
+    <rdfs:subClassOf rdf:resource="#Person"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Supplier">
+    <rdfs:subClassOf rdf:resource="#Organization"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="shippedBy">
+    <rdfs:range rdf:resource="#Shipper"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasItems">
+    <rdfs:range rdf:resource="#ItemsCollection"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="shipTo">
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+    <rdfs:range rdf:resource="#Organization"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="billTo">
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+    <rdfs:range rdf:resource="#Organization"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="contactPerson">
+    <rdfs:range rdf:resource="#Personnel"/>
+    <rdfs:domain rdf:resource="#Organization"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAddress">
+    <rdfs:domain rdf:resource="#Agent"/>
+    <rdfs:range rdf:resource="#Address"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasItem">
+    <rdfs:domain rdf:resource="#ItemsCollection"/>
+    <rdfs:range rdf:resource="#PurchasedItem"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="suppliedBy">
+    <rdfs:range rdf:resource="#Supplier"/>
+    <rdfs:domain rdf:resource="#PurchasedItem"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="Price">
+    <rdfs:domain rdf:resource="#PurchasedItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Position">
+    <rdfs:domain rdf:resource="#Personnel"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Discount">
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="LastName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="PurchaseOrderDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Comments">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ItemDescription">
+    <rdfs:domain rdf:resource="#PurchasedItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Phone">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Agent"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ItemName">
+    <rdfs:domain rdf:resource="#PurchasedItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="OrderNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Quantity">
+    <rdfs:domain rdf:resource="#PurchasedItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="UPC">
+    <rdfs:domain rdf:resource="#PurchasedItem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="PartNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#PurchasedItem"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="OrderDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="OrganizationName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Organization"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Fax">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Agent"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Street">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Country">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Title">
+    <rdfs:domain rdf:resource="#Personnel"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="HomePage">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Agent"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="FirstName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Person"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Email">
+    <rdfs:domain rdf:resource="#Agent"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Amount">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Currency">
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ShipmentDate">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#PurchaseOrder"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="State">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Zip">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Address"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="City">
+    <rdfs:domain rdf:resource="#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
+

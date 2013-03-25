@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY rdf   "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <!ENTITY rdfs  "http://www.w3.org/2000/01/rdf-schema#">
+   <!ENTITY xsd   "http://www.w3.org/2001/XMLSchema#"> 
+   <!ENTITY owl   "http://www.w3.org/2002/07/owl#"> 
+   <!ENTITY photo "http://ebiquity.umbc.edu/ontology/photo.owl#">
+   <!ENTITY cc    "http://web.resource.org/cc/#">
+   ]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF  
+   xmlns:rdf  = "&rdf;"
+   xmlns:rdfs = "&rdfs;"
+   xmlns:owl  = "&owl;"
+   xmlns:xsd  = "&xsd;"
+   xmlns:cc   = "&cc;"
+   xmlns      = "&photo;"
+   xml:base   = "&photo;">
+  
+  <owl:Ontology rdf:about="&photo;photo">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity Photo Ontology</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="Photo">
+    <rdfs:label>Photo</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#title"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#takenOn"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#description"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#jpegURI"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#size"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#width"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#height"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="title">
+    <rdfs:label>Photo Title</rdfs:label>
+    <rdfs:domain rdf:resource="#Photo"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="takenOn">
+    <rdfs:label>Photo Taken On Date and Time</rdfs:label>
+    <rdfs:domain rdf:resource="#Photo"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="description">
+    <rdfs:label>Photo Description</rdfs:label>
+    <rdfs:domain rdf:resource="#Photo"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="jpegURI">
+    <rdfs:label>Photo JPEG URI</rdfs:label>
+    <rdfs:domain rdf:resource="#Photo"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="size">
+    <rdfs:label>Photo Size</rdfs:label>
+    <rdfs:domain rdf:resource="#Photo"/>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="height">
+    <rdfs:label>Photo Height</rdfs:label>
+    <rdfs:domain rdf:resource="#Photo"/>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="width">
+    <rdfs:label>Photo Width</rdfs:label>
+    <rdfs:domain rdf:resource="#Photo"/>
+    <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
+
+
+

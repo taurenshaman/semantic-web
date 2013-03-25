@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY rdf    "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <!ENTITY rdfs   "http://www.w3.org/2000/01/rdf-schema#">
+   <!ENTITY xsd    "http://www.w3.org/2001/XMLSchema#"> 
+   <!ENTITY owl    "http://www.w3.org/2002/07/owl#"> 
+   <!ENTITY person "http://ebiquity.umbc.edu/ontology/person.owl#">
+   <!ENTITY event  "http://ebiquity.umbc.edu/ontology/event.owl#">
+   <!ENTITY cc     "http://web.resource.org/cc/#">
+   ]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF  
+   xmlns:rdf  = "&rdf;"
+   xmlns:rdfs = "&rdfs;"
+   xmlns:owl  = "&owl;"
+   xmlns:xsd  = "&xsd;"
+   xmlns:cc   = "&cc;"
+   xmlns      = "&event;"
+   xml:base   = "&event;">
+  
+  <owl:Ontology rdf:about="&event;event">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity Event Ontology</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="Event">
+    <rdfs:label>Event </rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#title"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#startDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#endDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#abstract"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#location"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#uri"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#speaker"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#host"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="EventSeries">
+    <rdfs:label>Event Series</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#title"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#description"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#startDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#endDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#uri"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#defaultLocation"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#defaultDay"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#defaultStartTime"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#defaultEndTime"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#defaultHost"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="title">
+    <rdfs:label>Title</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="startDate">
+    <rdfs:label>Start Date and Time</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="endDate">
+    <rdfs:label>End Date and Time</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="abstract">
+    <rdfs:label>Event Abstract</rdfs:label>
+    <rdfs:domain rdf:resource="#Event"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="description">
+    <rdfs:label>Event Description</rdfs:label>
+    <rdfs:domain rdf:resource="#EventSeries"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="location">
+    <rdfs:label>Event Location</rdfs:label>
+    <rdfs:domain rdf:resource="#Event"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="defaultLocation">
+    <rdfs:label>EventSeries Default Location</rdfs:label>
+    <rdfs:domain rdf:resource="#EventSeries"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="tag">
+    <rdfs:label>Event Tag</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="uri">
+    <rdfs:label>URI</rdfs:label>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:ID="speaker">
+    <rdfs:label>Event Speaker</rdfs:label>
+    <rdfs:domain rdf:resource="#Event"/>
+    <rdfs:range rdf:resource="&person;Person"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="host">
+    <rdfs:label>Event Host</rdfs:label>
+    <rdfs:domain rdf:resource="#Event"/>
+    <rdfs:range rdf:resource="&person;Person"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="defaultHost">
+    <rdfs:label>EventSeries Default Host</rdfs:label>
+    <rdfs:domain rdf:resource="#EventSeries"/>
+    <rdfs:range rdf:resource="&person;Person"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="defaultStartTime">
+    <rdfs:label>Default Start Time</rdfs:label>
+    <rdfs:domain rdf:resource="#EventSeries"/>
+    <rdfs:range rdf:resource="&xsd;Time"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="defaultEndTime">
+    <rdfs:label>Default End Time</rdfs:label>
+    <rdfs:domain rdf:resource="#EventSeries"/>
+    <rdfs:range rdf:resource="&xsd;Time"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="defaultDay">
+    <rdfs:label>Default Day</rdfs:label>
+    <rdfs:domain rdf:resource="#EventSeries"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:ID="includes">
+   <rdfs:label>Includes</rdfs:label>
+   <owl:inverseOf rdf:resource="isPartOf" />
+   <rdfs:domain rdf:resource="#EventSeries" />
+   <rdfs:range  rdf:resource="#Event" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="isPartOf">
+   <rdfs:label>isPartOf</rdfs:label>
+   <owl:inverseOf rdf:resource="includes" />
+   <rdfs:domain rdf:resource="#Event" />
+   <rdfs:range  rdf:resource="#EventSeries" />
+  </owl:ObjectProperty>
+
+</rdf:RDF>
+
+
+

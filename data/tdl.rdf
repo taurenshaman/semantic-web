@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<rdf:RDF
+	xml:lang="en"
+	xml:base="http://www.eyrie.org/~zednenem/2002/web-threads/tdl.rdf"
+	xmlns       ="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:owl   ="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf   ="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dc    ="http://purl.org/dc/elements/1.1/"
+	xmlns:c     ="http://www.eyrie.org/~zednenem/2003/rdfcollection#"
+>
+
+<owl:Ontology rdf:about="">
+	<label>Thread Description Language (TDL)</label>
+	<comment>An RDF vocabulary for describing threaded discussions.</comment>
+	<seeAlso rdf:resource="."/>
+	<owl:imports rdf:resource="http://www.eyrie.org/~zednenem/2003/rdfcollection/rdfcollection.rdf"/>
+	<dc:date>2003-07-31</dc:date>
+</owl:Ontology>
+
+<rdf:Description rdf:about="." rdf:type="http://xmlns.com/foaf/0.1/Document">
+	<dc:title>Thread Description Language</dc:title>
+	<dc:creator>David Menendez</dc:creator>
+	<dc:description>
+		Description of TDL vocabulary and guidance for its use.
+	</dc:description>
+	<seeAlso rdf:resource=""/>
+</rdf:Description>
+
+<!-- Basic vocabulary -->
+
+<Class rdf:about="Post">
+	<isDefinedBy rdf:resource="tdl.rdf"/>
+	<label>Post</label>
+	<comment>
+		A single part of a discussion, such as a weblog or message board post, or
+		Usenet, e-mail, or IM message.
+	</comment>
+	<subClassOf rdf:resource="http://purl.org/dc/dcmitype/Text"/>
+</Class>
+
+<Class rdf:about="Topic">
+	<isDefinedBy rdf:resource="tdl.rdf"/>
+	<label>Topic</label>
+	<comment>
+		A set of posts, usually connected in some way, such as being a discussion
+		thread, a category in a weblog, or a query response. 
+	</comment>
+	<subClassOf rdf:resource="http://purl.org/dc/dcmitype/Collection"/>
+</Class>
+
+
+<rdf:Property rdf:about="agreesWith">
+	<isDefinedBy rdf:resource=""/>
+	<label>agreesWith</label>
+	<comment>
+		A resource which this Post agrees with or amplifies 
+	</comment>
+	<subPropertyOf rdf:resource="commentsOn"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="categoryOf">
+	<isDefinedBy rdf:resource=""/>
+	<label>categoryOf</label>
+	<comment>
+		Indicates that this topic is a subtopic of the specified topic. The
+		posts in this topic are all part of the larger topic in the same order
+		relative to each other. 
+	</comment>
+	<subPropertyOf rdf:resource="subtopicOf"/>
+	<domain rdf:resource="Topic"/>
+	<range rdf:resource="Topic"/>
+</rdf:Property>
+
+
+<rdf:Property rdf:about="commentsOn">
+	<isDefinedBy rdf:resource=""/>
+	<label>commentsOn</label>
+	<comment>
+		A resource which this Post discusses or responds to
+	</comment>
+	<subPropertyOf rdf:resource="refersTo"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="concludingPost">
+	<isDefinedBy rdf:resource=""/>
+	<label>concludingPost</label>
+	<comment>
+		The last Post in a Topic
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
+	<domain rdf:resource="Topic"/>
+	<range rdf:resource="Post"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="content">
+	<isDefinedBy rdf:resource=""/>
+	<label>content</label>
+	<comment>
+		An XML fragment representing the content of this Post
+	</comment>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="currentPosts">
+	<isDefinedBy rdf:resource=""/>
+	<label>currentPosts</label>
+	<comment>
+		A collection of Posts in this Topic which are considered current
+		(@@ questionable utility)
+	</comment>
+	<subPropertyOf rdf:resource="../rdfchannel#current"/>
+	<domain rdf:resource="Topic"/>
+	<domain rdf:resource="../rdfchannel#Channel"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="disagreesWith">
+	<isDefinedBy rdf:resource=""/>
+	<label>disagreesWith</label>
+	<comment>
+		A resource which this Post rebuts or presents evidence contrary to
+	</comment>
+	<subPropertyOf rdf:resource="commentsOn"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="excerpt">
+	<isDefinedBy rdf:resource=""/>
+	<label>excerpt</label>
+	<comment>
+		An XML fragment representing part of the content of this Post
+	</comment>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="followsUp">
+	<isDefinedBy rdf:resource=""/>
+	<label>followsUp</label>
+	<comment>
+		A Post which this Post updates or corrects
+	</comment>
+	<subPropertyOf rdf:resource="refersTo"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="Post"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="hasPosts">
+	<isDefinedBy rdf:resource=""/>
+	<label>hasPosts</label>
+	<comment>
+		Indicates the set of posts which are logically part of this resource
+		(usually a Topic). Posts which are not in the list are not part of this resource.
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
+	<range>
+		<c:SetClass>
+			<c:allMembersFrom rdf:resource="Post"/>
+		</c:SetClass>
+	</range>
+</rdf:Property>
+
+<rdf:Property rdf:about="hasPostSequence">
+	<isDefinedBy rdf:resource=""/>
+	<label>hasPostSequence</label>
+	<comment>
+		Indicates the ordered sequence of posts which are logically part of this
+		resource (usually a Topic). Posts which are not in the list are not part
+		of this resource.
+	</comment>
+	<subPropertyOf rdf:resource="hasPosts"/>
+	<range>
+		<c:SequenceClass>
+			<c:allMembersFrom rdf:resource="Post"/>
+		</c:SequenceClass>
+	</range>
+</rdf:Property>
+
+<rdf:Property rdf:about="hasTopics">
+	<isDefinedBy rdf:resource=""/>
+	<label>hasTopics</label>
+	<comment>
+		Indicates the set of topics which are formally part of this resource (usually a Topic).
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
+	<range>
+		<c:SetClass>
+			<c:allMembersfrom rdf:resource="Topic"/>
+		</c:SetClass>
+	</range>
+</rdf:Property>
+
+<rdf:Property rdf:about="initialPost">
+	<isDefinedBy rdf:resource=""/>
+	<label>initialPost</label>
+	<comment>
+		The first Post in a Topic
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
+	<domain rdf:resource="Topic"/>
+	<range rdf:resource="Post"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="partOf">
+	<isDefinedBy rdf:resource=""/>
+	<label>partOf</label>
+	<comment>
+		Indicates a topic to which this post belongs.
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/isPartOf"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="Topic"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="pointsTo">
+	<isDefinedBy rdf:resource=""/>
+	<label>pointsTo</label>
+	<comment>
+		A resource which this Post refers to but does not discuss
+	</comment>
+	<subPropertyOf rdf:resource="refersTo"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="quotes">
+	<isDefinedBy rdf:resource=""/>
+	<label>quotes</label>
+	<comment>
+		A resource which this Post quotes
+	</comment>
+	<subPropertyOf rdf:resource="refersTo"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="refersTo">
+	<isDefinedBy rdf:resource=""/>
+	<label>refersTo</label>
+	<comment>
+		A resource to which this Post refers
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/references"/>
+	<domain rdf:resource="Post"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="segmentOf">
+	<isDefinedBy rdf:resource=""/>
+	<label>segmentOf</label>
+	<comment>
+		Indicates a topic for which this topic is a subtopic. The posts
+		in this topic are all part of the larger topic in the same order
+		contiguously.
+	</comment>
+	<subPropertyOf rdf:resource="subtopicOf"/>
+	<domain rdf:resource="Topic"/>
+	<range rdf:resource="Topic"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="subtopicOf">
+	<isDefinedBy rdf:resource=""/>
+	<label>subtopicOf</label>
+	<comment>
+		Indicates a topic for which this topic is a subtopic. The posts
+		in this topic are all part of the larger topic in the same order,
+		but not necessarily contiguously.
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/isPartOf"/>
+	<domain rdf:resource="Topic"/>
+	<range rdf:resource="Topic"/>
+</rdf:Property>
+
+
+
+<!-- Additional vocabulary for weblogs -->
+
+<Class rdf:about="Weblog">
+	<isDefinedBy rdf:resource=""/>
+	<label>Weblog</label>
+	<comment>
+		A type of Topic corresponding to a Weblog, a popular form of web site.
+	</comment>
+	<subClassOf rdf:resource="Topic"/>
+</Class>
+
+<rdf:Property rdf:about="hasLinksAt">
+	<isDefinedBy rdf:resource=""/>
+	<label>hasLinksAt</label>
+	<comment>
+		A web page or RDF dataset listing resources which this
+		Weblog recommends.
+	</comment>
+	<domain rdf:resource="Weblog"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="hasWeblogs">
+	<isDefinedBy rdf:resource=""/>
+	<label>hasWeblogs</label>
+	<comment>
+		Indicates a collection of weblogs which are part of some larger entity,
+		such as a weblog hosting service or corporate web site.
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/hasPart"/>
+	<range>
+		<c:SetClass>
+			<c:allMembersFrom rdf:resource="Weblog"/>
+		</c:SetClass>
+	</range>
+</rdf:Property>
+
+<rdf:Property rdf:about="recommends">
+	<isDefinedBy rdf:resource=""/>
+	<label>recommends</label>
+	<comment>
+		A resource which this Weblog links to in a prominent place (e.g., the "blogroll")
+	</comment>
+	<subPropertyOf rdf:resource="http://purl.org/dc/terms/references"/>
+	<domain rdf:resource="Weblog"/>
+	<range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+</rdf:Property>
+
+</rdf:RDF>

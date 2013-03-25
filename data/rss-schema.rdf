@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<!-- 
+RDF Schema declaration for Rich Site Summary (RSS) 1.0 <http://purl.org/rss/1.0/>
+
+note: This schema currently is defining RSS-specific constructs 
+(resource and relationship types) only. No contraints have been 
+introduced.
+
+Note: this schema is represented in the RDF M&S abbreviated 
+syntax <http://www.w3.org/TR/REC-rdf-syntax/#abbreviatedSyntax> for 
+syntactic inclusion in an HTML/XHTML document
+-->
+
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+	<!--  Class declarations   -->
+
+	<rdfs:Class rdf:about="http://purl.org/rss/1.0/channel" rdfs:label="Channel" rdfs:comment="An RSS information channel.">
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://purl.org/rss/1.0/image" rdfs:label="Image" rdfs:comment="An RSS image.">
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://purl.org/rss/1.0/item" rdfs:label="Item" rdfs:comment="An RSS item.">
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdfs:Class>
+
+	<rdfs:Class rdf:about="http://purl.org/rss/1.0/textinput" rdfs:label="Text Input" rdfs:comment="An RSS text input.">
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdfs:Class>
+
+	<!--  Property declarations   -->
+
+	<rdf:Property rdf:about="http://purl.org/rss/1.0/items" rdfs:label="Items" rdfs:comment="Points to a list of rss:item elements that are members of the subject channel.">
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdf:Property>
+
+	<rdf:Property rdf:about="http://purl.org/rss/1.0/title" rdfs:label="Title" rdfs:comment="A descriptive title for the channel.">
+
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdf:Property>
+
+	<rdf:Property rdf:about="http://purl.org/rss/1.0/link" rdfs:label="Link" rdfs:comment="The URL to which an HTML rendering of the subject will link.">
+
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/identifier"/>
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdf:Property>
+
+	<rdf:Property rdf:about="http://purl.org/rss/1.0/url" rdfs:label="URL" rdfs:comment="The URL of the image to used in the 'src' attribute of the channel's image tag when rendered as HTML.">
+
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/identifier"/>
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdf:Property>
+
+	<rdf:Property rdf:about="http://purl.org/rss/1.0/description" rdfs:label="Description" rdfs:comment="A short text description of the subject.">
+
+		<rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/description"/>
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdf:Property>
+
+	<rdf:Property rdf:about="http://purl.org/rss/1.0/name" rdfs:label="Name" rdfs:comment="The text input field's (variable) name.">
+
+		<rdfs:isDefinedBy rdf:resource="http://purl.org/rss/1.0/"/>
+
+	</rdf:Property>
+
+</rdf:RDF>
+

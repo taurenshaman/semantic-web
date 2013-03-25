@@ -1,0 +1,98 @@
+<?xml version="1.0"?><!-- This is an  RDF Schema for RooDolF, a
+representation of a Google Result Set in RDF written by
+  Alexander Loeser, aloeser@cs.tu-berlin.de --><rdf:RDF xmlns="http://nutria.cs.tu-berlin.de/roodolf/rdfs#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/1999/XMLSchema-datatypes#"><rdfs:Class rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult"><rdfs:comment>Each time you issue a search request to the Google service,
+        a response is returned back to you. A GoogleSearchResult is such a response.
+        GoogleSearchResult encapsulates the complete results returned by the Google Web APIs search call.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+      </rdfs:comment></rdfs:Class><rdfs:Class rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#Results"><rdfs:comment>Includes a sequence of result elements for the query. The
+        element order is done by Google.
+      </rdfs:comment><rdfs:domain rdfs:resource="rdf:Seq" /></rdfs:Class><rdfs:Class rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#DirectoryCategories"><rdfs:comment>Includes a bag of directory categories for
+        the query. The elements are not ordered and are
+        recommended by Google.
+      </rdfs:comment><rdfs:domain rdfs:resource="rdf:Bag" /></rdfs:Class><rdfs:Class rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement"><rdfs:comment>ResultElement contains an individual search result component
+        of a Result.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment></rdfs:Class><rdfs:Class rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#DirectoryCategoryElement"><rdfs:comment>DirectoryCategory encapsulates the directory category portion of GoogleSearchResult.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment></rdfs:Class><!-- RooDoolF:URL=dc.identifier
+    <rdfs:Class rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#URL">
+        <rdfs:comment>URL of the ResultElement.
+      </rdfs:comment>
+      <rdfs:domain rdfs:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement"/>
+      <rdfs:range rdf:resource="xsd:uri"/>
+    </rdfs:Class>
+--><rdfs:Class rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#relatedInformationPresentURI"><rdfs:comment>If #relatedInformationPresent is true it shows the RooDolF Query URI for related
+        Links.
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement" /><rdfs:range rdf:resource="xsd:uriReference" /></rdfs:Class><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#documentFiltering"><rdfs:comment>A Boolean value indicating whether filtering was performed on the search
+        results. This will be "true" only if (a) you requested filtering and (b) filtering actually occurred
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>documentFiltering</rdfs:label><rdfs:range rdf:resource="xsd:boolean" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#estimatedTotalResultCount"><rdfs:comment>The estimated total number of results that exist for the query.
+        Note: The estimated number may be either higher or lower than the actual number of results that exist.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>estimatedTotalResultCount</rdfs:label><rdfs:range rdf:resource="xsd:nonNegativeInteger" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#estimateIsExact"><rdfs:comment>A Boolean value indicating that the estimate is actually the exact value.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>estimateIsExact</rdfs:label><rdfs:range rdf:resource="xsd:boolean" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#searchQuery"><rdfs:comment>This is the value of 'q' for the search request.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>searchQuery</rdfs:label><rdfs:range rdf:resource="xsd:uriReference" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#startIndex"><rdfs:comment>Indicates the index (1-based) of the first search result in a GoogleSearchResult.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>startIndex</rdfs:label><rdfs:range rdf:resource="xsd:nonNegativeInteger" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#endIndex"><rdfs:comment>Indicates the index (1-based) of the first search result in GoogleSearchResult.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>endIndex</rdfs:label><rdfs:range rdf:resource="xsd:nonNegativeInteger" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#searchTips"><rdfs:comment>A text string intended for display to the end user. It provides instructive
+        suggestions on how to use Google.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>searchTips</rdfs:label><rdfs:range rdf:resource="xsd:string" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#searchTime"><rdfs:comment>Text, floating-point number indicating the total server time to
+        return the search results, measured in seconds.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#GoogleSearchResult" /><rdfs:label>searchTips</rdfs:label><rdfs:range rdf:resource="xsd:string" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#cachedSize"><rdfs:comment>Text (Integer + "k"). Indicates that a cached version of the 'URL'
+        is available; size is indicated in kilobytes.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement" /><rdfs:label>cachedSize</rdfs:label><rdfs:range rdf:resource="xsd:string" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#directoryCategory"><rdfs:comment>Returns the ODP directory name for the current ODP category
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement" /><rdfs:label>directoryCategory</rdfs:label><rdfs:range rdf:resource="xsd:string" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#directoryTitle"><rdfs:comment>If the URL for this resultElement is contained in the ODP directory,
+        the title that appears in the directory appears here as a text string. Note that the
+        directoryTitle may be different from the URL's title.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement" /><rdfs:label>directoryTitle</rdfs:label><rdfs:range rdf:resource="xsd:string" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#hostName"><rdfs:comment>When filtering occurs, a maximum of two results from any given host
+        is returned. When this occurs, the second resultElement that comes from that host
+        contains the host name in this parameter.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement" /><rdfs:label>hostName</rdfs:label><rdfs:range rdf:resource="xsd:uriReference" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#relatedInformationPresent"><rdfs:comment>Boolean indicating that the "related:" query term is supported for the URL
+        of the ResultSet.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement" /><rdfs:label>relatedInformationPresent</rdfs:label><rdfs:range rdf:resource="xsd:boolean" /></rdf:Property><!-- RooDoolF:snippet=dc:description
+   <rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#snippet">
+        <rdfs:comment>A snippet which shows the query in context on the URL where it appears.
+        This is formatted HTML and usually includes 'B' tags within it. Note that the query
+        term does not always appear in the snippet. Note: Query terms will be in highlighted in
+        bold in the results, and line breaks will be included for proper text wrapping.
+        (returned as HTML)
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement"/>
+        <rdfs:label>snippet</rdfs:label>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </rdf:Property>
+--><!-- RooDoolF:summary=dc:subject
+   <rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#summary">
+        <rdfs:comment>If the search result has a listing in the ODP directory, the
+        ODP summary appears here as a text string. (returned as HTML)
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement"/>
+        <rdfs:label>summary</rdfs:label>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </rdf:Property>
+--><!-- RooDoolF:title=dc:title
+   <rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#title">
+        <rdfs:comment>The title of the search result, returned as HTML
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment>
+        <rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#ResultElement"/>
+        <rdfs:label>title</rdfs:label>
+        <rdfs:range rdf:resource="xsd:string"/>
+    </rdf:Property>
+--><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#fullViewableName"><rdfs:comment>Text, containing the ODP directory name for the current ODP category
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#DirectoryCategory" /><rdfs:label>fullViewableName</rdfs:label><rdfs:range rdf:resource="xsd:string" /></rdf:Property><rdf:Property rdf:about="http://nutria.cs.tu-berlin.de/roodolf/rdfs#specialEncoding"><rdfs:comment>Specifies the encoding scheme of the directory information.
+        (Taken from the Google Api Description, Copyright by Google INC.)
+        </rdfs:comment><rdfs:domain rdf:resource="http://nutria.cs.tu-berlin.de/roodolf/rdfs#DirectoryCategory" /><rdfs:label>specialEncoding</rdfs:label><rdfs:range rdf:resource="xsd:string" /></rdf:Property></rdf:RDF>

@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY rdf        "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <!ENTITY rdfs       "http://www.w3.org/2000/01/rdf-schema#">
+   <!ENTITY xsd        "http://www.w3.org/2001/XMLSchema#"> 
+   <!ENTITY owl        "http://www.w3.org/2002/07/owl#"> 
+   <!ENTITY conference "http://ebiquity.umbc.edu/ontology/conference.owl#">
+   <!ENTITY cc         "http://web.resource.org/cc/#">      
+   ]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF  
+   xmlns:rdf  = "&rdf;"
+   xmlns:rdfs = "&rdfs;"
+   xmlns:owl  = "&owl;"
+   xmlns:xsd  = "&xsd;"
+   xmlns:cc   = "&cc;"
+   xmlns      = "&conference;"
+   xml:base   = "&conference;">
+  
+  <owl:Ontology rdf:about="&conference;conference">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity Conference Ontology</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="Conference">
+    <rdfs:label>Conference </rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#title"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#startDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#endDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#abstractDueOn"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#paperDueOn"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#registrationDueOn"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#description"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#location"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#uri"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="title">
+    <rdfs:label>Conference Title</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="startDate">
+    <rdfs:label>Conference Start Date and Time</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="endDate">
+    <rdfs:label>Conference End Date and Time</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="abstractDueOn">
+    <rdfs:label>Conference Abstract Date and Time Deadline</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="paperDueOn">
+    <rdfs:label>Conference Paper Date and Time Deadline</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="registrationDueOn">
+    <rdfs:label>Conference Registration Date and Time Deadline</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="description">
+    <rdfs:label>Conference Description</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="location">
+    <rdfs:label>Conference Location</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="tag">
+    <rdfs:label>Conference Tag</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="uri">
+    <rdfs:label>Conference URI</rdfs:label>
+    <rdfs:domain rdf:resource="#Conference"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
+
+
+

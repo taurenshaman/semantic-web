@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY rdf     "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <!ENTITY rdfs    "http://www.w3.org/2000/01/rdf-schema#">
+   <!ENTITY xsd     "http://www.w3.org/2001/XMLSchema#"> 
+   <!ENTITY owl     "http://www.w3.org/2002/07/owl#"> 
+   <!ENTITY assoc   "http://ebiquity.umbc.edu/ontology/association.owl#">
+   <!ENTITY person  "http://ebiquity.umbc.edu/ontology/person.owl#">
+   <!ENTITY project "http://ebiquity.umbc.edu/ontology/project.owl#">
+   <!ENTITY cc      "http://web.resource.org/cc/#">
+   ]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF  
+   xmlns:rdf     = "&rdf;"
+   xmlns:rdfs    = "&rdfs;"
+   xmlns:owl     = "&owl;"
+   xmlns:xsd     = "&xsd;"
+   xmlns:project = "&project;"
+   xmlns:person  = "&person;"
+   xmlns:cc      = "&cc;"
+   xmlns         = "&assoc;">
+  
+  <owl:Ontology rdf:about="&assoc;association">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity Association Ontology</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="PersonProjectAssociation">
+    <rdfs:label>Person Project Association</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#person"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#project"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#role"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#comment"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="person">
+    <rdfs:label>Associated Person</rdfs:label>
+    <owl:inverseOf rdf:resource="&person;associatedWith" />
+    <rdfs:domain rdf:resource="#PersonProjectAssociation"/>
+    <rdfs:range rdf:resource="&person;Person"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="project">
+    <rdfs:label>Associated Project</rdfs:label>
+    <owl:inverseOf rdf:resource="&project;associatedWith" />
+    <rdfs:domain rdf:resource="#PersonProjectAssociation"/>
+    <rdfs:range rdf:resource="&project;Project"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="role">
+    <rdfs:label>Associated Person Role</rdfs:label>
+    <rdfs:domain rdf:resource="#PersonProjectAssociation"/>
+    <rdfs:range rdf:resource="&person;Person"/>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="comment">
+    <rdfs:label>Comment</rdfs:label>
+    <rdfs:domain rdf:resource="#PersonProjectAssociation"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+</rdf:RDF>
+
+
+

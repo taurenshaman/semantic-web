@@ -1,0 +1,201 @@
+<rdf:RDF xmlns="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <owl:Ontology rdf:about="http://xmlns.com/wot/0.1/">
+        <dc:date>2004-02-23</dc:date>
+        <dc:description>Web Of Trust (wot) RDF vocabulary, described using W3C RDF Schema and the Web Ontology Language.</dc:description>
+        <dc:title>Web Of Trust vocabulary</dc:title>
+        <seeAlso rdf:resource="http://xmlns.com/foaf/0.1/"/>
+        <owl:imports rdf:resource="http://www.w3.org/2000/01/rdf-schema"/>
+        <owl:imports rdf:resource="http://www.w3.org/2002/07/owl"/>
+    </owl:Ontology>
+
+    <owl:Class rdf:about="http://xmlns.com/wot/0.1/EncryptedDocument">
+        <comment>An encrypted document intended for a set of recipients.</comment>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Encrypted Document</label>
+        <subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Endorsement-4"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/Endorsement"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/User"/>
+        <vs:term_status>unstable</vs:term_status>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://xmlns.com/wot/0.1/Endorsement">
+        <comment>An endorsement resource containing a detached ascii signature.</comment>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Endorsement</label>
+        <subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Endorsement-4"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/EncryptedDocument"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/User"/>
+        <vs:term_status>unstable</vs:term_status>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://xmlns.com/wot/0.1/PubKey">
+        <comment>A class used to represent a PGP/GPG public key for a user (an agent, person, group or organization).</comment>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Public Key</label>
+        <subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Credential"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/EncryptedDocument"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/Endorsement"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/User"/>
+        <vs:term_status>stable</vs:term_status>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://xmlns.com/wot/0.1/SigEvent">
+        <comment>An event describing the action of a public key being signed by some other public key.</comment>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Key Signing Event</label>
+        <subClassOf rdf:resource="http://www.w3.org/2002/12/cal/ical#Vevent"/>
+        <subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Event"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/EncryptedDocument"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/Endorsement"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/User"/>
+        <vs:term_status>testing</vs:term_status>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://xmlns.com/wot/0.1/User">
+        <comment>A user (agent, person, group or organization) of a PGP/GPG public key.</comment>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Key User</label>
+        <subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/EncryptedDocument"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/Endorsement"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <owl:disjointWith rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <vs:term_status>stable</vs:term_status>
+    </owl:Class>
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/wot/0.1/assurance">
+        <comment>A property linking a document to an endorsement resource containing a detached ascii signature.</comment>
+        <domain rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Assurance</label>
+        <range rdf:resource="http://xmlns.com/wot/0.1/Endorsement"/>
+        <vs:term_status>stable</vs:term_status>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/wot/0.1/encryptedTo">
+        <comment>A property linking an encrypted document to a recipient.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/EncryptedDocument"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Encrypted to</label>
+        <range rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <vs:term_status>unstable</vs:term_status>
+    </owl:ObjectProperty>
+
+    <owl:FunctionalProperty rdf:about="http://xmlns.com/wot/0.1/encrypter">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <comment>A property linking an encrypted document to the public key that was used to encrypt it.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/EncryptedDocument"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Encrypted by</label>
+        <range rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <vs:term_status>unstable</vs:term_status>
+    </owl:FunctionalProperty>
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/wot/0.1/fingerprint">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <comment>A public key hex fingerprint string (40 digits, white space insignificant).</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Fingerprint</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <vs:term_status>testing</vs:term_status>
+    </owl:DatatypeProperty>
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/wot/0.1/hasKey">
+        <comment>A property to link a PubKey from a User</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/User"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>has Key</label>
+        <range rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <vs:term_status>testing</vs:term_status>
+        <owl:inverseOf rdf:resource="http://xmlns.com/wot/0.1/identity" />
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/wot/0.1/hex_id">
+        <comment>A public key hex identifier string (8 digits).</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Hex identifier</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <vs:term_status>stable</vs:term_status>
+    </owl:DatatypeProperty>
+
+    <owl:FunctionalProperty rdf:about="http://xmlns.com/wot/0.1/identity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <comment>A property linking a public key to the user of the key.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Identity</label>
+        <range rdf:resource="http://xmlns.com/wot/0.1/User"/>
+        <vs:term_status>testing</vs:term_status>
+    </owl:FunctionalProperty>
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/wot/0.1/length">
+        <comment>A numeric string representing the length, in bytes, of a public key.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Length</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <vs:term_status>stable</vs:term_status>
+    </owl:DatatypeProperty>
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/wot/0.1/pubkeyAddress">
+        <comment>The location of an ascii version of a public key.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Address</label>
+        <range rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <vs:term_status>testing</vs:term_status>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/wot/0.1/sigdate">
+        <comment>The date of a public key signature event.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Signature date</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <vs:term_status>testing</vs:term_status>
+    </owl:DatatypeProperty>
+
+    <owl:ObjectProperty rdf:about="http://xmlns.com/wot/0.1/signed">
+        <comment>A property linking a public key to a public key signature event.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Signed</label>
+        <range rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <vs:term_status>testing</vs:term_status>
+    </owl:ObjectProperty>
+
+    <owl:FunctionalProperty rdf:about="http://xmlns.com/wot/0.1/signer">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+        <comment>A property linking a public key signature event to the public key that was used to sign.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Signer</label>
+        <range rdf:resource="http://xmlns.com/wot/0.1/PubKey"/>
+        <vs:term_status>unstable</vs:term_status>
+    </owl:FunctionalProperty>
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/wot/0.1/sigtime">
+        <comment>The time (of day) of a public key signature event.</comment>
+        <domain rdf:resource="http://xmlns.com/wot/0.1/SigEvent"/>
+        <isDefinedBy rdf:resource="http://xmlns.com/wot/0.1/"/>
+        <label>Signature time</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+        <vs:term_status>unstable</vs:term_status>
+    </owl:DatatypeProperty>
+</rdf:RDF>

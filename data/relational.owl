@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE rdf:RDF [
+	<!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY owl  "http://www.w3.org/2002/07/owl#" >
+	<!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+	<!ENTITY old  "http://www.laborda.org/RDF/rdf-schema#" >
+]>
+
+<rdf:RDF xmlns:rdf="&rdf;" 
+         xmlns:rdfs="&rdfs;"
+         xmlns:owl="&owl;">
+
+<owl:Ontology rdf:about="">
+  <owl:priorVersion>
+    <owl:Ontology rdf:about="&old;" />
+  </owl:priorVersion>
+  <rdfs:comment xml:lang="en">An Ontology to describe the schema information of a relational database.</rdfs:comment>
+</owl:Ontology>				 
+				 
+<owl:Class rdf:ID="Database">
+  <rdfs:label xml:lang="en">Database</rdfs:label>
+  <rdfs:comment xml:lang="en">The class of databases.</rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&rdf;Bag"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Table">
+  <rdfs:label xml:lang="en">Table</rdfs:label>
+  <rdfs:comment xml:lang="en">The class of database tables.</rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&rdf;Seq"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Column">
+  <rdfs:label xml:lang="en">Column</rdfs:label>
+  <rdfs:comment xml:lang="en">The class of database columns.</rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</owl:Class>
+
+<owl:Class rdf:ID="PrimaryKey">
+  <rdfs:label xml:lang="en">PrimaryKey</rdfs:label>
+  <rdfs:comment xml:lang="en">The Primary Key of a Table.</rdfs:comment>
+  <rdfs:subClassOf rdf:resource="&rdf;Bag"/>
+</owl:Class>
+
+<!-- Properties -->
+
+<owl:ObjectProperty rdf:ID="has">
+  <rdfs:domain rdf:resource="&owl;Thing"/>
+  <rdfs:range rdf:resource="&owl;Thing"/>
+  <rdfs:label xml:lang="en">has</rdfs:label>
+  <rdfs:comment xml:lang="en">A Thing may have other things inside.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasTable">
+  <rdf:type rdf:resource="&owl;InverseFunctionalProperty" />
+  <rdfs:subPropertyOf rdf:resource="#has" />
+  <rdfs:domain rdf:resource="#Database"/>
+  <rdfs:range rdf:resource="#Table" />
+  <rdfs:label xml:lang="en">hasTable</rdfs:label>
+  <rdfs:comment xml:lang="en">A Database has a set of Tables.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasColumn">
+  <rdfs:subPropertyOf rdf:resource="#has" />
+  <rdfs:domain>
+	  <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+		    <owl:Class rdf:about="#Table" />
+			  <owl:Class rdf:about="#PrimaryKey" />
+		  </owl:unionOf>
+		</owl:Class>
+	</rdfs:domain> 
+  <rdfs:range rdf:resource="#Column" />
+  <rdfs:label xml:lang="en">hasColumn</rdfs:label>
+  <rdfs:comment xml:lang="en">A Table has a set of Columns.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:Restriction>
+  <owl:onProperty rdf:resource="#hasColumn" />
+  <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+</owl:Restriction>
+
+<owl:ObjectProperty rdf:ID="isIdentifiedBy">
+  <rdf:type rdf:resource="&owl;FunctionalProperty" />
+	<rdfs:domain rdf:resource="#Table" />
+	<rdfs:range rdf:resource="#PrimaryKey" />
+  <rdfs:label xml:lang="en">isIdentifiedBy</rdfs:label>
+	<rdfs:comment xml:lang="en">A Table is identified by a Primary Key</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="references">
+  <rdf:type rdf:resource="&owl;FunctionalProperty" />
+  <rdfs:domain rdf:resource="#Column"/>
+	<rdfs:range rdf:resource="#Column" />
+  <rdfs:label xml:lang="en">references</rdfs:label>
+  <rdfs:comment xml:lang="en">A Foreign Key Column references another Column.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:ID="length">
+  <rdfs:domain rdf:resource="#Column"/>
+  <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+	<rdfs:label xml:lang="en">length</rdfs:label>
+	<rdfs:comment xml:lang="en">The maximum length, an entry of the Column may have.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="scale">
+  <rdfs:domain rdf:resource="#Column"/>
+  <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+	<rdfs:label xml:lang="en">scale</rdfs:label>
+	<rdfs:comment xml:lang="en">The scale an entry of the Column has, e.g. of a decimal value.</rdfs:comment>
+</owl:DatatypeProperty>
+
+
+</rdf:RDF>

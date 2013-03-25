@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+   <!ENTITY rdf      "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <!ENTITY rdfs     "http://www.w3.org/2000/01/rdf-schema#">
+   <!ENTITY xsd      "http://www.w3.org/2001/XMLSchema#">
+   <!ENTITY owl      "http://www.w3.org/2002/07/owl#">
+   <!ENTITY assoc    "http://ebiquity.umbc.edu/ontology/association.owl#">
+   <!ENTITY person   "http://ebiquity.umbc.edu/ontology/person.owl#">
+   <!ENTITY project  "http://ebiquity.umbc.edu/ontology/project.owl#">
+   <!ENTITY research "http://ebiquity.umbc.edu/ontology/research.owl#">
+   <!ENTITY pub      "http://ebiquity.umbc.edu/ontology/publication.owl#">
+   <!ENTITY cc       "http://web.resource.org/cc/#">
+   ]>
+
+<!--
+  This ontology document is licensed under the Creative Commons
+  Attribution License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by/2.0/ or send a letter to
+  Creative Commons, 559 Nathan Abbott Way, Stanford, California
+  94305, USA.
+-->
+
+<rdf:RDF
+   xmlns:rdf      = "&rdf;"
+   xmlns:rdfs     = "&rdfs;"
+   xmlns:owl      = "&owl;"
+   xmlns:xsd      = "&xsd;"
+   xmlns:project  = "&project;"
+   xmlns:person   = "&person;"
+   xmlns:pub      = "&pub;"
+   xmlns:research = "&research;"
+   xmlns:assoc    = "&assoc;"
+   xmlns:cc       = "&cc;"
+   xmlns          = "&project;"
+   xml:base       = "&project;">
+  
+  <owl:Ontology rdf:about="&project;project">
+    <owl:versionInfo>0.1</owl:versionInfo>
+    <rdfs:label>eBiquity Project Ontology</rdfs:label>
+    <cc:License rdf:resource="http://creativecommons.org/licenses/by/2.0/" />
+  </owl:Ontology>
+
+  <owl:Class rdf:ID="Project">
+    <rdfs:label>Project</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#title"/><owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#logoURI"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#startDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#endDate"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction><owl:onProperty rdf:resource="#description"/><owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality></owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ActiveProject">
+    <rdfs:label>Active Project</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Project" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="PastProject">
+    <rdfs:label>Past Project</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Project" />
+  </owl:Class>
+
+  <owl:Class rdf:ID="Proposal">
+    <rdfs:label>Proposal</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Project" />
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="tag">
+    <rdfs:label>Project Tag</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="description">
+    <rdfs:label>Project Description</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="title">
+    <rdfs:label>Project Title</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="logoURI">
+    <rdfs:label>Project Logo Image URI</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&xsd;anyURI"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="startDate">
+    <rdfs:label>Project Start Date and Time</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="endDate">
+    <rdfs:label>Project End Date and Time</rdfs:label>
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&xsd;dateTime"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:ID="associatedWith">
+    <rdfs:label>Associated With Person</rdfs:label>
+    <owl:inverseOf rdf:resource="&assoc;project" />
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&assoc;PersonProjectAssociation"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="relatedPublication">
+    <rdfs:label>Related Publication</rdfs:label>
+    <owl:inverseOf rdf:resource="&pub;relatedProject" />
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&pub;Publication"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="relatedResource">
+    <rdfs:label>Related Resource</rdfs:label>
+    <owl:inverseOf rdf:resource="&pub;relatedProject" />
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&pub;Resource"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="relatedResearchArea">
+    <rdfs:label>Related Research Area</rdfs:label>
+    <owl:inverseOf rdf:resource="&research;relatedProject" />
+    <rdfs:domain rdf:resource="#Project"/>
+    <rdfs:range rdf:resource="&research;Research"/>
+  </owl:ObjectProperty>
+
+
+</rdf:RDF>

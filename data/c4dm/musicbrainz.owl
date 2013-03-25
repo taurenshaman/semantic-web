@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:wn="http://xmlns.com/wordnet/1.6/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns="http://musicbrainz.org/mm/mm-2.1#"
+  xml:base="http://musicbrainz.org/mm/mm-2.1">
+   <owl:Ontology rdf:about="http://purl.org/NET/c4dm/musicbrainz.owl">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >
+        The MusicBrainz Metadata Vocabulary described using W3C RDF Schema
+        and the Web Ontology Language. The vocabulary provides terms for
+        describing music, i.e. artists, albums, and tracks.
+	OWL DL version, written by Yves Raimond.
+	Must take care about some tricky things : you cannot refer directly to classes in owl dl (for the type property, by instance), so you must refer to blank instanciation of object classes). Set of individuals and classes are disjoint.
+    </rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Album">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Artist"/>
+    </owl:disjointWith>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Album</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Track"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A compact disk. This is a generic term which applies not only to actual albums but also 
+    CD singles, EPs, etc.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TrmID">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Trm ID</rdfs:label>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This objects represents the class of http://...trmid/xxx (contained in the bags objects of the property trmID list...)</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Status">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Status Type</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Album release status.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Type">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A type of Album release.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Release Type</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Track">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A track on a compact disk. The term is not limited to simply music as it could cover a spoken word 
+    track, an audio book, etc.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Track</rdfs:label>
+    <owl:disjointWith rdf:resource="#Album"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Artist"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Artist">
+    <owl:disjointWith rdf:resource="#Album"/>
+    <owl:disjointWith rdf:resource="#Track"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An artist. This is a generic term which is applied to solo articles, groups, and also "various artists". 
+    The Musicbrainz II database schema will refine the model to further distinguish between artists/band members and 
+    groups.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Artist</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  <owl:Class rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
+  <owl:ObjectProperty rdf:ID="releaseType">
+    <rdfs:domain rdf:resource="#Album"/>
+    <rdfs:range rdf:resource="#Status"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Album Release Type</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Release status for an album, e.g. official, bootleg, etc.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="cdindexidList">
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+    <rdfs:domain rdf:resource="#Artist"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >List of CD Index Ids</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >CD Index Id List</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="trmidList">
+    <rdfs:domain rdf:resource="#Track"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >List of trmids for a track. A track can have multiple trmids. If there are then this 
+    property is used rather than trmid.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TRM Id List</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="albumList">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >List of albums, e.g. albums by an artist</rdfs:comment>
+    <rdfs:domain rdf:resource="#Artist"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Album List</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="releaseStatus">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Release status for an album, e.g. official, bootleg, etc.</rdfs:comment>
+    <rdfs:range rdf:resource="#Type"/>
+    <rdfs:domain rdf:resource="#Album"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Album Release Status</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="trackList">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Track List</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >List of tracks on an album</rdfs:comment>
+    <rdfs:domain rdf:resource="#Album"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="trmid">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TRM Id</rdfs:label>
+    <rdfs:domain rdf:resource="#Track"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relatable music identifier. Created from audio properties of a track. A track may 
+    have multiple TRM ids.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="sortName">
+    <rdfs:domain rdf:resource="#Artist"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Version of an artists name to be used for sort ordering</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Artist Sort Name</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="duration">
+    <rdfs:domain rdf:resource="#Track"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Duration of a track. In milliseconds</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#long"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Duration</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="trackNum">
+    <rdfs:domain rdf:resource="#Track"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Track Number</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Position of a track on an album</rdfs:comment>
+  </owl:DatatypeProperty>
+  <Type rdf:ID="TypeAlbum"/>
+  <Type rdf:ID="TypeSpokenword"/>
+  <Type rdf:ID="TypeEP"/>
+  <Type rdf:ID="TypeSingle"/>
+  <Type rdf:ID="TypeCompilation"/>
+  <Type rdf:ID="TypeInterview"/>
+  <Type rdf:ID="TypeOther"/>
+  <Status rdf:ID="StatusBootleg"/>
+  <Type rdf:ID="TypeRemix"/>
+  <Type rdf:ID="TypeSoundtrack"/>
+  <Type rdf:ID="TypeAudiobook"/>
+  <Type rdf:ID="TypeLive"/>
+  <Status rdf:ID="StatusPromotion"/>
+  <Status rdf:ID="StatusOfficial"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.2, Build 311)  http://protege.stanford.edu -->

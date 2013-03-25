@@ -1,0 +1,176 @@
+# This ontology.
+@prefix like:     <http://ontologi.es/like#> .
+
+# Related.
+@prefix rev:      <http://purl.org/stuff/rev#> .
+
+# Stock imports.
+@prefix cc:       <http://creativecommons.org/ns#> .
+@prefix dc:       <http://purl.org/dc/terms/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix link:     <http://www.w3.org/2006/link#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix vs:       <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xhv:      <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+like: 
+	a owl:Ontology ;
+	rdfs:label "Ultra-simple review vocab"@en ;
+	rdfs:comment """
+EXAMPLE USAGE:
+
+Super-easy method to say you like the band Coldplay:
+
+  <#me> like:likes <http://dbpedia.org/resource/Coldplay> .
+
+Or providing a rating (between 0.0 and 5.0):
+
+  <#me> like:opinion
+             [ a like:Opinion ;
+               like:regarding <http://dbpedia.org/resource/Coldplay> ;
+               rev:rating 4.5 ] .
+
+Here, no rating is provided, but all PositiveOpinions have a rating
+of more than 3.0 by definition:
+
+  <#me> like:opinion
+             [ a like:PositiveOpinion ;
+               like:regarding <http://dbpedia.org/resource/Coldplay> ] .
+
+This, however, means you like the Wikipedia article about
+Coldplay, but doesn't indicate whether or not you like the band:
+
+  <#me> like:likes <http://en.wikipedia.org/wiki/Coldplay> .
+
+This vocab provides a "like:likes_topic_of" term for linking
+to articles. It's a little ambiguous - the following could
+mean that I like the Wikipedia article about Coldplay, or that
+I like the band themselves - or perhaps both!
+
+   <#me> like:likes_topic_of <http://en.wikipedia.org/wiki/Coldplay> .
+"""@en ;  # """ 
+	foaf:maker <http://tobyinkster.co.uk/#i> ;
+	dc:issued "2009-05-26"^^xsd:date ;
+	dc:modified "2010-07-26"^^xsd:date , "2010-12-01"^^xsd:date , "2011-01-10"^^xsd:date .
+
+like:Opinion
+	a owl:Class ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "stable" ;
+	rdfs:label "Opinion"@en ;
+	rdfs:comment "An Opinion is a rev:Review, constrained so that its sole rev:rating value must be between 0.0 and 5.0 inclusive."@en ;
+	rdfs:subClassOf
+		rev:Review ,
+		[
+			a owl:Restriction ;
+			owl:onProperty rev:maxRating ;
+			owl:hasValue 5.0
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty rev:minRating ;
+			owl:hasValue 0.0
+		] ,
+		[
+			a owl:Restriction ;
+			owl:onProperty rev:rating ;
+			owl:maxCardinality 1
+		] .
+
+like:PositiveOpinion
+	a owl:Class ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "stable" ;
+	rdfs:label "Positive Opinion"@en ;
+	rdfs:subClassOf
+		like:Opinion ,
+		[
+			a owl:Restriction ;
+			owl:onProperty rev:rating ;
+			rdfs:comment "Rating > 3.0"@en
+		] .
+
+like:NegativeOpinion
+	a owl:Class ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "stable" ;
+	rdfs:label "Negative Opinion"@en ;
+	rdfs:subClassOf
+		like:Opinion ,
+		[
+			a owl:Restriction ;
+			owl:onProperty rev:rating ;
+			rdfs:comment "Rating < 2.0"@en
+		] .
+
+like:opinion
+	a owl:ObjectProperty ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "stable" ;
+	rdfs:label "opinion"@en ;
+	rdfs:subPropertyOf [ owl:inverseOf rev:reviewer ] ;
+	rdfs:domain foaf:Agent ; # usually foaf:Person.
+	rdfs:range like:Opinion .
+
+like:regarding
+	a owl:ObjectProperty ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "stable" ;
+	rdfs:label "regarding"@en ;
+	rdfs:subPropertyOf [ owl:inverseOf rev:hasReview ] ;
+	rdfs:domain like:Opinion ;
+	rdfs:range owl:Thing .
+
+like:likes
+	a owl:ObjectProperty ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "stable" ;
+	rdfs:label "likes"@en , "❤" ;
+	rdfs:domain foaf:Agent ; # usually foaf:Person.
+	rdfs:range owl:Thing .
+
+like:dislikes
+	a owl:ObjectProperty ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "stable" ;
+	rdfs:label "dislikes"@en ;
+	rdfs:domain foaf:Agent ; # usually foaf:Person.
+	rdfs:range owl:Thing .
+
+like:likes_topic_of
+	a owl:ObjectProperty ;
+	rdfs:isDefinedBy like: ;
+	vs:term_status "unstable" ;
+	rdfs:label "likes topic of"@en ;
+	rdfs:comment "This property has a somewhat wooly definition. If an agent likes_topic_of a document, it may mean that they like the article itself (e.g. the style in which it's been written), or it may mean that they like something that's discussed in the article - perhaps not even the primary topic of the article!"@en ;
+	rdfs:domain foaf:Agent ; # usually foaf:Person.
+	rdfs:range foaf:Document .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+
+# Imply flattened form from reified form.
+{ ?person like:opinion [ a like:PositiveOpinion ; like:regarding ?thing ] . }
+	=> { ?person like:likes ?thing . } .
+{ ?person like:opinion [ a like:NegativeOpinion ; like:regarding ?thing ] . }
+	=> { ?person like:dislikes ?thing . } .
+
+# Imply reified form from flattened form.
+{ ?person like:likes ?thing . }
+	=> { ?person like:opinion [ a like:PositiveOpinion ; like:regarding ?thing ] . } .
+{ ?person like:dislikes ?thing . }
+	=> { ?person like:opinion [ a like:NegativeOpinion ; like:regarding ?thing ] . } .
+
+# An Opinion with a high enough score is a PositiveOpinion.
+{ ?op a like:Opinion ; rev:rating ?score . ?score <http://www.w3.org/2000/10/swap/math#greaterThan> 3.0 . }
+	=> { ?op a like:PositiveOpinion . } .
+{ ?op a like:Opinion ; rev:rating ?score . ?score <http://www.w3.org/2000/10/swap/math#lessThan> 2.0 . }
+	=> { ?op a like:NegativeOpinion . } .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##

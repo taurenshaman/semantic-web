@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://purl.org/NET/c4dm/keys.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://purl.org/NET/c4dm/keys.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Note"/>
+  <owl:Class rdf:ID="Key"/>
+  <owl:ObjectProperty rdf:ID="tonic">
+    <rdfs:domain rdf:resource="#Key"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="wikipedia">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="mode">
+    <rdfs:domain rdf:resource="#Key"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >major</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >minor</rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+  <Note rdf:ID="AFlat"/>
+  <Key rdf:ID="CMajor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/C_major</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <tonic>
+      <Note rdf:ID="C"/>
+    </tonic>
+  </Key>
+  <Key rdf:ID="AFlatMinor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <tonic rdf:resource="#AFlat"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/A-flat_minor</wikipedia>
+  </Key>
+  <Key rdf:ID="FMajor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/F_major</wikipedia>
+    <tonic>
+      <Note rdf:ID="F"/>
+    </tonic>
+  </Key>
+  <Key rdf:ID="FMinor">
+    <tonic rdf:resource="#F"/>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/F_minor</wikipedia>
+  </Key>
+  <Key rdf:ID="BFlatMinor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/B-flat_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <tonic>
+      <Note rdf:ID="BFlat"/>
+    </tonic>
+  </Key>
+  <Key rdf:ID="EFlatMinor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/E-flat_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <tonic>
+      <Note rdf:ID="EFlat"/>
+    </tonic>
+  </Key>
+  <Note rdf:ID="B"/>
+  <Note rdf:ID="FSharp"/>
+  <Note rdf:ID="GFlat"/>
+  <Note rdf:ID="DFlat"/>
+  <Note rdf:ID="CSharp"/>
+  <Key rdf:ID="CMinor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/C_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <tonic rdf:resource="#C"/>
+  </Key>
+  <Note rdf:ID="DSharp"/>
+  <Key rdf:ID="DSharpMinor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/D-sharp_minor</wikipedia>
+    <tonic rdf:resource="#DSharp"/>
+  </Key>
+  <Note rdf:ID="G"/>
+  <Key rdf:ID="DFlatMajor">
+    <tonic rdf:resource="#DFlat"/>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/D-flat_major</wikipedia>
+  </Key>
+  <Note rdf:ID="E"/>
+  <Key rdf:ID="GSharpMinor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <tonic>
+      <Note rdf:ID="GSharp"/>
+    </tonic>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/G-sharp_minor</wikipedia>
+  </Key>
+  <Key rdf:ID="AMinor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/A_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <tonic>
+      <Note rdf:ID="A"/>
+    </tonic>
+  </Key>
+  <Note rdf:ID="ASharp"/>
+  <Key rdf:ID="EMinor">
+    <tonic rdf:resource="#E"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/E_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+  </Key>
+  <Note rdf:ID="CFlat"/>
+  <Key rdf:ID="FSharpMajor">
+    <tonic rdf:resource="#FSharp"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/F-sharp_major</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+  </Key>
+  <Key rdf:ID="EMajor">
+    <tonic rdf:resource="#E"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/E_major</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+  </Key>
+  <Key rdf:ID="GMinor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/G_minor</wikipedia>
+    <tonic rdf:resource="#G"/>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+  </Key>
+  <Key rdf:ID="AMajor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/A_major</wikipedia>
+    <tonic rdf:resource="#A"/>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+  </Key>
+  <Key rdf:ID="CSharpMajor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <tonic rdf:resource="#CSharp"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/C-sharp_major</wikipedia>
+  </Key>
+  <Key rdf:ID="FSharpMinor">
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/F-sharp_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <tonic rdf:resource="#FSharp"/>
+  </Key>
+  <Key rdf:ID="CSharpMinor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/C-sharp_minor</wikipedia>
+    <tonic rdf:resource="#CSharp"/>
+  </Key>
+  <Note rdf:ID="D"/>
+  <Key rdf:ID="DMajor">
+    <tonic rdf:resource="#D"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/D_major</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+  </Key>
+  <Key rdf:ID="GFlatMajor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/G-flat_major</wikipedia>
+    <tonic rdf:resource="#GFlat"/>
+  </Key>
+  <Key rdf:ID="BMinor">
+    <tonic rdf:resource="#B"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/B_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+  </Key>
+  <Key rdf:ID="AFlatMajor">
+    <tonic rdf:resource="#AFlat"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/A-flat_major</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+  </Key>
+  <Key rdf:ID="GMajor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <tonic rdf:resource="#G"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/G_major</wikipedia>
+  </Key>
+  <Key rdf:ID="EFlatMajor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/E-flat_major</wikipedia>
+    <tonic rdf:resource="#EFlat"/>
+  </Key>
+  <Key rdf:ID="CFlatMajor">
+    <tonic rdf:resource="#CFlat"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/C-flat_major</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+  </Key>
+  <Key rdf:ID="BMajor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <tonic rdf:resource="#B"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/B_major</wikipedia>
+  </Key>
+  <Key rdf:ID="ASharpMinor">
+    <tonic rdf:resource="#ASharp"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/A-sharp_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+  </Key>
+  <Key rdf:ID="DMinor">
+    <tonic rdf:resource="#D"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/D_minor</wikipedia>
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minor</mode>
+  </Key>
+  <Key rdf:ID="BFlatMajor">
+    <mode rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >major</mode>
+    <tonic rdf:resource="#BFlat"/>
+    <wikipedia rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://en.wikipedia.org/wiki/B-flat_major</wikipedia>
+  </Key>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.2, Build 346)  http://protege.stanford.edu -->

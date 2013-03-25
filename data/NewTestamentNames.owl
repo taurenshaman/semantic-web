@@ -1,0 +1,766 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rss="http://purl.org/rss/1.0/"
+    xmlns="http://semanticbible.org/ns/2005/NTNames#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://semanticbible.org/ns/2005/NTNames">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment xml:lang="en">The names here are as
+transliterated in the English Standard Version (ESV), copyright ©
+2001 by Crossway Bibles, a division of Good News Publishers.
+
+Reuse note: where feasible, class names coincide with SUMO (Suggested
+Upper Merged Ontology), as developed within the IEEE Standard Upper
+Ontology Working Group, described at http://www.ontologyportal.org/,
+and available as OWL at http://reliant.teknowledge.com/DAML/SUMO.owl
+(but not without some problems). I've copied, rather than re-used, but
+this provides a future migration path toward coordinating the two
+ontologies.
+
+</rdfs:comment>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >1.0</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:ID="SupernaturalBeing">
+    <rdfs:label xml:lang="en">Supernatural Being</rdfs:label>
+    <rdfs:comment xml:lang="en">A CognitiveAgent whose effects are not limited to the physical world. This includes the Lord Almighty, as well as supposed or imaginary deities.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CognitiveAgent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#CognitiveAgent">
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#CognitiveAgent
+SUO 1.55: July 14, 2003
+A &amp;%SentientAgent with responsibilities 
+and the ability to reason, deliberate, make plans, etc.  This is 
+essentially the legal/ethical notion of a person.  Note that, although 
+&amp;%Human is a subclass of &amp;%CognitiveAgent, there may be instances of 
+&amp;%CognitiveAgent which are not also instances of &amp;%Human.  For example, 
+chimpanzees, gorillas, dolphins, whales, and some extraterrestrials 
+(if they exist) may be &amp;%CognitiveAgents.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Agent"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Cognitive Agent</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Region">
+    <rdfs:label xml:lang="en">Region</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Object"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#Region: "A topographic location.  Regions encompass surfaces of Objects, imaginary places, and GeographicAreas. "</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ReligiousOrganization">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="BeliefGroup"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Organization"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Religious Organization</rdfs:label>
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#ReligiousOrganization
+SUO 1.55: July 14, 2003
+An &amp;%Organization whose members
+share a set of religious beliefs.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Island">
+    <rdfs:label xml:lang="en">Island</rdfs:label>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#Island
+SUO 1.55: July 14, 2003
+A &amp;%LandArea that is completely surrounded by a &amp;%WaterArea.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LandArea"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GeographicCoordinate">
+    <rdfs:comment xml:lang="en">For latitude and longitude: handled more generally in SUO</rdfs:comment>
+    <rdfs:label xml:lang="en">Geographic Coordinate</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="CitizenshipAttribute">
+    <rdfs:comment xml:lang="en">Belonging to the citizenry of a country (e.g. Roman).</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="HumanAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ResidencyAttribute">
+    <rdfs:comment xml:lang="en">The attribute of living in a particular City or Province. Unlike Ethnicity, which is permanent, Residency can change.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HumanAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="EthnicityAttribute">
+    <rdfs:comment xml:lang="en">The attribute of belonging to a particular ethnic group, or originating from a GeographicArea. Unlike Residency, which can change, Ethnicity is considered permanent.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#HumanAttribute"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Object">
+    <rdfs:label xml:lang="en">Object</rdfs:label>
+    <rdfs:comment xml:lang="en">Following http://reliant.teknowledge.com/DAML/SUMO.owl#Object, this "Corresponds roughly to the class of ordinary 
+objects.  Examples include normal physical objects, geographical regions, 
+and locations of &amp;%Processes, the complement of &amp;%Objects in the &amp;%Physical class. "</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="BeliefSystem">
+    <rdfs:comment xml:lang="en">An organization of propositions into an identifiable belief system. A person who holds to a belief system can be considered a member of the corresponding BeliefGroup.
+
+The notion of Proposition here is derived from http://reliant.teknowledge.com/DAML/SUMO.owl#Proposition.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="PoliticalOrganization">
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#PoliticalOrganization
+SUO 1.55: July 14, 2003
+An &amp;%Organization that is a &amp;%Government,
+a &amp;%subOrganization of a &amp;%Government, or an &amp;%Organization that is attempting
+to bring about some sort of political change.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Organization"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Agent">
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#Agent
+SUO 1.55: July 14, 2003
+Something or someone that can act on its own and 
+produce changes in the world.</rdfs:comment>
+    <rdfs:label xml:lang="en">Agent</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#BeliefGroup">
+    <rdfs:label xml:lang="en">Belief Group</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GroupOfPeople"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#BeliefGroup
+SUO 1.55: July 14, 2003
+A &amp;%Group whose &amp;%members share a belief or
+set of beliefs.
+For NTN, this covers groups defined by a particular set of beliefs (orthodox or heretical) which are informal, rather than formal, in membership and activity.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Group">
+    <rdfs:subClassOf rdf:resource="#Agent"/>
+    <rdfs:label xml:lang="en">Group</rdfs:label>
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#Group
+SUO 1.55: July 14, 2003
+A &amp;%Collection of &amp;%Agents, e.g. a flock
+of sheep, a herd of goats, or the local Boy Scout troop.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ReligiousBeliefSystem">
+    <rdfs:comment xml:lang="en">A system of religious beliefs, or a philosophy.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#BeliefSystem"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NaturalLanguage">
+    <rdfs:comment xml:lang="en">Broadly the same as http://reliant.teknowledge.com/DAML/SUMO.owl#NaturalLanguage
+SUO 1.55: July 14, 2003
+The &amp;%subclass of &amp;%HumanLanguages which
+are not designed and which evolve from generation to generation.  This
+&amp;%Class includes all of the national languages, e.g. English, Spanish,
+Japanese, etc.  Note that this class includes dialects of natural
+languages.</rdfs:comment>
+    <rdfs:label xml:lang="en">Natural Language</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ContentBearingObject"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Woman">
+    <rdfs:comment xml:lang="en">SUO 1.55: July 14, 2003
+The class of &amp;%Female &amp;%Humans.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Human"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Man"/>
+    </owl:disjointWith>
+    <rdfs:label xml:lang="en">Woman</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Man"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:ID="spouseOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#LandArea">
+    <rdfs:label xml:lang="en">Land Area</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="WaterArea"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GeographicArea"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#LandArea
+SUO 1.55: July 14, 2003
+An area which is predominantly solid ground,
+e.g. a &amp;%Nation, a mountain, a desert, etc.  Note that a &amp;%LandArea may
+contain some relatively small &amp;%WaterAreas.  For example, Australia is
+a &amp;%LandArea even though it contains various rivers and lakes.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FixedHoliday">
+    <rdfs:comment xml:lang="en">Would be a subclass of http://reliant.teknowledge.com/DAML/SUMO.owl#TimeInterval, but is specified within MILO.
+MILO: &amp;%FixedHoliday is the class of &amp;%Holidays 
+whose observance is fixed to recurrences of the calendar day that the 
+holiday commemorates.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="God">
+    <rdfs:comment xml:lang="en">Self-documenting</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="EvilSupernaturalBeing"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#SupernaturalBeing"/>
+    <rdfs:label xml:lang="en">God</rdfs:label>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Angel"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="FreshWaterArea">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterArea"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Fresh Water Area</rdfs:label>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#FreshWaterArea
+
+SUO 1.55: July 14, 2003
+A &amp;%WaterArea whose &amp;%Water is not saline,
+e.g. most rivers and lakes.</rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="SaltWaterArea"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="PoliticalBeliefSystem">
+    <rdfs:subClassOf rdf:resource="#BeliefSystem"/>
+  </owl:Class>
+  <owl:Class rdf:about="#HumanAttribute">
+    <rdfs:comment xml:lang="en">Attributes of people, overlapping with the class hierarchy under suo:Group: this is unsatisfactory.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Human">
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#Human
+SUO 1.55: July 14, 2003
+Modern man, the only remaining species of the Homo genus.</rdfs:comment>
+    <rdfs:label xml:lang="en">Human</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#CognitiveAgent"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StateOrProvince">
+    <rdfs:label xml:lang="en">State or Province</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GeopoliticalArea"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#StateOrProvince
+SUO 1.55: July 14, 2003
+Administrative subdivisions of a
+&amp;%Nation that are broader than any other political subdivisions that
+may exist.  This &amp;%Class includes the states of the United States, as
+well as the provinces of Canada and European countries.
+Here it covers both provinces and districts.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#LandArea"/>
+  </owl:Class>
+  <owl:Class rdf:ID="EthnicGroup">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GroupOfPeople"/>
+    </rdfs:subClassOf>
+    <rdfs:label xml:lang="en">Ethnic Group</rdfs:label>
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#EthnicGroup
+SUO 1.55: July 14, 2003
+A &amp;%Group whose &amp;%members originate from
+the same &amp;%GeographicArea or share the same &amp;%Language and/or cultural
+practices.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Nation">
+    <rdfs:label xml:lang="en">Nation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#LandArea"/>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#Nation
+SUO 1.55: July 14, 2003
+The broadest &amp;%GeopoliticalArea, i.e. &amp;%Nations are
+&amp;%GeopoliticalAreas that are not part of any other overarching and
+comprehensive governance structure (excepting commonwealths and other sorts
+of loose international organizations).
+Note that modern nations referred to in the New Testament (Spain,
+Italy, Libya) are typically not instances of Nation, but rather
+of Region (if the borders are indefinite) or of LandArea.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GeopoliticalArea"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#GeographicArea">
+    <rdfs:subClassOf rdf:resource="#Region"/>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#GeographicArea
+SUO 1.55: July 14, 2003
+A geographic location, generally having 
+definite boundaries.  Note that this differs from its immediate superclass 
+&amp;%Region in that a &amp;%GeographicArea is a three-dimensional &amp;%Region of the 
+earth.  Accordingly, all astronomical objects other than earth and all 
+one-dimensional and two-dimensional &amp;%Regions are not classed under 
+&amp;%GeographicArea.</rdfs:comment>
+    <rdfs:label xml:lang="en">Geographic Area</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ResidenceGroup">
+    <rdfs:label xml:lang="en">Populace</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GroupOfPeople"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A group identified by common residence in a City or StateOrProvince. At the level of Nation, this should generally be EthnicGroup. Unlike EthnicGroup, they need not have cultural or ethnic features in common.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Character">
+    <rdfs:comment xml:lang="en">Broadly the same as http://reliant.teknowledge.com/DAML/SUMO.owl#Character
+SUO 1.55: July 14, 2003
+An element of an alphabet, a set of numerals, etc.
+Note that a &amp;%Character may or may not be part of a &amp;%Language.  &amp;%Character
+is a subclass of &amp;%SymbolicString, because every instance of &amp;%Character is
+an alphanumeric sequence consisting of a single element.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ContentBearingObject"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ReligiousBelief">
+    <rdfs:subClassOf rdf:resource="#HumanAttribute"/>
+    <rdfs:comment xml:lang="en">The attribute of ascribing to a ReligiousBeliefSystem (which includes philosophies).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Angel">
+    <rdfs:subClassOf rdf:resource="#SupernaturalBeing"/>
+    <owl:disjointWith rdf:resource="#God"/>
+    <rdfs:comment xml:lang="en">Supernatural beings that work to support God's purposes as his agents.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Series">
+    <rdfs:comment xml:lang="en">Broadly the same as http://reliant.teknowledge.com/DAML/SUMO.owl#Series
+SUO 1.55: July 14, 2003
+A &amp;%Text consisting of multiple self-contained units.  
+Some examples are an encyclopedia containing a couple dozen volumes, a television 
+series made up of many episodes, a film serial, etc.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ContentBearingObject"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ContentBearingObject">
+    <rdfs:comment xml:lang="en">Broadly the same as http://reliant.teknowledge.com/DAML/SUMO.owl#ContentBearingObject
+SUO 1.55: July 14, 2003
+Any &amp;%SelfConnectedObject that expresses 
+information.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#SaltWaterArea">
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#SaltWaterArea
+SUO 1.55: July 14, 2003
+A &amp;%WaterArea whose &amp;%Water is saline, e.g.
+oceans and seas.</rdfs:comment>
+    <rdfs:label xml:lang="en">Salt Water Area</rdfs:label>
+    <owl:disjointWith rdf:resource="#FreshWaterArea"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterArea"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="City">
+    <rdfs:label xml:lang="en">City</rdfs:label>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#City
+SUO 1.55: July 14, 2003
+A &amp;%LandArea of relatively small size, inhabited
+by a community of people, and having some sort of political structure.
+Note that this class includes both large cities and small settlements
+like towns, villages, hamlets, etc.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GeopoliticalArea"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#LandArea"/>
+  </owl:Class>
+  <owl:Class rdf:about="#EvilSupernaturalBeing">
+    <owl:disjointWith rdf:resource="#God"/>
+    <rdfs:subClassOf rdf:resource="#SupernaturalBeing"/>
+    <rdfs:comment xml:lang="en">Class of malevolent supernatural beings, whose instances include Satan and demons. </rdfs:comment>
+    <rdfs:label xml:lang="en">Evil Supernatural Being</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Organization">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GroupOfPeople"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#Organization
+SUO 1.55: July 14, 2003
+An &amp;%Organization is a corporate or similar institution. The &amp;%members of an &amp;%Organization typically have a common purpose or function. Note that this class also covers divisions, departments, etc. of organizations.  For example, both the Shell Corporation and the accounting department at Shell would both be instances of &amp;%Organization.  Note too that the existence of an &amp;%Organization is dependent on the existence of at least one &amp;%member (since &amp;%Organization is a subclass of &amp;%Collection).  Accordingly, in cases of purely legal organizations, a fictitious &amp;%member 
+should be assumed.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#WaterArea">
+    <owl:disjointWith rdf:resource="#LandArea"/>
+    <rdfs:subClassOf rdf:resource="#GeographicArea"/>
+    <rdfs:label xml:lang="en">Water Area</rdfs:label>
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#WaterArea
+SUO 1.55: July 14, 2003
+A body which is made up predominantly of water,
+e.g. rivers, lakes, oceans, etc.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:cardinality>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:ID="nativePlaceOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#GeopoliticalArea">
+    <rdfs:comment xml:lang="en">Based on SUMO, http://reliant.teknowledge.com/DAML/SUMO.owl#GeopoliticalArea
+SUO 1.55: July 14, 2003
+Any &amp;%GeographicArea which is associated 
+with some sort of political structure.  This class includes &amp;%Lands, 
+&amp;%Cities, districts of cities, counties, etc.  Note that the identity 
+of a &amp;%GeopoliticalArea may remain constant after a change in borders.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#GeographicArea"/>
+    <rdfs:label xml:lang="en">Geopolitical Area</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="SonOfGod">
+    <rdfs:subClassOf rdf:resource="#Human"/>
+    <rdfs:comment xml:lang="en">Both Human and God</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#God"/>
+    <rdfs:label xml:lang="en">Son of God</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Mountain">
+    <rdfs:subClassOf rdf:resource="#LandArea"/>
+    <rdfs:comment xml:lang="en">Wordnet: "a land mass that projects well above its surroundings; higher than a hill. "
+Used here for things referred to as "mount", even though some of these might seem
+like hills to well-traveled observers. </rdfs:comment>
+    <rdfs:label xml:lang="en">Mountain</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#Man">
+    <rdfs:comment xml:lang="en">SUO 1.55: July 14, 2003
+The class of &amp;%Male &amp;%Humans.</rdfs:comment>
+    <owl:disjointWith rdf:resource="#Woman"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Woman"/>
+        <owl:onProperty>
+          <owl:SymmetricProperty rdf:about="#spouseOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">Man</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Tribe">
+    <rdfs:comment xml:lang="en">Subclass for the Twelve Tribes of Israel</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#EthnicGroup"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PoliticalAttribute">
+    <rdfs:subClassOf rdf:resource="#HumanAttribute"/>
+    <rdfs:comment xml:lang="en">The attribute of ascribing to a PoliticalBeliefSystem, or belonging to a political party or system.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#GroupOfPeople">
+    <rdfs:subClassOf rdf:resource="#Group"/>
+    <rdfs:label xml:lang="en">Group of People</rdfs:label>
+    <rdfs:comment xml:lang="en">Comparable to http://reliant.teknowledge.com/DAML/SUMO.owl#GroupOfPeople
+SUO 1.55: July 14, 2003
+Any &amp;%Group whose &amp;%members are
+exclusively &amp;%Humans.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="residentPlace">
+    <rdfs:range rdf:resource="#Region"/>
+    <rdfs:comment xml:lang="en">The location a person or group of people resides in. Range values may change over time: no attempt is made to capture this. Transient residence of very short duration is assumed to be visited, not resident. People addressed in a letter bound for a specific destination (e.g. the epistle of Paul to the Romans) are assumed to be resident there unless there is indication to the contrary (since the timing of a letter's arrival could not be determined with high precision). </rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="visitedPlace"/>
+    </rdfs:subPropertyOf>
+    <rdfs:label xml:lang="en">resident place</rdfs:label>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="residentPlaceOf"/>
+    </owl:inverseOf>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Human"/>
+          <owl:Class rdf:about="#GroupOfPeople"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="politicalBelief">
+    <rdfs:comment xml:lang="en">Holding to a PoliticalBelief</rdfs:comment>
+    <rdfs:range rdf:resource="#PoliticalBeliefSystem"/>
+    <rdfs:label xml:lang="en">political belief</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Human"/>
+          <owl:Class rdf:about="#GroupOfPeople"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#residentPlaceOf">
+    <rdfs:domain rdf:resource="#Region"/>
+    <owl:inverseOf rdf:resource="#residentPlace"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Human"/>
+          <owl:Class rdf:about="#GroupOfPeople"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="visitedPlaceOf"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="memberOf">
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">member of</rdfs:label>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="member"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="en">Human is a memberOf a Group. Inverse of member. There are subtleties about Collections in SUMO that i'm omiting here.</rdfs:comment>
+    <rdfs:range rdf:resource="#Group"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="ethnicityOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="ethnicity"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#EthnicityAttribute"/>
+    <rdfs:range rdf:resource="#Human"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="religiousBelief">
+    <rdfs:range rdf:resource="#ReligiousBeliefSystem"/>
+    <rdfs:label xml:lang="en">religious belief</rdfs:label>
+    <rdfs:comment xml:lang="en">Having a ReligiousBelief as an attribute</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Human"/>
+          <owl:Class rdf:about="#GroupOfPeople"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="antagonistOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="hasAntagonist"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="en">"A person who opposes and contends against this person", similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range. Not necessarily reciprocal.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAntagonist">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="knows"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#Human"/>
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:comment xml:lang="en">inverse of antagonistOf, which is not necessarily reciprocal</rdfs:comment>
+    <owl:inverseOf rdf:resource="#antagonistOf"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#knows">
+    <rdfs:label xml:lang="en">knows of</rdfs:label>
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:comment xml:lang="en">"A person known by this person (indicating some level of reciprocated interaction between the parties)", similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range.</rdfs:comment>
+    <rdfs:range rdf:resource="#Human"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#visitedPlace">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#visitedPlaceOf"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#Region"/>
+    <rdfs:comment xml:lang="en">Places that a human visited. For current purposes, only instances which are explicitly mentioned in Scripture are included, not those that might be inferred (e.g. if going from from A to B implies visiting C, C would not be listed). </rdfs:comment>
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">visited place</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="childOf">
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">child of</rdfs:label>
+    <rdfs:range rdf:resource="#Human"/>
+    <rdfs:comment xml:lang="en">Similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range. In-laws are considered relatives. </rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="parentOf"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:ID="relativeOf"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="latitude">
+    <rdfs:range rdf:resource="#GeographicCoordinate"/>
+    <rdfs:domain rdf:resource="#GeographicArea"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#member">
+    <owl:inverseOf rdf:resource="#memberOf"/>
+    <rdfs:label xml:lang="en">member</rdfs:label>
+    <rdfs:comment xml:lang="en">Group has member Human. Inverse of memberOf. No provision for membership changes over time.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Group"/>
+    <rdfs:range rdf:resource="#Human"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasEnemy">
+    <rdfs:comment xml:lang="en">inverse of enemyOf, which is not necessarily reciprocal</rdfs:comment>
+    <rdfs:range rdf:resource="#Human"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="enemyOf"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:subPropertyOf rdf:resource="#knows"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#parentOf">
+    <rdfs:comment xml:lang="en">Similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range.</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:SymmetricProperty rdf:about="#relativeOf"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf rdf:resource="#childOf"/>
+    <rdfs:range rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">parent of</rdfs:label>
+    <rdfs:domain rdf:resource="#Human"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="longitude">
+    <rdfs:domain rdf:resource="#GeographicArea"/>
+    <rdfs:range rdf:resource="#GeographicCoordinate"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#enemyOf">
+    <rdfs:comment xml:lang="en">"A person towards whom this person feels hatred, intends injury to, or opposes the interests of", similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range. Not necessarily reciprocal.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#hasEnemy"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#visitedPlaceOf">
+    <rdfs:domain rdf:resource="#GeographicArea"/>
+    <rdfs:range rdf:resource="#Human"/>
+    <owl:inverseOf rdf:resource="#visitedPlace"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#ethnicity">
+    <rdfs:range rdf:resource="#EthnicityAttribute"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The ethnicity or, more generally, cultural heritage of a person. This can overlap with both religiousBelief (which may, however, change over time) and nativePlace (which, like ethnicity, does not change, though residency might). Whether a given property represents ethnicity or citizenship (nativePlace) can be a difficult decision, but in general, ethnic identities like "Jewish" or "Greek" take precedence. For example, we consider the Apostle Paul to have Jewish ethnicity, though he was a citizen of Tarsus, because he was raised as a Jew. </rdfs:comment>
+    <rdfs:domain rdf:resource="#Human"/>
+    <owl:inverseOf rdf:resource="#ethnicityOf"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="name_grc">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The human language name of an Object in Koine (not Modern) Greek, in the standard dictionary form (nominative case). 
+ Since Protege (3.0 build 141) doesn't seem to support loading and saving xml:lang attributes on properties, different subproperties are used for representing names in different languages. "grc" is the three-letter ISO-639-2 standard designator for Koine Greek.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Object"/>
+          <owl:Class rdf:about="#BeliefSystem"/>
+          <owl:Class rdf:about="#FixedHoliday"/>
+          <owl:Class rdf:about="#HumanAttribute"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="occupation">
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="LNID">
+    <rdfs:comment xml:lang="en">Louw-Nida identifier, keying specific Greek terms (and their English translations) to their taxonomy of semantic domains. A string like "33.X'.439" identifies the term sumballo, which can be translated as "to express differences of opinion in a forceful way". In their scheme, this has domain index 33 (Communication), with sub-domain index X' (Dispute, Debate). The final integer index uniquely defines this term (but the same term may have multiple senses). The sub-domain index can be determined from the term index, but it seems helpful to include both. Note the possible values of the sub-domain index are A-Z, then A'-Z', etc.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="description">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label xml:lang="en">description</rdfs:label>
+    <rdfs:comment xml:lang="en">A brief description of the salient aspects of a Human, based on their being mentioned in Scripture. This is not the way to enter dictionary-style definitions.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Human"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="coordinateDegree">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#GeographicCoordinate"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="name_en">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment xml:lang="en">The human language name of an Object in English. 
+Since Protege (3.0 build 141) doesn't seem to support loading and saving xml:lang attributes on properties, different subproperties are used for representing names in different languages.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Object"/>
+          <owl:Class rdf:about="#BeliefSystem"/>
+          <owl:Class rdf:about="#FixedHoliday"/>
+          <owl:Class rdf:about="#HumanAttribute"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:ID="subregion">
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:ID="subregionOf"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#GeographicArea"/>
+    <rdfs:comment xml:lang="en">Inverse of subregionOf</rdfs:comment>
+    <rdfs:domain rdf:resource="#GeographicArea"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="#subregionOf">
+    <rdfs:domain rdf:resource="#GeographicArea"/>
+    <rdfs:range rdf:resource="#Region"/>
+    <rdfs:comment xml:lang="en">A smaller GeographicArea is a subregionOf a larger one (e.g. Jerusalem is a subregionOf Israel).</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="#subregion"/>
+  </owl:TransitiveProperty>
+  <owl:SymmetricProperty rdf:about="#spouseOf">
+    <rdfs:range rdf:resource="#Human"/>
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">spouse of</rdfs:label>
+    <rdfs:comment xml:lang="en">Similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range. Multiple spouses are all included, whether sequential (Herodias) or simultaneous (the woman at the well). </rdfs:comment>
+    <owl:inverseOf rdf:resource="#spouseOf"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:ID="collaboratesWith">
+    <rdfs:label xml:lang="en">collaborates with</rdfs:label>
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:comment xml:lang="en">"A person who works toward a common goal with this person", similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range. Those to whom an author sends greetings are assumed to be collaborators, though this is perhaps broader than the general sense of the word.</rdfs:comment>
+    <rdfs:range rdf:resource="#Human"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#knows"/>
+    <owl:inverseOf rdf:resource="#collaboratesWith"/>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:about="#relativeOf">
+    <owl:inverseOf rdf:resource="#relativeOf"/>
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">relative of</rdfs:label>
+    <rdfs:range rdf:resource="#Human"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">A person who is related by kinship to this person. No attempt is made to delineate precisely which kinship relations qualify: this is used when a description indicates two people are "related". parent/child/siblingOf are subproperties of this, properly speaking. </rdfs:comment>
+  </owl:SymmetricProperty>
+  <owl:SymmetricProperty rdf:ID="siblingOf">
+    <rdfs:domain rdf:resource="#Human"/>
+    <rdfs:comment xml:lang="en">Similar to http://purl.org/vocab/relationship vocabulary, but with different domain and range.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#relativeOf"/>
+    <rdfs:range rdf:resource="#Human"/>
+    <rdfs:label xml:lang="en">sibling of</rdfs:label>
+    <owl:inverseOf rdf:resource="#siblingOf"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:SymmetricProperty>
+  <owl:FunctionalProperty rdf:ID="coordinateMinute">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#GeographicCoordinate"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="nativePlace">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Human"/>
+          <owl:Class rdf:about="#GroupOfPeople"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label xml:lang="en">native place</rdfs:label>
+    <rdfs:comment xml:lang="en">Birthplace, or place in which a person grows up. Unlike residentOf, only one possible value. residentPlace is to be preferred unless the birthplace relationship is clearly identified.</rdfs:comment>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:about="#nativePlaceOf"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="#visitedPlace"/>
+    <rdfs:range rdf:resource="#Region"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="coordinateHour">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#GeographicCoordinate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="#nativePlaceOf">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Human"/>
+          <owl:Class rdf:about="#GroupOfPeople"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <owl:inverseOf rdf:resource="#nativePlace"/>
+    <rdfs:domain rdf:resource="#GeographicArea"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#visitedPlaceOf"/>
+  </owl:InverseFunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.3, Build 225.4)  http://protege.stanford.edu -->

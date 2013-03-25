@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE rdf:RDF[
+ <!ENTITY rdfs  'http://www.w3.org/2000/01/rdf-schema#'>
+ <!ENTITY owl  'http://www.w3.org/2002/07/owl#'>
+ <!ENTITY whois  'http://www.kanzaki.com/ns/whois'>
+ <!ENTITY dc  'http://purl.org/dc/elements/1.1/'>
+ <!ENTITY dcterms  'http://purl.org/dc/terms/'>
+ <!ENTITY foaf  'http://xmlns.com/foaf/0.1/'>
+ <!ENTITY wordnet 'http://xmlns.com/wordnet/1.6/'>
+ <!ENTITY contact 'http://www.w3.org/2000/10/swap/pim/contact#'>
+ <!ENTITY geo 'http://www.w3.org/2003/01/geo/wgs84_pos#'>
+]><rdf:RDF xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:wn="http://xmlns.com/wordnet/1.6/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:contact="http://www.w3.org/2000/10/swap/pim/contact#" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:ex="http://purl.org/net/ns/ex#" xmlns="http://www.kanzaki.com/ns/whois#" xml:base="http://www.kanzaki.com/ns/whois" xml:lang="en"><owl:Ontology rdf:about=""><rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Document" /><owl:imports rdf:resource="http://www.kanzaki.com/ns/dliser.rdf" /><dc:title>Who's who description vocabulary</dc:title><dc:description>An experimental vocabulary to describe a person's profile/history. Properties 'whois:stage' describe one's stage of life (whois:Stage). Similar to Ian Davis' BIO: vocab, however, while BIO: describes events on specific dates, this vocabulary uses whois:since/whois:until so that it can describe a period of time. This also includes such properties as career or honor to be used as a personal resume. Examples included in this document.</dc:description><dc:description xml:lang="ja">プロフィールを記述するための実験ボキャブラリ。Ian DavisのBIO: vocabと似ていますが、BIO:がEventという単位を基本に特定の日を記述するのに対し、こちらはライフサイクルのステージという概念で期間も記述できるようにしています。career, honorといったプロパティは、履歴メタデータの記述にも使えます。</dc:description><dcterms:created>2003-07-08</dcterms:created><dcterms:modified>2006-06-25</dcterms:modified><owl:versionInfo>Version 0.5. OWL DL version.</owl:versionInfo><dc:creator><foaf:Person rdf:about="urn:pin:MK705"><foaf:name xml:lang="ja">神崎正英</foaf:name><rdfs:seeAlso rdf:resource="http://www.kanzaki.com/info/webwho.rdf" /></foaf:Person></dc:creator></owl:Ontology><!-- ==== Class definitions ==== --><owl:Class rdf:ID="Place"><rdfs:label>Place</rdfs:label><rdfs:comment>A place -- this can be the domain of both contact: vocab and geo: vocab.</rdfs:comment><rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing" /></owl:Class><owl:Class rdf:ID="Stage"><rdfs:label>Stage</rdfs:label><rdfs:comment>A stage of life. A distinct time period in a sequence of one's life cycle.</rdfs:comment></owl:Class><owl:Class rdf:ID="Education"><rdfs:label>Educaton</rdfs:label><rdfs:comment>A period of education in one's academic career, as a stage of life.</rdfs:comment><rdfs:subClassOf rdf:resource="#Stage" /></owl:Class><owl:Class rdf:ID="Job"><rdfs:label>Job</rdfs:label><rdfs:comment>A period of job in one's professional career, as a stage of life.</rdfs:comment><rdfs:subClassOf rdf:resource="#Stage" /></owl:Class><!-- ==== Property definitions ==== --><!-- Properties to describe a Person --><owl:ObjectProperty rdf:ID="description"><rdfs:label>Description</rdfs:label><rdfs:comment>General description of a person's activities. Use to describe something that does not fit into a Stage.</rdfs:comment><rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person" /><rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="stage"><rdfs:label>Stage</rdfs:label><rdfs:comment>Describes an aspect of one's personal history. <!-- no more a super property of career.--></rdfs:comment><rdfs:subPropertyOf rdf:resource="#description" /><rdfs:range rdf:resource="#Stage" /><!-- <rdfs:range rdf:resource="rdfs:Resource"/> --></owl:ObjectProperty><owl:ObjectProperty rdf:ID="career"><rdfs:label>Career</rdfs:label><rdfs:comment>A job, education or any achievement in one's life, which can be specific to a stage of life (object = #Stage) or in general (object = any).</rdfs:comment><rdfs:subPropertyOf rdf:resource="#description" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="academicCareer"><rdfs:label>Academic Career</rdfs:label><rdfs:comment>an educational career in one's personal history.</rdfs:comment><rdfs:subPropertyOf rdf:resource="#career" /><rdfs:range rdf:resource="#Education" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="professionalCareer"><rdfs:label>Professional Career</rdfs:label><rdfs:comment>a professional or business career in one's personal history.</rdfs:comment><rdfs:subPropertyOf rdf:resource="#career" /><rdfs:range rdf:resource="#Job" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="achievement"><rdfs:label>Achievement</rdfs:label><rdfs:comment>a one's achievement in general. Note you can use foaf:publication, foaf:pastProject for a specific achievement.</rdfs:comment><rdfs:subPropertyOf rdf:resource="#career" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="honor"><rdfs:label>Honor</rdfs:label><rdfs:comment>an honor that one has been rewarded.</rdfs:comment><rdfs:subPropertyOf rdf:resource="#career" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="where"><rdfs:label>Where</rdfs:label><rdfs:comment>Place which relates to a stage of life. The range is whois:Place to have structured description. Use bio:place for literal value</rdfs:comment><rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/spatial" /><rdfs:domain rdf:resource="#Stage" /><rdfs:range rdf:resource="#Place" /></owl:ObjectProperty><owl:ObjectProperty rdf:ID="what"><rdfs:label>What</rdfs:label><rdfs:comment>What a person is/was doing in a stage of life. The range is owl:Thing to have structured description. Use dc:description for literal description, or dc:subject for keywords.</rdfs:comment><rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/topic" /><rdfs:domain rdf:resource="#Stage" /><rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" /></owl:ObjectProperty><owl:DatatypeProperty rdf:ID="when"><rdfs:label>When</rdfs:label><rdfs:comment>date/time which relates to a stage of life. Super property of since and until. W3C-DTF format value is assumed (i.e. can be yyyy, yyyy-mm, yyyy-mm-dd etc).</rdfs:comment><rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/temporal" /><rdfs:domain rdf:resource="#Stage" /><rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal" /></owl:DatatypeProperty><owl:DatatypeProperty rdf:ID="since"><rdfs:label>Since</rdfs:label><rdfs:comment>date when a stage of life started. </rdfs:comment><rdfs:subPropertyOf rdf:resource="#when" /></owl:DatatypeProperty><owl:DatatypeProperty rdf:ID="until"><rdfs:label>Until</rdfs:label><rdfs:comment>date when a stage of life ended.</rdfs:comment><rdfs:subPropertyOf rdf:resource="#when" /></owl:DatatypeProperty><owl:DatatypeProperty rdf:ID="born"><rdfs:label>Born</rdfs:label><rdfs:comment>One's birthday. This can be used in place of 'whois:since' where the 'whois:Stage' is one's first stage.</rdfs:comment><rdfs:subPropertyOf rdf:resource="#since" /></owl:DatatypeProperty><owl:ObjectProperty rdf:ID="plan"><rdfs:label>Plan</rdfs:label><rdfs:comment>General description of a person's future activities. Note past activity can be described with #career.</rdfs:comment><rdfs:subPropertyOf rdf:resource="#description" /></owl:ObjectProperty><!-- ==== External names ==== --><owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing" /><owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/topic" /><owl:ObjectProperty rdf:about="http://purl.org/dc/terms/spatial" /><owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/temporal" /><!-- ==== Examples ==== --><ex:Example><dc:description>Simple, unstructured description. Class tags 'whois:Stage' are omitted by using rdf:parseType='Resource', and 'bio:place' property is used instead of 'whois:where' to have literal values). Note the 'whois:born' (instead of 'whois:since') implies (the omitted 'whois:Stage' is) one's first stage of life, and the stage without 'whois:until' denotes the current phase.</dc:description><dc:description xml:lang="ja">最もシンプルな例（rdf:parseType='Resource'を用いて'whois:Stage'も省略）。場所を単なるリテラルとするためにbio:placeを用いている。whois:bornを持つwhois:Stageは出身地での人生の最初のステージを示す。また、whois:untilのないwhois:Stageは現在のステージ。</dc:description><!--http://internetalchemy.org/vocab/bio/0.1/--><ex:pfx>whois:</ex:pfx><ex:code><![CDATA[
+<foaf:Person>
+ <foaf:name>Masahide Kanzaki</foaf:name>
+ <whois:stage rdf:parseType='Resource'>
+  <bio:place>Tokyo, Japan</bio:place>
+  <whois:since>1982</whois:since>
+ </whois:stage>
+ <whois:stage rdf:parseType='Resource'>
+  <bio:place>Suzuka, Mie, Japan</bio:place>
+  <whois:born>1960</whois:born>
+  <whois:until>1978</whois:until>
+ </whois:stage>
+</foaf:Person>
+ ]]></ex:code></ex:Example><ex:Example><dc:description>A structured description of a stage of one's life. Note properties from contact: and geo: vocabulary can be used with whois:Place.</dc:description><dc:description xml:lang="ja">whois:where、whois:whatの内容にほかの語彙を含む構造的な記述を利用した例。</dc:description><ex:code><![CDATA[
+<whois:stage>
+ <whois:Stage>
+  <whois:since>1987</whois:since>
+  <whois:until>1989</whois:until>
+  <whois:where>
+   <whois:Place geo:lat="40.794" geo:long="-73.972">
+    <contact:country>U.S.A.</contact:country>
+    <contact:city>New York</contact:city>
+   </whois:Place>
+  </whois:where>
+  <whois:what>
+   <wn:School>
+    <foaf:homepage rdf:resource="http://www.columbia.edu/cu/business/"/>
+   </wn:School>
+  </whois:what>
+ </whois:Stage>
+</whois:stage>
+ ]]></ex:code></ex:Example><ex:Example><dc:description>Combined with other FOAF vocabularies, we can make a personal resume as a metadata. A career can be described with 'whois:career' property + 'whois:Education' or 'whois:Job' class, or sub properties 'whois:academicCareer' and 'whois:professionalCareer' that denote appropriate classes as range.</dc:description><dc:description xml:lang="ja">'whois:career'プロパティと'whois:Education', 'whois:Job'クラスを使って、履歴メタデータを記述する例。これらはサブプロパティ'whois:academicCareer'および'whois:professionalCareer'によってクラスを暗黙的に示すこともできる。</dc:description><ex:code><![CDATA[
+<foaf:Person>
+ <foaf:name>Masahide Kanzaki</foaf:name>
+ <foaf:mbox rdf:resource="mailto:webmaster@kanzaki.com"/>
+ <whois:stage whois:born="1960" bio:place="Suzuka, Mie, Japan"/>
+ <whois:career>
+  <whois:Education>
+   <dc:title>Columbia Business School</dc:title>
+   <whois:since>1987</whois:since>
+   <whois:until>1989</whois:until>
+  </whois:Education>
+ </whois:career>
+ <whois:career>
+  <whois:Job>
+   <dc:title>A virtual corporation</dc:title>
+   <whois:since>1989</whois:since>
+   <whois:until>2002</whois:since>
+  </whois:Job>
+ </whois:career>
+ <whois:professionalCareer rdf:parseType="Resource">
+  <dc:title>Keio University</dc:title>
+  <whois:since>2003</whois:since>
+ </whois:professionalCareer>
+</foaf:Person>
+ ]]></ex:code></ex:Example></rdf:RDF>
