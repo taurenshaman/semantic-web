@@ -1,0 +1,320 @@
+@prefix DrvOnt:  <http://mccarthy.dia.fi.upm.es/Driving_License_Ontology#> .
+@prefix :        <http://mccarthy.dia.fi.upm.es/Job_Offer_Ontology#> .
+@prefix CompOnt:  <http://mccarthy.dia.fi.upm.es/Compensation_Ontology#> .
+@prefix SkillOnt:  <http://mccarthy.dia.fi.upm.es/Skill_Ontology#> .
+@prefix EcoActOnt:  <http://mccarthy.dia.fi.upm.es/Economic_Activity_Ontology#> .
+@prefix wsml:    <http://www.wsmo.org/wsml/wsml-syntax#> .
+@prefix GeoOnt:  <http://mccarthy.dia.fi.upm.es/Geography_Ontology#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix Time:    <http://mccarthy.dia.fi.upm.es/Time_Ontology#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix EduOnt:  <http://mccarthy.dia.fi.upm.es/Education_Ontology#> .
+@prefix ComOnt:  <http://mccarthy.dia.fi.upm.es/Competence_Ontology#> .
+@prefix LanOnt:  <http://mccarthy.dia.fi.upm.es/Language_Ontology#> .
+@prefix LabRegOnt:  <http://mccarthy.dia.fi.upm.es/Labour_Regulatory_Ontology#> .
+@prefix OccOnt:  <http://mccarthy.dia.fi.upm.es/Occupation_Ontology#> .
+
+:Letter_plus_CV_to_Domestic_Adviser
+      a       :How_To_Apply ;
+      :Id     3 ;
+      :description "Letter + CV to Domestic Adviser"^^xsd:string .
+
+:Full_Name
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:string .
+
+:belongs_to_end_date
+      a       rdf:Property ;
+      rdfs:domain :Time_specification ;
+      rdfs:range :Vacancy .
+
+:Max_age
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:integer .
+
+:number_workers
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:integer .
+
+:JV_List
+      a       rdfs:Class .
+
+:publication_date
+      a       rdf:Property ;
+      rdfs:domain :Job_Vacancy ;
+      rdfs:range Time:DateTimeDescription .
+
+:is_located_in
+      a       rdf:Property ;
+      rdfs:domain :Organization , :Vacancy ;
+      rdfs:range GeoOnt:Location .
+
+:requires_work_experience
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range :Requested_Work_Experience .
+
+:Vacancy
+      a       rdfs:Class .
+
+:Other
+      a       :How_To_Apply ;
+      :Id     7 ;
+      :description "Other - see free text"^^xsd:string .
+
+:Begin_date
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range :Time_specification .
+
+:Interval
+      a       rdfs:Class ;
+      rdfs:subClassOf :Time_specification .
+
+:How_To_Apply
+      a       rdfs:Class .
+
+:duration
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range Time:DurationDescription .
+
+:Requested_Work_Experience
+      a       rdfs:Class .
+
+:Telephone
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:string .
+
+:Elem
+      a       rdfs:Class .
+
+:how_to_apply
+      a       rdf:Property ;
+      rdfs:domain :Job_Vacancy ;
+      rdfs:range :How_To_Apply .
+
+:Id   a       rdf:Property ;
+      rdfs:domain :How_To_Apply ;
+      rdfs:range xsd:integer .
+
+:has_compensation
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range CompOnt:Compensation .
+
+:Letter_plus_CV_to_EMPLOYER
+      a       :How_To_Apply ;
+      :Id     2 ;
+      :description "Letter + CV to EMPLOYER"^^xsd:string .
+
+:Telephone_EMPLOYER
+      a       :How_To_Apply ;
+      :Id     5 ;
+      :description "Telephone EMPLOYER"^^xsd:string .
+
+:has_pos
+      a       rdf:Property ;
+      rdfs:domain :Elem ;
+      rdfs:range xsd:integer .
+
+:Address
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:string .
+
+:has_job_category
+      a       rdf:Property ;
+      rdfs:domain :ICT_Vacancy , :Vacancy , :Requested_Work_Experience ;
+      rdfs:range OccOnt:Occupation , OccOnt:Computing_professionals__213 .
+
+:Identifier
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:string .
+
+:Organization
+      a       rdfs:Class .
+
+:requires_competence
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range ComOnt:Competence .
+
+:Years
+      a       rdf:Property ;
+      rdfs:domain :Requested_Work_Experience ;
+      rdfs:range Time:Year .
+
+:email
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:string .
+
+:anonymous
+      a       rdf:Property ;
+      rdfs:domain :Job_Vacancy ;
+      rdfs:range xsd:boolean .
+
+:belongs_to_begin_date
+      a       rdf:Property ;
+      rdfs:domain :Time_specification ;
+      rdfs:range :Vacancy .
+
+:has_job_vacancy
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range :Job_Vacancy .
+
+:employment_agent
+      a       rdf:Property ;
+      rdfs:domain :Job_Vacancy ;
+      rdfs:range xsd:string .
+
+:is_associated_with
+      a       rdf:Property ;
+      rdfs:domain :Requested_Work_Experience ;
+      rdfs:range :Vacancy .
+
+:date
+      a       rdf:Property ;
+      rdfs:domain :Fixed_date ;
+      rdfs:range Time:DateTimeDescription .
+
+:Job_Vacancy
+      a       rdfs:Class .
+
+:job_description
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:string .
+
+:requires_professional_affiliation
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range OccOnt:Occupation .
+
+:dates
+      a       rdf:Property ;
+      rdfs:domain :Interval ;
+      rdfs:range Time:DateTimeInterval .
+
+:Postal_Code
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:string .
+
+:ICT_Vacancy
+      a       rdfs:Class ;
+      rdfs:subClassOf :Vacancy .
+
+:Appointment_set_by_employer
+      a       :How_To_Apply ;
+      :Id     6 ;
+      :description "Appointment set by employer - see free text"^^xsd:string .
+
+:has_activity_sector
+      a       rdf:Property ;
+      rdfs:domain :Vacancy , :Requested_Work_Experience ;
+      rdfs:range EcoActOnt:Sector .
+
+:Time_specification
+      a       rdfs:Class .
+
+:Fixed_date
+      a       rdfs:Class ;
+      rdfs:subClassOf :Time_specification .
+
+:contact_person
+      a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:string .
+
+:End_date
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range :Time_specification .
+
+:requires_flexibility_to_travel
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:boolean .
+
+:has_elems
+      a       rdf:Property ;
+      rdfs:domain :JV_List ;
+      rdfs:range :Elem .
+
+:Min_age
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:integer .
+
+:has_work_condition
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range LabRegOnt:Work_Condition .
+
+:has_contract_type
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range LabRegOnt:Contract_Type .
+
+:job_name
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:string .
+
+:Letter_plus_CV_to_CONTACT_EA
+      a       :How_To_Apply ;
+      :Id     1 ;
+      :description "Letter + CV to CONTACT EA"^^xsd:string .
+
+:has_education
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range EduOnt:Education .
+
+:requires_car
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:boolean .
+
+:belongs_to
+      a       rdf:Property ;
+      rdfs:domain :How_To_Apply , :Job_Vacancy , :Vacancy ;
+      rdfs:range :Job_Vacancy , :Organization .
+
+:description
+      a       rdf:Property ;
+      rdfs:domain :How_To_Apply ;
+      rdfs:range xsd:string .
+
+:Fax  a       rdf:Property ;
+      rdfs:domain :Organization ;
+      rdfs:range xsd:string .
+
+:Work_Location
+      a       rdf:Property ;
+      rdfs:domain :Vacancy ;
+      rdfs:range xsd:string .
+
+:has_vacancy
+      a       rdf:Property ;
+      rdfs:domain :Job_Vacancy ;
+      rdfs:range :Vacancy .
+
+:Telephone_CONTACT_EA
+      a       :How_To_Apply ;
+      :Id     4 ;
+      :description "Telephone CONTACT EA"^^xsd:string .
+
+:has_value
+      a       rdf:Property ;
+      rdfs:domain :Elem ;
+      rdfs:range :Job_Vacancy .

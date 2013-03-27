@@ -1,0 +1,346 @@
+@prefix DrvOnt:  <http://mccarthy.dia.fi.upm.es/Driving_License_Ontology#> .
+@prefix :        <http://mccarthy.dia.fi.upm.es/Job_Seeker_Ontology#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix CompOnt:  <http://mccarthy.dia.fi.upm.es/Compensation_Ontology#> .
+@prefix SkillOnt:  <http://mccarthy.dia.fi.upm.es/Skill_Ontology#> .
+@prefix EcoActOnt:  <http://mccarthy.dia.fi.upm.es/Economic_Activity_Ontology#> .
+@prefix wsml:    <http://www.wsmo.org/wsml/wsml-syntax#> .
+@prefix GeoOnt:  <http://mccarthy.dia.fi.upm.es/Geography_Ontology#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix Time:    <http://mccarthy.dia.fi.upm.es/Time_Ontology#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix EduOnt:  <http://mccarthy.dia.fi.upm.es/Education_Ontology#> .
+@prefix ComOnt:  <http://mccarthy.dia.fi.upm.es/Competence_Ontology#> .
+@prefix LanOnt:  <http://mccarthy.dia.fi.upm.es/Language_Ontology#> .
+@prefix LabRegOnt:  <http://mccarthy.dia.fi.upm.es/Labour_Regulatory_Ontology#> .
+@prefix OccOnt:  <http://mccarthy.dia.fi.upm.es/Occupation_Ontology#> .
+
+:zip_code
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:Offered_Work_Experience
+      a       rdfs:Class .
+
+:marital_status
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range :Marital_Status .
+
+:Position_held
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience ;
+      rdfs:range xsd:string .
+
+:has_objective
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range :ICT_Objective .
+
+:employment_agent
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:has_work_experience
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range :Offered_Work_Experience .
+
+:Elem
+      a       rdfs:Class .
+
+:has_work_condition
+      a       rdf:Property ;
+      rdfs:domain :Objective ;
+      rdfs:range LabRegOnt:Work_Condition .
+
+:anonymous
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:boolean .
+
+:Begin_date
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range Time:DateTimeDescription .
+
+:Mobile
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:two_four
+      a       :Experience ;
+      :code   "3"^^xsd:string ;
+      :description "2-4 years' experience"^^xsd:string .
+
+:Single
+      a       :Marital_Status ;
+      :code   1 .
+
+:five_more
+      a       :Experience ;
+      :code   "4"^^xsd:string ;
+      :description "5 years experience or more"^^xsd:string .
+
+:End_date
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range Time:DateTimeDescription .
+
+:End_Date
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience ;
+      rdfs:range Time:DateTimeDescription .
+
+:Fax  a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:has_professional_affiliation
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range OccOnt:Occupation .
+
+:has_nationality_from
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range GeoOnt:Country .
+
+:Address_of_the_Employer
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience ;
+      rdfs:range xsd:string .
+
+:Hobbies
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:Gender
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:Post_Code
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:has_competence
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range CompOnt:Competence .
+
+:Candidacy
+      a       rdfs:Class .
+
+:Postal_Address
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:less_1
+      a       :Experience ;
+      :code   "1"^^xsd:string ;
+      :description "Less than 1 year's experience"^^xsd:string .
+
+:has_available_car
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range xsd:boolean .
+
+:no_experience
+      a       :Experience ;
+      :code   "0"^^xsd:string ;
+      :description "No experience"^^xsd:string .
+
+:Name_of_the_Employer
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience ;
+      rdfs:range xsd:string .
+
+:has_candidacy
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range :Candidacy .
+
+:belongs_to
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience , :Objective , :Candidacy ;
+      rdfs:range :Job_Seeker , :Candidacy .
+
+:Identifier
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range xsd:string .
+
+:Address
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:Married
+      a       :Marital_Status ;
+      :code   2 .
+
+:has_education
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range EduOnt:Education .
+
+:First_Name
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:Marital_Status
+      a       rdfs:Class .
+
+:Begin_Date
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience ;
+      rdfs:range Time:DateTimeDescription .
+
+:Last_Name
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:speaks
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range LanOnt:Language .
+
+:code
+      a       rdf:Property ;
+      rdfs:domain :Experience , :Marital_Status ;
+      rdfs:range xsd:string , xsd:integer .
+
+:has_job_category
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience , :ICT_Objective , :Objective ;
+      rdfs:range OccOnt:Occupation , OccOnt:Computing_professionals__213 .
+
+:has_elems
+      a       rdf:Property ;
+      rdfs:domain :CV_List ;
+      rdfs:range :Elem .
+
+:is_marital_status_of
+      a       rdf:Property ;
+      rdfs:domain :Marital_Status ;
+      rdfs:range :Job_Seeker .
+
+:resides_in
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range GeoOnt:Country .
+
+:has_activity_sector
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience , :Objective ;
+      rdfs:range EcoActOnt:Sector .
+
+:has_pos
+      a       rdf:Property ;
+      rdfs:domain :Elem ;
+      rdfs:range xsd:integer .
+
+:Job_Seeker
+      a       rdfs:Class .
+
+:Experience
+      a       rdfs:Class .
+
+:occupation_experience
+      a       rdf:Property ;
+      rdfs:domain :Objective ;
+      rdfs:range :Experience .
+
+:has_value
+      a       rdf:Property ;
+      rdfs:domain :Elem ;
+      rdfs:range :Job_Seeker .
+
+:Date_of_Birth
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range Time:DateTimeDescription .
+
+:has_contract_type
+      a       rdf:Property ;
+      rdfs:domain :Objective ;
+      rdfs:range LabRegOnt:Contract_Type .
+
+:References
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:has_flexibility_to_car
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range xsd:boolean .
+
+:Main_activities
+      a       rdf:Property ;
+      rdfs:domain :Offered_Work_Experience ;
+      rdfs:range xsd:string .
+
+:ICT_Objective
+      a       rdfs:Class ;
+      rdfs:subClassOf :Objective .
+
+:has_mother_tongue
+      a       rdf:Property ;
+      rdfs:domain :Candidacy ;
+      rdfs:range LanOnt:Language .
+
+:has_location
+      a       rdf:Property ;
+      rdfs:domain :Objective ;
+      rdfs:range GeoOnt:Location .
+
+:Telephone
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:Town
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker , :Objective ;
+      rdfs:range xsd:string .
+
+:Divorced
+      a       :Marital_Status ;
+      :code   3 .
+
+:email
+      a       rdf:Property ;
+      rdfs:domain :Job_Seeker ;
+      rdfs:range xsd:string .
+
+:description
+      a       rdf:Property ;
+      rdfs:domain :Experience ;
+      rdfs:range xsd:string .
+
+:has_compensation
+      a       rdf:Property ;
+      rdfs:domain :Objective ;
+      rdfs:range CompOnt:Compensation .
+
+:Objective
+      a       rdfs:Class .
+
+:one_two
+      a       :Experience ;
+      :code   "2"^^xsd:string ;
+      :description "1-2 years' experience"^^xsd:string .
+
+:CV_List
+      a       rdfs:Class .

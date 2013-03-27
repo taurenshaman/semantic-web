@@ -1,0 +1,135 @@
+@prefix :        <http://mccarthy.dia.fi.upm.es/Labour_Regulatory_Ontology#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix Time:    <http://mccarthy.dia.fi.upm.es/Time_Ontology#> .
+@prefix JobSeeOnt:  <http://mccarthy.dia.fi.upm.es/Job_Seeker_Ontology#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wsml:    <http://www.wsmo.org/wsml/wsml-syntax#> .
+@prefix JobOffOnt:  <http://mccarthy.dia.fi.upm.es/Job_Offer_Ontology#> .
+
+:Consultant
+      a       :Contract_Type ;
+      :Name   "Consultant"^^xsd:string .
+
+:Occasional_job
+      a       :Contract_Type ;
+      :Description "work of a merely occasional nature undertaken by persons at risk of social exclusion or who have not yet entered the labour market or who are about to leave it'. By 'merely occasional' is meant activities involving a worker for no more than 30 days per calendar year, and for which in any case the remuneration amounts to no more that EUR 5,000 in a calendar year. The service performed must take the form of minor and exceptional domestic work (for instance, child-minding or care for the elderly), private tuition, gardening or the organisation of social, sporting, cultural or charitable events."^^xsd:string ;
+      :Name   "supplementary and occasional employment contract"^^xsd:string .
+
+:Job_sharing
+      a       :Contract_Type ;
+      :Description "an arrangement based on 'a special contract whereby two or more workers jointly assume the responsibilities of a single work obligation"^^xsd:string ;
+      :Name   "Job sharing"^^xsd:string .
+
+:Hotel_restaurant
+      a       :Contract_Type ;
+      :Description "a specific contract with time and work periods that are specific to hotels and restaurants"^^xsd:string ;
+      :Name   "Hotel/restaurant"^^xsd:string .
+
+:Full_time
+      a       rdfs:Class , :Full_time ;
+      rdfs:subClassOf :Work_Time ;
+      :bll_code 1 .
+
+:is_associated_to_Objective
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition , :Contract_Type ;
+      rdfs:range JobSeeOnt:Objective .
+
+:Temporary
+      a       :Contract_Type ;
+      :Description "provisional contract or staff-leasing contract"^^xsd:string ;
+      :Name   "Interim"^^xsd:string .
+
+:Description
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition , :Contract_Type ;
+      rdfs:range xsd:string .
+
+:Limited_duration
+      a       rdf:Property ;
+      rdfs:domain :Contract_Type ;
+      rdfs:range xsd:boolean .
+
+:Work_Condition
+      a       rdfs:Class .
+
+:Recruitment_public_services
+      a       :Contract_Type ;
+      :Name   "Recruitment public services"^^xsd:string .
+
+:Name
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition , :Contract_Type ;
+      rdfs:range xsd:string .
+
+:Contract_Type
+      a       rdfs:Class .
+
+:Traineeship
+      a       :Contract_Type ;
+      :Name   "Traineeship"^^xsd:string .
+
+:work_time
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition ;
+      rdfs:range :Work_Time .
+
+:Seasonal_job
+      a       :Contract_Type ;
+      :Description "agriculture tasks, entertainers for holidays organizations, waiters, ..."^^xsd:string ;
+      :Name   "Seasonal job"^^xsd:string .
+
+:Work_Time
+      a       rdfs:Class .
+
+:On_call_job
+      a       :Contract_Type ;
+      :Description "intermittent jobs, the worker is available to be used by the employer during a pre-established period of time. However, the employer may make use of the worker for only a limited number of days in this period, depending on production peaks and organisational needs, and must notify the worker that his or her services are needed at least one working day in advance"^^xsd:string ;
+      :Name   "On-call job"^^xsd:string .
+
+:bll_code
+      a       rdf:Property ;
+      rdfs:domain :Work_Time ;
+      rdfs:range xsd:integer .
+
+:Autonomous
+      a       :Contract_Type ;
+      :Description "freelance worker who is responsible for the final result, in coordination with the employers organisation and regardless of the time taken to complete the work"^^xsd:string ;
+      :Name   "Autonomous"^^xsd:string .
+
+:hours_week
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition ;
+      rdfs:range xsd:integer .
+
+:Work_entry
+      a       :Contract_Type ;
+      :Description """for particular categories, such as young people aged 18 to 29 and disadvantaged workers (long-term unemployed people aged under 32, unemployed workers aged over 45, women resident in areas with high levels of female unemployment etc), in order to achieve 'by means of an individual project' to adjust the workers professional skills to a particular job, his or her labour market entry or re-entry'. 
+	In addition, in order to back this kind of contracts, the employers will enjoy fees or advantages given by government agencies, such as reduction of taxes"""^^xsd:string ;
+      :Name   "work-entry contract"^^xsd:string .
+
+:shifts
+      a       rdf:Property ;
+      rdfs:domain :Work_Time ;
+      rdfs:range Time:DateTimeInterval .
+
+:execution_time
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition ;
+      rdfs:range Time:DurationDescription .
+
+:is_associated_with_Vacancy
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition , :Contract_Type ;
+      rdfs:range JobOffOnt:Vacancy .
+
+:Partial_time
+      a       rdfs:Class , :Partial_time ;
+      rdfs:subClassOf :Work_Time ;
+      :bll_code 2 .
+
+:relocation_required
+      a       rdf:Property ;
+      rdfs:domain :Work_Condition ;
+      rdfs:range xsd:boolean .

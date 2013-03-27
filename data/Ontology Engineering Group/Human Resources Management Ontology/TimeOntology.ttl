@@ -1,0 +1,312 @@
+@prefix :        <http://mccarthy.dia.fi.upm.es/Time_Ontology#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix JobSeeOnt:  <http://mccarthy.dia.fi.upm.es/Job_Seeker_Ontology#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wsml:    <http://www.wsmo.org/wsml/wsml-syntax#> .
+@prefix JobOffOnt:  <http://mccarthy.dia.fi.upm.es/Job_Offer_Ontology#> .
+@prefix EduOnt:  <http://mccarthy.dia.fi.upm.es/Education_Ontology#> .
+
+:unitMinute
+      a       :TemporalUnit .
+
+:is_dateinterval_of_Interval
+      a       rdf:Property ;
+      rdfs:domain :DateTimeInterval ;
+      rdfs:range JobOffOnt:Interval .
+
+:after
+      a       rdf:Property ;
+      rdfs:domain :TemporalEntity ;
+      rdfs:range :TemporalEntity .
+
+:unitType
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range :TemporalUnit .
+
+:hours
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription ;
+      rdfs:range xsd:float .
+
+:inDateTime
+      a       rdf:Property ;
+      rdfs:domain :Instant ;
+      rdfs:range :DateTimeDescription .
+
+:is_end_date_of_Education
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range EduOnt:Education .
+
+:intervalMeets
+      a       rdf:Property ;
+      rdfs:domain :ProperInterval ;
+      rdfs:range :ProperInterval .
+
+:thursday
+      a       :DayOfWeek .
+
+:is_begin_date_of_OWE
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range JobSeeOnt:Offered_Work_Experience .
+
+:is_birth_of_JS
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range JobSeeOnt:Job_Seeker .
+
+:year
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:integer .
+
+:unitDay
+      a       :TemporalUnit .
+
+:month
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:integer .
+
+:ProperInterval
+      a       rdfs:Class ;
+      rdfs:subClassOf :Interval .
+
+:unitMonth
+      a       :TemporalUnit .
+
+:months
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription ;
+      rdfs:range xsd:float .
+
+:minutes
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription ;
+      rdfs:range xsd:float .
+
+:is_end_date_of_Candidacy
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range JobSeeOnt:Candidacy .
+
+:minute
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:integer .
+
+:TemporalEntity
+      a       rdfs:Class .
+
+:timeZone
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range :TimeZone .
+
+:hasEnd
+      a       rdf:Property ;
+      rdfs:domain :TemporalEntity ;
+      rdfs:range :Instant .
+
+:Interval
+      a       rdfs:Class ;
+      rdfs:subClassOf :TemporalEntity .
+
+:wednesday
+      a       :DayOfWeek .
+
+:inside
+      a       rdf:Property ;
+      rdfs:domain :Interval ;
+      rdfs:range :Instant .
+
+:DurationDescription
+      a       rdfs:Class .
+
+:intervalDuring
+      a       rdf:Property ;
+      rdfs:domain :ProperInterval ;
+      rdfs:range :ProperInterval .
+
+:hasDateTimeDescription
+      a       rdf:Property ;
+      rdfs:domain :DateTimeInterval ;
+      rdfs:range :DateTimeDescription .
+
+:sunday
+      a       :DayOfWeek .
+
+:DateTimeInterval
+      a       rdfs:Class ;
+      rdfs:subClassOf :ProperInterval .
+
+:is_begin_date_of_Candidacy
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range JobSeeOnt:Candidacy .
+
+:weeks
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription ;
+      rdfs:range xsd:float .
+
+:unitHour
+      a       :TemporalUnit .
+
+:hasDurationDescription
+      a       rdf:Property ;
+      rdfs:domain :TemporalEntity ;
+      rdfs:range :DurationDescription .
+
+:tuesday
+      a       :DayOfWeek .
+
+:unitSecond
+      a       :TemporalUnit .
+
+:dayOfYear
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:integer .
+
+:unitWeek
+      a       :TemporalUnit .
+
+:Year
+      a       rdfs:Class ;
+      rdfs:subClassOf :DurationDescription .
+
+:is_years_of_w_exp
+      a       rdf:Property ;
+      rdfs:domain :Year ;
+      rdfs:range JobOffOnt:Requested_Work_Experience .
+
+:week
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:integer .
+
+:dayOfWeek
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range :DayOfWeek .
+
+:DateTimeDescription
+      a       rdfs:Class .
+
+:intervalEquals
+      a       rdf:Property ;
+      rdfs:domain :ProperInterval ;
+      rdfs:range :ProperInterval .
+
+:before
+      a       rdf:Property ;
+      rdfs:domain :TemporalEntity ;
+      rdfs:range :TemporalEntity .
+
+:is_duration_of_vacancy
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription ;
+      rdfs:range JobOffOnt:Vacancy .
+
+:Instant
+      a       rdfs:Class ;
+      rdfs:subClassOf :TemporalEntity .
+
+:intervalFinishes
+      a       rdf:Property ;
+      rdfs:domain :ProperInterval ;
+      rdfs:range :ProperInterval .
+
+:saturday
+      a       :DayOfWeek .
+
+:DayOfWeek
+      a       rdfs:Class .
+
+:friday
+      a       :DayOfWeek .
+
+:is_publication_date_of_JV
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range JobOffOnt:Job_Vacancy .
+
+:TemporalUnit
+      a       rdfs:Class .
+
+:is_date_of_fixed_date
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range JobOffOnt:Fixed_date .
+
+:monday
+      a       :DayOfWeek .
+
+:intervalStarts
+      a       rdf:Property ;
+      rdfs:domain :ProperInterval ;
+      rdfs:range :ProperInterval .
+
+:day  a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:integer .
+
+:intervalBefore
+      a       rdf:Property ;
+      rdfs:domain :ProperInterval ;
+      rdfs:range :ProperInterval .
+
+:second
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:float .
+
+:days
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription ;
+      rdfs:range xsd:float .
+
+:seconds
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription ;
+      rdfs:range xsd:float .
+
+:intervalOverlaps
+      a       rdf:Property ;
+      rdfs:domain :ProperInterval ;
+      rdfs:range :ProperInterval .
+
+:hasBeginning
+      a       rdf:Property ;
+      rdfs:domain :TemporalEntity ;
+      rdfs:range :Instant .
+
+:hour
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range xsd:integer .
+
+:years
+      a       rdf:Property ;
+      rdfs:domain :DurationDescription , :Year ;
+      rdfs:range xsd:float .
+
+:is_end_date_of_OWE
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range JobSeeOnt:Offered_Work_Experience .
+
+:is_begin_date_of_Education
+      a       rdf:Property ;
+      rdfs:domain :DateTimeDescription ;
+      rdfs:range EduOnt:Education .
+
+:TimeZone
+      a       rdfs:Class .
+
+:unitYear
+      a       :TemporalUnit .
