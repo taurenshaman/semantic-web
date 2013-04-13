@@ -1,0 +1,2394 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY terms "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY core2 "http://purl.uniprot.org/core/" >
+    <!ENTITY doap "http://usefulinc.com/ns/doap#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY ontology "http://www.geonames.org/ontology#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY wgs84_pos "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY gsontology "http://rdf.geospecies.org/ont/gsontology#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY observationMethod "http://rdf.geospecies.org/methods/observationMethod#" >
+    <!ENTITY core "http://rdf.geospecies.org/ont/gsontology#http://purl.uniprot.org/core/" >
+]>
+
+
+<rdf:RDF xmlns="http://rdf.geospecies.org/ont/gsontology#"
+     xml:base="http://rdf.geospecies.org/ont/gsontology"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:core="http://rdf.geospecies.org/ont/gsontology#&core2;"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:gsontology="http://rdf.geospecies.org/ont/gsontology#"
+     xmlns:doap="http://usefulinc.com/ns/doap#"
+     xmlns:core2="http://purl.uniprot.org/core/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:ontology="http://www.geonames.org/ontology#"
+     xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:observationMethod="http://rdf.geospecies.org/methods/observationMethod#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="&rdf;XMLLiteral"
+            >This ontology is underdevelopment. Feel free to use it, but be aware that is is not perfect. The associated GeoSpecies Data set is usable with out it, and available as a separate download see http://about.geospecies.org</rdfs:comment>
+        <dc:creator
+            >Peter J. DeVries</dc:creator>
+        <dc:coverage>2009-05-04</dc:coverage>
+        <dc:title
+            >GeoSpecies Ontology</dc:title>
+        <owl:imports rdf:resource="http://rdf.geospecies.org/methods/observationMethod.rdf"/>
+        <owl:imports rdf:resource="http://rdfs.org/sioc/ns"/>
+        <owl:imports rdf:resource="http://umbel.org/umbel/sc/"/>
+        <owl:imports rdf:resource="http://usefulinc.com/ns/doap"/>
+        <owl:imports rdf:resource="http://www.geonames.org/ontology"/>
+        <owl:imports rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos"/>
+        <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;coverage"/>
+    <owl:AnnotationProperty rdf:about="&dc;creator"/>
+    <owl:AnnotationProperty rdf:about="&dc;date"/>
+    <owl:AnnotationProperty rdf:about="&dc;title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#classInKingdom -->
+
+    <owl:ObjectProperty rdf:about="#classInKingdom">
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+        <rdfs:range rdf:resource="#KingdomConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#classInPhylum -->
+
+    <owl:ObjectProperty rdf:about="#classInPhylum">
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+        <rdfs:range rdf:resource="#PhylumConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#countyExpectedSpecies -->
+
+    <owl:ObjectProperty rdf:about="#countyExpectedSpecies">
+        <rdfs:label
+            >countyExpectedSpecies</rdfs:label>
+        <rdfs:domain rdf:resource="#County"/>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#countyObservedSpecies -->
+
+    <owl:ObjectProperty rdf:about="#countyObservedSpecies">
+        <rdfs:label
+            >countyObservedSpecies</rdfs:label>
+        <rdfs:domain rdf:resource="#County"/>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#countyWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#countyWikipediaArticle">
+        <rdfs:domain rdf:resource="#County"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familyInClass -->
+
+    <owl:ObjectProperty rdf:about="#familyInClass">
+        <rdfs:label>familyInClass</rdfs:label>
+        <rdfs:range rdf:resource="#ClassConcept"/>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familyInKingdom -->
+
+    <owl:ObjectProperty rdf:about="#familyInKingdom">
+        <rdfs:label>familyInKingdom</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+        <rdfs:range rdf:resource="#KingdomConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familyInOrder -->
+
+    <owl:ObjectProperty rdf:about="#familyInOrder">
+        <rdfs:label>familyInOrder</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+        <rdfs:range rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familyInPhylum -->
+
+    <owl:ObjectProperty rdf:about="#familyInPhylum">
+        <rdfs:label>familyInPhylum</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+        <rdfs:range rdf:resource="#PhylumConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familyReference -->
+
+    <owl:ObjectProperty rdf:about="#familyReference">
+        <rdfs:label>familyReference</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familySite -->
+
+    <owl:ObjectProperty rdf:about="#familySite">
+        <rdfs:label>familySite</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#galleryHasSpecies -->
+
+    <owl:ObjectProperty rdf:about="#galleryHasSpecies">
+        <rdfs:label
+            >galleryHasSpecies</rdfs:label>
+        <rdfs:domain rdf:resource="#Gallery"/>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasClassBio2RDFtaxon -->
+
+    <owl:ObjectProperty rdf:about="#hasClassBio2RDFtaxon">
+        <rdfs:label
+            >hasClassBio2RDFtaxon</rdfs:label>
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasClassBio2RDFtaxon"/>
+                <owl:someValuesFrom rdf:resource="#ClassBio2RDFtaxon"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasClassDBpediaResource -->
+
+    <owl:ObjectProperty rdf:about="#hasClassDBpediaResource">
+        <rdfs:label
+            >hasClassDBpediaResource</rdfs:label>
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasClassFreebaseGUID -->
+
+    <owl:ObjectProperty rdf:about="#hasClassFreebaseGUID">
+        <rdfs:label
+            >hasClassFreebaseGUID</rdfs:label>
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasClassFreebaseGUID"/>
+                <owl:someValuesFrom rdf:resource="#ClassFreebaseGUID"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasClassUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasClassUbioLSID">
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+        <rdfs:range rdf:resource="#ClassUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasClassWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#hasClassWikipediaArticle">
+        <rdfs:label
+            >hasClassWikipediaArticle</rdfs:label>
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasDomainUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasDomainUbioLSID">
+        <rdfs:label
+            >hasDomainUbioLSID</rdfs:label>
+        <rdfs:domain rdf:resource="#DomainConcept"/>
+        <rdfs:range rdf:resource="#DomainUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasDomainWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#hasDomainWikipediaArticle">
+        <rdfs:label
+            >hasDomainWikipediaArticle</rdfs:label>
+        <rdfs:domain rdf:resource="#DomainConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasFamilyBio2RDFtaxon -->
+
+    <owl:ObjectProperty rdf:about="#hasFamilyBio2RDFtaxon">
+        <rdfs:label
+            >hasFamilyBio2RDFtaxon</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasFamilyBio2RDFtaxon"/>
+                <owl:someValuesFrom rdf:resource="#FamilyBio2RDFtaxon"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasFamilyDBpediaResource -->
+
+    <owl:ObjectProperty rdf:about="#hasFamilyDBpediaResource">
+        <rdfs:label
+            >hasFamilyDBpediaResource</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasFamilyFreebaseGUID -->
+
+    <owl:ObjectProperty rdf:about="#hasFamilyFreebaseGUID">
+        <rdfs:label
+            >hasFamilyFreebaseGUID</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasFamilyFreebaseGUID"/>
+                <owl:someValuesFrom rdf:resource="#FamilyFreebaseGUID"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasFamilyUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasFamilyUbioLSID">
+        <rdfs:label
+            >familyNamebankIdentifier</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+        <rdfs:range rdf:resource="#FamilyUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasFamilyWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#hasFamilyWikipediaArticle">
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesClassConcept -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesClassConcept">
+        <rdfs:range rdf:resource="#ClassConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesClassPage -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesClassPage">
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesConcept -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesConcept">
+        <rdfs:label
+            >hasGeoSpeciesConcept</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesDomainConcept -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesDomainConcept">
+        <rdfs:label
+            >hasGeoSpeciesDomainConcept</rdfs:label>
+        <rdfs:range rdf:resource="#DomainConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesFamilyConcept -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesFamilyConcept">
+        <rdfs:label
+            >hasGeoSpeciesFamilyConcept</rdfs:label>
+        <rdfs:range rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesFamilyPage -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesFamilyPage">
+        <rdfs:label
+            >hasGeoSpeciesFamilyPage</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesKingdomConcept -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesKingdomConcept">
+        <rdfs:label
+            >hasGeoSpeciesKingdomConcept</rdfs:label>
+        <rdfs:range rdf:resource="#KingdomConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesKingdomPage -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesKingdomPage">
+        <rdfs:label
+            >hasGeoSpeciesKingdomPage</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesOrderConcept -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesOrderConcept">
+        <rdfs:label
+            >hasGeoSpeciesOrderConcept</rdfs:label>
+        <rdfs:range rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesOrderPage -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesOrderPage">
+        <rdfs:label
+            >hasGeoSpeciesOrderPage</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesSpeciesConcept -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesSpeciesConcept">
+        <rdfs:label
+            >hasGeoSpeciesSpeciesConcept</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasGeoSpeciesSpeciesPage -->
+
+    <owl:ObjectProperty rdf:about="#hasGeoSpeciesSpeciesPage">
+        <rdfs:label
+            >hasGeoSpeciesSpeciesPage</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasKingdomBio2RDFtaxon -->
+
+    <owl:ObjectProperty rdf:about="#hasKingdomBio2RDFtaxon">
+        <rdfs:label
+            >hasKingdomBio2RDFtaxon</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasKingdomBio2RDFtaxon"/>
+                <owl:someValuesFrom rdf:resource="#KingdomBio2RDFtaxon"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasKingdomDBpediaResource -->
+
+    <owl:ObjectProperty rdf:about="#hasKingdomDBpediaResource">
+        <rdfs:label
+            >hasKingdomDBpediaResource</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasKingdomUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasKingdomUbioLSID">
+        <rdfs:label
+            >hasKingdomUbioLSID</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+        <rdfs:range rdf:resource="#KingdomUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasKingdomWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#hasKingdomWikipediaArticle">
+        <rdfs:label
+            >hasKingdomWikipediaArticle</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasObservationMethod -->
+
+    <owl:ObjectProperty rdf:about="#hasObservationMethod">
+        <rdfs:label
+            >observationMethod</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+        <rdfs:range rdf:resource="#ObservationMethod"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasOrderBio2RDFtaxon -->
+
+    <owl:ObjectProperty rdf:about="#hasOrderBio2RDFtaxon">
+        <rdfs:label
+            >hasOrderBio2RDFtaxon</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasOrderBio2RDFtaxon"/>
+                <owl:someValuesFrom rdf:resource="#OrderBio2RDFtaxon"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasOrderDBpediaResource -->
+
+    <owl:ObjectProperty rdf:about="#hasOrderDBpediaResource">
+        <rdfs:label
+            >hasOrderDBpediaResource</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasOrderFreebaseGUID -->
+
+    <owl:ObjectProperty rdf:about="#hasOrderFreebaseGUID">
+        <rdfs:label
+            >hasOrderFreebaseGUID</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasOrderFreebaseGUID"/>
+                <owl:someValuesFrom rdf:resource="#OrderFreebaseGUID"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasOrderUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasOrderUbioLSID">
+        <rdfs:label
+            >orderNamebankIdentifier</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+        <rdfs:range rdf:resource="#OrderUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasOrderWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#hasOrderWikipediaArticle">
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumBio2RDFtaxon -->
+
+    <owl:ObjectProperty rdf:about="#hasPhylumBio2RDFtaxon">
+        <rdfs:label
+            >hasPhylumBio2RDFtaxon</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPhylumBio2RDFtaxon"/>
+                <owl:someValuesFrom rdf:resource="#FamilyBio2RDFtaxon"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumDBpediaResource -->
+
+    <owl:ObjectProperty rdf:about="#hasPhylumDBpediaResource">
+        <rdfs:label
+            >hasPhylumDBpediaResource</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumFreebaseGUID -->
+
+    <owl:ObjectProperty rdf:about="#hasPhylumFreebaseGUID">
+        <rdfs:label
+            >hasPhylumFreebaseGUID</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasPhylumFreebaseGUID"/>
+                <owl:someValuesFrom rdf:resource="#PhylumFreebaseGUID"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasPhylumUbioLSID">
+        <rdfs:label
+            >hasPhylumUbioLSID</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+        <rdfs:range rdf:resource="#PhylumUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#hasPhylumWikipediaArticle">
+        <rdfs:label
+            >hasPhylumWikipediaArticle</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPrimarySpeciesUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasPrimarySpeciesUbioLSID">
+        <rdfs:label
+            >hasPrimarySpeciesUbioLSID</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="#hasSpeciesUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasProject -->
+
+    <owl:ObjectProperty rdf:about="#hasProject">
+        <rdfs:label>hasProject</rdfs:label>
+        <rdfs:range rdf:resource="&doap;Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSecondarySpeciesUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasSecondarySpeciesUbioLSID">
+        <rdfs:label
+            >hasSecondarySpeciesUbioLSID</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="#hasSpeciesUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSpeciesBio2RDFtaxon -->
+
+    <owl:ObjectProperty rdf:about="#hasSpeciesBio2RDFtaxon">
+        <rdfs:label
+            >hasSpeciesBio2RDFtaxon</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasSpeciesBio2RDFtaxon"/>
+                <owl:someValuesFrom rdf:resource="#SpeciesBio2RDFtaxon"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSpeciesDBpediaResource -->
+
+    <owl:ObjectProperty rdf:about="#hasSpeciesDBpediaResource">
+        <rdfs:label
+            >hasSpeciesDBpediaResource</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSpeciesFreebaseGUID -->
+
+    <owl:ObjectProperty rdf:about="#hasSpeciesFreebaseGUID">
+        <rdfs:label
+            >hasSpeciesFreebaseGUID</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#hasSpeciesFreebaseGUID"/>
+                <owl:someValuesFrom rdf:resource="#SpeciesFreebaseGUID"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSpeciesUbioLSID -->
+
+    <owl:ObjectProperty rdf:about="#hasSpeciesUbioLSID">
+        <rdfs:label
+            >speciesNamebankIdentifier</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+        <rdfs:range rdf:resource="#SpeciesUbioLSID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSpeciesWikipediaArticle -->
+
+    <owl:ObjectProperty rdf:about="#hasSpeciesWikipediaArticle">
+        <rdfs:label
+            >hasSpeciesWikipediaArticle</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#imageInPage -->
+
+    <owl:ObjectProperty rdf:about="#imageInPage">
+        <rdfs:label>imageInPage</rdfs:label>
+        <rdfs:range rdf:resource="&foaf;Document"/>
+        <rdfs:domain rdf:resource="&foaf;Image"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#locationObservation -->
+
+    <owl:ObjectProperty rdf:about="#locationObservation">
+        <rdfs:label
+            >locationObservation</rdfs:label>
+        <rdfs:domain rdf:resource="#Location"/>
+        <rdfs:range rdf:resource="#Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#locationProject -->
+
+    <owl:ObjectProperty rdf:about="#locationProject">
+        <rdfs:label>locationProject</rdfs:label>
+        <rdfs:domain rdf:resource="#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#locationSpecies -->
+
+    <owl:ObjectProperty rdf:about="#locationSpecies">
+        <rdfs:label>locationSpecies</rdfs:label>
+        <rdfs:domain rdf:resource="#Location"/>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#location_trs_uri -->
+
+    <owl:ObjectProperty rdf:about="#location_trs_uri">
+        <rdfs:domain rdf:resource="#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationCollector -->
+
+    <owl:ObjectProperty rdf:about="#observationCollector">
+        <rdfs:label
+            >observationCollector</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationCounty -->
+
+    <owl:ObjectProperty rdf:about="#observationCounty">
+        <rdfs:label
+            >observationCounty</rdfs:label>
+        <rdfs:range rdf:resource="#County"/>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationLocation -->
+
+    <owl:ObjectProperty rdf:about="#observationLocation">
+        <rdfs:label
+            >observationLocation</rdfs:label>
+        <rdfs:range rdf:resource="#Location"/>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationProject -->
+
+    <owl:ObjectProperty rdf:about="#observationProject">
+        <rdfs:label
+            >observationProject</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationSpecies -->
+
+    <owl:ObjectProperty rdf:about="#observationSpecies">
+        <rdfs:label
+            >observationSpecies</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationSpecimen -->
+
+    <owl:ObjectProperty rdf:about="#observationSpecimen">
+        <rdfs:label
+            >observationSpecimen</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationState -->
+
+    <owl:ObjectProperty rdf:about="#observationState">
+        <rdfs:label
+            >observationState</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+        <rdfs:range rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderGBIF_Page -->
+
+    <owl:ObjectProperty rdf:about="#orderGBIF_Page">
+        <rdfs:label>orderGBIF_Page</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderInClass -->
+
+    <owl:ObjectProperty rdf:about="#orderInClass">
+        <rdfs:label>orderInClass</rdfs:label>
+        <rdfs:range rdf:resource="#ClassConcept"/>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderInKingdom -->
+
+    <owl:ObjectProperty rdf:about="#orderInKingdom">
+        <rdfs:label>orderInKingdom</rdfs:label>
+        <rdfs:range rdf:resource="#KingdomConcept"/>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderInPhylum -->
+
+    <owl:ObjectProperty rdf:about="#orderInPhylum">
+        <rdfs:label>orderInPhylum</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+        <rdfs:range rdf:resource="#PhylumConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderReference -->
+
+    <owl:ObjectProperty rdf:about="#orderReference">
+        <rdfs:label>orderReference</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderSite -->
+
+    <owl:ObjectProperty rdf:about="#orderSite">
+        <rdfs:label>orderSite</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#pageSpecies -->
+
+    <owl:ObjectProperty rdf:about="#pageSpecies">
+        <rdfs:label>pageSpecies</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#phylumInKingdom -->
+
+    <owl:ObjectProperty rdf:about="#phylumInKingdom">
+        <rdfs:range rdf:resource="#KingdomConcept"/>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#projectReference -->
+
+    <owl:ObjectProperty rdf:about="#projectReference">
+        <rdfs:label
+            >projectReference</rdfs:label>
+        <rdfs:domain rdf:resource="&doap;Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#projectSpecies -->
+
+    <owl:ObjectProperty rdf:about="#projectSpecies">
+        <rdfs:label>projectSpecies</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#referenceFamily -->
+
+    <owl:ObjectProperty rdf:about="#referenceFamily">
+        <rdfs:label>referenceFamily</rdfs:label>
+        <rdfs:range rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#referenceOrder -->
+
+    <owl:ObjectProperty rdf:about="#referenceOrder">
+        <rdfs:label>referenceOrder</rdfs:label>
+        <rdfs:range rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#referenceProject -->
+
+    <owl:ObjectProperty rdf:about="#referenceProject">
+        <rdfs:label
+            >referenceProject</rdfs:label>
+        <rdfs:range rdf:resource="&doap;Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#referenceSpecies -->
+
+    <owl:ObjectProperty rdf:about="#referenceSpecies">
+        <rdfs:label
+            >referenceSpecies</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#referenceState -->
+
+    <owl:ObjectProperty rdf:about="#referenceState">
+        <rdfs:label>referenceState</rdfs:label>
+        <rdfs:range rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#siteFamily -->
+
+    <owl:ObjectProperty rdf:about="#siteFamily">
+        <rdfs:label>siteFamily</rdfs:label>
+        <rdfs:range rdf:resource="#FamilyConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#siteOrder -->
+
+    <owl:ObjectProperty rdf:about="#siteOrder">
+        <rdfs:label>siteOrder</rdfs:label>
+        <rdfs:range rdf:resource="#OrderConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesConceptHasSpecimen -->
+
+    <owl:ObjectProperty rdf:about="#speciesConceptHasSpecimen">
+        <rdfs:label
+            >speciesConceptHasSpecimen</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesExpectedInCounty -->
+
+    <owl:ObjectProperty rdf:about="#speciesExpectedInCounty">
+        <rdfs:label
+            >speciesExpectedInCounty</rdfs:label>
+        <rdfs:range rdf:resource="#County"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesExpectedInLocation -->
+
+    <owl:ObjectProperty rdf:about="#speciesExpectedInLocation">
+        <rdfs:label
+            >speciesExpectedInLocation</rdfs:label>
+        <rdfs:range rdf:resource="#Location"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesExpectedInState -->
+
+    <owl:ObjectProperty rdf:about="#speciesExpectedInState">
+        <rdfs:label
+            >speciesExpectedInState</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+        <rdfs:range rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesHasGallery -->
+
+    <owl:ObjectProperty rdf:about="#speciesHasGallery">
+        <rdfs:label
+            >speciesHasGallery</rdfs:label>
+        <rdfs:range rdf:resource="#Gallery"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesInClass -->
+
+    <owl:ObjectProperty rdf:about="#speciesInClass">
+        <rdfs:label>speciesInClass</rdfs:label>
+        <rdfs:range rdf:resource="#ClassConcept"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesInFamily -->
+
+    <owl:ObjectProperty rdf:about="#speciesInFamily">
+        <rdfs:label>speciesInFamily</rdfs:label>
+        <rdfs:range rdf:resource="#FamilyConcept"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesInKingdom -->
+
+    <owl:ObjectProperty rdf:about="#speciesInKingdom">
+        <rdfs:label
+            >speciesInKingdom</rdfs:label>
+        <rdfs:range rdf:resource="#KingdomConcept"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesInOrder -->
+
+    <owl:ObjectProperty rdf:about="#speciesInOrder">
+        <rdfs:label>speciesInOrder</rdfs:label>
+        <rdfs:range rdf:resource="#OrderConcept"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesInPhylum -->
+
+    <owl:ObjectProperty rdf:about="#speciesInPhylum">
+        <rdfs:label>speciesInPhylum</rdfs:label>
+        <rdfs:range rdf:resource="#PhylumConcept"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesLocation -->
+
+    <owl:ObjectProperty rdf:about="#speciesLocation">
+        <rdfs:label>speciesLocation</rdfs:label>
+        <rdfs:range rdf:resource="#Location"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesObservation -->
+
+    <owl:ObjectProperty rdf:about="#speciesObservation">
+        <rdfs:label
+            >speciesObservation</rdfs:label>
+        <rdfs:range rdf:resource="#Observation"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesObservedInCounty -->
+
+    <owl:ObjectProperty rdf:about="#speciesObservedInCounty">
+        <rdfs:label
+            >speciesObservedInCounty</rdfs:label>
+        <rdfs:range rdf:resource="#County"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesObservedInLocation -->
+
+    <owl:ObjectProperty rdf:about="#speciesObservedInLocation">
+        <rdfs:label
+            >speciesObservedInLocation</rdfs:label>
+        <rdfs:range rdf:resource="#Location"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesObservedInState -->
+
+    <owl:ObjectProperty rdf:about="#speciesObservedInState">
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesPage -->
+
+    <owl:ObjectProperty rdf:about="#speciesPage">
+        <rdfs:label>speciesPage</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesProject -->
+
+    <owl:ObjectProperty rdf:about="#speciesProject">
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesReference -->
+
+    <owl:ObjectProperty rdf:about="#speciesReference">
+        <rdfs:label
+            >speciesReference</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesUnexpectedInState -->
+
+    <owl:ObjectProperty rdf:about="#speciesUnexpectedInState">
+        <rdfs:label
+            >speciesUnexpectedInState</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+        <rdfs:range rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesUnknownInState -->
+
+    <owl:ObjectProperty rdf:about="#speciesUnknownInState">
+        <rdfs:label
+            >speciesUnknownInState</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+        <rdfs:range rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenCollector -->
+
+    <owl:ObjectProperty rdf:about="#specimenCollector">
+        <rdfs:label
+            >specimenCollector</rdfs:label>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenHasProject -->
+
+    <owl:ObjectProperty rdf:about="#specimenHasProject">
+        <rdfs:label
+            >specimenHasProject</rdfs:label>
+        <rdfs:range rdf:resource="&doap;Project"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenHasSpeciesConcept -->
+
+    <owl:ObjectProperty rdf:about="#specimenHasSpeciesConcept">
+        <rdfs:label
+            >specimenHasSpeciesConcept</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenIdentifier -->
+
+    <owl:ObjectProperty rdf:about="#specimenIdentifier">
+        <rdfs:label
+            >specimenIdentifier</rdfs:label>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenLocation -->
+
+    <owl:ObjectProperty rdf:about="#specimenLocation">
+        <rdfs:label
+            >specimenLocation</rdfs:label>
+        <rdfs:range rdf:resource="#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenMethod -->
+
+    <owl:ObjectProperty rdf:about="#specimenMethod">
+        <rdfs:label>specimenMethod</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenObservation -->
+
+    <owl:ObjectProperty rdf:about="#specimenObservation">
+        <rdfs:label
+            >specimenObservation</rdfs:label>
+        <rdfs:range rdf:resource="#Observation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#stateExpectedSpecies -->
+
+    <owl:ObjectProperty rdf:about="#stateExpectedSpecies">
+        <rdfs:label
+            >stateExpectedSpecies</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+        <rdfs:domain rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#stateObservedSpecies -->
+
+    <owl:ObjectProperty rdf:about="#stateObservedSpecies">
+        <rdfs:label
+            >stateObservedSpecies</rdfs:label>
+        <rdfs:range rdf:resource="#SpeciesConcept"/>
+        <rdfs:domain rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#stateReference -->
+
+    <owl:ObjectProperty rdf:about="#stateReference">
+        <rdfs:label>stateReference</rdfs:label>
+        <rdfs:domain rdf:resource="#State"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+    <owl:DatatypeProperty rdf:about="&terms;bibliographicCitation">
+        <rdfs:label
+            >dcterms:bibliographicCitation</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#classClassCommonName -->
+
+    <owl:DatatypeProperty rdf:about="#classClassCommonName">
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#classClassName -->
+
+    <owl:DatatypeProperty rdf:about="#classClassName">
+        <rdfs:domain rdf:resource="#ClassConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#domainDomainCommonName -->
+
+    <owl:DatatypeProperty rdf:about="#domainDomainCommonName">
+        <rdfs:label
+            >domainDomainCommonName</rdfs:label>
+        <rdfs:domain rdf:resource="#DomainConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#domainDomainName -->
+
+    <owl:DatatypeProperty rdf:about="#domainDomainName">
+        <rdfs:label
+            >domainDomainName</rdfs:label>
+        <rdfs:domain rdf:resource="#DomainConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familyFamilyCommonName -->
+
+    <owl:DatatypeProperty rdf:about="#familyFamilyCommonName">
+        <rdfs:label
+            >familyFamilyCommonName</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#familyFamilyName -->
+
+    <owl:DatatypeProperty rdf:about="#familyFamilyName">
+        <rdfs:label
+            >familyFamilyName</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasFamilyGBIF -->
+
+    <owl:DatatypeProperty rdf:about="#hasFamilyGBIF">
+        <rdfs:label>hasFamilyGBIF</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasFamilyITIS -->
+
+    <owl:DatatypeProperty rdf:about="#hasFamilyITIS">
+        <rdfs:label>hasFamilyITIS</rdfs:label>
+        <rdfs:domain rdf:resource="#FamilyConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasKingdomGBIF -->
+
+    <owl:DatatypeProperty rdf:about="#hasKingdomGBIF">
+        <rdfs:label>hasKingdomGBIF</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasKingdomITIS -->
+
+    <owl:DatatypeProperty rdf:about="#hasKingdomITIS">
+        <rdfs:label>hasKingdomITIS</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasOrderGBIF -->
+
+    <owl:DatatypeProperty rdf:about="#hasOrderGBIF">
+        <rdfs:label>hasOrderGBIF</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasOrderITIS -->
+
+    <owl:DatatypeProperty rdf:about="#hasOrderITIS">
+        <rdfs:label>hasOrderITIS</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumBioLib -->
+
+    <owl:DatatypeProperty rdf:about="#hasPhylumBioLib">
+        <rdfs:label>hasPhylumBioLib</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumGBIF -->
+
+    <owl:DatatypeProperty rdf:about="#hasPhylumGBIF">
+        <rdfs:label>hasPhylumGBIF</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumITIS -->
+
+    <owl:DatatypeProperty rdf:about="#hasPhylumITIS">
+        <rdfs:label>hasPhylumITIS</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumNCBITaxonID -->
+
+    <owl:DatatypeProperty rdf:about="#hasPhylumNCBITaxonID">
+        <rdfs:label
+            >hasPhylumNCBITaxonID</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasPhylumTreeBaseTaxonID -->
+
+    <owl:DatatypeProperty rdf:about="#hasPhylumTreeBaseTaxonID">
+        <rdfs:label
+            >hasPhylumTreeBaseTaxonID</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSpeciesGBIF -->
+
+    <owl:DatatypeProperty rdf:about="#hasSpeciesGBIF">
+        <rdfs:label>hasSpeciesGBIF</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasSpeciesITIS -->
+
+    <owl:DatatypeProperty rdf:about="#hasSpeciesITIS">
+        <rdfs:label>hasSpeciesITIS</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#hasUbioSpeciesCitation -->
+
+    <owl:DatatypeProperty rdf:about="#hasUbioSpeciesCitation">
+        <rdfs:label
+            >ubioSpeciesCitation</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&terms;bibliographicCitation"/>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#kingdomKingdomCommonName -->
+
+    <owl:DatatypeProperty rdf:about="#kingdomKingdomCommonName">
+        <rdfs:label
+            >kingdomKingdomCommonName</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#kingdomKingdomName -->
+
+    <owl:DatatypeProperty rdf:about="#kingdomKingdomName">
+        <rdfs:label
+            >kingdomKingdomName</rdfs:label>
+        <rdfs:domain rdf:resource="#KingdomConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#locationDateRange -->
+
+    <owl:DatatypeProperty rdf:about="#locationDateRange">
+        <rdfs:label
+            >locationDateRange</rdfs:label>
+        <rdfs:domain rdf:resource="#Location"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#locationDayOfYear -->
+
+    <owl:DatatypeProperty rdf:about="#locationDayOfYear">
+        <rdfs:label
+            >locationDayOfYear</rdfs:label>
+        <rdfs:domain rdf:resource="#Location"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationCountyName -->
+
+    <owl:DatatypeProperty rdf:about="#observationCountyName">
+        <rdfs:label
+            >observationCountyName</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationDateRange -->
+
+    <owl:DatatypeProperty rdf:about="#observationDateRange">
+        <rdfs:label
+            >observationDateRange</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationDayOfYear -->
+
+    <owl:DatatypeProperty rdf:about="#observationDayOfYear">
+        <rdfs:label
+            >observationDayOfYear</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationEndDate -->
+
+    <owl:DatatypeProperty rdf:about="#observationEndDate">
+        <rdfs:label
+            >observationEndDate</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationEndDayOfYear -->
+
+    <owl:DatatypeProperty rdf:about="#observationEndDayOfYear">
+        <rdfs:label
+            >observationEndDayOfYear</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationStartDate -->
+
+    <owl:DatatypeProperty rdf:about="#observationStartDate">
+        <rdfs:label
+            >observationStartDate</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationStartDayOfYear -->
+
+    <owl:DatatypeProperty rdf:about="#observationStartDayOfYear">
+        <rdfs:label
+            >observationStartDayOfYear</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationStateprovName -->
+
+    <owl:DatatypeProperty rdf:about="#observationStateprovName">
+        <rdfs:label
+            >observationStateprovName</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#observationUWIRCCode -->
+
+    <owl:DatatypeProperty rdf:about="#observationUWIRCCode">
+        <rdfs:label
+            >observationUWIRCCode</rdfs:label>
+        <rdfs:domain rdf:resource="#Observation"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderCertainty -->
+
+    <owl:DatatypeProperty rdf:about="#orderCertainty">
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderOrderCommonName -->
+
+    <owl:DatatypeProperty rdf:about="#orderOrderCommonName">
+        <rdfs:label
+            >orderOrderCommonName</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#orderOrderName -->
+
+    <owl:DatatypeProperty rdf:about="#orderOrderName">
+        <rdfs:label>orderOrderName</rdfs:label>
+        <rdfs:domain rdf:resource="#OrderConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#phylumPhylumCommonName -->
+
+    <owl:DatatypeProperty rdf:about="#phylumPhylumCommonName">
+        <rdfs:label
+            >phylumPhylumCommonName</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#phylumPhylumName -->
+
+    <owl:DatatypeProperty rdf:about="#phylumPhylumName">
+        <rdfs:label
+            >phylumPhylumName</rdfs:label>
+        <rdfs:domain rdf:resource="#PhylumConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesCanonicalName -->
+
+    <owl:DatatypeProperty rdf:about="#speciesCanonicalName">
+        <rdfs:label
+            >speciesCanonicalName</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesDateRange -->
+
+    <owl:DatatypeProperty rdf:about="#speciesDateRange">
+        <rdfs:label
+            >speciesDateRange</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesDayOfYear -->
+
+    <owl:DatatypeProperty rdf:about="#speciesDayOfYear">
+        <rdfs:label
+            >speciesDayOfYear</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesFamilyName -->
+
+    <owl:DatatypeProperty rdf:about="#speciesFamilyName">
+        <rdfs:label
+            >speciesFamilyName</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesGenusName -->
+
+    <owl:DatatypeProperty rdf:about="#speciesGenusName">
+        <rdfs:label
+            >speciesGenusName</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesSpeciesCommonName -->
+
+    <owl:DatatypeProperty rdf:about="#speciesSpeciesCommonName">
+        <rdfs:label
+            >speciesSpeciesCommonName</rdfs:label>
+        <rdfs:label
+            >speciesSpecCommonName</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesSpeciesName -->
+
+    <owl:DatatypeProperty rdf:about="#speciesSpeciesName">
+        <rdfs:label
+            >speciesSpeciesName</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesSpecificEpithet -->
+
+    <owl:DatatypeProperty rdf:about="#speciesSpecificEpithet">
+        <rdfs:label
+            >speciesSpecificEpithet</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#speciesSubfamilyName -->
+
+    <owl:DatatypeProperty rdf:about="#speciesSubfamilyName">
+        <rdfs:label
+            >speciesSubfamilyName</rdfs:label>
+        <rdfs:domain rdf:resource="#SpeciesConcept"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenCertainty -->
+
+    <owl:DatatypeProperty rdf:about="#specimenCertainty">
+        <rdfs:label
+            >specimenCertainty</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenEndDate -->
+
+    <owl:DatatypeProperty rdf:about="#specimenEndDate">
+        <rdfs:label
+            >specimen_end_date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenStartDate -->
+
+    <owl:DatatypeProperty rdf:about="#specimenStartDate">
+        <rdfs:label
+            >specimen_start_date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#specimenUWIRCCode -->
+
+    <owl:DatatypeProperty rdf:about="#specimenUWIRCCode">
+        <rdfs:label
+            >specimen_uwirc_code</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://rdf.geospecies.org/methods/observationMethod#ArthropodCollectionMethods -->
+
+    <owl:Class rdf:about="&observationMethod;ArthropodCollectionMethods">
+        <rdfs:subClassOf rdf:resource="#ObservationMethod"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/methods/observationMethod#Human_Observation -->
+
+    <owl:Class rdf:about="&observationMethod;Human_Observation">
+        <rdfs:subClassOf rdf:resource="#ObservationMethod"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/methods/observationMethod#Photographed -->
+
+    <owl:Class rdf:about="&observationMethod;Photographed">
+        <rdfs:subClassOf rdf:resource="#ObservationMethod"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#Bio2RDFtaxon -->
+
+    <owl:Class rdf:about="#Bio2RDFtaxon">
+        <rdfs:label>Bio2RDFtaxon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#ClassBio2RDFtaxon -->
+
+    <owl:Class rdf:about="#ClassBio2RDFtaxon">
+        <rdfs:label
+            >ClassBio2RDFtaxon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Bio2RDFtaxon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#ClassConcept -->
+
+    <owl:Class rdf:about="#ClassConcept">
+        <rdfs:label>ClassConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#ClassDBpediaResource -->
+
+    <owl:Class rdf:about="#ClassDBpediaResource">
+        <rdfs:label
+            >ClassDBpediaResource</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#DBpediaResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#ClassFreebaseGUID -->
+
+    <owl:Class rdf:about="#ClassFreebaseGUID">
+        <rdfs:label
+            >ClassFreebaseGUID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#FreebaseGUID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#ClassUbioLSID -->
+
+    <owl:Class rdf:about="#ClassUbioLSID">
+        <rdfs:label>ubioClassID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ubioNameBankLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#County -->
+
+    <owl:Class rdf:about="#County">
+        <rdfs:label>County</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#DBpediaResource -->
+
+    <owl:Class rdf:about="#DBpediaResource">
+        <rdfs:label>DBpediaResource</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#DomainConcept -->
+
+    <owl:Class rdf:about="#DomainConcept">
+        <rdfs:label>DomainConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#DomainUbioLSID -->
+
+    <owl:Class rdf:about="#DomainUbioLSID">
+        <rdfs:label>DomainUbioLSID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ubioNameBankLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#FamilyBio2RDFtaxon -->
+
+    <owl:Class rdf:about="#FamilyBio2RDFtaxon">
+        <rdfs:label
+            >FamilyBio2RDFtaxon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Bio2RDFtaxon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#FamilyConcept -->
+
+    <owl:Class rdf:about="#FamilyConcept">
+        <rdfs:label>FamilyConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#FamilyDBpediaResource -->
+
+    <owl:Class rdf:about="#FamilyDBpediaResource">
+        <rdfs:label
+            >FamilyDBpediaResource</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#DBpediaResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#FamilyFreebaseGUID -->
+
+    <owl:Class rdf:about="#FamilyFreebaseGUID">
+        <rdfs:label
+            >FamilyFreebaseGUID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#FreebaseGUID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#FamilyUbioLSID -->
+
+    <owl:Class rdf:about="#FamilyUbioLSID">
+        <rdfs:label>ubioFamilyID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ubioNameBankLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#FreebaseGUID -->
+
+    <owl:Class rdf:about="#FreebaseGUID">
+        <rdfs:label>FreebaseGUID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#Gallery -->
+
+    <owl:Class rdf:about="#Gallery">
+        <rdfs:label>Gallery</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#KingdomBio2RDFtaxon -->
+
+    <owl:Class rdf:about="#KingdomBio2RDFtaxon">
+        <rdfs:label
+            >KingdomBio2RDFtaxon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Bio2RDFtaxon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#KingdomConcept -->
+
+    <owl:Class rdf:about="#KingdomConcept">
+        <rdfs:label>KingdomConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#KingdomDBpediaResource -->
+
+    <owl:Class rdf:about="#KingdomDBpediaResource">
+        <rdfs:label
+            >KingdomDBpediaResource</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#DBpediaResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#KingdomUbioLSID -->
+
+    <owl:Class rdf:about="#KingdomUbioLSID">
+        <rdfs:label>ubioKingdomLSID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ubioNameBankLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#Location -->
+
+    <owl:Class rdf:about="#Location">
+        <rdfs:label>Location</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#Observation -->
+
+    <owl:Class rdf:about="#Observation">
+        <rdfs:label>Observation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#ObservationMethod -->
+
+    <owl:Class rdf:about="#ObservationMethod">
+        <rdfs:label
+            >ObservationMethod</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#OrderBio2RDFtaxon -->
+
+    <owl:Class rdf:about="#OrderBio2RDFtaxon">
+        <rdfs:label
+            >OrderBio2RDFtaxon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Bio2RDFtaxon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#OrderConcept -->
+
+    <owl:Class rdf:about="#OrderConcept">
+        <rdfs:label>OrderConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#OrderDBpediaResource -->
+
+    <owl:Class rdf:about="#OrderDBpediaResource">
+        <rdfs:label
+            >OrderDBpediaResource</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#DBpediaResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#OrderFreebaseGUID -->
+
+    <owl:Class rdf:about="#OrderFreebaseGUID">
+        <rdfs:label
+            >OrderFreebaseGUID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#FreebaseGUID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#OrderUbioLSID -->
+
+    <owl:Class rdf:about="#OrderUbioLSID">
+        <rdfs:label>ubioOrderID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ubioNameBankLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#PhylumBio2RDFtaxon -->
+
+    <owl:Class rdf:about="#PhylumBio2RDFtaxon">
+        <rdfs:label
+            >PhylumBio2RDFtaxon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Bio2RDFtaxon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#PhylumConcept -->
+
+    <owl:Class rdf:about="#PhylumConcept">
+        <rdfs:label>PhylumConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#PhylumDBpediaResource -->
+
+    <owl:Class rdf:about="#PhylumDBpediaResource">
+        <rdfs:label
+            >PhylumDBpediaResource</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#DBpediaResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#PhylumFreebaseGUID -->
+
+    <owl:Class rdf:about="#PhylumFreebaseGUID">
+        <rdfs:label
+            >PhylumFreebaseGUID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#FreebaseGUID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#PhylumUbioLSID -->
+
+    <owl:Class rdf:about="#PhylumUbioLSID">
+        <rdfs:label>ubioPhylumID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ubioNameBankLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#PrimarySpeciesUbioLSID -->
+
+    <owl:Class rdf:about="#PrimarySpeciesUbioLSID">
+        <rdfs:label
+            >PrimarySpeciesUbioLSID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#SpeciesUbioLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#SecondarySpeciesUbioLSID -->
+
+    <owl:Class rdf:about="#SecondarySpeciesUbioLSID">
+        <rdfs:label
+            >SecondarySpeciesUbioLSID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#SpeciesUbioLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#SpeciesBio2RDFtaxon -->
+
+    <owl:Class rdf:about="#SpeciesBio2RDFtaxon">
+        <rdfs:label
+            >SpeciesBio2RDFtaxon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#Bio2RDFtaxon"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#SpeciesConcept -->
+
+    <owl:Class rdf:about="#SpeciesConcept">
+        <rdfs:label>SpeciesConcept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#SpeciesDBpediaResource -->
+
+    <owl:Class rdf:about="#SpeciesDBpediaResource">
+        <rdfs:label
+            >SpeciesDBpediaResource</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#DBpediaResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#SpeciesFreebaseGUID -->
+
+    <owl:Class rdf:about="#SpeciesFreebaseGUID">
+        <rdfs:label
+            >SpeciesFreebaseGUID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#FreebaseGUID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#SpeciesUbioLSID -->
+
+    <owl:Class rdf:about="#SpeciesUbioLSID">
+        <rdfs:label>ubioSpeciesID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="#ubioNameBankLSID"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#State -->
+
+    <owl:Class rdf:about="#State">
+        <rdfs:label>State</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://rdf.geospecies.org/ont/gsontology#ubioNameBankLSID -->
+
+    <owl:Class rdf:about="#ubioNameBankLSID">
+        <rdfs:label>ubioNameBankID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Document"/>
+    </owl:Class>
+    
+
+
+    <!-- http://usefulinc.com/ns/doap#Project -->
+
+    <owl:Class rdf:about="&doap;Project"/>
+    
+
+
+    <!-- http://www.geonames.org/ontology#Country -->
+
+    <owl:Class rdf:about="&ontology;Country">
+        <rdfs:subClassOf rdf:resource="&wgs84_pos;SpatialThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing -->
+
+    <owl:Class rdf:about="&wgs84_pos;SpatialThing"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Document -->
+
+    <owl:Class rdf:about="&foaf;Document"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Image -->
+
+    <owl:Class rdf:about="&foaf;Image"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="&foaf;Person"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.uniprot.org/core/Class -->
+
+    <rdf:Description rdf:about="&core2;Class">
+        <rdfs:label
+            >http://purl.uniprot.org/core/Class</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.uniprot.org/core/Family -->
+
+    <rdf:Description rdf:about="&core2;Family">
+        <rdfs:label
+            >http://purl.uniprot.org/core/Family</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.uniprot.org/core/Kingdom -->
+
+    <rdf:Description rdf:about="&core2;Kingdom">
+        <rdfs:label
+            >http://purl.uniprot.org/core/Kingdom</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.uniprot.org/core/Order -->
+
+    <rdf:Description rdf:about="&core2;Order">
+        <rdfs:label
+            >http://purl.uniprot.org/core/Order</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.uniprot.org/core/Phylum -->
+
+    <rdf:Description rdf:about="&core2;Phylum">
+        <rdfs:label
+            >http://purl.uniprot.org/core/Phylum</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.uniprot.org/core/Species -->
+
+    <rdf:Description rdf:about="&core2;Species">
+        <rdfs:label
+            >http://purl.uniprot.org/core/Species</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.uniprot.org/core/Subspecies -->
+
+    <rdf:Description rdf:about="&core2;Subspecies">
+        <rdfs:label
+            >http://purl.uniprot.org/core/Subspecies</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1042) http://owlapi.sourceforge.net -->
+
