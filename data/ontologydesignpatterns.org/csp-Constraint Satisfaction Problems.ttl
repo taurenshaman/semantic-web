@@ -10,8 +10,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://vocab.deri.ie/csp> a owl:Ontology, adms:SemanticAsset;
-    dcterms:title "CSP - A vocabulary to represent Constraint Satisfaction Problems.";
-    dcterms:description "A vocabulary to represent Constraint Satisfaction Problems (CSPs) in which constraints are expressed by Boolean expressions on fluents.</b>";
+    dcterms:title "CSP - A vocabulary to represent Constraint Satisfaction Problems."@en;
+	dcterms:title "CSP - 表示约束满足问题的词汇集"@zh-CN;
+    dcterms:description "A vocabulary to represent Constraint Satisfaction Problems (CSPs) in which constraints are expressed by Boolean expressions on fluents."@en;
+	dcterms:description "表示约束满足问题的词汇集，这些约束使用布尔表达式表示。"@zh-CN;
     dcterms:modified "2011-06-29"^^xsd:date;
     vann:preferredNamespaceUri "http://vocab.deri.ie/csp#";
     vann:preferredNamespacePrefix "csp";
@@ -27,12 +29,10 @@
         csp:fpservant .
 
 csp:ttl a adms:SemanticDistribution;
-    dcterms:FileFormat <>;
     adms:accessURL "http://vocab.deri.ie/csp.ttl";
     adms:status <http://purl.org/adms/status/Completed> .
 
 csp:rdf a adms:SemanticDistribution;
-    dcterms:FileFormat <>;
     adms:accessURL "http://vocab.deri.ie/csp.rdf";
     adms:status <http://purl.org/adms/status/Completed> .
 
@@ -53,95 +53,123 @@ csp:fbadra a foaf:Person;
 
 csp:fpservant a foaf:Person;
     foaf:name "François-Paul Servant";
-    foaf:homepage <>;
     foaf:mbox <mailto:francois-paul.servant@renault.com> .
 
 csp:Renault a dcterms:Agent;
     foaf:member csp:fpservant;
-    foaf:name "Renault";
-    foaf:homepage <> .
+    foaf:name "Renault" .
 
 csp:Solution a rdfs:Class, owl:Class;
-    rdfs:label "Solution";
-    rdfs:comment "A solution of the constraint satisfaction problem." .
+    rdfs:label "Solution"@en;
+	rdfs:label "解决方案"@zh-CN;
+	rdfs:comment "约束满足问题的解决方案。"@zh-CN;
+    rdfs:comment "A solution of the constraint satisfaction problem."@en .
 
 csp:Fluent a rdfs:Class, owl:Class;
-    rdfs:label "Fluent";
-    rdfs:comment "A fluent is the association of a variable name and a subset of its domain of values.";
+    rdfs:label "Fluent"@en;
+	rdfs:label ""@zh-CN;
+	rdfs:comment "Fluent"@zh-CN;
+    rdfs:comment "A fluent is the association of a variable name and a subset of its domain of values."@en;
     rdfs:subClassOf csp:BoolExpr .
 
 csp:BoolExpr a rdfs:Class, owl:Class;
-    rdfs:label "Boolean expression";
-    rdfs:comment "A Boolean expression." .
+    rdfs:label "Boolean expression"@en;
+	rdfs:label "布尔表达式"@zh-CN;
+	rdfs:comment "一个布尔表达式。"@zh-CN;
+    rdfs:comment "A Boolean expression."@en .
 
 csp:And a rdfs:Class, owl:Class;
-    rdfs:label "And";
-    rdfs:comment "Models a conjunctive logical sub-expression AND (BoolExpr1 BoolExpr2 ... BoolExprn).";
+    rdfs:label "And"@en;
+	rdfs:label "与"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "Models a conjunctive logical sub-expression AND (BoolExpr1 BoolExpr2 ... BoolExprn)."@en;
     rdfs:subClassOf csp:BoolExpr .
 
 csp:Or a rdfs:Class, owl:Class;
-    rdfs:label "Or";
-    rdfs:comment "Models a disjunctive logical sub-expression OR (BoolExpr1 BoolExpr2 ... BoolExprn).";
+    rdfs:label "Or"@en;
+	rdfs:label "或"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "Models a disjunctive logical sub-expression OR (BoolExpr1 BoolExpr2 ... BoolExprn)."@en;
     rdfs:subClassOf csp:BoolExpr;
     owl:disjointWith
         csp:And,
         csp:Not .
 
 csp:Not a rdfs:Class, owl:Class;
-    rdfs:label "Not";
-    rdfs:comment "Models the negation of a logical sub-expression NOT(BoolExpr).";
+    rdfs:label "Not"@en;
+	rdfs:label "非"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "Models the negation of a logical sub-expression NOT(BoolExpr)."@en;
     rdfs:subClassOf csp:BoolExpr;
     owl:disjointWith
         csp:And,
         csp:Or .
 
 csp:Relation a rdfs:Class, owl:Class;
-    rdfs:label "Relation";
-    rdfs:comment "The list of all valid combinations of values of a set of variables." .
+    rdfs:label "Relation"@en;
+	rdfs:label "关系"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "The list of all valid combinations of values of a set of variables."@en .
 
 csp:variable a rdf:Property;
-    rdfs:label "variable";
-    rdfs:comment "A variable can be seen as a function associating a value to an object, and is therefore modelled as an RDF property that points to one (or many) value(s).";
+    rdfs:label "variable"@en;
+	rdfs:label "变量"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "A variable can be seen as a function associating a value to an object, and is therefore modelled as an RDF property that points to one (or many) value(s)."@en;
     rdfs:domain csp:Solution;
     rdfs:range rdfs:Resource .
 
 csp:var a rdf:Property;
-    rdfs:label "has variable";
-    rdfs:comment "The variable associated with a fluent.";
+    rdfs:label "has variable"@en;
+	rdfs:label "有变量"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "The variable associated with a fluent."@en;
     rdfs:domain csp:Fluent;
     rdfs:range rdfs:Resource .
 
 csp:val a rdf:Property;
-    rdfs:label "has value";
-    rdfs:comment "A value associated with a fluent.";
+    rdfs:label "has value"@en;
+	rdfs:label "有值"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "A value associated with a fluent."@en;
     rdfs:domain csp:Fluent;
     rdfs:range rdfs:Resource .
 
 csp:and a rdf:Property;
-    rdfs:label "and";
-    rdfs:comment "Links a logical conjunction operator to its arguments.";
+    rdfs:label "and"@en;
+	rdfs:label "与"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "Links a logical conjunction operator to its arguments."@en;
     rdfs:domain csp:And;
     rdfs:range csp:BoolExpr .
 
 csp:isSatisfiable a rdf:Property;
-    rdfs:label "is satisfiable";
-    rdfs:comment "Boolean flag indicating for a relation if each supported combination of values must be satisfiable or not.";
+    rdfs:label "is satisfiable"@en;
+	rdfs:label ""@zh-CN;
+	rdfs:comment "可满足的"@zh-CN;
+    rdfs:comment "Boolean flag indicating for a relation if each supported combination of values must be satisfiable or not."@en;
     rdfs:domain csp:Relation .
 
 csp:supports a rdf:Property;
-    rdfs:label "supports";
-    rdfs:comment "Specifies all supported value combinations in the relation. ";
+    rdfs:label "supports"@en;
+	rdfs:label "支持"@zh-CN;
+	rdfs:comment "指明在关系中所有支持的值。"@zh-CN;
+    rdfs:comment "Specifies all supported value combinations in the relation. "@en;
     rdfs:domain csp:Relation;
     rdfs:range rdfs:Resource .
 
 csp:or a rdf:Property;
-    rdfs:label "or";
-    rdfs:comment "Links a logical disjunction operator to its arguments.";
+    rdfs:label "or"@en;
+	rdfs:label "或"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "Links a logical disjunction operator to its arguments."@en;
     rdfs:domain csp:Or;
     rdfs:range csp:BoolExpr .
 
 csp:not a rdf:Property;
-    rdfs:label "not";
-    rdfs:comment "Links a logical negation operator to its argument.";
+    rdfs:label "not"@en;
+	rdfs:label "非"@zh-CN;
+	rdfs:comment ""@zh-CN;
+    rdfs:comment "Links a logical negation operator to its argument."@en;
     rdfs:domain csp:Not;
     rdfs:range csp:BoolExpr .
