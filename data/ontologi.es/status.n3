@@ -1,0 +1,144 @@
+# This ontology.
+@prefix status:   <http://ontologi.es/status#> .
+
+# Related ontologies.
+@prefix crm:      <http://purl.org/NET/cidoc-crm/core#> .
+@prefix event:    <http://purl.org/NET/c4dm/event.owl#> .
+@prefix tl:       <http://purl.org/NET/c4dm/timeline.owl#> .
+
+# Stock imports.
+@prefix cc:       <http://creativecommons.org/ns#> .
+@prefix dc:       <http://purl.org/dc/terms/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix link:     <http://www.w3.org/2006/link#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:     <http://purl.org/vocab/vann/> .
+@prefix vs:       <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xhv:      <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+status:
+	a owl:Ontology ;
+	rdfs:label "Document Status Ontology" ;
+	rdfs:comment "A lightweight ontology for defining the publication status of documents, and transitions between statuses." ,
+		"This ontology defines terms for dealing with statuses and also a collection of predefined statuses. If you don't like the predefined statuses, you should be able to define your own set of statuses but still use them in conjunction with this ontology." ;
+	foaf:maker <http://tobyinkster.co.uk/#i> ;
+	dc:issued "2009-06-17"^^xsd:date ;
+	dc:modified "2009-09-14"^^xsd:date ;
+	vann:preferredNamespacePrefix "status" ;
+	vann:preferredNamespaceUri "http://ontologi.es/status#" .
+
+<http://ontologi.es/status>
+	a foaf:Document ;
+	foaf:primaryTopic status: ;
+	status:status status:ReviewCopy ;
+	status:change
+		[
+			status:previous_status status:Sketch ;
+			status:new_status status:ReviewCopy ;
+			event:agent <http://tobyinkster.co.uk/#i> ;
+			event:time [ tl:at "2009-06-18"^^xsd:date ]
+		] .
+
+status:StatusClass
+	a owl:Class ;
+	rdfs:subClassOf owl:Class ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Status Class" .
+
+status:status
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf rdf:type ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "status" ;
+	rdfs:comment "The (presumably current) status of the document." ;
+	rdfs:domain foaf:Document ;
+	rdfs:range status:StatusClass .
+	
+status:StatusChange
+	a owl:Class ;
+	rdfs:subPropertyOf event:Event , crm:E17_Type_Assignment ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Status Change" ;
+	rdfs:comment "An event representing the changing of a status. This inherits from Yves Raimond's event ontology, so terms from that ontology can be used to describe when the change happened, and who caused the change." .
+
+status:previous_status
+	a owl:ObjectProperty ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "previous status" ;
+	rdfs:domain status:StatusChange ;
+	rdfs:range status:StatusClass .
+
+status:new_status
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf event:product , crm:P42_assigned ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "new status" ;
+	rdfs:domain status:StatusChange ;
+	rdfs:range status:StatusClass .
+
+status:change
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf [ owl:inverseOf event:factor ] , [ owl:inverseOf crm:P41_classified ] ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "change" ;
+	rdfs:domain foaf:Document ;
+	rdfs:range status:StatusChange .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+status:Standard
+	a status:StatusClass ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Standard" .
+
+status:New
+	a status:StatusClass ;
+	rdfs:subClassOf status:Standard ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "New" .
+
+status:Archived
+	a status:StatusClass ;
+	rdfs:subClassOf status:Standard ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Archived" .
+
+status:Obsolete
+	a status:StatusClass ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Obsolete" .
+
+status:Historic
+	a status:StatusClass ;
+	rdfs:subClassOf status:Obsolete ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Historic" ;
+	rdfs:comment "A document that is obsolete but deemed to be of historical interest by its publisher." .
+
+status:Draft 
+	a status:StatusClass ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Draft" .
+
+status:Sketch
+	a status:StatusClass ;
+	rdfs:subClassOf status:Draft ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Sketch" ;
+	rdfs:comment "A very early draft." .
+
+status:ReviewCopy
+	a status:StatusClass ;
+	rdfs:subClassOf status:Draft ;
+	rdfs:isDefinedBy status: ;
+	rdfs:label "Review Copy" ;
+	rdfs:comment "A late stage draft, for final review." .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 

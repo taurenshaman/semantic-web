@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.mesh-ip.eu/mmio.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://www.mesh-ip.eu/mmio.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/InformationObjects.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="audio-object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="multimedia-object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="multimedia-file">
+    <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/InformationObjects.owl#information-realization"/>
+  </owl:Class>
+  <owl:Class rdf:ID="visual-file">
+    <rdfs:subClassOf rdf:resource="#multimedia-file"/>
+  </owl:Class>
+  <owl:Class rdf:ID="language">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="multimedia-format"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="linguistic-object">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#multimedia-object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="video-file">
+    <rdfs:subClassOf rdf:resource="#visual-file"/>
+  </owl:Class>
+  <owl:Class rdf:ID="audio-file">
+    <rdfs:subClassOf rdf:resource="#multimedia-file"/>
+  </owl:Class>
+  <owl:Class rdf:ID="semantic-annotation">
+    <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#description"/>
+  </owl:Class>
+  <owl:Class rdf:about="#multimedia-object">
+    <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#information-object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="image-file">
+    <rdfs:subClassOf rdf:resource="#visual-file"/>
+  </owl:Class>
+  <owl:Class rdf:ID="visual-object">
+    <rdfs:subClassOf rdf:resource="#multimedia-object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="video-format">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="visual-format"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#visual-format">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#multimedia-format"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="audio-format">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#multimedia-format"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="text-file">
+    <rdfs:subClassOf rdf:resource="#multimedia-file"/>
+  </owl:Class>
+  <owl:Class rdf:ID="image-format">
+    <rdfs:subClassOf rdf:resource="#visual-format"/>
+  </owl:Class>
+  <owl:Class rdf:ID="multimedia-analysis-tool">
+    <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#agentive-physical-object"/>
+  </owl:Class>
+  <owl:Class rdf:about="#multimedia-format">
+    <rdfs:subClassOf rdf:resource="http://www.loa-cnr.it/ontologies/InformationObjects.owl#combinatorial-system"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="refers-to">
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#information-object"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#information-object"/>
+  </owl:ObjectProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

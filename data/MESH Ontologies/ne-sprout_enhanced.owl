@@ -1,0 +1,499 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.mesh-ip.eu/ne-sprout_enhanced.owl#"
+  xml:base="http://www.mesh-ip.eu/ne-sprout_enhanced.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Generated from TDL</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="money">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="numex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Ocean">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Sea"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="temporal-spec-type"/>
+  <owl:Class rdf:ID="Embankment">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ne-location"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Boat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="WaterVehicle"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Region">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ne-location"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="span">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ne_type"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ne-location">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="enamex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Ship">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#WaterVehicle"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Sea">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Airplane">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="AirVehicle"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Helicopter"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Dyke">
+    <rdfs:subClassOf rdf:resource="#Embankment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Ambulance">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Truck"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="FireEngine"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Car"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LandVehicle"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ne-person">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#enamex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="org-type"/>
+  <owl:Class rdf:ID="Train">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#LandVehicle"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ne-vehicle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#enamex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Helicopter">
+    <owl:disjointWith rdf:resource="#Airplane"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#AirVehicle"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Village">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:ID="River">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:ID="_DUMMY-FRAMES-METASLOT">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:Class>
+  <owl:Class rdf:ID="City">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:about="#LandVehicle">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WaterVehicle"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#AirVehicle"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#ne-vehicle"/>
+  </owl:Class>
+  <owl:Class rdf:about="#AirVehicle">
+    <rdfs:subClassOf rdf:resource="#ne-vehicle"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#WaterVehicle"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#LandVehicle"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Truck">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Car"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#FireEngine"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Ambulance"/>
+    <rdfs:subClassOf rdf:resource="#LandVehicle"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Car">
+    <rdfs:subClassOf rdf:resource="#LandVehicle"/>
+    <owl:disjointWith rdf:resource="#Truck"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#FireEngine"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Ambulance"/>
+  </owl:Class>
+  <owl:Class rdf:ID="curr"/>
+  <owl:Class rdf:about="#WaterVehicle">
+    <owl:disjointWith rdf:resource="#LandVehicle"/>
+    <owl:disjointWith rdf:resource="#AirVehicle"/>
+    <rdfs:subClassOf rdf:resource="#ne-vehicle"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ne-product">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#enamex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="komp-nomen">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#enamex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="quantity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#numex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="stringList">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Continent">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:ID="mtype"/>
+  <owl:Class rdf:ID="iteration">
+    <rdfs:subClassOf rdf:resource="#ne_type"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FireEngine">
+    <owl:disjointWith rdf:resource="#Truck"/>
+    <owl:disjointWith rdf:resource="#Car"/>
+    <owl:disjointWith rdf:resource="#Ambulance"/>
+    <rdfs:subClassOf rdf:resource="#LandVehicle"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ne-organization">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#enamex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Shore">
+    <rdfs:subClassOf rdf:resource="#Embankment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="percentage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#numex"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="point">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="interval"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#numex">
+    <rdfs:subClassOf rdf:resource="#ne_type"/>
+  </owl:Class>
+  <owl:Class rdf:ID="part-of-point-type"/>
+  <owl:Class rdf:ID="_DUMMY-FRAMES-METACLASS">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </owl:Class>
+  <owl:Class rdf:about="#enamex">
+    <rdfs:subClassOf rdf:resource="#ne_type"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ne-address">
+    <rdfs:subClassOf rdf:resource="#enamex"/>
+  </owl:Class>
+  <owl:Class rdf:ID="timex">
+    <rdfs:subClassOf rdf:resource="#ne_type"/>
+  </owl:Class>
+  <owl:Class rdf:about="#interval">
+    <rdfs:subClassOf rdf:resource="#timex"/>
+  </owl:Class>
+  <owl:Class rdf:ID="loc-type"/>
+  <owl:Class rdf:ID="Country">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Street">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:ID="_TEMPORARY-ITEMS"/>
+  <owl:Class rdf:ID="State">
+    <rdfs:subClassOf rdf:resource="#ne-location"/>
+  </owl:Class>
+  <owl:Class rdf:ID="duration">
+    <rdfs:subClassOf rdf:resource="#interval"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="_REFERENCES">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+          <owl:Class rdf:about="#_DUMMY-FRAMES-METACLASS"/>
+          <owl:Class rdf:about="#_TEMPORARY-ITEMS"/>
+          <owl:Class rdf:about="#_DUMMY-FRAMES-METASLOT"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_route">
+    <rdfs:range rdf:resource="#ne-location"/>
+    <rdfs:domain rdf:resource="#ne-vehicle"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="located_in">
+    <rdfs:domain rdf:resource="#ne-location"/>
+    <rdfs:range rdf:resource="#ne-location"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="orgtype">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-organization"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="part-of-month">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#point"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="part-of-week">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="part-of-year">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="part-of-day">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="part-of-century">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#point"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="title">
+    <rdfs:domain rdf:resource="#ne-person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="loctype">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-location"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="currency">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#money"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:ID="century">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#point"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="timex_amount">
+    <rdfs:domain rdf:resource="#timex"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="dofw">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#point"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="each">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#point"/>
+    <rdfs:domain rdf:resource="#iteration"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="magnitude">
+    <rdfs:domain rdf:resource="#numex"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="year">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hour">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="amount">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#numex"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="second">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#point"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="name-affix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#ne-person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="product-name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-product"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="month">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="prepositions">
+    <rdfs:range rdf:resource="#stringList"/>
+    <rdfs:domain rdf:resource="#ne_type"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="surname">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-person"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="area">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-location"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="surface">
+    <rdfs:domain rdf:resource="#ne_type"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="temporal-unit">
+    <rdfs:domain rdf:resource="#interval"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="difference">
+    <rdfs:range rdf:resource="#numex"/>
+    <rdfs:domain rdf:resource="#span"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="orgname">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#ne-organization"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="from">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#span"/>
+    <rdfs:range rdf:resource="#ne_type"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="age">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#ne-person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="dofm">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="unit">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#quantity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="product-model">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-product"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="nomen">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#komp-nomen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="abbreviation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#ne-organization"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="given_name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#ne-person"/>
+    <rdfs:range rdf:resource="#stringList"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="special-day">
+    <rdfs:domain rdf:resource="#point"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="address">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-address"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="descriptor">
+    <rdfs:domain rdf:resource="#ne_type"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="week">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#point"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="minute">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#point"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="name-suffix">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-person"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="span_type">
+    <rdfs:range rdf:resource="#span_type"/>
+    <rdfs:domain rdf:resource="#span"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="locname">
+    <rdfs:domain rdf:resource="#ne-location"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="product-variant">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#ne-product"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="to">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#ne_type"/>
+    <rdfs:domain rdf:resource="#span"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="p-position">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#ne-person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="spec">
+    <rdfs:range rdf:resource="#temporal-spec-type"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#interval"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="nom-segmentation">
+    <rdfs:domain rdf:resource="#komp-nomen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="muc-type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#timex"/>
+    <rdfs:range rdf:resource="#mtype"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="designator">
+    <rdfs:domain rdf:resource="#ne-organization"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

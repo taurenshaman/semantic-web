@@ -1,0 +1,91 @@
+# This ontology.
+@prefix arc:      <http://ontologi.es/place/arc/vocab#> .
+
+# Related ontologies.
+@prefix geo:      <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+
+# Stock imports.
+@prefix cc:       <http://creativecommons.org/ns#> .
+@prefix dc:       <http://purl.org/dc/terms/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix link:     <http://www.w3.org/2006/link#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:     <http://purl.org/vocab/vann/> .
+@prefix vs:       <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xhv:      <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+arc:
+	a owl:Ontology ;
+	rdfs:label "Great Circle Ontology"@en ;
+	foaf:maker <http://tobyinkster.co.uk/#i> ;
+	dc:issued "2009-06-21"^^xsd:date ;
+	vann:preferredNamespacePrefix "arc" ;
+	vann:preferredNamespaceUri "http://ontologi.es/place/arc/vocab#" .
+
+arc:DirectedLine
+	a owl:Class ;
+	rdfs:subClassOf geo:SpatialThing ;
+	rdfs:label "Directed Line"@en ;
+	rdfs:comment "A directed line between two points on the surface of a planet, such that all points along the length of the line are also on the surface of the planet."@en .
+
+arc:Arc
+	a owl:Class ;
+	rdfs:subClassOf arc:DirectedLine ;
+	rdfs:label "Arc"@en ;
+	rdfs:comment "A directed line between two points on the surface of a planet, which represents the shortest surface distance between those points."@en .
+
+arc:inverse
+	a owl:ObjectProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+	rdfs:domain arc:DirectedLine ;
+	rdfs:range arc:DirectedLine ;
+	rdfs:label "inverse"@en ;
+	rdfs:comment "Indicates that the subject and object lines pass through the same set of points, but in the opposite order."@en .
+
+arc:part
+	a owl:ObjectProperty ;
+	rdfs:domain arc:DirectedLine ;
+	rdfs:range arc:DirectedLine ;
+	rdfs:label "part"@en ;
+	rdfs:comment "Indicates that the object is a DirectedLine such that all its points are also points of the subject DirectedLine. The object does not necessarily have the same direction as the subject."@en .
+
+arc:point
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf dc:hasPart ;
+	rdfs:domain arc:DirectedLine ;
+	rdfs:range geo:Point ;
+	rdfs:label "point"@en ;
+	rdfs:comment "Indicates a point that falls along a line."@en .
+
+arc:points
+	a owl:ObjectProperty , owl:FunctionalProperty , owl:InverseFunctionalProperty ;
+	rdfs:domain arc:DirectedLine ;
+	rdfs:range rdfs:Container ;
+	rdfs:label "points"@en ;
+	rdfs:comment "The object is an ordered and infinite collection of geo:Point resources that lie along the subject line. Because of its infinite length, it cannot be fully described using RDF, but an RDF description may mention particular points that exist within the collection using the rdfs:member property. (An exception would be a zero-length line, in which case this collection will only contain one member.)"@en .
+
+arc:start
+	a owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:subPropertyOf arc:point ;
+	rdfs:label "start"@en ;
+	rdfs:domain "The starting point of a line."@en .
+
+arc:end
+	a owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:subPropertyOf arc:point ;
+	rdfs:label "end"@en ;
+	rdfs:domain "The ending point of a line."@en .
+
+arc:mid
+	a owl:ObjectProperty , owl:FunctionalProperty ;
+	rdfs:subPropertyOf arc:point ;
+	rdfs:label "mid"@en ;
+	rdfs:domain "The midpoint of a line."@en .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 

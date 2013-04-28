@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:pdo="http://www.patexpert.org/ontologies/pdo.owl#"
+	xmlns:pulo="http://www.patexpert.org/ontologies/pulo.owl#"
+  xml:base="http://www.patexpert.org/ontologies/pdo.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="SideView">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Side view of a technical drawing.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TechnicalDrawing"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TechnicalDrawing">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The depiction of an embodiment under a special view. Examples are cross sectional views of machines, top views of buildings, etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.patexpert.org/ontologies/pulo.owl#Figure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Waveform">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Graph"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The depiction of a varying quantity in relation to another one. Examples: function, clock signals, etc.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="State">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Diagram"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A diagram depicting state transitions.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Flowchart">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The depiction of an algorithm or process under a standardized form. It usually consists of some shapes (circles, rectangles, diamonds, ovals) connected with directed arcs. The arcs indicate the flow of execution of the individual steps of the algorithm/process.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.patexpert.org/ontologies/pulo.owl#Figure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PlaneView">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Plane View of a technical drawing.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TechnicalDrawing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ElevationalView">
+    <rdfs:subClassOf rdf:resource="#TechnicalDrawing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Elevational view of a technical drawing.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Graph">
+    <rdfs:subClassOf rdf:resource="http://www.patexpert.org/ontologies/pulo.owl#Figure"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The depiction of a varying quantity as a function of one (2-D graph) or two variables (3-D graph). Apart from function plots, this class of figures may contain pie charts, bar charts and surface plots.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Circuit">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This special kind of diagram is an electric circuit.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Diagram"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TimeChart">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A special kind of chart which depicts the fluctuations of multiple signals through time.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Waveform"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SectionalView">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >One sectional view of the technical drawing.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TechnicalDrawing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Photo">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A scanned and binarized photo.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.patexpert.org/ontologies/pulo.owl#Figure"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Response">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Response of a system over an input signal.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Waveform"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BlockDiagram">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A diagram which depicts a system as a set of boxes (corresponding to modules / subsystems) and directed arcs between them such that it depicts a flow of something from module to module.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Diagram"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Diagram">
+    <rdfs:subClassOf rdf:resource="http://www.patexpert.org/ontologies/pulo.owl#Figure"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Diagrams are used to depict architectural views of systems designs.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Trellis">
+    <rdfs:subClassOf rdf:resource="#State"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A special kind of diagram that depicts state transitions for the respective Trellis modulation/encoding process.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TopView">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Top View of a technical drawing.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#TechnicalDrawing"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BottomView">
+    <rdfs:subClassOf rdf:resource="#TechnicalDrawing"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bottom View of a technical drawing.</rdfs:comment>
+  </owl:Class>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.2, Build 339)  http://protege.stanford.edu -->

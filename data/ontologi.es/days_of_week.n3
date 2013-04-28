@@ -1,0 +1,379 @@
+# Saved by TopBraid on Sun Aug 08 18:26:56 CEST 2010
+# baseURI: http://ontologi.es/days#
+# imports: http://www.w3.org/2006/time
+# imports: http://purl.org/NET/c4dm/timeline.owl
+# imports: http://xmlns.com/foaf/0.1/
+# imports: http://purl.org/dc/terms/
+
+@prefix days:    <http://ontologi.es/days#> .
+@prefix dc:      <http://purl.org/dc/terms/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time:    <http://www.w3.org/2006/time#> .
+@prefix tl:      <http://purl.org/NET/c4dm/timeline.owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://buzzword.org.uk/2009/vocamp-bristol/days-example.ttl>
+      rdf:type foaf:Document ;
+      dc:title "Example: Days of the Week"@en ;
+      dc:format "text/turtle" .
+
+days:
+      rdf:type owl:Ontology ;
+      rdfs:seeAlso <http://buzzword.org.uk/2009/vocamp-bristol/days-example.ttl> ;
+      dc:modified "2010-08-08T17:04:52+01:00"^^xsd:dateTime ;
+      dc:description "An ontologies to describe dates (instants or intervals) on specific timeline instances."@en ;
+      dc:issued "2009-09-11"^^xsd:date ;
+      dc:title "Days of the Week Ontology"@en ;
+      owl:imports foaf: , <http://purl.org/NET/c4dm/timeline.owl> , <http://www.w3.org/2006/time> , dc: ;
+      owl:versionInfo 0.2 ;
+      foaf:maker <http://foaf.me/zazi#me> ;
+      foaf:maker
+              [ foaf:name "Libby Miller"
+              ] ;
+      foaf:maker
+              [ foaf:name "Toby Inkster"
+              ] .
+
+days:DayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Day Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:day_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:DayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Day Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:day_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:FridayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Friday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:friday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:FridayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Friday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:friday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:HolidayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Holiday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:holiday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:HolidayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Holiday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:holiday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:MondayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Monday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:monday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:MondayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Monday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:monday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:SaturdayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Saturday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:saturday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:SaturdayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Saturday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:saturday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:SundayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Sunday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:sunday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:SundayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Sunday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:sunday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:ThursdayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Thursday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:thursday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:ThursdayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Thursday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:thursday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:TuesdayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Tuesday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:tuesday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:TuesdayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Tuesday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:tuesday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:WednesdayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Wednesday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:wednesday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:WednesdayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Wednesday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:wednesday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:WeekdayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "Weekday Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:weekday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:WeekdayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "Weekday Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:weekday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:WeekendDayInstant
+      rdf:type owl:Class ;
+      rdfs:comment "Specify an exact time relative to midnight using tl:at."@en ;
+      rdfs:label "WeekendDay Instant"@en ;
+      rdfs:subClassOf time:Instant ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:weekendday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Instant)
+              ] .
+
+days:WeekendDayInterval
+      rdf:type owl:Class ;
+      rdfs:comment "Specify a start time relative to midnight using tl:at and a duration using tl:duration."@en ;
+      rdfs:label "WeekendDay Interval"@en ;
+      rdfs:subClassOf time:Interval ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:hasValue days:weekendday_timeline ;
+                            owl:onProperty tl:timeline
+                          ] time:Interval)
+              ] .
+
+days:day_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a day."@en ;
+      dc:title "Day Timeline"@en .
+
+days:friday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a Friday."@en ;
+      dc:title "Friday Timeline"@en .
+
+days:holiday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a day when somebody is not working."@en ;
+      dc:title "Holiday Timeline"@en .
+
+days:monday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a Monday."@en ;
+      dc:title "Monday Timeline"@en .
+
+days:saturday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a Saturday."@en ;
+      dc:title "Saturday Timeline"@en .
+
+days:sunday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a Sunday."@en ;
+      dc:title "Sunday Timeline"@en .
+
+days:thursday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a Thursday."@en ;
+      dc:title "Thursday Timeline"@en .
+
+days:tuesday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a Tuesday."@en ;
+      dc:title "Tuesday Timeline"@en .
+
+days:wednesday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a Wednesday."@en ;
+      dc:title "Wednesday Timeline"@en .
+
+days:weekday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a week day (i.e. Monday to Friday in most cultures)."@en ;
+      dc:title "Weekday Timeline"@en .
+
+days:weekendday_timeline
+      rdf:type tl:TimeLine ;
+      dc:description "Starting and ending on midnight in the relevant timezone and encompassing a day of the weekend (i.e. Saturday or Sunday in most cultures)."@en ;
+      dc:title "WeekendDay Timeline"@en .

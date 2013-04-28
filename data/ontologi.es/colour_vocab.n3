@@ -1,0 +1,71 @@
+# This ontology.
+@prefix cv:       <http://ontologi.es/colour/vocab#> .
+
+# Stock imports.
+@prefix cc:       <http://creativecommons.org/ns#> .
+@prefix dc:       <http://purl.org/dc/terms/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix link:     <http://www.w3.org/2006/link#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:     <http://purl.org/vocab/vann/> .
+@prefix vs:       <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xhv:      <http://www.w3.org/1999/xhtml/vocab#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+
+cv:
+	a owl:Ontology ;
+	rdfs:label "Colour Vocab" ;
+	foaf:maker <http://tobyinkster.co.uk/#i> ;
+	dc:issued "2009-07-06"^^xsd:date ;
+	dc:modified "2009-07-08"^^xsd:date ;
+	vann:preferredNamespacePrefix "cv" ;
+	vann:preferredNamespaceUri "http://ontologi.es/colour/vocab#" ;
+	rdfs:seeAlso <examples.n3> .
+
+cv:Colour
+	a owl:Class ;
+	rdfs:subClassOf skos:Concept ;
+	rdfs:label "Colour" .
+
+cv:hex_code
+	a owl:DatatypeProperty ;
+	rdfs:subPropertyOf skos:notation ;
+	rdfs:label "hex code" ;
+	rdfs:domain cv:Colour .
+
+cv:rgba_component
+	a owl:DatatypeProperty ;
+	rdfs:label "colour component value" ;
+	rdfs:domain cv:Colour ;
+	rdfs:range xsd:decimal ;
+	rdfs:comment "Value between 0.0 and 1.0 in the RGBA colour space." .
+
+cv:r
+	a owl:DatatypeProperty ;
+	rdfs:label "red" ;
+	rdfs:subPropertyOf cv:rgba_component .
+
+cv:g
+	a owl:DatatypeProperty ;
+	rdfs:label "green" ;
+	rdfs:subPropertyOf cv:rgba_component .
+
+cv:b
+	a owl:DatatypeProperty ;
+	rdfs:label "blue" ;
+	rdfs:subPropertyOf cv:rgba_component .
+
+cv:a
+	a owl:DatatypeProperty ;
+	rdfs:label "alpha" ;
+	rdfs:comment "1.0 is fully opaque" ;
+	rdfs:subPropertyOf cv:rgba_component .
+
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+

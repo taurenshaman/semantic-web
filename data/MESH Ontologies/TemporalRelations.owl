@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.loa-cnr.it/ontologies/TemporalRelations.owl#"
+    xmlns:dol="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xml:base="http://www.loa-cnr.it/ontologies/TemporalRelations.owl">
+  <owl:Ontology rdf:about="">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An Ontology of temporal relations, adpated from Allen's interval calculus. OWL engineering by Aldo Gangemi.</rdfs:comment>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Imports: DOLCE-Lite</rdfs:comment>
+    <owl:imports rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl"/>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >397
+    </owl:versionInfo>
+  </owl:Ontology>
+  <owl:ObjectProperty rdf:ID="started-by">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="starts"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:ID="temporally-includes"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="met-by">
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="meets"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="temporally-connected"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="concludes">
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="concluded-by"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A last part of a perdurant (any part that includes the 'final' boundary, but not the 'initial' one.</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:ID="temporally-included-in"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="temporal-location">
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#temporal-region"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="temporal-location-of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="present-at">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Presence is axiomatized as being temporally  located in a part of one's life.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="time-of-presence-of"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#time-interval"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="e-temporal-location"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#e-temporal-location">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="e-temporal-location-of"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Analytical indirect location holding between endurants and temporal regions.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#temporal-region"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#time-of-presence-of">
+    <owl:inverseOf rdf:resource="#present-at"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#e-temporal-location-of"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#time-interval"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#starts">
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#temporally-included-in"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A beginning part of a perdurant (any part that includes the 'initial' boundary, but not the 'final' one.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <owl:inverseOf rdf:resource="#started-by"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#concluded-by">
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <owl:inverseOf rdf:resource="#concludes"/>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#temporally-includes"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="temporal-relation-i">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="temporal-relation"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#mediated-relation-i"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporally-connected">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Having a common atomic temporal location.</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#temporal-relation"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf rdf:resource="#temporally-connected"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporal-relation">
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#mediated-relation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Any mediated relation that composes temporal locations of perdurants with mereotopological relations between those locations.Mereotopological relations are those specified in the J. Allen's theory of time intervals.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#temporal-relation-i"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#e-temporal-location-of">
+    <owl:inverseOf rdf:resource="#e-temporal-location"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#temporal-region"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#endurant"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location-of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#meets">
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Temporal connection between perdurants: p1 ending part is connected to p2 beginning part.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#temporally-connected"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <owl:inverseOf rdf:resource="#met-by"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="temporally-coincides">
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <owl:inverseOf rdf:resource="#temporally-coincides"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:subPropertyOf rdf:resource="#temporal-relation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AKA 'co-occurs'. Temporal coincidence between perdurants.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporal-location-of">
+    <owl:inverseOf rdf:resource="#temporal-location"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#exact-location-of"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#temporal-region"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="temporally-overlaps">
+    <rdfs:subPropertyOf rdf:resource="#temporal-relation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Temporal overlap: having a (partly) common temporal location.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#temporally-overlaps"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:TransitiveProperty rdf:about="#temporally-included-in">
+    <rdfs:subPropertyOf rdf:resource="#temporal-relation-i"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:about="#temporally-includes"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:ID="precedes">
+    <owl:inverseOf>
+      <owl:TransitiveProperty rdf:ID="follows"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:subPropertyOf rdf:resource="#temporal-relation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Temporal precedence between two perdurants. No further dependence is implied (e.g. mereological, causal).</rdfs:comment>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="#follows">
+    <rdfs:subPropertyOf rdf:resource="#temporal-relation-i"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="#precedes"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="#temporally-includes">
+    <owl:inverseOf rdf:resource="#temporally-included-in"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >All temporal locations of perdurant x are also temporal locations of perdurant y.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:domain rdf:resource="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#perdurant"/>
+    <rdfs:subPropertyOf rdf:resource="#temporal-relation"/>
+  </owl:TransitiveProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

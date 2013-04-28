@@ -1,0 +1,647 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:pso="http://www.patexpert.org/ontologies/pso.owl#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:pulo="http://www.patexpert.org/ontologies/pulo.owl#"
+	xmlns:sumo="http://www.owl-ontologies.com/sumo.owl#"
+  xml:base="http://www.patexpert.org/ontologies/pso.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="DisclosureOfInvention">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section provides a disclosure of the invention in such terms that the technical problems and its solution can be understood and also states the advantageous effects of the invention.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Description"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="B8Document">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasDescriptionSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasClaimsSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EPOPatentKindDocument"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >B8Document is a corrected title page of a B document, i.e. B1 or B2 document. It contains the following parts: bibliographic data, description, claims (in English), claims (in French), claims (in German) and drawings.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasBibliography_FrontPageSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasDrawingsSection"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Abstract">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="FrontPage"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Abstract is a Section that discloses the gist of the solution of the problem through the invention and the principal use or uses of the invention. It should generally not exceed 250 words and should preferably be in the range of 50 to 150 words, comprising one paragraph. Also if the abstract is both in English and in another language, the English text shall appear first.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="RepresentativeDrawing">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#FrontPage"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It is the Section that contains the representative figure or figures of the patent.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="UsageOfInvention">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Description"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >In this Section it is indicated explicitly, when it is not obvious from the description or nature of the invention, the way in which the invention is capable of exploitation in industry and the way in which it can be made and used, or, if it can only be used, the way in which it can be used. The term "industry" is to be understood in its broadest sense as in the Paris Convention for the Protection of Industrial Property.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="BestMode">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Description"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section sets forth at least the best mode contemplated by the applicant for carrying out the invention claimed. This is done in terms of examples, where appropriate, and with reference to the drawings.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="A2Document">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDescriptionSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasFrontPageSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentKindDocument"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDrawingsSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasClaimsSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A2Document is European patent application published without European search report. It consists of the following parts: a standardized front page, the description of the invention, the claims and the drawings.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="B2Document">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasBibliography_FrontPageSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasClaimsSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDrawingsSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >B2Document is a new European patent specification (amended specification) that contains the following parts: bibliographic data, description, claims (in English), claims (in French), claims (in German) and drawings.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentKindDocument"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDescriptionSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DependentClaim">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Claim that includes all the features of one or more other claims.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Claim"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="B9Document">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentKindDocument"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >B9Document is a complete reprint of a B document, i.e. B1 or B2 document.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#FrontPage">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="EPOPatentDocumentSection"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It refers to the contents of the front page. It comprises bibliography, abstract and representative drawing Sections.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="A9Document">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A9Document is a complete reprint of an A document, i.e. A1, A2 or A3 document. It has the same structure as A1, A2 or A3 documents.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasClaimsSection"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentKindDocument"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasAbstract_FrontPageSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasRepresentativeDrawing_FrontPageSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDrawingsSection"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDescriptionSection"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasSearchReportSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasBibliography_FrontPageSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="A3Document">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasRepresentativeDrawing_FrontPageSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A3Document is a separate publication of the European search report. It is structured from the following parts: bibliographic data, abstract, representative drawing (if any), European search report, documents considered to be relevant and annex to the European Search Report or European Patent Application.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSearchReportSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasBibliography_FrontPageSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentKindDocument"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAbstract_FrontPageSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="IndependentClaim">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Claim"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Claim that is independet and is not based on other claims.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SearchReport">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentDocumentSection"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section presents the results of the international search that emerged from the research of relevant prior art. It also contains the classification of the subject matter at least according to the International Patent Classification.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="A1Document">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasFrontPageSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasSearchReportSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasClaimsSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDescriptionSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDrawingsSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A1Document is European patent application published with International search report. It consists of the following parts: a standardized front page, the description of the invention, the claims, the drawings and the international search report.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentKindDocument"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="BackgroundArt">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section indicates the background art which, that according to the applicant, can be regarded as useful for the understanding, searching and examination of the invention.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Description"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SummaryOfTheInvention">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentDocumentSection"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#EPOPatentKindDocument">
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/sumo.owl#Patent"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Patent Documents can be classified into certain categories based on their structure. EPO, USPTO, JPO and WIPO are the main patent institutions that define typologies of patent documents structure. EPO classifies patents into A patent documents (patent applications) and type B patent documents (patent specifications).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Bibliography">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bibliography is a Section where bibliographic data are cited. Such data can be the inventor’s name, the application date, the title of the invention, references to other patents and other data as prescribed by the Administrative Instructions. Finally, bibliographic data should appear in a specific format.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#FrontPage"/>
+  </owl:Class>
+  <owl:Class rdf:ID="A8Document">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasRepresentativeDrawing_FrontPageSection"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A8Document is a corrected title page of an A document, i.e. A1 or A2 document. It contains the following parts: bibliographic data, abstract and representative drawing.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasAbstract_FrontPageSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#EPOPatentKindDocument"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasBibliography_FrontPageSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TechSolution">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section refers to the technical solution provided by the invention in a simple and understandable way.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#DisclosureOfInvention"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AdvantageousEffects">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section states the advantageous effects of the invention with reference to the background art.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#DisclosureOfInvention"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TechProblem">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section refers to the technical problems (even if not expressly stated as such) of the invention in a simple and understandable way.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#DisclosureOfInvention"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DrawingDescription">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section describes the figures in the drawings.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Description"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="B1Document">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDrawingsSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#EPOPatentKindDocument"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasBibliography_FrontPageSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasDescriptionSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >B1Document is a European patent specification (granted patent). It contains the following parts: bibliographic data, description, claims (in English), claims (in French), claims (in German) and drawings.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasClaimsSection"/>
+        </owl:onProperty>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MainClaim">
+    <rdfs:subClassOf rdf:resource="#IndependentClaim"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It is the basic independent claim that constitutes the base of the majority of the dependant claims.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Claim">
+    <rdfs:subClassOf rdf:resource="http://www.patexpert.org/ontologies/pulo.owl#Text"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It is a Text that comprises precise statements of the invention that the applicant wishes to protect.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="OtherInformation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentDocumentSection"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Description">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Description is the Section that contains free-text which is structured in terms of headings and paragraphs. The headings specify each topic addressed in the description. No restrictions apply to the length of the headings and paragraphs. The Description addresses six topics concerning the invention: technical field, background art, disclosure of the invention, brief description of the drawings, best mode, and way in which the invention can be exploited in industry and way in which it can be manufactured and used. The aforementioned section should be followed in all description sections, except when the nature of the invention requires a different approach.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentDocumentSection"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#BackgroundArt"/>
+              <owl:Class rdf:about="#BestMode"/>
+              <owl:Class rdf:about="#DisclosureOfInvention"/>
+              <owl:Class rdf:about="#DrawingDescription"/>
+              <owl:Class rdf:ID="TechnicalField"/>
+              <owl:Class rdf:about="#UsageOfInvention"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="hasSubSection"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#TechnicalField">
+    <rdfs:subClassOf rdf:resource="#Description"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It is the Section that specifies the technical field to which the invention relates.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Drawings">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#EPOPatentDocumentSection"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This Section, which is usually the last part of a patent application, contains mostly drawings such as flow sheets and diagrams. Drawings shall not contain text matter, except a single word or words, when absolutely indispensable.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#EPOPatentDocumentSection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >It refers to the sections that constitute a patent document that draws upon EPO’s layout standards.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdf:Description rdf:about="http://www.patexpert.org/ontologies/pulo.owl#Section">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        ></rdfs:comment>
+      </rdf:Description>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hasOptional"/>
+  <owl:ObjectProperty rdf:ID="hasUsageOfInvention_DescriptionSection">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="hasSection"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasBibliography_FrontPageSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isMandatoryIn"/>
+  <owl:ObjectProperty rdf:ID="hasDrawingDescription_DescriptionSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="refersToClaim">
+    <rdfs:domain rdf:resource="#DependentClaim"/>
+    <rdfs:range rdf:resource="#IndependentClaim"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasFrontPageSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDisclosureOfInvention_DescriptionSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasDrawingsSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasBackroundArt_DescriptionSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasAbstract_FrontPageSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTechnicalField_DescriptionSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasBestMode_DescriptionSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasRepresentativeDrawing_FrontPageSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasClaimsSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasStructure">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/sumo.owl#Patent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="isOptionalIn"/>
+  <owl:ObjectProperty rdf:ID="includeIn">
+    <rdfs:domain rdf:resource="#Claim"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasTitle_FrontPage"/>
+  <owl:ObjectProperty rdf:about="#hasSearchReportSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasDescriptionSection">
+    <rdfs:subPropertyOf rdf:resource="#hasSection"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMandatory"/>
+  <owl:ObjectProperty rdf:ID="contains">
+    <rdfs:range rdf:resource="#Claim"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="hasNumber">
+    <rdfs:domain rdf:resource="#Claim"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="isWrittenIn">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/sumo.owl#Patent"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >English</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >German</rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >French</rdf:first>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="startsInPage"/>
+  <owl:DatatypeProperty rdf:ID="hasPages"/>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.2, Build 339)  http://protege.stanford.edu -->

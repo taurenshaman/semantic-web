@@ -1,0 +1,1219 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >classified
+    </owl:versionInfo>
+    <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >397
+    </owl:versionInfo>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The DOLCE and DnS ontologies. OWL engineering by Aldo Gangemi.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="state">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="stative"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Within stative occurrences, we distinguish between  states and processes according to homeomericity: sitting is classified as a state  but running is classified as a process, since there are (very short) temporal parts  of a running that are not themselves runnings.In general, states differ from situations because they are not assumed to have a description from which they depend. They can be sequenced by some course, but they do not require a description as a unifying criterion.On the other hand, at any time, one can conceive a description that asserts the constraints by which a state of a certian type is such, and in this case, it becomes a situation.Since the decision of designing an explicit description that unifies a perdurant depends on context, task, interest, application, etc., when aligning an ontology do DLP, there can be indecision on where to align a state-oriented class. For example, in the WordNet alignment, we have decided to put only some physical states under 'state', e.g. 'turgor', in order to stress the social orientedness of DLP. But whereas we need to talk explicitly of the criteria by which we conceive turgor states, these will be put under 'situation'.Similar considerations are made for the other types of perdurants in DOLCE.A different notion of event (dealing with change) is currently investigated for further developments: being 'achievement', 'accomplishment', 'state', 'event', etc. can be also considered 'aspects' of processes or of parts of them. For example, the same process 'rock erosion in the Sinni valley' can be conceptualized as an accomplishment (what has brought the current state that e.g. we are trying to explain), as an achievement (the erosion process as the result of a previous accomplishment), as a state (if we collapse the time interval of the erosion into a time point), or as an event (what has changed our focus from a state to another).In the erosion case, we could have good motivations to shift from one aspect to another: a) causation focus, b) effectual focus, c) condensation d) transition (causality).If we want to consider all the aspects of a process together, we need to postulate a unifying descriptive set of criteria (i.e. a 'description'), according to which that process is circumstantiated in a 'situation'. The different aspects will arise as a parts of a same situation.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="abstract">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The main characteristic of abstract entities is that  they do not have spatial nor temporal qualities, and they are not qualities themselves.  The only class of abstract entities we consider in the present version of the upper  ontology is that of quality regions (or simply regions). Quality spaces are special  kinds of quality regions, being mereological sums of all the regions related to a certain quality type. The other examples of abstract entities (sets and facts) are only  indicative.</rdfs:comment>
+    <owl:disjointWith>
+      <rdf:Description rdf:ID="perdurant">
+        <owl:disjointWith>
+          <owl:Class rdf:ID="quality"/>
+        </owl:disjointWith>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Perdurants (AKA occurrences) comprise what are variously called events, processes, phenomena, activities and states. They can have temporal parts or spatial parts. For instance, the first movement of (an execution of) a symphony is a temporal part of the symphony. On the other hand, the play performed by the left side of the orchestra is a spatial part. In both cases, these parts are occurrences themselves. We assume that objects cannot be parts of occurrences, but rather they participate in them. Perdurants extend in time by accumulating different temporal parts, so that, at any time they are present, they are only partially present, in  the sense that some of their proper temporal parts (e.g., their previous or future phases) may be not present. E.g., the piece of paper you are reading now is wholly present, while some temporal parts of your reading are not present yet, or any more. Philosophers say that endurants are entities that are in time, while lacking temporal parts (so to speak, all their parts flow with them in time). Perdurants, on the contrary, are entities that happen in time, and can have temporal parts (all their parts are fixed in time).</rdfs:comment>
+        <rdfs:subClassOf>
+          <rdf:Description rdf:ID="spatio-temporal-particular">
+            <owl:equivalentClass>
+              <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                  <owl:Class>
+                    <owl:unionOf rdf:parseType="Collection">
+                      <rdf:Description rdf:ID="endurant">
+                        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                        >The main characteristic of endurants is that all of them are independent essential wholes. This does not mean that the corresponding property (being an endurant) carries proper unity, since there is  no common unity criterion for endurants. Endurants can 'genuinely' change in time,  in the sense that the very same endurant as a whole can have incompatible properties at different times. To see this, suppose that an endurant - say 'this paper' - has a  property at a time t 'it's white', and a different, incompatible property at time t'  'it's yellow': in both cases we refer to the whole object, without picking up any  particular part of it. Within endurants, we distinguish between physical and non-physical  endurants, according to whether they have direct spatial qualities. Within physical  endurants, we distinguish between amounts of matter, objects, and features.</rdfs:comment>
+                        <owl:disjointWith rdf:resource="#abstract"/>
+                        <owl:disjointWith rdf:resource="#perdurant"/>
+                        <owl:disjointWith>
+                          <owl:Class rdf:about="#quality"/>
+                        </owl:disjointWith>
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:onProperty>
+                              <rdf:Description rdf:ID="part">
+                                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                >The most generic part relation, reflexive, asymmetric, and transitive.</rdfs:comment>
+                                <owl:inverseOf>
+                                  <owl:TransitiveProperty rdf:ID="part-of"/>
+                                </owl:inverseOf>
+                                <rdfs:domain>
+                                  <rdf:Description rdf:ID="particular">
+                                    <rdfs:comment rdf:datatype=
+                                    "http://www.w3.org/2001/XMLSchema#string"
+                                    >AKA 'entity'.Any individual in the DOLCE domain of discourse. The extensional coverage of DOLCE is as large as possible, since it ranges on 'possibilia', i.e all possible individuals that can be postulated by means of DOLCE axioms. Possibilia include physical objects, substances, processes, qualities,  conceptual regions, non-physical objects, collections and even arbitrary sums of objects.The class 'particular' features a covering partition that includes: endurant, perdurant, quality, and abstract. There are also some subclasses defined as unions of subclasses of 'particular' for special purposes: spatio-temporal-particular (any particular except abstracts)- physical-realization (any realization of an information object, defined in the ExtendedDnS ontology).</rdfs:comment>
+                                  </rdf:Description>
+                                </rdfs:domain>
+                                <rdfs:subPropertyOf>
+                                  <rdf:Description rdf:ID="immediate-relation">
+                                    <rdfs:domain rdf:resource="#particular"/>
+                                    <owl:inverseOf>
+                                      <rdf:Description rdf:ID="immediate-relation-i">
+                                        <rdfs:range rdf:resource="#particular"/>
+                                        <owl:inverseOf rdf:resource="#immediate-relation"/>
+                                        <rdfs:comment rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#string"
+                                        >A relation that holds without additional mediating individuals. In logical terms, a non-composed relation.</rdfs:comment>
+                                        <rdfs:domain rdf:resource="#particular"/>
+                                      </rdf:Description>
+                                    </owl:inverseOf>
+                                    <rdfs:comment rdf:datatype=
+                                    "http://www.w3.org/2001/XMLSchema#string"
+                                    >A relation that holds without  additional mediating individuals. In logical terms, a non-composed relation.</rdfs:comment>
+                                    <rdfs:range rdf:resource="#particular"/>
+                                  </rdf:Description>
+                                </rdfs:subPropertyOf>
+                                <rdfs:range rdf:resource="#particular"/>
+                              </rdf:Description>
+                            </owl:onProperty>
+                            <owl:allValuesFrom rdf:resource="#endurant"/>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:onProperty>
+                              <owl:ObjectProperty rdf:ID="participant-in"/>
+                            </owl:onProperty>
+                            <owl:someValuesFrom rdf:resource="#perdurant"/>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:onProperty>
+                              <rdf:Description rdf:ID="specific-constant-constituent">
+                                <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+                                <owl:inverseOf>
+                                  <owl:ObjectProperty rdf:ID="specific-constant-constituent-of"/>
+                                </owl:inverseOf>
+                                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                >'Constituent' should depend on some layering of  the ontology. For example, scientific granularities or ontological 'strata' are  typical layerings. A constituent is a part belonging to a lower layer. Since layering is actually a partition of the ontology, constituents are not properly classified as parts, although this kinship can be intuitive for common sense. Example of specific constant constituents are the entities constituting a setting (a situation), whilethe entities constituting a collection are examples of generic constant constituents.</rdfs:comment>
+                                <rdfs:domain rdf:resource="#particular"/>
+                                <rdfs:range rdf:resource="#particular"/>
+                              </rdf:Description>
+                            </owl:onProperty>
+                            <owl:allValuesFrom rdf:resource="#endurant"/>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                        <rdfs:subClassOf rdf:resource="#spatio-temporal-particular"/>
+                      </rdf:Description>
+                      <rdf:Description rdf:about="#perdurant">
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:allValuesFrom rdf:resource="#perdurant"/>
+                            <owl:onProperty rdf:resource="#specific-constant-constituent"/>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:onProperty rdf:resource="#part"/>
+                            <owl:allValuesFrom rdf:resource="#perdurant"/>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:allValuesFrom>
+                              <owl:Class rdf:ID="temporal-quality"/>
+                            </owl:allValuesFrom>
+                            <owl:onProperty>
+                              <owl:ObjectProperty rdf:ID="has-quality"/>
+                            </owl:onProperty>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:onProperty>
+                              <owl:ObjectProperty rdf:about="#has-quality"/>
+                            </owl:onProperty>
+                            <owl:someValuesFrom>
+                              <owl:Class rdf:ID="temporal-location_q"/>
+                            </owl:someValuesFrom>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                        <rdfs:subClassOf>
+                          <owl:Restriction>
+                            <owl:someValuesFrom rdf:resource="#endurant"/>
+                            <owl:onProperty>
+                              <rdf:Description rdf:ID="participant">
+                                <rdfs:range rdf:resource="#endurant"/>
+                                <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+                                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                >The immediate relation holding between endurants and perdurants (e.g. in 'the car is running').Participation can be constant (in all parts of the perdurant, e.g. in 'the car is running'), or temporary (in only some parts, e.g. in 'I'm electing the president').A 'functional' participant is specialized for those forms of participation that depend on the nature of participants, processes, or on the intentionality of agentive participants. Traditional 'thematic role' should be mapped to functional participation.For relations holding between participants in a same perdurant, see the co-participates relation.</rdfs:comment>
+                                <owl:inverseOf>
+                                  <owl:ObjectProperty rdf:about="#participant-in"/>
+                                </owl:inverseOf>
+                                <rdfs:domain rdf:resource="#perdurant"/>
+                              </rdf:Description>
+                            </owl:onProperty>
+                          </owl:Restriction>
+                        </rdfs:subClassOf>
+                      </rdf:Description>
+                      <owl:Class rdf:about="#quality"/>
+                    </owl:unionOf>
+                  </owl:Class>
+                  <rdf:Description rdf:about="#particular"/>
+                </owl:intersectionOf>
+              </owl:Class>
+            </owl:equivalentClass>
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Dummy class for optimizing some property universes. It includes all entities that are not reifications of universals ('abstracts'), i.e. those entities that are in space-time.</rdfs:comment>
+          </rdf:Description>
+        </rdfs:subClassOf>
+      </rdf:Description>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#quality"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#particular"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:complementOf>
+              <owl:Class rdf:about="#temporal-location_q"/>
+            </owl:complementOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#has-quality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:complementOf>
+              <owl:Class rdf:ID="spatial-location_q"/>
+            </owl:complementOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#has-quality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="time-interval">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="temporal-region"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A temporal region, measured according to a calendar.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#quality">
+    <rdfs:subClassOf rdf:resource="#spatio-temporal-particular"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#particular"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="inherent-in"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Qualities can be seen as the basic entities we can  perceive or measure: shapes, colors, sizes, sounds, smells, as well as weights, lengths,  electrical charges... 'Quality' is often used as a synonymous of 'property', but this is  not the case in this upper ontology: qualities are particulars, properties are universals.  Qualities inhere to entities: every entity (including qualities themselves) comes with  certain qualities, which exist as long as the entity exists.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="space-region">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#space-region"/>
+        <owl:onProperty rdf:resource="#part"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="physical-region"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#spatial-location_q"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="q-location-of"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An ordinary space: geographical, cosmological, anatomical, topographic, etc.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="amount-of-matter">
+    <rdfs:subClassOf>
+      <rdf:Description rdf:ID="physical-endurant">
+        <rdfs:subClassOf rdf:resource="#endurant"/>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <rdf:Description rdf:ID="physical-quality">
+                <rdfs:subClassOf>
+                  <owl:Restriction>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:ID="q-location"/>
+                    </owl:onProperty>
+                    <owl:allValuesFrom>
+                      <owl:Class rdf:about="#physical-region"/>
+                    </owl:allValuesFrom>
+                  </owl:Restriction>
+                </rdfs:subClassOf>
+                <rdfs:subClassOf>
+                  <owl:Restriction>
+                    <owl:allValuesFrom rdf:resource="#physical-quality"/>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:about="#has-quality"/>
+                    </owl:onProperty>
+                  </owl:Restriction>
+                </rdfs:subClassOf>
+                <rdfs:subClassOf rdf:resource="#quality"/>
+                <rdfs:subClassOf>
+                  <owl:Restriction>
+                    <owl:someValuesFrom rdf:resource="#physical-endurant"/>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:about="#inherent-in"/>
+                    </owl:onProperty>
+                  </owl:Restriction>
+                </rdfs:subClassOf>
+                <owl:disjointWith>
+                  <owl:Class rdf:ID="abstract-quality"/>
+                </owl:disjointWith>
+                <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >A quality inherent in a physical endurant.</rdfs:comment>
+              </rdf:Description>
+            </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#has-quality"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#spatial-location_q"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#has-quality"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#specific-constant-constituent"/>
+            <owl:allValuesFrom rdf:resource="#physical-endurant"/>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#physical-quality"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#has-quality"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#part"/>
+            <owl:allValuesFrom rdf:resource="#physical-endurant"/>
+          </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >An endurant having a direct physical (at least spatial) quality.</rdfs:comment>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="non-physical-endurant"/>
+        </owl:disjointWith>
+        <owl:disjointWith>
+          <owl:Class rdf:ID="arbitrary-sum"/>
+        </owl:disjointWith>
+      </rdf:Description>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The common trait of amounts of matter is that they are endurants with no unity (according to Gangemi et a. 2001 none of them is an essential  whole). Amounts of matter - 'stuffs' referred to by mass nouns like 'gold', 'iron', 'wood',  'sand', 'meat', etc. - are mereologically  invariant, in the sense that they change their  identity when they change some parts.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="spatio-temporal-region">
+    <rdfs:subClassOf rdf:resource="#space-region"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Any region resulting from the composition of a space region with a temporal region, i.e. being present in region r at time t.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="relevant-part">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="feature"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Features that are relevant parts of their host, like a bump or an edge.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="quality-space">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A quality space is a topologically maximal region. The constraint of maximality cannot be given completely in OWL, but a constraint is given that creates a partition out of all quality spaces (e.g. no two quality spaces can overlap mereologically).</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:ID="region">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >We distinguish between a quality (e.g., the color  of a specific rose), and its value (e.g., a particular shade of red). The latter  is called quale, and describes the position of an individual quality within a certain  conceptual space (called here quality space) Gardenfors (2000). So when we say that  two roses have (exactly) the same color, we mean that their color qualities, which  are distinct, have the same position in the color space, that is they have the same  color quale.</rdfs:comment>
+            <rdfs:subClassOf rdf:resource="#abstract"/>
+            <rdfs:subClassOf>
+              <owl:Restriction>
+                <owl:allValuesFrom rdf:resource="#region"/>
+                <owl:onProperty rdf:resource="#part"/>
+              </owl:Restriction>
+            </rdfs:subClassOf>
+          </rdf:Description>
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <owl:Class>
+                <owl:complementOf rdf:resource="#quality-space"/>
+              </owl:Class>
+            </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="overlaps"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="dependent-place">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#feature"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A feature that is not part of its host, like a hole in a piece of cheese, the underneath of a table, the front of a house, or the shadow of a tree.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#spatial-location_q">
+    <rdfs:subClassOf rdf:resource="#physical-quality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A physical quality, q-located in (whose value is given within) ordinary spaces (geographical coordinates, cosmological positions, anatomical axes, etc.).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#non-physical-endurant">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#has-quality"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#abstract-quality"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#part"/>
+        <owl:allValuesFrom rdf:resource="#non-physical-endurant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#endurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An endurant with no mass, generically constantly depending on some agent. Non-physical endurants can have physical constituents (e.g. in the case of members of a collection).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#abstract-quality">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#q-location"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="abstract-region"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#inherent-in"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#non-physical-endurant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#quality"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#abstract-quality"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#has-quality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A quality inherent in a non-physical endurant.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="proposition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The abstract content of a proposition. Abstract content is purely combinatorial: from this viewpoint, any content that can be generated by means of combinatorial rules is assumed to exist in the domain of quantification (reified abstracts).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#abstract"/>
+  </owl:Class>
+  <owl:Class rdf:ID="non-physical-object">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <rdf:Description rdf:ID="generically-dependent-on">
+            <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+            <rdfs:range rdf:resource="#particular"/>
+            <rdfs:domain rdf:resource="#particular"/>
+            <owl:inverseOf>
+              <owl:ObjectProperty rdf:ID="generic-dependent"/>
+            </owl:inverseOf>
+          </rdf:Description>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#physical-endurant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#non-physical-endurant"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#non-physical-object"/>
+        <owl:onProperty rdf:resource="#part"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Formerly known as description. A unitary endurant with no mass (non-physical), generically constantly depending on some agent, on some communication act, and indirectly on some agent participating in that act. Both descriptions (in the now current sense) and concepts are non-physical objects.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#abstract-region">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A region at which only abstract qualities can be directly located. It assumes some metrics for abstract (neither physical nor temporal) properties.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#abstract-region"/>
+        <owl:onProperty rdf:resource="#part"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#abstract-quality"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#q-location-of"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#region"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#temporal-region"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#temporal-region">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A region at which only temporal qualities can be  directly located. It assumes a metrics for time.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#part"/>
+        <owl:allValuesFrom rdf:resource="#temporal-region"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#temporal-quality"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#q-location-of"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#region"/>
+  </owl:Class>
+  <owl:Class rdf:about="#physical-region">
+    <rdfs:subClassOf rdf:resource="#region"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#part"/>
+        <owl:allValuesFrom rdf:resource="#physical-region"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#physical-quality"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#q-location-of"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#temporal-region"/>
+    <owl:disjointWith rdf:resource="#abstract-region"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A region at which only physical qualities can be  directly located. It assumes some metrics for physical properties.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="set">
+    <rdfs:subClassOf rdf:resource="#abstract"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A mathematical set.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#stative">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An occurrence-type is stative or eventive according  to whether it holds of the mereological sum of two of its instances, i.e. if it is  cumulative or not. A sitting occurrence is stative since the sum of two sittings  is still a sitting occurrence.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#perdurant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="quale">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An atomic region.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#region"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#region"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="atomic-part-of"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="event">
+    <rdfs:subClassOf rdf:resource="#perdurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >An occurrence-type is stative or eventive according  to whether it holds of the mereological sum of two of its instances, i.e. if it is cumulative or not. A sitting occurrence is stative since the sum of two sittings is still a sitting occurrence.In general, events differ from situations because they are not assumed to have a description from which they depend. They can be sequenced by some course, but they do not require a description as a unifying criterion.On the other hand, at any time, one can conceive a description that asserts the constraints by which an event of a certian type is such, and in this case, it becomes a situation.Since the decision of designing an explicit description that unifies a perdurant depends on context, task, interest, application, etc., when aligning an ontology do DLP, there can be indecision on where to align an event-oriented class. For example, in the WordNet alignment, we have decided to put only some physical events under 'event', e.g. 'discharge', in order to stress the social orientedness of DLP. But whereas we need to talk explicitly of the criteria by which we conceive discharge events, these will be put under 'situation'.Similar considerations are made for the other types of perdurants in DOLCE.A different notion of event (dealing with change) is currently investigated for further developments: being 'achievement', 'accomplishment', 'state', 'event', etc. can be also considered 'aspects' of processes or of parts of them. For example, the same process 'rock erosion in the Sinni valley' can be conceptualized as an accomplishment (what has brought the current state that e.g. we are trying to explain), as an achievement (the erosion process as the result of a previous accomplishment), as a state (if we collapse the time interval of the erosion into a time point), or as an event (what has changed our focus from a state to another).In the erosion case, we could have good motivations to shift from one aspect to another: a) causation focus, b) effectual focus, c) condensation d) transition (causality).If we want to consider all the aspects of a process together, we need to postulate a unifying descriptive set of criteria (i.e. a 'description'), according to which that process is circumstantiated in a 'situation'. The different aspects will arise as a parts of a same situation.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#temporal-location_q">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#temporal-quality"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A temporal location quality.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#arbitrary-sum">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#part"/>
+        <owl:someValuesFrom rdf:resource="#endurant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#endurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AKA arbitrary-collection.The mereological sum of any two or more endurants (physical or not). Arbitrary sums have no unity criterion (they are 'extensional').</rdfs:comment>
+    <owl:disjointWith rdf:resource="#non-physical-endurant"/>
+  </owl:Class>
+  <owl:Class rdf:about="#temporal-quality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A quality inherent in a perdurant.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#quality"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#has-quality"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#temporal-quality"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#perdurant"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#inherent-in"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#temporal-region"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#q-location"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#physical-quality"/>
+    <owl:disjointWith rdf:resource="#abstract-quality"/>
+  </owl:Class>
+  <owl:Class rdf:ID="achievement">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eventive occurrences (events) are called achievements  if they are atomic, otherwise they are accomplishments.Further developments: being 'achievement', 'accomplishment', 'state', 'event', etc. can be also considered 'aspects' of processes or of parts of them. For example, the same process 'rock erosion in the Sinni valley' can be seen as an accomplishment (what has brought the current state that e.g. we are trying to explain), as an achievement (the erosion process as the result of a previous accomplishment), as a state (collapsing the time interval of the erosion into a time point), as an event (what has changed our focus from a state to another).In the erosion case, we could have good motivations to shift from one aspect to another: a) causation focus, b) effectual focus, c) condensation d) transition (causality).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#event"/>
+  </owl:Class>
+  <owl:Class rdf:about="#feature">
+    <rdfs:subClassOf rdf:resource="#physical-endurant"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#physical-endurant"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="host"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#amount-of-matter"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Features are 'parasitic entities', that exist insofar their host exists. Typical examples of features are holes, bumps, boundaries, or spots of color. Features may be relevant parts of their host, like a bump or an edge, or dependent regions like a hole in a piece of cheese, the underneath of a table, the front of a house, or the shadow of a tree, which are not parts of their host. All features are essential wholes, but no common unity criterion may exist for all of them. However, typical features have a topological unity, as they are singular entities.Here only features of physical endurants are considered.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="abstract-location">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="exact-location"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Analytical location holding between non-physical endurants and abstract regions.</rdfs:comment>
+    <rdfs:range rdf:resource="#abstract-region"/>
+    <rdfs:domain rdf:resource="#non-physical-endurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="abstract-location-of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="specific-constant-dependent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The constant dependence between two individuals. Taken here as primitive.</rdfs:comment>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+    <owl:inverseOf>
+      <rdf:Description rdf:ID="specifically-constantly-dependent-on">
+        <rdfs:domain rdf:resource="#particular"/>
+        <owl:inverseOf rdf:resource="#specific-constant-dependent"/>
+        <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+        <rdfs:range rdf:resource="#particular"/>
+      </rdf:Description>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="strong-connection">
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:subPropertyOf>
+      <rdf:Description rdf:ID="mediated-relation">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >A relation that composes other  relations. For example, a participation relation composed with a representation relation.Composed relation cannot be directly expressed in OWL-DL, then (at least some) compositions are expressed as class or restriction axioms.</rdfs:comment>
+        <rdfs:range rdf:resource="#particular"/>
+        <rdfs:domain rdf:resource="#particular"/>
+        <owl:inverseOf>
+          <owl:ObjectProperty rdf:ID="mediated-relation-i"/>
+        </owl:inverseOf>
+      </rdf:Description>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf rdf:resource="#strong-connection"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >By strong connection here we mean a connection between  two entities that share a boundary.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="spatio-temporally-present-at">
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="spatio-temporal-presence-of"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#exact-location"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#spatio-temporal-region"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="boundary-of">
+    <rdfs:subPropertyOf>
+      <rdf:Description rdf:ID="proper-part-of">
+        <rdfs:range rdf:resource="#particular"/>
+        <rdfs:subPropertyOf>
+          <owl:TransitiveProperty rdf:about="#part-of"/>
+        </rdfs:subPropertyOf>
+        <rdfs:domain rdf:resource="#particular"/>
+        <owl:inverseOf>
+          <rdf:Description rdf:ID="proper-part">
+            <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >The proper part relation: irreflexive, antisymmetric, and transitive.</rdfs:comment>
+            <rdfs:domain rdf:resource="#particular"/>
+            <rdfs:subPropertyOf rdf:resource="#part"/>
+            <owl:inverseOf rdf:resource="#proper-part-of"/>
+            <rdfs:range rdf:resource="#particular"/>
+          </rdf:Description>
+        </owl:inverseOf>
+      </rdf:Description>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A boundary here is taken to be a part (mereological treatment). Consequently, in the case of endurants, (reified) boundaries are features.</rdfs:comment>
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="boundary"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#has-quality">
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:range rdf:resource="#quality"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#inherent-in"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#specific-constant-constituent-of">
+    <owl:inverseOf rdf:resource="#specific-constant-constituent"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="r-location">
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A relation for representing regions within other regions, e.g. in measurement spaces (space composition).The result of r-location composition is a new 'composed region', which can either preserve the same region type (e.g. physical+physical->physical, or  physical+abstract->physical), or not (e.g. physical+abstract->abstract). See 'composition description' for more details.In some cases, space composition is conventional, i.e. a space is just 'located' at another space, as in the case of measurement spaces:(direct composition):   r r-location r1In other cases, r-location implies a complex path, e.g. :(homogeneous composition):   r q-location-of q inherent-in x has-quality q1 q-location r1(heterogeneous composition across endurants and perdurants):   r q-location-of q inherent-in e participant-in p has-quality q1 q-location r1(heterogeneous composition across physical and non-physical endurants):   r q-location-of q inherent-in pe specific-constant-dependent npe has-quality q1 q-location r1</rdfs:comment>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="r-location-of"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#region"/>
+    <rdfs:domain rdf:resource="#region"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#boundary">
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:subPropertyOf rdf:resource="#proper-part"/>
+    <owl:inverseOf rdf:resource="#boundary-of"/>
+    <rdfs:domain rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#abstract-location-of">
+    <owl:inverseOf rdf:resource="#abstract-location"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="exact-location-of"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#abstract-region"/>
+    <rdfs:range rdf:resource="#non-physical-endurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="total-temporary-participant-in">
+    <rdfs:domain rdf:resource="#endurant"/>
+    <rdfs:range rdf:resource="#perdurant"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="temporary-participant-in"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="total-temporary-participant"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#total-temporary-participant">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="temporary-participant"/>
+    </rdfs:subPropertyOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The perdurant p has a participant e that temporarily participates in p with all its parts, e.g. in 'I played the concert' (where I actually played just an ouverture).See also 'temporary-participant'.</rdfs:comment>
+    <rdfs:range rdf:resource="#endurant"/>
+    <owl:inverseOf rdf:resource="#total-temporary-participant-in"/>
+    <rdfs:domain rdf:resource="#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="life">
+    <rdfs:domain rdf:resource="#endurant"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:ID="constant-participant-in"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#perdurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Total constant participation applied to the mereological sum of the perdurants in which an endurant participates.</rdfs:comment>
+    <owl:inverseOf>
+      <rdf:Description rdf:ID="life-of">
+        <rdfs:domain rdf:resource="#perdurant"/>
+        <rdfs:subPropertyOf>
+          <owl:ObjectProperty rdf:ID="constant-participant"/>
+        </rdfs:subPropertyOf>
+        <rdfs:range rdf:resource="#endurant"/>
+        <owl:inverseOf rdf:resource="#life"/>
+      </rdf:Description>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporary-participant">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Only some parts of the perdurant p have a participant e.In fact, participation can be constant (in all parts of the perdurant, e.g. in 'the car is running'), or temporary (in only some parts, e.g. in 'I'm electing the president').Implicitly, this relation has a temporal indexing.If needed, in OWL one can derive such indexing by expliciting what parts of p have e as _constant_ participant.An appropriate OWL axiom is created to bind this relation to a proper part of it, which has the temporary-participant as a constant one.</rdfs:comment>
+    <rdfs:range rdf:resource="#endurant"/>
+    <rdfs:subPropertyOf rdf:resource="#participant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#temporary-participant-in"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#perdurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="sibling-part">
+    <owl:inverseOf rdf:resource="#sibling-part"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mereological sibling: having a common whole</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#mediated-relation"/>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#participant-in">
+    <rdfs:range rdf:resource="#perdurant"/>
+    <rdfs:domain rdf:resource="#endurant"/>
+    <owl:inverseOf rdf:resource="#participant"/>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#q-location">
+    <rdfs:domain rdf:resource="#quality"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#q-location-of"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#region"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The immediate relation holding for qualities and regions. See 'generic location' branching for the various mediated relations that embed q-location.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="partly-compresent">
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:subPropertyOf rdf:resource="#mediated-relation"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A composed (mediated) relation used here to make relations 'temporary': by adding it as a superrelation, the effect is that the two related endurants cannot be present at all the same time intervals, but are compresent at least at some time interval (see related axiom).In FOL, the same constraint can be stated directly by coreference.This workaround can be used to index time of relations that involve reciprocal dependency, but it cannot be used in general with relations involving multiple strata of reality. For example, _about_ relation can be temporally indexed, without involving that the time of the information object overlaps with the time of the entity the information is about (but this works for e.g. the _realizes_ relation between information objects and entities whatsoever). The different temporal constraints of about vs. expresses probably derive from the dependency of aboutness from conception (to be about x, an information object should also express a description d that is satisfied by a situation including x, then temporal overlapping of _about_ is true in virtue of d). On the other hand, even conceives cannot be indexed in this way, because overlapping does not hold between the time og the conceiving agent, and the conceived description (or situation).</rdfs:comment>
+    <owl:inverseOf rdf:resource="#partly-compresent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporary-participant-in">
+    <rdfs:subPropertyOf rdf:resource="#participant-in"/>
+    <owl:inverseOf rdf:resource="#temporary-participant"/>
+    <rdfs:range rdf:resource="#perdurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >x participates in some of y's parts.</rdfs:comment>
+    <rdfs:domain rdf:resource="#endurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="q-present-at">
+    <rdfs:subPropertyOf rdf:resource="#mediated-relation"/>
+    <rdfs:domain rdf:resource="#physical-quality"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="time-of-q-presence-of"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#time-interval"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Presence of a physical quality when inheres in  an endurant.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#r-location-of">
+    <owl:inverseOf rdf:resource="#r-location"/>
+    <rdfs:range rdf:resource="#region"/>
+    <rdfs:domain rdf:resource="#region"/>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="temporary-part-of">
+    <rdfs:subPropertyOf rdf:resource="#partly-compresent"/>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#part-of"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#endurant"/>
+    <rdfs:range rdf:resource="#endurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="temporary-part"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#generic-dependent">
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf rdf:resource="#generically-dependent-on"/>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The dependence on an individual of a given type at some time. This is traditionally a relation between particulars and universals, but this one states that x generically depends on y if a z different from y, but with the same properties, can be equivalently its depend-on.This is a temporally-indexed relation (embedded in this syntax).</rdfs:comment>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="generic-location-of">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="generic-location"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#mediated-relation-i"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#exact-location">
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#generic-location"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#region"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A location relation bounded to regions and defined analytically through the composition of inherence and q-location. This is the analytical version of 'generic location'.</rdfs:comment>
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#exact-location-of"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-t-quality">
+    <rdfs:range rdf:resource="#quality"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="t-inherent-in"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf rdf:resource="#has-quality"/>
+    <rdfs:domain rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="temporary-atomic-part">
+    <rdfs:domain rdf:resource="#endurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="temporary-atomic-part-of"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Having an atom as part at a time t.</rdfs:comment>
+    <rdfs:range rdf:resource="#endurant"/>
+    <rdfs:subPropertyOf>
+      <rdf:Description rdf:ID="temporary-proper-part">
+        <rdfs:subPropertyOf>
+          <owl:ObjectProperty rdf:about="#temporary-part"/>
+        </rdfs:subPropertyOf>
+        <rdfs:subPropertyOf rdf:resource="#proper-part"/>
+        <owl:inverseOf>
+          <rdf:Description rdf:ID="temporary-proper-part-of">
+            <rdfs:subPropertyOf rdf:resource="#temporary-part-of"/>
+            <rdfs:subPropertyOf rdf:resource="#proper-part-of"/>
+            <owl:inverseOf rdf:resource="#temporary-proper-part"/>
+            <rdfs:domain rdf:resource="#endurant"/>
+            <rdfs:range rdf:resource="#endurant"/>
+          </rdf:Description>
+        </owl:inverseOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Being proper part at time t. It holds for endurants only. This is important to model proper parts that can change or be lost over time without affecting the identity of the whole.</rdfs:comment>
+        <rdfs:range rdf:resource="#endurant"/>
+        <rdfs:domain rdf:resource="#endurant"/>
+      </rdf:Description>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#atomic-part-of">
+    <rdfs:range rdf:resource="#particular"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="atomic-part"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:subPropertyOf>
+      <owl:TransitiveProperty rdf:about="#part-of"/>
+    </rdfs:subPropertyOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#exact-location-of">
+    <rdfs:range rdf:resource="#particular"/>
+    <owl:inverseOf rdf:resource="#exact-location"/>
+    <rdfs:domain rdf:resource="#region"/>
+    <rdfs:subPropertyOf rdf:resource="#generic-location-of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="weak-connection">
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The basic connection, not requiring a  common boundary.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#weak-connection"/>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporary-atomic-part-of">
+    <rdfs:range rdf:resource="#endurant"/>
+    <owl:inverseOf rdf:resource="#temporary-atomic-part"/>
+    <rdfs:domain rdf:resource="#endurant"/>
+    <rdfs:subPropertyOf rdf:resource="#temporary-proper-part-of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="total-constant-participant-in">
+    <rdfs:domain rdf:resource="#endurant"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#constant-participant-in"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#perdurant"/>
+    <owl:inverseOf>
+      <rdf:Description rdf:ID="total-constant-participant">
+        <rdfs:domain rdf:resource="#perdurant"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >The perdurant p has a participant e that constantly participates in p with all its parts, e.g. in 'I played the concert' (where the concert is a solo concert).</rdfs:comment>
+        <owl:inverseOf rdf:resource="#total-constant-participant-in"/>
+        <rdfs:subPropertyOf>
+          <owl:ObjectProperty rdf:about="#constant-participant"/>
+        </rdfs:subPropertyOf>
+        <rdfs:range rdf:resource="#endurant"/>
+      </rdf:Description>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#t-inherent-in">
+    <owl:inverseOf rdf:resource="#has-t-quality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The immediate relation holding for qualities and entities at time t.</rdfs:comment>
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#inherent-in"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#quality"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="quale-of">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="has-quale"/>
+    </owl:inverseOf>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#q-location-of"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="#quality"/>
+    <rdfs:domain rdf:resource="#quale"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#atomic-part">
+    <rdfs:subPropertyOf rdf:resource="#part"/>
+    <owl:inverseOf rdf:resource="#atomic-part-of"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The part relation between a particular and an atom.</rdfs:comment>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#constant-participant-in">
+    <rdfs:subPropertyOf rdf:resource="#participant-in"/>
+    <rdfs:domain rdf:resource="#endurant"/>
+    <rdfs:range rdf:resource="#perdurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#constant-participant"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="generic-constituent-of">
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf>
+      <rdf:Description rdf:ID="generic-constituent">
+        <rdfs:domain rdf:resource="#particular"/>
+        <owl:inverseOf rdf:resource="#generic-constituent-of"/>
+        <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+        <rdfs:range rdf:resource="#particular"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >'Constituent' should depend on some layering of  the ontology. For example, scientific granularities or ontological 'strata' are  typical layerings. A constituent is a part belonging to a lower layer. Since layering is actually a partition of the ontology, constituents are not properly classified as parts, although this kinship can be intuitive for common sense. Example of specific constant constituents are the entities constituting a setting (a situation), whilethe entities constituting a collection are examples of generic constant constituents.</rdfs:comment>
+      </rdf:Description>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#has-quale">
+    <rdfs:subPropertyOf rdf:resource="#q-location"/>
+    <owl:inverseOf rdf:resource="#quale-of"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A quality having a q-location at an atomic region.</rdfs:comment>
+    <rdfs:domain rdf:resource="#quality"/>
+    <rdfs:range rdf:resource="#quale"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#constant-participant">
+    <rdfs:range rdf:resource="#endurant"/>
+    <rdfs:subPropertyOf rdf:resource="#participant"/>
+    <rdfs:domain rdf:resource="#perdurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Anytime x is present, x has participant y. In other words, all parts of x have a same participant.Participation can be constant (in all parts of the perdurant, e.g. in 'the car is running'), or temporary (in only some parts, e.g. in 'I'm electing the president').</rdfs:comment>
+    <owl:inverseOf rdf:resource="#constant-participant-in"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#time-of-q-presence-of">
+    <owl:inverseOf rdf:resource="#q-present-at"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#mediated-relation-i"/>
+    </rdfs:subPropertyOf>
+    <rdfs:domain rdf:resource="#time-interval"/>
+    <rdfs:range rdf:resource="#physical-quality"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="physical-location">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Analytical location holding between physical endurants and physical regions.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#exact-location"/>
+    <rdfs:domain rdf:resource="#physical-endurant"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="physical-location-of"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#physical-region"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#inherent-in">
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The immediate relation holding for qualities and entities.</rdfs:comment>
+    <rdfs:domain rdf:resource="#quality"/>
+    <owl:inverseOf rdf:resource="#has-quality"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#mediated-relation-i">
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A relation that composes other relations. For example, a participation relation composed with a representation relation. Composed relation cannot be directly expressed in OWL-DL, then (at least some) compositions are expressed as class or restriction axioms.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#mediated-relation"/>
+    <rdfs:domain rdf:resource="#particular"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#host">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="host-of"/>
+    </owl:inverseOf>
+    <rdfs:domain rdf:resource="#feature"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The immediate relation holding for features and entities.</rdfs:comment>
+    <rdfs:range rdf:resource="#physical-endurant"/>
+    <rdfs:subPropertyOf rdf:resource="#specifically-constantly-dependent-on"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#generic-location">
+    <rdfs:subPropertyOf rdf:resource="#mediated-relation"/>
+    <rdfs:range rdf:resource="#particular"/>
+    <owl:inverseOf rdf:resource="#generic-location-of"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The most generic location relation, probably equivalent to more than one image schema in a cognitive system (e.g. containment for exact location, proximity for approximate location).This is meant to reason on generalized, common sense as well as formal locations, including naive localization, between any kinds of entities. Generic location is branched into 'exact' location, ranging on regions, and 'approximate' (naive) location, ranging on non-regions.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#spatio-temporal-presence-of">
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:domain rdf:resource="#spatio-temporal-region"/>
+    <owl:inverseOf rdf:resource="#spatio-temporally-present-at"/>
+    <rdfs:subPropertyOf rdf:resource="#exact-location-of"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#host-of">
+    <owl:inverseOf rdf:resource="#host"/>
+    <rdfs:domain rdf:resource="#physical-endurant"/>
+    <rdfs:range rdf:resource="#feature"/>
+    <rdfs:subPropertyOf rdf:resource="#specific-constant-dependent"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="mereologically-coincides">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Having the same parts at time t.</rdfs:comment>
+    <rdfs:range rdf:resource="#endurant"/>
+    <rdfs:domain rdf:resource="#endurant"/>
+    <rdfs:subPropertyOf>
+      <owl:ObjectProperty rdf:about="#temporary-part"/>
+    </rdfs:subPropertyOf>
+    <owl:inverseOf rdf:resource="#mereologically-coincides"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporary-part">
+    <rdfs:domain rdf:resource="#endurant"/>
+    <owl:inverseOf rdf:resource="#temporary-part-of"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Being part at time t. It holds for endurants only. This is important to model parts that can change or be lost over time without affecting the identity of the whole. In FOL, this is expressed as a ternary relation, but in DLs we only can reason with binary relations, then only the necessary axiom of compresence is represented here.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#part"/>
+    <rdfs:subPropertyOf rdf:resource="#partly-compresent"/>
+    <rdfs:range rdf:resource="#endurant"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#q-location-of">
+    <owl:inverseOf rdf:resource="#q-location"/>
+    <rdfs:domain rdf:resource="#region"/>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+    <rdfs:range rdf:resource="#quality"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#overlaps">
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf rdf:resource="#overlaps"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Mereological overlap: having a common part.</rdfs:comment>
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:subPropertyOf rdf:resource="#mediated-relation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#physical-location-of">
+    <rdfs:range rdf:resource="#physical-endurant"/>
+    <rdfs:subPropertyOf rdf:resource="#exact-location-of"/>
+    <rdfs:domain rdf:resource="#physical-region"/>
+    <owl:inverseOf rdf:resource="#physical-location"/>
+  </owl:ObjectProperty>
+  <owl:TransitiveProperty rdf:ID="identity-n">
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Any pair of individuals are notionally identical iff they instantiate all and only the same concepts.</rdfs:comment>
+    <rdfs:range rdf:resource="#particular"/>
+    <owl:inverseOf rdf:resource="#identity-n"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:ID="identity-c">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#particular"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <owl:inverseOf rdf:resource="#identity-c"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Any pair of individuals are ontologically identical if they are identical to themselves. Reflexive, symmetric, and transitive.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation"/>
+  </owl:TransitiveProperty>
+  <owl:TransitiveProperty rdf:about="#part-of">
+    <owl:inverseOf rdf:resource="#part"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#immediate-relation-i"/>
+    <rdfs:domain rdf:resource="#particular"/>
+    <rdfs:range rdf:resource="#particular"/>
+  </owl:TransitiveProperty>
+  <rdf:Description rdf:ID="physical-object">
+    <owl:disjointWith rdf:resource="#amount-of-matter"/>
+    <owl:disjointWith rdf:resource="#feature"/>
+    <rdfs:subClassOf rdf:resource="#physical-endurant"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The main characteristic of physical objects is that  they are endurants with unity. However, they have no common unity criterion, since  different subtypes of objects may  have different unity criteria. Differently from  aggregates, (most) physical objects change some of their parts while keeping their  identity, they can have therefore temporary parts. Often physical objects (indeed,  all endurants) are ontologically independent from occurrences (discussed below).  However, if we admit that every object has a life, it is hard to exclude a mutual  specific constant dependence between the two. Nevertheless, we may still use the  notion of dependence to (weakly) characterize objects as being not specifically  constantly dependent on other objects.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:ID="process">
+    <rdfs:subClassOf rdf:resource="#stative"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Within stative occurrences, we distinguish between states and processes     according to homeomericity: sitting is classified as a state but running     is classified as a process, since there are (very short) temporal parts of     a running that are not themselves runnings. In general, processes differ     from situations because they are not assumed to have a description from     which they depend. They can be sequenced by some course, but they do not     require a description as a unifying criterion. On the other hand, at any     time, one can conceive a description that asserts the constraints by which     a process of a certian type is such, and in this case, it becomes a     situation. Since the decision of designing an explicit description that     unifies a perdurant depends on context, task, interest, application, etc.,     when aligning an ontology do DLP, there can be indecision on where to     align a process-oriented class. For example, in the WordNet alignment, we     have decided to put only some physical processes under 'process', e.g.     'organic process', in order to stress the social orientedness of DLP. But     whereas we need to talk explicitly of the criteria by which we conceive     organic processes, these will be put under 'situation'. Similar     considerations are made for the other types of perdurants in DOLCE. A     different notion of event (dealing with change) is currently investigated     for further developments: being 'achievement', 'accomplishment', 'state',     'event', etc. can be also considered 'aspects' of processes or of parts of     them. For example, the same process 'rock erosion in the Sinni valley' can     be conceptualized as an accomplishment (what has brought the current state     that e.g. we are trying to explain), as an achievement (the erosion     process as the result of a previous accomplishment), as a state (if we     collapse the time interval of the erosion into a time point), or as an     event (what has changed our focus from a state to another). In the erosion     case, we could have good motivations to shift from one aspect to another:     a) causation focus, b) effectual focus, c) condensation d) transition     (causality). If we want to consider all the aspects of a process together,     we need to postulate a unifying descriptive set of criteria (i.e. a     'description'), according to which that process is circumstantiated in a     'situation'. The different aspects will arise as a parts of a same situation.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:ID="accomplishment">
+    <rdfs:subClassOf rdf:resource="#event"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Eventive occurrences (events) are called achievements if they are atomic, otherwise they are accomplishments.Further developments: being 'achievement', 'accomplishment', 'state', 'event', etc. can be also considered 'aspects' of processes or of parts of them. For example, the same process 'rock erosion in the Sinni valley' can be seen as an accomplishment (what has brought the current state that e.g. we are trying to explain), as an achievement (the erosion process as the result of a previous accomplishment), as a state (collapsing the time interval of the erosion into a time point), as an event (what has changed our focus from a state to another).In the erosion case, we could have good motivations to shift from one aspect to another: a) causation focus, b) effectual focus, c) condensation d) transition (causality).</rdfs:comment>
+  </rdf:Description>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.2.1, Build 365)  http://protege.stanford.edu -->

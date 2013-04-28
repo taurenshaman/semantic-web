@@ -1,0 +1,1440 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:mmio="http://www.mesh-ip.eu/mmio.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns="http://smartweb.semanticweb.org/ontology/mpeg7#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:inf="http://www.loa-cnr.it/ontologies/InformationObjects.owl#"
+    xmlns:smartmedia="http://smartweb.semanticweb.org/ontology/smartmedia#"
+    xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+    xmlns:sem="http://www.loa-cnr.it/ontologies/SemioticCommunicationTheory.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:edns="http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#"
+  xml:base="http://smartweb.semanticweb.org/ontology/mpeg7">
+  <owl:Ontology rdf:about=""/>
+  <rdfs:Class rdf:about="http://www.mesh-ip.eu/mmio.owl#multimedia-object"/>
+  <owl:Class rdf:ID="MovingRegionTemporalDecomposition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Decomposition"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MovingRegionTemporalDecomposition</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Segment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class of fragments(snippets) of multimedia content.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Segment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.mesh-ip.eu/mmio.owl#multimedia-object"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Text">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Text</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class of textual data.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="textSegment"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MultimediaContent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Rating">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Rating</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the rating values and the criterion used to create the ratings. For example, media quality rating and media reviews.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ParametricMotion">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="VisualDescriptor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaInstance">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MediaInstance</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Physical content entity. An identifier and locator identifies the instance</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VideoDomain.Acquisition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VideoDomain.Acquisition</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ControlledTermUse"/>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 VideoDomain classification scheme</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="TextDomain">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the textual domain (empty and ToDo)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TextDomain</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ControlledTermUse"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaIdentification">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Identifies the multimedia content entity independent of the different available instances and profiles.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MediaIdentification</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="VisualCoding">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the coding of the visual component of the Media Profile. If a content entity is audiovisual, VisualCoding and AudioCoding are used simultaneously.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VisualCoding</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MotionActivity">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#VisualDescriptor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TextCoding">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TextCoding</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the coding of the text.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StillRegion3DSpatialDecomposition">
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >StillRegion3DSpatialDecomposition</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Decomposition of a still region of an image or video frame (3D).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StreamMask">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >StreamMask</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaTime">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MediaTime</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Specifies a media time point or a media time interval.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ColorQuantization">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This descriptor defines a uniform quantization of a color space. The number of bins which the quantizer produces is configurable, such that great flexibility is provided for a wide range of applications. For a meaningful application in the context of MPEG-7, this descriptor has to be combined with dominant color descriptors, e.g. to express the meaning of the values of dominant colors.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ColorQuantization</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaLocator">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MediaLocator</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the Media Locator of a Media Instance.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="VideoDomain.Use">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VideoDomain.Use</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ControlledTermUse"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HomogenousTexture">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#VisualDescriptor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TextSegment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Segments of textual data.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TextSegment</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Segment"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DominantColor">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This color descriptor is most suitable for representing local (object or image region) features where a small number of colors are enough to characterize the color information in the region of interest. Whole images are also applicable, for example, flag images or color trademark images. Color quantization is used to extract a small number of representing colors in each region/image. The percentage of each quantized color in the region is calculated correspondingly. A spatial coherency on the entire descriptor is also defined, and is used in similarity retrieval.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >DominantColor</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#VisualDescriptor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="VideoSegmentSpatioTemporalDecomposition">
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VideoSegmentSpatioTemporalDecomposition</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Audio">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class of audio data.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Audio</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="audioSegment"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultimediaContent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sample">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the audio samples.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sample</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="VideoSegmentSpatialDecomposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VideoSegmentSpatialDecomposition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioDomain.Acquisition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ControlledTermUse"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioDomain.Acquisition</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 AudioDomain classification scheme</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="EdgeHistogram">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#VisualDescriptor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioVisual">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioVisual</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >todo</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#MultimediaContent"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#MultimediaContent">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class of multimedia data.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MultimediaContent</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ScalableColor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ScalableColor</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Scalable Color Descriptor is a Color Histogram in HSV Color Space, which is encoded by a Haar transform. Its binary representation is scalable in terms of bin numbers and bit representation accuracy over a broad range of data rates. The Scalable Color Descriptor is useful for image-to-image matching and retrieval based on color feature. Retrieval accuracy increases with the number of bits used in the representation.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#VisualDescriptor"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioCoding">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the coding of the audio component of the Media Profile. If a content entity is audiovisual, VisualCoding and AudioCoding are used simultaneously.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioCoding</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaProfile">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes one media profile of the multimedia content. Coding schemes (different parameters, resolution, compression etc.) are described here.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MediaProfile</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Video">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Video</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#MultimediaContent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="videoSegment"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class of videos.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#VisualDescriptor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VisualDescriptor</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes a visual feature of the still region using a visual descriptor.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioDomain.Use">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 AudioDomain classification scheme</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#ControlledTermUse"/>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioDomain.Use</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ColorSpace">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ColorSpace</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the  color spaces that will be used in other color based descriptions.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#ControlledTermUse">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Controlled use of a term from some classification scheme (eg: audio domain, image domain etc.). A term represents one well-defined concept in the domain, covered by the classification scheme (CS)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ControlledTermUse</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="ImageDomain.Use">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ImageDomain.Use</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 ImageDomain classification scheme</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="GoFGoPColor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >GoFGoPColor</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#VisualDescriptor"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Group of Frames/Group of Pictures color descriptor extends the ScalableColor descriptor that is defined for a still image to color description of a video segment or a collection of still images. Additional two bits allows to define how the color histogram was calculated, before the Haar transfor is applied to it: by average, median or intersection.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaFormat">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Information related to the file format and the coding parameters of the MediaProfile.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MediaFormat</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="RegionShape">
+    <rdfs:subClassOf rdf:resource="#VisualDescriptor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioPresentation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioPresentation</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 AudioPresentation classification scheme</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StillRegionSpatialDecomposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >StillRegionSpatialDecomposition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Decomposition of a still region of an image or video frame (2D).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="ContourShape">
+    <rdfs:subClassOf rdf:resource="#VisualDescriptor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Pixel">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the pixels of images and video frames.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Pixel</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="VideoSegment">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="temporalDecomposition"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="VideoSegmentTemporalDecomposition"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#VideoSegmentSpatialDecomposition"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="spatialDecomposition"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="spatioTemporalDecomposition"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#VideoSegmentSpatioTemporalDecomposition"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Segment"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes a set of frames of a video sequence.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VideoSegment</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MovingRegion">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes a spatio-temporal segment or moving region of a video sequence.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MovingRegion</rdfs:label>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#temporalDecomposition"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#MovingRegionTemporalDecomposition"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Segment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="MovingRegionSpatialDecomposition"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spatialDecomposition"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioSegment">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes a temporal audio segment corresponding to a temporal period of an audio sequence.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Segment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:ID="AudioSegmentTemporalDecomposition"/>
+        </owl:allValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#temporalDecomposition"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioSegment</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MovingRegionSpatioTemporalDecomposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MovingRegionSpatioTemporalDecomposition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+  </owl:Class>
+  <owl:Class rdf:ID="VisualCodingFormat">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VisualCodingFormat</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ImageDomain.Acquisition">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 ImageDomain classification scheme</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ImageDomain.Acquisition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+  </owl:Class>
+  <owl:Class rdf:ID="StillRegion3D">
+    <rdfs:subClassOf rdf:resource="#Segment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >StillRegion3D</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes a spatial segment or region of an image or a frame in a video (3D).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Image">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="stillRegion"/>
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#MultimediaContent"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Image</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The class of images.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#AudioSegmentTemporalDecomposition">
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioSegmentTemporalDecomposition</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaInformation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mpeg7:MediaInformation</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the physical format of the multimedia data.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StillRegion">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes a spatial segment or region of an image or a frame in a video (2D).</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >StillRegion</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Segment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#spatialDecomposition"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#StillRegionSpatialDecomposition"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TextDecomposition">
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TextDecomposition</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Decomposition of textual data.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MediaQuality">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes quality rating information of an audio or visual content. This is the quality of the signal. Quality of an audio or visual content may decrease when the signal goes through compression, transmission, or signal conversion. Media Quality can be used to represent both subjective and objective quality ratings.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MediaQuality</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="Frame">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Frame</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the frame of images and video frames.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="CameraMotion">
+    <rdfs:subClassOf rdf:resource="#VisualDescriptor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MotionTrajectory">
+    <rdfs:subClassOf rdf:resource="#VisualDescriptor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="VideoDomain.Source">
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VideoDomain.Source</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioDescriptor">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioDescriptor</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >todo</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioChannels">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioChannels</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the number and optionally the configuration of audio channels in the Media Profile. The channel configuration information can be described by use of ‘front’, ‘side’, ‘rear’ and ‘lfe’ attribute. In case of multilingual or multitrack audio stream, the number of tracks can be described on ‘track’ attribute.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="StreamSection">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >todo: document this class</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >StreamSection</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioDomain.Source">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioDomain.Source</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 AudioDomain classification scheme</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="SpatioTemporalLocator">
+    <rdfs:subClassOf rdf:resource="#VisualDescriptor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="AudioCodingFormat">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 AudioCodingFormat classification scheme</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >AudioCodingFormat</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+  </owl:Class>
+  <owl:Class rdf:ID="RegionLocator">
+    <rdfs:subClassOf rdf:resource="#VisualDescriptor"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ImageDomain.Source">
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the MPEG7 ImageDomain classification scheme</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ImageDomain.Source</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:about="#MovingRegionSpatialDecomposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >MovingRegionSpatialDecomposition</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Decomposition of a spatio-temporal region of video data.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+  </owl:Class>
+  <owl:Class rdf:about="#VideoSegmentTemporalDecomposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >VideoSegmentTemporalDecomposition</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Decomposition"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TextCodingFormat">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Set of terms describing the text coding format</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ControlledTermUse"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TextCodingFormat</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="BitRate">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the nominal bit rate in bit/s of the Media Profile.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BitRate</rdfs:label>
+  </owl:Class>
+  <owl:Class rdf:ID="UniqueID">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Class that describes a unique identifier.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >UniqueID</rdfs:label>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="textDecomposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >textDecomposition</rdfs:label>
+    <rdfs:range rdf:resource="#TextDecomposition"/>
+    <rdfs:domain rdf:resource="#TextSegment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has-decomposition">
+    <rdfs:domain rdf:resource="http://www.mesh-ip.eu/mmio.owl#multimedia-object"/>
+    <rdfs:range rdf:resource="#Decomposition"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="visualDescriptor">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#MovingRegion"/>
+          <owl:Class rdf:about="#StillRegion"/>
+          <owl:Class rdf:about="#StillRegion3D"/>
+          <owl:Class rdf:about="#VideoSegment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#VisualDescriptor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >visualDescriptor</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="audioDomain">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes one source, acquisition and/or use of an audio content entity. If a content entity is audiovisual, AudioDomain and VideoDomain are used simultaneously. An example of a classification scheme is MPEG7AudioDomainCS.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioDomain</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaIdentification"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#AudioDomain.Acquisition"/>
+          <owl:Class rdf:about="#AudioDomain.Source"/>
+          <owl:Class rdf:about="#AudioDomain.Use"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#stillRegion">
+    <rdfs:range rdf:resource="#StillRegion"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >stillRegion</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Image"/>
+          <owl:Class rdf:about="#MovingRegionSpatioTemporalDecomposition"/>
+          <owl:Class rdf:about="#MovingRegionTemporalDecomposition"/>
+          <owl:Class rdf:about="#StillRegion3DSpatialDecomposition"/>
+          <owl:Class rdf:about="#StillRegionSpatialDecomposition"/>
+          <owl:Class rdf:about="#VideoSegmentSpatioTemporalDecomposition"/>
+          <owl:Class rdf:about="#VideoSegmentTemporalDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="audioDescriptor">
+    <rdfs:range rdf:resource="#AudioDescriptor"/>
+    <rdfs:domain rdf:resource="#AudioSegment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioDescriptor</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="componentMediaProfile">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes one component Media Profile of a multiplexed Media Profile, describing a multimedia content with different component multimedia contents.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >componentMediaProfile</rdfs:label>
+    <rdfs:range rdf:resource="#MediaProfile"/>
+    <rdfs:domain rdf:resource="#MediaProfile"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#spatialDecomposition">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >spatialDecomposition</rdfs:label>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#VideoSegmentSpatialDecomposition"/>
+          <owl:Class rdf:about="#MovingRegionSpatialDecomposition"/>
+          <owl:Class rdf:about="#StillRegionSpatialDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#MovingRegion"/>
+          <owl:Class rdf:about="#StillRegion"/>
+          <owl:Class rdf:about="#VideoSegment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#videoSegment">
+    <rdfs:range rdf:resource="#VideoSegment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >videoSegment</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Video"/>
+          <owl:Class rdf:about="#VideoSegmentTemporalDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="textDomain">
+    <rdfs:domain rdf:resource="#MediaIdentification"/>
+    <rdfs:range rdf:resource="#TextDomain"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >textDomain</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes one source, acquisition and/or use of a textual entity.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="movingRegion">
+    <rdfs:range rdf:resource="#MovingRegion"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#MovingRegionSpatialDecomposition"/>
+          <owl:Class rdf:about="#MovingRegionSpatioTemporalDecomposition"/>
+          <owl:Class rdf:about="#MovingRegionTemporalDecomposition"/>
+          <owl:Class rdf:about="#VideoSegmentSpatialDecomposition"/>
+          <owl:Class rdf:about="#VideoSegmentSpatioTemporalDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >movingRegion</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="imageDomain">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#ImageDomain.Acquisition"/>
+          <owl:Class rdf:about="#ImageDomain.Source"/>
+          <owl:Class rdf:about="#ImageDomain.Use"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain rdf:resource="#MediaIdentification"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >imageDomain</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes one source, acquisition and/or use of an image content entity. An example of a classification scheme is MPEG7ImageDomainCS.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#textSegment">
+    <rdfs:range rdf:resource="#TextSegment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >textSegment</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Text"/>
+          <owl:Class rdf:about="#TextDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temporalDecomposition">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#AudioSegmentTemporalDecomposition"/>
+          <owl:Class rdf:about="#MovingRegionTemporalDecomposition"/>
+          <owl:Class rdf:about="#VideoSegmentTemporalDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#AudioSegment"/>
+          <owl:Class rdf:about="#MovingRegion"/>
+          <owl:Class rdf:about="#VideoSegment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >temporalDecomposition</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="mediaInstance">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaInstance</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaProfile"/>
+    <rdfs:range rdf:resource="#MediaInstance"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Identifies and locates one Media Instance of the Media Profile.</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="mediaProfile">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaProfile</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaInformation"/>
+    <rdfs:range rdf:resource="#MediaProfile"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="streamSection">
+    <rdfs:domain rdf:resource="#StreamMask"/>
+    <rdfs:range rdf:resource="#StreamSection"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >streamSection</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#spatioTemporalDecomposition">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#MovingRegionSpatioTemporalDecomposition"/>
+          <owl:Class rdf:about="#VideoSegmentSpatioTemporalDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#MovingRegion"/>
+          <owl:Class rdf:about="#VideoSegment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >spatioTemporalDecomposition</rdfs:label>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#audioSegment">
+    <rdfs:range rdf:resource="#AudioSegment"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioSegment</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Audio"/>
+          <owl:Class rdf:about="#AudioSegmentTemporalDecomposition"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="videoDomain">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes one source, acquisition and/or use of a video content entity. An example of a classification scheme is MPEG7VideoDomainCS..</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >videoDomain</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaIdentification"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#VideoDomain.Acquisition"/>
+          <owl:Class rdf:about="#VideoDomain.Source"/>
+          <owl:Class rdf:about="#VideoDomain.Use"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="coeff">
+    <rdfs:domain rdf:resource="#ScalableColor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >coeff</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="numOfBins">
+    <rdfs:domain rdf:resource="#ColorQuantization"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >numOfBins</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="component">
+    <rdfs:domain rdf:resource="#ColorQuantization"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >component</rdfs:label>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:ID="entityIdentifier">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >entityIdentifier</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Identifies uniquely the particular and unique multimedia content entity. For example, ISO's ISAN.</rdfs:comment>
+    <rdfs:range rdf:resource="#UniqueID"/>
+    <rdfs:domain rdf:resource="#MediaIdentification"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="spatialDecompostion3D">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >spatialDecompostion3D</rdfs:label>
+    <rdfs:domain rdf:resource="#StillRegion3D"/>
+    <rdfs:range rdf:resource="#StillRegion3DSpatialDecomposition"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="spatialCoherency">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >todo: document this property</rdfs:comment>
+    <rdfs:domain rdf:resource="#DominantColor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >spatialCoherency</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://smartweb.semanticweb.org/ontology/smartmedia#description">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#MediaInstance"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >description</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="maximum">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >maximum</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the maximum numerical value for the BitRate in case of variable bit rate.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#BitRate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaFormat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the format of the Media Profile.</rdfs:comment>
+    <rdfs:range rdf:resource="#MediaFormat"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaFormat</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaProfile"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="resolution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Pixel"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >resolution</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the resolution of images and frames in dpi (dots per inch).</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://smartweb.semanticweb.org/ontology/smartmedia#content">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Shortcut to supply text content directly without the need of specifying an URL.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >content</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#MediaInstance"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="authority">
+    <rdfs:domain rdf:resource="#UniqueID"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >authority</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="height">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Frame"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the height of images and frames in pixels. The quotient of width and height is the sampling aspect ratio, which is the same as the optical image aspect ratio if the pixels are square.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >height</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="locationDescription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#MediaInstance"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the location of a Media Instance not available via a Media Locator. For example, the location of tapes stored in the analogue archive of a broadcaster.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >locationDescription</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="aspectRatio">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >aspectRatio</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the pixel aspect ratio (width/height).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Frame"/>
+          <owl:Class rdf:about="#Pixel"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaInformation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaInformation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#MediaInformation"/>
+    <rdfs:domain rdf:resource="#Segment"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="bitsPer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the audio sample accuracy in bits per sample.</rdfs:comment>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Pixel"/>
+          <owl:Class rdf:about="#Sample"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bitsPer</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="ID">
+    <rdfs:domain rdf:resource="#UniqueID"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ID</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaIdentification">
+    <rdfs:range rdf:resource="#MediaIdentification"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaIdentification</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaInformation"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaDuration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Represents the media duration in time using a lexical representation of days (nD), time duration and a fraction specification (TnHnMnSnN) including the specification of the number of fractions of one second (nF):
+(-)PnDTnHnMnSnNnF 
+
+todo: change datatype (?)</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaDuration</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaTime"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaQuality">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaQuality</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the quality of the signal corresponding to the Media Profile.</rdfs:comment>
+    <rdfs:domain rdf:resource="#MediaProfile"/>
+    <rdfs:range rdf:resource="#MediaQuality"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="colorSpace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#ColorSpace"/>
+    <rdfs:domain rdf:resource="#DominantColor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >colorSpace</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="audioPresentation">
+    <rdfs:domain rdf:resource="#AudioCoding"/>
+    <rdfs:range rdf:resource="#AudioPresentation"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioPresentation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="sample">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >sample</rdfs:label>
+    <rdfs:range rdf:resource="#Sample"/>
+    <rdfs:domain rdf:resource="#AudioCoding"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="bitRate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#BitRate"/>
+    <rdfs:domain rdf:resource="#MediaFormat"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bitRate</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the nominal bit rate in bit/s of the Media Profile.</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="textMask">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#TextSegment"/>
+    <rdfs:range rdf:resource="#StreamMask"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >textMask</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="pixel">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >pixel</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#Pixel"/>
+    <rdfs:domain rdf:resource="#VisualCoding"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://smartweb.semanticweb.org/ontology/smartmedia#textType">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The text segment's type.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >textType</rdfs:label>
+    <rdfs:domain rdf:resource="#TextSegment"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="value">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#AudioChannels"/>
+          <owl:Class rdf:about="#BitRate"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Bit rate in bit/s.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >value</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="audioCoding">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#AudioCoding"/>
+    <rdfs:domain rdf:resource="#MediaFormat"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the coding of the audio component of the Media Profile. If a content entity is audiovisual, VisualCoding and AudioCoding are used simultaneously.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioCoding</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaTimePoint">
+    <rdfs:domain rdf:resource="#MediaTime"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaTimePoint</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Specifies a media time point using Gregorian date and day time.
+Format: YYYY-MM-DDThh:mm:ss:nnnFNNN 
+n: number of fractions, nnn can be any number between 0 and NNN-1 (NNN and with it nnn can have an arbitrary number of digits)
+N: number of fractions of one second which are counted by nnn. NNN can have a arbitrary number of digits and is not limited to three.
+(T and F are delimiters delimiters for the time specification  and the number of fractions of one second resp.)
+Todo: change datatype (?)</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="rate">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the sampling rate for audio in Hz.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Sample"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rate</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="colorQuantization">
+    <rdfs:domain rdf:resource="#DominantColor"/>
+    <rdfs:range rdf:resource="#ColorQuantization"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >colorQuantization</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >type</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#UniqueID"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="term">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >term</rdfs:label>
+    <rdfs:domain rdf:resource="#ControlledTermUse"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="start">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#StreamSection"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >start</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="colorSpaceType">
+    <rdfs:domain rdf:resource="#ColorSpace"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >colorSpaceType</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Supported color spaces.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="audioEmphasis">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#AudioCoding"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioEmphasis</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Defines the type of the audio emphasis used.  The values can be either selected from the following list or a free text.	none – Audio emphasis is not used,50/15Microseconds – Audio emphasis is 50/15 microseconds, ccittJ17 – Audio emphasis is CCITT J.17.</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="aggregation">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >aggregation</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The average histogram, which refers to averaging the counter value of each bin across all frames or pictures, is equivalent to computing the aggregate color histogram of all frames and pictures with proper normalization. The Median Histogram refers to computing the median of the counter value of each bin across all frames or pictures. It is more robust to round-off errors and the presence of outliers in image intensity values compared to the average histogram. The Intersection Histogram refers to computing the minimum of the counter value of each bin across all frames or pictures to capture the "least common" color traits of a group of images.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#GoFGoPColor"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaLocator">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the Media Locator of a Media Instance.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaLocator</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#MediaInstance"/>
+    <rdfs:range rdf:resource="#MediaLocator"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="audioFormat">
+    <rdfs:domain rdf:resource="#AudioCoding"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#AudioCodingFormat"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioFormat</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="organization">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >organization</rdfs:label>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#UniqueID"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="structure">
+    <rdfs:domain rdf:resource="#Frame"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >structure</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="rear">
+    <rdfs:domain rdf:resource="#AudioChannels"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of the rear channels.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >rear</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="length">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >length</rdfs:label>
+    <rdfs:domain rdf:resource="#StreamSection"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="numOfBitplanesDiscarded">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >numOfBitplanesDiscarded</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#ScalableColor"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hasID">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#VisualDescriptor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaURI">
+    <rdfs:domain rdf:resource="#MediaLocator"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaURI</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="lfe">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#AudioChannels"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of the LFE (Low Frequency Enhancement) channels.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >lfe</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="unit">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >unit</rdfs:label>
+    <rdfs:domain rdf:resource="#StreamSection"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="track">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >track</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of independent audio tracks used in a multilingual or multitrack audio stream.</rdfs:comment>
+    <rdfs:domain rdf:resource="#AudioChannels"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="mediaTime">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#AudioSegment"/>
+          <owl:Class rdf:about="#VideoSegment"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#MediaTime"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >mediaTime</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="minimum">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the minimum numerical value for the BitRate in case of variable bit rate.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#BitRate"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >minimum</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="textCoding">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >textCoding</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#TextCoding"/>
+    <rdfs:domain rdf:resource="#MediaFormat"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="width">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the width of images and frames in pixels. The quotient of width and height is the sampling aspect ratio, which is the same as the optical image aspect ratio if the pixels are square.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Frame"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >width</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="audioChannels">
+    <rdfs:range rdf:resource="#AudioChannels"/>
+    <rdfs:domain rdf:resource="#AudioCoding"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >audioChannels</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="targetChannelBitRate">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#MediaFormat"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the nominal bit rate in bits/s of the channel for which this MediaProfile is targeted.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >targetChannelBitRate</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="numOfCoeff">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >numOfCoeff</rdfs:label>
+    <rdfs:domain rdf:resource="#ScalableColor"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="visualCoding">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >visualCoding</rdfs:label>
+    <rdfs:domain rdf:resource="#MediaFormat"/>
+    <rdfs:range rdf:resource="#VisualCoding"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the coding of the visual component of the Media Profile. If a content entity is audiovisual, VisualCoding and AudioCoding are used simultaneously.</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="textFormat">
+    <rdfs:range rdf:resource="#TextCodingFormat"/>
+    <rdfs:domain rdf:resource="#TextCoding"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >textFormat</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="instanceIdentifier">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >instanceIdentifier</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Identifies the Media Instance or copy.</rdfs:comment>
+    <rdfs:domain rdf:resource="#MediaInstance"/>
+    <rdfs:range rdf:resource="#UniqueID"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="qualityRating">
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >qualityRating</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Describes the rating values and the criterion used to create the media quality ratings.</rdfs:comment>
+    <rdfs:domain rdf:resource="#MediaQuality"/>
+    <rdfs:range rdf:resource="#Rating"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="bandwidth">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#MediaFormat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >bandwidth</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the bandwidth range in Hz covered by the coded multimedia content. Its value dependents on the acquisition filters and/or transcoding applied to the Media Profile.</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="variable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates whether the bitrate is variable or fixed. If the bitrate is variable, three optional attributes can be used to specify the minimum, maximum and average bitrates.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >variable</rdfs:label>
+    <rdfs:domain rdf:resource="#BitRate"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="fileSize">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the size, in bytes, of the file where the Media Profile is stored.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >fileSize</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#MediaFormat"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="side">
+    <rdfs:domain rdf:resource="#AudioChannels"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >side</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of the side channels.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="front">
+    <rdfs:domain rdf:resource="#AudioChannels"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >front</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The number of the front channels.</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="frame">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#Frame"/>
+    <rdfs:domain rdf:resource="#VisualCoding"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >frame</rdfs:label>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="average">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the average numerical value for the BitRate in case of variable bit rate.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >average</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#BitRate"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="ratingValue">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Indicates the actual numerical rating values assigned to the multimedia content.</rdfs:comment>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >ratingValue</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#Rating"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="scalableColor">
+    <rdfs:range rdf:resource="#ScalableColor"/>
+    <rdfs:domain rdf:resource="#GoFGoPColor"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >scalableColor</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="visualFormat">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="#VisualCoding"/>
+    <rdfs:range rdf:resource="#VisualCodingFormat"/>
+    <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >visualFormat</rdfs:label>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
