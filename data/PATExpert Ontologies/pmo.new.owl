@@ -1,0 +1,1031 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY daml "http://www.daml.org/2001/03/daml+oil#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY sumo "http://www.owl-ontologies.com/sumo.owl#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY pmo "http://www.patexpert.org/ontologies/pmo.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.patexpert.org/ontologies/pmo.owl#"
+     xml:base="http://www.patexpert.org/ontologies/pmo.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:sumo="http://www.owl-ontologies.com/sumo.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+     xmlns:pmo="http://www.patexpert.org/ontologies/pmo.owl#">
+  <owl:Ontology rdf:about="http://www.patexpert.org/ontologies/pmo.owl">
+    <rdfs:label xml:lang="en">Patent Metadata Ontology (PMO)</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">PMO-专利元数据本体</rdfs:label>
+  </owl:Ontology>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+  <owl:AnnotationProperty rdf:about="&pmo;name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The name of an organization or individual.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&sumo;CognitiveAgent"/>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="&pmo;assigneeOf">
+    <rdfs:label xml:lang="en">assignee Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:domain rdf:resource="&sumo;CognitiveAgent"/>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="&pmo;applicantOf">
+    <rdfs:label xml:lang="en">applicant Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:domain rdf:resource="&sumo;CognitiveAgent"/>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="&owl;disjointWith"/>
+  <owl:AnnotationProperty rdf:about="&pmo;legalRepresentativeOf">
+    <rdfs:label xml:lang="en">legal Representative Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:domain rdf:resource="&sumo;CognitiveAgent"/>
+  </owl:AnnotationProperty>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#CognitiveAgent -->
+
+  <rdfs:Datatype rdf:about="&sumo;CognitiveAgent"/>
+
+
+
+  <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+  <rdfs:Datatype rdf:about="&xsd;date"/>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#refers -->
+
+  <owl:ObjectProperty rdf:about="&sumo;refers"/>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#applicant -->
+
+  <owl:ObjectProperty rdf:about="&pmo;applicant">
+    <rdfs:label xml:lang="en">applicant</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Organization or individual who filed the document. Also known as patentee.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#applicantOf -->
+
+  <owl:ObjectProperty rdf:about="&pmo;applicantOf">
+    <rdfs:label xml:lang="en">applicant Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:range rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <owl:inverseOf rdf:resource="&pmo;applicant"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#assignee -->
+
+  <owl:ObjectProperty rdf:about="&pmo;assignee">
+    <rdfs:label xml:lang="en">assignee</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The organization or idividual who has assigned the IP document.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <owl:inverseOf rdf:resource="&pmo;assigneeOf"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#assigneeOf -->
+
+  <owl:ObjectProperty rdf:about="&pmo;assigneeOf">
+    <rdfs:label xml:lang="en">assignee Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:range rdf:resource="&pmo;IntellectualPropertyDocument"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#citedBy -->
+
+  <owl:ObjectProperty rdf:about="&pmo;citedBy">
+    <rdfs:label xml:lang="en">cited By</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A backward reference to an intance that cites this document.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="&sumo;refers"/>
+    <rdfs:range rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <owl:inverseOf rdf:resource="&pmo;cites"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&pmo;IntellectualPropertyDocument"/>
+          <rdf:Description rdf:about="&pmo;IntellectualPropertySupplementDocument"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#cites -->
+
+  <owl:ObjectProperty rdf:about="&pmo;cites">
+    <rdfs:label xml:lang="en">cites</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A reference to another intellectual property document.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="&sumo;refers"/>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="&pmo;IntellectualPropertyDocument"/>
+          <rdf:Description rdf:about="&pmo;IntellectualPropertySupplementDocument"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#classifiedAs -->
+
+  <owl:ObjectProperty rdf:about="&pmo;classifiedAs">
+    <rdfs:label xml:lang="en">classified As</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">An associated classification category.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:domain rdf:resource="&pmo;PatentDocument"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#classifiedPatent -->
+
+  <owl:ObjectProperty rdf:about="&pmo;classifiedPatent">
+    <rdfs:label xml:lang="en">classified Patent</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A patent document which is classified with a category.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:range rdf:resource="&pmo;PatentDocument"/>
+    <owl:inverseOf rdf:resource="&pmo;classifiedAs"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#eventSource -->
+
+  <owl:ObjectProperty rdf:about="&pmo;eventSource">
+    <rdfs:label xml:lang="en">event Source</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">References the IP document a LegalEvent is associated with.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:domain rdf:resource="&pmo;LegalEvent"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#hasEvent -->
+
+  <owl:ObjectProperty rdf:about="&pmo;hasEvent">
+    <rdfs:label xml:lang="en">has Event</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A ssociated LegalEvents</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:range rdf:resource="&pmo;LegalEvent"/>
+    <owl:inverseOf rdf:resource="&pmo;eventSource"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#inventor -->
+
+  <owl:ObjectProperty rdf:about="&pmo;inventor">
+    <rdfs:label xml:lang="en">inventor</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The inventor of an IP.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&sumo;Human"/>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <owl:inverseOf rdf:resource="&pmo;inventorOf"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#inventorOf -->
+
+  <owl:ObjectProperty rdf:about="&pmo;inventorOf">
+    <rdfs:label xml:lang="en">inventor Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:domain rdf:resource="&sumo;Human"/>
+    <rdfs:range rdf:resource="&pmo;IntellectualPropertyDocument"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#legalRepresentative -->
+
+  <owl:ObjectProperty rdf:about="&pmo;legalRepresentative">
+    <rdfs:label xml:lang="en">legal Representative</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">E.g. the patent attorney.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <owl:inverseOf rdf:resource="&pmo;legalRepresentativeOf"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#legalRepresentativeOf -->
+
+  <owl:ObjectProperty rdf:about="&pmo;legalRepresentativeOf">
+    <rdfs:label xml:lang="en">legal Representative Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:range rdf:resource="&pmo;IntellectualPropertyDocument"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#parentCategory -->
+
+  <owl:ObjectProperty rdf:about="&pmo;parentCategory">
+    <rdfs:label xml:lang="en">parent Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A more abstract category.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:range rdf:resource="&pmo;PatentClassificationCategory"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#patentFamily -->
+
+  <owl:ObjectProperty rdf:about="&pmo;patentFamily">
+    <rdfs:label xml:lang="en">patent Family</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">References the patent family this patent ddoccument is member of</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentDocument"/>
+    <rdfs:range rdf:resource="&pmo;PatentFamily"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#patentFamilyMember -->
+
+  <owl:ObjectProperty rdf:about="&pmo;patentFamilyMember">
+    <rdfs:label xml:lang="en">patent Family Member</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">References an instance which is member of a patent family.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&pmo;PatentDocument"/>
+    <rdfs:domain rdf:resource="&pmo;PatentFamily"/>
+    <owl:inverseOf rdf:resource="&pmo;patentFamily"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#priority -->
+
+  <owl:ObjectProperty rdf:about="&pmo;priority">
+    <rdfs:label xml:lang="en">priority</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Reference to a priority application. This can also be for example a utility model.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:domain rdf:resource="&pmo;PatentDocument"/>
+    <owl:inverseOf rdf:resource="&pmo;priorityOf"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#priorityOf -->
+
+  <owl:ObjectProperty rdf:about="&pmo;priorityOf">
+    <rdfs:label xml:lang="en">priority Of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Reference to PatentDocument of which this document is a priority.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:range rdf:resource="&pmo;PatentDocument"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#subCategory -->
+
+  <owl:ObjectProperty rdf:about="&pmo;subCategory">
+    <rdfs:label xml:lang="en">sub Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Referenz to a sub-category.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:range rdf:resource="&pmo;PatentClassificationCategory"/>
+    <owl:inverseOf rdf:resource="&pmo;parentCategory"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#uniqueIdentifiedBy -->
+
+  <owl:ObjectProperty rdf:about="&pmo;uniqueIdentifiedBy">
+    <rdfs:label xml:lang="en">unique Identified By</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#applicant -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;applicant">
+    <rdfs:label xml:lang="en">applicant</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Organization or individual who filed the document. Also known as patentee.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&sumo;CognitiveAgent"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#applicationNumber -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;applicationNumber">
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:label xml:lang="en">application Number</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The number given an authority to the filed document that describes an intellectual property.
+      Application numbers are unique numbers given by a national patent office, the EPO or the WIPO for each filed document. There is a recommendet structure of application numbers in WIPO standard ST.13 (http://www.wipo.int/export/sites/www/scit/en/standards/pdf/03-13-01.pdf).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#assignee -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;assignee">
+    <rdfs:label xml:lang="en">assignee</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The organization or idividual who has assigned the IP document.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&sumo;CognitiveAgent"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#classificationCode -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;classificationCode">
+    <rdfs:label xml:lang="en">classification Code</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">String value of assigned classification code. This property is introduced in order to use PMO without an classification ontology.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#countryOfFiling -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;countryOfFiling">
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:label xml:lang="en">country Of Filing</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The country or organization where a patent application has been filed. A two-letter code specified in the WIPO standard ST.3 (http://www.wipo.int/export/sites/www/scit/en/standards/pdf/03-03-01.pdf)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#dateOfFiling -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;dateOfFiling">
+    <rdfs:label xml:lang="en">date Of Filing</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The date when a patent application has been filed.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:range rdf:resource="&xsd;date"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#dateOfPublication -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;dateOfPublication">
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:label xml:lang="en">date Of Publication</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The date of publication</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentPublication"/>
+    <rdfs:range rdf:resource="&xsd;date"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#designatedContractingState -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;designatedContractingState">
+    <rdfs:label xml:lang="en">designated Contracting State</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">For EP and WO patents: the states where the patent is planned to go into the national phase. A two-letter ISO code.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentDocument"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#keyword -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;keyword">
+    <rdfs:label xml:lang="en">keyword</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A keyword associated with a category.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#kindCode -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;kindCode">
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:label xml:lang="en">kind Code</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">An associated kind of document code (typically the last two character of a publication number). The kind code indicates, if the document is an application, publication, granted patent or other (e.g. utility model).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentPublication"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#legalRepresentative -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;legalRepresentative">
+    <rdfs:label xml:lang="en">legal Representative</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">E.g. the patent attorney.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&sumo;CognitiveAgent"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#name -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The name of an organization or individual.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#publicationNumber -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;publicationNumber">
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:label xml:lang="en">publication Number</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Publication numbers in general consist of three parts: a country part, a number part and a kind code. Publication numbers are specified by the WIPO standard ST.6 (http://www.wipo.int/export/sites/www/scit/en/standards/pdf/03-06-01.pdf).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;PatentPublication"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#title -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;title">
+    <rdfs:label xml:lang="en">title</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The title of a category</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#validFrom -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;validFrom">
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:label xml:lang="en">valid From</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Since when this category is part of the classification.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IPCCategory"/>
+    <rdfs:range rdf:resource="&xsd;date"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#validTo -->
+
+  <owl:DatatypeProperty rdf:about="&pmo;validTo">
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:label xml:lang="en">valid To</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">Until when this category will be part of the classification.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <rdfs:domain rdf:resource="&pmo;IPCCategory"/>
+    <rdfs:range rdf:resource="&xsd;date"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#Certificate -->
+
+  <owl:Class rdf:about="&sumo;Certificate"/>
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#Class -->
+
+  <owl:Class rdf:about="&sumo;Class"/>
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#ContentBearingObject -->
+
+  <owl:Class rdf:about="&sumo;ContentBearingObject"/>
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#Human -->
+
+  <owl:Class rdf:about="&sumo;Human"/>
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#Relation -->
+
+  <owl:Class rdf:about="&sumo;Relation"/>
+
+
+
+  <!-- http://www.owl-ontologies.com/sumo.owl#Set -->
+
+  <owl:Class rdf:about="&sumo;Set"/>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#DesignPatent -->
+
+  <owl:Class rdf:about="&pmo;DesignPatent">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertyRight"/>
+    <rdfs:label xml:lang="en">Design Patent</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#ECLACategory -->
+
+  <owl:Class rdf:about="&pmo;ECLACategory">
+    <rdfs:subClassOf rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:label xml:lang="en">ECLA Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A category of the European Patent Classification (ECLA). ECLA is the classification scheme applied by the European Patent Office to its internal collection of search documentation and is based on the IPC, but is often more detailed. See also: http://l2.espacenet.com/eclasrch</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <owl:versionInfo rdf:datatype="&xsd;string">This aspect is not modelled.</owl:versionInfo>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#EquivalentFamily -->
+
+  <owl:Class rdf:about="&pmo;EquivalentFamily">
+    <rdfs:subClassOf rdf:resource="&pmo;PatentFamily"/>
+    <rdfs:label xml:lang="en">Equivalent Family</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A patent family where all members have the same priority applications.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#GrantedPatent -->
+
+  <owl:Class rdf:about="&pmo;GrantedPatent">
+    <rdfs:subClassOf rdf:resource="&pmo;PatentPublication"/>
+    <rdfs:label xml:lang="en">Granted Patent</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A published patent that has been granted.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#INPADOCFamily -->
+
+  <owl:Class rdf:about="&pmo;INPADOCFamily">
+    <rdfs:subClassOf rdf:resource="&pmo;PatentFamily"/>
+    <rdfs:label xml:lang="en">INPADOC Family</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A patent family definition used in INPADOC.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IPCCategory -->
+
+  <owl:Class rdf:about="&pmo;IPCCategory">
+    <rdfs:subClassOf rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:label xml:lang="en">IPC Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A catecory of the International Patent Classification (IPC). The IPC is currently used by over 70 patent authorities to classify and index the subject matter of published patent specifications. The IPC is maintained and is administered by the World Intellectual Property Organisation and was first published in 1968. The eighth edition was published in mid 2005 and came into force in January 2006.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IPCClass -->
+
+  <owl:Class rdf:about="&pmo;IPCClass">
+    <rdfs:subClassOf rdf:resource="&pmo;IPCCategory"/>
+    <rdfs:label xml:lang="en">IPC Class</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">An IPC class.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IPCGroup -->
+
+  <owl:Class rdf:about="&pmo;IPCGroup">
+    <rdfs:subClassOf rdf:resource="&pmo;IPCCategory"/>
+    <rdfs:label xml:lang="en">IPC Group</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">An IPC group.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IPCMaingroup -->
+
+  <owl:Class rdf:about="&pmo;IPCMaingroup">
+    <rdfs:subClassOf rdf:resource="&pmo;IPCCategory"/>
+    <rdfs:label xml:lang="en">IPC Maingroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">An IPC maingroup.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IPCSection -->
+
+  <owl:Class rdf:about="&pmo;IPCSection">
+    <rdfs:subClassOf rdf:resource="&pmo;IPCCategory"/>
+    <rdfs:label xml:lang="en">IPC Section</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">IPC部分</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      An IPC section (A-H). A: Human Necessities
+      B: Performing Operations, Transporting
+      C: Chemistry, Metallurgy
+      D: Textiles, Paper
+      E: Fixed Constructions
+      F: Mechanical Engineering, Lighting, Heating, Weapons
+      G: Physics
+      H: Electricity
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">
+      IPC部分（A-H）。A：人类的必需品；
+      B：执行操作，运输；
+      C：化学，冶金；
+      D：纺织，造纸；
+      E：固定建筑物；
+      F：机械工程，照明，加热，武器；
+      G：物理；
+      H：电力。
+    </rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IPCSubclass -->
+
+  <owl:Class rdf:about="&pmo;IPCSubclass">
+    <rdfs:subClassOf rdf:resource="&pmo;IPCCategory"/>
+    <rdfs:label xml:lang="en">IPC Subclass</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">IPC子类</rdfs:label>
+    <rdfs:comment xml:lang="en">An IPC dot group.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IndustrialDesign -->
+
+  <owl:Class rdf:about="&pmo;IndustrialDesign">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertyRight"/>
+    <rdfs:label xml:lang="en">Industrial Design</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The class of &quot;industrial designs&quot; includes two-dimensional and three-dimensional features of shape and surface of objects, and thus covers both concepts of &quot;designs&quot; and &quot;models&quot; where a distinction is made between the former and the latter. The term &quot;industrial designs&quot; does not include design patents. See ST.13.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IntellectualPropertyDocument -->
+
+  <owl:Class rdf:about="&pmo;IntellectualPropertyDocument">
+    <rdfs:subClassOf rdf:resource="&sumo;ContentBearingObject"/>
+    <rdfs:label xml:lang="en">Intellectual Property Document</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A special class of documents that describe and claim intellectual properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IntellectualPropertyRight -->
+
+  <owl:Class rdf:about="&pmo;IntellectualPropertyRight">
+    <rdfs:subClassOf rdf:resource="&sumo;Certificate"/>
+    <rdfs:label xml:lang="en">Intellectual Property Right</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#IntellectualPropertySupplementDocument -->
+
+  <owl:Class rdf:about="&pmo;IntellectualPropertySupplementDocument">
+    <rdfs:subClassOf rdf:resource="&sumo;ContentBearingObject"/>
+    <rdfs:label xml:lang="en">Intellectual Property Supplement Document</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A document that supplements an IP document, e.g. a search report, an opposition, prior art, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#LegalEvent -->
+
+  <owl:Class rdf:about="&pmo;LegalEvent">
+    <rdfs:subClassOf rdf:resource="&sumo;ContentBearingObject"/>
+    <rdfs:label xml:lang="en">Legal Event</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A ContentBearingObject that describes events during a patent (or intellectual property) lifecycle. Examples are: a patent has been filed, a patent has been granted, a patent has been revoked, examination has been requested for a patent, etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#Opposition -->
+
+  <owl:Class rdf:about="&pmo;Opposition">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertySupplementDocument"/>
+    <rdfs:label xml:lang="en">Opposition</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">An opposition filed against a patent application.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#Patent -->
+
+  <owl:Class rdf:about="&pmo;Patent">
+    <rdfs:label xml:lang="en">Patent</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertyRight"/>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#PatentClassification -->
+
+  <owl:Class rdf:about="&pmo;PatentClassification">
+    <rdfs:label xml:lang="en">Patent Classification</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:subClassOf rdf:resource="&sumo;Relation"/>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#PatentClassificationCategory -->
+
+  <owl:Class rdf:about="&pmo;PatentClassificationCategory">
+    <rdfs:subClassOf rdf:resource="&sumo;Class"/>
+    <rdfs:label xml:lang="en">Patent Classification Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">An abstract category of a patent classification. Concrete categories are for example IPC or ECLA categories. Each category is part of a concrete PatentClassification scheme.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#PatentDocument -->
+
+  <owl:Class rdf:about="&pmo;PatentDocument">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertyDocument"/>
+    <rdfs:label xml:lang="en">Patent Document</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      An instance of &quot;PatentDocument&quot; is a &quot;ContentBearingObject&quot; that has textual content, image data and metadata (e.g. bibliographic data, citations, classifications, etc.).
+      Concrete sub-classes of &quot;PatentDocument&quot; are: PatentPublication, PatentApplication
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#PatentFamily -->
+
+  <owl:Class rdf:about="&pmo;PatentFamily">
+    <rdfs:subClassOf rdf:resource="&sumo;Set"/>
+    <rdfs:label xml:lang="en">Patent Family</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">A group of patents related by a common priority claim.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#PatentForInvention -->
+
+  <owl:Class rdf:about="&pmo;PatentForInvention">
+    <rdfs:subClassOf rdf:resource="&pmo;Patent"/>
+    <rdfs:label xml:lang="en">Patent For Invention</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#PatentPublication -->
+
+  <owl:Class rdf:about="&pmo;PatentPublication">
+    <rdfs:subClassOf rdf:resource="&pmo;PatentDocument"/>
+    <rdfs:label xml:lang="en">Patent Publication</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The class of documents that have been applied for a patent and where published.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#PlantPatent -->
+
+  <owl:Class rdf:about="&pmo;PlantPatent">
+    <rdfs:subClassOf rdf:resource="&pmo;Patent"/>
+    <rdfs:label xml:lang="en">Plant Patent</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">植物专利</rdfs:label>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#SearchReport -->
+
+  <owl:Class rdf:about="&pmo;SearchReport">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertySupplementDocument"/>
+    <rdfs:label xml:lang="en">Search Report</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">搜索报告</rdfs:label>
+    <rdfs:comment xml:lang="en">A search report issued at a patent office.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#SupplementaryProtectionCertificate -->
+
+  <owl:Class rdf:about="&pmo;SupplementaryProtectionCertificate">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertyRight"/>
+    <rdfs:label xml:lang="en">Supplementary Protection Certificate</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="de">Ergänzendes Schutzzertifikat, siehe http://de.wikipedia.org/wiki/Erg%C3%A4nzendes_Schutzzertifikat</rdfs:comment>
+    <rdfs:comment xml:lang="en">A sui generis right available for medicinal and plant protection products. The right comes into force after the corresponding patent expires and has a maximum life time of 5 years. see http://en.wikipedia.org/wiki/Supplementary_protection_certificate</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#TopographiesOfIntegratedCircuits -->
+
+  <owl:Class rdf:about="&pmo;TopographiesOfIntegratedCircuits">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertyRight"/>
+    <rdfs:label xml:lang="en">Topographies Of Integrated Circuits</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:comment xml:lang="en">The class of topographies (layout design) of integrated circuits means the three-dimensional disposition, however expressed, of the elements, at least one of which is an active element, and of some or all of the interconnections of an integrated circuit, or such a three-dimensional disposition prepared for an integrated circuit intended for manufacture (see ST.13).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#USPCCategory -->
+
+  <owl:Class rdf:about="&pmo;USPCCategory">
+    <rdfs:subClassOf rdf:resource="&pmo;PatentClassificationCategory"/>
+    <rdfs:label xml:lang="en">USPC Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">USPC类别</rdfs:label>
+    <rdfs:comment xml:lang="en">Category of the US Patent Classication (USPC). USPC is the scheme used by the USPTO examiners as their primary classification tool. The scheme can be used to subject search US patents as far back as 1790, since all the affected documents are reclassified whenever the classification schedules are revised. See also: http://www.uspto.gov/go/classification/</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn"></rdfs:comment>
+    <owl:versionInfo rdf:datatype="&xsd;string">This aspect is not modelled.</owl:versionInfo>
+  </owl:Class>
+
+
+
+  <!-- http://www.patexpert.org/ontologies/pmo.owl#UtilityModel -->
+
+  <owl:Class rdf:about="&pmo;UtilityModel">
+    <rdfs:subClassOf rdf:resource="&pmo;IntellectualPropertyRight"/>
+    <rdfs:label xml:lang="en">Utility Model</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">工具模型</rdfs:label>
+  </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY daml "http://www.daml.org/2001/03/daml+oil#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY pdo "http://www.patexpert.org/ontologies/pdo.owl#" >
+    <!ENTITY pulo "http://www.patexpert.org/ontologies/pulo.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.patexpert.org/ontologies/pdo.owl#"
+     xml:base="http://www.patexpert.org/ontologies/pdo.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:pulo="http://www.patexpert.org/ontologies/pulo.owl#"
+     xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
+     xmlns:pdo="http://www.patexpert.org/ontologies/pdo.owl#">
+    <owl:Ontology rdf:about="http://www.patexpert.org/ontologies/pdo.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#BlockDiagram -->
+
+    <owl:Class rdf:about="&pdo;BlockDiagram">
+        <rdfs:subClassOf rdf:resource="&pdo;Diagram"/>
+        <rdfs:comment rdf:datatype="&xsd;string">A diagram which depicts a system as a set of boxes (corresponding to modules / subsystems) and directed arcs between them such that it depicts a flow of something from module to module.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#BottomView -->
+
+    <owl:Class rdf:about="&pdo;BottomView">
+        <rdfs:subClassOf rdf:resource="&pdo;TechnicalDrawing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Bottom View of a technical drawing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Circuit -->
+
+    <owl:Class rdf:about="&pdo;Circuit">
+        <rdfs:subClassOf rdf:resource="&pdo;Diagram"/>
+        <rdfs:comment rdf:datatype="&xsd;string">This special kind of diagram is an electric circuit.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Diagram -->
+
+    <owl:Class rdf:about="&pdo;Diagram">
+        <rdfs:subClassOf rdf:resource="&pulo;Figure"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Diagrams are used to depict architectural views of systems designs.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#ElevationalView -->
+
+    <owl:Class rdf:about="&pdo;ElevationalView">
+        <rdfs:subClassOf rdf:resource="&pdo;TechnicalDrawing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Elevational view of a technical drawing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Flowchart -->
+
+    <owl:Class rdf:about="&pdo;Flowchart">
+        <rdfs:subClassOf rdf:resource="&pulo;Figure"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The depiction of an algorithm or process under a standardized form. It usually consists of some shapes (circles, rectangles, diamonds, ovals) connected with directed arcs. The arcs indicate the flow of execution of the individual steps of the algorithm/process.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Graph -->
+
+    <owl:Class rdf:about="&pdo;Graph">
+        <rdfs:subClassOf rdf:resource="&pulo;Figure"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The depiction of a varying quantity as a function of one (2-D graph) or two variables (3-D graph). Apart from function plots, this class of figures may contain pie charts, bar charts and surface plots.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Photo -->
+
+    <owl:Class rdf:about="&pdo;Photo">
+        <rdfs:subClassOf rdf:resource="&pulo;Figure"/>
+        <rdfs:comment rdf:datatype="&xsd;string">A scanned and binarized photo.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#PlaneView -->
+
+    <owl:Class rdf:about="&pdo;PlaneView">
+        <rdfs:subClassOf rdf:resource="&pdo;TechnicalDrawing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Plane View of a technical drawing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Response -->
+
+    <owl:Class rdf:about="&pdo;Response">
+        <rdfs:subClassOf rdf:resource="&pdo;Waveform"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Response of a system over an input signal.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#SectionalView -->
+
+    <owl:Class rdf:about="&pdo;SectionalView">
+        <rdfs:subClassOf rdf:resource="&pdo;TechnicalDrawing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">One sectional view of the technical drawing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#SideView -->
+
+    <owl:Class rdf:about="&pdo;SideView">
+        <rdfs:subClassOf rdf:resource="&pdo;TechnicalDrawing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Side view of a technical drawing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#State -->
+
+    <owl:Class rdf:about="&pdo;State">
+        <rdfs:subClassOf rdf:resource="&pdo;Diagram"/>
+        <rdfs:comment rdf:datatype="&xsd;string">A diagram depicting state transitions.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#TechnicalDrawing -->
+
+    <owl:Class rdf:about="&pdo;TechnicalDrawing">
+        <rdfs:subClassOf rdf:resource="&pulo;Figure"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The depiction of an embodiment under a special view. Examples are cross sectional views of machines, top views of buildings, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#TimeChart -->
+
+    <owl:Class rdf:about="&pdo;TimeChart">
+        <rdfs:subClassOf rdf:resource="&pdo;Waveform"/>
+        <rdfs:comment rdf:datatype="&xsd;string">A special kind of chart which depicts the fluctuations of multiple signals through time.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#TopView -->
+
+    <owl:Class rdf:about="&pdo;TopView">
+        <rdfs:subClassOf rdf:resource="&pdo;TechnicalDrawing"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Top View of a technical drawing.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Trellis -->
+
+    <owl:Class rdf:about="&pdo;Trellis">
+        <rdfs:subClassOf rdf:resource="&pdo;State"/>
+        <rdfs:comment rdf:datatype="&xsd;string">A special kind of diagram that depicts state transitions for the respective Trellis modulation/encoding process.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pdo.owl#Waveform -->
+
+    <owl:Class rdf:about="&pdo;Waveform">
+        <rdfs:subClassOf rdf:resource="&pdo;Graph"/>
+        <rdfs:comment rdf:datatype="&xsd;string">The depiction of a varying quantity in relation to another one. Examples: function, clock signals, etc.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.patexpert.org/ontologies/pulo.owl#Figure -->
+
+    <owl:Class rdf:about="&pulo;Figure"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
