@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rdf:RDF [
+	<!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	<!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+	<!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+	<!ENTITY dc 'http://purl.org/dc/elements/1.1/'>
+	<!ENTITY sumo 'http://www.owl-ontologies.com/sumo.owl#'>
+	<!ENTITY owl 'http://www.w3.org/2002/07/owl#'>
+	<!ENTITY pulo 'http://www.patexpert.org/ontologies/pulo.owl#'>
+	<!ENTITY daml 'http://www.daml.org/2001/03/daml+oil#'>
+]>
+<rdf:RDF xml:base="http://www.patexpert.org/ontologies/pulo.owl" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns="http://www.patexpert.org/ontologies/pulo.owl#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sumo="http://www.owl-ontologies.com/sumo.owl#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:pulo="http://www.patexpert.org/ontologies/pulo.owl#" xmlns:daml="http://www.daml.org/2001/03/daml+oil#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <owl:Class rdf:about="&sumo;ContentBearingObject">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;ContentDevelopment">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;Device">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;FieldOfStudy">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;NaturalLanguage">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;Object">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;ObjectiveNorm">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;Patent">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <rdf:Description rdf:about="&sumo;Process">
+    <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+  </rdf:Description>
+  <owl:Class rdf:about="&sumo;Proposition">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;Quantity">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Class rdf:about="&sumo;Text">
+    <rdf:type rdf:resource="&owl;Class" />
+  </owl:Class>
+  <owl:Ontology rdf:about="http://www.patexpert.org/ontologies/pulo.owl">
+    <rdf:type rdf:resource="&owl;Ontology" />
+  </owl:Ontology>
+  <owl:Class rdf:about="&pulo;AdditionalSubject">
+    <rdfs:comment rdf:datatype="&xsd;string">Individuals of this class convey additional information. Additional information is non-trivial technical information which does not itself represent an addition to the state of the art but might constitute useful information for the searcher. The additional information complements the invention information by identifying, for example, the constituents of a composition or mixture, or elements or components of a process or structure, or use or applications of classified technical subjects.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;InformationSubject" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Apparatus">
+    <rdfs:comment rdf:datatype="&xsd;string">Examples: installations used in chemical or physical processes, tools, implements, machines, devices for performing operations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;InventionSubject" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;ChemicalFormula">
+    <rdfs:comment rdf:datatype="&xsd;string">A chemical formula depiction contained in an instance of Document.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;DocumentElement" />
+    <owl:disjointWith rdf:resource="&pulo;Figure" />
+    <owl:disjointWith rdf:resource="&pulo;MathFormula" />
+    <owl:disjointWith rdf:resource="&pulo;Reference" />
+    <owl:disjointWith rdf:resource="&pulo;Table" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;DeviceAttribute">
+    <rdfs:subClassOf rdf:resource="&sumo;ObjectiveNorm" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;DocumentElement">
+    <rdfs:comment rdf:datatype="&xsd;string">This class contains objects that can be considered as document components for an instance of a document. Examples: text, figure, table, mathematical formula, chemical formula.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;ContentBearingObject" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;English">
+    <rdfs:comment rdf:datatype="&xsd;string">English Language</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;NaturalLanguage" />
+    <owl:disjointWith rdf:resource="&pulo;French" />
+    <owl:disjointWith rdf:resource="&pulo;German" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;FieldOfPatentDocument">
+    <rdfs:comment rdf:datatype="&xsd;string">The branch of electrical engineering concerned with the technology of electronic communication at a distance</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;FieldOfStudy" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Figure">
+    <rdfs:comment rdf:datatype="&xsd;string">A special kind of image which is found in patent documents. Patent figures are black &amp; white depictions of content which is necessary for the specification of the patent subject of invention.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;DocumentElement" />
+    <owl:disjointWith rdf:resource="&pulo;MathFormula" />
+    <owl:disjointWith rdf:resource="&pulo;Reference" />
+    <owl:disjointWith rdf:resource="&pulo;Table" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;FigureElementReference">
+    <rdfs:comment rdf:datatype="&xsd;string">This class contains individuals which act as links between the patent text and patent figures. This excludes figure labels, e.g. Fig. 16. Only references which reference elements of figures are considered. An individual of this class is identified by a name, usually a number or an alphanumeric and may be linked to more than one figures of the document (e.g. if those figures depict multiple views of the same object, a reference to one of its constituents might be visible in more than one views).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;Reference" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;French">
+    <rdfs:comment rdf:datatype="&xsd;string">French Language</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;NaturalLanguage" />
+    <owl:disjointWith rdf:resource="&pulo;German" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;German">
+    <rdfs:comment rdf:datatype="&xsd;string">German Language</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;NaturalLanguage" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;InformationSubject">
+    <rdfs:comment rdf:datatype="&xsd;string">This class characterizes all individuals which provide pieces of information, mostly of technical nature, about specific patent documents.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;Proposition" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;InventionSubject">
+    <rdfs:comment rdf:datatype="&xsd;string">Individuals of this class convey invention information. IInvention information is technical information in the total disclosure of a patent document (for example, description, drawings, claims) that represents an addition to the state of the art. The invention information is determined in the context of the state of the art, using guidance provided by the claims of the patent document, with due regard given to the description and the drawings.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;InformationSubject" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Material">
+    <rdfs:comment rdf:datatype="&xsd;string">Examples: ingredients of mixtures.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;InventionSubject" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;MathFormula">
+    <rdfs:comment rdf:datatype="&xsd;string">A mathematical formula contained in an instance of Document.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;DocumentElement" />
+    <owl:disjointWith rdf:resource="&pulo;Reference" />
+    <owl:disjointWith rdf:resource="&pulo;Table" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;OpticalRecording">
+    <rdfs:comment rdf:datatype="&xsd;string">The act of making an optical recording.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;Recording" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;OpticalRecordingDevices">
+    <rdfs:comment rdf:datatype="&xsd;string">Optical recording devices are recording devices that use light in the form of a focused spot to read and write data from an optical record carrier to perform optical recording.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;RecordingSystems" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;PatentDocumentReference">
+    <rdfs:comment rdf:datatype="&xsd;string">Document elements of this kind point to other patent documents.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;Reference" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Percent">
+    <rdfs:comment rdf:datatype="&xsd;string">Percent is a proportion multiplied by 100.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;Quantity" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Product">
+    <rdfs:comment rdf:datatype="&xsd;string">Examples: Chemical compounds, compositions, fabrics, articles of manufacture.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;InventionSubject" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Ratio">
+    <rdfs:comment rdf:datatype="&xsd;string">Ratio refers to the relative magnitudes of two quantities (usually expressed as a quotient).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;Quantity" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Recording">
+    <rdfs:comment rdf:datatype="&xsd;string">The act of making a recording.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;ContentDevelopment" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;RecordingSystems">
+    <rdfs:comment rdf:datatype="&xsd;string">Recording systems are used for readind and writing data.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;Device" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Reference">
+    <rdfs:comment rdf:datatype="&xsd;string">A special kind of document element which points to another element / document inside or outside the document where it resides.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;DocumentElement" />
+    <owl:disjointWith rdf:resource="&pulo;Table" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Section">
+    <rdfs:comment rdf:datatype="&xsd;string">A Text that comprises a part of an extended Text and that is related strictly to a certain subject.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;Text" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Table">
+    <rdfs:comment rdf:datatype="&xsd;string">A tabular arrangement of textual elements.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;DocumentElement" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;TelecommunicationSystems">
+    <rdfs:comment rdf:datatype="&xsd;string">It refers to the systems used in transmitting messages over a distance electronically.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&sumo;Device" />
+  </owl:Class>
+  <owl:Class rdf:about="&pulo;Text">
+    <rdfs:comment rdf:datatype="&xsd;string">Text contained in an instance of a Document.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&pulo;DocumentElement" />
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="&pulo;containsDocumentElement">
+    <rdfs:domain rdf:resource="&sumo;Patent" />
+    <rdfs:range rdf:resource="&pulo;DocumentElement" />
+    <owl:inverseOf rdf:resource="&pulo;isContainedInDocument" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;containsFigure">
+    <rdfs:comment rdf:datatype="&xsd;string">This subproperty can be defined only for objects of Document type and link them with objects of Figure type.</rdfs:comment>
+    <rdfs:range rdf:resource="&pulo;Figure" />
+    <rdfs:subPropertyOf rdf:resource="&pulo;containsDocumentElement" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;containsFigureElementReference">
+    <rdfs:comment rdf:datatype="&xsd;string">This property links elements to figure elements with the document where they reside.</rdfs:comment>
+    <rdfs:range rdf:resource="&pulo;FigureElementReference" />
+    <rdfs:subPropertyOf rdf:resource="&pulo;containsDocumentElement" />
+    <owl:inverseOf rdf:resource="&pulo;isFigureElementReferenceContained" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;conveysAdditionalInformation">
+    <rdfs:comment rdf:datatype="&xsd;string">This property links only non-invention information to patent documents and figures.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="&pulo;conveysInformationSubject" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;conveysInformationSubject">
+    <rdfs:comment rdf:datatype="&xsd;string">This property is used to link patent document elements or figures with objects of type InformationSubject.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pulo;DocumentElement" />
+    <rdfs:range rdf:resource="&pulo;InformationSubject" />
+    <owl:inverseOf rdf:resource="&pulo;isConveyedByDocumentElement" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;conveysInventionInformation">
+    <rdfs:comment rdf:datatype="&xsd;string">This property links only invention relevant information to patent documents and figures.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="&pulo;conveysInformationSubject" />
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;fileFormat">
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;fileName">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;filingDate">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:range rdf:resource="&xsd;date" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasApplicant">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasAttorney">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasCaption">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;hasDatabaseKey">
+    <rdfs:comment rdf:datatype="&xsd;string">Assuming that patent documents and figures (to be precise not the files themselves but primary metadata information about them)  are stored in a database table and that the key of the table is an integer number, this property relates a document to the database table key that can be used for the retrieval of the respective data. Values for this property should be given together with values for the property isInDatabaseTable.</rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;int" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;hasFigureElementReferenceLabel">
+    <rdfs:comment rdf:datatype="&xsd;string">This property is used to link objects of type FigureElementReference to their label as this appears in both patent text and in the figure where the reference lies.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pulo;FigureElementReference" />
+    <rdfs:subPropertyOf rdf:resource="&pulo;hasLabel" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;hasFigureLabel">
+    <rdfs:comment rdf:datatype="&xsd;string">This property is used to link objects of type Figure to their label as this appears in both patent text and in the drawings section, e.g. if Fig. 3(a) appears in the patent text and respective figure, then the value of this property for the particular figure will be "3(a)".</rdfs:comment>
+    <rdfs:domain rdf:resource="&pulo;Figure" />
+    <rdfs:subPropertyOf rdf:resource="&pulo;hasLabel" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasInventor">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;hasLabel">
+    <rdfs:comment rdf:datatype="&xsd;string">The property that links any figurative element or whole figures to their labels.</rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasPart">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;hasPatentDocumentNumber">
+    <rdfs:comment rdf:datatype="&xsd;string">This datatype property links each patent document to a string of the form: [country code] [number] [kind code].</rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasReference">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasSection">
+    <rdfs:domain rdf:resource="&sumo;Patent" />
+    <rdfs:range rdf:resource="&pulo;Section" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;hasfamilyRelation">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;height">
+    <rdfs:range rdf:resource="&xsd;float" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="&pulo;identifiedBy">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;inCoverPage">
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="&pulo;isContainedInDocument">
+    <rdfs:comment rdf:datatype="&xsd;string">Any object (either information or figure or figure element reference) that is contained to a document can be linked by means of this property to the container document.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pulo;DocumentElement" />
+    <rdfs:range rdf:resource="&sumo;Patent" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;isConveyedByDocumentElement">
+    <rdfs:comment rdf:datatype="&xsd;string">An instance of InformationSubject that is conveyed by a particular document element, i.e. by a text passage, figure, etc.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pulo;InformationSubject" />
+    <rdfs:range rdf:resource="&pulo;DocumentElement" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;isFigureContained">
+    <rdfs:comment rdf:datatype="&xsd;string">This subclass of the property pertains to document figures.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pulo;Figure" />
+    <rdfs:subPropertyOf rdf:resource="&pulo;isContainedInDocument" />
+    <owl:inverseOf rdf:resource="&pulo;containsFigure" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;isFigureElementReferenceContained">
+    <rdfs:comment rdf:datatype="&xsd;string">This subclass of the property pertains to figure element references.</rdfs:comment>
+    <rdfs:domain rdf:resource="&pulo;FigureElementReference" />
+    <rdfs:subPropertyOf rdf:resource="&pulo;isContainedInDocument" />
+  </owl:ObjectProperty>
+  <owl:AnnotationProperty rdf:about="&pulo;isFunctionOf">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+    <rdfs:domain rdf:resource="&sumo;Process" />
+    <rdfs:range rdf:resource="&sumo;Object" />
+  </owl:AnnotationProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;isInDatabaseTable">
+    <rdfs:comment rdf:datatype="&xsd;string">This property relates documents and document elements to a database table for retrieval of application-specific data. The property hasDatabaseKey further specifies the particular table entry/row which provides the desired data.</rdfs:comment>
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:ObjectProperty rdf:about="&pulo;isInPatent">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;isPartOf">
+    <rdf:type rdf:resource="&owl;ObjectProperty" />
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="&pulo;isWrittenIn">
+    <rdfs:domain rdf:resource="&sumo;Text" />
+    <rdfs:range rdf:resource="&sumo;NaturalLanguage" />
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;objectAnnotation">
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;objectId">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:range rdf:resource="&xsd;string" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;objectMetadata">
+    <rdf:type rdf:resource="&owl;DatatypeProperty" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;orientation">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:range rdf:nodeID="autos1" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;publicationDate">
+    <rdf:type rdf:resource="&owl;DatatypeProperty" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;resolution">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:range rdf:resource="&xsd;float" />
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="&pulo;width">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:range rdf:resource="&xsd;float" />
+  </owl:DatatypeProperty>
+  <rdfs:Datatype rdf:about="&xsd;date">
+    <rdf:type rdf:resource="&rdfs;Datatype" />
+  </rdfs:Datatype>
+  <rdfs:Datatype rdf:nodeID="autos1">
+    <owl:oneOf rdf:nodeID="autos2" />
+  </rdfs:Datatype>
+  <rdf:List rdf:nodeID="autos2">
+    <rdf:first rdf:datatype="&xsd;string">SIDEWAYS</rdf:first>
+    <rdf:rest rdf:nodeID="autos3" />
+  </rdf:List>
+  <rdf:List rdf:nodeID="autos3">
+    <rdf:first rdf:datatype="&xsd;string">UPRIGHT</rdf:first>
+    <rdf:rest rdf:resource="&rdf;nil" />
+  </rdf:List>
+</rdf:RDF>
