@@ -1,0 +1,717 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY units "http://sweet.jpl.nasa.gov/ontology/units.owl#" >
+    <!ENTITY numerics "http://sweet.jpl.nasa.gov/ontology/numerics.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://sweet.jpl.nasa.gov/ontology/time.owl#"
+     xml:base="http://sweet.jpl.nasa.gov/ontology/time.owl"
+     xmlns:numerics="http://sweet.jpl.nasa.gov/ontology/numerics.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:units="http://sweet.jpl.nasa.gov/ontology/units.owl#">
+    <owl:Ontology rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl">
+        <rdfs:label xml:lang="en-us">Time Ontology</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间本体</rdfs:label>
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <rdfs:comment xml:lang="en-us">by SWEET project</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">来自SWEET项目</rdfs:comment>
+        <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/numerics.owl#"/>
+        <owl:imports rdf:resource="http://sweet.jpl.nasa.gov/ontology/units.owl#"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#after -->
+
+    <owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#after">
+        <rdfs:label xml:lang="en-us">after</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">之后</rdfs:label>
+        <rdfs:subPropertyOf rdf:resource="&numerics;greaterThan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#before -->
+
+    <owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#before">
+        <rdfs:label xml:lang="en-us">before</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">之前</rdfs:label>
+        <owl:inverseOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#after"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#hasTemporalObject -->
+
+    <owl:ObjectProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#hasTemporalObject">
+        <rdfs:label xml:lang="en-us">has temporal object</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间对象</rdfs:label>
+        <rdfs:range rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/numerics.owl#greaterThan -->
+
+    <owl:ObjectProperty rdf:about="&numerics;greaterThan"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#fractionOfYear -->
+
+    <owl:DatatypeProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#fractionOfYear">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en-us">fraction of year</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">年数</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#numberOfYears -->
+
+    <owl:DatatypeProperty rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#numberOfYears">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en-us">number of years</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">年的部分</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#ARCHAEAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#ARCHAEAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Autumn -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Autumn">
+        <rdfs:label xml:lang="en-us">Autumn</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">秋天</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Fall"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Beginning -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Beginning">
+        <rdfs:label xml:lang="en-us">Beginning</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">开始</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Start"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#CAMBRIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#CAMBRIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#CARBONIFEROUS -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#CARBONIFEROUS"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#CENOZOIC -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#CENOZOIC"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#CRETACEOUS -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#CRETACEOUS"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Century -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Century">
+        <rdfs:label xml:lang="en-us">Century</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">世纪</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#CurrentTime -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#CurrentTime">
+        <rdfs:label xml:lang="en-us">Current Time</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">当前时间</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Instant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#DEVONIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#DEVONIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Day -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Day">
+        <rdfs:label xml:lang="en-us">Day</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">天</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Daytime -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Daytime">
+        <rdfs:label xml:lang="en-us">Daytime</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">白天</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Decade -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Decade">
+        <rdfs:label xml:lang="en-us">Decade</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">十年期</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Delay -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Delay">
+        <rdfs:label xml:lang="en-us">Delay</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">延迟</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Duration -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration">
+        <rdfs:label xml:lang="en-us">Duration</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">持续时间</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Event"/>
+        <owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TimeInterval"/>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalObject"/>
+        <rdfs:subClassOf rdf:resource="&numerics;Interval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#EOCENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#EOCENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#End -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#End">
+        <rdfs:label xml:lang="en-us">End</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">结束</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalRelation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Evening -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Evening">
+        <rdfs:label xml:lang="en-us">Evening</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">黄昏</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Nighttime"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Event -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Event">
+        <rdfs:label xml:lang="en-us">Event</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">事件</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Occurrence"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Fall -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Fall">
+        <rdfs:label xml:lang="en-us">Fall</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">秋天</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Season"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#HOLOCENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#HOLOCENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#History -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#History">
+        <rdfs:label xml:lang="en-us">History</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">历史</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Hour -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Hour">
+        <rdfs:label xml:lang="en-us">Hour</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">小时</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Instant -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Instant">
+        <rdfs:label xml:lang="en-us">Instant</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">瞬间</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalObject"/>
+        <rdfs:subClassOf rdf:resource="&numerics;Point"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#JURASSIC -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#JURASSIC"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#MESOZOIC -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#MESOZOIC"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#MIOCENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#MIOCENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#MISSISSIPPIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#MISSISSIPPIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Millennium -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Millennium">
+        <rdfs:label xml:lang="en-us">Millennium</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">千年</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Minute -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Minute">
+        <rdfs:label xml:lang="en-us">Minute</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">分钟</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Month -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Month">
+        <rdfs:label xml:lang="en-us">Month</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">月</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Morning -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Morning">
+        <rdfs:label xml:lang="en-us">Morning</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">早上</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Daytime"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#NEOGENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#NEOGENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Nighttime -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Nighttime">
+        <rdfs:label xml:lang="en-us">Nighttime</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">夜间</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#OLIGOCENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#OLIGOCENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#ORDOVICIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#ORDOVICIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Occurrence -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Occurrence">
+        <rdfs:label xml:lang="en-us">Occurrence</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">发生</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PALEOCENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PALEOCENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PALEOGENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PALEOGENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PALEOZOIC -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PALEOZOIC"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PENNSYLVANIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PENNSYLVANIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PERMIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PERMIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PLEISTOCENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PLEISTOCENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PLIOCENE -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PLIOCENE"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PRECAMBRIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PRECAMBRIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#PROTEROZOIC -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#PROTEROZOIC"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Period -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Period">
+        <rdfs:label xml:lang="en-us">Period</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间段</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalRelation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Prehistoric -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Prehistoric">
+        <rdfs:label xml:lang="en-us">Prehistoric</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">史前</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Period"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#QUATERNARY -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#QUATERNARY"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#SILURIAN -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#SILURIAN"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Season -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Season">
+        <rdfs:label xml:lang="en-us">Season</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">季节</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Second -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Second">
+        <rdfs:label xml:lang="en-us">Second</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">秒</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Spring -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Spring">
+        <rdfs:label xml:lang="en-us">Spring</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">春天</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Season"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Start -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Start">
+        <rdfs:label xml:lang="en-us">Start</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">开始</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalRelation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Summer -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Summer">
+        <rdfs:label xml:lang="en-us">Summer</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">夏天</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Season"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#TERTIARY -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TERTIARY"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#TRIASSIC -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TRIASSIC"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalEntity -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalEntity">
+        <rdfs:label xml:lang="en-us">Temporal Entity</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间实体</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalObject -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalObject">
+        <rdfs:label xml:lang="en-us">Temporal Object</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间对象</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalReference -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalReference">
+        <rdfs:label xml:lang="en-us">Temporal Reference</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间参照</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalRelation -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalRelation">
+        <rdfs:label xml:lang="en-us">Temporal Relation</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间关系</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalEntity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#TimeInterval -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#TimeInterval">
+        <rdfs:label xml:lang="en-us">Time Interval</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">时间间隔</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#UT -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#UT">
+        <rdfs:label xml:lang="en-us">UT</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">通用时间</rdfs:label>
+        <owl:equivalentClass rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#UniversalTime"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#UniversalTime -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#UniversalTime">
+        <rdfs:label xml:lang="en-us">Universal Time</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">通用时间</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#TemporalReference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Week -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Week">
+        <rdfs:label xml:lang="en-us">Week</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">周</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Winter -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Winter">
+        <rdfs:label xml:lang="en-us">Winter</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">冬天</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Season"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/time.owl#Year -->
+
+    <owl:Class rdf:about="http://sweet.jpl.nasa.gov/ontology/time.owl#Year">
+        <rdfs:label xml:lang="en-us">Year</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">年</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/ontology/time.owl#Duration"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/numerics.owl#Interval -->
+
+    <owl:Class rdf:about="&numerics;Interval"/>
+    
+
+
+    <!-- http://sweet.jpl.nasa.gov/ontology/numerics.owl#Point -->
+
+    <owl:Class rdf:about="&numerics;Point"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
