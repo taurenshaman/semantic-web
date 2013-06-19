@@ -1,0 +1,225 @@
+<rdf:RDF
+    xmlns:nid3="http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#"
+    xmlns:nfo="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
+    xmlns:nmo="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
+    xmlns:nie="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
+    xmlns:exif="http://www.kanzaki.com/ns/exif#"
+    xmlns:nao="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:protege="http://protege.stanford.edu/system#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:ncal="http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:nrl="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#"
+    xmlns:pimo="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+    xmlns:tmo="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:nco="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#"
+    xmlns:nexif="http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#">
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject">
+    <rdfs:label>MailboxDataObject</rdfs:label>
+    <rdfs:comment>An entity encountered in a mailbox. Most common interpretations for such an entity include Message or Folder</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#DataObject"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage">
+    <rdfs:comment>A message sent with Instant Messaging software.</rdfs:comment>
+    <rdfs:label>IMMessage</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email">
+    <rdfs:comment>An email.</rdfs:comment>
+    <rdfs:label>Email</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader">
+    <rdfs:comment>An arbitrary message header.</rdfs:comment>
+    <rdfs:label>MessageHeader</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message">
+    <rdfs:label>Message</rdfs:label>
+    <rdfs:comment>A message. Could be an email, instant messanging message, SMS message etc.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#InformationElement"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity">
+    <rdfs:label>MimeEntity</rdfs:label>
+    <rdfs:comment>A MIME entity, as defined in RFC2045, Section 2.4.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#InformationElement"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox">
+    <rdfs:comment>A mailbox - container for MailboxDataObjects.</rdfs:comment>
+    <rdfs:label>Mailbox</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#InformationElement"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#replyTo">
+    <rdfs:comment>An address where the reply should be sent.</rdfs:comment>
+    <rdfs:label>replyTo</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageSubject">
+    <rdfs:comment>The subject of a message</rdfs:comment>
+    <rdfs:label>messageSubject</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#subject"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#references">
+    <rdfs:label>references</rdfs:label>
+    <rdfs:comment>Signifies that a message references another message. This property is a generic one. See RFC 2822 Sec. 3.6.4</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#recipient">
+    <rdfs:label>recipient</rdfs:label>
+    <rdfs:comment>A common superproperty for all properties that link a message with its recipients. Please don't use this property directly.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#to">
+    <rdfs:comment>The primary intended recipient of an email.</rdfs:comment>
+    <rdfs:label>to</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryRecipient"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#bcc">
+    <rdfs:label>bcc</rdfs:label>
+    <rdfs:comment>A Contact that is to receive a bcc of the email. A Bcc (blind carbon copy) is a copy of an email message sent to a recipient whose email address does not appear in the message.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryRecipient"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryRecipient">
+    <rdfs:label>secondaryRecipient</rdfs:label>
+    <rdfs:comment>A superproperty for all "additional" recipients of a message.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#recipient"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#cc">
+    <rdfs:label>cc</rdfs:label>
+    <rdfs:comment>A Contact that is to receive a cc of the email. A cc (carbon copy) is a copy of an email message whose recipient appears on the recipient list, so that all other recipients are aware of it.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#secondaryRecipient"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#contentMimeType">
+    <rdfs:label>contentMimeType</rdfs:label>
+    <rdfs:comment>Key used to store the MIME type of the content of an object when it is different from the object's main MIME type. This value can be used, for example, to model an e-mail message whose mime type is"message/rfc822", but whose content has type "text/html". If not specified, the MIME type of the
+content defaults to the value specified by the 'mimeType' property.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#mimeType"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#from">
+    <rdfs:comment>The sender of the message</rdfs:comment>
+    <rdfs:label>from</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#plainTextMessageContent">
+    <rdfs:label>plainTextMessageContent</rdfs:label>
+    <rdfs:comment>Plain text representation of the body of the message. For multipart messages, all parts are concatenated into the value of this property. Attachments, whose mimeTypes are different from text/plain or message/rfc822 are considered separate DataObjects and are therefore not included in the value of this property.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#plainTextContent"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#isRead">
+    <rdfs:label>isRead</rdfs:label>
+    <rdfs:comment>A flag that states the fact that a MailboxDataObject has been read.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#htmlMessageContent">
+    <rdfs:label>htmlMessageContent</rdfs:label>
+    <rdfs:comment>HTML representation of the body of the message. For multipart messages, all parts are concatenated into the value of this property. Attachments, whose mimeTypes are different from text/plain or message/rfc822 are considered separate DataObjects and are therefore not included in the value of this property.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageHeader">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:comment>Links the message wiith an arbitrary message header.</rdfs:comment>
+    <rdfs:label>messageHeader</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#primaryRecipient">
+    <rdfs:comment>The primary intended recipient of a message.</rdfs:comment>
+    <rdfs:label>primaryRecipient</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#recipient"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#inReplyTo">
+    <rdfs:label>inReplyTo</rdfs:label>
+    <rdfs:comment>Signifies that a message is a reply to another message. This feature is commonly used to link messages into conversations. Note that it is more specific than nmo:references. See RFC 2822 sec. 3.6.4</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#references"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sentDate">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:comment>Date when this message was sent.</rdfs:comment>
+    <rdfs:label>sentDate</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#contentCreated"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sender">
+    <rdfs:label>sender</rdfs:label>
+    <rdfs:comment>The person or agent submitting the message to the network, if other from the one given with the nmo:from property. Defined in RFC 822 sec. 4.4.2</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#Contact"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#recipient"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerName">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:comment>Name of the message header.</rdfs:comment>
+    <rdfs:label>headerName</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#messageId">
+    <rdfs:label>messageId</rdfs:label>
+    <rdfs:comment>An identifier of a message. This property has been inspired by the message-id property defined in RFC 2822, Sec. 3.6.4. It should be used for all kinds of identifiers used by various messaging applications to connect multiple messages into conversations. For email messageids, values are according to RFC2822/sec 3.6.4 and the literal value in RDF must include the brackets.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#identifier"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#headerValue">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:comment>Value of the message header.</rdfs:comment>
+    <rdfs:label>headerValue</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MessageHeader"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#hasAttachment">
+    <rdfs:comment>Links a message with files that were sent as attachments.</rdfs:comment>
+    <rdfs:label>hasAttachment</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Attachment"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#receivedDate">
+    <rdfs:comment>Date when this message was received.</rdfs:comment>
+    <rdfs:label>receivedDate</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+</rdf:RDF>

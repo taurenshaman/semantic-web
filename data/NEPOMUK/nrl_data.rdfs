@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+
+<!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>     
+<!ENTITY nrl 'http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#'>     
+<!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+<!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>]>
+
+<rdf:RDF xmlns:rdf="&rdf;"     xmlns:nrl="&nrl;"     xmlns:rdfs="&rdfs;" xmlns:xsd="&xsd;">
+
+<rdfs:Class rdf:about="&nrl;AsymmetricProperty"     rdfs:label="AsymmetricProperty" rdfs:comment="A marker class to identify asymmetric properties">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;Configuration"     rdfs:label="Configuration" rdfs:comment="Represents a named graph containing configuration data">
+    <rdfs:subClassOf rdf:resource="&nrl;Data"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;GraphMetadata"     rdfs:label="GraphMetadata" rdfs:comment="Represents a special named graph that contains metadata for another graph">
+    <rdfs:subClassOf rdf:resource="&nrl;Data"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;Data"     rdfs:label="Data" rdfs:comment="An abstract class representing all named graph roles">
+    <rdfs:subClassOf rdf:resource="&nrl;Graph"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;DocumentGraph"     rdfs:label="DocumentGraph" rdfs:comment="A marker class to identify named graphs that exist within a physical document">
+    <rdfs:subClassOf rdf:resource="&nrl;Graph"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;ExternalViewSpecification"     rdfs:label="ExternalViewSpecification" rdfs:comment="Represents an external view specification, this usually being a program which automatically generates the required view for an input graph">
+    <rdfs:subClassOf rdf:resource="&nrl;ViewSpecification"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;FunctionalProperty"     rdfs:label="FunctionalProperty" rdfs:comment="A marker class to identify functional properties">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;Graph"     rdfs:label="Graph" rdfs:comment="Represents a named graph">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;GraphView"     rdfs:label="GraphView" rdfs:comment="Identifies a graph which is itself a view of another named graph">
+    <rdfs:subClassOf rdf:resource="&nrl;Graph"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;InstanceBase"     rdfs:label="InstanceBase" rdfs:comment="Represents a named graph containing instance data">
+    <rdfs:subClassOf rdf:resource="&nrl;Data"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;InverseFunctionalProperty"     rdfs:label="InverseFunctionalProperty" rdfs:comment="A marker class to identify inverse functional properties">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;KnowledgeBase"     rdfs:label="KnowledgeBase" rdfs:comment="Represents a named graph containing both schematic and instance data">
+    <rdfs:subClassOf rdf:resource="&nrl;InstanceBase"/>
+    <rdfs:subClassOf rdf:resource="&nrl;Ontology"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;Ontology"     rdfs:label="Ontology" rdfs:comment="Represents a named graph having the role of an Ontology">
+    <rdfs:subClassOf rdf:resource="&nrl;Schema"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;ReflexiveProperty"     rdfs:label="ReflexiveProperty" rdfs:comment="A marker class to identify reflexive properties">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;RuleViewSpecification"     rdfs:label="RuleViewSpecification" rdfs:comment="Represents a view specification that is composed of a set of rules which generate the required view from the input graph upon firing">
+    <rdfs:subClassOf rdf:resource="&nrl;ViewSpecification"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;Schema"     rdfs:label="Schema" rdfs:comment="Represents a named graph containing schematic data">
+    <rdfs:subClassOf rdf:resource="&nrl;Data"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;Semantics"     rdfs:label="Semantics" rdfs:comment="Represents some declarative semantics">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;SymmetricProperty"     rdfs:label="SymmetricProperty" rdfs:comment="A marker class to identify symmetric properties">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;TransitiveProperty"     rdfs:label="TransitiveProperty" rdfs:comment="A marker class to identify transitive properties">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nrl;ViewSpecification"     rdfs:label="ViewSpecification" rdfs:comment="Represents a specification of the means to achieve a transformation of an input graph into the required graph view">
+    <rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&nrl;cardinality"     rdfs:label="cardinality" rdfs:comment="Specifies the precise value cardinality for a specific property">
+    <rdfs:domain rdf:resource="&rdf;Property"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;equivalentGraph"     rdfs:label="equivalentGraph" rdfs:comment="Links two equivalent named graphs. A symmetric property">
+    <rdf:type rdf:resource="&nrl;SymmetricProperty"/>
+    <rdfs:range rdf:resource="&nrl;Graph"/>
+    <rdfs:domain rdf:resource="&nrl;Graph"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;externalRealizer"     rdfs:label="externalRealizer" rdfs:comment="Points to the location of the realizer for the external view specification">
+    <rdfs:domain rdf:resource="&nrl;ExternalViewSpecification"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;graphMetadataFor"     rdfs:label="graphMetadataFor" rdfs:comment="Links a metadata graph to the graph that is being described. A unique value is compulsory">
+    <rdfs:domain rdf:resource="&nrl;GraphMetadata"/>
+    <rdfs:range rdf:resource="&nrl;Graph"/>
+    <nrl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:minCardinality>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;coreGraphMetadataFor"     rdfs:label="coreGraphMetadataFor" rdfs:comment=" Links a metadata graph to the graph for which it specifies the core graph properties including the semantics and the graph namespace. A graph can have only one unique core metadata graph">
+    <rdfs:domain rdf:resource="&nrl;GraphMetadata"/>
+    <rdfs:range rdf:resource="&nrl;Graph"/>
+    <rdf:type rdf:resource="&nrl;InverseFunctionalProperty"/>
+    <rdfs:subPropertyOf rdf:resource="&nrl;graphMetadataFor"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;updatable"     rdfs:label="updatable" rdfs:comment="A core graph metadata property, this defines whether a graph can be freely updated '1' or otherwise '0'">
+    <rdfs:domain rdf:resource="&nrl;Graph"/>
+    <rdfs:range rdf:resource="&xsd;boolean"/>
+    <nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;hasSemantics"     rdfs:label="hasSemantics" rdfs:comment="Points to a representation of the declarative semantics for a graph role">
+    <rdfs:domain rdf:resource="&nrl;Data"/>
+    <rdfs:range rdf:resource="&nrl;Semantics"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;hasSpecification"     rdfs:label="hasSpecification" rdfs:comment="Points to the representation of the view specification required to generate the graph view in question">
+    <rdfs:domain rdf:resource="&nrl;GraphView"/>
+    <rdfs:range rdf:resource="&nrl;ViewSpecification"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;imports"     rdfs:label="imports" rdfs:comment="Models a subsumption relationship between two graphs, stating that the object graph is imported and included in the subject graph">
+    <rdfs:range rdf:resource="&nrl;Data"/>
+    <rdfs:domain rdf:resource="&nrl;Data"/>
+    <rdfs:subPropertyOf rdf:resource="&nrl;superGraphOf"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;inverseProperty"     rdfs:label="inverseProperty" rdfs:comment="Links two properties and specifies their inverse behaviour">
+    <rdfs:range rdf:resource="&rdf;Property"/>
+    <rdfs:domain rdf:resource="&rdf;Property"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;maxCardinality"     rdfs:label="maxCardinality" rdfs:comment="Specifies a maximum value cardinality for a specific property">
+    <rdfs:domain rdf:resource="&rdf;Property"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;minCardinality"     rdfs:label="minCardinality" rdfs:comment="Specifies a minimum value cardinality for a specific property">
+    <rdfs:domain rdf:resource="&rdf;Property"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;realizes"     rdfs:label="realizes" rdfs:comment="Points to a representation of the declarative semantics that the view specification realizes">
+    <rdfs:domain rdf:resource="&nrl;ViewSpecification"/>
+    <rdfs:range rdf:resource="&nrl;Semantics"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;rule"     rdfs:label="rule" rdfs:comment="Specifies rules for a view specification that is driven by rules">
+    <rdfs:domain rdf:resource="&nrl;RuleViewSpecification"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;ruleLanguage"     rdfs:label="ruleLanguage" rdfs:comment="Specifies the rule language for a view specification that is driven by rules">
+    <rdfs:domain rdf:resource="&nrl;RuleViewSpecification"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;semanticsDefinedBy"     rdfs:label="semanticsDefinedBy" rdfs:comment="Points to the human readable specifications for a representation of some declarative semantics">
+    <rdfs:domain rdf:resource="&nrl;Semantics"/>
+    <rdfs:range rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;subGraphOf"     rdfs:label="subGraphOf" rdfs:comment="Specifies a containment relationship between two graphs, meaning that the subject graph is included in the object graph">
+    <rdfs:range rdf:resource="&nrl;Graph"/>
+    <rdfs:domain rdf:resource="&nrl;Graph"/>
+    <nrl:inverseProperty rdf:resource="&nrl;superGraphOf"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;superGraphOf"     rdfs:label="superGraphOf" rdfs:comment="Specifies a subsumption relationship between two graphs, meaning that the object graph is included in the subject graph">
+    <rdfs:domain rdf:resource="&nrl;Graph"/>
+    <rdfs:range rdf:resource="&nrl;Graph"/>
+    <nrl:inverseProperty rdf:resource="&nrl;subGraphOf"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nrl;viewOn"     rdfs:label="viewOn" rdfs:comment="Points to a graph view over the subject named graph">
+    <rdfs:range rdf:resource="&nrl;Graph"/>
+    <rdfs:domain rdf:resource="&nrl;GraphView"/>
+</rdf:Property>
+
+<nrl:Graph rdf:about="&nrl;DefaultGraph"     rdfs:label="DefaultGraph" rdfs:comment="Represents the default graph, the graph which contains any triple that does not belong to any other named graph"/>
+
+</rdf:RDF> 

@@ -1,0 +1,709 @@
+<rdf:RDF
+    xmlns:nrl="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#"
+    xmlns:nmo="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
+    xmlns:protege="http://protege.stanford.edu/system#"
+    xmlns:tmo="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#"
+    xmlns:exif="http://www.kanzaki.com/ns/exif#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:ncal="http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#"
+    xmlns:nco="http://www.semanticdesktop.org/ontologies/2007/03/22/nco#"
+    xmlns:nao="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:nid3="http://www.semanticdesktop.org/ontologies/2007/05/10/nid3#"
+    xmlns:nexif="http://www.semanticdesktop.org/ontologies/2007/05/10/nexif#"
+    xmlns:pimo="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#"
+    xmlns:nie="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:nfo="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Room">
+    <rdfs:label>Room</rdfs:label>
+    <rdfs:comment>A properPart of a Building which is separated from the exterior of the Building and/or other Rooms of the Building by walls. Some Rooms may have a specific purpose, e.g. sleeping, bathing, cooking, entertainment, etc. (Definition from SUMO).</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#State">
+    <rdfs:label>State</rdfs:label>
+    <rdfs:comment>Administrative subdivisions of a Nation that are broader than any other political subdivisions that may exist. This Class includes the states of the United States, as well as the provinces of Canada and European countries. (Definition from SUMO).</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Country">
+    <rdfs:label>Country</rdfs:label>
+    <rdfs:comment>The territory occupied by a nation; "he returned to the land of his birth"; "he visited several European countries". (Definition from SUMO)</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Collection">
+    <rdfs:label>Collection</rdfs:label>
+    <rdfs:comment>A collection of Things, independent of their class. The items in the collection share a common property. Which property may be modelled explicitly or mentioned in the description of the Collection. The requirement of explicit modelling the semantic meaning of the collection is not mandatory, as collections can be created ad-hoc. Implizit modelling can be applied by the system by learning the properties. For example, a Collection of "Coworkers" could be defined as that all elements must be of class "Person" and have an attribute "work for the same Organization as the user". Further standards can be used to model these attributes.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#City">
+    <rdfs:label>City</rdfs:label>
+    <rdfs:comment>A large and densely populated urban area; may include several independent administrative districts; "Ancient Troy was a great city". (Definition from SUMO)</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Attendee">
+    <rdfs:comment>The role of someone attending a social event.</rdfs:comment>
+    <rdfs:label>Attendee</rdfs:label>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonRole"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#LogicalMediaType">
+    <protege:role>abstract</protege:role>
+    <rdfs:label>Logical Media Type</rdfs:label>
+    <rdfs:comment>Logical media types represent the content aspect of information elements e.g. a flyer, a contract, a promotional video, a todo list.  The user can create new logical media types dependend on their domain: a salesman will need MarketingFlyer, Offer, Invoice while a student might create Report, Thesis and Homework. This is independent from the information element and data object (NIE/NFO) in which the media type will be stored. The same contract can be stored in a PDF file, a text file, or an HTML website.
+The groundingOccurrence of a LogicalMediaType is the Document that stores the content.</rdfs:comment>
+    <pimo:classRole>
+      <pimo:ClassRole rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#AbstractClass">
+        <rdfs:label>AbstractClass</rdfs:label>
+      </pimo:ClassRole>
+    </pimo:classRole>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Meeting">
+    <rdfs:label>Meeting</rdfs:label>
+    <rdfs:comment>The social act of assembling for some common purpose; "his meeting with the salesman was the high point of his day". (Definition from SUMO)</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#SocialEvent"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Note">
+    <rdfs:label>Note</rdfs:label>
+    <rdfs:comment>A note. The textual contents of the note should be expressed in the nao:description value of the note.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Document"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Contract">
+    <rdfs:label>Contract</rdfs:label>
+    <rdfs:comment>A binding agreement between two or more persons that is enforceable by law. (Definition from SUMO). This is an example class for a document type, there are more detailled ontologies to model Contracts.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Document"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonGroup">
+    <rdfs:label>Group of Persons</rdfs:label>
+    <rdfs:comment>A group of Persons. They are connected to each other by sharing a common attribute, for example they all belong to the same organization or have a common interest. Refer to pimo:Collection for more information about defining collections.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Collection"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Event">
+    <rdfs:label>Event</rdfs:label>
+    <rdfs:comment>Something that happens
+An Event is conceived as compact in time. (Definition from Merriam-Webster)</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ProcessConcept"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#SocialEvent">
+    <rdfs:label>Social Event</rdfs:label>
+    <rdfs:comment>A social occasion or activity. (Definition from Merriam-Webster)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Event"/>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Locatable"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThingOrPropertyOrAssociation">
+    <protege:role>abstract</protege:role>
+    <rdfs:comment>Superclass of resources that can be generated by the user.</rdfs:comment>
+    <rdfs:label>ClassOrThingOrPropertyOrAssociation</rdfs:label>
+    <pimo:classRole rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#AbstractClass"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person">
+    <rdfs:label>Person</rdfs:label>
+    <rdfs:comment>Represents a person. Either living, dead, real or imaginary. (Definition from foaf:Person)</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Locatable"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#BlogPost">
+    <rdfs:label>Blog Post</rdfs:label>
+    <rdfs:comment>A blog note. You just want to write something down right now and need a place to do that. Add a blog-note! This is an example class for a document type, there are more detailled ontologies to model Blog-Posts (like SIOC).</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Document"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent">
+    <protege:role>abstract</protege:role>
+    <rdfs:label>Agent</rdfs:label>
+    <rdfs:comment>An agent (eg. person, group, software or physical artifact). The Agent class is the class of agents; things that do stuff. A well known sub-class is Person, representing people. Other kinds of agents include Organization and Group.
+(inspired by FOAF).
+Agent is not a subclass of NAO:Party.</rdfs:comment>
+    <pimo:classRole rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#AbstractClass"/>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThing">
+    <protege:role>abstract</protege:role>
+    <rdfs:label>ClassOrThing</rdfs:label>
+    <rdfs:comment>Superclass of class and thing. To add properties to both class and thing.</rdfs:comment>
+    <pimo:classRole rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#AbstractClass"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThingOrPropertyOrAssociation"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#OrganizationMember">
+    <rdfs:label>Member</rdfs:label>
+    <rdfs:comment>The role of one or multiple persons being a member in one or multiple organizations. Use pimo:organization and pimo:roleHolder to link to the organizations and persons.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonRole"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonRole">
+    <rdfs:label>Role of Person</rdfs:label>
+    <rdfs:comment>A person takes a certain role in a given context. The role can be that of "a mentor or another person" or "giving a talk at a meeting", etc.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonalInformationModel">
+    <rdfs:label>Personal Information Model</rdfs:label>
+    <rdfs:comment>A Personal Information Model (PIMO) of a user. Represents the sum of all information from the personal knowledge workspace (in literature also referred to as Personal Space of Information (PSI)) which a user needs for Personal Information Management (PIM).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#KnowledgeBase"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Topic">
+    <rdfs:label>Topic</rdfs:label>
+    <rdfs:comment>A topic is the subject of a discussion or document. Topics are distinguished from Things in their taxonomic nature, examples are scientific areas such as "Information Science", "Biology", or categories used in content syndication such as "Sports", "Politics". They are specific to the user's domain.</rdfs:comment>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Tag"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Organization">
+    <rdfs:label>Organization</rdfs:label>
+    <rdfs:comment>An administrative and functional structure (as a business or a political party). (Definition from Merriam-Webster)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent"/>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Locatable"/>
+    </rdfs:subClassOf>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association">
+    <rdfs:label>Association</rdfs:label>
+    <rdfs:comment>An association between two or more pimo-things. This is used to model n-ary relations and metadata about relations. For example, the asociation of a person being organizational member is only effectual within a period of time (after the person joined the organization and before the person left the organization). There can be multiple periods of time when associations are valid.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThingOrPropertyOrAssociation"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Document">
+    <rdfs:label>Document</rdfs:label>
+    <rdfs:comment>A generic document. This is a placeholder class for document-management domain ontologies to subclass. Create more and specified subclasses of pimo:Document for the document types in your domain. Documents are typically instances of both NFO:Document (modeling the information element used to store the document) and a LogicalMediaType subclass. Two examples are given for what to model here: a contract for a business domain, a BlogPost for an informal domain.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#LogicalMediaType"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Tag">
+    <protege:role>abstract</protege:role>
+    <rdfs:label>Tag</rdfs:label>
+    <rdfs:comment>Tags in the context of PIMO. A marker class for Things that are used to categorize documents (or other things). Tags must be a kind of Thing and must have a unique label. Documents should not be Tags by default.</rdfs:comment>
+    <pimo:classRole rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#AbstractClass"/>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#Tag"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing">
+    <rdfs:label>Thing</rdfs:label>
+    <rdfs:comment>Entities that are in the direct attention of the user when doing knowledge work.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ProcessConcept">
+    <protege:role>abstract</protege:role>
+    <rdfs:label>Process Concept</rdfs:label>
+    <rdfs:comment>Concepts that relate to a series of actions or operations conducing to an end. Abstract class. Defines optional start and endtime properties, names taken from NCAL.</rdfs:comment>
+    <pimo:classRole rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#AbstractClass"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassRole">
+    <rdfs:label>ClassRole</rdfs:label>
+    <rdfs:comment>Roles of classes in PIMO: concrete instances are Abstract and Concrete.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Project">
+    <rdfs:label>Project</rdfs:label>
+    <rdfs:comment>Any piece of work that is undertaken or attempted (Wordnet). An enterprise carefully planned to achieve a particular aim (Oxford Dictionary).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ProcessConcept"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location">
+    <rdfs:label>Location</rdfs:label>
+    <rdfs:comment>A physical location. Subclasses are modeled for the most common locations humans work in: Building, City, Country, Room, State. This selection is intended to be applicable cross-cultural and cross-domain. City is a prototype that can be further refined for villages, etc. Subclass of a WGS84:SpatialThing, can have geo-coordinates.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Task">
+    <rdfs:label>Task</rdfs:label>
+    <rdfs:comment>A (usually assigned) piece of work (often to be finished within a certain time). (Definition from Merriam-Webster)</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ProcessConcept"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Locatable">
+    <protege:role>abstract</protege:role>
+    <rdfs:label>Locatable</rdfs:label>
+    <rdfs:comment>Things that can be at a location. Abstract class, use it as a superclass of things that can be placed in physical space.</rdfs:comment>
+    <pimo:classRole rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#AbstractClass"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Building">
+    <rdfs:label>Building</rdfs:label>
+    <rdfs:comment>A structure that has a roof and walls and stands more or less permanently in one place; "there was a three-story building on the corner"; "it was an imposing edifice". (Definition from SUMO).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasTag">
+    <rdfs:label>has tag</rdfs:label>
+    <rdfs:comment>The subject's contents describes the object. Or the subject can be seen as belonging to the thing described by the object.  Similar semantics as skos:subject.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#hasTag"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Tag"/>
+    <nrl:inverseProperty>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isTagFor"/>
+    </nrl:inverseProperty>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#tagLabel">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>tag label</rdfs:label>
+    <nrl:minCardinality>1</nrl:minCardinality>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#prefLabel"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#personalIdentifier"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Tag"/>
+    <rdfs:comment>The unique label of the tag. The label must be unique within the scope of one PersonalInformationModel. It is required and a subproperty of nao:prefLabel. It clarifies the use of nao:personalIdentifier by restricting the scope to tags. Semantically equivalent to skos:prefLabel, where uniqueness of labels is also recommended.</rdfs:comment>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasOtherRepresentation">
+    <rdfs:label>has other representation</rdfs:label>
+    <rdfs:comment>hasOtherRepresentation points from a Thing in your PIMO to a thing in an ontology that represents the same real world thing. 
+This means that the real world object O represented by an instance I1 has additional representations (as instances I2-In of different conceptualizations).
+This means: IF (I_i represents O_j in Ontology_k) AND (I_m represents O_n in Ontology_o) THEN (O_n and O_j are the same object).
+hasOtherRepresentation is a transitive relation, but not equivalent (not symmetric nor reflexive).
+
+For example, the URI of a  foaf:Person representation published on the web is a hasOtherRepresentation for the person. This property is inverse functional, two Things from two information models having the same hasOtherRepresentation are considered to be representations of the same entity from the real world.
+
+TODO: rename this to subjectIndicatorRef to resemble topic maps ideas?</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdf:type rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#TransitiveProperty"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#occurrence"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasOtherConceptualization">
+    <rdfs:label>has other conceptualization</rdfs:label>
+    <rdfs:comment>Short: hasOtherRepresentation points from a Class in your PIMO to a class in a domain ontology that represents the same class. Longer: hasOtherConceptualization means that a class of real world objects O represented by a concept C1 in the ontology has additional conceptualizations (as classes C2-Cn in different domain ontologies).
+This means: IF (O_i is conceptialized by C_j in Ontology_k) AND (O_l is conceptialized by C_m in Ontology_n) THEN (O_i and O_l is the same set of objects).
+hasOtherConceptualization is an transitive relation, but not equivalent (not symmetric nor reflexive).</rdfs:comment>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#occurrence"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <rdf:type rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#TransitiveProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasGlobalNamespace">
+    <rdfs:label>global namespace</rdfs:label>
+    <rdfs:comment>The global namespace of this user using the semdesk uri scheme, based on the Global Identifier of the user. Example semdesk://bob@example.com/things/. See http://dev.nepomuk.semanticdesktop.org/repos/trunk/doc/2008_09_semdeskurischeme/index.html</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonalInformationModel"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#wikiText">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>wiki text</rdfs:label>
+    <rdfs:comment>A wiki-like free-text description of a Thing or a Class. The text can be formatted using a limited set of HTML elements and can contain links to other Things. The format is described in detail in the WIF specification (http://semanticweb.org/wiki/Wiki_Interchange_Format).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember">
+    <rdfs:label>association member</rdfs:label>
+    <rdfs:comment>An super-property of all roles that an entity can have in an association. Member is the generic role of a thing in an association. Association subclasses should define sub-properties of this property. Associations can have Things as</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#roleHolder">
+    <rdfs:comment>the person taking the role</rdfs:comment>
+    <rdfs:label>role holder</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonRole"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty">
+    <rdfs:label>object property</rdfs:label>
+    <rdfs:comment>The object of statements is another Thing. Users should be able to edit statements defined with this property. Abstract super-property.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#duration">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:comment>The duration of the meeting. Begin and end time.</rdfs:comment>
+    <rdfs:label>duration</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#SocialEvent"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasLocalNamespace">
+    <rdfs:label>local namespace</rdfs:label>
+    <rdfs:comment>The local namespace of this user using the semdesk uri scheme, based on the Local Identifier of the user. Example semdesk://bob@/things/. See http://dev.nepomuk.semanticdesktop.org/repos/trunk/doc/2008_09_semdeskurischeme/index.html</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonalInformationModel"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#dtstart">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>start date</rdfs:label>
+    <rdfs:comment>This property specifies when the process begins. Inspired by NCAL:dtstart.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ProcessConcept"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#attendee">
+    <rdfs:comment>A social event is attended by a person.</rdfs:comment>
+    <rdfs:label>attendee</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#SocialEvent"/>
+    <nrl:inverseProperty>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#attends"/>
+    </nrl:inverseProperty>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isRelated"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasOrganizationMember">
+    <rdfs:comment>The subject organization has the object person or organization (Agent) as a member.</rdfs:comment>
+    <rdfs:label>organization has member</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Organization"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasPart"/>
+    </rdfs:subPropertyOf>
+    <nrl:inverseProperty>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isOrganizationMemberOf"/>
+    </nrl:inverseProperty>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#jabberId">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>jabber ID of the user</rdfs:label>
+    <rdfs:comment>Jabber-ID of the user. Used to communicate amongst peers in the social scenario of the semantic desktop. Use the xmpp node identifier as specified by RFC3920, see http://www.xmpp.org/specs/rfc3920.html#addressing-node. The format is the same as e-mail addresses: username@hostname.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isLocationOf">
+    <rdfs:comment>The subject location is the current location of the object.</rdfs:comment>
+    <rdfs:label>is location of</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <nrl:inverseProperty>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasLocation"/>
+    </nrl:inverseProperty>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isRelated"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasDeprecatedRepresentation">
+    <rdfs:label>has deprecated representation</rdfs:label>
+    <rdfs:comment>The subject Thing was represented previously using the object resource. This indicates that the object resource was a duplicate representation of the subject and merged with the subject. Implementations can use this property to resolve dangling links in distributed system. When encountering resources that are deprecated representations of a Thing, they should be replaced with the Thing. The range is not declared as we assume all knowledge about the object is gone, including its rdf:type.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasOtherSlot">
+    <rdfs:label>represented by other slot</rdfs:label>
+    <rdfs:comment>hasOtherSlot points from a clot  in your PIMO to a slot in a domain ontology that represents the same connection idea.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdf:type rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#TransitiveProperty"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#subPropertyOf"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#groundingForDeletedThing">
+    <rdfs:label>grounding for deleted thing</rdfs:label>
+    <rdfs:comment>This NIE Information Element was used as a grounding occurrence for the object Thing. The Thing was then deleted by the user manually, indicating that this Information Element should not cause an automatic creation of another Thing in the future. The object resource has no range to indicate that it was completely removed from the user's PIMO, including the rdf:type statement. Relevant for data alignment and enrichment algorithms.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#organization">
+    <rdfs:label>organization</rdfs:label>
+    <rdfs:comment>relation to the organization in an OrganizationMember association.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Organization"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#OrganizationMember"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#roleContext">
+    <rdfs:label>role context</rdfs:label>
+    <rdfs:comment>The context where the role-holder impersonates this role. For example, the company where a person is employed.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonRole"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isRelated">
+    <rdfs:label>is related</rdfs:label>
+    <rdfs:comment>The thing is related to the other thing. Similar in meaning to skos:related. Symmetric but not transitive.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#isRelated"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isRelated"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#groundingOccurrence">
+    <rdfs:label>grounding occurrence</rdfs:label>
+    <rdfs:comment>The subject Thing represents the entity that is described in the object InformationElement. The subject Thing is the canonical, unique representation in the personal information model for the entity described in the object. Multiple InformationElements can be the grounding occurrence of the same Thing,  one InformationElement can be the groundingOccurrence of only one Thing.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#InformationElement"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#occurrence"/>
+    </rdfs:subPropertyOf>
+    <rdf:type rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#InverseFunctionalProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#attendingMeeting">
+    <rdfs:comment>the attended meeting</rdfs:comment>
+    <rdfs:label>attending meeting</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Attendee"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#SocialEvent"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#roleContext"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasFolder">
+    <rdfs:label>has folder</rdfs:label>
+    <rdfs:comment>Folders can be used to store information elements related to a Thing or Class. This property can be used to connect a Class or Thing to existing Folders. Implementations can suggest annotations for documents stored inside these folders or  suggest the folder for new documents related to the Thing or Class.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThing"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#locatedWithin">
+    <rdfs:label>located within</rdfs:label>
+    <rdfs:comment>The subject location is contained within the object location. For example, a room is located within a building or a city is located within a country.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    <nrl:inverseProperty>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#containsLocation"/>
+    </nrl:inverseProperty>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#partOf"/>
+    </rdfs:subPropertyOf>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#partOf">
+    <rdfs:label>part of</rdfs:label>
+    <rdfs:comment>This is part of the object. Like a page is part of a book or an engine is part of a car. You can make sub-properties of this to reflect more detailed relations.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <nrl:inverseProperty>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasPart"/>
+    </nrl:inverseProperty>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isTagFor">
+    <rdfs:label>is tag for</rdfs:label>
+    <rdfs:comment>This thing is described further in the object thing. Similar  semantics as skos:isSubjectOf.</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#isTagFor"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Tag"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasTag"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isOrganizationMemberOf">
+    <rdfs:comment>The subject person or organozation (Agent) is member of the object organization.</rdfs:comment>
+    <rdfs:label>is member of organization</rdfs:label>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Organization"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent"/>
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasOrganizationMember"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#partOf"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty">
+    <rdfs:label>datatype property</rdfs:label>
+    <rdfs:comment>The object of statements is a literal, resource, or datatype value describing the subject thing. Users should be able to edit statements defined with this property. Abstract super-property.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isWriteable">
+    <rdfs:label>is writeable</rdfs:label>
+    <rdfs:comment>Defines if this information model can be modified by the user of the system. This is usually false for imported ontologies and true for the user's own PersonalInformationModel.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationEffectual">
+    <rdfs:label>association effectual during</rdfs:label>
+    <rdfs:comment>During which time is this association effective? If omitted, the association is always effective. Start time and end-time may be left open, an open start time indicates that the fact is unknown, an open end-time indicates that the end-date is either unknown or the association has not ended.
+There can be multiple effectual periods.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#occurrence">
+    <rdfs:label>occurrence</rdfs:label>
+    <rdfs:comment>The subject Thing is represented also in the object resource. All facts added to the object resource are valid for the subject thing. The subject is the canonical represtation of the object. In particual, this implies when (?object ?p ?v) -&gt; (?subject ?p ?v) and (?s ?p ?object) -&gt; (?s ?p ?subject). The class of the object is not defined, but should be compatible with the class of the subject. Occurrence relations can be inferred through same identifiers or referencingOccurrence relations.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#classRole">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>class role</rdfs:label>
+    <rdfs:comment>Annotating abstract and concrete classes. Implementations may offer the feature to hide abstract classes. By default, classes are concrete. Classes can be declared abstract by setting their classRole to abstract. Instances should not have an abstract class as type (if not inferred).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassRole"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#dtend">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>end date</rdfs:label>
+    <rdfs:comment>This property specifies the date and time when a process ends. Inspired by NCAL:dtend.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ProcessConcept"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#referencingOccurrence">
+    <rdfs:label>referencing occurrence</rdfs:label>
+    <rdfs:comment>The subject thing is described in the object document. Ideally, the document is public and its primary topic is the thing. Although this property is not inverse-functional (because the Occurrences are not canonical elements of a formal ontology) this property allows to use public documents, such as wikipedia pages, as indicators identity.  The more formal hasOtherRepresentation property can be used when an ontology about the subject exists.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#InformationElement"/>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#createdPimo">
+    <rdfs:label>created Pimo</rdfs:label>
+    <rdfs:comment>The creator of the Personal Information Model. The human being whose mental models are represented in the PIMO.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonalInformationModel"/>
+    <nrl:inverseProperty>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#creator"/>
+    </nrl:inverseProperty>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#alt">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#containsLocation">
+    <rdfs:label>contains location</rdfs:label>
+    <rdfs:comment>The subject location contains the object location. For example, a building contains a room or a country contains a city.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    <rdfs:subPropertyOf>
+      <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasPart"/>
+    </rdfs:subPropertyOf>
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#locatedWithin"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isDefinedBy">
+    <nrl:minCardinality>1</nrl:minCardinality>
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>is defined by</rdfs:label>
+    <rdfs:comment>Each element in a PIMO must be connected to the PIMO, to be able to track multiple PIMOs in a distributed scenario. Also, this is the way to find the user that this Thing belongs to.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ClassOrThingOrPropertyOrAssociation"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonalInformationModel"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasRootTopic">
+    <rdfs:label>root topic</rdfs:label>
+    <rdfs:comment>The root topics of this PersonalInformationModel's topic hierarchy. Every topic that has no pimo:superTopic is a root topic. Semantically equivalent to skos:hasTopConcept.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonalInformationModel"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Topic"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasPart">
+    <rdfs:label>has part</rdfs:label>
+    <rdfs:comment>The object is part of the subject. Like a page is part of a book or an engine is part of a car. You can make sub-properties of this to reflect more detailed relations. The semantics of this relations is the same as skos:narrowerPartitive</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty"/>
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#partOf"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#taskDueTime">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:label>task due time</rdfs:label>
+    <rdfs:comment>when is this task due? Represented in ISO 8601, example: 2003-11-22T17:00:00</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Task"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#datatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#creator">
+    <nrl:minCardinality>1</nrl:minCardinality>
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#createdPimo"/>
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:comment>The creator of the Personal Information Model. A subproperty of NAO:creator. The human being whose mental models are represented in the PIMO. Range is an Agent.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Agent"/>
+    <rdfs:label>creator</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#PersonalInformationModel"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#creator"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#subTopic">
+    <rdfs:label>sub topic</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Topic"/>
+    <rdfs:comment>The object topic is more specific in meaning than the subject topic. Transitive. Similar in meaning to skos:narrower</rdfs:comment>
+    <nrl:inverseProperty>
+      <nrl:TransitiveProperty rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#superTopic">
+        <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#subTopic"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#partOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#objectProperty"/>
+        <rdfs:comment>The object topic is more general in meaning than the subject topic. Transitive. Similar to skos:broader.</rdfs:comment>
+        <rdfs:label>broader topic</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Topic"/>
+        <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Topic"/>
+      </nrl:TransitiveProperty>
+    </nrl:inverseProperty>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Topic"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasPart"/>
+    <rdf:type rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#TransitiveProperty"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasLocation">
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isLocationOf"/>
+    <nrl:maxCardinality>1</nrl:maxCardinality>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Location"/>
+    <rdfs:comment>The subject thing is currently located at the object location.</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Locatable"/>
+    <rdfs:label>has location</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isRelated"/>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#attends">
+    <rdfs:comment>A person attends a social event.</rdfs:comment>
+    <rdfs:label>attends event</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
+    <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#SocialEvent"/>
+    <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#attendee"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#isRelated"/>
+  </rdf:Property>
+  <nrl:RuleViewSpecification rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#RuleViewSpecificationInferOccurrences">
+    <rdfs:label>RuleViewSpecificationInferOccurrences</rdfs:label>
+  </nrl:RuleViewSpecification>
+  <nrl:GraphView rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#InferOccurrences">
+    <rdfs:label>InferOccurrences</rdfs:label>
+  </nrl:GraphView>
+  <nrl:RuleViewSpecification rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#RuleViewSpecificationGroundingClosure">
+    <rdfs:label>RuleViewSpecificationGroundingClosure</rdfs:label>
+  </nrl:RuleViewSpecification>
+  <nrl:GraphView rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#OccurrenceClosure">
+    <rdfs:label>OccurrenceClosure</rdfs:label>
+  </nrl:GraphView>
+  <pimo:ClassRole rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#ConcreteClass">
+    <rdfs:label>ConcreteClass</rdfs:label>
+  </pimo:ClassRole>
+  <nrl:GraphView rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#GroundingClosure">
+    <rdfs:label>GroundingClosure</rdfs:label>
+  </nrl:GraphView>
+  <nrl:RuleViewSpecification rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#RuleViewSpecificationOccurrenceClosure">
+    <rdfs:label>RuleViewSpecificationOccurrenceClosure</rdfs:label>
+  </nrl:RuleViewSpecification>
+  <nrl:GraphView rdf:about="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#FullPimoView">
+    <rdfs:label>FullPimoView</rdfs:label>
+  </nrl:GraphView>
+</rdf:RDF>

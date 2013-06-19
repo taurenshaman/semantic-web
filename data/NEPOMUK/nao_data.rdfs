@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+	 <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	 <!ENTITY nao 'http://www.semanticdesktop.org/ontologies/2007/08/15/nao#'>
+       <!ENTITY nrl 'http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#'>
+       <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+	 <!ENTITY dc 'http://purl.org/dc/elements/1.1/'>
+	 <!ENTITY dcterms 'http://purl.org/dc/terms/'>
+	 <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+]>
+<rdf:RDF xmlns:rdf="&rdf;"
+	 xmlns:nrl="&nrl;"
+	 xmlns:nao="&nao;"
+         xmlns:xsd="&xsd;"
+         xmlns:dc="&dc;"
+         xmlns:dcterms="&dcterms;"
+	 xmlns:rdfs="&rdfs;">
+
+<rdfs:Class rdf:about="&nao;Party"
+	 rdfs:label="party" 	 rdfs:comment="Represents a single or a group of individuals">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nao;Symbol"
+	 rdfs:label="symbol" rdfs:comment="Represents a symbol">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdfs:Class rdf:about="&nao;Tag"
+	 rdfs:label="tag" rdfs:comment="Represents a generic tag">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&nao;annotation"
+	 rdfs:label="annotation" rdfs:comment="Generic annotation for a resource">
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;altLabel"
+	 rdfs:label="alternative label" rdfs:comment="An alternative label alongside the preferred label for a resource">
+	<rdfs:subPropertyOf rdf:resource="&rdfs;label"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdfs:Class rdf:about="&nao;FreeDesktopIcon"
+	 rdfs:label="freedesktopicon" rdfs:comment="Represents a desktop icon as defined in the FreeDesktop Icon Naming Standard">
+	<rdfs:subClassOf rdf:resource="&nao;Symbol"/>
+</rdfs:Class>
+
+<rdf:Property rdf:about="&nao;iconName"
+	 rdfs:label="iconname" rdfs:comment="Defines a name for a FreeDesktop Icon as defined in the FreeDesktop Icon Naming Standard">
+	<nrl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:minCardinality>
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;identifier"/>
+	<rdfs:domain rdf:resource="&nao;FreeDesktopIcon"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;hasSubResource"
+	 rdfs:label="has Subresource" rdfs:comment="Defines a relationship between a resource and one or more sub resources">
+        <rdf:type rdf:resource="&nrl;TransitiveProperty"/>
+	<rdfs:range rdf:resource="&rdfs;Resource"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;isRelated"/>
+	<nrl:inverseProperty rdf:resource="&nao;hasSuperResource"/> 
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;hasSuperResource"
+	 rdfs:label="has Superresource" rdfs:comment="Defines a relationship between a resource and one or more super resources">
+        <rdf:type rdf:resource="&nrl;TransitiveProperty"/>
+	<rdfs:range rdf:resource="&rdfs;Resource"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;isRelated"/>
+	<nrl:inverseProperty rdf:resource="&nao;hasSubResource"/> 
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;score"
+	 rdfs:label="score" rdfs:comment="An authorative score for an item valued between 0 and 1">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+	<rdfs:range rdf:resource="&xsd;float"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;scoreParameter"
+	 rdfs:label="scoreparameter" rdfs:comment="A marker property to mark selected properties which are input to a mathematical algorithm to generate scores for resources. Properties are marked by being defined as subproperties of this property">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+	<rdfs:range rdf:resource="&xsd;float"/>
+</rdf:Property>
+
+
+<rdf:Property rdf:about="&nao;contributor"
+	 rdfs:label="contributor" rdfs:comment="Refers to a single or a group of individuals that contributed to a resource">
+	<rdfs:range rdf:resource="&nao;Party"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:subPropertyOf rdf:resource="&dc;contributor"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;creator"
+	 rdfs:label="creator" rdfs:comment="Refers to the single or group of individuals that created the resource">
+	<rdfs:range rdf:resource="&nao;Party"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:subPropertyOf rdf:resource="&dc;creator"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;description"
+	 rdfs:label="description" rdfs:comment="A non-technical textual annotation for a resource">
+	<rdfs:subPropertyOf rdf:resource="&rdfs;comment"/>
+        <rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;engineeringTool"
+	 rdfs:label="engineering tool" rdfs:comment="Specifies the engineering tool used to generate the graph">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:domain rdf:resource="&nrl;Data"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;hasDefaultNamespace"
+	 rdfs:label="has default namespace" rdfs:comment="Defines the default static namespace for a graph">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+	<rdfs:domain rdf:resource="&nrl;Data"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;hasDefaultNamespaceAbbreviation"
+	 rdfs:label="has default namespace abbreviation" rdfs:comment="Defines the default static namespace abbreviation for a graph">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+	<rdfs:domain rdf:resource="&nrl;Data"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;rating"
+	 rdfs:label="rating" rdfs:comment="Annotation for a resource in the form of an unrestricted rating">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;numericRating"
+	 rdfs:label="numeric rating" rdfs:comment=" Annotation for a resource in the form of a numeric rating (float value), allowed values are between 1 and 10 whereas 0 is interpreted as not set">
+	<rdfs:subPropertyOf rdf:resource="&nao;rating"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;scoreParameter"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+	<rdfs:range rdf:resource="&xsd;float"/>
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;hasSymbol"
+	 rdfs:label="has symbol" rdfs:comment="Annotation for a resource in the form of a symbol representation">
+	<rdfs:range rdf:resource="&nao;Symbol"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;prefSymbol"
+	 rdfs:label="preferred symbol" rdfs:comment="A unique preferred symbol representation for a resource">
+	<rdfs:subPropertyOf rdf:resource="&nao;hasSymbol"/>
+	<rdfs:range rdf:resource="&nao;Symbol"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;altSymbol"
+	 rdfs:label="alternative symbol" rdfs:comment="An alternative symbol representation for a resource">
+	<rdfs:range rdf:resource="&nao;Symbol"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;hasSymbol"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;hasTag"
+	 rdfs:label="has tag" rdfs:comment="Defines an existing tag for a resource">
+	<rdfs:range rdf:resource="&nao;Tag"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<nrl:inverseProperty rdf:resource="&nao;isTagFor"/> 
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;hasTopic"
+	 rdfs:label="has topic" rdfs:comment="Defines a relationship between two resources, where the object is a topic of the subject">
+	<rdfs:subPropertyOf rdf:resource="&nao;isRelated"/>
+	<nrl:inverseProperty rdf:resource="&nao;isTopicOf"/> 
+	<rdfs:range rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;identifier"
+	 rdfs:label="identifier" rdfs:comment="Defines a generic identifier for a resource">
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;isRelated"
+	 rdfs:label="is related to" rdfs:comment="Defines an annotation for a resource in the form of a relationship between the subject resource and another resource">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+        <rdf:type rdf:resource="&nrl;SymmetricProperty"/>
+	<rdfs:range rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;isTagFor"
+	 rdfs:label="is tag for" rdfs:comment="States which resources a tag is associated with">
+	<rdfs:domain rdf:resource="&nao;Tag"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<nrl:inverseProperty rdf:resource="&nao;hasTag"/> 
+	<rdfs:range rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;isTopicOf"
+	 rdfs:label="is topic of" rdfs:comment="Defines a relationship between two resources, where the subject is a topic of the object">
+	<rdfs:subPropertyOf rdf:resource="&nao;isRelated"/>
+	<nrl:inverseProperty rdf:resource="&nao;hasTopic"/> 
+	<rdfs:range rdf:resource="&rdfs;Resource"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;modified"
+	 rdfs:label="modified at" rdfs:comment="States the modification time for a resource">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<rdfs:subPropertyOf rdf:resource="&dcterms;modified"/>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+	<rdfs:range rdf:resource="&xsd;dateTime"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;created"
+	 rdfs:label="created at" rdfs:comment="States the creation, or first modification time for a resource">
+	<rdfs:subPropertyOf rdf:resource="&nao;modified"/>
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+	<rdfs:range rdf:resource="&xsd;dateTime"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;lastModified"
+	 rdfs:label="lastModified" rdfs:comment="States the last modification time for a resource">
+	<rdfs:subPropertyOf rdf:resource="&nao;modified"/>
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+	<rdfs:domain rdf:resource="&rdfs;Resource"/>
+	<rdfs:range rdf:resource="&xsd;dateTime"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;personalIdentifier"
+	 rdfs:label="personal identifier" rdfs:comment="Defines a personal string identifier for a resource">
+        <rdf:type rdf:resource="&nrl;InverseFunctionalProperty"/>
+	<rdfs:subPropertyOf rdf:resource="&nao;identifier"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;prefLabel"
+	 rdfs:label="preferred label" rdfs:comment="A preferred label for a resource">
+	<rdfs:subPropertyOf rdf:resource="&rdfs;label"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;pluralPrefLabel"
+	 rdfs:label="preferred label plural form" rdfs:comment="The plural form of the preferred label for a resource">
+	<rdfs:subPropertyOf rdf:resource="&rdfs;label"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;serializationLanguage"
+	 rdfs:label="serialization language" rdfs:comment="States the serialization language for a named graph that is represented within a document">
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+	<rdfs:domain rdf:resource="&nrl;DocumentGraph"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;status"
+	 rdfs:label="status" rdfs:comment="Specifies the status of a graph, stable, unstable or testing">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+	<rdfs:domain rdf:resource="&nrl;Data"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+
+<rdf:Property rdf:about="&nao;version"
+	 rdfs:label="version" rdfs:comment="Specifies the version of a graph, in numeric format">
+	<rdfs:subPropertyOf rdf:resource="&nao;annotation"/>
+	<nrl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</nrl:maxCardinality>
+	<rdfs:domain rdf:resource="&nrl;Data"/>
+	<rdfs:range rdf:resource="&xsd;float"/>
+</rdf:Property>
+
+</rdf:RDF>
