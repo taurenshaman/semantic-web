@@ -25,9 +25,10 @@
 
 status:
 	a owl:Ontology ;
-	rdfs:label "Document Status Ontology" ;
-	rdfs:comment "A lightweight ontology for defining the publication status of documents, and transitions between statuses." ,
-		"This ontology defines terms for dealing with statuses and also a collection of predefined statuses. If you don't like the predefined statuses, you should be able to define your own set of statuses but still use them in conjunction with this ontology." ;
+	rdfs:label "Document Status Ontology"@en ;
+	rdfs:label "文档状态本体"@zh-CN ;
+	rdfs:comment "A lightweight ontology for defining the publication status of documents, and transitions between statuses. This ontology defines terms for dealing with statuses and also a collection of predefined statuses. If you don't like the predefined statuses, you should be able to define your own set of statuses but still use them in conjunction with this ontology."@en ;
+	rdfs:comment "一个定义了文档的发布状态和状态间转换的轻量级本体。此本体定义处理状态和预定义的状态集合的术语。如果你不喜欢的预定义的状态，你应该能够定义自己的一组状态，但仍然与这个本体联合使用。"@zh-CN ;
 	foaf:maker <http://tobyinkster.co.uk/#i> ;
 	dc:issued "2009-06-17"^^xsd:date ;
 	dc:modified "2009-09-14"^^xsd:date ;
@@ -50,14 +51,18 @@ status:StatusClass
 	a owl:Class ;
 	rdfs:subClassOf owl:Class ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Status Class" .
+	rdfs:label "Status Class"@en ;
+	rdfs:label "状态类"@zh-CN ;
+	.
 
 status:status
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf rdf:type ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "status" ;
-	rdfs:comment "The (presumably current) status of the document." ;
+	rdfs:label "status"@en ;
+	rdfs:label "状态"@zh-CN ;
+	rdfs:comment "The (presumably current) status of the document."@en ;
+	rdfs:comment "文档（大概当前的）的状态。"@zh-CN ;
 	rdfs:domain foaf:Document ;
 	rdfs:range status:StatusClass .
 	
@@ -65,13 +70,17 @@ status:StatusChange
 	a owl:Class ;
 	rdfs:subPropertyOf event:Event , crm:E17_Type_Assignment ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Status Change" ;
-	rdfs:comment "An event representing the changing of a status. This inherits from Yves Raimond's event ontology, so terms from that ontology can be used to describe when the change happened, and who caused the change." .
+	rdfs:label "Status Change"@en ;
+	rdfs:label "状态变更"@zh-CN ;
+	rdfs:comment "An event representing the changing of a status. This inherits from Yves Raimond's event ontology, so terms from that ontology can be used to describe when the change happened, and who caused the change."@en ;
+	rdfs:comment "描述状态变更的事件。继承自Yves Raimond的事件本体，所以可以用那个本体的术语来形容发生变化的事件，导致该事件的主体。"@zh-CN ;
+	.
 
 status:previous_status
 	a owl:ObjectProperty ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "previous status" ;
+	rdfs:label "previous status"@en ;
+	rdfs:label "前置状态"@zh-CN ;
 	rdfs:domain status:StatusChange ;
 	rdfs:range status:StatusClass .
 
@@ -79,7 +88,8 @@ status:new_status
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf event:product , crm:P42_assigned ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "new status" ;
+	rdfs:label "new status"@en ;
+	rdfs:label "新状态"@zh-CN ;
 	rdfs:domain status:StatusChange ;
 	rdfs:range status:StatusClass .
 
@@ -87,7 +97,8 @@ status:change
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf [ owl:inverseOf event:factor ] , [ owl:inverseOf crm:P41_classified ] ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "change" ;
+	rdfs:label "change"@en ;
+	rdfs:label "变更"@zh-CN ;
 	rdfs:domain foaf:Document ;
 	rdfs:range status:StatusChange .
 
@@ -96,49 +107,68 @@ status:change
 status:Standard
 	a status:StatusClass ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Standard" .
+	rdfs:label "Standard"@en ;
+	rdfs:label "标准"@zh-CN ;
+	.
 
 status:New
 	a status:StatusClass ;
 	rdfs:subClassOf status:Standard ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "New" .
+	rdfs:label "New"@en ;
+	rdfs:label "新"@zh-CN ;
+	.
 
 status:Archived
 	a status:StatusClass ;
 	rdfs:subClassOf status:Standard ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Archived" .
+	rdfs:label "Archived"@en ;
+	rdfs:label "存档"@zh-CN ;
+	.
 
 status:Obsolete
 	a status:StatusClass ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Obsolete" .
+	rdfs:label "Obsolete"@en ;
+	rdfs:label "废弃"@zh-CN ;
+	.
 
 status:Historic
 	a status:StatusClass ;
 	rdfs:subClassOf status:Obsolete ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Historic" ;
-	rdfs:comment "A document that is obsolete but deemed to be of historical interest by its publisher." .
+	rdfs:label "Historic"@en ;
+	rdfs:label "历史"@zh-CN ;
+	rdfs:comment "A document that is obsolete but deemed to be of historical interest by its publisher."@en ;
+	rdfs:comment "文档是过时的，但出版者认为仍然具有历史价值。"@zh-CN ;
+	.
 
 status:Draft 
 	a status:StatusClass ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Draft" .
+	rdfs:label "Draft"@en ;
+	rdfs:label "草稿"@zh-CN ;
+	.
 
 status:Sketch
 	a status:StatusClass ;
 	rdfs:subClassOf status:Draft ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Sketch" ;
-	rdfs:comment "A very early draft." .
+	rdfs:label "Sketch"@en ;
+	rdfs:label "草图"@zh-CN ;
+	rdfs:comment "A very early draft."@en ;
+	rdfs:comment "非常早期的草稿。"@zh-CN ;
+	.
 
 status:ReviewCopy
 	a status:StatusClass ;
 	rdfs:subClassOf status:Draft ;
 	rdfs:isDefinedBy status: ;
-	rdfs:label "Review Copy" ;
-	rdfs:comment "A late stage draft, for final review." .
+	rdfs:label "Review Copy"@en ;
+	rdfs:label "审查副本"@zh-CN ;
+	rdfs:comment "A late stage draft, for final review."@en ;
+	rdfs:comment "用于最终审查的晚期阶段的草稿。"@zh-CN ;
+	.
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 

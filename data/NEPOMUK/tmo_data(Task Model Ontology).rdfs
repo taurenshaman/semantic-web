@@ -1,4 +1,4 @@
-<rdf:RDF
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:nrl="http://www.semanticdesktop.org/ontologies/2007/08/15/nrl#"
     xmlns:nmo="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
     xmlns:protege="http://protege.stanford.edu/system#"
@@ -18,240 +18,326 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:nfo="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+  <owl:Ontology rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#">
+    <label xml:lang="en">Task Model Ontology</label>
+    <label xml:lang="zh-CN">任务模型本体</label>
+    <rdfs:comment xml:lang="en">Task Model Ontology can be used to describe personal tasks of individuals, as well known as to-do lists.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">任务模型本体可用于描述个人任务，也就是to-do列表。</rdfs:comment>
+  </owl:Ontology>
+  
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#SuccessorDependency">
-    <rdfs:label xml:lang="en">SuccessorDependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">In a tmo:SuccessorDependency the tmo:dependencyMemberA is the task which is to be executed after tmo:dependencyMemberB.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">SuccessorDependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">接替依赖</rdfs:label>
+    <rdfs:comment xml:lang="en">In a tmo:SuccessorDependency the tmo:dependencyMemberA is the task which is to be executed after tmo:dependencyMemberB.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在tmo:SuccessorDependency中，任务tmo:dependencyMemberA在tmo:dependencyMemberB之后执行。</rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PredecessorSuccessorDependency"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskState">
-    <rdfs:label xml:lang="en">TaskState</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The tmo:taskState property allows tracking a task during its lifecycle. The tmo:TaskState class was modelled so that for each state can be set which the typical prior and posterior states are. This has the advantage that e.g. a UI can retrieve the allowed states at runtime from the ontology; rather can having this potentially changing knowledge hard coded. But the prior and posterior states are only defaults; the human user is always free to change the state.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TaskState</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">任务状态</rdfs:label>
+    <rdfs:comment xml:lang="en">The tmo:taskState property allows tracking a task during its lifecycle. The tmo:TaskState class was modelled so that for each state can be set which the typical prior and posterior states are. This has the advantage that e.g. a UI can retrieve the allowed states at runtime from the ontology; rather can having this potentially changing knowledge hard coded. But the prior and posterior states are only defaults; the human user is always free to change the state.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Importance">
-    <rdfs:label xml:lang="en">Importance</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The importance of a task according to the "ABC analysis" (see also http://en.wikipedia.org/wiki/Time_management for a general description of "ABC" like task ordering). We envision not only two shades but allow for more fine grain nuances. There are a couple if instances realizing named instances of importance. This property is usually combined with the property/class tmo:Urgence..</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Importance</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性</rdfs:label>
+    <rdfs:comment xml:lang="en">The importance of a task according to the "ABC analysis" (see also http://en.wikipedia.org/wiki/Time_management for a general description of "ABC" like task ordering). We envision not only two shades but allow for more fine grain nuances. There are a couple if instances realizing named instances of importance. This property is usually combined with the property/class tmo:Urgence..</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvement">
-    <rdfs:label xml:lang="en">PersonInvolvement</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Often tasks are social, i.e., different persons are involved in performing the task. Those persons play different roles to achieve the goal of the task. These Roles are in form of instances of tmo:PersonInvolvementRole. tmo:PersonInvolvement realizes n-ary associations to pimo:Persons which are related to an tmo:task. The involvement is further characterized by an tmo:PersonTaskRole. See section 3 for further details.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">PersonInvolvement</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Often tasks are social, i.e., different persons are involved in performing the task. Those persons play different roles to achieve the goal of the task. These Roles are in form of instances of tmo:PersonInvolvementRole. tmo:PersonInvolvement realizes n-ary associations to pimo:Persons which are related to an tmo:task. The involvement is further characterized by an tmo:PersonTaskRole. See section 3 for further details.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#SimilarityDependence">
-    <rdfs:comment xml:lang="en">For cases where task are just similar.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">SimilarityDependence</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">For cases where task are just similar.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">SimilarityDependence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#UndirectedDependency"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Delegability">
-    <rdfs:label xml:lang="en">Delegability</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The extent to which a task is suited to be delegated. The stated instances are only proposals. The user should create instances which reflect his desired nuances. Aslo a straight Boolean decision is considerable.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Delegability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The extent to which a task is suited to be delegated. The stated instances are only proposals. The user should create instances which reflect his desired nuances. Aslo a straight Boolean decision is considerable.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PredecessorDependency">
-    <rdfs:label xml:lang="en">PredecessorDependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">In a  tmo:PredecessorDependency the tmo:dependencyMemberA is the task which is to be executed before tmo:dependencyMemberB.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">PredecessorDependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">In a  tmo:PredecessorDependency the tmo:dependencyMemberA is the task which is to be executed before tmo:dependencyMemberB.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PredecessorSuccessorDependency"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Role">
-    <rdfs:label xml:lang="en">Role</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The realizes roles in the sense that humans play various roles in their activities. Examples are e.g. : architect, developer or moderator.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The realizes roles in the sense that humans play various roles in their activities. Examples are e.g. : architect, developer or moderator.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrier"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Priority">
-    <rdfs:label xml:lang="en">Priority</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The priority of a task. See http://en.wikipedia.org/wiki/Time_management for different approaches on finding priorities. There are 3 default instances: low, medium and high.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Priority</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">优先级</rdfs:label>
+    <rdfs:comment xml:lang="en">The priority of a task. See http://en.wikipedia.org/wiki/Time_management for different approaches on finding priorities. There are 3 default instances: low, medium and high.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task">
-    <rdfs:label xml:lang="en">Task</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The tmo:task is the central entity of the tmo. Task can range from vague things to be possibly done in e distant future to concrete things to be done in a precise foreseeable  manner. It is not unrealistic  to assume that knowledge worker have hundred or more tasks a day.
+    <rdfs:label xml:lang="en">Task</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">任务</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The tmo:task is the central entity of the tmo. Task can range from vague things to be possibly done in e distant future to concrete things to be done in a precise foreseeable  manner. It is not unrealistic  to assume that knowledge worker have hundred or more tasks a day.
 
-A task can have subtasks. Or the other way around, a task can be assigned to a supertask. A subtask is an independent task, which refers to another task via a subtask relation. Usually this means that the execution of the subtask is required in order to fulfil the execution of the super task. But finally this is left to the user; the user is free to finish a supertask while some subtasks are not finished. Subtasks can be used to structure complex task into manageable parts. Consequently subtasks can also be used to transfer a certain aspect of a complex task to other participants.
+      A task can have subtasks. Or the other way around, a task can be assigned to a supertask. A subtask is an independent task, which refers to another task via a subtask relation. Usually this means that the execution of the subtask is required in order to fulfil the execution of the super task. But finally this is left to the user; the user is free to finish a supertask while some subtasks are not finished. Subtasks can be used to structure complex task into manageable parts. Consequently subtasks can also be used to transfer a certain aspect of a complex task to other participants.
 
-A tmo:Task is modelled as a subclass of pimo:ProcessThing which is a subclass of pimo:Thing. This was done because the information artefacts which a knowledge worker has in his mind are supposed to be represented in the PIMO and tasks can be such concepts. This implies practically that tasks are not only visible within special task management applications but also within PIMO editing and viewing applications . This does not necessarily mean that in such a generic PIMO editing environment all task properties can be altered but rather that the task is at least displayed by its name.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+      A tmo:Task is modelled as a subclass of pimo:ProcessThing which is a subclass of pimo:Thing. This was done because the information artefacts which a knowledge worker has in his mind are supposed to be represented in the PIMO and tasks can be such concepts. This implies practically that tasks are not only visible within special task management applications but also within PIMO editing and viewing applications . This does not necessarily mean that in such a generic PIMO editing environment all task properties can be altered but rather that the task is at least displayed by its name.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Task"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvementRole">
-    <rdfs:label xml:lang="en">PersonInvolvementRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Specifies the role a person plays in a task. These Roles are e.g. Creator, Controller, Requester, Contributor, Analyst, External Observer, Delegate, Task Owner, Executor, or Internal Observer. Some roles are only for information purpose, some are used for functionality e.g. for collaborative tasks.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">PersonInvolvementRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Specifies the role a person plays in a task. These Roles are e.g. Creator, Controller, Requester, Contributor, Analyst, External Observer, Delegate, Task Owner, Executor, or Internal Observer. Some roles are only for information purpose, some are used for functionality e.g. for collaborative tasks.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskContainer">
-    <rdfs:label xml:lang="en">TaskContainer</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">TaskContainer</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Collection"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole">
-    <rdfs:label xml:lang="en">StateTypeRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">tmo:StateTypeRole is an abstract class which subsumes various other classes which represent "states" or roles e.g. in role based modelling conceptualisations.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">StateTypeRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">tmo:StateTypeRole is an abstract class which subsumes various other classes which represent "states" or roles e.g. in role based modelling conceptualisations.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Urgency">
-    <rdfs:label xml:lang="en">Urgency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The urgence of a task according to the "ABC analysis" (see also http://en.wikipedia.org/wiki/Time_management for a general description of "ABC" like task ordering). We envision not only two shades but allow for more fine grain nuances. There are a couple if instances realizing named instances of urgence. This property is usually combined with the property/class tmo:Importance.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Urgency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The urgence of a task according to the "ABC analysis" (see also http://en.wikipedia.org/wiki/Time_management for a general description of "ABC" like task ordering). We envision not only two shades but allow for more fine grain nuances. There are a couple if instances realizing named instances of urgence. This property is usually combined with the property/class tmo:Importance.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Attachment">
-    <rdfs:label xml:lang="en">Attachment</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">By means of attachments, references to other resources can be established. Resources are information objects. Every Thing, which can be referenced, on the Nepomuk Social Semantik Desktop is an information object. In contrast to the usual Nepomuk Social Semantik Desktop references/associations, here additionally information can be specified. Further metadata about the role an attachment plays can be stated by means of instances of tmo:AttachmentRole. It can be expressed what the Role of attachment is e.g., regarding "desired/requested" or "required" or "potentially useful / somehow related" or "used/produced/achieved". The reference property models the actual link to the attached piece of information.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Attachment</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">By means of attachments, references to other resources can be established. Resources are information objects. Every Thing, which can be referenced, on the Nepomuk Social Semantik Desktop is an information object. In contrast to the usual Nepomuk Social Semantik Desktop references/associations, here additionally information can be specified. Further metadata about the role an attachment plays can be stated by means of instances of tmo:AttachmentRole. It can be expressed what the Role of attachment is e.g., regarding "desired/requested" or "required" or "potentially useful / somehow related" or "used/produced/achieved". The reference property models the actual link to the attached piece of information.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffortType">
-    <rdfs:label xml:lang="en">TaskEffortType</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The class tmo:TaskEffortType provides instances which can be used to separate between the state of and task Effort; if this is planned for the future (Planned), if this is currently pending (Running) or if  the effort was already done (Actual).</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TaskEffortType</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The class tmo:TaskEffortType provides instances which can be used to separate between the state of and task Effort; if this is planned for the future (Planned), if this is currently pending (Running) or if  the effort was already done (Actual).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AssociationDependency">
-    <rdfs:comment xml:lang="en">A lighweight dependency where two tasks are just associated.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">AssociationDependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A lighweight dependency where two tasks are just associated.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">AssociationDependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subClassOf>
       <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#UndirectedDependency"/>
     </rdfs:subClassOf>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffort">
-    <rdfs:label xml:lang="en">TaskEffort</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The class tmo:TaskEffort can be used to represent periods of time a task is intented to be work on, or was actually worked on. This differentiation is modelled by the three instances of tmo:TaskEffortType (Planned/Actual/Running). For the time, there are two diifferent wys of representation. one is the start and end time as two points of time, the other is the duration as an intervall. When start and end time are known the duration can be calculated, but there are also situations where only the duration is known or where the actual duration is not exactly the time between start and end time.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TaskEffort</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The class tmo:TaskEffort can be used to represent periods of time a task is intented to be work on, or was actually worked on. This differentiation is modelled by the three instances of tmo:TaskEffortType (Planned/Actual/Running). For the time, there are two diifferent wys of representation. one is the start and end time as two points of time, the other is the duration as an intervall. When start and end time are known the duration can be calculated, but there are also situations where only the duration is known or where the actual duration is not exactly the time between start and end time.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#Tag">
-    <rdfs:comment xml:lang="en">Represents a generic tag</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">nao:Tag</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Represents a generic tag</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">nao:Tag</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierRole">
-    <rdfs:label xml:lang="en">AbilityCarrierRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Examples instances  of tmo:AbilityCarrierRole's are e.g. "requested", "required" and "used" which further specify the type a person was involved in.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">AbilityCarrierRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Examples instances  of tmo:AbilityCarrierRole's are e.g. "requested", "required" and "used" which further specify the type a person was involved in.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierInvolvement">
-    <rdfs:label xml:lang="en">AbilityCarrierInvolvement</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">For a task it is possible to state which kinds of actors are involved in a task. Even more importantly the desired role or skills for this task can be explicitly stated. This provides guidance to which persons should be included and the role they might play in the task. To such as actors, we refer to as "Ability Carrier", which is more passive than the label "Actor", since not each involved thing is necessarily acting. The Involvement is further characterized by different roles: Requested, Required and Used.
-&lt;br&gt;
-The class AbilityCarrierInvolvement ties together an AbilityCarrier with an AbilityCarrierRole.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">AbilityCarrierInvolvement</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      For a task it is possible to state which kinds of actors are involved in a task. Even more importantly the desired role or skills for this task can be explicitly stated. This provides guidance to which persons should be included and the role they might play in the task. To such as actors, we refer to as "Ability Carrier", which is more passive than the label "Actor", since not each involved thing is necessarily acting. The Involvement is further characterized by different roles: Requested, Required and Used.
+      &lt;br&gt;
+      The class AbilityCarrierInvolvement ties together an AbilityCarrier with an AbilityCarrierRole.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionState">
-    <rdfs:comment xml:lang="en">States a task can go through during transmission of an task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">TransmissionState</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">States a task can go through during transmission of an task.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TransmissionState</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrier">
     <protege:role>abstract</protege:role>
-    <rdfs:label xml:lang="en">AbilityCarrier</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">tmo:AbilityCarrier is an abstract class which comprises all entities which can take action or which are somehow involved in tasks.
-This is in other task conceptualizations rather named "actor". But here it is named tmo:AbilityCarrier because it is not necessarily  "active".
+    <rdfs:label xml:lang="en">AbilityCarrier</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      tmo:AbilityCarrier is an abstract class which comprises all entities which can take action or which are somehow involved in tasks.
+      This is in other task conceptualizations rather named "actor". But here it is named tmo:AbilityCarrier because it is not necessarily  "active".
 
 
-&lt;br&gt;
-The execution of a task relies on certain abilities. The abstract concept of
-tmo:AbilitiyCarrier's comprise all those more concrete concepts
-of which one can think of while working on tasks. Using this abstract
-class enables to substitute such tmo:AbilityCarrier's in the process of
-generating patterns from task instances and vice versa in the process of
-instantiating task instances from patterns without violating the schema.
-With this attribute, a series of ability carrying entities (Person, Role,
-Skill) and the role of involvement (required, request, used) is enabled. The role
-hereby allows specifying how the ability carrying entity is or was
-involved.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+      &lt;br&gt;
+      The execution of a task relies on certain abilities. The abstract concept of
+      tmo:AbilitiyCarrier's comprise all those more concrete concepts
+      of which one can think of while working on tasks. Using this abstract
+      class enables to substitute such tmo:AbilityCarrier's in the process of
+      generating patterns from task instances and vice versa in the process of
+      instantiating task instances from patterns without violating the schema.
+      With this attribute, a series of ability carrying entities (Person, Role,
+      Skill) and the role of involvement (required, request, used) is enabled. The role
+      hereby allows specifying how the ability carrying entity is or was
+      involved.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffortAccuracy">
-    <rdfs:label xml:lang="en">TaskEffortAccuracy</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The class tmo:TaskEffortAccuracy can be used to differentiate whether the effort facts are  "Exact" or wheather they are "Approximate".</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TaskEffortAccuracy</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The class tmo:TaskEffortAccuracy can be used to differentiate whether the effort facts are  "Exact" or wheather they are "Approximate".</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission">
-    <rdfs:label xml:lang="en">TaskTransmission</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Tasks are not restricted to one person and may cross from
-the PTM of one person to the PTM of another. With transmission, we
-refer to the process of sending a task from one person (sender) to one
-or more other persons (receiver(s)) (see Section 5.2.1.3 Task
-Transmission). Task delegation and task transfer are two special kinds of
-task transmission which are described at the end of this section. In
-addition, the collaborative task is realized by task transmission.
-For the process of sending a task, some information is required. This
-information is also modelled in the task ontology. This information is still
-useful after the process of sending a task was completed. Task Delegation is a process where the sender of the task restricts the
-access rights of the receiver. This includes the right to distribute further
-this task and additionally the obligation to give feedback to the sender.
-The person that receives a task by delegation usually has not the full
-control about the task. The attributes described in the following section
-have the purpose to enable such "access rights". The receiver will also
-probably have obligations regarding what to report to whom at which
-time.
-In contrast, the simplest case is that all rights are granted to the receiver
-and there is no feedback desired by the sender. What to do with the task
-may be apparent by the organization context, or it may be left to the
-receiver. This is like sending an email, but with the advantage that the
-information is transferred in the "task space" of the participating persons.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TaskTransmission</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      Tasks are not restricted to one person and may cross from
+      the PTM of one person to the PTM of another. With transmission, we
+      refer to the process of sending a task from one person (sender) to one
+      or more other persons (receiver(s)) (see Section 5.2.1.3 Task
+      Transmission). Task delegation and task transfer are two special kinds of
+      task transmission which are described at the end of this section. In
+      addition, the collaborative task is realized by task transmission.
+      For the process of sending a task, some information is required. This
+      information is also modelled in the task ontology. This information is still
+      useful after the process of sending a task was completed. Task Delegation is a process where the sender of the task restricts the
+      access rights of the receiver. This includes the right to distribute further
+      this task and additionally the obligation to give feedback to the sender.
+      The person that receives a task by delegation usually has not the full
+      control about the task. The attributes described in the following section
+      have the purpose to enable such "access rights". The receiver will also
+      probably have obligations regarding what to report to whom at which
+      time.
+      In contrast, the simplest case is that all rights are granted to the receiver
+      and there is no feedback desired by the sender. What to do with the task
+      may be apparent by the organization context, or it may be left to the
+      receiver. This is like sending an email, but with the advantage that the
+      information is transferred in the "task space" of the participating persons.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency">
     <protege:role>abstract</protege:role>
-    <rdfs:label xml:lang="en">TaskDependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">By means of the tmo:subtask property hierarchiesof tasks can be represented. This is the primary dependency structure. But further dependencies among tasks may exist. These dependencies allow for a graph network structure. For ease of use, dependencies should not be too frequent, otherwise the primarily character of a hierarchy would be diminished and a consequent graph (opposed to tree) representation would become considerable. However, such a graph representation has other drawbacks, the user is likely to loose oversight, tree structures are more helpful in structuring the work.
+    <rdfs:label xml:lang="en">TaskDependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      By means of the tmo:subtask property hierarchiesof tasks can be represented. This is the primary dependency structure. But further dependencies among tasks may exist. These dependencies allow for a graph network structure. For ease of use, dependencies should not be too frequent, otherwise the primarily character of a hierarchy would be diminished and a consequent graph (opposed to tree) representation would become considerable. However, such a graph representation has other drawbacks, the user is likely to loose oversight, tree structures are more helpful in structuring the work.
 
-A dependency relation is characterized by the type of the relation and by an additional description. There are different possibilities for dependency relations between tasks.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+      A dependency relation is characterized by the type of the relation and by an additional description. There are different possibilities for dependency relations between tasks.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Association"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#UndirectedDependency">
-    <rdfs:comment xml:lang="en">A symmetric dependency between tasks.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">UndirectedDependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">A symmetric dependency between tasks.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">UndirectedDependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Interdependence">
-    <rdfs:label xml:lang="en">Interdependence</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">This is the case when task are identified as being very independent, possibly if they are indeed the same task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Interdependence</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">This is the case when task are identified as being very independent, possibly if they are indeed the same task.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#UndirectedDependency"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AttachmentRole">
-    <rdfs:label xml:lang="en">AttachmentRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">tmo:AttachmentRoles further specify the type of how an tmo:Attachment relates to a tmo:Task. Example instances  of tmo:AttachmentRoles are e.g. "desired_request", "required" and "used".</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">AttachmentRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">tmo:AttachmentRoles further specify the type of how an tmo:Attachment relates to a tmo:Task. Example instances  of tmo:AttachmentRoles are e.g. "desired_request", "required" and "used".</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PredecessorSuccessorDependency">
     <protege:role>abstract</protege:role>
-    <rdfs:label xml:lang="en">PredecessorSuccessorDependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The tmo:PredecessorSuccessorDependency enables a directed relation between task. By means of the concrete subclasses one can further distinguish from which point of view this relation is created.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">PredecessorSuccessorDependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The tmo:PredecessorSuccessorDependency enables a directed relation between task. By means of the concrete subclasses one can further distinguish from which point of view this relation is created.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionType">
-    <rdfs:label xml:lang="en">TransmissionType</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">By means of the tmo:TransmissionType one can distinguish several different types which might imply different business logic. e.g. delegation can mean that the results of the task fulfilment care to be reported back to the sender of the task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TransmissionType</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">By means of the tmo:TransmissionType one can distinguish several different types which might imply different business logic. e.g. delegation can mean that the results of the task fulfilment care to be reported back to the sender of the task.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskPrivacyState">
-    <rdfs:label xml:lang="en">TaskPrivacyState</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The tmo:TaskPrivacyState serves for the separation between a professional and a private purpose of a task. This attribute provides with the values "professional/private" a high-level separation of privacy in terms of setting distribution and access
-rights to other users for the task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">TaskPrivacyState</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The tmo:TaskPrivacyState serves for the separation between a professional and a private purpose of a task. This attribute provides with the values "professional/private" a high-level separation of privacy in terms of setting distribution and access
+      rights to other users for the task.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#StateTypeRole"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Skill">
-    <rdfs:label xml:lang="en">Skill</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Skill humans posess and which are involved in activities. Examples areexamples are e.g. technologies like Java, XML,  ...</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">Skill</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">技能</rdfs:label>
+    <rdfs:comment xml:lang="en">Skill humans posess and which are involved in activities. Examples areexamples are e.g. technologies like Java, XML,  ...</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrier"/>
   </rdfs:Class>
   <rdfs:Class rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#SuperSubTaskDependency">
-    <rdfs:label xml:lang="en">SuperSubTaskDependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Stating that a task is a subtask of aanother tasks is accomplised by the property tmo:subtask. By means of the tmo:SuperSubTaskDependency one can additionally describe the subtask-supertask relation e.g. by an description. This enables an n-ary relation between subtask and supertask.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">SuperSubTaskDependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Stating that a task is a subtask of aanother tasks is accomplised by the property tmo:subtask. By means of the tmo:SuperSubTaskDependency one can additionally describe the subtask-supertask relation e.g. by an description. This enables an n-ary relation between subtask and supertask.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"/>
   </rdfs:Class>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrierRole">
@@ -261,27 +347,34 @@ rights to other users for the task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"
     </rdfs:subPropertyOf>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierRole"/>
-    <rdfs:label xml:lang="en">abilityCarrierRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:AbilityCarrierInvolvement. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">abilityCarrierRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:AbilityCarrierInvolvement. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <nrl:minCardinality>1</nrl:minCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#logEntry">
-    <rdfs:label xml:lang="en">logEntry</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Tasks are not static entities which are created once and then they remain constant until they are finished. The tasks as we see it should be able to evolve together with the beliefs/ideas/thoughts of the human user. Tasks are not only requirements to be fulfilled but tasks can reflect the usage of task related information, e.g. attachment documents are added during the lifespan of tasks where the exact point of time of the attachment can be important to understand the task proceeding or if due dates might be shifted. This information can be kept. We leave it open how this is done in concrete cases.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">logEntry</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Tasks are not static entities which are created once and then they remain constant until they are finished. The tasks as we see it should be able to evolve together with the beliefs/ideas/thoughts of the human user. Tasks are not only requirements to be fulfilled but tasks can reflect the usage of task related information, e.g. attachment documents are added during the lifespan of tasks where the exact point of time of the attachment can be important to understand the task proceeding or if due dates might be shifted. This information can be kept. We leave it open how this is done in concrete cases.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionTo">
     <nrl:minCardinality>1</nrl:minCardinality>
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">transmissionTo</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">transmissionTo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskEffortStartDate">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The point of time a tmo:TaskEffort started.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">taskEffortStartDate</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The point of time a tmo:TaskEffort started.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskEffortStartDate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffort"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
@@ -290,8 +383,10 @@ rights to other users for the task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#lastReviewDate">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The last date a task was reviewed.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">lastReviewDate</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The last date a task was reviewed.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">lastReviewDate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
@@ -300,8 +395,10 @@ rights to other users for the task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dueDate">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The dueDate according to popular time management paradigms.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">dueDate</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The dueDate according to popular time management paradigms.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">dueDate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#taskDueTime"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf>
@@ -310,18 +407,24 @@ rights to other users for the task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskGoal">
-    <rdfs:label xml:lang="en">taskGoal</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The goal which is to be accomplished by a task. Goal orientation is a primary objective in task management. For goal articulation there are different possibilities on a tmo:Task instance. First there is a set of already articulated goals, which are made available to the user for simple selection. In contrast to Web 2.0 style applications those goals can be conceptualized as instances. The semantic desktop user is free to enhance his present goal repertoire by new instances. In principle the user can also use the tmo:taskName property for short sequences of text or the tmo:taskDescription property with its ability to display longer sequences of text to manifest goals. In the long term this is not desirable. When a phrase is repeatedly used as a goal, it should be uses as a typed "marker" and a instance should be used. The range is kept very flexible as a Thing.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskGoal</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">任务目标</rdfs:label>
+    <rdfs:comment xml:lang="en">The goal which is to be accomplished by a task. Goal orientation is a primary objective in task management. For goal articulation there are different possibilities on a tmo:Task instance. First there is a set of already articulated goals, which are made available to the user for simple selection. In contrast to Web 2.0 style applications those goals can be conceptualized as instances. The semantic desktop user is free to enhance his present goal repertoire by new instances. In principle the user can also use the tmo:taskName property for short sequences of text or the tmo:taskDescription property with its ability to display longer sequences of text to manifest goals. In the long term this is not desirable. When a phrase is repeatedly used as a goal, it should be uses as a typed "marker" and a instance should be used. The range is kept very flexible as a Thing.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyMemberA">
     <nrl:minCardinality>1</nrl:minCardinality>
-    <rdfs:label xml:lang="en">dependencyMemberA</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">dependencyMemberA</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
-    <rdfs:comment xml:lang="en">The semantic of this relation is defined in the subclass of undirected Dependency on which this property is stated. (The subject of the statement where this property is expressed). 
-Used in the  role based modeling of tmo:TaskDependency. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">
+      The semantic of this relation is defined in the subclass of undirected Dependency on which this property is stated. (The subject of the statement where this property is expressed).
+      Used in the  role based modeling of tmo:TaskDependency. See section 3.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf>
@@ -330,31 +433,39 @@ Used in the  role based modeling of tmo:TaskDependency. See section 3.</rdfs:com
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timemanagement">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">timemanagement</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Abstract super-property for various proerties related to time management.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">timemanagement</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract super-property for various proerties related to time management.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#startTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">startTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">It can be important to state when a task 
-should be performed; to set a proper start date (time) and end 
-date (time) for working on a task. First, this is planning 
-information about what the user wants to do (or is supposed to 
-do). We refer to this type of dates as "target". When the time 
-passes and the task is started and finally finished, statements 
-about the "actual" start and end dates can be set. 
+    <rdfs:label xml:lang="en">startTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">开始时间</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      It can be important to state when a task
+      should be performed; to set a proper start date (time) and end
+      date (time) for working on a task. First, this is planning
+      information about what the user wants to do (or is supposed to
+      do). We refer to this type of dates as "target". When the time
+      passes and the task is started and finally finished, statements
+      about the "actual" start and end dates can be set.
 
-This super property subsumes starting points of times. The subproperty tmo:targetStartTime is meant to capture the time when the task should start as envisioned in planning, in contrast  tmo:actualStartTime is meant to capture the time when the task was actually started.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+      This super property subsumes starting points of times. The subproperty tmo:targetStartTime is meant to capture the time when the task should start as envisioned in planning, in contrast  tmo:actualStartTime is meant to capture the time when the task was actually started.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
     </rdfs:subPropertyOf>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualCompletion">
-    <rdfs:label xml:lang="en">actualCompletion</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">actualCompletion</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    <rdfs:comment xml:lang="en">The degree (in percent) to which a task is completed.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">The degree (in percent) to which a task is completed.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:subPropertyOf>
@@ -363,16 +474,20 @@ This super property subsumes starting points of times. The subproperty tmo:targe
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#urgency">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">urgency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The urgence of a task according to the "ABC analysis" (see http://en.wikipedia.org/wiki/Time_management).</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">urgency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性</rdfs:label>
+    <rdfs:comment xml:lang="en">The urgence of a task according to the "ABC analysis" (see http://en.wikipedia.org/wiki/Time_management).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Urgency"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timemanagement"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskStateChangesFrom">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">taskStateChangesFrom</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskStateChangesFrom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskState"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskState"/>
     <rdfs:subPropertyOf>
@@ -381,8 +496,10 @@ This super property subsumes starting points of times. The subproperty tmo:targe
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#receiveDateTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The date a tmo:TaskTransmission was received.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">receiveDateTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The date a tmo:TaskTransmission was received.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">receiveDateTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
@@ -390,14 +507,17 @@ This super property subsumes starting points of times. The subproperty tmo:targe
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependency">
-    <rdfs:label xml:lang="en">dependency</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Tasks can be associated with each other in various ways. Those associations are realized by instances of tmo:TaskDependency.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">dependency</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">依赖</rdfs:label>
+    <rdfs:comment xml:lang="en">Tasks can be associated with each other in various ways. Those associations are realized by instances of tmo:TaskDependency.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetStartTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">targetStartTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">targetStartTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#startTime"/>
     <rdfs:subPropertyOf>
@@ -407,15 +527,18 @@ This super property subsumes starting points of times. The subproperty tmo:targe
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskEffortAccuracy">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">See class tmo:TaskEffortAccuracy.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">taskEffortAccuracy</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">See class tmo:TaskEffortAccuracy.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskEffortAccuracy</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffort"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffortAccuracy"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionState">
     <nrl:minCardinality>1</nrl:minCardinality>
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">transmissionState</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">transmissionState</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionState"/>
     <rdfs:subPropertyOf>
@@ -424,8 +547,10 @@ This super property subsumes starting points of times. The subproperty tmo:targe
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyDescription">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">Endusers can clarify why they created a tmo:TaskDependency.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">dependencyDescription</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Endusers can clarify why they created a tmo:TaskDependency.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">dependencyDescription</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#description"/>
     </rdfs:subPropertyOf>
@@ -433,30 +558,38 @@ This super property subsumes starting points of times. The subproperty tmo:targe
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#createdBy">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The pimo:Person which created am tmoAttachment.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">createdBy</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The pimo:Person which created am tmoAttachment.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">createdBy</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Attachment"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#progress">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    <rdfs:label xml:lang="en">progress</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The degree to which a task is completed. (abstract) (in percent)</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">progress</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The degree to which a task is completed. (abstract) (in percent)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <nrl:maxCardinality>1</nrl:maxCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrier">
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrier"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
-    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:AbilityCarrierInvolvement. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:AbilityCarrierInvolvement. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">abilityCarrier</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">abilityCarrier</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierInvolvement"/>
     <nrl:minCardinality>1</nrl:minCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#sendDateTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The date a tmo:TaskTransmission was send.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">sendDateTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The date a tmo:TaskTransmission was send.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">sendDateTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
@@ -465,24 +598,30 @@ This super property subsumes starting points of times. The subproperty tmo:targe
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#endTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">endTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">It can be important to state when a task 
-should be performed; to set a proper start date (time) and end 
-date (time) for working on a task. First, this is planning 
-information about what the user wants to do (or is supposed to 
-do). We refer to this type of dates as "target". When the time 
-passes and the task is started and finally finished, statements 
-about the "actual" start and end dates can be set. 
+    <rdfs:label xml:lang="en">endTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      It can be important to state when a task
+      should be performed; to set a proper start date (time) and end
+      date (time) for working on a task. First, this is planning
+      information about what the user wants to do (or is supposed to
+      do). We refer to this type of dates as "target". When the time
+      passes and the task is started and finally finished, statements
+      about the "actual" start and end dates can be set.
 
-This super property subsumes ending points of times. The subproperty tmo:targetEndTime is meant to capture the time when the task should be finished  as envisioned in planning, in contrast  tmo:actualEndTime is meant to capture the time when the task was actually finished.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+      This super property subsumes ending points of times. The subproperty tmo:targetEndTime is meant to capture the time when the task should be finished  as envisioned in planning, in contrast  tmo:actualEndTime is meant to capture the time when the task was actually finished.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
     </rdfs:subPropertyOf>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#personInvolvement">
-    <rdfs:label xml:lang="en">personInvolvement</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">connects the complex (n-ary, role described) PersonInvolvement and the task. See PersonInvolvement for details.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">personInvolvement</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">connects the complex (n-ary, role described) PersonInvolvement and the task. See PersonInvolvement for details.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvement"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:inverseProperty>
@@ -492,23 +631,31 @@ This super property subsumes ending points of times. The subproperty tmo:targetE
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskId">
     <nrl:minCardinality>1</nrl:minCardinality>
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">taskId</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The tmo:taskId allows a unique identification of a task object within the range of all Nepomuk objects.
-The tmo:taskId is automatically generated during the creation of a task. Using UUID is an valid approach to generate id's.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskId</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">任务ID</rdfs:label>
+    <rdfs:comment xml:lang="en">
+      The tmo:taskId allows a unique identification of a task object within the range of all Nepomuk objects.
+      The tmo:taskId is automatically generated during the creation of a task. Using UUID is an valid approach to generate id's.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskEffortDuration">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:label xml:lang="en">taskEffortDuration</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The amount of time a tmo:TaskEffort should represent in seconds. This can be eighter calculated from tmo:taskEffortStartDate and tmo:taskEffortEndDate or it can be set explicitly.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskEffortDuration</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The amount of time a tmo:TaskEffort should represent in seconds. This can be eighter calculated from tmo:taskEffortStartDate and tmo:taskEffortEndDate or it can be set explicitly.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffort"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskEffortEndDate">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The point of time a tmo:TaskEffort ended.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">taskEffortEndDate</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The point of time a tmo:TaskEffort ended.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskEffortEndDate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffort"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
@@ -516,14 +663,17 @@ The tmo:taskId is automatically generated during the creation of a task. Using U
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskEffort">
-    <rdfs:label xml:lang="en">taskEffort</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">taskEffort</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffort"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#priority">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">priority</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The priority of a task. See http://en.wikipedia.org/wiki/Time_management for different approaches on finding priorities.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">priority</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">优先级</rdfs:label>
+    <rdfs:comment xml:lang="en">The priority of a task. See http://en.wikipedia.org/wiki/Time_management for different approaches on finding priorities.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Priority"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timemanagement"/>
@@ -532,44 +682,54 @@ The tmo:taskId is automatically generated during the creation of a task. Using U
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskReference"/>
     </rdfs:subPropertyOf>
-    <rdfs:label xml:lang="en">dependencyMemberB</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">dependencyMemberB</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
     <nrl:minCardinality>1</nrl:minCardinality>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
-    <rdfs:comment xml:lang="en">The semantic of this relation is defined in the subclass of undirected Dependency on which this property is stated. (The subject of the statement where this property is expressed). Used in the  role based modeling of tmo:TaskDependency. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">The semantic of this relation is defined in the subclass of undirected Dependency on which this property is stated. (The subject of the statement where this property is expressed). Used in the  role based modeling of tmo:TaskDependency. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#involvedPerson">
-    <rdfs:label xml:lang="en">involvedPerson</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">involvedPerson</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvement"/>
     <nrl:minCardinality>1</nrl:minCardinality>
-    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:PersonInvolvement. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:PersonInvolvement. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#containsTask">
-    <rdfs:label xml:lang="en">containsTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">containsTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">包含任务</rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasPart"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskContainer"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#description">
-    <rdfs:label xml:lang="en">nao:description</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">nao:description</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">nao:description</rdfs:label>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">targetTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">It can be important to state when a task 
-should be performed; to set a proper start date (time) and end 
-date (time) for working on a task. First, this is planning 
-information about what the user wants to do (or is supposed to 
-do). We refer to this type of dates as "target". When the time 
-passes and the task is started and finally finished, statements 
-about the "actual" start and end dates can be set. 
+    <rdfs:label xml:lang="en">targetTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      It can be important to state when a task
+      should be performed; to set a proper start date (time) and end
+      date (time) for working on a task. First, this is planning
+      information about what the user wants to do (or is supposed to
+      do). We refer to this type of dates as "target". When the time
+      passes and the task is started and finally finished, statements
+      about the "actual" start and end dates can be set.
 
-This super property subsumes points of times, which have values which are intended, in contrast to values which only have been actually realized (actualTime)</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+      This super property subsumes points of times, which have values which are intended, in contrast to values which only have been actually realized (actualTime)
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
     </rdfs:subPropertyOf>
@@ -577,14 +737,17 @@ This super property subsumes points of times, which have values which are intend
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#indexPosition">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:label xml:lang="en">indexPosition</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The position of ordered subtasks regarding their parent task. It is possible to use this property because we allow for only one parent task. More exactly this should be realized by an rdf:List, but those has the disadvantage that no typing is possible. This issue needs to be clarified in future revisions.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">indexPosition</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The position of ordered subtasks regarding their parent task. It is possible to use this property because we allow for only one parent task. More exactly this should be realized by an rdf:List, but those has the disadvantage that no typing is possible. This issue needs to be clarified in future revisions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetEndTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">targetEndTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">targetEndTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#endTime"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetTime"/>
@@ -595,24 +758,29 @@ This super property subsumes points of times, which have values which are intend
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
     </rdfs:subPropertyOf>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvementRole"/>
-    <rdfs:label xml:lang="en">involvedPersonRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">involvedPersonRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvement"/>
-    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:PersonInvolvement. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:PersonInvolvement. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <nrl:minCardinality>1</nrl:minCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachmentReference">
-    <rdfs:comment xml:lang="en">Used in the role based modeling of tmo:Attachment. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Used in the role based modeling of tmo:Attachment. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <nrl:minCardinality>1</nrl:minCardinality>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Attachment"/>
-    <rdfs:label xml:lang="en">attachmentReference</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">attachmentReference</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualEndTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">actualEndTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">actualEndTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualTime"/>
@@ -621,8 +789,10 @@ This super property subsumes points of times, which have values which are intend
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#subTask">
-    <rdfs:label xml:lang="en">subTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Tasks can be hierarchically arranged. See tmo:Task for details.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">subTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">子任务</rdfs:label>
+    <rdfs:comment xml:lang="en">Tasks can be hierarchically arranged. See tmo:Task for details.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#hasPart"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
@@ -639,12 +809,15 @@ This super property subsumes points of times, which have values which are intend
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#subTask"/>
-    <rdfs:label xml:lang="en">superTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">superTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">超级任务</rdfs:label>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskDescription">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">taskDescription</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">For short identifying descriptions of task one should use the tmo:taskName, more elaborate textual content can be placed in the tmo:taskDescription property. The description is amongst others meant to specify what needs to be done in the task in an informal way. The task description is the right place to state information about what to do with a task. The task description helps users to understand the goal and the proceeding of a task. It can also describe the context of a task. The task description is composed at minimum of a summary of what is done to reach the goal. The task description is the main source for identifying related information, e.g., suitable patterns.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskDescription</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">For short identifying descriptions of task one should use the tmo:taskName, more elaborate textual content can be placed in the tmo:taskDescription property. The description is amongst others meant to specify what needs to be done in the task in an informal way. The task description is the right place to state information about what to do with a task. The task description helps users to understand the goal and the proceeding of a task. It can also describe the context of a task. The task description is composed at minimum of a summary of what is done to reach the goal. The task description is the main source for identifying related information, e.g., suitable patterns.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#description"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
   </rdf:Property>
@@ -652,21 +825,27 @@ This super property subsumes points of times, which have values which are intend
     <nrl:inverseProperty>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#contextThread"/>
     </nrl:inverseProperty>
-    <rdfs:label xml:lang="en">contextTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">This property realizes the connection fromo the user work context by an relation to an workcontext:contextThread.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">contextTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">This property realizes the connection fromo the user work context by an relation to an workcontext:contextThread.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">stateTypeRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The sub-properties of tmo:stateTypeRole realize role described associations. Some of those instances which are rather generic are stated in the TMO.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">stateTypeRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The sub-properties of tmo:stateTypeRole realize role described associations. Some of those instances which are rather generic are stated in the TMO.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskSource">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">taskSource</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The taskSopurce property can be used to state from which sources a task was derived, e.g from another task or from an task pattern</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskSource</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">任务源</rdfs:label>
+    <rdfs:comment xml:lang="en">The taskSopurce property can be used to state from which sources a task was derived, e.g from another task or from an task pattern</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskReference"/>
@@ -675,14 +854,18 @@ This super property subsumes points of times, which have values which are intend
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskEffortType">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">See class tmo:TaskEffortType.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">taskEffortType</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">See class tmo:TaskEffortType.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskEffortType</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffort"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskEffortType"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrierInvolvement">
-    <rdfs:label xml:lang="en">abilityCarrierInvolvement</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Connects the complex (n-ary, role described) AbilityCarrierInvolvement and the task. See tmo:AbilityCarrierInvolvement and section 3 for details.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">abilityCarrierInvolvement</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Connects the complex (n-ary, role described) AbilityCarrierInvolvement and the task. See tmo:AbilityCarrierInvolvement and section 3 for details.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierInvolvement"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:inverseProperty>
@@ -691,7 +874,8 @@ This super property subsumes points of times, which have values which are intend
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualStartTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">actualStartTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">actualStartTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualTime"/>
@@ -700,8 +884,10 @@ This super property subsumes points of times, which have values which are intend
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskTransmission">
-    <rdfs:label xml:lang="en">taskTransmission</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Creates the connection to the tmo:TaskTransmission where the details of a  transmission act are aggregated.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskTransmission</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Creates the connection to the tmo:TaskTransmission where the details of a  transmission act are aggregated.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
     <nrl:inverseProperty>
@@ -711,17 +897,21 @@ This super property subsumes points of times, which have values which are intend
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionType">
     <nrl:minCardinality>1</nrl:minCardinality>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionType"/>
-    <rdfs:label xml:lang="en">transmissionType</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">transmissionType</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
-    <rdfs:comment xml:lang="en">See class tmo:TransmissionType.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">See class tmo:TransmissionType.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetCompletion">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The degree (in percent) to which a task should be completed. This property has a rather rare usage, but one can imagine situations where one explicitly states that a task has only to be performed to a certain extend.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">The degree (in percent) to which a task should be completed. This property has a rather rare usage, but one can imagine situations where one explicitly states that a task has only to be performed to a certain extend.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
-    <rdfs:label xml:lang="en">targetCompletion</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">targetCompletion</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#progress"/>
   </rdf:Property>
@@ -730,17 +920,21 @@ This super property subsumes points of times, which have values which are intend
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskReference"/>
     </rdfs:subPropertyOf>
     <nrl:minCardinality>1</nrl:minCardinality>
-    <rdfs:label xml:lang="en">transmissionTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">transmissionTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
     <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskTransmission"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The task which is actually to transferred by means of an tmo:TaskTransmission.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">The task which is actually to transferred by means of an tmo:TaskTransmission.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#contextThread">
     <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#contextTask"/>
-    <rdfs:label xml:lang="en">contextThread</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">This property realizes the connection to the user work context by an relation to an workcontext:contextThread.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">contextThread</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">This property realizes the connection to the user work context by an relation to an workcontext:contextThread.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://ontologies.opendfki.de/repos/ontologies/wcon/workcontext#MediumTermContextThread"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
@@ -749,28 +943,35 @@ This super property subsumes points of times, which have values which are intend
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AbilityCarrierInvolvement"/>
-    <rdfs:label xml:lang="en">abilityCarrierTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:AbilityCarrierInvolvement. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">abilityCarrierTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:AbilityCarrierInvolvement. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
     <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#abilityCarrierInvolvement"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timeUsage">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:comment xml:lang="en">Represents the amount of time spend on a task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">timeUsage</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Represents the amount of time spend on a task.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">timeUsage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <nrl:maxCardinality>1</nrl:maxCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#nextReviewIntervall">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">The time when the next review should be performed</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">nextReviewIntervall</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">The time when the next review should be performed</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">nextReviewIntervall</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionFrom">
     <nrl:minCardinality>1</nrl:minCardinality>
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">transmissionFrom</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">transmissionFrom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#Person"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskTransmission"/>
   </rdf:Property>
@@ -778,32 +979,42 @@ This super property subsumes points of times, which have values which are intend
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
-    <rdfs:comment xml:lang="en">The task state property allows tracking a task during its lifecycle. A tmo:taskState is required, initially it can e.g. be set to "new".</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">The task state property allows tracking a task during its lifecycle. A tmo:taskState is required, initially it can e.g. be set to "new".</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskState"/>
     <nrl:minCardinality>1</nrl:minCardinality>
-    <rdfs:label xml:lang="en">taskState</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">taskState</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#delegability">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">delegability</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">This property determines how appropriate a task is to be delegated to another Person. Some task have to be performed by the owning person and cannot be delegated.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">delegability</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">This property determines how appropriate a task is to be delegated to another Person. Some task have to be performed by the owning person and cannot be delegated.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Delegability"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timemanagement"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskPrivacyState">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">taskPrivacyState</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">For the separation between professional and private purpose of a task, this attribute provides with the values "professional/private" a high level separation of privacy in terms of setting distribution rights to other users for the task.
-This separation may arise as a general Nepomuk issue and may therefore be handled in conjunction with a privacy preserving SSD architecture.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskPrivacyState</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      For the separation between professional and private purpose of a task, this attribute provides with the values "professional/private" a high level separation of privacy in terms of setting distribution rights to other users for the task.
+      This separation may arise as a general Nepomuk issue and may therefore be handled in conjunction with a privacy preserving SSD architecture.
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskPrivacyState"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskName">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">taskName</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The tmo:taskName helps the user to identify a tmo:task in a list. It should be expressive enough to give a meaningful recognition. Details should be written in the tmo:taskDescription attribute instead. A tmo:taskName attribute is not allowed to contain line breaks. The name property is a sub-property of the nao:prefLabel , so this instance can by default be displayed correctly in places which are not specialized towards the TMO alone.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskName</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">任务名称</rdfs:label>
+    <rdfs:comment xml:lang="en">The tmo:taskName helps the user to identify a tmo:task in a list. It should be expressive enough to give a meaningful recognition. Details should be written in the tmo:taskDescription attribute instead. A tmo:taskName attribute is not allowed to contain line breaks. The name property is a sub-property of the nao:prefLabel , so this instance can by default be displayed correctly in places which are not specialized towards the TMO alone.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#prefLabel"/>
     </rdfs:subPropertyOf>
@@ -812,55 +1023,71 @@ This separation may arise as a general Nepomuk issue and may therefore be handle
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskReference">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">taskReference</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Abstract super-property for various properties which establish a connections to a task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskReference</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Abstract super-property for various properties which establish a connections to a task.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionStateChangesFrom">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">transmissionStateChangesFrom</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">transmissionStateChangesFrom</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionState"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionState"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#importance">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">importance</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">The importance of a task according to the "ABC analysis" (see http://en.wikipedia.org/wiki/Time_management).</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">importance</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性</rdfs:label>
+    <rdfs:comment xml:lang="en">The importance of a task according to the "ABC analysis" (see http://en.wikipedia.org/wiki/Time_management).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Importance"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timemanagement"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#subTaskOrdering">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">subTaskOrdering</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">This property allows to optionally state the ordering of the subtasks listed in the tmo:subTask property a task. This is only for ordering/sorting in GUIs, the semantic relation is defined in tmo:subTask, and if this and tmo:subTask differ, tmo:subTasks is the correct list (while ordering is lost). See also tmo:indexPosition for a property which realizes this by means of an workaround since the support of rdf:List is often limited on tool support. Also there is no support for range restrictions.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">subTaskOrdering</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">This property allows to optionally state the ordering of the subtasks listed in the tmo:subTask property a task. This is only for ordering/sorting in GUIs, the semantic relation is defined in tmo:subTask, and if this and tmo:subTask differ, tmo:subTasks is the correct list (while ordering is lost). See also tmo:indexPosition for a property which realizes this by means of an workaround since the support of rdf:List is often limited on tool support. Also there is no support for range restrictions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#transmissionStateChangesTo">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">transmissionStateChangesTo</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">transmissionStateChangesTo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionState"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TransmissionState"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dependencyOrderNumber">
     <nrl:minCardinality>1</nrl:minCardinality>
-    <rdfs:comment xml:lang="en">Task Dependencies can be ordered.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Task Dependencies can be ordered.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskDependency"/>
-    <rdfs:label xml:lang="en">dependencyOrderNumber</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">dependencyOrderNumber</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#actualTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">actualTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">It can be important to state when a task should be performed; to set a proper start date (time) and end date (time) for working on a task. First, this is planning information about what the user wants to do (or is supposed to do). We refer to this type of dates as "target". When the time passes and the task is started and finally finished, statements about the "actual" start and end dates can be set.
+    <rdfs:label xml:lang="en">actualTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">
+      It can be important to state when a task should be performed; to set a proper start date (time) and end date (time) for working on a task. First, this is planning information about what the user wants to do (or is supposed to do). We refer to this type of dates as "target". When the time passes and the task is started and finally finished, statements about the "actual" start and end dates can be set.
 
-This super property subsumes points of times, which have values which are realized, in contrast to values which only have been intended (targetTime)</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+      This super property subsumes points of times, which have values which are realized, in contrast to values which only have been intended (targetTime)
+    </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf>
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime"/>
     </rdfs:subPropertyOf>
@@ -868,23 +1095,29 @@ This super property subsumes points of times, which have values which are realiz
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#dateTime">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">dateTime</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">tmo:dateTime subsumes various properties with Range XMLSchema:dateTime. If possible the properties are further grouped by "abstract" properties.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">dateTime</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">tmo:dateTime subsumes various properties with Range XMLSchema:dateTime. If possible the properties are further grouped by "abstract" properties.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachmentRole">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:label xml:lang="en">attachmentRole</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:Attachment. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">attachmentRole</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:Attachment. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Attachment"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#AttachmentRole"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2007/08/15/nao#prefLabel">
-    <rdfs:label xml:lang="en">nao:prefLabel</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">nao:prefLabel</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachmentTask">
-    <rdfs:comment xml:lang="en">Inverse of attachment, connects an Attachment Association to the associated Task. Is required for every instance of Attachment. Used in the  role based modeling of tmo:Attachment. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Inverse of attachment, connects an Attachment Association to the associated Task. Is required for every instance of Attachment. Used in the  role based modeling of tmo:Attachment. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Attachment"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:maxCardinality>1</nrl:maxCardinality>
@@ -892,19 +1125,24 @@ This super property subsumes points of times, which have values which are realiz
       <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachment"/>
     </nrl:inverseProperty>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
-    <rdfs:label xml:lang="en">attachmentTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">attachmentTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachment">
-    <rdfs:label xml:lang="en">attachment</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Connects the complex (n-ary, role described) Attachment and the task. See tmo:Attachment and section 3 for details.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">attachment</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Connects the complex (n-ary, role described) Attachment and the task. See tmo:Attachment and section 3 for details.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Attachment"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
     <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#attachmentTask"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#taskStateChangesTo">
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
-    <rdfs:label xml:lang="en">taskStateChangesTo</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Allows to model the possible or proposed state transitions.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">taskStateChangesTo</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskState"/>
     <rdfs:range rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TaskState"/>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#stateTypeRole"/>
@@ -913,21 +1151,27 @@ This super property subsumes points of times, which have values which are realiz
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timeUsage"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
-    <rdfs:label xml:lang="en">actualTimeUsage</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">actualTimeUsage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <nrl:maxCardinality>1</nrl:maxCardinality>
-    <rdfs:comment xml:lang="en">Represents the amount of time actually spend on a task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Represents the amount of time actually spend on a task.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#targetTimeUsage">
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#Task"/>
-    <rdfs:label xml:lang="en">targetTimeUsage</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">targetTimeUsage</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#timeUsage"/>
-    <rdfs:comment xml:lang="en">Represents the amount of time planned to be spend on a task.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:comment xml:lang="en">Represents the amount of time planned to be spend on a task.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <nrl:maxCardinality>1</nrl:maxCardinality>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
   </rdf:Property>
   <rdf:Property rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#involvedPersonTask">
-    <rdfs:label xml:lang="en">involvedPersonTask</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
-    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:PersonInvolvement. See section 3.</rdfs:comment><rdfs:comment xml:lang="zh-CN"></rdfs:comment>
+    <rdfs:label xml:lang="en">involvedPersonTask</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:comment xml:lang="en">Used in the  role based modeling of tmo:PersonInvolvement. See section 3.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN"></rdfs:comment>
     <rdfs:subPropertyOf rdf:resource="http://www.semanticdesktop.org/ontologies/2007/11/01/pimo#associationMember"/>
     <rdfs:domain rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#PersonInvolvement"/>
     <nrl:inverseProperty rdf:resource="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#personInvolvement"/>
@@ -935,246 +1179,327 @@ This super property subsumes points of times, which have values which are realiz
     <nrl:maxCardinality>1</nrl:maxCardinality>
   </rdf:Property>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Creator">
-    <rdfs:label xml:lang="en">Creator</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Creator</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">创建者</rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_04">
-    <rdfs:label xml:lang="en">Urgency_04</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_04</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-04</rdfs:label>
   </tmo:Urgency>
   <tmo:TaskContainer rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_archive">
-    <rdfs:label xml:lang="en">Archive</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Archive</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskContainer>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_09">
-    <rdfs:label xml:lang="en">Importance_09</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_09</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:Importance>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Finalized">
-    <rdfs:label xml:lang="en">Finalized</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Finalized</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskState>
   <tmo:TransmissionState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Rejected_Transmitted">
-    <rdfs:label xml:lang="en">Rejected_Transmitted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Rejected_Transmitted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TransmissionState>
   <tmo:Delegability rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_High">
-    <rdfs:label xml:lang="en">High</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">High</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">高</rdfs:label>
   </tmo:Delegability>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_03">
-    <rdfs:label xml:lang="en">Urgency_03</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_03</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-03</rdfs:label>
   </tmo:Urgency>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Archived">
-    <rdfs:label xml:lang="en">Archived</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Archived</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskState>
   <tmo:TaskEffortAccuracy rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskEffortAccuracy_Approximate">
-    <rdfs:label xml:lang="en">Approximate</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Approximate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskEffortAccuracy>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_08">
-    <rdfs:label xml:lang="en">Importance_08</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_08</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-08</rdfs:label>
   </tmo:Importance>
   <tmo:Delegability rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Never">
-    <rdfs:label xml:lang="en">Never</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Never</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">从不</rdfs:label>
   </tmo:Delegability>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_06">
-    <rdfs:label xml:lang="en">Urgency_06</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_06</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-06</rdfs:label>
   </tmo:Urgency>
   <tmo:AbilityCarrierRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AbilityCarrierRole_Required">
-    <rdfs:label xml:lang="en">Required</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Required</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">必须</rdfs:label>
   </tmo:AbilityCarrierRole>
   <tmo:Delegability rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Medium">
-    <rdfs:label xml:lang="en">Medium</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Medium</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:Delegability>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_07">
-    <rdfs:label xml:lang="en">Importance_07</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_07</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-07</rdfs:label>
   </tmo:Importance>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Related">
-    <rdfs:label xml:lang="en">Related</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Related</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:AbilityCarrierRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AbilityCarrierRole_Requested">
-    <rdfs:label xml:lang="en">Requested</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Requested</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:AbilityCarrierRole>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_05">
-    <rdfs:label xml:lang="en">Urgency_05</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_05</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-05</rdfs:label>
   </tmo:Urgency>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Completed">
-    <rdfs:label xml:lang="en">Completed</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Completed</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">已完成</rdfs:label>
   </tmo:TaskState>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_06">
-    <rdfs:label xml:lang="en">Importance_06</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_06</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-06</rdfs:label>
   </tmo:Importance>
   <tmo:TaskPrivacyState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskPrivacy_Professional">
-    <rdfs:label xml:lang="en">Professional</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Professional</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskPrivacyState>
   <tmo:TransmissionState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Accepted_NotTransmitted">
-    <rdfs:label xml:lang="en">ed_NotTransmitted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">ed_NotTransmitted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TransmissionState>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Analyst">
-    <rdfs:label xml:lang="en">Analyst</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Analyst</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:TransmissionType rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionType_Join">
-    <rdfs:label xml:lang="en">Join</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Join</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TransmissionType>
   <tmo:AbilityCarrierRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AbilityCarrierRole_Used">
-    <rdfs:label xml:lang="en">Used</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Used</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:AbilityCarrierRole>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_05">
-    <rdfs:label xml:lang="en">Importance_05</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_05</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:Importance>
   <tmo:TaskContainer rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_activetasks">
-    <rdfs:label xml:lang="en">Activetasks</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Activetasks</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskContainer>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Suspended">
-    <rdfs:label xml:lang="en">Suspended</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Suspended</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskState>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Observer">
-    <rdfs:label xml:lang="en">Observer</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Observer</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:Priority rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Priority_High">
-    <rdfs:label xml:lang="en">High</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">High</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:Priority>
   <tmo:Delegability rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Unrestricted">
-    <rdfs:label xml:lang="en">Unrestricted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Unrestricted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:Delegability>
   <tmo:Priority rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Priority_Medium">
-    <rdfs:label xml:lang="en">Medium</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Medium</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:Priority>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Reviewer">
-    <rdfs:label xml:lang="en">Reviewer</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Reviewer</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:TransmissionType rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionType_Delegation">
-    <rdfs:label xml:lang="en">Delegation</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Delegation</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TransmissionType>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_04">
-    <rdfs:label xml:lang="en">Importance_04</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_04</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-04</rdfs:label>
   </tmo:Importance>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_02">
-    <rdfs:label xml:lang="en">Urgency_02</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_02</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-02</rdfs:label>
   </tmo:Urgency>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_New">
-    <rdfs:label xml:lang="en">New</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">New</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskState>
   <tmo:TaskContainer rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_trashtasks">
-    <rdfs:label xml:lang="en">Trashtasks</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Trashtasks</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskContainer>
   <tmo:TransmissionState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Rejected_NotTransmitted">
-    <rdfs:label xml:lang="en">Rejected_NotTransmitted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Rejected_NotTransmitted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TransmissionState>
   <tmo:TaskEffortTaskEffortType rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskEffortType_Running">
-    <rdfs:label xml:lang="en">Running</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Running</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskEffortTaskEffortType>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_03">
-    <rdfs:label xml:lang="en">Importance_03</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_03</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-03</rdfs:label>
   </tmo:Importance>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_01">
-    <rdfs:label xml:lang="en">Urgency_01</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_01</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-01</rdfs:label>
   </tmo:Urgency>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Initiator">
-    <rdfs:label xml:lang="en">Initiator</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Initiator</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Deleted">
-    <rdfs:label xml:lang="en">Deleted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Deleted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">已删除</rdfs:label>
   </tmo:TaskState>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_02">
-    <rdfs:label xml:lang="en">Importance_02</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_02</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-02</rdfs:label>
   </tmo:Importance>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_InternalObserver">
-    <rdfs:label xml:lang="en">InternalObserver</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">InternalObserver</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Running">
-    <rdfs:label xml:lang="en">Running</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Running</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskState>
   <tmo:TaskContainer rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_outbox">
-    <rdfs:label xml:lang="en">Outbox</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Outbox</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskContainer>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Co-worker">
-    <rdfs:label xml:lang="en">Co-worker</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Co-worker</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">同事</rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_10">
-    <rdfs:label xml:lang="en">Importance_10</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_10</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-10</rdfs:label>
   </tmo:Importance>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_10">
-    <rdfs:label xml:lang="en">Urgency_10</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_10</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-10</rdfs:label>
   </tmo:Urgency>
   <tmo:Importance rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Importance_01">
-    <rdfs:label xml:lang="en">Importance_01</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Importance_01</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">重要性-01</rdfs:label>
   </tmo:Importance>
   <tmo:TransmissionType rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionType_Transfer">
-    <rdfs:label xml:lang="en">Transfer</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Transfer</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TransmissionType>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Suggested">
-    <rdfs:label xml:lang="en">Suggested</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Suggested</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:TransmissionState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_NotTransmitted">
-    <rdfs:label xml:lang="en">NotTransmitted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">NotTransmitted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TransmissionState>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Executor">
-    <rdfs:label xml:lang="en">Executor</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Executor</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:TaskPrivacyState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskPrivacy_Private">
-    <rdfs:label xml:lang="en">Private</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Private</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">私有</rdfs:label>
   </tmo:TaskPrivacyState>
   <tmo:TaskEffortTaskEffortType rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskEffortType_Planned">
-    <rdfs:label xml:lang="en">Planned</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Planned</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskEffortTaskEffortType>
   <tmo:AttachmentRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Required">
-    <rdfs:label xml:lang="en">Required</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Required</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">必须</rdfs:label>
   </tmo:AttachmentRole>
   <tmo:TaskContainer rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskContainer_inbox">
-    <rdfs:label xml:lang="en">Inbox</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Inbox</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:TaskContainer>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Delegate">
-    <rdfs:label xml:lang="en">Delegate</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Delegate</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Controller">
-    <rdfs:label xml:lang="en">Controller</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Controller</rdfs:label>
+    <rdfs:label xml:lang="zh-CN"></rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_ExternalObserver">
-    <rdfs:label xml:lang="en">ExternalObserver</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">ExternalObserver</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">外部观察者</rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Owner">
-    <rdfs:label xml:lang="en">Owner</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Owner</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">所有者</rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:TaskState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskState_Terminated">
-    <rdfs:label xml:lang="en">Terminated</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Terminated</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">已终止</rdfs:label>
   </tmo:TaskState>
   <tmo:AttachmentRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Desired_Requested">
-    <rdfs:label xml:lang="en">Desired_Requested</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Desired_Requested</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">期望请求</rdfs:label>
   </tmo:AttachmentRole>
   <tmo:TaskEffortTaskEffortType rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskEffortType_Actual">
-    <rdfs:label xml:lang="en">Actual</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Actual</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">实际</rdfs:label>
   </tmo:TaskEffortTaskEffortType>
   <tmo:TaskEffortAccuracy rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TaskEffortAccuracy_Exact">
-    <rdfs:label xml:lang="en">Exact</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Exact</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">确切</rdfs:label>
   </tmo:TaskEffortAccuracy>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_08">
-    <rdfs:label xml:lang="en">Urgency_08</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_08</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-08</rdfs:label>
   </tmo:Urgency>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Collaborator">
-    <rdfs:label xml:lang="en">Collaborator</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Collaborator</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">合作者</rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:Delegability rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Delegability_Low">
-    <rdfs:label xml:lang="en">Low</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Low</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">低</rdfs:label>
   </tmo:Delegability>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_07">
-    <rdfs:label xml:lang="en">Urgency_07</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_07</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-07</rdfs:label>
   </tmo:Urgency>
   <tmo:TransmissionState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Accepted_Transmitted">
-    <rdfs:label xml:lang="en">ed_Transmitted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">ed_Transmitted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">传播</rdfs:label>
   </tmo:TransmissionState>
   <tmo:AttachmentRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Used">
-    <rdfs:label xml:lang="en">Used</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Used</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">已用</rdfs:label>
   </tmo:AttachmentRole>
   <tmo:Priority rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Priority_Low">
-    <rdfs:label xml:lang="en">Low</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Low</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">低</rdfs:label>
   </tmo:Priority>
   <tmo:TransmissionState rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_TransmissionState_Transmitted">
-    <rdfs:label xml:lang="en">Transmitted</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Transmitted</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">传播</rdfs:label>
   </tmo:TransmissionState>
   <tmo:AttachmentRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_AttachmentRole_Related">
-    <rdfs:label xml:lang="en">Related</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Related</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">相关</rdfs:label>
   </tmo:AttachmentRole>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Involved">
-    <rdfs:label xml:lang="en">Involved</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Involved</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">参与</rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:PersonInvolvementRole rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_PersonInvolvementRole_Receiver">
-    <rdfs:label xml:lang="en">Receiver</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Receiver</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">接收者</rdfs:label>
   </tmo:PersonInvolvementRole>
   <tmo:Urgency rdf:about="http://www.semanticdesktop.org/ontologies/2008/05/20/tmo#TMO_Instance_Urgency_09">
-    <rdfs:label xml:lang="en">Urgency_09</rdfs:label><rdfs:label xml:lang="zh-CN"></rdfs:label>
+    <rdfs:label xml:lang="en">Urgency_09</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">迫切性-09</rdfs:label>
   </tmo:Urgency>
 </rdf:RDF>
