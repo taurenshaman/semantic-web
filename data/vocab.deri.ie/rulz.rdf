@@ -11,8 +11,10 @@
 
   <owl:Ontology rdf:about="http://vocab.deri.ie/rulz">
     <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
-    <dcterms:title>Rulz - the Rules in the Web Zoo</dcterms:title>
-    <dcterms:description>A vocabulary to describe rules (RIF, N3, Prolog, etc.) in the Web, which enables to effectively and efficiently discover rules in any format, based on topics, language, goals, etc.</dcterms:description>
+    <dcterms:title xml:lang="en">Rulz - the Rules in the Web Zoo</dcterms:title>
+    <dcterms:title xml:lang="zh-CN">Rulz - 网络领域的规则</dcterms:title>
+    <dcterms:description xml:lang="en">A vocabulary to describe rules (RIF, N3, Prolog, etc.) in the Web, which enables to effectively and efficiently discover rules in any format, based on topics, language, goals, etc.</dcterms:description>
+    <dcterms:description xml:lang="zh-CN">用于描述网络上的规则（RIF、N3、Prolog等）的词汇集，使得能够根据主题、语言、目标等有效和高效地发现任何格式的规则。</dcterms:description>
     <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2010-06-24</dcterms:modified>
     <vann:preferredNamespaceUri>http://purl.org/NET/rulz#</vann:preferredNamespaceUri>
     <vann:preferredNamespacePrefix>rulz</vann:preferredNamespacePrefix>
@@ -26,13 +28,13 @@
   </owl:Ontology>
 
   <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/rulz#ttl">
-    <dcterms:FileFormat></dcterms:FileFormat>
+    <dcterms:FileFormat>TTL</dcterms:FileFormat>
     <adms:accessURL>http://vocab.deri.ie/rulz.ttl</adms:accessURL>
     <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
   </adms:SemanticDistribution>
 
   <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/rulz#rdf">
-    <dcterms:FileFormat></dcterms:FileFormat>
+    <dcterms:FileFormat>RDF</dcterms:FileFormat>
     <adms:accessURL>http://vocab.deri.ie/rulz.rdf</adms:accessURL>
     <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
   </adms:SemanticDistribution>
@@ -56,73 +58,94 @@
 
   <rdfs:Class rdf:about="http://purl.org/NET/rulz#Ruleset">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>ruleset</rdfs:label>
-    <rdfs:comment>A collection of rules</rdfs:comment>
+    <rdfs:label xml:lang="en">ruleset</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">规则集</rdfs:label>
+    <rdfs:comment xml:lang="en">A collection of rules</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一组规则。</rdfs:comment>
   </rdfs:Class>
 
   <rdfs:Class rdf:about="http://purl.org/NET/rulz#Rule">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>rule</rdfs:label>
-    <rdfs:comment>A single rule, typically consisting of a head and a body</rdfs:comment>
+    <rdfs:label xml:lang="en">rule</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">规则</rdfs:label>
+    <rdfs:comment xml:lang="en">A single rule, typically consisting of a head and a body</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一条规则，通常由头和体组成。</rdfs:comment>
   </rdfs:Class>
 
   <rdfs:Class rdf:about="http://purl.org/NET/rulz#Language">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label>rule language</rdfs:label>
-    <rdfs:comment>a certain rule language (such as Prolog or RIF-BLD). Note: this is not the same as the serialization used (use dc:format for this), for example RIF-BLD can be serialised in XML or in the presentation syntax.</rdfs:comment>
+    <rdfs:label xml:lang="en">rule language</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">规则语言</rdfs:label>
+    <rdfs:comment xml:lang="en">a certain rule language (such as Prolog or RIF-BLD). Note: this is not the same as the serialization used (use dc:format for this), for example RIF-BLD can be serialised in XML or in the presentation syntax.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">特定的规则语言（如Prolog或RIF-BLD）。注意：这不同于序列化（用dc:format表示）所使用的语言，如RIF-BLD可以序列化为XML或演示语法。</rdfs:comment>
   </rdfs:Class>
 
   <rdf:Property rdf:about="http://purl.org/NET/rulz#inRuleset">
-    <rdfs:label>in ruleset</rdfs:label>
-    <rdfs:comment>a rule is typically part of a ruleset</rdfs:comment>
+    <rdfs:label xml:lang="en">in ruleset</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">在规则集</rdfs:label>
+    <rdfs:comment xml:lang="en">a rule is typically part of a ruleset</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一条规则通常是某规则集的一部分。</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Rule"/>
     <rdfs:range rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
   </rdf:Property>
 
   <rdf:Property rdf:about="http://purl.org/NET/rulz#subset">
-    <rdfs:label>has subset</rdfs:label>
-    <rdfs:comment>rulesets can be logically partitioned using subsets</rdfs:comment>
+    <rdfs:label xml:lang="en">has subset</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">子集</rdfs:label>
+    <rdfs:comment xml:lang="en">rulesets can be logically partitioned using subsets</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">规则集可以在逻辑上分割成子集。</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
     <rdfs:range rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
   </rdf:Property>
 
   <rdf:Property rdf:about="http://purl.org/NET/rulz#language">
-    <rdfs:label>uses logic language</rdfs:label>
-    <rdfs:comment>the logic language used in the ruleset  (for example RIF-BLD, N3, or Prolog)</rdfs:comment>
+    <rdfs:label xml:lang="en">uses logic language</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">使用的逻辑语言</rdfs:label>
+    <rdfs:comment xml:lang="en">the logic language used in the ruleset  (for example RIF-BLD, N3, or Prolog)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在规则集中使用的逻辑语言（如RIF-BLD、N3或Prolog）。</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
     <rdfs:range rdf:resource="http://purl.org/NET/rulz#Language"/>
   </rdf:Property>
 
   <rdf:Property rdf:about="http://purl.org/NET/rulz#inHead">
-    <rdfs:label>uses term in head</rdfs:label>
-    <rdfs:comment>a certain term used in the head of the rule</rdfs:comment>
+    <rdfs:label xml:lang="en">uses term in head</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">头中的术语</rdfs:label>
+    <rdfs:comment xml:lang="en">a certain term used in the head of the rule</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在规则的头中使用的特定术语。</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Rule"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdf:Property>
 
   <rdf:Property rdf:about="http://purl.org/NET/rulz#inBody">
-    <rdfs:label>uses term in body</rdfs:label>
-    <rdfs:comment>a certain term used in the body of the rule</rdfs:comment>
+    <rdfs:label xml:lang="en">uses term in body</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">体中的术语</rdfs:label>
+    <rdfs:comment xml:lang="en">a certain term used in the body of the rule</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在规则的体中使用的特定术语。</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Rule"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdf:Property>
 
   <rdf:Property rdf:about="http://purl.org/NET/rulz#endorsedBy">
-    <rdfs:label>endorsed by</rdfs:label>
-    <rdfs:comment>documents the endorsement of a certain ruleset by a certain agent (person or organisation)</rdfs:comment>
+    <rdfs:label xml:lang="en">endorsed by</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">支持者</rdfs:label>
+    <rdfs:comment xml:lang="en">documents the endorsement of a certain ruleset by a certain agent (person or organisation)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">支持、签署特定规则集的特定代理（个人或组织）。</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
     <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
   </rdf:Property>
 
   <rdf:Property rdf:about="http://purl.org/NET/rulz#inferenceContext">
-    <rdfs:label>inference context</rdfs:label>
-    <rdfs:comment>the object of this property determines the location of the triples inferred by applying the ruleset to some dataset</rdfs:comment>
+    <rdfs:label xml:lang="en">inference context</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">推理上下文</rdfs:label>
+    <rdfs:comment xml:lang="en">the object of this property determines the location of the triples inferred by applying the ruleset to some dataset</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">这个属性的宾语决定了在某些数据集上应用了规则集后推理出的三元组的位置。</rdfs:comment>
     <rdfs:domain rdf:resource="http://purl.org/NET/rulz#Ruleset"/>
     <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
   </rdf:Property>
 
   <rulz:Language rdf:about="http://purl.org/NET/rulz#N3">
-    <rdfs:label>N3 Notation3</rdfs:label>
+    <rdfs:label xml:lang="en">N3 Notation3</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">N3</rdfs:label>
     <rdfs:seeAlso rdf:resource="http://www.w3.org/TeamSubmission/n3/"/>
   </rulz:Language>
 

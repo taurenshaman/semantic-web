@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://vocab.deri.ie/cogs">
+    <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
+    <dcterms:title>COGS Vocabulary</dcterms:title>
+    <dcterms:description>COGS: Vocabulary for describing ETL and data transformation activities.</dcterms:description>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-02-25</dcterms:modified>
+    <vann:preferredNamespaceUri>http://vocab.deri.ie/cogs#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>cogs</vann:preferredNamespacePrefix>
+    <foaf:homepage rdf:resource="http://vocab.deri.ie/cogs.html"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-02-25</dcterms:created>
+    <dcterms:publisher>http://vocab.deri.ie/cogs#DERI%2C%20NUI%20Galway</dcterms:publisher>
+    <dcterms:partOf rdf:resource="http://vocab.deri.ie"/>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+    <dc:creator rdf:resource="http://vocab.deri.ie/cogs#andfre"/>
+  </owl:Ontology>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/cogs#ttl">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/cogs.ttl</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/cogs#rdf">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/cogs.rdf</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <foaf:Person rdf:about="http://vocab.deri.ie/cogs#andfre">
+    <foaf:name>André Freitas</foaf:name>
+    <foaf:homepage></foaf:homepage>
+  </foaf:Person>
+
+  <dcterms:Agent rdf:about="http://vocab.deri.ie/cogs#DERI%2C%20NUI%20Galway">
+    <foaf:member rdf:resource="http://vocab.deri.ie/cogs#andfre"/>
+    <foaf:name>DERI, NUI Galway</foaf:name>
+    <foaf:homepage rdf:resource="http://www.deri.ie/"/>
+  </dcterms:Agent>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#WebServiceLookup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>WebServiceLookup</rdfs:label>
+    <rdfs:comment>Allows the retrieving of data from a web service and uses this during the form filling process.  @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Lookup"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#View">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>View</rdfs:label>
+    <rdfs:comment>Consists of a stored query accessible as a virtual table composed of the result set of a query. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ValueOperation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ValueOperation</rdfs:label>
+    <rdfs:comment>Evaluate a selected function for a particular value of x. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ValueCalculation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ValueCalculation</rdfs:label>
+    <rdfs:comment>A value that results from some sort of calculation performed on a specified input value. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Validation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Validation</rdfs:label>
+    <rdfs:comment>The act of validating; finding or testing the truth of something. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Transformation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Uppercase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Uppercase</rdfs:label>
+    <rdfs:comment>String operation for converting a string to uppercase. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#StringOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#UpdateQueryObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>UpdateQuery</rdfs:label>
+    <rdfs:comment>Query that changes the data of one or more records in a table.  @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#QueryObject"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#UnitConversion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>UnitConversion</rdfs:label>
+    <rdfs:comment>Units of measurement. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Triple">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Triple</rdfs:label>
+    <rdfs:comment>A basic RDF statement resembling the English-Language construct of (subject, predicate, object). @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Trim">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Trim</rdfs:label>
+    <rdfs:comment>String operation for removing leading and trailing whitespace from a string. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#StringOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Trigger">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Trigger</rdfs:label>
+    <rdfs:comment>A procedural code that is automatically executed in response to certain events on a particular table or view in a database.  @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#TransformationProcess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TransformationProcess</rdfs:label>
+    <rdfs:comment>Process that applies a series of rules or functions to the extracted data from the source to derive the data for loading into the end target. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Transformation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Transformation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Transformation</rdfs:label>
+    <rdfs:comment>The process of manipulating data. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#TerminologicalMapping">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TerminologicalMapping</rdfs:label>
+    <rdfs:comment>Mapping using a terminological base. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Mapping"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#TableLookup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>TableLookup</rdfs:label>
+    <rdfs:comment>Process of using a known value to search for data on a table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Lookup"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Table">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Table</rdfs:label>
+    <rdfs:comment>A predefined format of rows and columns that define a database entity. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Success">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Success</rdfs:label>
+    <rdfs:comment>Status of a job that had successful  performance. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ExecutionStatus"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#StringSimilarity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StringSimilarity</rdfs:label>
+    <rdfs:comment>Finds similarities in character strings. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#SimilarityMatching"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#StringOperation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StringOperation</rdfs:label>
+    <rdfs:comment>Operations for manipulating strings. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#StringFilter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StringFilter</rdfs:label>
+    <rdfs:comment>Provides means for matching strings of text, such as particular characters, words, or patterns of characters. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Filter"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#StoredProcedure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StoredProcedure</rdfs:label>
+    <rdfs:comment>A transformation used to create unique primary key values or cycle through a sequential range of numbers to replace missing keys. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#StagingAreaArtifact">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StagingAreaArtifact</rdfs:label>
+    <rdfs:comment>The final product; what the end users see. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#StaggingArea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>StaggingArea</rdfs:label>
+    <rdfs:comment>A place where data can be processed before entering the warehouse area. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#DataManagementLayer"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#SplitColumn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SplitColumn</rdfs:label>
+    <rdfs:comment>Divides a column in one or more other collumns. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ColumnOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Split">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Split</rdfs:label>
+    <rdfs:comment>String operation that returns a zero-based, one-dimensional array containing a specified number of substrings. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#StringOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Source">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Source</rdfs:label>
+    <rdfs:comment>A database, application, file or other storage facility from which the data is derived. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#DataManagementLayer"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#SortRow">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SortRow</rdfs:label>
+    <rdfs:comment>Row Operation that sorts rows based on a specified fields and on whether they should be sorted in ascending or descending order. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#SimilarityMatching">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SimilarityMatching</rdfs:label>
+    <rdfs:comment>Given a target and an arrangement yields a value in where 0 represents perfect similarity. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#AutomatedMatching"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Service">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Service</rdfs:label>
+    <rdfs:comment>Something done by a device or user with the function of giving good by providing usefulness. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Server">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Server</rdfs:label>
+    <rdfs:comment>Software program, or the computer on which that program runs, that provides a specific kind of service to client software. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Sensor">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Sensor</rdfs:label>
+    <rdfs:comment>Device that measures or detects a real-world condition and converts the condition into an analog or digital representation. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#SemanticSimilarity">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SemanticSimilarity</rdfs:label>
+    <rdfs:comment>Concept whereby a set of documents or terms within term lists are assigned a metric based on the likeness of their semantic content. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#SimilarityMatching"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#SelectQueryObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>SelectQuery</rdfs:label>
+    <rdfs:comment>Query that locates and displays information requested. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#QueryObject"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Script">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Script</rdfs:label>
+    <rdfs:comment>A program or sequence of instructions that is interpreted or carried out by another program rather than by the computer processor. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Schema">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Schema</rdfs:label>
+    <rdfs:comment>The structure of a database system described in a formal language supported by the database management system. Describes tables, for example. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ScheduledJob">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ScheduledJob</rdfs:label>
+    <rdfs:comment>Job that owns information on when and how often it has to execute operations. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Job"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Running">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Running</rdfs:label>
+    <rdfs:comment>Status of a job that is in the state of being operated. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ExecutionStatus"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RulesBasedMatching">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RulesBasedMatching</rdfs:label>
+    <rdfs:comment>Matching of data based on a rule or group of rules. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#AutomatedMatching"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Rule">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Rule</rdfs:label>
+    <rdfs:comment>A principle or formula. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RowOperation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RowOperation</rdfs:label>
+    <rdfs:comment>Instructions executed on rows of a table or file. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Row">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Row</rdfs:label>
+    <rdfs:comment>A serie of objects placed in line. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Round">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Round</rdfs:label>
+    <rdfs:comment>Round a numeric value to a specified number of decimal places. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#NumericOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Replace">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Replace</rdfs:label>
+    <rdfs:comment>String operation for updating the content of a string. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#StringOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RenameColumn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RenameColumn</rdfs:label>
+    <rdfs:comment>Changes the name of a certain column. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ColumnOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RejectedData">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RejectedData</rdfs:label>
+    <rdfs:comment>Data that contain database violations and are forbidden to get inserted into a table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RegexFilter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RegexFilter</rdfs:label>
+    <rdfs:comment>Filter written in a formal language that can be interpreted by a regular expression processor. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Filter"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RESTLookup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RESTLookup</rdfs:label>
+    <rdfs:comment>Describes the request/response exchanges between a Service Metadata Publisher and a client wishing to discover endpoint information. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Lookup"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RDFNamedGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RDFNamedGraph</rdfs:label>
+    <rdfs:comment>Multiple RDF graphs in a single document/repository and naming them with URIs. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#RDFGraph">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RDFGraph</rdfs:label>
+    <rdfs:comment>A set of RDF triple. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#QueryObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Query</rdfs:label>
+    <rdfs:comment>A request for information from a database. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Query">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Query</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Publication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Publication</rdfs:label>
+    <rdfs:comment>Some kind of content available to certain public. @en-us</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Program">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Program</rdfs:label>
+    <rdfs:comment>A sequence of instructions written to perform a specified task for a computer. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#PresentationArea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PresentationArea</rdfs:label>
+    <rdfs:comment>What the user sees. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#DataAccessLayer"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#PredefinedMatching">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PredefinedMatching</rdfs:label>
+    <rdfs:comment>Forces a matching under a certain criteria.  @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#MappingProcess"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#PerformanceIndicator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PerformanceIndicator</rdfs:label>
+    <rdfs:comment>Measures used used to evaluate the success of a particular activity. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Execution"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Paste">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Paste</rdfs:label>
+    <rdfs:comment>To copy an object from a buffer  or clipboard to a file. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Parsing">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Parsing</rdfs:label>
+    <rdfs:comment>Process of analyzing a text, checking for correct syntax and building a  implicit in the input tokens. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Extraction"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Output">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Output</rdfs:label>
+    <rdfs:comment>Information, resulting from computer processing, that is delivered to a user. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Order">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Order</rdfs:label>
+    <rdfs:comment>Place in a certain established system.  @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Operator">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Operator</rdfs:label>
+    <rdfs:comment>A symbol or function representing a mathematical operation. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Operation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Operation</rdfs:label>
+    <rdfs:comment>Instructions that can be done by a computer. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Transformation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ObjectRepresentation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ObjectRepresentation</rdfs:label>
+    <rdfs:comment>Internal representation of an object suitable for matching its features. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ObjectReference">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ObjectReference</rdfs:label>
+    <rdfs:comment>Value that enables a program to indirectly access a particular object. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Object">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Object</rdfs:label>
+    <rdfs:comment>Any entity that can be manipulated by the commands of a programming language, such as a value, variable, function, or data structure. </rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#NumericOperation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>NumericOperation</rdfs:label>
+    <rdfs:comment>Manipulate and manage numeric data. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#NumericCast">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>NumericCast</rdfs:label>
+    <rdfs:comment>Converts an expression of one data type to another. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#NumericOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Move">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Move</rdfs:label>
+    <rdfs:comment>To change in position from one point to another. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Method">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Method</rdfs:label>
+    <rdfs:comment>A subroutine that is exclusively associated either with a or with an object. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Metadata">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Metadata</rdfs:label>
+    <rdfs:comment>Data that describe data and other structures, such as objects, business rules and processes. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#MergeRow">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MergeRow</rdfs:label>
+    <rdfs:comment>Row Operation that allows the comparison of two streams of rows. It is often used in situations where the source system of a data warehouse does not contain a date of last update. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#MappingProcess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MappingProcess</rdfs:label>
+    <rdfs:comment>A workflow diagram to bring a clearer understanding of a process or series of parallel processes. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Mapping"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#MappingFile">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>MappingFile</rdfs:label>
+    <rdfs:comment>e.g. RDB2RDF</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Mapping">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Mapping</rdfs:label>
+    <rdfs:comment>The definition of relationship and data flow between source and target objects. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Transformation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ManuallyStartedJob">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ManuallyStartedJob</rdfs:label>
+    <rdfs:comment>Job that was forced to be initialized by an user or admin. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Job"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ManualAdHocProcess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ManualAdHocProcess</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#AdHocProcess"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Lowercase">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Lowercase</rdfs:label>
+    <rdfs:comment>String operation for converting a string to lowercase.@en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#StringOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Lookup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Lookup</rdfs:label>
+    <rdfs:comment>A transformation used to look up data in a relational table, view or synonym. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Transformation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Log">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Log</rdfs:label>
+    <rdfs:comment>A record of computer activity. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#LoadingType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LoadingType</rdfs:label>
+    <rdfs:comment>Techniques required for the movement of data from the operational environment to the data warehouse environment. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Loading"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#LoadingProcess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LoadingProcess</rdfs:label>
+    <rdfs:comment>Information from data sources are loaded and stored in a form of tables. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Loading"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Loading">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Loading</rdfs:label>
+    <rdfs:comment>Stage that is responsible for loading data into the end target. @en-us</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Layer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Layer</rdfs:label>
+    <rdfs:comment>Each individual level. @en-us</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#LastError">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>LastError</rdfs:label>
+    <rdfs:comment>Thread's final error. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#KeyRestructuring">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>KeyRestructuring</rdfs:label>
+    <rdfs:comment>Transformation of keys with built-in meanings into generic keys. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#KeyGeneration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>KeyGeneration</rdfs:label>
+    <rdfs:comment>Process of generating keys for cryptography. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#JoinRows">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>JoinRows</rdfs:label>
+    <rdfs:comment>Row Operation that allows combinations (Cartesian product) of all rows in the input streams.@en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Job">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Job</rdfs:label>
+    <rdfs:comment>A process or group of processes also known as workflow.@en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Execution"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#InstanceMapping">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>InstanceMapping</rdfs:label>
+    <rdfs:comment>The process of assigning a source data element to a target data. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Mapping"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#InsertTriple">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>InsertTriple</rdfs:label>
+    <rdfs:comment>Includes one or more triple into the store. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#GraphOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#InsertRow">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>InsertRow</rdfs:label>
+    <rdfs:comment>Inclusion of a row on a table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#InsertQueryObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>InsertQuery</rdfs:label>
+    <rdfs:comment>Query that inserts data into the database. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#QueryObject"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#InsertColumn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>InsertColumn</rdfs:label>
+    <rdfs:comment>Inserts one or more collumns according to a certain criteria to a table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ColumnOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Input">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Input</rdfs:label>
+    <rdfs:comment>Any data entered into a computer.@en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#InitialLoad">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>InitialLoad</rdfs:label>
+    <rdfs:comment>Populates the tables in the data warehouse schema and then verifying that the data is ready for use. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#LoadingType"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#IncrementalLoad">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>IncrementalLoad</rdfs:label>
+    <rdfs:comment>Applies ongoing changes to one or more tables based on a predefined schedule. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#LoadingType"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#HumanValidation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>HumanValidation</rdfs:label>
+    <rdfs:comment>Validation performed by a person:  an user or admin. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Validation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#HumanMatching">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>HumanMatching</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#MappingProcess"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#GraphOperation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>GraphOperation</rdfs:label>
+    <rdfs:comment>Instructions performed on graphs. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#FullRefresh">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>FullRefresh</rdfs:label>
+    <rdfs:comment>Truncates all the tables and data gets loaded again. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#LoadingType"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Formula">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Formula</rdfs:label>
+    <rdfs:comment>A rule or principle. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#FormatRevision">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>FormatRevision</rdfs:label>
+    <rdfs:comment>Reviews the file format. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Filter">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Filter</rdfs:label>
+    <rdfs:comment>An operation that can be used to retain rows in a mapping that do not meet specific conditions. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#FillDown">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>FillDown</rdfs:label>
+    <rdfs:comment>Copy the contents of the topmost cells of a selected range into the cells below.@en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ColumnOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#FileLookup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>FileLookup</rdfs:label>
+    <rdfs:comment>File that keeps the mapping. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Lookup"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#File">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>File</rdfs:label>
+    <rdfs:comment>A block of arbitrary information, or resource for storing information, which is available to a computer program. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#FieldDecoding">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>FieldDecoding</rdfs:label>
+    <rdfs:comment>Performs decoding operations when you specify field-encoding function. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Fail">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Fail</rdfs:label>
+    <rdfs:comment>Status of a job that stops operating or functioning. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ExecutionStatus"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#FactTable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>FactTable</rdfs:label>
+    <rdfs:comment>A table that consists of the measurements, metrics or facts of a  process. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Table"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Extraction">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Extraction</rdfs:label>
+    <rdfs:comment>The first part of an ETL process which involves extracting the data from source systems. @en-us</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ExecutionStatus">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ExecutionStatus</rdfs:label>
+    <rdfs:comment>Provides the current execution status of a process. e.g. : fail, running, success. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Execution"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Execution">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Execution</rdfs:label>
+    <rdfs:comment>A carrying into effect or to completion.@en-us</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Exception">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Exception</rdfs:label>
+    <rdfs:comment>An event, which occurs during the execution of a program, which disrupts the normal flow of the program's instructions. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Event">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Event</rdfs:label>
+    <rdfs:comment>An action that is usually initiated outside the scope of a program and that is handled by a piece of code inside the program. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Endpoint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Endpoint</rdfs:label>
+    <rdfs:comment>Point of termination. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DimensionTable">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DimensionTable</rdfs:label>
+    <rdfs:comment>One of the set of companion tables to a fact table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Table"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Device">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Device</rdfs:label>
+    <rdfs:comment>A machine designed for a purpose. E.g.: Unit of hardware.  @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DestructiveMerge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DestructiveMerge</rdfs:label>
+    <rdfs:comment>Applies the incoming data to the target data and if the primary key of an incoming record marches with the key of an existing record updates the matching target record. If the incoming record is a new record without a match with any existing record, adds the incoming record to the target table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#LoadingType"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DeleteTriple">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DeleteTriple</rdfs:label>
+    <rdfs:comment>Deletes on or more triples into the store.@en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#GraphOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DeleteRow">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DeleteRow</rdfs:label>
+    <rdfs:comment>Exclusion of a single or group of rows by a certain criteria on a table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DeleteQueryObject">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DeleteQuery</rdfs:label>
+    <rdfs:comment>Query that does a delete operation on a row, column, table for example. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#QueryObject"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DeleteColumn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DeleteColumn</rdfs:label>
+    <rdfs:comment>Deletes one or more collumns according to a certain criteria to a table. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ColumnOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Deduplication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Deduplication</rdfs:label>
+    <rdfs:comment>Data compression technique for eliminating redundant data. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DatetimeConversion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DatetimeConversion</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Dataset">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Dataset</rdfs:label>
+    <rdfs:comment>A collection of data, usually presented in tabular form where each column represents a particular variable and each row corresponds to a given member of the data set in question. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Database">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Database</rdfs:label>
+    <rdfs:comment>A database is a collection of information organized into interrelated tables of data and specifications of data objects. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DataStream">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DataStream</rdfs:label>
+    <rdfs:comment>A sequence of digitally encoded coherent signals (packets of data) used to transmit or receive information that is in the process of being transmitted. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DataMart">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DataMart</rdfs:label>
+    <rdfs:comment>Data mart as a process-oriented subset of the overall organization’s data based on a foundation of atomic data, and that depends only on the physics of the data-measurement events, not on the anticipated user’s questions.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DataManagementLayer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DataManagementLayer</rdfs:label>
+    <rdfs:comment>Layer responsible for the development, execution and supervision of plans, policies, programs and practices that control, protect, deliver and enhance the value of data and information assets. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Layer"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DataAccessLayer">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DataAccessLayer</rdfs:label>
+    <rdfs:comment>Layer that controls access to data in a computer-based information system. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Layer"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#DSN">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DSN</rdfs:label>
+    <rdfs:comment>Data Source Name (DSN) is a data structure that contains the information about a specific database. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Cube">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Cube</rdfs:label>
+    <rdfs:comment>A multidimensional database that holds data. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Copy">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Copy</rdfs:label>
+    <rdfs:comment>A piece of data that was duplicated. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ConstructiveMerge">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ConstructiveMerge</rdfs:label>
+    <rdfs:comment>If the primary key of an incoming record matches with the key of an existing Record, leaves the existing Record, adds the incoming record and marks the added record as superseding the old record. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#LoadingType"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ColumnOperation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ColumnOperation</rdfs:label>
+    <rdfs:comment>Instructions applied on one or more collumns. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Column">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Column</rdfs:label>
+    <rdfs:comment>Database tables are composed of individual columns corresponding to the attributes of the object. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Class">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Class</rdfs:label>
+    <rdfs:comment>A construct that is used as a blueprint to create instances of the class. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Object"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#CharacterSetConversion">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>CharacterSetConversion</rdfs:label>
+    <rdfs:comment>Converts strings between different character sets. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Ceil">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Ceil</rdfs:label>
+    <rdfs:comment>Returns the smallest integer greater than or equal to n. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#NumericOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#AutomatedValidation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AutomatedValidation</rdfs:label>
+    <rdfs:comment>Validation performed by a computer. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Validation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#AutomatedMatching">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AutomatedMatching</rdfs:label>
+    <rdfs:comment>Task of finding entries that refer to the same entity across different data sources using computer resources. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#MappingProcess"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#AutomatedAdHocProcess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AutomatedAdHocProcess</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#AdHocProcess"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Assignment">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Assignment</rdfs:label>
+    <rdfs:comment>Sets or re-sets the value stored in the storage location(s) denoted by a variable name. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#ValueOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ApplyScript">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ApplyScript</rdfs:label>
+    <rdfs:comment>Request for using a certain script. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Operation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#ApplyFormula">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ApplyFormula</rdfs:label>
+    <rdfs:comment>New data are computed based on the user-defined formula. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#NumericOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#Append">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Append</rdfs:label>
+    <rdfs:comment>String operation for concatenating lists or arrays. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#StringOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#AggregateRows">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AggregateRows</rdfs:label>
+    <rdfs:comment> Functions which return a single result row based on groups of rows. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#RowOperation"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cogs#AdHocProcess">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>AdHocProcess</rdfs:label>
+    <rdfs:comment>Process that seeks a solution designed for a specific problem or task, non-generalizable, and not intended to be able to be adapted to other purposes. @en-us</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cogs#Execution"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cogs#isExpressedBy">
+    <rdfs:label>isExpressedBy</rdfs:label>
+    <rdfs:comment>This property allows the association between an abstract representation of a Transformation and an encapsulated computational artifact artifact (e.g. code, binary).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cogs#Transformation"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cogs#precededBy">
+    <rdfs:label>precededBy</rdfs:label>
+    <rdfs:comment>Defines the ordering among two processes</rdfs:comment>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cogs#dependsOn">
+    <rdfs:label>dependsOn</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cogs#Job"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cogs#Job"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cogs#associatedGraph">
+    <rdfs:label>associatedGraph</rdfs:label>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cogs#RDFNamedGraph"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cogs#associatedEndpoint">
+    <rdfs:label>associatedEndpoint</rdfs:label>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cogs#Endpoint"/>
+  </rdf:Property>
+
+</rdf:RDF>
