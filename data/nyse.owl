@@ -1,5 +1,118 @@
-<?xml version="1.0" encoding="ISO-8859-1"?><!DOCTYPE rdf:RDF[
-	 <!ENTITY daml 'http://www.w3.org/2002/07/owl#'>
-	 <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>  
-         <!ENTITY countries-ont 'http://www.daml.org/2001/09/countries/iso-3166-ont#'>
-]><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xml:base="http://www.daml.org/2001/10/html/nyse-ont"><owl:Ontology rdf:about=""><owl:versionInfo>$Id: nyse-ont.owl,v 1.3 2004/11/10 02:05:53 mdean Exp $</owl:versionInfo><rdfs:comment>New York Stock Exchange (NYSE) listing ontology</rdfs:comment></owl:Ontology><owl:Class rdf:ID="Symbol"><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#symbol" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#symbol" /><owl:cardinality>1</owl:cardinality></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#name" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#name" /><owl:maxCardinality>1</owl:maxCardinality></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#country" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#country" /><owl:maxCardinality>1</owl:maxCardinality></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#description" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#description" /><owl:maxCardinality>1</owl:maxCardinality></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#listingDate" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#date" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#listingDate" /><owl:maxCardinality>1</owl:maxCardinality></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#industry" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#industry" /><owl:maxCardinality>1</owl:maxCardinality></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#issueType" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#issueType" /><owl:maxCardinality>1</owl:maxCardinality></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#homePage" /><owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#uriReference" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#homePage" /><owl:maxCardinality>1</owl:maxCardinality></owl:Restriction></rdfs:subClassOf></owl:Class><owl:DatatypeProperty rdf:ID="country" /><owl:DatatypeProperty rdf:ID="description" /><owl:DatatypeProperty rdf:ID="homePage" /><owl:DatatypeProperty rdf:ID="industry" /><owl:DatatypeProperty rdf:ID="issueType" /><owl:DatatypeProperty rdf:ID="listingDate" /><owl:DatatypeProperty rdf:ID="name" /><owl:DatatypeProperty rdf:ID="symbol" /></rdf:RDF>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE rdf:RDF[
+  <!ENTITY daml 'http://www.w3.org/2002/07/owl#'>
+  <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#'>
+  <!ENTITY countries-ont 'http://www.daml.org/2001/09/countries/iso-3166-ont#'>
+]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xml:base="http://www.daml.org/2001/10/html/nyse-ont">
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo>$Id: nyse-ont.owl,v 1.3 2004/11/10 02:05:53 mdean Exp $</owl:versionInfo>
+    <rdfs:comment>New York Stock Exchange (NYSE) listing ontology</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Symbol">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#symbol" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#symbol" />
+        <owl:cardinality>1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#name" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#name" />
+        <owl:maxCardinality>1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#country" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#country" />
+        <owl:maxCardinality>1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#description" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#description" />
+        <owl:maxCardinality>1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#listingDate" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#date" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#listingDate" />
+        <owl:maxCardinality>1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#industry" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#industry" />
+        <owl:maxCardinality>1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#issueType" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#issueType" />
+        <owl:maxCardinality>1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#homePage" />
+        <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#uriReference" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#homePage" />
+        <owl:maxCardinality>1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:DatatypeProperty rdf:ID="country" />
+  <owl:DatatypeProperty rdf:ID="description" />
+  <owl:DatatypeProperty rdf:ID="homePage" />
+  <owl:DatatypeProperty rdf:ID="industry" />
+  <owl:DatatypeProperty rdf:ID="issueType" />
+  <owl:DatatypeProperty rdf:ID="listingDate" />
+  <owl:DatatypeProperty rdf:ID="name" />
+  <owl:DatatypeProperty rdf:ID="symbol" />
+</rdf:RDF>
