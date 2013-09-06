@@ -1,0 +1,1228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY gfo "http://www.onto-med.de/ontologies/gfo.owl#">
+  <!ENTITY gfo.owl "http://www.onto-med.de/ontologies/gfo.owl">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="&gfo.owl;"
+         xmlns:gfo="&gfo;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;">
+
+<!-- Ontology Information -->
+  <owl:Ontology rdf:about="">
+    <rdfs:comment xml:lang="en">Copyright (c) 2006, Regents of the Research Group Ontologies in Medicine (Onto-Med), University of Leipzig, Germany.
+       All rights reserved.  
+
+       Redistribution and use in source and binary forms, with or without modification,
+       are permitted provided that the following conditions are met:
+       
+       1. Redistributions of source code must retain the above copyright notice, this list
+          of conditions and the following disclaimer.
+       
+       2. Redistributions in binary form must reproduce the above copyright notice, this list
+          of conditions and the following disclaimer in the documentation and/or other
+          materials provided with the distribution.
+          
+       3. Neither the name of the Research Group Ontologies in Medicine (Onto-Med), University
+          of Leipzig nor the names of its contributors may be used to endorse or promote products
+          derived from this software without specific prior written permission.
+
+       THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+       OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+       AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+       CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+       DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+       DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+       IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+       OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</rdfs:comment>
+    <owl:versionInfo rdf:datatype="&xsd;string">Version 1.0 ($Revision: 1.9 $)</owl:versionInfo>
+  </owl:Ontology>
+
+<!-- Classes -->
+  <owl:Class rdf:about="#Abstract">
+    <rdfs:comment xml:lang="en">Abstract individuals are independent from time and space (they are not in time and space).
+Examples: the number "2" or pi.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <owl:disjointWith rdf:resource="#Concrete"/>
+    <owl:disjointWith rdf:resource="#Space_time"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Action">
+    <rdfs:comment xml:lang="en">Actions are occurents which are caused by some presential (the agent) at every (inner and outer) time-boundary of the chronoid framing the occurent.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Occurrent"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#has_agent"/>
+        <owl:someValuesFrom rdf:resource="#Presential"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Amount_of_substrate">
+    <rdfs:subClassOf rdf:resource="#Continuous"/>
+    <rdfs:subClassOf rdf:resource="#Presential"/>
+    <owl:equivalentClass rdf:resource="#Mass_entity"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Awareness_level">
+    <rdfs:subClassOf rdf:resource="#Level"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#abstract_part_of"/>
+        <owl:someValuesFrom rdf:resource="#Mental_stratum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_level">
+    <rdfs:subClassOf rdf:resource="#Level"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#abstract_part_of"/>
+        <owl:someValuesFrom rdf:resource="#Material_stratum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Category">
+    <rdfs:comment rdf:datatype="&xsd;string">Categories satisfy the following conditions: (1) Categories can be instantiated; (2) Categories can be predicated of other entities.
+Categories are defined intensional-with-an-s. They are, therefore, closely related to language.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Item"/>
+    <owl:disjointWith rdf:resource="#Individual"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Change">
+    <rdfs:comment rdf:datatype="&xsd;string">A change in the technical sense refers to a pair of process
+boundaries. Either at coinciding boundaries (then it comes close to
+notions like ``punctual'' or ``instantaneous event'' as well as
+``moment'' -- in a temporal reading), or at boundaries at the opposite
+ends of a process of arbitrary extension.
+
+The notion of change is relative to contradictory conditions
+between which a transition takes place. These contradictions refer to
+some collection of pairwise disjoint universals.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Occurrent"/>
+    <owl:disjointWith rdf:resource="#History"/>
+    <owl:disjointWith rdf:resource="#Process"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Chemical_level">
+    <rdfs:subClassOf rdf:resource="#Level"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#abstract_part_of"/>
+        <owl:someValuesFrom rdf:resource="#Material_stratum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Chronoid">
+    <rdfs:comment rdf:datatype="&xsd;string">Chronoids are entities sui generis.
+
+Every chronoid has exactly two extremal and
+infinitely many inner time boundaries which are
+equivalently called time-points.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Temporal_region"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Concept">
+    <rdfs:subClassOf rdf:resource="#Category"/>
+    <owl:disjointWith rdf:resource="#Symbol_structure"/>
+    <owl:disjointWith rdf:resource="#Universal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Concrete">
+    <rdfs:comment rdf:datatype="&xsd;string">Concrete individuals have a relation to time or space (they are in time and space).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <owl:disjointWith rdf:resource="#Abstract"/>
+    <owl:disjointWith rdf:resource="#Space_time"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Configuration">
+    <rdfs:comment rdf:datatype="&xsd;string">We consider a collection of presential facts which exist at the same time-boundary. Such collections may be considered themselves as presentials, and we call them configurations.
+
+It is further required that configurations contain at least one material object.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Presential"/>
+    <owl:disjointWith rdf:resource="#Material_boundary"/>
+    <owl:disjointWith rdf:resource="#Material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Configuroid">
+    <rdfs:comment rdf:datatype="&xsd;string">Configuroids are, in the simplest case, integrated wholes made up of material structure processes and property processes.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Process"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Continuous">
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="#Individual"/>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#Discrete"/>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Continuous_change">
+    <rdfs:comment xml:lang="en">For the purpose of formalizing continuous changes, a minimal chronoid universal D(c) is employed in order to capture the idea of observable differences during certain chronoids, whereas the change itself does not allow the observation of a difference. The predicate change(e1,e2, u1, u2, u, D(c)) is intended to formalize this approach. Continous changes occur over time (a chronoid).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Change"/>
+    <owl:equivalentClass rdf:resource="#Intrinsic_change"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Continuous_process">
+    <rdfs:comment rdf:datatype="&xsd;string">Processes where all non-coinciding internal boundaries are intrinsic changes. 
+These turn out as purely continuous processes, described e.g.
+in physics by differential equations.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Continuous"/>
+    <rdfs:subClassOf rdf:resource="#Process"/>
+    <owl:disjointWith rdf:resource="#Discrete_process"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Dependent">
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <owl:disjointWith rdf:resource="#Independent"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#depends_on"/>
+        <owl:someValuesFrom rdf:resource="#Item"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Discrete">
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Discrete_presential">
+    <rdfs:subClassOf rdf:resource="#Discrete"/>
+    <rdfs:subClassOf rdf:resource="#Presential"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#instance_of"/>
+        <owl:someValuesFrom rdf:resource="#Persistant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Mass_entity"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Discrete_process">
+    <rdfs:comment rdf:datatype="&xsd;string">Discrete processes are made up of alterations of extrinsic changes and states.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Discrete"/>
+    <rdfs:subClassOf rdf:resource="#Process"/>
+    <owl:disjointWith rdf:resource="#Continuous_process"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Entity">
+    <rdfs:comment rdf:datatype="&xsd;string">Everything which exists is called an entity.</rdfs:comment>
+    <owl:unionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="#Item"/>
+      <rdf:Description rdf:about="#Set"/>
+    </owl:unionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Extrinsic_change">
+    <rdfs:comment xml:lang="en">Deprecated. Extrinsic changes are represented by change(e1,e2, u1, u2, u), where e1 and e2 are a pair of coincident process boundaries, and u1 and u2 are disjoint sub-universals of u.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Change"/>
+    <owl:disjointWith rdf:resource="#Intrinsic_change"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Function">
+    <rdfs:comment rdf:datatype="&xsd;string">A function F is a universal (conceptual structure) defined in purely teleological terms with respect to a given goal G which commonly is ascribed by means of has-function relation to entities that are the realizations of the function F, execute such a realization or are intended to do it.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Concept"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#History">
+    <rdfs:comment rdf:datatype="&xsd;string">Histories consist of a number of process boundaries.
+
+We assume that any history can be embedded into a process, which then
+forms a foundation of the history. If it were not for this foundation,
+one would face the problem of singling out the right boundaries in
+order to get a natural history: It is not sensible to measure the
+temperature of a patient first, then determine his weight, followed by
+measuring his blood pressure and to consider these strangely arbitrary
+process boundaries as a history of the patient's body data.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Occurrent"/>
+    <owl:disjointWith rdf:resource="#Change"/>
+    <owl:disjointWith rdf:resource="#Process"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Independent">
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <owl:disjointWith rdf:resource="#Dependent"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Individual">
+    <rdfs:comment rdf:datatype="&xsd;string">Individuals are entities which cannot be further instantiated.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Item"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#instantiated_by"/>
+            <owl:someValuesFrom rdf:resource="#Item"/>
+          </owl:Restriction>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Category"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Dependent"/>
+          <rdf:Description rdf:about="#Independent"/>
+        </owl:unionOf>
+      </owl:Class>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Abstract"/>
+          <rdf:Description rdf:about="#Concrete"/>
+          <rdf:Description rdf:about="#Space_time"/>
+        </owl:unionOf>
+      </owl:Class>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Role"/>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="#Individual"/>
+              <owl:Class>
+                <owl:complementOf rdf:resource="#Role"/>
+              </owl:Class>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Instantanuous_change">
+    <rdfs:comment xml:lang="en">Instantanuous changes are represented by change(e1,e2, u1, u2, u), where e1 and e2 are a pair of coincident process boundaries, and u1 and u2 are disjoint sub-universals of u. Instantanuous changes are therefore changes of properties on two coinciding time boundaries.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Change"/>
+    <owl:equivalentClass rdf:resource="#Extrinsic_change"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Intrinsic_change">
+    <rdfs:comment xml:lang="en">Deprecated. 
+For the purpose of formalizing intrinsic changes, a minimal chronoid universal D(c) is employed in order to capture the idea of observable differences during certain chronoids, whereas the change itself does not allow the observation of a difference. The predicate change(e1,e2, u1, u2, u, D(c)) is intended to formalize this approach.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Change"/>
+    <owl:disjointWith rdf:resource="#Extrinsic_change"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Item">
+    <rdfs:comment rdf:datatype="&xsd;string">An item is everything which is not a set. Also called ur-element.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Entity"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="#has_member"/>
+            <owl:someValuesFrom rdf:resource="#Entity"/>
+          </owl:Restriction>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Set"/>
+    <owl:unionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="#Category"/>
+      <rdf:Description rdf:about="#Individual"/>
+    </owl:unionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Level">
+    <rdfs:comment rdf:datatype="&xsd;string">An ontological level, which is sth. more restricted and "part of" some gfo:Stratum.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Ontological_layer"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#abstract_part_of"/>
+        <owl:someValuesFrom rdf:resource="#Stratum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Stratum"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Line">
+    <rdfs:subClassOf rdf:resource="#Spatial_boundary"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#spatial_boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Surface"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mass_entity">
+    <rdfs:subClassOf rdf:resource="#Continuous"/>
+    <rdfs:subClassOf rdf:resource="#Presential"/>
+    <owl:disjointWith rdf:resource="#Discrete_presential"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_boundary">
+    <rdfs:subClassOf rdf:resource="#Dependent"/>
+    <rdfs:subClassOf rdf:resource="#Presential"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#depends_on"/>
+        <owl:someValuesFrom rdf:resource="#Material_object"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Configuration"/>
+    <owl:disjointWith rdf:resource="#Material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_line">
+    <rdfs:subClassOf rdf:resource="#Material_boundary"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Material_surface"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Material_point"/>
+    <owl:disjointWith rdf:resource="#Material_surface"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_object">
+    <rdfs:comment rdf:datatype="&xsd;string">A material structure is an individual which satisfies the following conditions: 
+it is a presential, it occupies space, it is a bearer of qualities,  but other entities cannot have
+it as quality, and it consists of an amount of substrate, and it instantiates a persistant ("has identity").</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Discrete_presential"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#framed_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#framed_by"/>
+        <owl:someValuesFrom rdf:resource="#Topoid"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Configuration"/>
+    <owl:disjointWith rdf:resource="#Material_boundary"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_persistant">
+    <rdfs:comment rdf:datatype="&xsd;string">Material persistants are particular universals whose instances are 
+material structures; they are related to those entities which are called 
+sometimes continuants or objects, as apples, cars or houses. 
+Material persistants capture the phenomenon of persistance through time of a material 
+object. A material persistant P satisfies a number of neccessary conditions. For every
+material persistant P there exists a process P such that
+the set of instances of P coincides with the set of process-boundaries
+of P. This implies the existence of a chronoid c
+such that for every time-point t of c there exists exactly 
+one instance of P at time point t.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Persistant"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Material_object"/>
+        <owl:onProperty rdf:resource="#instantiated_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_point">
+    <rdfs:subClassOf rdf:resource="#Material_boundary"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Material_line"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Material_line"/>
+    <owl:disjointWith rdf:resource="#Material_surface"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_stratum">
+    <rdfs:comment xml:lang="en">According to (Poli,2001), the basic structure of the material stratum is a distinction of physical, chemical and biological levels.
+These levels can be further refined.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Stratum"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_structure">
+    <rdfs:subClassOf rdf:resource="#Discrete_presential"/>
+    <owl:equivalentClass rdf:resource="#Material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Material_surface">
+    <rdfs:subClassOf rdf:resource="#Material_boundary"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Material_object"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Material_line"/>
+    <owl:disjointWith rdf:resource="#Material_point"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mental_stratum">
+    <rdfs:comment xml:lang="en">In accordance with the work of R. Poli, we divide the
+psychological/mental stratum into the layer of
+awareness and the layer of
+personality. Awareness comprises most
+of what is studied by cognitive science (perception, memory,
+reasoning, etc). Personality on the other hand concerns the phenomenon
+of will and the way in which someone reacts to her experiences.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Stratum"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Occurrent">
+    <rdfs:comment rdf:datatype="&xsd;string">Occurents have temporal parts and thus cannot be present at a time-boundary. Time
+belongs to them, because they happen in time and the time of the occurent
+is built into it. The relation between an occurent and a chronoid is
+determined by the projection relation.
+
+Occurents are also called generalized processes in the GFO.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Concrete"/>
+    <owl:disjointWith rdf:resource="#Presential"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Ontological_layer">
+    <rdfs:comment xml:lang="en">Ontological_layer, all of its subconcepts and the properties layer_of and on_layer are work in progress in a premature beta state.</rdfs:comment>
+    <rdfs:comment rdf:datatype="&xsd;string">a collective term for gfo:stratum and gfo:level</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Category"/>
+    <owl:versionInfo xml:lang="en">Beta</owl:versionInfo>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Persistant">
+    <rdfs:comment rdf:datatype="&xsd;string">Persistants are GFO's way to capture identity over time.
+
+GFO pursues an approach which
+accounts for persistence by means of a suitable
+universal whose instances are presentials. Such universals are called
+persistants. These do not change and they can be used to
+explain how presentials which have different properties at different
+times can nevertheless be the same.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Universal"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#instantiated_by"/>
+        <owl:someValuesFrom rdf:resource="#Presential"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Personality_level">
+    <rdfs:subClassOf rdf:resource="#Level"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#abstract_part_of"/>
+        <owl:someValuesFrom rdf:resource="#Mental_stratum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Physical_level">
+    <rdfs:subClassOf rdf:resource="#Level"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#abstract_part_of"/>
+        <owl:someValuesFrom rdf:resource="#Material_stratum"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Point">
+    <rdfs:subClassOf rdf:resource="#Spatial_boundary"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#spatial_boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Line"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Presential">
+    <rdfs:comment rdf:datatype="&xsd;string">A presential exists wholly at exactly one time boundary.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Concrete"/>
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#exists_at"/>
+        <owl:someValuesFrom rdf:resource="#Time_boundary"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#exists_at"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Occurrent"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Process">
+    <rdfs:comment rdf:datatype="&xsd;string">Processes are a special kind of occurent. Processes are directly in time, they have characteristics which cannot be captured by a collection of time boundaries.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Occurrent"/>
+    <owl:disjointWith rdf:resource="#Change"/>
+    <owl:disjointWith rdf:resource="#History"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Processual_role">
+    <rdfs:comment rdf:datatype="&xsd;string">Processual roles are dependent processes. They are roles with a process as context.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Process"/>
+    <rdfs:subClassOf rdf:resource="#Role"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#role_of"/>
+        <owl:someValuesFrom rdf:resource="#Process"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Relational_role"/>
+    <owl:disjointWith rdf:resource="#Social_role"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Property">
+    <rdfs:subClassOf rdf:resource="#Concrete"/>
+    <rdfs:subClassOf rdf:resource="#Dependent"/>
+    <owl:disjointWith rdf:resource="#Relator"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Property_value">
+    <rdfs:comment rdf:datatype="&xsd;string">The concept of a property value reflects a relationship between the property of x and the same property as exhibited by another entity y.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Concrete"/>
+    <rdfs:subClassOf rdf:resource="#Dependent"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#value_of"/>
+        <owl:someValuesFrom rdf:resource="#Property"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Relational_role">
+    <rdfs:subClassOf rdf:resource="#Dependent"/>
+    <rdfs:subClassOf rdf:resource="#Role"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#role_of"/>
+        <owl:someValuesFrom rdf:resource="#Relator"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Processual_role"/>
+    <owl:disjointWith rdf:resource="#Social_role"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Relator">
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <owl:disjointWith rdf:resource="#Property"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Role">
+    <rdfs:subClassOf rdf:resource="#Concrete"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Set">
+    <rdfs:comment rdf:datatype="&xsd;string">Set is a category pertaining to the individuals in the ZFC set theory.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Entity"/>
+    <owl:disjointWith rdf:resource="#Item"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Situation">
+    <rdfs:comment rdf:datatype="&xsd;string">A situation is a special configuration which can be comprehended as a whole and satisfies certain conditions of unity, which are imposed by relations and categories associated with the situation. Herein, we consider situations to be the most complex kind of presentials.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Configuration"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Situoid">
+    <rdfs:comment rdf:datatype="&xsd;string">Situoids are processes whose boundaries are situations and which satisfy certain principles of coherence, comprehensibility, and continuity. They are regarded as the most complex integrated wholes of the world. A situoid is, intuitively, a part of the
+world which is a coherent and comprehensible whole and does not need other entities in order to exist. Every situoid has a temporal extent and is framed by a topoid.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Configuroid"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Social_role">
+    <rdfs:subClassOf rdf:resource="#Independent"/>
+    <rdfs:subClassOf rdf:resource="#Role"/>
+    <owl:disjointWith rdf:resource="#Processual_role"/>
+    <owl:disjointWith rdf:resource="#Relational_role"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Social_stratum">
+    <rdfs:comment xml:lang="en">On the one hand, the social stratum is
+divided into Agents and
+Institutions. Agents are the bearers of the social
+roles that humans play. Institutions are defined as systems of
+interrelated social components. On the other hand, a social system can
+be seen as a network in which businesses, politics, art, language (and
+many other facets) both present their own features and
+influence each other.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Stratum"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Space">
+    <rdfs:comment rdf:datatype="&xsd;string">GFO uses Brentano space.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Space_time"/>
+    <owl:disjointWith rdf:resource="#Time"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Space_time">
+    <rdfs:subClassOf rdf:resource="#Individual"/>
+    <owl:disjointWith rdf:resource="#Abstract"/>
+    <owl:disjointWith rdf:resource="#Concrete"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Spatial_boundary">
+    <rdfs:comment rdf:datatype="&xsd;string">Boundaries of regions are surfaces, boundaries of
+surfaces are lines, and boundaries of lines are
+points. As in the case of time-boundaries, spatial
+boundaries have no independent existence, i.e. they depend on the
+spatial entity of which they are  boundaries.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Space"/>
+    <owl:disjointWith rdf:resource="#Spatial_region"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#spatial_boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Space"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Spatial_region">
+    <rdfs:comment rdf:datatype="&xsd;string">Space regions are mereological sums of topoids.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Space"/>
+    <owl:disjointWith rdf:resource="#Spatial_boundary"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#State">
+    <rdfs:comment xml:lang="en">A process without an instantanuous change at any of its inner time boundaries is called a state.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Process"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Stratum">
+    <rdfs:comment xml:lang="en">According to (Poli, 2001, 2002)  (based 
+on the philosopher Hartmann) we distinguish at least three ontological
+strata of the world: the material stratum, the
+mental/psychological stratum, and the
+social stratum stratum. 
+
+Every entity of the world participates in certain
+strata and levels. We take the position that the layers are
+characterized by integrated systems of categories. Hence, a layer can
+be understood as a meta-category whose instances are categories of
+certain kinds. Among these levels specific forms of categorial and
+existential dependencies hold. For example, a mental entity requires
+an animate material object as its existential bearer.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Ontological_layer"/>
+    <owl:disjointWith rdf:resource="#Level"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Surface">
+    <rdfs:subClassOf rdf:resource="#Spatial_boundary"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#spatial_boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Topoid"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Symbol">
+    <rdfs:subClassOf rdf:resource="#Symbol_structure"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Symbol_sequence">
+    <rdfs:subClassOf rdf:resource="#Symbol_structure"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Symbol_structure">
+    <rdfs:subClassOf rdf:resource="#Category"/>
+    <owl:disjointWith rdf:resource="#Concept"/>
+    <owl:disjointWith rdf:resource="#Universal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Temporal_region">
+    <rdfs:comment rdf:datatype="&xsd;string">Time Regions are defined as the mereological sum of chronoids,
+i.e. time regions may consist of non-connected intervals of time.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Time"/>
+    <owl:disjointWith rdf:resource="#Time_boundary"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Time">
+    <rdfs:comment rdf:datatype="&xsd;string">The time model of GFO is based on Brentano and the glass continuum of Allen&amp;Hayes.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Space_time"/>
+    <owl:disjointWith rdf:resource="#Space"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Time_boundary">
+    <rdfs:comment rdf:datatype="&xsd;string">Time boundaries depend on a chronoids (i.e. they have no independent
+existence) and can coincide.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Time"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#time_boundary_of"/>
+        <owl:someValuesFrom rdf:resource="#Chronoid"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Temporal_region"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Token">
+    <rdfs:subClassOf rdf:resource="#Concrete"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#instance_of"/>
+        <owl:someValuesFrom rdf:resource="#Symbol_structure"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Topoid">
+    <rdfs:comment rdf:datatype="&xsd;string">Topoids are connected compact regions of space. They have spatial boundaries.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Spatial_region"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Universal">
+    <rdfs:comment rdf:datatype="&xsd;string">Universals are immanent universals. They exist in re.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Category"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#instantiated_by"/>
+        <owl:someValuesFrom rdf:resource="#Item"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Concept"/>
+    <owl:disjointWith rdf:resource="#Symbol_structure"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Value_space">
+    <rdfs:comment rdf:datatype="&xsd;string">Property values usually appear in groups which are called value structures, value spaces or measurement systems.
+Each of these structures corresponds to some property. More intuitively, one could say that the property may be measured with respect to some measurement system.
+For instance, sizes may be measured with the values ``small'' ``big'' or ``very big'', which are the elements of one value structure.
+
+The notion of a value structure of a property is similar to a quality dimension in (Gardenfors, 2000).
+
+Further, value structures are related to quality spaces in DOLCE (Masolo, 2003}. A quality space consists of all ``quales'' (our property values) of some ``quality'' (our property).
+
+Often it seems to be the case that a notion of distance can be defined, and that certain layers of value structures are isomorphic to some subset of real numbers, which allows for a mapping of values to pairs of a real number and a unit, as in the case of ``10 kg''.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Universal"/>
+  </owl:Class>
+
+  <owl:Class rdf:nodeID="b36">
+    <owl:unionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="#Configuration"/>
+      <rdf:Description rdf:about="#Configuroid"/>
+    </owl:unionOf>
+  </owl:Class>
+
+  <owl:Class rdf:nodeID="b4">
+    <owl:unionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="#Occurrent"/>
+      <rdf:Description rdf:about="#Presential"/>
+    </owl:unionOf>
+  </owl:Class>
+
+<!-- Annotation Properties -->
+  <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+  <owl:AnnotationProperty rdf:about="&owl;versionInfo"/>
+
+<!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="#abstract_has_part">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:domain rdf:resource="#Item"/>
+    <rdfs:range rdf:resource="#Item"/>
+    <owl:inverseOf rdf:resource="#abstract_part_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#abstract_part_of">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:comment rdf:datatype="&xsd;string">The abstract part-of relation is denoted by p(x,y);
+the argument-types of this relation are not specified, i.e. we allow
+arbitrary entities to be arguments. We assume that p(x,y) satisfies
+the condition of a partial ordering, .i.e. the following axioms: reflexivity, antisymmetry and transitivity.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Item"/>
+    <rdfs:range rdf:resource="#Item"/>
+    <owl:inverseOf rdf:resource="#abstract_has_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#agent_in">
+    <rdfs:subPropertyOf rdf:resource="#causes"/>
+    <rdfs:subPropertyOf rdf:resource="#participates_in"/>
+    <owl:inverseOf rdf:resource="#has_agent"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#boundary_of">
+    <rdfs:subPropertyOf rdf:resource="#depends_on"/>
+    <owl:inverseOf rdf:resource="#has_boundary"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#categorial_part_of">
+    <rdfs:subPropertyOf rdf:resource="#abstract_part_of"/>
+    <owl:inverseOf rdf:resource="#has_categorial_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#category_in_layer">
+    <rdfs:subPropertyOf rdf:resource="#categorial_part_of"/>
+    <owl:inverseOf rdf:resource="#has_category"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#caused_by">
+    <rdfs:domain rdf:nodeID="b4"/>
+    <rdfs:range rdf:nodeID="b4"/>
+    <owl:inverseOf rdf:resource="#causes"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#causes">
+    <owl:inverseOf rdf:resource="#caused_by"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#constituent_part_of">
+    <rdfs:subPropertyOf rdf:resource="#proper_part_of"/>
+    <owl:inverseOf rdf:resource="#has_constituent_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#depends_on">
+    <rdfs:comment rdf:datatype="&xsd;string">This relation captures the notion of existential dependence.</rdfs:comment>
+    <rdfs:domain rdf:resource="#Item"/>
+    <rdfs:range rdf:resource="#Item"/>
+    <owl:inverseOf rdf:resource="#necessary_for"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#exists_at">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Presential"/>
+    <rdfs:range rdf:resource="#Time_boundary"/>
+  </owl:FunctionalProperty>
+
+  <owl:FunctionalProperty rdf:about="#framed_by">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Material_object"/>
+    <rdfs:range rdf:resource="#Topoid"/>
+    <rdfs:subPropertyOf rdf:resource="#occupies"/>
+    <owl:inverseOf rdf:resource="#frames"/>
+  </owl:FunctionalProperty>
+
+  <owl:InverseFunctionalProperty rdf:about="#frames">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Topoid"/>
+    <rdfs:range rdf:resource="#Material_object"/>
+    <owl:inverseOf rdf:resource="#framed_by"/>
+  </owl:InverseFunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#function_determinant_of">
+    <rdfs:range rdf:resource="#Function"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#function_of">
+    <owl:inverseOf rdf:resource="#has_function"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#functional_item_of">
+    <rdfs:domain rdf:resource="#Role"/>
+    <rdfs:subPropertyOf rdf:resource="#function_determinant_of"/>
+    <owl:inverseOf rdf:resource="#has_functional_item"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#goal_of">
+    <rdfs:comment xml:lang="en">"goal" here refers to "final state" in (Burek, 2006).</rdfs:comment>
+    <rdfs:domain rdf:nodeID="b36"/>
+    <rdfs:subPropertyOf rdf:resource="#function_determinant_of"/>
+    <owl:inverseOf rdf:resource="#has_goal"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_agent"/>
+  <owl:InverseFunctionalProperty rdf:about="#has_boundary">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <owl:inverseOf rdf:resource="#boundary_of"/>
+  </owl:InverseFunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#has_categorial_part">
+    <rdfs:domain rdf:resource="#Category"/>
+    <rdfs:range rdf:resource="#Category"/>
+    <rdfs:subPropertyOf rdf:resource="#abstract_has_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_category">
+    <rdfs:domain rdf:resource="#Ontological_layer"/>
+    <rdfs:range rdf:resource="#Category"/>
+    <owl:inverseOf rdf:resource="#category_in_layer"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_constituent_part">
+    <rdfs:domain rdf:nodeID="b36"/>
+    <rdfs:subPropertyOf rdf:resource="#has_proper_part"/>
+    <owl:inverseOf rdf:resource="#constituent_part_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_function">
+    <rdfs:domain rdf:resource="#Individual"/>
+    <rdfs:range rdf:resource="#Function"/>
+    <owl:inverseOf rdf:resource="#function_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_function_determinant">
+    <rdfs:domain rdf:resource="#Function"/>
+    <rdfs:range rdf:resource="#Individual"/>
+    <owl:inverseOf rdf:resource="#function_determinant_of"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#has_functional_item">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Function"/>
+    <rdfs:range rdf:resource="#Role"/>
+    <rdfs:subPropertyOf rdf:resource="#has_function_determinant"/>
+    <owl:inverseOf rdf:resource="#functional_item_of"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#has_goal">
+    <rdfs:domain rdf:resource="#Function"/>
+    <rdfs:subPropertyOf rdf:resource="#has_function_determinant"/>
+    <owl:inverseOf rdf:resource="#goal_of"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#has_left_time_boundary">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#has_time_boundary"/>
+    <owl:inverseOf rdf:resource="#left_boundary_of"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#has_member">
+    <rdfs:domain rdf:resource="#Set"/>
+    <rdfs:range rdf:resource="#Entity"/>
+    <owl:inverseOf rdf:resource="#member_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_part">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:domain rdf:resource="#Concrete"/>
+    <rdfs:range rdf:resource="#Concrete"/>
+    <rdfs:subPropertyOf rdf:resource="#abstract_has_part"/>
+    <owl:inverseOf rdf:resource="#part_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_participant">
+    <rdfs:domain rdf:resource="#Occurrent"/>
+    <rdfs:range rdf:resource="#Presential"/>
+    <owl:inverseOf rdf:resource="#participates_in"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_proper_part">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#has_part"/>
+    <owl:inverseOf rdf:resource="#proper_part_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_requirement">
+    <rdfs:domain rdf:resource="#Function"/>
+    <rdfs:subPropertyOf rdf:resource="#has_function_determinant"/>
+    <owl:inverseOf rdf:resource="#requirement_of"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#has_right_time_boundary">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#has_time_boundary"/>
+    <owl:inverseOf rdf:resource="#right_boundary_of"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#has_sequence_constituent">
+    <owl:inverseOf rdf:resource="#sequence_constituent_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_spatial_boundary">
+    <rdfs:range rdf:resource="#Spatial_boundary"/>
+    <rdfs:subPropertyOf rdf:resource="#has_boundary"/>
+    <owl:inverseOf rdf:resource="#spatial_boundary_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_time_boundary">
+    <rdfs:domain rdf:resource="#Chronoid"/>
+    <rdfs:range rdf:resource="#Time_boundary"/>
+    <rdfs:subPropertyOf rdf:resource="#has_boundary"/>
+    <owl:inverseOf rdf:resource="#time_boundary_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_token">
+    <rdfs:domain rdf:resource="#Symbol_structure"/>
+    <rdfs:range rdf:resource="#Concrete"/>
+    <rdfs:subPropertyOf rdf:resource="#instance_of"/>
+    <owl:inverseOf rdf:resource="#token_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#has_value">
+    <rdfs:domain rdf:resource="#Property"/>
+    <rdfs:range rdf:resource="#Property_value"/>
+    <owl:inverseOf rdf:resource="#value_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#instance_of">
+    <rdfs:comment rdf:datatype="&xsd;string">The instantiation relation holds between a category and an item. It is not a relation between categories and individuals due to higher order categories such as "species".</rdfs:comment>
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:range rdf:resource="#Category"/>
+    <owl:inverseOf rdf:resource="#instantiated_by"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#instantiated_by">
+    <rdfs:domain rdf:resource="#Category"/>
+    <owl:inverseOf rdf:resource="#instance_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#layer_of">
+    <rdfs:domain rdf:resource="#Ontological_layer"/>
+    <rdfs:range rdf:resource="#Individual"/>
+    <owl:inverseOf rdf:resource="#on_layer"/>
+  </owl:ObjectProperty>
+
+  <owl:InverseFunctionalProperty rdf:about="#left_boundary_of">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment rdf:datatype="&xsd;string">Left boundary of a chronoid.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#has_left_time_boundary"/>
+  </owl:InverseFunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#level_of">
+    <rdfs:domain rdf:resource="#Level"/>
+    <rdfs:subPropertyOf rdf:resource="#layer_of"/>
+    <owl:inverseOf rdf:resource="#on_level"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#member_of">
+    <rdfs:domain rdf:resource="#Entity"/>
+    <rdfs:range rdf:resource="#Set"/>
+    <owl:inverseOf rdf:resource="#has_member"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#necessary_for">
+    <rdfs:domain rdf:resource="#Item"/>
+    <rdfs:range rdf:resource="#Item"/>
+    <owl:inverseOf rdf:resource="#depends_on"/>
+  </owl:ObjectProperty>
+
+  <owl:InverseFunctionalProperty rdf:about="#occupied_by">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Space"/>
+    <rdfs:range rdf:resource="#Presential"/>
+    <owl:inverseOf rdf:resource="#occupies"/>
+  </owl:InverseFunctionalProperty>
+
+  <owl:FunctionalProperty rdf:about="#occupies">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Presential"/>
+    <rdfs:range rdf:resource="#Space"/>
+    <owl:inverseOf rdf:resource="#occupied_by"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#on_layer">
+    <rdfs:domain rdf:resource="#Individual"/>
+    <rdfs:range rdf:resource="#Ontological_layer"/>
+    <owl:inverseOf rdf:resource="#layer_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#on_level">
+    <rdfs:range rdf:resource="#Level"/>
+    <rdfs:subPropertyOf rdf:resource="#on_layer"/>
+    <owl:inverseOf rdf:resource="#level_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#on_stratum">
+    <rdfs:range rdf:resource="#Stratum"/>
+    <rdfs:subPropertyOf rdf:resource="#on_layer"/>
+    <owl:inverseOf rdf:resource="#stratum_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#part_of">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:domain rdf:resource="#Concrete"/>
+    <rdfs:range rdf:resource="#Concrete"/>
+    <rdfs:subPropertyOf rdf:resource="#abstract_part_of"/>
+    <owl:inverseOf rdf:resource="#has_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#participates_in">
+    <rdfs:domain rdf:resource="#Presential"/>
+    <rdfs:range rdf:resource="#Occurrent"/>
+    <owl:inverseOf rdf:resource="#has_participant"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#plays_role">
+    <rdfs:domain rdf:resource="&owl;Thing"/>
+    <rdfs:range rdf:resource="#Role"/>
+  </owl:ObjectProperty>
+
+  <owl:InverseFunctionalProperty rdf:about="#projection_of">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+  </owl:InverseFunctionalProperty>
+
+  <owl:FunctionalProperty rdf:about="#projects_to">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:domain rdf:resource="#Occurrent"/>
+    <rdfs:range rdf:resource="#Temporal_region"/>
+    <owl:inverseOf rdf:resource="#projection_of"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#proper_part_of">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:subPropertyOf rdf:resource="#part_of"/>
+    <owl:inverseOf rdf:resource="#has_proper_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#realized_by">
+    <owl:inverseOf rdf:resource="#realizes"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#realizes">
+    <rdfs:domain rdf:resource="#Individual"/>
+    <rdfs:range rdf:resource="#Function"/>
+    <owl:inverseOf rdf:resource="#realized_by"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#requirement_of">
+    <rdfs:comment xml:lang="en">"requirement" here refers to "initial state" in (Burek, 2006).</rdfs:comment>
+    <rdfs:domain rdf:nodeID="b36"/>
+    <rdfs:subPropertyOf rdf:resource="#function_determinant_of"/>
+    <owl:inverseOf rdf:resource="#has_requirement"/>
+  </owl:ObjectProperty>
+
+  <owl:InverseFunctionalProperty rdf:about="#right_boundary_of">
+    <rdf:type rdf:resource="&owl;ObjectProperty"/>
+    <rdfs:comment rdf:datatype="&xsd;string">Right boundary of a chronoid.</rdfs:comment>
+    <owl:inverseOf rdf:resource="#has_right_time_boundary"/>
+  </owl:InverseFunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#role_of">
+    <rdfs:domain rdf:resource="#Role"/>
+    <rdfs:range rdf:resource="#Individual"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#sequence_constituent_of">
+    <rdfs:domain rdf:resource="#Token"/>
+    <rdfs:range rdf:resource="#Symbol_sequence"/>
+    <rdfs:subPropertyOf rdf:resource="#part_of"/>
+    <owl:inverseOf rdf:resource="#has_sequence_constituent"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#spatial_boundary_of">
+    <rdfs:domain rdf:resource="#Spatial_boundary"/>
+    <rdfs:range rdf:resource="#Space"/>
+    <rdfs:subPropertyOf rdf:resource="#boundary_of"/>
+    <owl:inverseOf rdf:resource="#has_spatial_boundary"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#stratum_of">
+    <rdfs:domain rdf:resource="#Stratum"/>
+    <rdfs:subPropertyOf rdf:resource="#layer_of"/>
+    <owl:inverseOf rdf:resource="#on_stratum"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#time_boundary_of">
+    <rdfs:domain rdf:resource="#Time_boundary"/>
+    <rdfs:range rdf:resource="#Chronoid"/>
+    <rdfs:subPropertyOf rdf:resource="#boundary_of"/>
+    <owl:inverseOf rdf:resource="#has_time_boundary"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#token_of">
+    <owl:inverseOf rdf:resource="#has_token"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#value_of">
+    <rdfs:domain rdf:resource="#Property_value"/>
+    <rdfs:range rdf:resource="#Property"/>
+    <owl:inverseOf rdf:resource="#has_value"/>
+  </owl:ObjectProperty>
+
+<!-- Instances -->
+  <gfo:Set rdf:about="#empty_set"/>
+</rdf:RDF>

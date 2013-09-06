@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY gfo-bio "http://onto.eva.mpg.de/ontologies/gfo-bio.owl">
+  <!ENTITY gfo-bio-meta "http://onto.eva.mpg.de/ontologies/gfo-bio-meta.owl#">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="http://onto.eva.mpg.de/ontologies/gfo-bio-meta.owl"
+         xmlns:gfo-bio-meta="&gfo-bio-meta;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;">
+
+<!-- Ontology Information -->
+  <owl:Ontology rdf:about=""
+                rdfs:label="gfo-bio-meta"
+                owl:versionInfo="1.0">
+    <owl:imports>
+      <owl:Ontology rdf:about="&gfo-bio;"/>
+    </owl:imports>
+  </owl:Ontology>
+
+<!-- Classes -->
+  <owl:Class rdf:about="&gfo-bio;#Biological_individual"/>
+  <owl:Class rdf:about="&gfo-bio;#Biological_presential"/>
+  <owl:Class rdf:about="&gfo-bio;#Organism"/>
+  <owl:Class rdf:about="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+  <owl:Class rdf:about="http://www.onto-med.de/ontologies/gfo.owl#Category"/>
+  <owl:Class rdf:about="http://www.onto-med.de/ontologies/gfo.owl#Ontological_layer">
+    <rdfs:subClassOf rdf:resource="#Facet"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part_development_stage">
+    <rdfs:subClassOf rdf:resource="#Process_part_whole"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomy">
+    <rdfs:subClassOf rdf:resource="#Organism_layer"/>
+    <rdfs:subClassOf rdf:resource="#Structural_part_whole"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Arabidopsis_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Arabidopsis_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Caenorhabditis_elegans_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Caenorhabditis_elegans_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cell_development">
+    <rdfs:subClassOf rdf:resource="#Cell_layer"/>
+    <rdfs:subClassOf rdf:resource="#Development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cell_layer">
+    <rdfs:subClassOf rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cell_structure">
+    <rdfs:subClassOf rdf:resource="#Cell_layer"/>
+    <rdfs:subClassOf rdf:resource="#Structural_part_whole"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cell_taxonomy">
+    <rdfs:subClassOf rdf:resource="#Cell_layer"/>
+    <rdfs:subClassOf rdf:resource="#Taxonomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cerial_plant_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cerial_plant_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Development">
+    <rdfs:subClassOf rdf:resource="#Facet"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Dictyostelium_discoideum_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Drosophila_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Drosophila_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Facet">
+    <rdfs:subClassOf rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Category"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Fungal_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Human_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Maize_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Medaka_fish_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Medaka_fish_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mosquito_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mouse_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mouse_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Organism_development">
+    <rdfs:subClassOf rdf:resource="#Development"/>
+    <rdfs:subClassOf rdf:resource="#Organism_layer"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Organism_development_stage">
+    <rdfs:subClassOf rdf:resource="#Process_part_whole"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Organism_layer">
+    <rdfs:subClassOf rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Organism_taxonomy">
+    <rdfs:subClassOf rdf:resource="#Organism_layer"/>
+    <rdfs:subClassOf rdf:resource="#Taxonomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Part_whole">
+    <rdfs:subClassOf rdf:resource="#Facet"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plant_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plant_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Process_part_whole">
+    <rdfs:subClassOf rdf:resource="#Part_whole"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Structural_part_whole">
+    <rdfs:subClassOf rdf:resource="#Part_whole"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Taxonomy">
+    <rdfs:subClassOf rdf:resource="#Facet"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Zebrafish_anatomy">
+    <rdfs:subClassOf rdf:resource="#Anatomy"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Zebrafish_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+  </owl:Class>
+
+<!-- Annotation Properties -->
+  <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+  <owl:AnnotationProperty rdf:about="&owl;versionInfo"/>
+
+<!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+  <owl:ObjectProperty rdf:about="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+
+<!-- Instances -->
+  <gfo-bio-meta:Anatomy rdf:about="&gfo-bio;#Anatomical_part"/>
+  <gfo-bio-meta:Mouse_anatomy rdf:about="&gfo-bio;#Anatomical_part_of_mouse"/>
+  <gfo-bio-meta:Cell_structure rdf:about="&gfo-bio;#Cell_component"/>
+  <gfo-bio-meta:Organism_taxonomy rdf:about="&gfo-bio;#Mouse"/>
+  <gfo-bio-meta:Part_whole rdf:about="&gfo-bio;#has_part"/>
+  <gfo-bio-meta:Part_whole rdf:about="&gfo-bio;#part_of"/>
+</rdf:RDF>

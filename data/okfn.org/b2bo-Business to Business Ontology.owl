@@ -1,0 +1,2190 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:schema="http://schema.org/"
+     xmlns:gr="http://purl.org/goodrelations/v1#"
+     xmlns:dbp="http://dbpedia.org/resource/"
+     xmlns:b2bo="http://purl.org/b2bo#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:payment="http://reference.data.gov.uk/def/payment#">
+    <owl:Ontology rdf:about="http://purl.org/b2bo#">
+        <rdfs:label xml:lang="en">Business to business ontology (B2BO)</rdfs:label>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.9.0</owl:versionInfo>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-07-13</dcterms:created>
+        <b2bo:lastUpdate rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-02-14</b2bo:lastUpdate>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
+        <rdfs:comment xml:lang="en">An ontology defines the standard for documents interchange in Business to Business.</rdfs:comment>
+        <dc:description xml:lang="en">B2BO - Business to Business Ontology it&apos;s vocabulary, which is designed to describe documents exchanged in B2B processes. 
+
+Aim of this vocabulary is to give an ability to create B2B document in standard, which allows exchange documents between B2B entities, e.g. VAT invoice or offer. Most users not familiar with OWL, RDF and others Semantic Web technologies should treat this ontology as a formal, readable for machine language description of electronic business documents. Referring to EDI standard, B2BO gives opportunity not only to exchange documents, but make it possible to describe information in a manner that allows you to compare and processing offers and product specifications.  
+
+NOTICE!
+This ontology has been created under the laws in force in Poland, and in the case of documents that are not legally defined you should treat this like recommendation or proposal. You should not define document based only on this document, make sure that you document is always lawful. As a developers, we&apos;ll make everything we can to keep this standard in good conditions, but remember - you take responsibilities for your documents! 
+</dc:description>
+        <dcterms:title xml:lang="en">B2BO: Business to Business Ontology - standard for documents interchange in B2B process.</dcterms:title>
+        <dcterms:subject xml:lang="en">E-Commerce, B2B, Business to Business</dcterms:subject>
+        <dcterms:creator xml:lang="en">M.Sc. Eng. Gniewosław Rzepka</dcterms:creator>
+        <dcterms:creator  rdf:resource="http://gniewoslaw.pl/me"/>
+        <dcterms:creator xml:lang="en">Ph.D. Eng. Marcin Skulimowski</dcterms:creator>
+        <terms:contributor xml:lang="en">Ph.D. Jan Michalak</terms:contributor>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <dcterms:rights xml:lang="en">The Business to Business Ontology is under the Creative Commons Attribution 3.0 Unported license; see http://creativecommons.org/licenses/by/3.0/. 
+In a nutshell, you are free to copy, distribute and transmit the work; to remix/adapt the work (e.g. to import the ontology and create specializations of its elements), as long as you attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).</dcterms:rights>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Ontology>
+    
+
+
+
+<!--Classes-->
+    
+
+
+    <!-- http://purl.org/b2bo#Address -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Address">
+    <owl:equivalentClass rdf:resource="http://schema.org/PostalAddress"/>
+        <rdfs:label xml:lang="en">Address</rdfs:label>
+        <rdfs:label xml:lang="pl">Adres</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows to define an address, a collection of information like street name or post office, used to define precise location. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować adres pocztowy, zawierający imię i nazwisko adresata lub nazwę instytucji, numer domu i mieszkania, miejscowość, kod pocztowy, pocztę oraz nazwę ulicy.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#AdvanceInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#AdvanceInvoice">
+        <rdfs:label xml:lang="en">Advance Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura Zaliczkowa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Defines advance invoice, document related to advance. Advance invoice should be exposed no later than 7 days after advance payment.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje fakturę zaliczkową, dokument wiążący się z wcześniejszym otrzymaniem zaliczki na poczet wydaniu towaru lub wykonania usługi. Faktury zaliczkowe należy wystawiać nie później niż w terminie nie później niż 7 dnia od dnia, w którym otrzymano część lub całość należności od nabywcy.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Amount -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Amount">
+        <rdfs:label xml:lang="en">Amount</rdfs:label>
+        <rdfs:label xml:lang="pl">Kwota</rdfs:label>
+        <rdfs:comment xml:lang="en">This defines document amount. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa kwotę dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Bidder -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Bidder">
+        <rdfs:label xml:lang="en">Bidder</rdfs:label>
+        <rdfs:label xml:lang="pl">Oferent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:comment xml:lang="en">Entity making offer.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Podmiot wychodzący z ofertą.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Buyer -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Buyer">
+        <rdfs:label xml:lang="en">Buyer</rdfs:label>
+        <rdfs:label xml:lang="pl">Nabywca</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:comment xml:lang="en">Entity making purchase goods or services.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Podmiot dokunujący nabywająca dobra lub usługi.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Category -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Category">
+        <rdfs:label xml:lang="en">SCoE category</rdfs:label>
+        <rdfs:label xml:lang="pl">Kategorie SCoE</rdfs:label>
+        <rdfs:comment xml:lang="en">Presents various types of economic statistical category classification (b2bo:SCoE) - classification systems aspects of economic activity (such as PKD, PKWiU).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Prezentuje różne rodzaje kategorii statystycznych klasyfikacji gospodarczych (b2bo:SCoE) - systemów klasyfikacji aspektów działalności gospodarczej (m.in. PKD, PKWiU).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#CorrectiveInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#CorrectiveInvoice">
+        <rdfs:label xml:lang="en">Corrective Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura Korygująca</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Corrective invoice is a specific type of invoice. The purpose of this document is to bring the original invoice to the state corresponding to reality. Original invoice may not reflect reality as a result of events that took place after they are issued, and as a result of mistakes in the content of ordinary invoice. The invoice is a document of a formal. There may be, therefore, improved by adding, crossing, etc. (especially as there is in the market for original and copy). As rightly pointed out in the judgment of the Supreme Administrative Court of 17 February 2000 (I SA / Po 110/99, LEX No. 57696) "any change in the VAT invoice issued invoice shall be made ​​correcting" (at this point to make a reservation, that some of the invoices can also be improved corrective note, which also is a specific invoice).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Specyficznym rodzajem faktur są faktury korygujące. Celem ich wystawienia jest doprowadzenie faktury pierwotnej 
+do stanu odpowiadającego rzeczywistości. Faktury pierwotne mogą nie odpowiadać rzeczywistości na skutek zdarzeń, 
+które miały miejsce już po ich wystawieniu, a także na skutek zwykłych pomyłek w treści faktury. 
+Faktura jest dokumentem o charakterze sformalizowanym. Nie może być w związku z tym 
+poprawiana przez dopisywanie, przeprawianie itp. (zwłaszcza że występuje w obrocie w oryginale i kopii). 
+Jak słusznie stwierdził NSA w wyroku z dnia 17 lutego 2000 r. (I SA/Po 110/99, LEX nr 57696), 
+&quot;wszelkie zmiany w wystawionej fakturze VAT winny być dokonane fakturą korygującą&quot; 
+(w tym miejscu należy uczynić zastrzeżenie, że niektóre elementy faktury mogą być poprawione także notą korygującą, 
+która również jest specyficzną fakturą).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#CorrectiveNote -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#CorrectiveNote">
+        <rdfs:label xml:lang="en">Corrective Note</rdfs:label>
+        <rdfs:label xml:lang="pl">Nota Korygująca</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Corrective note is a kind of the equivalent of correcting invoice. However, while the corrective invoice issued by the taxable person supplying or performing the service, corrective note issued by the purchaser of the goods or services and may involve only minor mistakes (in the judgment of 24 August 2000, and SA / Gd 903/98, LEX No. 59724, Supreme Administrative Court, however, noted that "if the original text description of activities included in the invoice actually responsible for this operation, which is described in note correction is no rational basis to issue a corrective note"). In particular, it can not be by issuing a corrective note aim to change the bodies listed on the invoice.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Nota korygująca jest swego rodzajem odpowiednikiem faktury korygującej. O ile jednak faktura korygująca wystawiana jest przez podatnika dokonującego dostawy lub wykonującego usługę, nota korygująca wystawiana jest przez nabywcę towaru lub usługi oraz dotyczyć może tylko drobnych pomyłek (w wyroku z dnia 24 sierpnia 2000 r., I SA/Gd 903/98, LEX nr 59724, NSA zauważył jednak, że &quot;jeżeli pierwotny tekst opisu czynności zawarty w fakturze odpowiadał w rzeczywistości tej czynności, która opisana została w nocie korygującej, to brak racjonalnych podstaw do wystawienia noty korygującej&quot;). W szczególności nie można poprzez wystawienie noty korygującej zmierzać do zmiany podmiotów wyszczególnionych na fakturze.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Delivery -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Delivery">
+        <rdfs:label xml:lang="en">Delivery</rdfs:label>
+        <rdfs:label xml:lang="pl">Dostawa</rdfs:label>
+        <rdfs:comment xml:lang="en">Represents various form of delivery.
+
+Source: http://pl.wikipedia.org/wiki/Incoterms</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Reprezentuje różne formy dostawy.
+
+Źródło: http://pl.wikipedia.org/wiki/Incoterms</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#DeliveryNote -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#DeliveryNote">
+        <rdfs:label xml:lang="en">Delivery note</rdfs:label>
+        <rdfs:label xml:lang="pl">Dokument W-Z</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Defines document that is a proof of the dispatch goods from the warehouse.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje dokument W-Z - dokument wydania towaru z magazynu sprzedawcy.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Deposit -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Deposit">
+        <rdfs:label xml:lang="en">Deposit</rdfs:label>
+        <rdfs:label xml:lang="pl">Wadium</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:comment xml:lang="en">The Amount of the deposit. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Umożliwia zdefiniowanie kwoty wadium.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#DepositSlip -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#DepositSlip">
+        <rdfs:label xml:lang="en">Deposit slip</rdfs:label>
+        <rdfs:label xml:lang="pl">Dowód opłaty</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">This allows you to define deposit slip, document that is a payment proof. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala na zdefiniowanie dowodu opłaty, dokumenty który jest potwierdzeniem wykonania płatności.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Document -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Document">
+    	<owl:equivalentClass rdf:resource="http://xmlns.com/foaf/0.1/Document"/>
+        <rdfs:label xml:lang="en">Document</rdfs:label>
+        <rdfs:label xml:lang="pl">Dokument</rdfs:label>
+        <rdfs:comment xml:lang="en">Document that presents a basic resource, which is a summary of  various form of commerce transactions between businesses. There are several forms, e.g. offers, invoices or receipts. We defined multiple subclasses of this one. The most popular is b2bo:VATInvoice, which is a most exchanged form of document in Business to Business transactions. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Dokument prezentujący zasób, jakim jest podsumowaniem różnych form transakcji pomiędzy przedsiębiorstwami. Istnieje wiele rodzajów dokumentów, m.in.: orefty, faktury lub rachunki. Zdefiniowano wiele podklass tej klasy. Do najbardziej popularnych należy b2bo:VATInvoice, która jest najczęściej wymienianym dokumentem.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#DocumentAmount -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#DocumentAmount">
+        <rdfs:label xml:lang="en">The Amount of the document</rdfs:label>
+        <rdfs:label xml:lang="pl">Kwota Dokumentu</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:comment xml:lang="en">It provides ability to define summary of document&apos;s amount.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Umożliwia zdefiniowanie kwoty dokumentu - kwoty która jest podsumowaniem całego dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#DocumentAmountInVATRate -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#DocumentAmountInVATRate">
+        <rdfs:label xml:lang="en">The Amount of the Document in VAT Rate</rdfs:label>
+        <rdfs:label xml:lang="pl">Kwota Dokumentu w Stawce VAT</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:comment xml:lang="en">This allows define the amount of the document  in specified VAT rate.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować kwotę dokumentu w konkretnej stawce VAT.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#DocumentType -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#DocumentType">
+        <rdfs:label xml:lang="en">Document Type</rdfs:label>
+        <rdfs:label xml:lang="pl">Typ Dokumentu</rdfs:label>
+        <rdfs:comment xml:lang="en">It defines document copy like original or copy.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa egzemplarz dokumentu, jak oryginał lub kopia.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Entity -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Entity">
+    	<owl:equivalentClass>
+	      <owl:Class>
+			<owl:unionOf rdf:parseType="Collection">
+				  <rdf:Description rdf:about="http://schema.org/Person"/>
+				  <rdf:Description rdf:about="http://schema.org/Organization"/>
+				  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#BusinessEntity"/>
+			</owl:unionOf>
+	      </owl:Class>
+    	</owl:equivalentClass>
+        <rdfs:label xml:lang="en">Entity</rdfs:label>
+        <rdfs:label xml:lang="pl">Podmiot</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows to define business entity.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala na zdefiniowanie podmiotu gospodarczego.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#ExportInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#ExportInvoice">
+        <rdfs:label xml:lang="en">Export Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura Eksportowa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">This allows you to define export invoice.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Umożliwia zdefiniowanie faktury eksportowej.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#FinalInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#FinalInvoice">
+        <rdfs:label xml:lang="en">Final Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura Końcowa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">This allows you to define final invoice.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Umożliwia zdefiniowanie faktury końcowej.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#GoodsReceivedNote -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#GoodsReceivedNote">
+        <rdfs:label xml:lang="en">Goods Received Note</rdfs:label>
+        <rdfs:label xml:lang="pl">Dokument PZ</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">This allows you to define GRN (Goods Received Note) document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje dokument PZ.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Item -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Item">
+        <rdfs:label xml:lang="en">Document Item</rdfs:label>
+        <rdfs:label xml:lang="pl">Pozycja Dokummentu</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines document item that contains information about good/service name, unit of measurement, price.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje pozycję dokumentu, która zawiera informację m.in. o nazwie towaru/usługi, jednostce miary, cenie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Identifier -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Identifier">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#prodID"/>
+                <owl:onClass rdf:resource="http://purl.org/b2bo#ProductID"/>
+                <owl:cardinality>1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#value"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Identifier</rdfs:label>
+        <rdfs:label xml:lang="pl">Identyfikator</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines a set of standards to allow for the implementation of identifiers, such as EAN code.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje zbiór standardów pozwalających na implementację identyfikatorów, takich jak kod EAN.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#ItemAmount -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#ItemAmount">
+        <rdfs:label xml:lang="en">Amount of the Item</rdfs:label>
+        <rdfs:label xml:lang="pl">Kwota Pozycji</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:comment xml:lang="en">Definition of this one allows define an amount of document single item.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definicja tej klasy pozwala zdefiniować kwotę pojedyńczej pozycji dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Offer -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Offer">
+    	<owl:equivalentClass>
+	      <owl:Class>
+			<owl:unionOf rdf:parseType="Collection">
+				  <rdf:Description rdf:about="http://schema.org/Offer"/>
+				  <rdf:Description rdf:about="http://purl.org/goodrelations/v1#Offering"/>
+			</owl:unionOf>
+	      </owl:Class>
+    	</owl:equivalentClass>
+        <rdfs:label xml:lang="en">Offer</rdfs:label>
+        <rdfs:label xml:lang="pl">Oferta</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">This class defines an offer document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Ta klasa definiuje dokument oferty.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Payee -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Payee">
+        <rdfs:label xml:lang="en">Payee</rdfs:label>
+        <rdfs:label xml:lang="pl">Odbiorca płatności</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:comment xml:lang="en">The entity to which the payment was made.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Podmiot dla którego zrealizowano płatność.</rdfs:comment>
+        <rdfs:comment rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Payer -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Payer">
+        <rdfs:label xml:lang="en">Payer</rdfs:label>
+        <rdfs:label xml:lang="pl">Płatnik</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:comment xml:lang="en">The entity which made the payment.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Podmoit który płaci.</rdfs:comment>
+        <rdfs:comment rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Payment -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Payment">
+    	<owl:equivalentClass rdf:resource="http://reference.data.gov.uk/def/payment#Payment"/>
+        <rdfs:label xml:lang="en">Payment</rdfs:label>
+        <rdfs:label xml:lang="pl">Płatnosć</rdfs:label>
+        <rdfs:comment xml:lang="en">Represents various form of payments.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Reprezentuje różne formy płatności.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#PotentialBuyer -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#PotentialBuyer">
+        <rdfs:label xml:lang="en">Potential Buyer</rdfs:label>
+        <rdfs:label xml:lang="pl">Oblat</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:comment xml:lang="en">Entity to which is addressed an offer.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Podmiot do którego jest kierowana oferta.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#ProductID -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#ProductID">
+        <rdfs:label xml:lang="en">Product ID</rdfs:label>
+        <rdfs:label xml:lang="pl">ID produktu</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the standard for product identification, such as EAN code.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje standard identyfikacji produktu, np. kod EAN.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#ProformaInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#ProformaInvoice">
+        <rdfs:label xml:lang="en">Proforma Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura Proforma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Defines proforma invoice - document or proposal being announced invoice (usually an invoice VAT). This is not an accounting document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuję fakturę Proformę - dokument będący zapowiedzią lub propozycją faktury (zwykle faktury VAT). Nie jest dokumentem księgowym.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#PurchaseOrder -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#PurchaseOrder">
+        <rdfs:label xml:lang="en">Purchase Order</rdfs:label>
+        <rdfs:label xml:lang="pl">Zamówienie</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Allows define purchase order document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefifniować dokument zamówienia.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Receipt -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Receipt">
+        <rdfs:label xml:lang="en">Receipt</rdfs:label>
+        <rdfs:label xml:lang="pl">Paragon</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#RequestForProposal -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#RequestForProposal">
+        <rdfs:label xml:lang="en">Request For Proposal</rdfs:label>
+        <rdfs:label xml:lang="pl">Zapytanie ofertowe</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Allows to create a document that is an invitation for potential suppliers, to submit business proposals for a specific goods or services.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować dokument będący zaproszeniem dla dostawców do wzięcia udziału w procesie składania ofert, który ma na celu pozyskanie przez podmiot składający  zapytanie określonego dobra lub usługi.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#SCoE -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#SCoE">
+        <rdfs:label xml:lang="en">Statistical classification of economic</rdfs:label>
+        <rdfs:label xml:lang="pl">Statystyczne klasyfikacje gospodarcze</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#category"/>
+                <owl:onClass rdf:resource="http://purl.org/b2bo#Category"/>
+                <owl:cardinality>1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#symbol"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Represents classification of issues that are related to business management, e.g. Polska Klasyfikacja Wyrobów i Usług (PKWiU).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Systemy pozwalające na klasyfikację zagadnień dotyczących prowadzenia działalności gospodarczej. Na celu mają usystematyzowanie i ujednolicenie ewidencji oraz prowadzenia badań statystycznych. Do przykładów takiej klasyfikacji należy Polska Klasyfikacja Wyrobów i Usług (PKWiU).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Seller -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Seller">
+        <rdfs:label xml:lang="en">Seller</rdfs:label>
+        <rdfs:label xml:lang="pl">Sprzedawca</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:comment xml:lang="en">Entity making sale goods or services.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Podmiot dokunujący sprzedaży dóbr lub usług.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#SimplifiedInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#SimplifiedInvoice">
+        <rdfs:label xml:lang="en">Simplified Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura Uproszczona</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Allows to create a simplified invice.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Jak wynika z art. 220a dyrektywy VAT z 2006 r., państwa członkowskie umożliwiają podatnikom 
+					wystawienie faktury uproszczonej w każdym z następujących przypadków:
+1)  kiedy kwota faktury nie przekracza 100 euro lub równowartości tej kwoty w walucie krajowej;
+2)  kiedy wystawiona faktura jest dokumentem lub notą uważaną za fakturę na mocy art. 219 ustawy (fakturę korygującą).
+Z powyższego wynika zatem, że faktura uproszczona to taka, która dokumentuje czynność o wartości nieprzekraczającej 100 euro. 
+W Polsce nie ma jeszcze przepisów implementujących faktury uproszczone.
+</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#TermsOfDelivery -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#TermsOfDelivery">
+        <rdfs:label xml:lang="en">Terms Of Delivery</rdfs:label>
+        <rdfs:label xml:lang="pl">Warunki dostawy</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows declaration of terms of delivery specified on document. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować warunki dostawy jakie są określone na dokumencie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#TermsOfPayment -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#TermsOfPayment">
+        <rdfs:label xml:lang="en">Terms Of Payment</rdfs:label>
+        <rdfs:label xml:lang="pl">Warunki Płatoności</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows declaration of terms of payment specified on document. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować warunki płatności jakie są określone na dokumencie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#Unit -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#Unit">
+        <rdfs:label xml:lang="en">Unit</rdfs:label>
+        <rdfs:label xml:lang="pl">Jednostka</rdfs:label>
+        <rdfs:comment xml:lang="en">Individuals of this class presents unit of measurement instances. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Klasa przedstawia jednostkę pomiaru.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#VATInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#VATInvoice">
+        <rdfs:label xml:lang="en">VAT Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura VAT</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#amount"/>
+                <owl:onClass rdf:resource="http://purl.org/b2bo#DocumentAmountInVATRate"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#amount"/>
+                <owl:onClass rdf:resource="http://purl.org/b2bo#DocumentAmount"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#entity"/>
+                <owl:onClass rdf:resource="http://purl.org/b2bo#Buyer"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#entity"/>
+                <owl:onClass rdf:resource="http://purl.org/b2bo#Seller"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/b2bo#item"/>
+                <owl:onClass rdf:resource="http://purl.org/b2bo#Item"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Defines Invoice in the sense of regulation Dz.U. 2011 nr 68 poz. 360 Rozporządzenie Ministra Finansów z dnia 28 marca 2011 r. w sprawie zwrotu podatku niektórym podatnikom, wystawiania faktur, sposobu ich przechowywania oraz listy towarów i usług, do których nie mają zastosowania zwolnienia od podatku od towarów i usług.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować Fakrutę VAT - dokument sprzedaży w rozumieniu Dz.U. 2011 nr 68 poz. 360 Rozporządzenia Ministra Finansów z dnia 28 marca 2011 r. w sprawie zwrotu podatku niektórym podatnikom, wystawiania faktur, sposobu ich przechowywania oraz listy towarów i usług, do których nie mają zastosowania zwolnienia od podatku od towarów i usług.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#VATMPInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#VATMPInvoice">
+        <rdfs:label xml:lang="en">VATMP Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura VATMP</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Allows to create a VATMP invoice.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować fakturę VATMP.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#VATMarginProfitInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#VATMarginProfitInvoice">
+        <rdfs:label xml:lang="en">VAT Profit Margin Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura VAT Marża</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Allows to create a VAT Protif Margin Invoice.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować fakturę VAT marża.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/b2bo#VATRRInvoice -->
+
+    <owl:Class rdf:about="http://purl.org/b2bo#VATRRInvoice">
+        <rdfs:label xml:lang="en">VAT RR Invoice</rdfs:label>
+        <rdfs:label xml:lang="pl">Faktura VAT RR</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:comment xml:lang="en">Allows to create a VAT RR invoice.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdeklarować faktuę VAT RR.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:Class>
+    
+
+
+
+
+<!--Object Properties-->
+
+    
+
+
+    <!-- http://purl.org/b2bo#address -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#address">
+        <rdfs:label xml:lang="en">address</rdfs:label>
+        <rdfs:label xml:lang="pl">adres</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines an entity (b2bo:Entity) address.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje adres podmiotu (b2bo:Entity).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Address"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#amount -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#amount">
+        <rdfs:label xml:lang="en">amount</rdfs:label>
+        <rdfs:label xml:lang="pl">kwota</rdfs:label>
+        <rdfs:comment xml:lang="en">Links document (b2bo:Document) or its subclasses to amount (b2bo:Amount).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Łączy dokument (b2bo:Document) lub jego podklasy z kwotą (b2bo:Amount).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#bankAccount -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#bankAccount">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">name of the bank</rdfs:label>
+        <rdfs:label xml:lang="pl">nazwa banku</rdfs:label>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="en">Allows precise select a bank instance, e.g. http://dbpedia.org/resource/PKO_Bank_Polski.</rdfs:comment>
+        <rdfs:comment xml:lang="pl">Pozwala precyzyjnie określić bank poprzez instancję, np. http://dbpedia.org/resource/PKO_Bank_Polski</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#category -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#category">
+        <rdfs:label xml:lang="en">category</rdfs:label>
+        <rdfs:label xml:lang="pl">kategoria</rdfs:label>
+        <rdfs:comment xml:lang="en">By selecting the appropriate instance allows you to specify the type of the statistical classification of economic (b2bo:SCoE).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Poprzez wybranie odpowiedniej instancji pozwala na okreslenie, jakiego typu jest statystyczna klasyfikacja gospodarcza(b2bo:SCoE)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#SCoE"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Category"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#classification -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#classification">
+        <rdfs:label xml:lang="en">classification</rdfs:label>
+        <rdfs:label xml:lang="pl">klasyfikacja</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows define document item statistical classification of economic (b2bo:SCoE).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala określić statystyczną klasyfikację gospodarczą pozycji dokumentu (b2bo: SCoE).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Item"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#SCoE"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#conditions -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#conditions">
+        <rdfs:label xml:lang="en">conditions</rdfs:label>
+        <rdfs:label xml:lang="pl">warunki</rdfs:label>
+        <rdfs:comment xml:lang="en">Links document (b2bo: Document) and payment terms (b2bo: TermsOfPayment) or delivery (b2bo:TermsOFDelivery) that are imposed on the document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Łączy dokument (b2bo:Document) wraz z warunkami płatności (b2bo:TermsOfPayment) lub dostawy (b2bo:TermsOfDelivery), jakie są nałożone na dokument.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/b2bo#TermsOfDelivery"/>
+                    <rdf:Description rdf:about="http://purl.org/b2bo#TermsOfPayment"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#copy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#copy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">copy</rdfs:label>
+        <rdfs:label xml:lang="pl">egzemplarz</rdfs:label>
+        <rdfs:comment xml:lang="en">It defines document copy like original or copy.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa egzemplarz dokumentu, jak oryginał lub kopia.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#DocumentType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#currency -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#currency">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">currency</rdfs:label>
+        <rdfs:label xml:lang="pl">waluta</rdfs:label>
+        <rdfs:comment xml:lang="en">You can specify the amount of currency (b2bo:Amount) by using an instance of, for example http://dbpedia.org/resource/United_States_dollar.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala określić walutę kwoty (b2bo:Amount) poprzez wykorzystanie instancji, np. http://dbpedia.org/resource/United_States_dollar</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Amount"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#dataLocker -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#dataLocker">
+        <rdfs:label xml:lang="en">url</rdfs:label>
+        <rdfs:label xml:lang="pl">url</rdfs:label>
+        <rdfs:comment xml:lang="en">Gives an ability to define a URL of product specification, published in accordance to Linked Data principles. Also called as product data locker. This is very powerful predicate for offers processing. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Daje możliwość definiowania adres URL specyfikacji produktu, opublikowanego zgodnie z pryncypiami Linked Data. Nazywany również  data locker produktu. Jest to bardzo ważnym rozwiązamien w przetworzeniu ofert.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#entity -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#entity">
+        <rdfs:label xml:lang="en">subject</rdfs:label>
+        <rdfs:label xml:lang="pl">podmiot</rdfs:label>
+        <rdfs:comment xml:lang="en">This define document entity.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa podmiot dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#formOfDelivery -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#formOfDelivery">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">form of delivery</rdfs:label>
+        <rdfs:label xml:lang="pl">forma dostawy</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows specified form of goods or service delivery.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala określić formę dostawy towaru lub usługi.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#TermsOfDelivery"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#formOfPayment -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#formOfPayment">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">form of payment</rdfs:label>
+        <rdfs:label xml:lang="pl">forma płatnosci</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows specified  form of document payment.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala określić formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#TermsOfPayment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#identified -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#identified">
+        <rdfs:label xml:lang="en">identified</rdfs:label>
+        <rdfs:label xml:lang="pl">identyfikowany</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows you to specify the value and type of document item identifier.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala określić wartość i typ identyfikatora pozycji dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Item"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Identifier"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#item -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#item">
+        <rdfs:label xml:lang="en">item</rdfs:label>
+        <rdfs:label xml:lang="pl">pozycja</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines position on document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje pozycję dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Item"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#mailto -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#mailto">
+        <rdfs:label xml:lang="en">email</rdfs:label>
+        <rdfs:label xml:lang="pl">email</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines an entity (b2bo:Entity) email address, that is built with prefix mailto: .</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa adres email podmiotu (b2bo:Entity), który jest zbudowany z użyciem przedrostka mailto: .</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#prodID -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#prodID">
+        <rdfs:label xml:lang="en">prodID</rdfs:label>
+        <rdfs:label xml:lang="pl">prodID</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the type of the entry ID.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje typ identyfikatora pozycji.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Identifier"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#ProductID"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#relatedTo -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#relatedTo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:label xml:lang="en">related to</rdfs:label>
+        <rdfs:label xml:lang="pl">dotyczy</rdfs:label>
+        <rdfs:comment xml:lang="en">Presents relation between documents. As simple example could be list of document related by one trade event: 
+Offer -&gt; Purchase Order -&gt; Invoice -&gt; Proof of Payment .</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Prezentuje powiązanie między dokumentami. Przykładem może być szereg dokumentów powiązanych z jednym zdarzeniem godpodarczym:
+Oferta -&gt; Zamówienie -&gt; FakturaVAT -&gt; Dowód opłaty.
+</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:range rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/b2bo#Document"/>
+                    <rdf:Description rdf:about="http://purl.org/b2bo#Item"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#unitOfMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/b2bo#unitOfMeasurement">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">unit of measurement</rdfs:label>
+        <rdfs:label xml:lang="pl">jednostka miary</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the unit of measure in which they expressed much of the product which is the position (b2bo:Item) in the document (b2bo:Document).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa jednostkę miary, w jakiej wyrażono ilość danego towaru będącego pozycją (b2bo:Item) na dokumencie (b2bo:Document).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Item"/>
+    </owl:ObjectProperty>
+    
+
+
+<!--Data properties-->
+
+    
+    <!-- http://purl.org/b2bo#accountNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#accountNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">bank account number</rdfs:label>
+        <rdfs:label xml:lang="pl">numer konta bankowego</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the number of the bank account of the entity described in the document as b2bo: Entity.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa numer konta bankowego podmiotu opisanego w dokumencie jako b2bo:Entity.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#creationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#creationDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">date of creation</rdfs:label>
+        <rdfs:label xml:lang="pl">data utworzenia</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the creation date of the document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa datę utworzenia dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/b2bo#date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#date -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#date">
+        <rdfs:label xml:lang="en">date</rdfs:label>
+        <rdfs:label xml:lang="pl">data</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines date.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje datę.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#deliveryDate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#deliveryDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">delivery date</rdfs:label>
+        <rdfs:label xml:lang="pl">termin dostawy</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the date of delivery.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa datę dostarczenia.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#TermsOfDelivery"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/b2bo#date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#exchangeRate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#exchangeRate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">exchange rate</rdfs:label>
+        <rdfs:label xml:lang="pl">kursy wymiany</rdfs:label>
+        <rdfs:comment xml:lang="pl">Określa kurs wymiany danej kwoty (b2bo:Amount).</rdfs:comment>
+        <rdfs:comment xml:lang="en">Specifies the amount of the exchange rate (b2bo:Amount).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#executionDate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#executionDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">date of execution</rdfs:label>
+        <rdfs:label xml:lang="pl">data realizacji</rdfs:label>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <terms:contributor xml:lang="pl">Umożliwia określenie daty realizacji.</terms:contributor>
+        <terms:contributor xml:lang="en">Allows you to specify the date of execution.</terms:contributor>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/b2bo#date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#firstName -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#firstName">
+        <rdfs:label xml:lang="en">first name</rdfs:label>
+        <rdfs:label xml:lang="pl">imię</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the first name of the entity (b2bo:Entity).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa imię podmiotu (b2bo:Entity).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#flatNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#flatNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">flat number</rdfs:label>
+        <rdfs:label xml:lang="pl">numer mieszkania</rdfs:label>
+        <rdfs:comment xml:lang="en">Determines number of the apartment.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa numer mieszkania.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#grossUnitPrice -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#grossUnitPrice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">gross unit price</rdfs:label>
+        <rdfs:label xml:lang="pl">cena jednostkowa brutto</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the gross unit price, which is the amount of item (b2bo:ItemAmount) found on the document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa cenę jednostkową brutto, jaką ma kwota pozycji (b2bo:ItemAmount) znajdująca się na dokumencie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#ItemAmount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#grossValue -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#grossValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">gross value</rdfs:label>
+        <rdfs:label xml:lang="pl">wartosć brutto</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the gross value of the amount (b2bo:Amount).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa wartosć brutto, danej kwoty (b2bo:Amount).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#houseNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#houseNumber">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">house/building number</rdfs:label>
+        <rdfs:label xml:lang="pl">numer domu</rdfs:label>
+        <rdfs:comment xml:lang="en">Determines number of the house.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa numer domu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#lastName -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#lastName">
+        <rdfs:label xml:lang="en">last name</rdfs:label>
+        <rdfs:label xml:lang="pl">nazwisko</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the last name of the entity (b2bo:Entity).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa nazwisko podmiotu (b2bo:Entity).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#legalDisclaimer -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#legalDisclaimer">
+        <rdfs:label xml:lang="en">legal disclaimer</rdfs:label>
+        <rdfs:label xml:lang="pl">zastrzeżenie prawne</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows you to add legal disclaimer to your document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Umożliwia dodanie zastrzeżenia prawnego do dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#locality -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#locality">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">locality</rdfs:label>
+        <rdfs:label xml:lang="pl">miejscowosć</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the name of the town.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje nazwę miejscowości.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#minQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#minQuantity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">minQuantity</rdfs:label>
+        <rdfs:label xml:lang="pl">minimalna ilość</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies minimum quantity of goods/services which is in the offer item.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa minimalną ilość towaru/usługi jaka znajduje się w pozycji oferty. </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#TermsOfPayment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#name -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#name">
+        <rdfs:label xml:lang="en">name</rdfs:label>
+        <rdfs:label xml:lang="pl">nazwa</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows you to specify the name of the Entity (b2bo:Entity)</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala okreslić nazwę działalnosci Podmiotu (b2bo:Entity)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#netUnitPrice -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#netUnitPrice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">net unit price</rdfs:label>
+        <rdfs:label xml:lang="pl">cena jednostkowa netto</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the net unit price, which is the amount of item (b2bo:ItemAmount) found on the document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa cenę jednostkową netto, jaką ma kwota pozycji (b2bo:ItemAmount) znajdująca się na dokumencie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#ItemAmount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#netValue -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#netValue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">net value</rdfs:label>
+        <rdfs:label xml:lang="pl">wartosć netto</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the net value that has the amount (b2bo:Amount).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa wartość netto, jaką posiada kwota (b2bo:Amount).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#nip -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#nip">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">NIP</rdfs:label>
+        <rdfs:label xml:lang="pl">NIP</rdfs:label>
+        <rdfs:comment xml:lang="en">Allows you to define the tax identification number of the entity.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala zdefiniować numer identyfikacji podatkowej podmiotu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#number -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#number">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">number</rdfs:label>
+        <rdfs:label xml:lang="pl">numer</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the the number of a given item which is on the document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa numer kolejny jaki dana pozycja ma na dokumencie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Item"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#orderDate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#orderDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">date of order</rdfs:label>
+        <rdfs:label xml:lang="pl">data zamówienia</rdfs:label>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="en">Defines the date of the order.</rdfs:comment>
+        <rdfs:comment xml:lang="pl">Definiuje datę zamówienia.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/b2bo#date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#paymentDate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#paymentDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">payment date</rdfs:label>
+        <rdfs:label xml:lang="pl">data płatności</rdfs:label>
+        <rdfs:comment xml:lang="en">Date of payment execution.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Data wykonania płatności.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#TermsOfPayment"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/b2bo#date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#postOffice -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#postOffice">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">post office</rdfs:label>
+        <rdfs:label xml:lang="pl">skrytka pocztowa</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the mailbox, the address of the entity.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa skrzynkę pocztową, adresu podmiotu. </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#postalCode -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#postalCode">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">postal code</rdfs:label>
+        <rdfs:label xml:lang="pl">kod pocztowy</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the zip code, address the entity.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa kod pocztowy, adresu podmiotu. </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#quantity -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#quantity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">quantity</rdfs:label>
+        <rdfs:label xml:lang="pl">ilosc</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the amount of goods/services which is in the document item.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa ilość towaru/usługi jaka znajduje się w pozycji dokumentu. </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Item"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#rabate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#rabate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">rabate</rdfs:label>
+        <rdfs:label xml:lang="pl">rabat</rdfs:label>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje rabat, jak ma dana pozycja dokumentu, wyrażony w procentach.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Defines a discount, as is the position of the document, expressed as a percentage.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#regon -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#regon">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">regon</rdfs:label>
+        <rdfs:label xml:lang="pl">regon</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the number of the Journal of the National Register of Economic Entities (Company).</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa numer Krajowego Rejestru Urzędowego Podmiotów Gospodarki Narodowej (REGON).</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#saleDate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#saleDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">date of sale</rdfs:label>
+        <rdfs:label xml:lang="pl">data sprzedaży</rdfs:label>
+        <rdfs:comment xml:lang="en">You can specify the date of sale.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala określić datę sprzedaży.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/b2bo#date"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/b2bo#ProformaInvoice"/>
+                    <rdf:Description rdf:about="http://purl.org/b2bo#VATInvoice"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#sku -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#sku">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">SKU</rdfs:label>
+        <rdfs:label xml:lang="pl">SKU</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies Stock Keeping Unit.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwala określić Stock Keeping Unit.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Item"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#statement -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#statement">
+        <rdfs:label xml:lang="en">statement</rdfs:label>
+        <rdfs:label xml:lang="pl">oświadczenie</rdfs:label>
+        <rdfs:comment xml:lang="pl">Pozwala dodać do dokumentu oświadczenie.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Allows you to add a statement to the document.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#street -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#street">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">street name</rdfs:label>
+        <rdfs:label xml:lang="pl">nazwa ulicy</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the name of the street address of the entity.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa nazwę ulicy, adresu podmiotu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Address"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#symbol -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#symbol">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">symbol</rdfs:label>
+        <rdfs:label xml:lang="pl">symbol</rdfs:label>
+        <rdfs:comment xml:lang="pl">Określa symbol danej statystycznej klasyfikacji gospodarczej, jaki posiada dana pozycja dokumentu.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Specifies the symbol of the statistical classification of economic, which is the position of the document.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#SCoE"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#telephone -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#telephone">
+        <rdfs:label xml:lang="en">telephone</rdfs:label>
+        <rdfs:label xml:lang="pl">telefon</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the phone number.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa numer telefonu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Entity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#timeLimitForPayment -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#timeLimitForPayment">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">time limit for payment</rdfs:label>
+        <rdfs:label xml:lang="pl">termin płatnosci</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the date of payment, expressed in days.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa termin płątności. Wyrażany w dniach, które podmiot ma na uiszczenie opłaty.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#TermsOfPayment"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#title -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#title">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">title</rdfs:label>
+        <rdfs:label xml:lang="pl">tytuł</rdfs:label>
+        <rdfs:comment xml:lang="en">This defines document title, including unique reference number.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pozwana na zdefiniowanie tytuł dokumentu, wraz z unikatowym jego numerem. </rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Document"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#toPay -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#toPay">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">to pay</rdfs:label>
+        <rdfs:label xml:lang="pl">do zapłaty</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the value to be paid.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa wartość dokumentu do zapłaty.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#DocumentAmount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#toPayInWords -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#toPayInWords">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">to pay in words</rdfs:label>
+        <rdfs:label xml:lang="pl">do zapłaty słownie</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the value to be paid as prescribed in words.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa wartość do zapłaty, zapisaną słownie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#DocumentAmount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#value -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#value">
+        <rdfs:label xml:lang="en">value</rdfs:label>
+        <rdfs:label xml:lang="pl">wartość</rdfs:label>
+        <rdfs:comment xml:lang="pl">Określa wartość identyfikatora.</rdfs:comment>
+        <rdfs:comment xml:lang="en">Specifies the identifier value.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Identifier"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#vatAmount -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#vatAmount">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">amount of VAT</rdfs:label>
+        <rdfs:label xml:lang="pl">kwota VAT</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the value of the VAT, which is in the amount.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa wartość podatku VAT, jaka jest w kwocie.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/b2bo#vatRate -->
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/b2bo#vatRate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label xml:lang="en">VAT rate</rdfs:label>
+        <rdfs:label xml:lang="pl">stawka VAT</rdfs:label>
+        <rdfs:comment xml:lang="en">Specifies the VAT rate, expressed as a percentage.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Określa stawkę podatku VAT, wyrażoną w procentach.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+        <rdfs:domain rdf:resource="http://purl.org/b2bo#Amount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+<!-- Individuals -->
+    
+
+
+    <!-- http://purl.org/b2bo#CFR -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#CFR">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Cost_and_Freight"/>
+        <rdfs:label xml:lang="en">Cost and Freight</rdfs:label>
+        <rdfs:label xml:lang="pl">Cost and Freight</rdfs:label>
+        <rdfs:comment xml:lang="en">Seller must pay the costs and freight to bring the goods to the port of destination. However, risk is transferred to the buyer once the goods are loaded on the vessel. Insurance for the goods is NOT included. This term is formerly known as CNF . Maritime transport only.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Koszt i fracht (... określony port przeznaczenia). Sprzedający nie ponosi kosztów ubezpieczenia towarów (od momentu załadunku na statek w porcie nadania), które leżą po stronie kupującego; dostawa zostaje uznana za zrealizowaną w momencie załadunku towaru na statek przewoźnika wskazanego przez sprzedającego.
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#CIF -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#CIF">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Cost,_insurance,_and_freight"/>
+        <rdfs:label xml:lang="en">Cost, Insurance and Freight</rdfs:label>
+        <rdfs:label xml:lang="pl">Cost, Insurance and Freight</rdfs:label>
+        <rdfs:comment xml:lang="en">Exactly the same as CFR except that the seller must in addition procure and pay for the insurance. Maritime transport only.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Koszt, ubezpieczenie i fracht (... określony port przeznaczenia). W odróżnieniu od CFR, sprzedający jest odpowiedzialny również za zawarcie umowy i opłacenie kosztu ubezpieczenia towaru w na rzecz kupującego. Warto zaznaczyć, że Incoterms 2000 zobowiązują sprzedającego do zapewnienia ochrony ubezpieczeniowej jedynie w podstawowym zakresie. Zarówno CFR jak i CIF mogą być używane wyłącznie w odniesieniu do transportu morskiego oraz wodnego śródlądowego.
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#CIP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#CIP">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Carriage_and_Insurance_Paid_to"/>
+        <rdfs:label xml:lang="en">Carriage and Insurance Paid to</rdfs:label>
+        <rdfs:label xml:lang="pl">Carriage and Insurance Paid to</rdfs:label>
+        <rdfs:comment xml:lang="en">The containerized transport/multimodal equivalent of CIF. Seller pays for carriage and insurance to the named destination point, but risk passes when the goods are handed over to the first carrier.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Przewoźne i ubezpieczenie opłacone do (... określonego miejsca przeznaczenia). Odpowiednik CIF w transporcie innym, niż morskim i wodnym śródlądowym (w tym multimodalnym).
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#CPT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#CPT">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Carriage_Paid_To"/>
+        <rdfs:label xml:lang="en">Carriage Paid To</rdfs:label>
+        <rdfs:label xml:lang="pl">Carriage Paid To</rdfs:label>
+        <rdfs:comment xml:lang="en">The seller pays for carriage. Risk transfers to buyer upon handing goods over to the first carrier at place of Import.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Przewoźne opłacone do (... określonego miejsca przeznaczenia). Odpowiednik CFR w transporcie innym, niż morskim i wodnym śródlądowym (w tym multimodalnym).
+	 	
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#Cash -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#Cash">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:label xml:lang="en">Cahs</rdfs:label>
+        <rdfs:label xml:lang="pl">Gotówka</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines cash as a form of document payment.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje gotówkę jako formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#Cheque -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#Cheque">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Cheque"/>	
+        <rdfs:label xml:lang="en">Cheque</rdfs:label>
+        <rdfs:label xml:lang="pl">Czek</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines cheque as a form of document payment. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje czek jako formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#Copy -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#Copy">
+        <rdf:type rdf:resource="http://purl.org/b2bo#DocumentType"/>
+        <rdfs:label xml:lang="en">Copy</rdfs:label>
+        <rdfs:label xml:lang="pl">Kopia</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines document copy.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje kopię dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#CreditCard -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#CreditCard">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:label xml:lang="en">Credit card</rdfs:label>
+        <rdfs:label xml:lang="pl">Karta kredytowa</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines credit card as a form of document payment. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje kartę kredytową jako formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#DAP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#DAP">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Delivered_at_Place"/>
+        <rdfs:label xml:lang="en">Delivered at Place</rdfs:label>
+        <rdfs:label xml:lang="pl">Delivered at Place</rdfs:label>
+        <rdfs:comment xml:lang="en">Seller pays for carriage to the named place, except for costs related to import clearance, and assumes all risks prior to the point that the goods are ready for unloading by the buyer.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Dostarczone do miejsca (sprzedający odpowiada za dostarczenie towaru do określonego miejsca, natomiast jego rozładunek jest w gestii kupującego).
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#DAT -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#DAT">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Delivered_at_Terminal"/>
+        <rdfs:label xml:lang="en">Delivered at Terminal</rdfs:label>
+        <rdfs:label xml:lang="pl">Delivered at Terminal</rdfs:label>
+        <rdfs:comment xml:lang="en">Seller pays for carriage to the terminal, except for costs related to import clearance, and assumes all risks up to the point that the goods are unloaded at the terminal.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Dostarczone, cło opłacone (... określone miejsce przeznaczenia). Dostarczone do terminalu (sprzedający odpowiada za dowiezienie towaru do określonego terminalu i jego rozładunek. 
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#DDP -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#DDP">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Delivered_Duty_Paid"/>
+        <rdfs:label xml:lang="en">Delivered Duty Paid</rdfs:label>
+        <rdfs:label xml:lang="pl">Delivered Duty Paid</rdfs:label>
+        <rdfs:comment xml:lang="en">Seller is responsible for delivering the goods to the named place in the country of the buyer, and pays all costs in bringing the goods to the destination including import duties and taxes. The buyer is responsible for unloading. This term is often used in place of the non-Incoterm &quot;Free In Store (FIS)&quot;. This term places the maximum obligations on the seller and minimum obligations on the buyer.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Dostarczone, cło opłacone (... określone miejsce przeznaczenia). Najszersza odpowiedzialność oraz zakres czynności sprzedającego spośród powyższych zasad. Zakres odpowiedzialności rozszerzony w stosunku do DDU o odpowiedzialność oraz pokrycie kosztów związanych z odprawą celną importową.
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#DebitCard -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#DebitCard">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:label xml:lang="en">Debit card</rdfs:label>
+        <rdfs:label xml:lang="pl">Karta debetowa</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines debit card as a form of document payment. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje kartę debetową jako formę płatności.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#DirectDebit -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#DirectDebit">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:label xml:lang="en">Direct debit</rdfs:label>
+        <rdfs:label xml:lang="pl">Polecenie przelewu</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines direct debit as a form of document payment. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje polecenie przelewu jako formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#Duplicate -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#Duplicate">
+        <rdf:type rdf:resource="http://purl.org/b2bo#DocumentType"/>
+        <rdfs:label xml:lang="en">Duplicate</rdfs:label>
+        <rdfs:label xml:lang="pl">Duplikat</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines the second instance of a document which is identical as original one.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje drugi egzemplarz dokumentu który jest identyczny z oryginałem.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#EAN -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#EAN">
+        <rdf:type rdf:resource="http://purl.org/b2bo#ProductID"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/International_Article_Number_(EAN)"/>
+        <rdfs:label xml:lang="en">EAN</rdfs:label>
+        <rdfs:label xml:lang="pl">EAN</rdfs:label>
+        <rdfs:comment xml:lang="en">An EAN-13 barcode (originally European Article Number, but now renamed International Article Number even though the abbreviation EAN has been retained) is a 13 digit (12 data and 1 check) barcoding standard which is a superset of the original 12-digit Universal Product Code (UPC) system developed in the United States. The EAN-13 barcode is defined by the standards organization GS1. The EAN-13 barcodes are used worldwide for marking products often sold at retail point of sale. The numbers encoded in EAN-13 bar codes are product identification numbers, which are also called Japanese Article Number (JAN) in Japan. All the numbers encoded in UPC and EAN barcodes are known as Global Trade Item Numbers (GTIN), and they can be encoded in other GS1 barcodes. The less commonly used EAN-8 barcodes are used also for marking retail goods; however, they are usually reserved for smaller items, for example confectionery. 2-digit and 5-digit supplemental barcodes may be added for a total of 14 or 17 data digits. These are generally used for periodicals (to indicate the serial number), or books and weighed products like food (to indicate the selling price), respectively.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">EAN (ang. European Article Number – Europejski Kod Towarowy) – rodzina kodów kreskowych (symbolika) wprowadzona w 1976 roku przez stowarzyszenie European Article Numbering. Kod został opracowany na podstawie opracowanego wcześniej w USA i Kanadzie kodu UPC. Symbolika została zaimplementowana w globalnym systemie GS1. Jest to kod ciągły, numeryczny, modularny, samosprawdzalny z dodatkową obowiązkową cyfrą kontrolną.</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/International_Article_Number_(EAN)"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#EXW -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#EXW">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Ex_Works"/>
+        <rdfs:label xml:lang="en">Ex Works</rdfs:label>
+        <rdfs:label xml:lang="pl">Ex Works</rdfs:label>
+        <rdfs:comment xml:lang="en">The seller makes the goods available at its premises. The buyer is responsible for unloading. This term places the maximum obligation on the buyer and minimum obligations on the seller. The Ex Works term is often used when making an initial quotation for the sale of goods without any costs included. EXW means that a seller has the goods ready for collection at his premises (works, factory, warehouse, plant) on the date agreed upon. The buyer pays all transportation costs and also bears the risks for bringing the goods to their final destination. The seller doesn&apos;t load the goods on collecting vehicles and doesn&apos;t clear them for export. If the seller does load the good, he does so at buyer&apos;s risk and cost. If parties wish seller to be responsible for the loading of the goods on departure and to bear the risk and all costs of such loading, this must be made clear by adding explicit wording to this effect in the contract of sale.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Termin ten przedstawia najmniejszą odpowiedzialność oraz zaangażowanie ze strony sprzedającego. Dostawa zostaje uznana za dokonaną w momencie postawienia towarów do dyspozycji kupującego w oznaczonym miejscu, bez zobligowania do dalszych czynności ze strony sprzedającego.
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#EcommercePaymentSystem -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#EcommercePaymentSystem">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:label xml:lang="en">E-commerce payment system</rdfs:label>
+        <rdfs:label xml:lang="pl">System płatności e-commerce</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines e-commerce payment system as a form of document payment. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje system płatności typu e-commerce jako formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#FAS -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#FAS">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Free_alongside_ship"/>
+        <rdfs:label xml:lang="en">Free Alongside Ship</rdfs:label>
+        <rdfs:label xml:lang="pl">Free Alongside Ship</rdfs:label>
+        <rdfs:comment xml:lang="en">The seller must place the goods alongside the ship at the named port. The seller must clear the goods for export. Suitable only for maritime transport but NOT for multimodal sea transport in containers (see Incoterms 2010, ICC publication 715). This term is typically used for heavy-lift or bulk cargo.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Franco wzdłuż burty statku (... określony port załadunku). Odpowiedzialność za koszty transportu oraz ryzyko sprzedającego kończą się w momencie dostarczenia towarów do burty statku w oznaczonym porcie nadania, jednak bez załadunku towarów na statek. Od tego momentu wszelkie koszty oraz ryzyko związane z towarem zostaje przeniesione na kupującego. Termin może być używany wyłącznie w odniesieniu do transportu morskiego oraz wodnego śródlądowego.
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#FCA -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#FCA">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <rdfs:label xml:lang="en">Free Carrier</rdfs:label>
+        <rdfs:label xml:lang="pl">Free Carrier</rdfs:label>
+        <rdfs:comment xml:lang="en">The seller hands over the goods, cleared for export, into the disposal of the first carrier (named by the buyer) at the named place. The buyer pays for carriage to the named point of delivery, and risk passes when the goods are handed over to the first carrier.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Franco przewoźnik (... określone miejsce).Sprzedający ponosi koszty transportu, załadunku oraz ubezpieczenia do momentu przekazania towarów pierwszemu przewoźnikowi, wskazanemu przez kupującego, w oznaczonym miejscu. Towar uważa się za dostarczony w momencie załadunku przez przewoźnika, w tym momencie następuje przeniesienie ryzyka uszkodzenia lub utraty towaru na kupującego.
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#FOB -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#FOB">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Delivery"/>
+        <rdfs:label xml:lang="en">Free on Board</rdfs:label>
+        <rdfs:label xml:lang="pl">Free on Board</rdfs:label>
+        <rdfs:comment xml:lang="en">The seller must load the goods on board the vessel nominated by the buyer. Cost and risk are divided when the goods are actually on board of the vessel (this rule is new!). The seller must clear the goods for export. The term is applicable for maritime and inland waterway transport only but NOT for multimodal sea transport in containers (see Incoterms 2010, ICC publication 715). The buyer must instruct the seller the details of the vessel and the port where the goods are to be loaded, and there is no reference to, or provision for, the use of a carrier or forwarder. This term has been greatly misused over the last three decades ever since Incoterms 1980 explained that FCA should be used for container shipments.
+		
+		Source:
+		http://en.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Franco statek (... określony port załadunku). Jak w przypadku FCA, jednak punktem przeniesienia kosztów i ryzyka za towar ze sprzedającego na kupującego jest moment przekroczenia burty statku przez towar, sprzedający ponosi też koszty załadunku. Termin może być używany wyłącznie w odniesieniu do transportu morskiego oraz wodnego śródlądowego.
+		
+		Źródło:
+		http://pl.wikipedia.org/wiki/Incoterms
+		</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Incoterms"/>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/resource/Kilogram -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/resource/Kilogram">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Unit"/>
+        <rdfs:isDefinedBy rdf:resource="http://dbpedia.org/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#OnlineBanking -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#OnlineBanking">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:label xml:lang="en">Online banking</rdfs:label>
+        <rdfs:label xml:lang="pl">Bankowość elektroniczna</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines online banking as a form of document payment. </rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje bankowość elektroniczną jako formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#Original -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#Original">
+        <rdf:type rdf:resource="http://purl.org/b2bo#DocumentType"/>
+        <rdfs:label xml:lang="en">Original</rdfs:label>
+        <rdfs:label xml:lang="pl">Oryginał</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines document as original.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje dokument jako oryginał.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/b2bo#Piece -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#Piece">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Unit"/>
+        <owl:sameAs rdf:resource="http://dbpedia.org/resource/Piece"/>
+        <rdfs:label xml:lang="en">Piece</rdfs:label>
+        <rdfs:label xml:lang="pl">Sztuka</rdfs:label>
+        <rdfs:comment xml:lang="en">A single unit of something.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Pojedyńcza jednostka czegoś.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+    
+    
+    <!-- http://purl.org/b2bo#PKD -->
+    
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#PKD">
+	<rdf:type rdf:resource="http://purl.org/b2bo#Category"/>
+	<owl:sameAs rdf:resource="http://pl.dbpedia.org/resource/Polska_Klasyfikacja_Dzia%C5%82alno%C5%9Bci"/>
+	<rdfs:label xml:lang="en">PKD</rdfs:label>
+        <rdfs:label xml:lang="pl">PKD</rdfs:label>
+        <rdfs:comment xml:lang="en">Polska Klasyfikacja Działalności</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Polska Klasyfikacja Działalności</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+    
+    
+    
+    <!-- http://purl.org/b2bo#PKWiU -->
+    
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#PKWiU">
+	<rdf:type rdf:resource="http://purl.org/b2bo#Category"/>
+	<owl:sameAs rdf:resource="http://pl.dbpedia.org/resource/Polska_Klasyfikacja_Wyrob%C3%B3w_i_Us%C5%82ug"/>
+	<rdfs:label xml:lang="en">PKWiU</rdfs:label>
+        <rdfs:label xml:lang="pl">PKWiU</rdfs:label>
+        <rdfs:comment xml:lang="en">Polska Klasyfikacja Wyrobów i Usług</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Polska Klasyfikacja Wyrobów i Usług</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+
+
+    <!-- http://purl.org/b2bo#Transfer -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/b2bo#Transfer">
+        <rdf:type rdf:resource="http://purl.org/b2bo#Payment"/>
+        <rdfs:label xml:lang="en">Transfer</rdfs:label>
+        <rdfs:label xml:lang="pl">Przelew</rdfs:label>
+        <rdfs:comment xml:lang="en">Defines transfer as a form of document payment.</rdfs:comment>
+        <ns:term_status xml:lang="en">stable</ns:term_status>
+        <rdfs:comment xml:lang="pl">Definiuje przelew jako formę płatności dokumentu.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://purl.org/b2bo#"/>
+    </owl:NamedIndividual>
+
+
+
+<!-- Annotation properties -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/b2bo#lastUpdate">
+    	<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:AnnotationProperty>
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#priorVersion">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </rdf:Description>
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/06/sw-vocab-status/ns#term_status"/>
+    <owl:AnnotationProperty rdf:about="http://www.purl.org/dc/terms/subject"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    <owl:AnnotationProperty rdf:about="http://www.purl.org/dc/terms/title"/>
+    <owl:AnnotationProperty rdf:about="http://www.purl.org/dc/terms/creator"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor"/>
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+</rdf:RDF>
+
+<!-- END -->

@@ -1,0 +1,514 @@
+﻿@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix : <http://purl.org/configurationontology#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://purl.org/configurationontology> .
+
+<http://purl.org/configurationontology> rdf:type owl:Ontology ;
+                                        
+                                        rdfs:label "'Configuration as Linked Data' ontology"@en ;
+                                        rdfs:label "Linked Data配置本体"@zh-CN ;
+                                        rdfs:comment """Ontology for the description of customizable products. It models the configuration process as the traversal of a graph of partially defined products, or \"Configurations\""""@en ;
+                                        rdfs:comment """有关定制产品描述的本体。它对配置流程建模为对部分定义的产品或【配置】的图的遍历。"""@zh-CN ;
+                                        <http://purl.org/vocab/vann/preferredNamespacePrefix> "cold" ;
+                                        
+                                        <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by/3.0/> ;
+                                        
+                                        <http://purl.org/dc/terms/creator> <http://data.semanticweb.org/person/edouard-chevalier> ,
+                                                                           <http://data.semanticweb.org/person/francois-paul-servant> ,
+                                                                           <http://dbpedia.org/resource/Renault> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+vs:term_status rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://purl.org/configurationontology#alternative
+
+:alternative rdf:type owl:ObjectProperty ;
+             rdfs:label "alternative"@en ;
+			 rdfs:label "备选"@zh-CN ;
+             rdfs:comment "Models the possibility of changing a choice already done."@en ;
+             rdfs:comment "对已作出选择进行变更的可能性进行建模。"@zh-CN ;
+             rdfs:domain :Configuration ;
+             
+             rdfs:range :ConfigurationLink ;
+             
+             rdfs:subPropertyOf :link .
+
+
+
+###  http://purl.org/configurationontology#choiceSeq
+
+:choiceSeq rdf:type owl:ObjectProperty ;
+           rdfs:label "choice seq"@en ;
+		   rdfs:label ""@zh-CN ;
+           rdfs:comment "To be used to specify to advanced clients the order in which choices were done in the Configuration. Any item of this rdf:Seq should be a Specification linked from from the Configuration by chosenSpec."@en ;
+           rdfs:comment ""@zh-CN ;
+           rdfs:domain :Configuration ;
+           
+           rdfs:subPropertyOf :definingChoice ;
+           
+           rdfs:range rdf:Seq .
+
+
+
+###  http://purl.org/configurationontology#chosenSpec
+
+:chosenSpec rdf:type owl:ObjectProperty ;
+            rdfs:label ""@en ;
+			rdfs:label ""@zh-CN ;
+            rdfs:comment "A Specification chosen in this Configuration."@en ;
+            rdfs:comment ""@zh-CN ;
+            rdfs:domain :Configuration ;
+            
+            rdfs:range :Specification ;
+            
+            rdfs:subPropertyOf :definingChoice .
+
+
+
+###  http://purl.org/configurationontology#completed
+
+:completed rdf:type owl:ObjectProperty ;
+           rdfs:label ""@en ;
+		   rdfs:label ""@zh-CN ;
+           rdfs:comment "Links a Configuration to a completely defined one (that is, a Completely Defined Product that matches the configuration in question). The price of the linked configuration may be higher than this configuration price. Configurations completed at the same price are given by the completedAtSamePrice property."@en ;
+           rdfs:comment ""@zh-CN ;
+           rdfs:range :CompletelyDefinedProduct ;
+           
+           rdfs:domain :Configuration .
+
+
+
+###  http://purl.org/configurationontology#completedAtSamePrice
+
+:completedAtSamePrice rdf:type owl:ObjectProperty ;
+                      rdfs:label ""@en ;
+					  rdfs:label ""@zh-CN ;
+                      rdfs:comment "Links a Configuration to a completely defined one, which has the same price."@en ;
+                      rdfs:comment ""@zh-CN ;
+                      rdfs:range :CompletelyDefinedProduct ;
+                      
+                      rdfs:domain :Configuration .
+
+
+
+###  http://purl.org/configurationontology#defaultSpec
+
+:defaultSpec rdf:type owl:ObjectProperty ;
+             rdfs:label ""@en ;
+			 rdfs:label ""@zh-CN ;
+             rdfs:comment "Specification included by default in a Completely Defined Product matching this configuration"@en ;
+             rdfs:comment ""@zh-CN ;
+             vs:term_status "unstable" ;
+             
+             rdfs:domain :Configuration ;
+             
+             rdfs:range :Specification .
+
+
+
+###  http://purl.org/configurationontology#definingChoice
+
+:definingChoice rdf:type owl:ObjectProperty ;
+                rdfs:label ""@en ;
+				rdfs:label ""@zh-CN ;
+                rdfs:comment "Parent property of all properties used to define a Configuration, i.e. used to define the choices done by the user: a Configuration is defined by the list of its definingChoices."@en ;
+                rdfs:comment ""@zh-CN ;
+                rdfs:domain :Configuration ;
+                
+                rdfs:subPropertyOf owl:topObjectProperty .
+
+
+
+###  http://purl.org/configurationontology#hasValue
+
+:hasValue rdf:type owl:ObjectProperty ;
+          
+          vs:term_status "unstable" ;
+          rdfs:label ""@en ;
+		  rdfs:label ""@zh-CN ;
+          rdfs:comment "Used in a Lexicon to list the values (specifications) of a ConfigurationVariable. Alternatively, we could say that these specifications have rdf:type the ConfigurationVariable in question."@en ;
+          rdfs:comment ""@zh-CN ;
+          rdfs:domain :ConfigurationVariable ;
+          
+          rdfs:range :Specification .
+
+
+
+###  http://purl.org/configurationontology#impliedSpec
+
+:impliedSpec rdf:type owl:ObjectProperty ;
+             rdfs:label ""@en ;
+			 rdfs:label ""@zh-CN ;
+             rdfs:comment "A Specification that is implied by the conjunction of the definingChoice(s) of this Configuration."@en ;
+             rdfs:comment ""@zh-CN ;
+             rdfs:domain :Configuration ;
+             
+             rdfs:range :Specification .
+
+
+
+###  http://purl.org/configurationontology#impossible
+
+:impossible rdf:type owl:ObjectProperty ;
+            rdfs:label ""@en ;
+			rdfs:label ""@zh-CN ;
+            rdfs:comment "Models a choice that conflicts with the definition of this configuration: some of the previous choices must be changed (and will be if following this link)"@en ;
+            rdfs:comment ""@zh-CN ;
+            rdfs:domain :Configuration ;
+            
+            rdfs:range :ConfigurationLink ;
+            
+            rdfs:subPropertyOf :link .
+
+
+
+###  http://purl.org/configurationontology#lexicon
+
+:lexicon rdf:type owl:ObjectProperty ;
+         rdfs:label ""@en ;
+		 rdfs:label ""@zh-CN ;
+         rdfs:comment "used to relate something to a Lexicon"@en ;
+         rdfs:comment ""@zh-CN ;
+         rdfs:range :Lexicon .
+
+
+
+###  http://purl.org/configurationontology#link
+
+:link rdf:type owl:ObjectProperty ;
+      rdfs:label ""@en ;
+	  rdfs:label ""@zh-CN ;
+      rdfs:comment "Parent property of all the properties linking a Configuration to another one in the configuration process."@en ;
+      rdfs:comment ""@zh-CN ;
+      rdfs:domain :Configuration ;
+      
+      rdfs:range :ConfigurationLink .
+
+
+
+###  http://purl.org/configurationontology#linkedConf
+
+:linkedConf rdf:type owl:ObjectProperty ;
+            rdfs:label ""@en ;
+			rdfs:label ""@zh-CN ;
+            rdfs:comment "the linked configuration that contains choices of current Configuration plus the specifications that will be added and listed in the configuration link it belongs to."@en ;
+            rdfs:comment ""@zh-CN ;
+            rdfs:range :Configuration ;
+            
+            rdfs:domain :ConfigurationLink .
+
+
+
+###  http://purl.org/configurationontology#maxPrice
+
+:maxPrice rdf:type owl:ObjectProperty ;
+          rdfs:label ""@en ;
+		  rdfs:label ""@zh-CN ;
+		  rdfs:comment ""@en ;
+		  rdfs:comment ""@zh-CN ;
+          rdfs:domain :Configuration ;
+          
+          rdfs:subPropertyOf :definingChoice ;
+          
+          rdfs:range gr:UnitPriceSpecification .
+
+
+
+###  http://purl.org/configurationontology#possible
+
+:possible rdf:type owl:ObjectProperty ;
+          rdfs:label ""@en ;
+		  rdfs:label ""@zh-CN ;
+          rdfs:comment "Models a choice (or a set of choices) that can done without changing any of the previous choices done in the configuration: links to a Configuration whose list of definingChoice(s) contains the list of definingChoice(s) of this configuration."@en ;
+          rdfs:comment ""@zh-CN ;
+          rdfs:domain :Configuration ;
+          
+          rdfs:range :ConfigurationLink ;
+          
+          rdfs:subPropertyOf :link .
+
+
+
+###  http://purl.org/configurationontology#proposedConf
+
+:proposedConf rdf:type owl:ObjectProperty ;
+              rdfs:label ""@en ;
+			  rdfs:label ""@zh-CN ;
+              rdfs:comment "Links a Configuration to another one supposed to be of interest for a customer at this point of the configuration process. The semantics is rather vague, leaving open the possibility to link to a Configuration that matches the defining choices of the subject configuration, or not (to be used by marketing people for bargains, 'upselling', etc.)"@en ;
+              rdfs:comment ""@zh-CN ;
+              rdfs:range :Configuration ;
+              
+              rdfs:domain :Configuration .
+
+
+
+###  http://purl.org/configurationontology#specToBeAdded
+
+:specToBeAdded rdf:type owl:ObjectProperty ;
+               rdfs:label ""@en ;
+			   rdfs:label ""@zh-CN ;
+               rdfs:comment "Specification to be added to a Configuration in a ConfigurationLink"@en ;
+               rdfs:comment ""@zh-CN ;
+               rdfs:domain :ConfigurationLink ;
+               
+               rdfs:range :Specification .
+
+
+
+###  http://purl.org/configurationontology#specToBeRemoved
+
+:specToBeRemoved rdf:type owl:ObjectProperty ;
+                 rdfs:label ""@en ;
+			     rdfs:label ""@zh-CN ;
+                 rdfs:comment "Specification to be removed from a Configuration in a ConfigurationLink"@en ;
+                 rdfs:comment ""@zh-CN ;
+                 rdfs:domain :ConfigurationLink ;
+                 
+                 rdfs:range :Specification .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/configurationontology#confVarId
+
+:confVarId rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:label ""@en ;
+		   rdfs:label ""@zh-CN ;
+           rdfs:comment "Code identifying a ConfigurationVariable within the Lexicon it belongs to."@en ;
+           rdfs:comment ""@zh-CN ;
+           vs:term_status "unstable"@en ;
+           
+           rdfs:domain :ConfigurationVariable ;
+           
+           rdfs:range rdfs:Literal .
+
+
+
+###  http://purl.org/configurationontology#specId
+
+:specId rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        rdfs:label ""@en ;
+		rdfs:label ""@zh-CN ;
+        rdfs:comment "Code identifying a Specification within the Lexicon it belongs to."@en ;
+        rdfs:comment ""@zh-CN ;
+        vs:term_status "unstable"@en ;
+        
+        rdfs:domain :Specification ;
+        
+        rdfs:range rdfs:Literal .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/configurationontology#CompletelyDefinedProduct
+
+:CompletelyDefinedProduct rdf:type owl:Class ;
+                          rdfs:label ""@en ;
+						  rdfs:label ""@zh-CN ;
+						  rdfs:comment ""@zh-CN ;
+						  rdfs:comment ""@en ;
+                          rdfs:subClassOf :Configuration ;
+                          
+                          vs:term_status "unstable" .
+
+
+
+###  http://purl.org/configurationontology#Configuration
+
+:Configuration rdf:type owl:Class ;
+               
+               rdfs:label "Configuration"@en ,
+                          "Configuration"@fr,
+						  ""@zh-CN ;
+               
+               rdfs:subClassOf gr:Offering ;
+               rdfs:comment ""@zh-CN ;
+               rdfs:comment "A valid partially defined product - valid in the sense that it can be completed into an existing product, one that can be ordered, without changing any of the current selections."@en .
+
+
+
+###  http://purl.org/configurationontology#ConfigurationLink
+
+:ConfigurationLink rdf:type owl:Class ;
+                   rdfs:label ""@en ;
+			       rdfs:label ""@zh-CN ;
+				   rdfs:comment ""@zh-CN ;
+                   rdfs:comment "Models the link to another Configuration: typically, the association of a Specification to be selected, and a resulting Configuration."@en .
+
+
+
+###  http://purl.org/configurationontology#ConfigurationVariable
+
+:ConfigurationVariable rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                         owl:onProperty :lexicon ;
+                                         owl:onClass :Lexicon ;
+                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                                       ] ;
+                       rdfs:label ""@en ;
+					   rdfs:label ""@zh-CN ;
+					   rdfs:comment ""@zh-CN ;
+                       rdfs:comment "A variable in a Lexicon. List of alternative specifications"@en .
+
+
+
+###  http://purl.org/configurationontology#Lexicon
+
+:Lexicon rdf:type owl:Class ;
+         
+         rdfs:subClassOf owl:Thing ;
+         rdfs:label ""@en ;
+		 rdfs:label ""@zh-CN ;
+		 rdfs:comment ""@zh-CN ;
+         rdfs:comment "Defines a set of specifications and their variables"@en .
+
+
+
+###  http://purl.org/configurationontology#Model
+
+:Model rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Specification ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :lexicon ;
+                         owl:onClass :Lexicon ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+                       ] ;
+			rdfs:label ""@en ;
+			rdfs:label ""@zh-CN ;
+			rdfs:comment ""@zh-CN ;
+       rdfs:comment "A specification that identifies a model (like \"Ford T\"). Corresponding configurations are supposed to share the same lexicon."@en .
+
+
+
+###  http://purl.org/configurationontology#ProductRange
+
+:ProductRange rdf:type owl:Class .
+
+
+
+###  http://purl.org/configurationontology#QualitativeOrQuantitativeValue
+
+:QualitativeOrQuantitativeValue rdf:type owl:Class ;
+                                
+                                owl:equivalentClass [ rdf:type owl:Class ;
+                                                      owl:unionOf ( gr:QualitativeValue
+                                                                    gr:QuantitativeValue
+                                                                  )
+                                                    ] ;
+                                rdfs:label "Qualitative Or Quantitative Value"@en ;
+								rdfs:label "定性值或定量值"@zh-CN ;
+								rdfs:comment ""@zh-CN ;
+                                rdfs:comment """Superclass for GoodRelation's Quantitative and QualitativeValue classes, which are disjoint. At the moment you identify a new class of value, you may not be able to choose between them. Hence the need for this class.
+In the initial release of this ontology, and until 2013-02, Specification was a subClass of gr:QualitativeValue. But that was bad.""" .
+
+
+
+###  http://purl.org/configurationontology#Specification
+
+:Specification rdf:type owl:Class ;
+               
+               rdfs:subClassOf :QualitativeOrQuantitativeValue ;
+               rdfs:label "Specification"@en ;
+			   rdfs:label "规范"@zh-CN ;
+			   rdfs:comment "特性，选项，任何一种AP214规范"@zh-CN ;
+               rdfs:comment "Feature, option, any kind of AP 214 specification"@en .
+
+
+
+###  http://purl.org/goodrelations/v1#Offering
+
+gr:Offering rdf:type owl:Class .
+
+
+
+###  http://purl.org/goodrelations/v1#ProductOrServiceModel
+
+gr:ProductOrServiceModel rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf owl:Thing .
+
+
+
+###  http://purl.org/goodrelations/v1#QualitativeValue
+
+gr:QualitativeValue rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :QualitativeOrQuantitativeValue .
+
+
+
+###  http://purl.org/goodrelations/v1#QuantitativeValue
+
+gr:QuantitativeValue rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :QualitativeOrQuantitativeValue .
+
+
+
+###  http://purl.org/goodrelations/v1#UnitPriceSpecification
+
+gr:UnitPriceSpecification rdf:type owl:Class .
+
+
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq
+
+rdf:Seq rdf:type owl:Class .
+
+
+
+
+###  Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net
+

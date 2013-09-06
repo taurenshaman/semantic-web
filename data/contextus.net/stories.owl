@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE owl [
+  <!ENTITY xsd		"http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY rdf		"http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs		"http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY owl		"http://www.w3.org/2002/07/owl#">
+  <!ENTITY base		"http://purl.org/ontology/stories/">
+  <!ENTITY dc       "http://purl.org/dc/elements/1.1/">
+  <!ENTITY dct      "http://purl.org/dc/terms/">
+  <!ENTITY event    "http://purl.org/NET/c4dm/event.owl#">
+  <!ENTITY olo		"http://purl.org/ontology/olo/core#">
+]>  
+
+<rdf:RDF  xmlns:rdf="&rdf;"
+            xmlns:rdfs="&rdfs;"
+            xmlns:owl="&owl;"
+            xmlns:xsd="&xsd;"
+            xmlns:base="&base;"
+            xmlns:dc="&dc;"
+            xmlns:dct="&dct;"
+            xmlns:event="&event;"
+            xmlns:olo="&olo;">
+            
+<owl:Ontology rdf:about="&base;">
+    <rdfs:label xml:lang="en">Stories Ontology</rdfs:label>
+    <owl:versionInfo>Revision: 1</owl:versionInfo>
+</owl:Ontology>
+
+<!-- Story -->
+
+<owl:Class rdf:about="&base;Story">
+    <rdfs:label xml:lang="en">Story</rdfs:label>
+    <rdfs:comment xml:lang="en">A story that may be told, contain other stories, and have a sequence of events.</rdfs:comment>    
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="&base;subject">
+   <rdfs:label xml:lang="en">subject</rdfs:label>
+   <rdfs:comment xml:lang="en">The subject(s) of the story. e.g. characters, events, skos concepts.</rdfs:comment>
+   <rdfs:domain rdf:resource="&base;Story" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&base;sub_story">
+   <rdfs:label xml:lang="en">sub_story</rdfs:label>
+   <rdfs:comment xml:lang="en">A story which is contained within this story. For example, a TV episode may contain stories for different characters, or one overarching story may contain several other smaller stories.</rdfs:comment>
+   <rdfs:domain rdf:resource="&base;Story" />
+   <rdfs:range rdf:resource="&base;Story" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&base;events">
+   <rdfs:label xml:lang="en">event</rdfs:label>
+   <rdfs:comment xml:lang="en">An ordered list of Events within this story.</rdfs:comment>
+   <rdfs:domain rdf:resource="&base;Story" />
+   <rdfs:range rdf:resource="&base;EventList" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&base;contextualises">
+	<rdfs:label xml:lang="en">contextualises</rdfs:label>
+	<rdfs:domain rdf:resource="&base;Story" />
+	<rdfs:range rdf:resource="&base;Interpretation" />
+</owl:ObjectProperty>
+
+<!-- Interpretation -->
+
+<owl:Class rdf:about="&base;Interpretation">
+    <rdfs:label xml:lang="en">Interpretation</rdfs:label>
+    <rdfs:comment xml:lang="en">An interpretation of something in the context of a story, given some supporting material. This is the viewpoint of the interpretation's creator, and may assert statements about the item.</rdfs:comment>
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="&base;interprets">
+   <rdfs:label xml:lang="en">interprets</rdfs:label>
+   <rdfs:comment xml:lang="en">The thing which is interpreted by this interpretation.</rdfs:comment>
+   <rdfs:domain rdf:resource="&base;Interpretation" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&base;asserts">
+   <rdfs:label xml:lang="en">asserts</rdfs:label>
+   <rdfs:comment xml:lang="en">The Assertion which is asserted by this interpretation.</rdfs:comment>
+   <rdfs:domain rdf:resource="&base;Interpretation" />
+   <rdfs:range rdf:resource="&base;Assertion" />
+</owl:ObjectProperty>
+
+<!-- EventList -->
+
+<owl:Class rdf:about="&base;EventList">
+    <rdfs:label xml:lang="en">EventList</rdfs:label>
+    <rdfs:comment xml:lang="en">Provides a means to create an ordered list of events that occur within a story - effectively a pairing of an Event and a numeric position.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&olo;OrderedList" />
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="&base;slot">
+	<rdfs:label xml:lang="en">slot</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="&olo;slot" />
+	<rdfs:domain rdf:resource="&base;EventList" />
+	<rdfs:range rdf:resource="&base;EventSlot" />
+</owl:ObjectProperty>
+
+<!-- EventSlot -->
+
+<owl:Class rdf:about="&base;EventSlot">
+	<rdfs:label xml:lang="en">EventSlot</rdfs:label>
+	<rdfs:comment xml:lang="en">Places an Event in an EventList, with index and neighbouring Event information.</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&olo;Slot" />
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="&base;item">
+	<rdfs:label xml:lang="en">item</rdfs:label>
+	<rdfs:subPropertyOf rdf:resource="&olo;item" />
+	<rdfs:domain rdf:resource="&base;EventSlot" />
+	<rdfs:range rdf:resource="&event;Event" />
+</owl:ObjectProperty>
+
+<!-- Assertion -->
+
+<owl:Class rdf:about="&base;Assertion">
+    <rdfs:label xml:lang="en">Assertion</rdfs:label>
+    <rdfs:comment xml:lang="en">Contains a set of statements in the form of an RDF graph, thus allowing for interpretations to assert beliefs about the state of the system.</rdfs:comment>
+</owl:Class>
+
+<owl:ObjectProperty rdf:about="&base;facts">
+   <rdfs:label>facts</rdfs:label>
+   <rdfs:comment>Facts asserted by this assertion, in the form of an RDF graph.</rdfs:comment>
+   <rdfs:domain rdf:resource="&base;Assertion" />
+</owl:ObjectProperty>
+
+<!-- General properties -->
+
+<owl:ObjectProperty rdf:about="&base;supports">
+   <rdfs:label xml:lang="en">supports</rdfs:label>
+   <rdfs:comment xml:lang="en">A Thing which supports an Interpretation (e.g. a supporting document, Event, etc).</rdfs:comment>
+  <rdfs:range rdf:resource="&base;Interpretation" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&base;tells">
+    <rdfs:label xml:lang="en">tells</rdfs:label>
+    <rdfs:comment xml:lang="en">A story told by this Thing. The Thing could be a photograph which has a story attached to it, a person, a country, a monument, etc.</rdfs:comment>
+    <rdfs:range rdf:resource="&base;Story" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&base;describes">
+	<rdfs:label xml:lang="en">describes</rdfs:label>
+	<rdfs:comment xml:lang="en">A Thing which describes an Event. This could be a Media Fragment, an Image, etc.</rdfs:comment>
+	<rdfs:range rdf:resource="&event;Event" />
+	<owl:inverseOf rdf:resource="&base;describedBy" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&base;describedBy">
+    <rdfs:label xml:lang="en">describedBy</rdfs:label>
+    <rdfs:comment xml:lang="en">The inverse of describes, this is an Event describedBy a Thing (e.g. a programme, photo)</rdfs:comment>
+    <rdfs:domain rdf:resource="&event;Event" />
+</owl:ObjectProperty>
+
+</rdf:RDF>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:ds="http://inference-web.org/2.0/ds.owl#"
+  xml:base="http://inference-web.org/2.0/ds.owl">
+
+<owl:Ontology rdf:about="">
+   <rdfs:label xml:lang="en">Data Structure Ontology (v 0.1.1)</rdfs:label>
+   <rdfs:comment xml:lang="en">This ontology offers OWL-Lite definition for object list. It is a restricted version of OWL-S ObjectList (http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl). 
+  It is compatible to rdf:List with the following differences: (i) OWL individuals as list members and (ii) appropriate property cardinality restriction. The range of first will specified by the subclasses. 
+  </rdfs:comment>
+</owl:Ontology>
+
+<!--
+2009-04-24
+  removed empty namespace declaration. that help reuse the namespace prefix mapping in jena. 
+
+v2.7  (June 28)
+* namespace has been changed
+
+ver 0.1.1 (Jan 12)
+- change the cardinality restriction on rest from =1 to <=1. Therefore, we may define the end of list by not instantiating the ds:rest.
+-->
+
+
+<owl:Class rdf:ID="List">
+	<rdfs:label xml:lang="en">List</rdfs:label>
+	<rdfs:comment xml:lang="en">A template for defining typed-list. It functions like rdf:List with object members.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#first"/>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#rest"/>
+        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>  
+</owl:Class>
+
+<ds:List rdf:ID="nil">
+  <rdfs:label xml:lang="en">nil</rdfs:label>
+  <rdfs:comment xml:lang="en">The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.</rdfs:comment>
+</ds:List>
+
+<owl:ObjectProperty rdf:ID="first">
+  <rdfs:label xml:lang="en">first</rdfs:label>
+  <rdfs:comment xml:lang="en">The first item in the subject RDF list.</rdfs:comment>
+  <rdfs:domain rdf:resource="#List"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="rest">
+  <rdfs:label xml:lang="en">rest</rdfs:label>
+  <rdfs:comment xml:lang="en">The rest of the subject RDF list after the first item.</rdfs:comment>
+  <rdfs:domain rdf:resource="#List"/>
+  <rdfs:range rdf:resource="#List"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

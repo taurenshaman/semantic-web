@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rdf:RDF 
+      xml:base="http://www.lingvoj.org/semio"
+      xmlns:owl="http://www.w3.org/2002/07/owl#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:dc="http://purl.org/dc/terms/"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+<!-- Ontology Information -->
+  <owl:Ontology rdf:about="http://www.lingvoj.org/semio.rdf">
+     <rdf:type rdf:resource="http://labs.mondeca.com/vocab/voaf#Vocabulary"/>
+    <dc:title xml:lang="en">SEMIO Ontology</dc:title>
+    <dc:description xml:lang="en">An ontology of signs</dc:description>
+    <rdfs:comment xml:lang="en">This is a very preliminary draft. Use cases for such an ontology are not  clear.</rdfs:comment>
+    <dc:modified>2012-02-20</dc:modified>
+    <dc:creator>
+          <foaf:Person rdf:about="http://labs.mondeca.com/vocab/mondeca.rdf#bvatant">
+                <foaf:name>Bernard Vatant</foaf:name>
+          </foaf:Person>
+    </dc:creator>
+  </owl:Ontology>
+
+<!-- Classes -->
+  <owl:Class rdf:about="#Code">
+    <rdfs:comment xml:lang="en">A string of characters, generally intended to be a unique identifier in some context</rdfs:comment>
+    <rdfs:label xml:lang="en">Code</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DataSign"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Context">
+    <rdfs:comment xml:lang="en">A resource describing the context. May gather any relevant piece of information: linguistic system context, space-time restrictions, information system, community of users ... </rdfs:comment>
+    <rdfs:label xml:lang="en">Context</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#DataSign">
+    <rdfs:comment xml:lang="en">A sign of which signifier is defined as the value of the Datatype Property 'signifierData'</rdfs:comment>
+    <rdfs:label xml:lang="en">Data Sign</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Sign"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#signifierData"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Icon">
+    <rdfs:comment xml:lang="en">An image which is a symbolic representation of something. Flags, logos, coat of arms ...</rdfs:comment>
+    <rdfs:label xml:lang="en">Icon</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Image"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Image">
+    <rdfs:comment xml:lang="en">Any image used as a sign. Either by direct denotation (a photograph of a cat for the concept of cat), or symbolic conotation (icons).</rdfs:comment>
+    <rdfs:label xml:lang="en">Image</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ObjectSign"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Image"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Multimedia">
+    <rdfs:comment xml:lang="en">For example a video representation</rdfs:comment>
+    <rdfs:label xml:lang="en">Multimedia</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ObjectSign"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#ObjectSign">
+    <rdfs:comment xml:lang="en">A sign of which signifier is defined as the value of the Object Property 'signifierObject'</rdfs:comment>
+    <rdfs:label xml:lang="en">Object Sign</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Sign"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="#signifierObject"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Phrase">
+    <rdfs:comment xml:lang="en">A string making sense in some natural language. Typically a term from a vocabulary. Other exemples include assertions, slogans, taglines ...</rdfs:comment>
+    <rdfs:label xml:lang="en">Phrase</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#DataSign"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Sign">
+    <rdfs:comment xml:lang="en">A sign has exactly one signifier, either 'signifier data' or 'signifier resource' attribute</rdfs:comment>
+    <rdfs:comment xml:lang="en">A sign is an information resource. As such, it can be useful to attach metadata using Dublin Core attributes such as creator, creation date etc ...</rdfs:comment>
+    <rdfs:comment xml:lang="en">Something that stands for something else in a given context. A sign has a signifier (physical data which can be communicated), a signified (a concept, or formal representation), both indicating a referent, which is outside the language scope, and a context in which the signification is asserted.</rdfs:comment>
+    <rdfs:label xml:lang="en">Sign</rdfs:label>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Sound">
+    <rdfs:comment xml:lang="en">Typically, the sound rendering of a phrase</rdfs:comment>
+    <rdfs:label xml:lang="en">Sound</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#ObjectSign"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#URI">
+    <rdfs:comment xml:lang="en">A URI is a code used in the context of the Web</rdfs:comment>
+    <rdfs:label xml:lang="en">Uniform Resource Identifier</rdfs:label>
+    <rdfs:subClassOf rdf:resource="#Code"/>
+  </owl:Class>
+
+<!-- Annotation Properties -->
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#versionInfo"/>
+
+<!-- Datatype Properties -->
+  <owl:DatatypeProperty rdf:about="#signifierData">
+    <rdfs:comment xml:lang="en">A data which is the signifier, such as a word, code or any kind of identifier. URI strings can be used as signifiers. In such a case, the default signified is the resource identified by the URI.</rdfs:comment>
+    <rdfs:domain rdf:resource="#DataSign"/>
+    <rdfs:label xml:lang="en">signifier data</rdfs:label>
+  </owl:DatatypeProperty>
+
+<!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="#UF">
+    <rdfs:comment xml:lang="en">Links to an alternative, non-preferred sign for the same signified</rdfs:comment>
+    <rdfs:comment xml:lang="en">Use this property for signs defined in the same context</rdfs:comment>
+    <rdfs:domain rdf:resource="#Sign"/>
+    <rdfs:label xml:lang="en">used for</rdfs:label>
+    <rdfs:range rdf:resource="#Sign"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#USE">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">Links to a preferred sign for the same signified</rdfs:comment>
+    <rdfs:comment xml:lang="en">Use this property for signs defined in the same context</rdfs:comment>
+    <rdfs:domain rdf:resource="#Sign"/>
+    <rdfs:label xml:lang="en">use</rdfs:label>
+    <rdfs:range rdf:resource="#Sign"/>
+    <owl:inverseOf rdf:resource="#UF"/>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#coreferentWith">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">Links two signs considered as having the same referent, even if they have different signifiers. Useful to link different and possibly inconsistent views of the referent.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Use this property for signs defined in different contexts</rdfs:comment>
+    <rdfs:domain rdf:resource="#Sign"/>
+    <rdfs:label xml:lang="en">coreference</rdfs:label>
+    <rdfs:range rdf:resource="#Sign"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#significationContext">
+    <rdfs:comment xml:lang="en">A resource defining the signification context, in the scope of which the signifier-signified association is asserted as valid.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Typically, the context ressource should be constructed as a blank node</rdfs:comment>
+    <rdfs:domain rdf:resource="#Sign"/>
+    <rdfs:label xml:lang="en">signification context</rdfs:label>
+    <rdfs:range rdf:resource="#Context"/>
+  </owl:ObjectProperty>
+
+  <owl:FunctionalProperty rdf:about="#signified">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment xml:lang="en">The resource for which the sign stands for</rdfs:comment>
+    <rdfs:domain rdf:resource="#Sign"/>
+    <rdfs:label xml:lang="en">signified</rdfs:label>
+  </owl:FunctionalProperty>
+
+  <owl:ObjectProperty rdf:about="#signifierObject">
+    <rdfs:comment xml:lang="en">A resource which is the signifier. Typical examples include images or icons, or sound tracks for natural language words.</rdfs:comment>
+    <rdfs:domain rdf:resource="#ObjectSign"/>
+    <rdfs:label xml:lang="en">signifier object</rdfs:label>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#transcription">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdfs:comment xml:lang="en">A transcription links two signs with the same signified in different formats or supports. For example a phrase to its sound rendering, or a trade mark to a logo.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Translation is considered as a particular case of transcription (debatable)</rdfs:comment>
+    <rdfs:domain rdf:resource="#Sign"/>
+    <rdfs:label xml:lang="en">transcription</rdfs:label>
+    <rdfs:range rdf:resource="#Sign"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#translation">
+    <rdfs:domain rdf:resource="#Phrase"/>
+    <rdfs:label xml:lang="en">translation</rdfs:label>
+    <rdfs:range rdf:resource="#Phrase"/>
+    <rdfs:subPropertyOf rdf:resource="#transcription"/>
+  </owl:ObjectProperty>
+</rdf:RDF>

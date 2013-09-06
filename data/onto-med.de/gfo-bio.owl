@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY gfo "http://www.onto-med.de/ontologies/gfo.owl">
+  <!ENTITY gfo-bio "http://onto.eva.mpg.de/ontologies/gfo-bio.owl">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+]>
+<rdf:RDF xml:base="&gfo-bio;"
+         xmlns:owl="&owl;"
+         xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;">
+
+<!-- Ontology Information -->
+  <owl:Ontology rdf:about="">
+    <rdfs:comment xml:lang="en">Copyright (c) 2006, Regents of the Research Group Ontologies in Medicine (Onto-Med), University of Leipzig, and the Max-Planck-Institute for Evolutionary Anthropology.
+All rights reserved.  
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Neither the name of the Research Group Ontologies in Medicine (Onto-Med), University of Leipzig or the Max-Planck-Institute for Evolutionary Anthropology nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</rdfs:comment>
+    <rdfs:comment xml:lang="en">This distribution uses ideas and code from Alan Rector, Robert Stevens, Jeremy Rogers and the CO-ODE and BioHealth Informatics Teams.
+We used the OWL-Version of the Simple Bio Upper Ontology (http://www.cs.man.ac.uk/~rector/ontologies/simple-top-bio/) as a source of ideas, and included some of the categories (esp. value partitions). The gfo-sbuo-link.owl uses the entire ontology and links to it.</rdfs:comment>
+    <owl:imports>
+      <owl:Ontology rdf:about="&gfo;"/>
+    </owl:imports>
+  </owl:Ontology>
+
+<!-- Classes -->
+  <owl:Class rdf:about="#Biological_individual">
+    <rdfs:subClassOf rdf:resource="&gfo;#Individual"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#on_level"/>
+        <owl:someValuesFrom rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_presential">
+    <rdfs:subClassOf rdf:resource="&gfo;#Presential"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="&gfo;#Presential"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#on_level"/>
+        <owl:someValuesFrom rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Organism">
+    <rdfs:subClassOf rdf:resource="#Biological_material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+  <owl:Class rdf:about="http://www.onto-med.de/ontologies/gfo.owl#Category"/>
+  <owl:Class rdf:about="http://www.onto-med.de/ontologies/gfo.owl#Ontological_layer"/>
+  <owl:Class rdf:about="#Adenine_symbol">
+    <rdfs:subClassOf rdf:resource="#Nucleotide_symbol"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Amino_acid_molecule">
+    <rdfs:subClassOf rdf:resource="#Molecule"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#instance_of"/>
+        <owl:someValuesFrom rdf:resource="#Amino_acid_symbol"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Amino_acid_sequence">
+    <rdfs:subClassOf rdf:resource="&gfo;#Symbol_sequence"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Amino_acid_symbol">
+    <rdfs:subClassOf rdf:resource="&gfo;#Symbol"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Amino_acid_molecule"/>
+        <owl:onProperty rdf:resource="&gfo;#instantiated_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_development">
+    <rdfs:subClassOf rdf:resource="#Biological_process"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Anatomical_part"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part">
+    <rdfs:subClassOf rdf:resource="#Biological_material_object"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Organism"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part_of_animal">
+    <rdfs:subClassOf rdf:resource="#Anatomical_part"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part_of_arabidopsis">
+    <rdfs:subClassOf rdf:resource="#Anatomical_part_of_plant"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Arabidopsis"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part_of_dictyostelium_discoideum">
+    <rdfs:subClassOf rdf:resource="#Anatomical_part_of_animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part_of_fungus">
+    <rdfs:subClassOf rdf:resource="#Anatomical_part"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Fungus"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part_of_mouse">
+    <rdfs:subClassOf rdf:resource="#Anatomical_part"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Mouse"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Anatomical_part_of_plant">
+    <rdfs:subClassOf rdf:resource="#Anatomical_part"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Plant"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Animal">
+    <rdfs:subClassOf rdf:resource="#Multicellular_organism"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Arabidopsis">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Arabidopsis_anatomical_development">
+    <rdfs:subClassOf rdf:resource="#Anatomical_development"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Anatomical_part_of_arabidopsis"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Arabidopsis_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Arabidopsis"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Arabidopsis_development_stage">
+    <rdfs:subClassOf rdf:resource="#Development_stage"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Arabidopsis_development"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Arabidopsis"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Atom">
+    <rdfs:subClassOf rdf:resource="#Chemical_presential"/>
+    <rdfs:subClassOf rdf:resource="&gfo;#Material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_action">
+    <rdfs:subClassOf rdf:resource="&gfo;#Action"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_configuration">
+    <rdfs:subClassOf rdf:resource="&gfo;#Configuration"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="&gfo;#Configuration"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#on_level"/>
+        <owl:someValuesFrom rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_configuroid">
+    <rdfs:subClassOf rdf:resource="&gfo;#Configuroid"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_experiment">
+    <rdfs:subClassOf rdf:resource="#Experiment"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Biological_presential"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_function">
+    <rdfs:subClassOf rdf:resource="&gfo;#Function"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_material_object">
+    <rdfs:subClassOf rdf:resource="&gfo;#Material_object"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="&gfo;#Material_object"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#on_level"/>
+        <owl:someValuesFrom rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_occurent">
+    <rdfs:subClassOf rdf:resource="&gfo;#Occurrent"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_process">
+    <rdfs:subClassOf rdf:resource="&gfo;#Process"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="&gfo;#on_level"/>
+            <owl:someValuesFrom rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+          </owl:Restriction>
+          <owl:Class>
+            <owl:intersectionOf rdf:parseType="Collection">
+              <rdf:Description rdf:about="&gfo;#Process"/>
+            </owl:intersectionOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_situation">
+    <rdfs:subClassOf rdf:resource="&gfo;#Situation"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="&gfo;#Situation"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#on_level"/>
+        <owl:someValuesFrom rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#Biological_level"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Biological_situoid">
+    <rdfs:subClassOf rdf:resource="&gfo;#Situoid"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Caenorhabditis_elegans">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cell">
+    <rdfs:subClassOf rdf:resource="#Biological_material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cell_component">
+    <rdfs:subClassOf rdf:resource="#Biological_material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cereal_plant">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Chemical_presential">
+    <rdfs:subClassOf rdf:resource="&gfo;#Presential"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="&gfo;#Presential"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#on_level"/>
+        <owl:someValuesFrom rdf:resource="&gfo;#Chemical_level"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Chemical_process">
+    <rdfs:subClassOf rdf:resource="&gfo;#Process"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="&gfo;#Process"/>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#on_level"/>
+        <owl:someValuesFrom rdf:resource="&gfo;#Chemical_level"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Chemical_reaction">
+    <rdfs:subClassOf rdf:resource="#Chemical_process"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Cytosine_symbol">
+    <rdfs:subClassOf rdf:resource="#Nucleotide_symbol"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#DNA">
+    <rdfs:subClassOf rdf:resource="#Polynucleotide_molecule"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#instance_of"/>
+        <owl:someValuesFrom rdf:resource="#DNA_sequence"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#DNA_sequence">
+    <rdfs:subClassOf rdf:resource="#Nucleotide_sequence"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Development_stage">
+    <rdfs:subClassOf rdf:resource="#Biological_process"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Organism_development"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Dictyostelium_discoideum">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Drosophila">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Experiment">
+    <rdfs:subClassOf rdf:resource="&gfo;#Action"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Experiment_method">
+    <rdfs:subClassOf rdf:resource="#Method"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Experiment"/>
+        <owl:onProperty rdf:resource="&gfo;#instantiated_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Fungus">
+    <rdfs:subClassOf rdf:resource="#Organism"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Guanine_symbol">
+    <rdfs:subClassOf rdf:resource="#Nucleotide_symbol"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Habronattus_californicus">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Human">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Loggerhead_sea_turtle">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Maize">
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mammal">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Medaka_fish">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Method">
+    <rdfs:subClassOf rdf:resource="&gfo;#Concept"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Molecule">
+    <rdfs:subClassOf rdf:resource="#Chemical_presential"/>
+    <rdfs:subClassOf rdf:resource="&gfo;#Material_object"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+            <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+            <owl:someValuesFrom rdf:resource="#Atom"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Monocellular_organism">
+    <rdfs:subClassOf rdf:resource="#Organism"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <rdf:Description rdf:about="#Organism"/>
+      <rdf:Description rdf:about="#Cell"/>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mosquito">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Mouse">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Multicellular_organism">
+    <rdfs:subClassOf rdf:resource="#Organism"/>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+            <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+            <owl:someValuesFrom rdf:resource="#Cell"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Nucleotide_molecule">
+    <rdfs:subClassOf rdf:resource="#Molecule"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#instance_of"/>
+        <owl:someValuesFrom rdf:resource="#Nucleotide_symbol"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Nucleotide_sequence">
+    <rdfs:subClassOf rdf:resource="&gfo;#Symbol_sequence"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Nucleotide_symbol">
+    <rdfs:subClassOf rdf:resource="&gfo;#Symbol"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Nucleotide_molecule"/>
+        <owl:onProperty rdf:resource="&gfo;#instantiated_by"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Organism_development">
+    <rdfs:subClassOf rdf:resource="#Biological_process"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Organism"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Pathway">
+    <rdfs:subClassOf rdf:resource="#Chemical_reaction"/>
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+      </owl:Restriction>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+        <owl:someValuesFrom rdf:resource="#Chemical_reaction"/>
+      </owl:Restriction>
+    </owl:intersectionOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plant">
+    <rdfs:subClassOf rdf:resource="#Organism"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plant_anatomical_development">
+    <rdfs:subClassOf rdf:resource="#Anatomical_development"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Anatomical_part_of_plant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plant_development">
+    <rdfs:subClassOf rdf:resource="#Organism_development"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Plant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plant_development_stage">
+    <rdfs:subClassOf rdf:resource="#Development_stage"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="#Plant_development"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#has_participant"/>
+        <owl:someValuesFrom rdf:resource="#Plant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Plasmodium_falciparum">
+    <rdfs:subClassOf rdf:resource="#Monocellular_organism"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Polynucleotide_molecule">
+    <rdfs:subClassOf rdf:resource="#Molecule"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+        <owl:someValuesFrom rdf:resource="#Nucleotide_molecule"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Protein">
+    <rdfs:subClassOf rdf:resource="#Molecule"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+        <owl:someValuesFrom rdf:resource="#Amino_acid_molecule"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#RNA">
+    <rdfs:subClassOf rdf:resource="#Polynucleotide_molecule"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#instance_of"/>
+        <owl:someValuesFrom rdf:resource="#RNA_sequence"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:Class rdf:about="#RNA_sequence">
+    <rdfs:subClassOf rdf:resource="#Nucleotide_sequence"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Species">
+    <rdfs:subClassOf rdf:resource="&gfo;#Concept"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Thymine_symbol">
+    <rdfs:subClassOf rdf:resource="#Nucleotide_symbol"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Tissue">
+    <rdfs:subClassOf rdf:resource="#Biological_material_object"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Uracil_symbol">
+    <rdfs:subClassOf rdf:resource="#Nucleotide_symbol"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Zebrafish">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="&gfo;#Abstract"/>
+  <owl:Class rdf:about="&gfo;#Action"/>
+  <owl:Class rdf:about="&gfo;#Amount_of_substrate"/>
+  <owl:Class rdf:about="&gfo;#Awareness_level"/>
+  <owl:Class rdf:about="&gfo;#Change"/>
+  <owl:Class rdf:about="&gfo;#Chemical_level"/>
+  <owl:Class rdf:about="&gfo;#Chronoid"/>
+  <owl:Class rdf:about="&gfo;#Concept"/>
+  <owl:Class rdf:about="&gfo;#Concrete"/>
+  <owl:Class rdf:about="&gfo;#Configuration"/>
+  <owl:Class rdf:about="&gfo;#Configuroid"/>
+  <owl:Class rdf:about="&gfo;#Continuous"/>
+  <owl:Class rdf:about="&gfo;#Continuous_change"/>
+  <owl:Class rdf:about="&gfo;#Continuous_process"/>
+  <owl:Class rdf:about="&gfo;#Dependent"/>
+  <owl:Class rdf:about="&gfo;#Discrete"/>
+  <owl:Class rdf:about="&gfo;#Discrete_presential"/>
+  <owl:Class rdf:about="&gfo;#Discrete_process"/>
+  <owl:Class rdf:about="&gfo;#Entity"/>
+  <owl:Class rdf:about="&gfo;#Extrinsic_change"/>
+  <owl:Class rdf:about="&gfo;#Function"/>
+  <owl:Class rdf:about="&gfo;#History"/>
+  <owl:Class rdf:about="&gfo;#Independent"/>
+  <owl:Class rdf:about="&gfo;#Individual"/>
+  <owl:Class rdf:about="&gfo;#Instantanuous_change"/>
+  <owl:Class rdf:about="&gfo;#Intrinsic_change"/>
+  <owl:Class rdf:about="&gfo;#Item"/>
+  <owl:Class rdf:about="&gfo;#Level"/>
+  <owl:Class rdf:about="&gfo;#Line"/>
+  <owl:Class rdf:about="&gfo;#Mass_entity"/>
+  <owl:Class rdf:about="&gfo;#Material_boundary"/>
+  <owl:Class rdf:about="&gfo;#Material_line"/>
+  <owl:Class rdf:about="&gfo;#Material_object"/>
+  <owl:Class rdf:about="&gfo;#Material_persistant"/>
+  <owl:Class rdf:about="&gfo;#Material_point"/>
+  <owl:Class rdf:about="&gfo;#Material_stratum"/>
+  <owl:Class rdf:about="&gfo;#Material_structure"/>
+  <owl:Class rdf:about="&gfo;#Material_surface"/>
+  <owl:Class rdf:about="&gfo;#Mental_stratum"/>
+  <owl:Class rdf:about="&gfo;#Occurrent"/>
+  <owl:Class rdf:about="&gfo;#Persistant"/>
+  <owl:Class rdf:about="&gfo;#Personality_level"/>
+  <owl:Class rdf:about="&gfo;#Physical_level"/>
+  <owl:Class rdf:about="&gfo;#Point"/>
+  <owl:Class rdf:about="&gfo;#Presential"/>
+  <owl:Class rdf:about="&gfo;#Process"/>
+  <owl:Class rdf:about="&gfo;#Processual_role"/>
+  <owl:Class rdf:about="&gfo;#Property"/>
+  <owl:Class rdf:about="&gfo;#Property_value"/>
+  <owl:Class rdf:about="&gfo;#Relational_role"/>
+  <owl:Class rdf:about="&gfo;#Relator"/>
+  <owl:Class rdf:about="&gfo;#Role"/>
+  <owl:Class rdf:about="&gfo;#Set"/>
+  <owl:Class rdf:about="&gfo;#Situation"/>
+  <owl:Class rdf:about="&gfo;#Situoid"/>
+  <owl:Class rdf:about="&gfo;#Social_role"/>
+  <owl:Class rdf:about="&gfo;#Social_stratum"/>
+  <owl:Class rdf:about="&gfo;#Space"/>
+  <owl:Class rdf:about="&gfo;#Space_time"/>
+  <owl:Class rdf:about="&gfo;#Spatial_boundary"/>
+  <owl:Class rdf:about="&gfo;#Spatial_region"/>
+  <owl:Class rdf:about="&gfo;#State"/>
+  <owl:Class rdf:about="&gfo;#Stratum"/>
+  <owl:Class rdf:about="&gfo;#Surface"/>
+  <owl:Class rdf:about="&gfo;#Symbol"/>
+  <owl:Class rdf:about="&gfo;#Symbol_sequence"/>
+  <owl:Class rdf:about="&gfo;#Symbol_structure"/>
+  <owl:Class rdf:about="&gfo;#Temporal_region"/>
+  <owl:Class rdf:about="&gfo;#Time"/>
+  <owl:Class rdf:about="&gfo;#Time_boundary"/>
+  <owl:Class rdf:about="&gfo;#Token">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#instance_of"/>
+        <owl:someValuesFrom rdf:resource="&gfo;#Symbol_structure"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+
+  <owl:Class rdf:about="&gfo;#Topoid"/>
+  <owl:Class rdf:about="&gfo;#Universal"/>
+  <owl:Class rdf:about="&gfo;#Value_space"/>
+  <owl:Class rdf:about="http://reliant.teknowledge.com/DAML/SUMO.owl#ElementalSubstance">
+    <rdfs:comment xml:lang="en">This is the entry point for a Period Table OWL File. Unfortunately, Pellet seems to die with
+every publicly available Period Table in OWL, therefore this is just the entry point. Declare
+the appropriate class equivalent with this one or Atom if you want to use elements.</rdfs:comment>
+    <owl:equivalentClass rdf:resource="#Atom"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.co-ode.org/ontologies/amino-acid/2005/10/11/amino-acid.owl#AminoAcid">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="&gfo;#instance_of"/>
+        <owl:someValuesFrom rdf:resource="#Amino_acid_symbol"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass rdf:resource="#Amino_acid_molecule"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#DDANAT_0000001"/>
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#GO_0005575">
+    <rdfs:subClassOf rdf:resource="#Cell_component"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#MA_0000001">
+    <rdfs:subClassOf rdf:resource="#Anatomical_part_of_mouse"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#PO_0007021">
+    <rdfs:subClassOf rdf:resource="#Plant_anatomical_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#PO_0007033">
+    <rdfs:subClassOf rdf:resource="#Plant_development_stage"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#TAIR_0000021">
+    <rdfs:subClassOf rdf:resource="#Arabidopsis_development_stage"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#TAIR_0000022">
+    <rdfs:subClassOf rdf:resource="#Arabidopsis_anatomical_development"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="http://www.geneontology.org/owl/#TAIR_0000205"/>
+  <owl:Class rdf:about="&owl;Nothing"/>
+  <owl:Class>
+    <rdfs:subClassOf rdf:resource="#Anatomical_part_of_dictyostelium_discoideum"/>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+        <owl:someValuesFrom rdf:resource="http://www.geneontology.org/owl/#DDANAT_0000001"/>
+      </owl:Restriction>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.geneontology.org/owl/#develops_from"/>
+        <owl:someValuesFrom rdf:resource="http://www.geneontology.org/owl/#DDANAT_0000001"/>
+      </owl:Restriction>
+    </owl:unionOf>
+  </owl:Class>
+
+<!-- Annotation Properties -->
+  <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+
+<!-- Object Properties -->
+  <owl:ObjectProperty rdf:about="http://www.onto-med.de/ontologies/gfo.owl#has_part">
+    <owl:equivalentProperty rdf:resource="http://www.geneontology.org/owl#OBO_REL_has_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.onto-med.de/ontologies/gfo.owl#part_of">
+    <owl:equivalentProperty rdf:resource="http://www.geneontology.org/owl#OBO_REL_part_of"/>
+    <owl:equivalentProperty rdf:resource="http://www.geneontology.org/owl/#part_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gfo;#abstract_has_part"/>
+  <owl:ObjectProperty rdf:about="&gfo;#abstract_part_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#agent_in"/>
+  <owl:ObjectProperty rdf:about="&gfo;#boundary_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#categorial_part_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#category_in_layer"/>
+  <owl:ObjectProperty rdf:about="&gfo;#caused_by"/>
+  <owl:ObjectProperty rdf:about="&gfo;#causes"/>
+  <owl:ObjectProperty rdf:about="&gfo;#constituent_part_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#depends_on"/>
+  <owl:ObjectProperty rdf:about="&gfo;#exists_at"/>
+  <owl:ObjectProperty rdf:about="&gfo;#framed_by"/>
+  <owl:ObjectProperty rdf:about="&gfo;#frames"/>
+  <owl:ObjectProperty rdf:about="&gfo;#function_determinant_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#function_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#functional_item_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#goal_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_agent"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_boundary"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_categorial_part"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_category"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_constituent_part"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_function"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_function_determinant"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_functional_item"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_goal"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_left_time_boundary"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_member"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_participant">
+    <owl:equivalentProperty rdf:resource="http://www.geneontology.org/owl#OBO_REL_has_participant"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gfo;#has_proper_part"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_requirement"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_right_time_boundary"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_sequence_constituent"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_spatial_boundary"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_time_boundary"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_token"/>
+  <owl:ObjectProperty rdf:about="&gfo;#has_value"/>
+  <owl:ObjectProperty rdf:about="&gfo;#instance_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#instantiated_by"/>
+  <owl:ObjectProperty rdf:about="&gfo;#layer_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#left_boundary_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#level_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#member_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#necessary_for"/>
+  <owl:ObjectProperty rdf:about="&gfo;#occupied_by"/>
+  <owl:ObjectProperty rdf:about="&gfo;#occupies"/>
+  <owl:ObjectProperty rdf:about="&gfo;#on_layer"/>
+  <owl:ObjectProperty rdf:about="&gfo;#on_level"/>
+  <owl:ObjectProperty rdf:about="&gfo;#on_stratum"/>
+  <owl:ObjectProperty rdf:about="&gfo;#participates_in">
+    <owl:equivalentProperty rdf:resource="http://www.geneontology.org/owl#OBO_REL_participates_in"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&gfo;#plays_role"/>
+  <owl:ObjectProperty rdf:about="&gfo;#projection_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#projects_to"/>
+  <owl:ObjectProperty rdf:about="&gfo;#proper_part_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#realized_by"/>
+  <owl:ObjectProperty rdf:about="&gfo;#realizes"/>
+  <owl:ObjectProperty rdf:about="&gfo;#requirement_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#right_boundary_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#role_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#sequence_constituent_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#spatial_boundary_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#stratum_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#time_boundary_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#token_of"/>
+  <owl:ObjectProperty rdf:about="&gfo;#value_of"/>
+  <owl:ObjectProperty rdf:about="http://www.geneontology.org/owl#OBO_REL_has_part">
+    <owl:equivalentProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#has_part"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.geneontology.org/owl#OBO_REL_has_participant">
+    <owl:equivalentProperty rdf:resource="&gfo;#has_participant"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.geneontology.org/owl#OBO_REL_part_of">
+    <owl:equivalentProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.geneontology.org/owl#OBO_REL_participates_in">
+    <owl:equivalentProperty rdf:resource="&gfo;#participates_in"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.geneontology.org/owl/#develops_from">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.geneontology.org/owl/#part_of">
+    <owl:equivalentProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+  </owl:ObjectProperty>
+
+<!-- Instances -->
+  <owl:Thing rdf:about="&gfo;#empty_set"/>
+  <owl:Restriction>
+    <rdfs:subClassOf rdf:resource="#Anatomical_part_of_mouse"/>
+    <owl:onProperty rdf:resource="http://www.geneontology.org/owl/#part_of"/>
+    <owl:someValuesFrom rdf:resource="http://www.geneontology.org/owl/#MA_0000001"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <rdfs:subClassOf rdf:resource="#Cell_component"/>
+    <owl:onProperty rdf:resource="http://www.onto-med.de/ontologies/gfo.owl#part_of"/>
+    <owl:someValuesFrom rdf:resource="#Cell"/>
+  </owl:Restriction>
+
+  <owl:Restriction>
+    <rdfs:subClassOf rdf:resource="#Cell_component"/>
+    <owl:onProperty rdf:resource="http://www.geneontology.org/owl/#part_of"/>
+    <owl:someValuesFrom rdf:resource="http://www.geneontology.org/owl/#GO_0005575"/>
+  </owl:Restriction>
+</rdf:RDF>

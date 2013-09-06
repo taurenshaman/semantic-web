@@ -1,0 +1,1508 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY owl2 "http://www.w3.org/2006/12/owl2#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY gfo "http://www.onto-med.de/ontologies/gfo.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY gfo-basic "http://www.onto-med.de/ontologies/gfo-basic.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.onto-med.de/ontologies/gfo-basic.owl#"
+     xml:base="http://www.onto-med.de/ontologies/gfo-basic.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:gfo="http://www.onto-med.de/ontologies/gfo.owl#"
+     xmlns:gfo-basic="http://www.onto-med.de/ontologies/gfo-basic.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl2="http://www.w3.org/2006/12/owl2#">
+    <owl:Ontology rdf:about="">
+        <dc:rights rdf:datatype="&xsd;string"
+            >Copyright (c) 2006-2008, Regents of the Research Group Ontologies in Medicine (Onto-Med), University of Leipzig, Germany.
+       All rights reserved.  
+
+       Redistribution and use in source and binary forms, with or without modification,
+       are permitted provided that the following conditions are met:
+       
+       1. Redistributions of source code must retain the above copyright notice, this list
+          of conditions and the following disclaimer.
+       
+       2. Redistributions in binary form must reproduce the above copyright notice, this list
+          of conditions and the following disclaimer in the documentation and/or other
+          materials provided with the distribution.
+          
+       3. Neither the name of the Research Group Ontologies in Medicine (Onto-Med), University
+          of Leipzig nor the names of its contributors may be used to endorse or promote products
+          derived from this software without specific prior written permission.
+
+       THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS
+       OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+       AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+       CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+       DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+       DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+       IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+       OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</dc:rights>
+        <owl:versionInfo
+            >Version 1.0 ($Revision: 1.13 $)</owl:versionInfo>
+        <dc:description
+            >This file belongs to the OWL distribution of GFO, cf. http://www.onto-med.de/ontologies/gfo.
+-----------------
+
+It comprises a set of selected major and rather stable GFO categories, with the intention to serve as a comprehensible starting point which
+
+1. should be useful for immediate modeling purposes,
+2. covers GFO&#39;s areas and exhibits outstanding GFO features
+3. omits categories of more theoretical character or those which are easily definable
+
+Categories of the third kind will be provided in separate extensions.
+
+-----------------
+
+In some comments, references to documents are used. These refer to several versions of the following report:
+
+Herre, H.; Heller, B.; Burek, P.; Hoehndorf, R.; Loebe, F. &amp; Michalek, H.. General Formal Ontology (GFO): A Foundational Ontology Integrating Objects and Processes. Part I: Basic Principles. Research Group Ontologies in Medicine (Onto-Med), University of Leipzig.
+
+[herre-h-2006--a]: Version 1.0, Onto-Med Report Nr. 8, 01.07.2006
+[part1-v1.0.1] Version 1.0.1., Draft, 14.02.2007</dc:description>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&dc;description"/>
+    <owl:AnnotationProperty rdf:about="&dc;contributor"/>
+    <owl:AnnotationProperty rdf:about="&dc;rights"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#abstract_has_part -->
+
+    <owl:ObjectProperty rdf:about="&gfo;abstract_has_part">
+        <rdfs:label xml:lang="en"
+            >abstract has-part</rdfs:label>
+        <dc:description
+            >Abstract has-part is the inverse of the abstract part-of relationship.
+[FL, 2008-02-28]</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#abstract_part_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;abstract_part_of">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en"
+            >abstract part-of</rdfs:label>
+        <dc:description
+            >The abstract part-of relation is denoted by p(x,y); the argument-types of this relation are not specified, i.e. we allow arbitrary entities to be arguments. We assume that p(x,y) satisfies the condition of a partial ordering, .i.e. the following axioms: reflexivity, antisymmetry and transitivity.
+[RH, 2006 based on herre-h-2006--a, p.44]</dc:description>
+        <owl:inverseOf rdf:resource="&gfo;abstract_has_part"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#boundary_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;boundary_of">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">boundary of</rdfs:label>
+        <dc:description
+            >&quot;Boundary of&quot; connects boundaries to the entities which they bind.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;depends_on"/>
+        <owl:inverseOf rdf:resource="&gfo;has_boundary"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#coincides_with -->
+
+    <owl:ObjectProperty rdf:about="&gfo;coincides_with">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:label xml:lang="en">coincides with</rdfs:label>
+        <dc:description
+            >Coincidence is a relationship between space boundaries or time boundaries, respectively. Intuitively, two such boundaries are coincident if and only if they occupy &#8220;the same&#8221; space, or point in time, but they are still different entities.
+[herre-h-2006--a, p.46]</dc:description>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Spatial_boundary"/>
+                    <rdf:Description rdf:about="&gfo;Time_boundary"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Spatial_boundary"/>
+                    <rdf:Description rdf:about="&gfo;Time_boundary"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#depends_on -->
+
+    <owl:ObjectProperty rdf:about="&gfo;depends_on">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">depends on</rdfs:label>
+        <dc:description
+            >This relation captures the notion of existential dependence.
+[RH, 2006]</dc:description>
+        <owl:inverseOf rdf:resource="&gfo;necessary_for"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#exhibits -->
+
+    <owl:ObjectProperty rdf:about="&gfo;exhibits">
+        <rdfs:label xml:lang="en">exhibits</rdfs:label>
+        <dc:description
+            >In the GFO-account of persistence, perpetuants exhibit presentials, i.e., the former ``exist through&#39;&#39; the latter at the time where the presential exists. With respect to persistants, presentials instantiate persistants.
+[FL, 2008-07-10]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Perpetuant"/>
+        <rdfs:range rdf:resource="&gfo;Presential"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#exists_at -->
+
+    <owl:ObjectProperty rdf:about="&gfo;exists_at">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">exists at</rdfs:label>
+        <dc:description
+            >Presentials exist at a single time boundary.</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Presential"/>
+        <rdfs:range rdf:resource="&gfo;Time_boundary"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#framed_by -->
+
+    <owl:ObjectProperty rdf:about="&gfo;framed_by">
+        <rdfs:label xml:lang="en">framed by</rdfs:label>
+        <dc:description
+            >A presential is framed by a spatial region if the location which the presential occupies is a spatial part of that region.
+[FL, 2008-02-27, based on herre-h-2006--a, p. 21]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Presential"/>
+        <rdfs:range rdf:resource="&gfo;Space"/>
+        <owl:inverseOf rdf:resource="&gfo;frames"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#frames -->
+
+    <owl:ObjectProperty rdf:about="&gfo;frames">
+        <rdfs:label xml:lang="en">frames</rdfs:label>
+        <dc:description
+            >A spatial region frames a presential if the location which the presential occupies is a spatial part of that region.
+[FL, 2008-02-27, based on herre-h-2006--a, p. 21]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Presential"/>
+        <rdfs:domain rdf:resource="&gfo;Space"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_boundary -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_boundary">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">has boundary</rdfs:label>
+        <dc:description
+            >The has-boundary relation connects entities with their boundaries, e.g. chronoids to time boundaries, topoids to surfaces, etc.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;necessary_for"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_left_time_boundary -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_left_time_boundary">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >has left time boundary</rdfs:label>
+        <dc:description
+            >Temporal regions have exactly one extremal left time boundary.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Left_time_boundary"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;has_time_boundary"/>
+        <owl:inverseOf rdf:resource="&gfo;left_boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_part -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_part">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">has-part</rdfs:label>
+        <dc:description
+            >The inverse of part-of.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;abstract_has_part"/>
+        <owl:inverseOf rdf:resource="&gfo;part_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_participant -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_participant">
+        <rdfs:label xml:lang="en">has participant</rdfs:label>
+        <dc:description
+            >Temporally extended entities have participants.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Processual_Structure"/>
+        <owl:inverseOf rdf:resource="&gfo;participates_in"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&gfo;Processual_Structure"/>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:range>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&gfo;Space_time"/>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_proper_part -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_proper_part">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">has proper part</rdfs:label>
+        <dc:description
+            >The inverse of proper part-of.
+[FL 2008-02-28]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;has_part"/>
+        <owl:inverseOf rdf:resource="&gfo;proper_part_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_property -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_property">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">has property</rdfs:label>
+        <dc:description
+            >Entities can have properties. In GFO, properties are individualized, and &quot;has property&quot; links an entity to its particular property.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Entity"/>
+        <rdfs:range rdf:resource="&gfo;Property"/>
+        <owl:inverseOf rdf:resource="&gfo;property_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_right_time_boundary -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_right_time_boundary">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >has right time boundary</rdfs:label>
+        <dc:description
+            >Temporal regions have exactly one extremal right time boundary.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Right_time_boundary"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;has_time_boundary"/>
+        <owl:inverseOf rdf:resource="&gfo;right_boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_role -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_role">
+        <rdfs:label xml:lang="en">has role</rdfs:label>
+        <dc:description
+            >The inverse of role of.
+[FL, 06.07.2008]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Entity"/>
+        <rdfs:range rdf:resource="&gfo;Role"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;abstract_has_part"/>
+        <owl:inverseOf rdf:resource="&gfo;role_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_spatial_boundary -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_spatial_boundary">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >has spatial boundary</rdfs:label>
+        <dc:description
+            >Space entities may have spatial boundaries.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Space"/>
+        <rdfs:range rdf:resource="&gfo;Spatial_boundary"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;has_boundary"/>
+        <owl:inverseOf rdf:resource="&gfo;spatial_boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_temporal_part -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_temporal_part">
+        <rdfs:label xml:lang="en"
+            >has temporal part</rdfs:label>
+        <dc:description
+            >The inverse of temporal part-of.
+[FL, 2008-03-13]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;has_part"/>
+        <owl:inverseOf rdf:resource="&gfo;temporal_part_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_time_boundary -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_time_boundary">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >has time boundary</rdfs:label>
+        <dc:description
+            >Temporal regions have temporal boundaries.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Temporal_region"/>
+        <rdfs:range rdf:resource="&gfo;Time_boundary"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;has_boundary"/>
+        <owl:inverseOf rdf:resource="&gfo;time_boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#has_token -->
+
+    <owl:ObjectProperty rdf:about="&gfo;has_token">
+        <rdfs:label xml:lang="en">has token</rdfs:label>
+        <dc:description
+            >The specific relation from a symbol structure (a category in GFO) to an entity seen as an occurrence of that symbol structure, as a token of it.
+[FL 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Concrete"/>
+        <rdfs:domain rdf:resource="&gfo;Symbol_structure"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;instantiated_by"/>
+        <owl:inverseOf rdf:resource="&gfo;token_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#instance_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;instance_of">
+        <rdfs:label xml:lang="en">instance of</rdfs:label>
+        <dc:description
+            >The instantiation relation holds between an entity and a category. Put differently, the category is predicated of that entity, the entity is the instance of that category. Entities of all kinds can be instances, which results in categories which have individuals as instances or categories which may have categories as instances, such as &quot;species&quot;.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Category"/>
+        <rdfs:domain rdf:resource="&gfo;Entity"/>
+        <owl:inverseOf rdf:resource="&gfo;instantiated_by"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#instantiated_by -->
+
+    <owl:ObjectProperty rdf:about="&gfo;instantiated_by">
+        <rdfs:label xml:lang="en">instantiated by</rdfs:label>
+        <dc:description
+            >Inverse of instance of.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Category"/>
+        <rdfs:range rdf:resource="&gfo;Entity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#left_boundary_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;left_boundary_of">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >left boundary of</rdfs:label>
+        <dc:description rdf:datatype="&xsd;string"
+            >Left boundary of a temporal region.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;time_boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#necessary_for -->
+
+    <owl:ObjectProperty rdf:about="&gfo;necessary_for">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">necessary for</rdfs:label>
+        <dc:description
+            >An entity is necessary for another one if the latter is required for the former to exist.
+[FL 2008-02-28]</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#occupied_by -->
+
+    <owl:ObjectProperty rdf:about="&gfo;occupied_by">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">occupied by</rdfs:label>
+        <dc:description
+            >Presentials exist in space, and the space entity occupied by a presential is uniquely determined (where a fixed granularity is assumed).
+[FL, 2008-02-27 based on herre-h-2006--a, p.21]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Presential"/>
+        <rdfs:domain rdf:resource="&gfo;Space"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;frames"/>
+        <owl:inverseOf rdf:resource="&gfo;occupies"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#occupies -->
+
+    <owl:ObjectProperty rdf:about="&gfo;occupies">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">occupies</rdfs:label>
+        <dc:description
+            >Presentials exist in space, and the space entity occupied by a presential is uniquely determined (where a fixed granularity is assumed).
+[FL, 2008-02-27 based on herre-h-2006--a, p.21]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Presential"/>
+        <rdfs:range rdf:resource="&gfo;Space"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;framed_by"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#part_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;part_of">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">part of</rdfs:label>
+        <dc:description
+            >The relation between parts and wholes.
+The union of several domain-specific part-of relationships not contained explicitly in gfo-basic, like spatial part-of or part-of among material structures.
+[FL, 2008-03-13]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;abstract_part_of"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Concrete"/>
+                    <rdf:Description rdf:about="&gfo;Space_time"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Concrete"/>
+                    <rdf:Description rdf:about="&gfo;Space_time"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#participates_in -->
+
+    <owl:ObjectProperty rdf:about="&gfo;participates_in">
+        <rdfs:label xml:lang="en">participates in</rdfs:label>
+        <dc:description
+            >Intuitively, objects participate in processes, for instance. In GFO, participation accommodates the GFO approach to persistence, i.e., at least presentials can participate in processes. Moreover, it is useful to extend the notion of participation also to other temporally extended entities.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Processual_Structure"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&gfo;Processual_Structure"/>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&gfo;Space_time"/>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#played_by -->
+
+    <owl:ObjectProperty rdf:about="&gfo;played_by">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">played by</rdfs:label>
+        <dc:description
+            >The inverse of plays-role.
+[FL, 06.07.2008]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Entity"/>
+        <rdfs:domain rdf:resource="&gfo;Role"/>
+        <owl:inverseOf rdf:resource="&gfo;plays_role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#plays_role -->
+
+    <owl:ObjectProperty rdf:about="&gfo;plays_role">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">plays role</rdfs:label>
+        <dc:description
+            >Entities can play roles with respect to some other entity which provides a context for that role. The plays-role relationship links an entity with its role.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Entity"/>
+        <rdfs:range rdf:resource="&gfo;Role"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#projection_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;projection_of">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en">projection of</rdfs:label>
+        <dc:description
+            >If, for instance, a process happens during a certain time, i.e., some temporal region, that region is the projection of that process (to time).
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Time"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#projects_to -->
+
+    <owl:ObjectProperty rdf:about="&gfo;projects_to">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">projects to</rdfs:label>
+        <dc:description
+            >Links an entity to its temporal extension.
+Entities which are in time are related to the corresponding temporal regions by projects to. Moreover, entities related to others which are in time may likewise project to temporal regions.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Time"/>
+        <owl:inverseOf rdf:resource="&gfo;projection_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#proper_part_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;proper_part_of">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en">proper part of</rdfs:label>
+        <dc:description
+            >The irreflexive variant of part-of.
+[FL 2008-02-28]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;part_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#property_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;property_of">
+        <rdfs:label xml:lang="en">property of</rdfs:label>
+        <dc:description
+            >Links properties to their bearers.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Property"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#right_boundary_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;right_boundary_of">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >right boundary of</rdfs:label>
+        <dc:description
+            >Right boundary of a temporal region.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:subPropertyOf rdf:resource="&gfo;time_boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#role_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;role_of">
+        <rdfs:label xml:lang="en">role of</rdfs:label>
+        <dc:description
+            >The relationship between a role and its context. Typically, the nature of the context determines that of the roles, which are in some sense a part of that context. E.g., processes form the context for certain roles (processual roles), such that the latter are recognizable as processes.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Entity"/>
+        <rdfs:domain rdf:resource="&gfo;Role"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;abstract_part_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#spatial_boundary_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;spatial_boundary_of">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >spatial boundary of</rdfs:label>
+        <dc:description
+            >Spatial boundaries may bound spatial entities.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Space"/>
+        <rdfs:domain rdf:resource="&gfo;Spatial_boundary"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#temporal_part_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;temporal_part_of">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:label xml:lang="en"
+            >temporal part-of</rdfs:label>
+        <dc:description
+            >A part-of relationship between two time entities. Time-boundaries cannot have parts.
+[FL, 2008-03-13]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Time"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;part_of"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Time"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&gfo;Time_boundary"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#time_boundary_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;time_boundary_of">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en"
+            >time boundary of</rdfs:label>
+        <dc:description
+            >Time boundaries bound temporal regions.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:range rdf:resource="&gfo;Temporal_region"/>
+        <rdfs:domain rdf:resource="&gfo;Time_boundary"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;boundary_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#token_of -->
+
+    <owl:ObjectProperty rdf:about="&gfo;token_of">
+        <rdfs:label xml:lang="en">token of</rdfs:label>
+        <dc:description
+            >Inverse of the has token relations.
+[FL, 2008-02-28]</dc:description>
+        <rdfs:domain rdf:resource="&gfo;Concrete"/>
+        <rdfs:range rdf:resource="&gfo;Symbol_structure"/>
+        <rdfs:subPropertyOf rdf:resource="&gfo;instance_of"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Abstract -->
+
+    <owl:Class rdf:about="&gfo;Abstract">
+        <rdfs:label xml:lang="en">Abstract</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Individual"/>
+        <owl:disjointWith rdf:resource="&gfo;Concrete"/>
+        <owl:disjointWith rdf:resource="&gfo;Space_time"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Abstract individuals are independent from time and space (they are not in time and space).
+Examples: the number &quot;2&quot; or pi.
+[RH, 2006]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Amount_of_substrate -->
+
+    <owl:Class rdf:about="&gfo;Amount_of_substrate">
+        <rdfs:label xml:lang="en"
+            >Amount of substrate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Presential"/>
+        <dc:description
+            >An amount of substrate is a presential, namely the matter of some material object. Amounts of substrate follow different identity criteria than material objects, i.e., they instantiate different persistants.
+
+Appropriate connotations of &quot;amount of substrate&quot; are &quot;stuff&quot; (in the common understanding)  or &quot;mass term&quot; (in linguistics).
+
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Category -->
+
+    <owl:Class rdf:about="&gfo;Category">
+        <rdfs:label xml:lang="en">Category</rdfs:label>
+        <owl:disjointWith rdf:resource="&gfo;Individual"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Categories satisfy the following conditions: (1) Categories can be instantiated; (2) Categories can be predicated of other entities.
+Categories are defined intensional-with-an-s. They are, therefore, closely related to language.
+[RH, 2006]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Change -->
+
+    <owl:Class rdf:about="&gfo;Change">
+        <rdfs:label xml:lang="en">Change</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Occurrent"/>
+        <owl:disjointWith rdf:resource="&gfo;Event"/>
+        <owl:disjointWith rdf:resource="&gfo;History"/>
+        <rdfs:seeAlso
+            >[part1-v1.0.1, p. 30]</rdfs:seeAlso>
+        <dc:description
+            >A change refers to a structure centered around two presentials, which are boundaries of one and the same process. If they exist at coinciding time boundaries, the change comes close to notions in the literature like &quot;punctual&quot; or &quot;instantaneous event&quot; as well as &quot;moment&quot; (in a temporal reading). Alternatively, the presentials may be boundaries at the opposite ends of a process of arbitrary extension.
+
+Either notion of change is relative to contradictory conditions between which a transition takes place. These conditions refer to some collection of pairwise disjoint subcategories of one category.
+
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Chronoid -->
+
+    <owl:Class rdf:about="&gfo;Chronoid">
+        <rdfs:label xml:lang="en">Chronoid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Temporal_region"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;has_right_time_boundary"/>
+                <owl:onClass rdf:resource="&gfo;Entity"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;has_left_time_boundary"/>
+                <owl:onClass rdf:resource="&gfo;Entity"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description rdf:datatype="&xsd;string"
+            >Chronoids are entities sui generis.
+
+Every chronoid has exactly two extremal and
+infinitely many inner time boundaries which are
+equivalently called time-points.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Concept -->
+
+    <owl:Class rdf:about="&gfo;Concept">
+        <rdfs:label xml:lang="en">Concept</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Category"/>
+        <owl:disjointWith rdf:resource="&gfo;Symbol_structure"/>
+        <owl:disjointWith rdf:resource="&gfo;Universal"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Concepts are categories that are expressed by linguistic signs and are present in someone&#8217;s mind.
+[herre-h-2006--a, p.6]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Concrete -->
+
+    <owl:Class rdf:about="&gfo;Concrete">
+        <rdfs:label xml:lang="en">Concrete</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Individual"/>
+        <owl:disjointWith rdf:resource="&gfo;Space_time"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Concrete individuals have a relation to time or space (they are in time and space).</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Continuous_change -->
+
+    <owl:Class rdf:about="&gfo;Continuous_change">
+        <rdfs:label xml:lang="en"
+            >Continuous change</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Change"/>
+        <owl:disjointWith rdf:resource="&gfo;Discrete_change"/>
+        <rdfs:seeAlso
+            >[part1-v.1.0.1, p.30-31]</rdfs:seeAlso>
+        <dc:description
+            >A continuous change is a change such that
+(1) its process boundaries exist at non-coincident time-boundaries,
+(2) any two non-coincident process boundaries of its process are distinguished with respect to the reference category and
+(3) any two coincident process boundaries exhibit no such distinction, i.e., no discrete changes of the same reference category.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Continuous_process -->
+
+    <owl:Class rdf:about="&gfo;Continuous_process">
+        <rdfs:label xml:lang="en"
+            >Continuous process</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Process"/>
+        <dc:description
+            >A process is a continuous process if it can be partitioned such that the partition contains only states or processes within a continuous change. Those states and changes must be based on the same reference category.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Discrete_change -->
+
+    <owl:Class rdf:about="&gfo;Discrete_change">
+        <rdfs:label xml:lang="en">Discrete change</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Change"/>
+        <dc:description
+            >A discrete change is a change at coincident time boundaries, for which a recognizable difference exists. That means,  there is a category with two disjoint sub-categories such that each of these is instantiated by exactly one of the process boundaries in the change.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Discrete_process -->
+
+    <owl:Class rdf:about="&gfo;Discrete_process">
+        <rdfs:label xml:lang="en"
+            >Discrete process</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Process"/>
+        <dc:description
+            >Discrete processes have a partitioning into an alteration of discrete changes and states.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Entity -->
+
+    <owl:Class rdf:about="&gfo;Entity">
+        <rdfs:label xml:lang="en">Entity</rdfs:label>
+        <owl:equivalentClass rdf:resource="&owl;Thing"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Everything is an entity, i.e., entity is the category which everything instantiates.
+[FL, 2008-02-27]</dc:description>
+        <dc:description
+            >We use the term entity for everything that exists where existence is understood in the broadest sense.
+[part1-v1.0.1, p.5]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Event -->
+
+    <owl:Class rdf:about="&gfo;Event">
+        <rdfs:label xml:lang="en">Event</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Occurrent"/>
+        <owl:disjointWith rdf:resource="&gfo;History"/>
+        <dc:description
+            >Events are processual structures comprising a process, and one of its extremal process boundaries. The latter must further satisfy a condition which differs from the condition applicable to all other boundaries of the process. I.e., the extremal boundary instantiates a sub-category of the event&#39;s reference category which is disjoint with that category instantiated by the remaining process boundaries. [FL, 2008-03-13]</dc:description>
+        <rdfs:seeAlso
+            >[part1-v1.0.1, p.31-32]</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#History -->
+
+    <owl:Class rdf:about="&gfo;History">
+        <rdfs:label xml:lang="en">History</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Occurrent"/>
+        <dc:description
+            >Histories are processual structures which consist of a process and a number of presentials which are constituents of  the boundaries of that process.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Individual -->
+
+    <owl:Class rdf:about="&gfo;Individual">
+        <rdfs:label xml:lang="en">Individual</rdfs:label>
+        <dc:description rdf:datatype="&xsd;string"
+            >Individuals are entities that are not instantiable.
+[herre-h-2006--a, p.19]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Left_time_boundary -->
+
+    <owl:Class rdf:about="&gfo;Left_time_boundary">
+        <rdfs:label xml:lang="en"
+            >Left time boundary</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Time_boundary"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&gfo;left_boundary_of"/>
+                        <owl:someValuesFrom rdf:resource="&gfo;Chronoid"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&gfo;Time_boundary"/>
+        <owl:disjointWith rdf:resource="&gfo;Right_time_boundary"/>
+        <dc:description
+            >see time boundary description
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Line -->
+
+    <owl:Class rdf:about="&gfo;Line">
+        <rdfs:label xml:lang="en">Line</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;spatial_boundary_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Surface"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&gfo;Spatial_boundary"/>
+        <dc:description
+            >Surfaces are bound by lines.
+[FL, 2008-07-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Material_boundary -->
+
+    <owl:Class rdf:about="&gfo;Material_boundary">
+        <rdfs:label xml:lang="en"
+            >Material boundary</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Presential"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;framed_by"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Spatial_boundary"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;depends_on"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Material_object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&gfo;Material_object"/>
+        <dc:description
+            >A material entity which depends on a material object and occupies a spatial boundary.
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Material_object -->
+
+    <owl:Class rdf:about="&gfo;Material_object">
+        <rdfs:label xml:lang="en">Material object</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Presential"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;framed_by"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Topoid"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description rdf:datatype="&xsd;string"
+            >A material structure is an individual which satisfies the following conditions: 
+it is a presential, it occupies space, it is a bearer of qualities,  but other entities cannot have
+it as quality, and it consists of an amount of substrate, and it instantiates a persistant (&quot;has identity&quot;).</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Occurrent -->
+
+    <owl:Class rdf:about="&gfo;Occurrent">
+        <rdfs:label xml:lang="en">Occurrent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Processual_Structure"/>
+        <owl:disjointWith rdf:resource="&gfo;Process"/>
+        <dc:description
+            >The category of occurrents comprises several categories that can be derived from processes.
+[FL, 2008-03-06 based on part1-v.1.0.1, p.30]</dc:description>
+        <rdfs:comment
+            >NOTE: In earlier versions, &quot;Occurrent&quot; denoted the category named &quot;Processual Structure&quot; herein.
+[FL, 2008-03-13]</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Perpetuant -->
+
+    <owl:Class rdf:about="&gfo;Perpetuant">
+        <rdfs:label xml:lang="en">Perpetuant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Concrete"/>
+        <dc:description
+            >A perpetuant is a concrete individual which persists through time and exhibits presentials.
+[FL, 06.03.2008]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Point -->
+
+    <owl:Class rdf:about="&gfo;Point">
+        <rdfs:label xml:lang="en">Point</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;spatial_boundary_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Line"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&gfo;Spatial_boundary"/>
+        <dc:description
+            >Lines are bound by points.
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Presential -->
+
+    <owl:Class rdf:about="&gfo;Presential">
+        <rdfs:label xml:lang="en">Presential</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Concrete"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;exists_at"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Time_boundary"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&gfo;Processual_Structure"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >A presential exists wholly at exactly one time boundary.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Process -->
+
+    <owl:Class rdf:about="&gfo;Process">
+        <rdfs:label xml:lang="en">Process</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Processual_Structure"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;projects_to"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Temporal_region"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description rdf:datatype="&xsd;string"
+            >Processes are directly in time, they develop over and unfold in time. Processes have characteristics which cannot be captured by a collection of time boundaries. In particular, processes exhibit internal coherence.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Processual_Structure -->
+
+    <owl:Class rdf:about="&gfo;Processual_Structure">
+        <rdfs:label xml:lang="en"
+            >Processual Structure</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Concrete"/>
+        <dc:description
+            >The category of processual structures centers around the more intuitive notion of processes. It captures processes themselves and occurrents, i.e., primarily structures of several other kinds that can be derived from processes.
+[FL, 2008-03-13 based on part1-v1.0.1, p.30]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Processual_role -->
+
+    <owl:Class rdf:about="&gfo;Processual_role">
+        <rdfs:label xml:lang="en">Processual role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Process"/>
+        <rdfs:subClassOf rdf:resource="&gfo;Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;role_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Process"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&gfo;Relational_role"/>
+        <owl:disjointWith rdf:resource="&gfo;Social_role"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Processual roles are roles with a process as context, and they are dependent processes.
+[FL, 2008-02-27]</dc:description>
+        <dc:description
+            >A processual role corresponds to the manner in which a single participant behaves in some process.
+[herre-h-2006--a, p.38]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Property -->
+
+    <owl:Class rdf:about="&gfo;Property">
+        <rdfs:label xml:lang="en">Property</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Individual"/>
+        <owl:disjointWith rdf:resource="&gfo;Relator"/>
+        <dc:description
+            >A property is a dependent entity which another entities has, i.e., that entity exhibits its property. Other common terms for property in natural language are characteristic, feature, quality, etc.
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Relational_role -->
+
+    <owl:Class rdf:about="&gfo;Relational_role">
+        <rdfs:label xml:lang="en">Relational role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Property"/>
+        <rdfs:subClassOf rdf:resource="&gfo;Role"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;played_by"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Entity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;role_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Relator"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="&gfo;Social_role"/>
+        <dc:description
+            >A relational role corresponds to the way in which an argument participates in some relation.
+[herre-h-2006--a, p.38]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Relator -->
+
+    <owl:Class rdf:about="&gfo;Relator">
+        <rdfs:label xml:lang="en">Relator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Individual"/>
+        <dc:description
+            >A relator mediates between or connects entities. It is a dependent entity which depends on those entities connected.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Right_time_boundary -->
+
+    <owl:Class rdf:about="&gfo;Right_time_boundary">
+        <rdfs:label xml:lang="en"
+            >Right time boundary</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Time_boundary"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&gfo;right_boundary_of"/>
+                        <owl:someValuesFrom rdf:resource="&gfo;Chronoid"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&gfo;Time_boundary"/>
+        <dc:description
+            >see time boundary description
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Role -->
+
+    <owl:Class rdf:about="&gfo;Role">
+        <rdfs:label xml:lang="en">Role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Individual"/>
+        <rdfs:seeAlso
+            >A role corresponds to the involvement of some entity (the player of the role) within another entity (the context of the role).
+Examples of role terms: student, patient, runner, reader, factor.
+[FL, 2008-02-27]</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Social_role -->
+
+    <owl:Class rdf:about="&gfo;Social_role">
+        <rdfs:label xml:lang="en">Social role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Role"/>
+        <dc:description
+            >A social role corresponds to the involvement of a social object within some society.
+[herre-h-2006--a, p.38]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Space -->
+
+    <owl:Class rdf:about="&gfo;Space">
+        <rdfs:label xml:lang="en">Space entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Space_time"/>
+        <owl:disjointWith rdf:resource="&gfo;Time"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Spatial entities in GFO are analyzed according to the ideas of Franz Brentano. Starting from connected three-dimensional entitites (topoids), related spatial entities can be distinguished.
+[FL, 2008-02-27]</dc:description>
+        <rdfs:seeAlso
+            >[herre-h-2006--a, sect. 5.2]</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Space_time -->
+
+    <owl:Class rdf:about="&gfo;Space_time">
+        <rdfs:label xml:lang="en"
+            >Space time entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Individual"/>
+        <dc:description
+            >A space-time-entity is something in which concrete entities can be located.
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Spatial_boundary -->
+
+    <owl:Class rdf:about="&gfo;Spatial_boundary">
+        <rdfs:label xml:lang="en"
+            >Spatial boundary</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;spatial_boundary_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Space"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&gfo;Space"/>
+        <owl:disjointWith rdf:resource="&gfo;Spatial_region"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Boundaries of regions are surfaces, boundaries of
+surfaces are lines, and boundaries of lines are
+points. As in the case of time-boundaries, spatial
+boundaries have no independent existence, i.e. they depend on the
+spatial entity of which they are  boundaries.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Spatial_region -->
+
+    <owl:Class rdf:about="&gfo;Spatial_region">
+        <rdfs:label xml:lang="en">Spatial region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Space"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Space regions are mereological sums of topoids.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#State -->
+
+    <owl:Class rdf:about="&gfo;State">
+        <rdfs:label xml:lang="en">State</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Process"/>
+        <rdfs:seeAlso
+            >[part1-v1.0.1, p.34]</rdfs:seeAlso>
+        <dc:description
+            >A process is a state with respect to a category iff every of its process boundaries instantiates that category.
+[FL, 2008-03-13]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Surface -->
+
+    <owl:Class rdf:about="&gfo;Surface">
+        <rdfs:label xml:lang="en">Surface</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;spatial_boundary_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Topoid"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&gfo;Spatial_boundary"/>
+        <dc:description
+            >Topoids are bounded by surfaces.
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Symbol_structure -->
+
+    <owl:Class rdf:about="&gfo;Symbol_structure">
+        <rdfs:label xml:lang="en"
+            >Symbol structure</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Category"/>
+        <owl:disjointWith rdf:resource="&gfo;Universal"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Symbolic structures are signs or texts that may be instantiated by tokens.
+[herre-h-2006--a, p.6]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Temporal_region -->
+
+    <owl:Class rdf:about="&gfo;Temporal_region">
+        <rdfs:label xml:lang="en">Temporal region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Time"/>
+        <owl:disjointWith rdf:resource="&gfo;Time_boundary"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Time Regions are defined as the mereological sum of chronoids,
+i.e. time regions may consist of non-connected intervals of time.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Time -->
+
+    <owl:Class rdf:about="&gfo;Time">
+        <rdfs:label xml:lang="en">Time entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Space_time"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >The time model of GFO is based on Brentano and the glass continuum of Allen&amp;Hayes.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Time_boundary -->
+
+    <owl:Class rdf:about="&gfo;Time_boundary">
+        <rdfs:label xml:lang="en">Time boundary</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&gfo;Left_time_boundary"/>
+                    <rdf:Description rdf:about="&gfo;Right_time_boundary"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;time_boundary_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Temporal_region"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&gfo;Time"/>
+        <dc:description
+            >Time boundaries depend on a chronoids and can coincide.
+
+Left time boundaries, if viewed from the perspective of bounding a specific chronoid, are those which are earlier than any inner or right time boundary of that chronoid. On the other hand, within a pair of coincident time boundaries, a left time boundary is later than the right time boundary in that pair.
+
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Topoid -->
+
+    <owl:Class rdf:about="&gfo;Topoid">
+        <rdfs:label xml:lang="en">Topoid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Spatial_region"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Topoids are connected compact regions of space. They have spatial boundaries.</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.onto-med.de/ontologies/gfo.owl#Universal -->
+
+    <owl:Class rdf:about="&gfo;Universal">
+        <rdfs:label xml:lang="en">Universal</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gfo;Category"/>
+        <dc:description rdf:datatype="&xsd;string"
+            >Universals are immanent categories. They exist in re.
+[FL, 2008-02-27]</dc:description>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:Class>
+        <rdfs:subClassOf rdf:resource="&gfo;Presential"/>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="&gfo;Property"/>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&gfo;property_of"/>
+                <owl:someValuesFrom rdf:resource="&gfo;Presential"/>
+            </owl:Restriction>
+        </owl:intersectionOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.842) http://owlapi.sourceforge.net -->
+
