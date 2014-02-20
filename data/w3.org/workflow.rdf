@@ -1,0 +1,376 @@
+
+
+
+<rdf:RDF xmlns="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:s="http://www.w3.org/2000/01/rdf-schema#">
+
+    <rdf:Description rdf:about="">
+        <dc:title>Issue Tracking Ontology</dc:title>
+        <dct:creator rdf:resource="http://www.w3.org/People/Berners-Lee/card#i"/>
+        <comment>This ontology defines a very general class (Task)
+    which can used for any kind of bug tracking, issue tracking,
+    to-do-list management, action items, goal depednency, and so on.
+    It captures the state of a task as a subclass, so that
+    subsumption can be used.
+    It captures a discussion thread about a task.
+    It captures subtasks structure if necessary.
+    A "Tracker" defines actual set of states, categories, etc.,
+    which  a task can be in. The data about the tracker
+    guides the software managing the task. 
+    
+    There is some workflow modeling finite state machine
+    terms which are optional for  more complex definition
+    of the transitions allowed.
+    </comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://usefulinc.com/ns/doap#bug-database">
+        <owl:inverseOf rdf:parseType="Resource">
+            <label xml:lang="en">project</label>
+        </owl:inverseOf>
+    </rdf:Description>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Change">
+        <comment>The universal class of things which
+change the state of a task.
+Included now: Creation, Transition. (Maybe in the future
+more π-calculus constructions such as splitting &#38; merging tasks,
+and import/export of obligations to a foreign opaque system.)
+</comment>
+        <label>change</label>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Closed">
+        <comment>A task which does not neeed attention. It may be closed because
+        has been abandonned or completed, for example.
+	</comment>
+        <label xml:lang="en">closed</label>
+        <label xml:lang="fr">fermé</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Creation">
+        <comment>A creation is a change from existence
+to non-existence
+a task. Typical properties include date and/or source
+(a document causing the transition), and a final state.</comment>
+        <label>creation</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Change"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Message">
+        <label xml:lang="en">message</label>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#NonTerminalState">
+        <comment>A state from which there are transisions.</comment>
+        <label>non-terminal state</label>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2005/01/wf/flow#TerminalState"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Open">
+        <comment>A task which needs attention. The very crude states of Open and Closed all
+        interoperatbility between different systems if the states for a given
+        application are made subclasses of either Open or Closed. This allows
+        tasks from different systems to be mixed and treatd together with
+        limited but valuable functionality.
+	</comment>
+        <label xml:lang="en">open</label>
+        <label xml:lang="fr">ouvert</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Product">
+        <comment>A product is a task which monitors something
+                which must be produced.</comment>
+        <label>product</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Task">
+        <comment>Something to be done in a wide sense,
+	an agenda item at a meeting is one example, but any
+	issue, task, action item, goal, product, deliverable, milestone, can such a thing.
+	The requirement for this framework was that it would allow
+	one to customize ontologies for things such as agenda items,
+	action items, working group issues with a spec, w3c Last Call issues,
+	software bugs and administrative requests.
+	In π-calculus, a process.
+	Make your type of issue a subclass of Task.
+	</comment>
+        <label xml:lang="en">task</label>
+        <owl:disjointUnionOf rdf:parseType="Resource">
+            <rdf:first rdf:resource="http://www.w3.org/2005/01/wf/flow#Open"/>
+            <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:resource="http://www.w3.org/2005/01/wf/flow#Closed"/>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:rest>
+        </owl:disjointUnionOf>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#TerminalState">
+        <comment>A state from which there are no transisions.</comment>
+        <label>terminal state</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Tracker">
+        <comment>A set of issues and 
+                the constraints on how they evolve.
+                To use this ontology, craete a new tracker.
+                Copy an existing one or make up your own.</comment>
+        <label>tracker</label>
+    </Class>
+
+    <Class rdf:about="http://www.w3.org/2005/01/wf/flow#Transition">
+        <comment>A transition is a change of state of
+a task. Typical properties include date and/or source
+(a document causing the transition), and a final state.</comment>
+        <label>transition</label>
+        <subClassOf rdf:resource="http://www.w3.org/2005/01/wf/flow#Change"/>
+    </Class>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#affects">
+        <domain rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Work"/>
+        <label>affects</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#allowedTransitions">
+        <comment>The state machine is defined
+	by these lists of transition allowed for each issue.
+	(An interesting option in the Web is to make an allowed transition
+	to a state in soemone else's ontology, which in turn allows
+	transitions into many ontologies.  So a finite state maxchine
+	may become very large. In practice this means that a task handed
+	off to another organization may be processed on all kinds of ways.)</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+        <label>allowed transitions</label>
+        <range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#asigneeClass">
+        <comment>When an issue is assigned, the assignee must be from this class</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+        <label>assignees must be</label>
+        <range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#assignee">
+        <comment>The person or group to whom this has been assigned.</comment>
+        <label>assigned to</label>
+        <range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+        <owl:inverseOf rdf:parseType="Resource">
+            <label>assignment</label>
+        </owl:inverseOf>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#attachment">
+        <comment>Something related is attached for information.</comment>
+        <label>attachment</label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#creates">
+        <domain rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Work"/>
+        <label>creates</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </rdf:Property>
+
+    <rdf:Description rdf:about="http://www.w3.org/2005/01/wf/flow#date">
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#DateTime"/>
+    </rdf:Description>
+
+    <rdf:Poperty rdf:about="http://www.w3.org/2005/01/wf/flow#dateDue">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+        <comment>The date this task is due.
+                </comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+        <label xml:lang="en">due</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </rdf:Poperty>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#deliverable">
+        <comment>Something which must be deliverered to accomplish this</comment>
+        <label xml:lang="en">deliverable</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Product"/>
+        <subPropertyOf rdf:resource="http://www.w3.org/2005/01/wf/flow#dependent"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#dependent">
+        <comment>Another task upon which this depends, in the sense that
+        this task cannot be completed without that task being done.
+        You can't use this for dependencies on anything other than other tasks.
+        (Note the US spelling of the URI. In the UK, a dependant is a something
+        which is dependent on somehing else.)</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+        <label>how</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+        <owl:inverseOf rdf:parseType="Resource">
+            <label>why</label>
+        </owl:inverseOf>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#description">
+        <comment>The description, definition,
+        or abstract. Information explaining what this is. 
+        Not arbitrary comment about anything, only about the subject.
+        (Use this property for anything. There is no domain restriction.).</comment>
+        <label>description</label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#final">
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Transition"/>
+        <label>to</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+    </rdf:Property>
+
+    <rdf:Poperty rdf:about="http://www.w3.org/2005/01/wf/flow#goalDescription">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+        <comment>A textual description of the goals of this product, etc.</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+        <label>goals</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </rdf:Poperty>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#initialState">
+        <comment>The initial state for a new issue</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+        <label xml:lang="en">initial state</label>
+        <label xml:lang="fr">état initial</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#issue">
+        <comment>A transition changes the state of the given issue.</comment>
+        <label>issue</label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#issueCategory">
+        <comment>Issues may be categorized according to the
+                subclasses of this class</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+        <label>issue category</label>
+        <range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#issueClass">
+        <comment>The class of issues which are allowed in this tracker.
+                This is essemtial to the operation of the tracker, 
+                as it defines which states an issue can be in.
+                (The issueClass must be a disjointUnionOf the state classes)</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+        <label>all issues must be in</label>
+        <range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#State"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#message">
+        <comment>A message about this. Attached for information.</comment>
+        <label xml:lang="en">message</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/2005/01/wf/flow#attachment"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#modifiedBy">
+        <label>changed by</label>
+        <range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#recipent">
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Message"/>
+        <label>to</label>
+        <range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#requires">
+        <comment>To be a valid transition,
+		a necessary (but not necessarily sufficuent) condition
+		is that there be recorded these properties for the record</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Transition"/>
+        <label>requires</label>
+        <range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#screenShot">
+        <comment>An image taken by capturing the state of a
+                 computer screen, for example to demonstrate a problem</comment>
+        <label xml:lang="en">screen shot</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/2005/01/wf/flow#attachment"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#sender">
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Message"/>
+        <label>from</label>
+        <range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#source">
+        <comment>The source of a transition is
+				the document by which it happened</comment>
+        <label>source</label>
+        <range rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Work"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#stateStore">
+        <comment>A read-write document.
+                The state of the issues is modified here.
+                When you set up a trcaker, thgis must be set to point
+                to a writeble data resource on the web.</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+        <label>state store</label>
+        <range rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Document"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#subscriber">
+        <label>subscriber</label>
+        <range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </rdf:Property>
+
+    <rdf:Poperty rdf:about="http://www.w3.org/2005/01/wf/flow#successCriteria">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+        <comment>A textual description of the successs critera.
+                How when we know this is done?</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+        <label>success criteria</label>
+        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </rdf:Poperty>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#task">
+        <label>task</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#terminalOutput">
+        <comment>A file showing user interaction from a
+                text terminal or console etc. </comment>
+        <label xml:lang="en">terminal output</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/2005/01/wf/flow#attachment"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#testData">
+        <comment>A file which can be used as inpiut to a test
+                or to demonstrate a problem. </comment>
+        <label xml:lang="en">test data</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/2005/01/wf/flow#attachment"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#tracker">
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Task"/>
+        <label>tracker</label>
+        <range rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+        <owl:inverseOf rdf:parseType="Resource">
+            <label>issue</label>
+        </owl:inverseOf>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://www.w3.org/2005/01/wf/flow#transactionStore">
+        <comment>An appendable document. Transactions and messsages
+                    can be written into here</comment>
+        <domain rdf:resource="http://www.w3.org/2005/01/wf/flow#Tracker"/>
+        <label>transaction store</label>
+        <range rdf:resource="http://www.w3.org/2000/10/swap/pim/doc#Document"/>
+    </rdf:Property>
+</rdf:RDF>
