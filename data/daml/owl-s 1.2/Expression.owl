@@ -1,0 +1,317 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+<!DOCTYPE uridef[
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY swrl "http://www.w3.org/2003/11/swrl">
+  <!ENTITY swrl-onto "http://www.daml.org/rules/proposal/swrl.owl">
+  <!ENTITY drs "http://cs-www.cs.yale.edu/homes/dvm/daml/drsonto040520.owl">
+  <!ENTITY kif "http://logic.stanford.edu/kif/kif.html">
+  <!ENTITY sparql "http://www.w3.org/TR/rdf-sparql-query/">
+  <!ENTITY rdql "http://www.w3.org/Submission/2004/SUBM-RDQL-20040109/">
+  <!ENTITY swrl-fol "http://www.w3.org/Submission/2005/01/">
+  <!ENTITY expr "http://www.daml.org/services/owl-s/1.2/generic/Expression.owl">
+  <!ENTITY DEFAULT "http://www.daml.org/services/owl-s/1.2/generic/Expression.owl">
+]>
+
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:swrl="&swrl;#"
+  xmlns:drs="&drs;#"
+  xmlns="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#"
+  xml:base="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl">
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    $Id: Expression.owl,v 1.30 2006/01/04 07:54:55 martin Exp $
+  </owl:versionInfo>
+  <rdfs:comment>
+    Ontology elements for capturing conditions, effects
+  </rdfs:comment>
+  <!--
+  <owl:imports>
+	<owl:Ontology rdf:about="&swrl-onto;" /> 
+  </owl:imports>
+  <owl:imports>
+	<owl:Ontology rdf:about="&drs;" /> 
+  </owl:imports>
+  -->
+</owl:Ontology>
+
+<owl:Class rdf:about="&swrl;#AtomList" />
+<owl:Class rdf:about="&drs;#Formula" />
+
+<owl:Class rdf:ID="LogicLanguage">
+  <rdfs:comment>
+    An instance of this class represents a particular logical formalism,
+    such as KIF, SWRL, or DRS.  At present we allow for zero or more
+    URIs to be specified, which normally are references to public document(s) 
+    that define the formalism.  We anticipate a variety of other properties 
+    will be added as the requirements become better understood.
+  </rdfs:comment>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="refURI">
+  <rdfs:domain rdf:resource="#LogicLanguage"/>
+  <rdfs:range rdf:resource="&xsd;#anyURI"/>
+</owl:DatatypeProperty>
+
+<LogicLanguage rdf:ID="SWRL">
+  <refURI rdf:datatype="&xsd;#anyURI">&swrl;</refURI>
+</LogicLanguage>
+
+<LogicLanguage rdf:ID="DRS">
+  <refURI rdf:datatype="&xsd;#anyURI">&drs;</refURI>
+</LogicLanguage>
+
+<LogicLanguage rdf:ID="KIF">
+  <refURI rdf:datatype="&xsd;#anyURI">&kif;</refURI>
+</LogicLanguage>
+
+<LogicLanguage rdf:ID="SPARQL">
+  <refURI rdf:datatype="&xsd;#anyURI">&sparql;</refURI>
+</LogicLanguage>
+
+<LogicLanguage rdf:ID="RDQL">
+  <refURI rdf:datatype="&xsd;#anyURI">&rdql;</refURI>
+</LogicLanguage>
+
+<LogicLanguage rdf:ID="SWRL-FOL">
+  <refURI rdf:datatype="&xsd;#anyURI">&swrl-fol;</refURI>
+</LogicLanguage>
+
+<owl:Class rdf:ID="Expression">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionLanguage"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="expressionLanguage">
+  <rdfs:domain rdf:resource="#Expression"/>
+  <rdfs:range rdf:resource="#LogicLanguage"/> 
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="QuotedExpression">
+  <rdfs:subClassOf rdf:resource="#Expression"/>
+  <owl:disjointWith rdf:resource="#UnquotedExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionData"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="expressionData">
+  <rdfs:domain rdf:resource="#QuotedExpression"/>
+  <rdfs:comment>
+    This property is used to refer to an "quoted" (literal) expression body.
+  </rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:ID="expressionBody">
+  <rdfs:comment>same as expressionData; for backwards compatibility</rdfs:comment>
+  <owl:equivalentProperty rdf:resource="#expressionData"/>
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:ID="variableBinding">
+  <rdfs:domain rdf:resource="#QuotedExpression"/>
+  <rdfs:range rdf:resource="#VariableBinding"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="VariableBinding">
+  <rdfs:comment>
+    This class is used to define a correspondence between a variable
+    mentioned in an quoted expression and an OWL instance.  This is
+    useful with expression languages in which the variables
+    can't be identified using URIs.
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#theVariable"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#theObject"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:ID="theVariable">
+  <rdfs:comment>
+    The value of this property is a substring of a QuotedExpression.
+    The substring represents a variable in the language of the 
+    QuotedExpression.  For example, if the QuotedExpression is in KIF, 
+    the substring would be something like "?a".
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#VariableBinding"/>
+</owl:DatatypeProperty>
+
+<owl:ObjectProperty rdf:ID="theObject">
+  <rdfs:comment>
+    The range is not defined, and so the value of this property can
+    be any OWL instance.
+    When used to bind an OWL-S process precondition variable, however, 
+    the value of this property must be an instance of process:Parameter.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="#VariableBinding"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="UnquotedExpression">
+  <rdfs:subClassOf rdf:resource="#Expression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionObject"/>
+      <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="expressionObject">
+  <rdfs:domain rdf:resource="#UnquotedExpression"/>
+  <rdfs:comment>
+    This property is used to refer to an "unquoted" expression body.
+  </rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="SWRL-Expression">
+  <rdfs:subClassOf rdf:resource="#UnquotedExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionLanguage"/>
+      <owl:hasValue rdf:resource="#SWRL" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionObject"/>
+      <owl:allValuesFrom rdf:resource="&swrl;#AtomList" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="DRS-Expression">
+  <rdfs:subClassOf rdf:resource="#UnquotedExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionLanguage"/>
+      <owl:hasValue rdf:resource="#DRS" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionObject"/>
+      <owl:allValuesFrom rdf:resource="&drs;#Formula" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="KIF-Expression">
+  <rdfs:subClassOf rdf:resource="#QuotedExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionLanguage"/>
+      <owl:hasValue rdf:resource="#KIF" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="SPARQL-Expression">
+  <rdfs:subClassOf rdf:resource="#QuotedExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionLanguage"/>
+      <owl:hasValue rdf:resource="#SPARQL" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="RDQL-Expression">
+  <rdfs:subClassOf rdf:resource="#QuotedExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionLanguage"/>
+      <owl:hasValue rdf:resource="#RDQL" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:ID="SWRL-FOL-Expression">
+  <rdfs:subClassOf rdf:resource="#QuotedExpression"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionLanguage"/>
+      <owl:hasValue rdf:resource="#SWRL-FOL" />
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<!-- a Condition is an Expression with variables to be bound in a knowledge context
+  in order to determine its truth value in that context -->
+
+<owl:Class rdf:ID="Condition">
+  <rdfs:label>Condition</rdfs:label>
+  <rdfs:subClassOf rdf:resource="#Expression"/>
+</owl:Class>
+
+<owl:Class rdf:ID="SWRL-Condition">
+  <rdfs:subClassOf rdf:resource="#SWRL-Expression"/>
+  <rdfs:subClassOf rdf:resource="#Condition"/>
+</owl:Class>
+
+<owl:Class rdf:ID="DRS-Condition">
+  <rdfs:subClassOf rdf:resource="#DRS-Expression"/>
+  <rdfs:subClassOf rdf:resource="#Condition"/>
+</owl:Class>
+
+<owl:Class rdf:ID="KIF-Condition">
+  <rdfs:subClassOf rdf:resource="#KIF-Expression"/>
+  <rdfs:subClassOf rdf:resource="#Condition"/>
+</owl:Class>
+
+<owl:Class rdf:ID="SPARQL-Condition">
+  <rdfs:subClassOf rdf:resource="#SPARQL-Expression"/>
+  <rdfs:subClassOf rdf:resource="#Condition"/>
+</owl:Class>
+
+<owl:Class rdf:ID="RDQL-Condition">
+  <rdfs:subClassOf rdf:resource="#RDQL-Expression"/>
+  <rdfs:subClassOf rdf:resource="#Condition"/>
+</owl:Class>
+
+<owl:Class rdf:ID="SWRL-FOL-Condition">
+  <rdfs:subClassOf rdf:resource="#SWRL-FOL-Expression"/>
+  <rdfs:subClassOf rdf:resource="#Condition"/>
+</owl:Class>
+
+<Condition rdf:ID="AlwaysTrue">
+  <rdfs:comment>
+    We add the 0 cardinality specs simply to ensure that no system can
+    define those properties for this instance.
+  </rdfs:comment>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionObject"/>
+      <owl:cardinality>0</owl:cardinality>
+    </owl:Restriction>
+  </rdf:type>
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#expressionData"/>
+      <owl:cardinality>0</owl:cardinality>
+    </owl:Restriction>
+  </rdf:type>
+</Condition> 
+
+</rdf:RDF>
+

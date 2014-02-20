@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY profile "http://www.daml.org/services/owl-s/1.2/Profile.owl">
+  <!ENTITY DEFAULT "http://www.daml.org/services/owl-s/1.2/ActorDefault.owl">
+]>
+
+<!--
+This document uses entity types as a shorthand for URIs.
+For a version with unexpanded entities, try loading this source
+into Internet Explorer.
+  -->
+
+<rdf:RDF
+  xmlns:rdf=	 "&rdf;#"
+  xmlns:rdfs=	 "&rdfs;#"  
+  xmlns:owl=	 "&owl;#"
+  xmlns:xsd=	 "&xsd;#"
+  xmlns:profile= "&profile;#"
+  xmlns=	 "&DEFAULT;#"
+  xml:base=      "&DEFAULT;">
+
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo>
+      $Id: ActorDefault.owl,v 1.8 2004/11/28 16:29:55 martin Exp $
+    </owl:versionInfo> 
+    <rdfs:comment>
+      Actor Default Properties
+
+      These were originally defined in previous versions of the DAML-S Profile,
+      and provided a mechanism of declaring actors that were responsible for
+      some given role within a service.
+      
+      -- These properties have now been removed from the DAML-S 0.9 Profile, and defined separately. --
+      
+      The abstraction of these parameters from the Profile ontology facilitates
+      the usage of other ontologies for defining individual parameters, such
+      as the foaf or vCard ontologies.
+
+      See the discussion accompanying the DAML-S 0.9 release for further details.
+
+      Created by Terry Payne (terryp@cs.cmu.edu).
+    </rdfs:comment> 
+    <rdfs:seeAlso rdf:resource="http://www.daml.org/services" /> 
+
+    <owl:imports rdf:resource="&profile;" /> 
+  </owl:Ontology>
+  
+
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+
+  <!--
+    This entry adds the range element to the property contactInformation
+    as defined in the Profile.
+    -->
+  
+  <owl:ObjectProperty rdf:about="&profile;#contactInformation">
+    <rdfs:range rdf:resource="#Actor"/>
+  </owl:ObjectProperty>
+
+<!--
+    The class Actor contains  details about the organisation or
+    individual that either offers a service or requests the service.
+
+    This was the original definition of Actor that was provided with earlier
+    releases of DAML-S.
+  -->
+
+  <owl:Class rdf:ID="Actor">
+    <rdfs:label>DefaultActor</rdfs:label> 
+    <rdfs:subClassOf rdf:resource="&owl;#Thing" /> 
+    <rdfs:comment>
+      Actor represents a Requester or Provider who might request or offer a service.
+      The original Actor definition was provided within DAML-S V0.5, V0.6 and V0.7
+    </rdfs:comment>
+  </owl:Class>
+
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+
+  <!--
+    Name, type of company etc of Service Provider or the name of
+    some officer that is referred by the Profile
+  -->
+  
+  <owl:DatatypeProperty rdf:ID="name">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="&xsd;#string"/>
+  </owl:DatatypeProperty>
+   
+
+  <!-- Title of whom is contacted.  It can be CEO, or
+    ServiceDepartment or whatever deemed appropriate
+
+    In general there may be more then one contact information: for
+    instance, there can be one for the shipping department, another
+    for the payment department, one for the technical support and so
+    on.  For this purpose, the field title is added to the definition
+    of Actor.
+    NOTE: contact information is intended to be interpreted by human
+    users, rather than to be interpreted automatically as is the case
+    of other fields
+    -->
+
+  <owl:DatatypeProperty rdf:ID="title">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="&xsd;#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="phone">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="&xsd;#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="fax">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="&xsd;#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="email">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="&xsd;#string"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="physicalAddress">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="&xsd;#string"/>
+  </owl:DatatypeProperty>
+
+  <!-- A URL to the companies web site -->
+  <owl:DatatypeProperty rdf:ID="webURL">
+    <rdfs:domain rdf:resource="#Actor"/>
+    <rdfs:range rdf:resource="&xsd;#string"/>
+  </owl:DatatypeProperty>
+  
+</rdf:RDF>
+

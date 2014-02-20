@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema.xsd">
+  <!ENTITY service "http://www.daml.org/services/owl-s/1.2/Service.owl">
+  <!ENTITY process "http://www.daml.org/services/owl-s/1.2/Process.owl">
+  <!ENTITY profile "http://www.daml.org/services/owl-s/1.2/profile.owl">
+  <!ENTITY country "http://www.daml.org/services/owl-s/1.2/Country.owl">
+  <!ENTITY DEFAULT "http://www.daml.org/services/owl-s/1.2/ServiceCategory.owl">
+]>
+
+<!--
+This document uses entity types as a shorthand for URIs.
+For a version with unexpanded entities, try loading this source
+into Internet Explorer.
+  -->
+
+<rdf:RDF
+  xmlns:rdf=	  "&rdf;#"
+  xmlns:rdfs=	  "&rdfs;#"
+  xmlns:owl =     "&owl;#"
+  xmlns:xsd=	  "&xsd;#"
+  xmlns:service=  "&service;#"
+  xmlns:process=  "&process;#"
+  xmlns=	  "&DEFAULT;#"
+  xml:base=       "&DEFAULT;">
+
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo>
+      $Id: ServiceCategory.owl,v 1.2 2006/03/06 05:43:02 martin Exp $
+    </owl:versionInfo> 
+    <rdfs:comment>
+      Moved here from Profile.owl, as of OWL-S release 1.2.
+    </rdfs:comment> 
+
+    <owl:imports rdf:resource="&service;" /> 
+    <owl:imports rdf:resource="&process;" /> 
+  </owl:Ontology>
+  
+<!--   ############ ########### ############ ############ ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############ ########### ############ ############ ########### --> 
+
+
+<!-- ################################################################ -->
+<!-- Service Category                                                 -->
+<!-- A set of classes and properties that may be used with            -->
+<!-- Profile.owl                                                      -->
+<!-- ################################################################ -->
+
+  <!--
+	serviceCategory refers to an ontology of services that
+	may be on offer.  High level services could include
+	classification on the bases of industry taxonomies such as
+	NAICS or UNSPCP or DandB or others that may be used.
+    
+        Additionally, it can be used to specify other classification
+        systems such as
+		* Products
+		* Problem Solving Capabilities
+		* Commercial Services
+		* Information
+		etc
+	No range restrictions are placed on this property at present.
+	Specific service descriptions will specialise this by
+	restricting the range appropriately using subPropertyOf.
+    
+        Examples of usage of serviceCategory are given in
+        ProfileAdditionalParameters.owl.
+
+    -->
+
+  <owl:ObjectProperty rdf:ID="serviceCategory">
+    <rdfs:domain rdf:resource="&profile;#Profile"/>
+    <rdfs:range rdf:resource="#ServiceCategory"/>
+  </owl:ObjectProperty>
+  
+
+  <!-- 
+    ServiceCategory describes categories of services on the bases of
+    some classification that may be outside OWL-S and possibly
+    outside OWL. In the latter case, they may require some
+    specialized reasoner if any inference has to be done with it
+    -->
+
+  <owl:Class rdf:ID="ServiceCategory"/>  
+
+
+  <!-- categoryName is the name of the actual category, which could be just a literal,
+       or perhaps the uri of the process parameter (a property)
+    -->
+  <owl:DatatypeProperty rdf:ID="categoryName">
+    <rdfs:domain rdf:resource="#ServiceCategory"/>
+  </owl:DatatypeProperty>
+  
+  
+  
+  <!-- each serviceCategory can refer to only one categoryName -->
+
+  <owl:Class rdf:about="#ServiceCategory">
+    <rdfs:comment>
+    a ServiceCategory is restricted to refer to only onename
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="#categoryName"/>
+        <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+
+  
+  <!-- taxonomy stores a reference to the taxonomy scheme.  It can be
+  either the URL of the taxonomy, or the name of the taxonomy or
+  anything else.  -->
+
+  <owl:DatatypeProperty rdf:ID="taxonomy">
+    <rdfs:domain rdf:resource="#ServiceCategory"/>
+  </owl:DatatypeProperty>
+    
+  <!-- each serviceCategory can refer to only one taxonomy, to limit
+  the possibility of confusion. -->
+
+  <owl:Class rdf:about="#ServiceCategory">
+    <rdfs:comment>
+    a ServiceCategory is restricted to refer to only one taxonomy
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="#taxonomy"/>
+        <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!-- value points to the value in a specific taxonomy
+    There may be more than one value for each taxonomy, so no
+    restriction is added here.
+    -->
+
+  <owl:DatatypeProperty rdf:ID="value">
+    <rdfs:domain rdf:resource="#ServiceCategory"/>
+  </owl:DatatypeProperty>
+  
+  
+  <!-- each serviceCategory can refer to only one value, 
+    if more then one value applies, then they have to be added as a
+    string with space separators -->
+
+  <owl:Class rdf:about="#ServiceCategory">
+    <rdfs:comment>
+    a ServiceCategory is restricted to refer to only one taxonomy
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="#value"/>
+        <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  
+  <!-- Often taxonomies associate a code to each type of service.
+    The following property stores the code -->
+  <owl:DatatypeProperty rdf:ID="code">
+    <rdfs:domain rdf:resource="#ServiceCategory"/>    
+  </owl:DatatypeProperty>
+  
+  
+  <!-- each serviceCategory can refer to only one code, 
+    if more then one value applies, then they have to be added as a
+    string with space separators 
+    There may be of course a problem of synchronization with the value -->
+
+  <owl:Class rdf:about="#ServiceCategory">
+    <rdfs:comment>
+    a ServiceCategory is restricted to refer to only one taxonomy
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="#code"/>
+        <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+   <!-- Taxononomies of businesses and products (such as NAICS and
+  UNSPSC) are already available and they may be translated in OWL in
+  the near future.  Here we offer the possibility to specify the type
+  of service that is provided as well as the type of product.  In
+  addition, we provide the bases for a retrieval of services on the
+  bases of these two features.
+    -->
+  
+  <!-- Map the Profile to a Service Type -->
+
+  <owl:DatatypeProperty rdf:ID="serviceClassification">
+    <rdfs:domain rdf:resource="&profile;#Profile"/> 
+    <rdfs:range rdf:resource="&xsd;#anyURI"/>
+  </owl:DatatypeProperty>
+  
+</rdf:RDF>
+

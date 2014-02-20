@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+<!--
+  This document uses entities as abbreviations for URIs.
+  For a version with entity references expanded, load the source into 
+  Internet Explorer.
+  -->
+<!DOCTYPE uridef [
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY service "http://www.daml.org/services/owl-s/1.2/Service.owl">
+  <!ENTITY DEFAULT "http://www.daml.org/services/owl-s/1.2/Service.owl">
+  <!ENTITY THIS "http://www.daml.org/services/owl-s/1.2/Service.owl">
+]>
+
+<rdf:RDF 
+  xmlns:rdf =  "&rdf;#"
+  xmlns:rdfs = "&rdfs;#"
+  xmlns:owl = "&owl;#"
+  xmlns =      "&service;#"
+  xml:base="&service;">
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    $Id: Service.owl,v 1.25 2005/05/18 21:45:19 martin Exp $
+  </owl:versionInfo>
+  <rdfs:comment>
+    Top level of OWL ontology for services.
+    Part of the OWL-S ontology; see http://www.daml.org/services/.  
+  </rdfs:comment>
+</owl:Ontology>
+
+
+<!-- =================================================================
+		  OWL SERVICES
+
+Class Service provides a simple means of organizing the parts of a Web
+service description.  Services are described by profiles, models, and
+groundings, which are briefly described below.  Each instance of
+Service can be thought of as an API declaration for a service entry
+point that a service provider wants to make accessible.  Each instance
+of Service refers to 0 or more profiles, and 0 or 1 models.  In
+addition, if there's a model, it must be accompanied by 1 or more
+groundings.
+
+More precisely, each instance of Service "presents" 0 or more
+instances of (a descendant class of) ServiceProfile, and may be
+"describedBy" an instance of (a descendant class of) ServiceModel.  In
+addition, when a ServiceModel exists, the Service "supports" one or
+more instances of (a descendant class of) ServiceGrounding.
+
+The service profile tells "what the service does"; that is, it gives
+the type of information needed by a service-seeking agent to determine
+whether the service meets its needs.
+
+The service model tells "how the service works"; that is, it describes
+what happens when the service is carried out.  For non-trivial
+services (those composed of several steps over time), this description
+may be used by a service-seeking agent in (at least) four different
+ways: (1) to perform a more in-depth analysis of whether the service
+meets its needs; (2) to compose service descriptions from multiple
+services to perform a specific task; (3) during the course of the
+service enactment, to coordinate the activities of the different
+participants; (4) to monitor the execution of the service.
+
+A service grounding specifies the details of how an agent can access a
+service.  Typically a grounding may specify some well know
+communications protocol (e.g., RPC, HTTP-FORM, CORBA IDL, SOAP, Java
+remote calls, OAA, Jini), and service-specific details such as port
+numbers used in contacting the service.
+
+Generally speaking, the ServiceProfile is used for advertising,
+registry, discovery, and matchmaking.  Once a potential service-using
+agent has located a service appropriate for its need, the ServiceModel
+and a ServiceGrounding, taken together, give enough information for an
+agent to make use of the selected service.
+
+================================================================== -->
+
+<!-- Service -->
+
+<owl:Class rdf:ID="Service">
+  <rdfs:label>Service</rdfs:label>
+  <rdfs:comment>See comments above</rdfs:comment>
+</owl:Class>
+
+<!-- Service Profile -->
+
+<owl:Class rdf:ID="ServiceProfile">
+  <rdfs:label>ServiceProfile</rdfs:label>
+  <rdfs:comment>See comments above</rdfs:comment>
+</owl:Class>
+
+<!-- Service Model -->
+
+<owl:Class rdf:ID="ServiceModel">
+  <rdfs:label>ServiceModel</rdfs:label>
+  <rdfs:comment>See comments above</rdfs:comment>
+</owl:Class>
+
+<!-- Service Grounding -->
+
+<owl:Class rdf:ID="ServiceGrounding">
+  <rdfs:label>ServiceGrounding</rdfs:label>
+  <rdfs:comment>See comments above</rdfs:comment>
+</owl:Class>
+
+
+
+<!--  Presenting a profile    -->
+
+<owl:ObjectProperty rdf:ID="presents">
+  <rdfs:comment> 
+    There are no cardinality restrictions on this property. 
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="&service;#Service"/>
+  <rdfs:range rdf:resource="&service;#ServiceProfile"/>
+  <owl:inverseOf rdf:resource="&service;#presentedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="presentedBy">
+  <rdfs:comment> 
+    There are no cardinality restrictions on this property. 
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="&service;#ServiceProfile"/>
+  <rdfs:range rdf:resource="&service;#Service"/>
+  <owl:inverseOf rdf:resource="&service;#presents"/>
+</owl:ObjectProperty>
+
+<!--   Being described by a model -->
+
+<owl:ObjectProperty rdf:ID="describedBy">
+  <rdfs:domain rdf:resource="&service;#Service"/>
+  <rdfs:range rdf:resource="&service;#ServiceModel"/>
+  <owl:inverseOf rdf:resource="&service;#describes"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Service">
+  <rdfs:comment> 
+    A service has 0 or 1 models.  (But note that a service with 0 models 
+    does not provide automated online access; it exists only for
+    discovery purposes; that is, it exists so as to provide a Profile.)
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:maxCardinality="1">
+      <owl:onProperty rdf:resource="#describedBy"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:ObjectProperty rdf:ID="describes">
+  <rdfs:comment> 
+    There are no cardinality restrictions on this property. That is,
+    the same service model can be used by many different services.
+  </rdfs:comment>
+  <rdfs:domain rdf:resource="&service;#ServiceModel"/>
+  <rdfs:range rdf:resource="&service;#Service"/>
+  <owl:inverseOf rdf:resource="&service;#describedBy"/>
+</owl:ObjectProperty>
+
+<!--
+  Supporting a grounding
+
+  Every service model must be grounded in order to be usable, and
+  there may be multiple groundings for a given model.
+  But the relationship between a service model and a grounding
+  is not expressed directly.  It is expressed indirectly via the
+  "supports" property of the Service.  This allows the service model
+  to be expressed independently of any particular grounding.
+  -->
+
+<owl:ObjectProperty rdf:ID="supports">
+  <rdfs:domain rdf:resource="&service;#Service"/>
+  <rdfs:range rdf:resource="&service;#ServiceGrounding"/>
+  <owl:inverseOf rdf:resource="&service;#supportedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="supportedBy">
+  <rdfs:domain rdf:resource="&service;#ServiceGrounding"/>
+  <rdfs:range rdf:resource="&service;#Service"/>
+  <owl:inverseOf rdf:resource="&service;#supports"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#ServiceGrounding">
+  <rdfs:comment> 
+    A Grounding must be associated with exactly one service.
+    (Also, that service must have a model - but that constraint
+    isn't expressed here.)
+  </rdfs:comment>
+  <rdfs:subClassOf>
+    <owl:Restriction owl:cardinality="1">
+      <owl:onProperty rdf:resource="#supportedBy"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+
+
+
+<!--  Providing a service   -->
+
+<owl:ObjectProperty rdf:ID="provides">
+  <rdfs:comment>
+    OWL-S is completely agnostic at present about what kind of thing
+    provides a service (hence, no domain declared here).
+  </rdfs:comment>
+  <rdfs:range rdf:resource="&service;#Service"/>
+  <owl:inverseOf rdf:resource="&service;#providedBy"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="providedBy">
+<!--BJP: This follows from the inversity, why not leave it out? Two definitions of the 
+same thing...more chances for error. OTOH, leaving them in is harmless and likely to be
+picked up by dumber (e.g., non-inverse aware) tools.-->
+  <rdfs:domain rdf:resource="&service;#Service"/>
+  <owl:inverseOf rdf:resource="&service;#provides"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>
+

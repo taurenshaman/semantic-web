@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef[
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">  
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY profile "http://www.daml.org/services/owl-s/1.2/Profile.owl">
+  <!ENTITY service-cat "http://www.daml.org/services/owl-s/1.2/ServiceCategory.owl">
+  <!ENTITY service-param "http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl">
+  <!ENTITY DEFAULT "http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl">
+  <!ENTITY country "http://www.daml.org/services/owl-s/1.2/Country.owl">
+  <!-- <!ENTITY country "http://www.daml.ri.cmu.edu/ont/Country.owl"> -->
+]>
+
+<!--
+This document uses entity types as a shorthand for URIs.
+For a version with unexpanded entities, try loading this source
+into Internet Explorer.
+  -->
+
+<rdf:RDF
+  xmlns:rdf=	  "&rdf;#"
+  xmlns:rdfs=	  "&rdfs;#"  
+  xmlns:owl =     "&owl;#"
+  xmlns:xsd=	  "&xsd;#"
+  xmlns:profile=  "&profile;#"
+  xmlns=	  "&DEFAULT;#"
+  xml:base=       "&DEFAULT;">
+
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo>
+      $Id: ProfileAdditionalParameters.owl,v 1.12 2006/03/06 05:26:36 martin Exp $
+    </owl:versionInfo> 
+    <rdfs:comment>
+      Process and Service Coalition
+      Additional concepts and definitions that augment the OWL-S Profile
+      ontology.
+      These accompany the OWL-S Release
+      Created by Terry Payne (terryp@cs.cmu.edu).
+      Modified by Massimo Paolucci (paolucci@cs.cmu.edu)
+
+    </rdfs:comment> 
+    <rdfs:seeAlso rdf:resource="http://www.daml.org/services" />
+<!--  
+  -->
+    <owl:imports rdf:resource="&profile;" />
+  </owl:Ontology>
+  
+
+<!--   ############ ########### ############ ############ ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############          SERVICE CATEGORIES           ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############ ########### ############ ############ ########### --> 
+
+  <!--
+    This section contains some examples of service category that may
+    be useful to define services.
+    NOTE: that these service categories show how service categories
+    are used in the OWL-S Profile.  By no means, the list is
+    restricted to them, indeed many more can be added.  
+    -->
+  
+  
+  <!-- 
+    NAICS is one of the industrial taxonomies widely used in the
+    real world.  This class shows the bases of how NAICS can be used
+    within OWL-S
+    -->
+  
+  <owl:Class rdf:ID="NAICS">
+    <rdfs:comment>
+      Hook to the NAICS taxonomy 
+    </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&service-cat;#ServiceCategory"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="&profile;#categoryName"/>
+	<owl:hasValue>
+	  NAICS 
+	</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="&profile;#taxonomy"/>
+	<owl:hasValue>
+	  www.naics.com
+	</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  
+  <!-- 
+    UNSPSC is one of the industrial taxonomies widely used in the
+    real world.  This class shows the bases of how UNSPSC can be used
+    within OWL-S
+    -->
+  
+  <owl:Class rdf:ID="UNSPSC">
+    <rdfs:comment>
+      Hook to the UNSPSC taxonomy 
+      </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&service-cat;#ServiceCategory"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="&profile;#categoryName"/>
+	<owl:hasValue>
+	   UNSPSC
+	</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="&profile;#taxonomy"/>
+	<owl:hasValue>
+	  www.un-spsc.net
+	</owl:hasValue>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  
+  
+  
+<!--   ############ ########### ############ ############ ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############           SERVICE PARAMETERS          ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############ ########### ############ ############ ########### --> 
+
+  <!--
+    This section contains some examples of service parameters that may
+    be useful to define services.
+    NOTE: that these service parameters show how service parameters
+    are used in the OWL-S Profile.  By no means, the list is
+    restricted to them, indeed many more can be added.  
+    -->
+  
+  <!-- Max resonse time by which the service will be delivered  
+    It would be better defined as a rule
+    -->
+
+  <owl:Class rdf:ID="MaxResponseTime">
+    <rdfs:subClassOf rdf:resource="&service-param;#ServiceParameter"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="&profile;#sParameter"/>
+	<owl:allValuesFrom rdf:resource="#Duration"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <!-- Average resonse time by which the service will be delivered  
+    It would be better defined as a rule
+    -->
+
+  <owl:Class rdf:ID="AverageResponseTime">
+    <rdfs:subClassOf rdf:resource="&service-param;#ServiceParameter"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="&profile;#sParameter"/>
+	<owl:allValuesFrom rdf:resource="#Duration"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <owl:Class rdf:ID="Duration" />
+  
+  <!-- 
+    Version 0.6 contained GeographicRadius as one of the properties of
+    Profile.  The property was then removed in 0.7 because it was felt
+    that it was not general enough.  It is added here as an example of
+    Service Parameter.
+    -->
+
+  <owl:Class rdf:ID="GeographicRadius">
+    <rdfs:subClassOf rdf:resource="&service-param;#ServiceParameter"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="&profile;#sParameter"/>
+	<owl:allValuesFrom rdf:resource="&country;#Country"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  
+  
+  
+<!--   ############ ########### ############ ############ ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############            QUALITY RATING             ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############ ########### ############ ############ ########### --> 
+
+  <!--
+    This section contains some examples of quality rating that may
+    be useful to define services.
+    NOTE: this quality rating show how the quality rating class
+    is used in the OWL-S Profile.  By no means, the list is
+    restricted to the rating defined here.
+    -->
+  
+  
+</rdf:RDF>
+

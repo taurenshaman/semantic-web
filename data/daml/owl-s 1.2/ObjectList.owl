@@ -1,0 +1,38 @@
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#"
+  xml:base="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl">
+
+<owl:Ontology rdf:about="">
+  <owl:versionInfo>
+    $Id: ObjectList.owl,v 1.5 2004/11/28 16:29:55 martin Exp $
+  </owl:versionInfo>
+  <rdfs:comment>
+  </rdfs:comment>
+</owl:Ontology>
+
+<owl:Class rdf:ID="List">
+  <rdfs:label>List</rdfs:label>
+  <rdfs:comment>This is intended to provide an OWL-DL compatible version of rdf:List</rdfs:comment>
+</owl:Class>
+
+<List rdf:ID="nil">
+  <rdfs:label>nil</rdfs:label>
+  <rdfs:comment>The empty list, with no items in it. If the rest of a list is nil then the list has no more items in it.</rdfs:comment>
+</List>
+
+<owl:ObjectProperty rdf:ID="first">
+  <rdfs:label>first</rdfs:label>
+  <rdfs:comment>The first item in the subject RDF list.</rdfs:comment>
+  <rdfs:domain rdf:resource="#List"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="rest">
+  <rdfs:label>rest</rdfs:label>
+  <rdfs:comment>The rest of the subject RDF list after the first item.</rdfs:comment>
+  <rdfs:domain rdf:resource="#List"/>
+</owl:ObjectProperty>
+
+</rdf:RDF>

@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+
+<!--
+      This is an initial definition of an ontology for resources, for the
+      purposes of OWL-S. The schemata here are written in a way that allows
+      this file reside anywhere (i.e., it does not have to be fetched from its
+      "real" URI).
+
+      Author: Ora Lassila
+
+      Copyright 2001 Nokia Research Center.
+      All Rights Reserved.
+
+      Subject to the Nokia Open Source (NOKOS) license:
+        http://www.opensource.org/licenses/nokia.html
+-->
+
+
+<!DOCTYPE uridef [
+  <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY r    "http://www.daml.org/services/owl-s/1.2/Resource.owl#">
+]>
+
+<rdf:RDF xmlns:rdf="&rdf;"
+         xmlns:rdfs="&rdfs;"
+         xmlns:owl = "&owl;"
+         xmlns:r="&r;"
+         xml:base="http://www.daml.org/services/owl-s/1.2/Resource.owl">
+
+<owl:Ontology rdf:about="&r;">
+  <owl:versionInfo>no version number yet...</owl:versionInfo>
+  <rdfs:comment>Resource Ontology for OWL-S</rdfs:comment>
+</owl:Ontology>
+
+
+<!--
+        BASE CLASS FOR ALL RESOURCES
+        
+        Resources have "capacity", but this notion can also be used to
+        represent various kinds of variables (which could act as pre-
+        conditions for allocation): location, access rights, etc.
+-->
+
+<owl:Class rdf:about="&r;Resource"
+   rdfs:label="Resource"/>
+
+<owl:ObjectProperty rdf:about="&r;allocationType"
+   rdfs:label="allocation type">
+  <rdfs:domain rdf:resource="&r;Resource"/>
+  <rdfs:range rdf:resource="&r;AllocationType"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="&r;capacityType"
+   rdfs:label="capacity type">
+  <rdfs:domain rdf:resource="&r;Resource"/>
+  <rdfs:range rdf:resource="&r;CapacityType"/>
+</owl:ObjectProperty>
+
+<rdf:Property rdf:about="&r;capacityGranularity"
+   rdfs:label="capacity granularity">
+  <rdfs:domain rdf:resource="&r;Resource"/>
+</rdf:Property>
+
+
+<!--
+        ALLOCATION TYPES
+        
+        Address essentially what happens after the resource is released:
+        
+          consumable    (gone after it is allocated)
+          reusable      (available after released)
+-->
+
+<owl:Class rdf:about="&r;AllocationType"
+   rdfs:label="Allocation Type"/>
+
+<r:AllocationType rdf:about="&r;ConsumableAllocation"/>
+<r:AllocationType rdf:about="&r;ReusableAllocation"/>
+
+
+<!--
+        CAPACITY TYPES
+        
+        Address "measures" of allocation:
+        
+          discrete      (resource has notion of granularity)
+          continuous    (allocate any amount)
+-->
+
+<owl:Class rdf:about="&r;CapacityType"
+   rdfs:label="Capacity Type"/>
+
+<r:CapacityType rdf:about="&r;DiscreteCapacity"/>
+<r:CapacityType rdf:about="&r;ContinuousCapacity"/>
+
+
+<!--
+        RESOURCE SUBCLASSES
+        
+        These mostly address issues of resource composition:
+
+          atomic
+            unit-capacity       (on/off)
+            batch-capacity      (multiple activities, time-synchronized, can allocate)
+          aggregate             (has "sub-resources")
+            conjunctive         (must allocate all)
+            disjunctive         (can allocate a subset)
+-->
+
+<owl:Class rdf:about="&r;AtomicResource"
+   rdfs:label="Atomic Resource">
+  <rdfs:subClassOf rdf:resource="&r;Resource"/>
+</owl:Class>
+
+<owl:Class rdf:about="&r;UnitCapacityResource"
+   rdfs:label="Unit-capacity Resource">
+  <rdfs:subClassOf rdf:resource="&r;AtomicResource"/>
+</owl:Class>
+
+<owl:Class rdf:about="&r;BatchCapacityResource"
+   rdfs:label="Batch-capacity Resource">
+  <rdfs:subClassOf rdf:resource="&r;AtomicResource"/>
+</owl:Class>
+
+<owl:Class rdf:about="&r;AggregateResource"
+   rdfs:label="Aggregate Resource">
+  <rdfs:subClassOf rdf:resource="&r;Resource"/>
+</owl:Class>
+
+<owl:Class rdf:about="&r;ConjunctiveAggregateResource"
+   rdfs:label="Conjunctive Aggregate Resource">
+  <rdfs:subClassOf rdf:resource="&r;AggregateResource"/>
+</owl:Class>
+
+<owl:Class rdf:about="&r;DisjunctiveAggregateResource"
+   rdfs:label="Disjunctive Aggregate Resource">
+  <rdfs:subClassOf rdf:resource="&r;AggregateResource"/>
+</owl:Class>
+
+
+</rdf:RDF>
+
+

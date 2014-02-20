@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+	A paper, "Time in OWL-S", that explained in detail how 
+	this entry sub-ontology of time can be used to support 
+	OWL-S can be found at 
+	http://www.isi.edu/~pan/damltime/AAAIsymp2004.pdf
+
+	More materials about OWL-Time:
+	http://www.isi.edu/~pan/OWL-Time.html
+
+-->
+ 
+<!DOCTYPE owl [
+     <!ENTITY time-entry  "http://www.isi.edu/~pan/damltime/time-entry.owl#" >
+     <!ENTITY tzont  "http://www.isi.edu/~pan/damltime/timezone-ont.owl#" >
+     <!ENTITY owl  "http://www.w3.org/2002/07/owl#" >
+     <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+     <!ENTITY rdf  "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+   ]>
+
+<rdf:RDF
+  xmlns     = "http://www.isi.edu/~pan/damltime/time-entry.owl#"
+  xmlns:time-entry = "http://www.isi.edu/~pan/damltime/time-entry.owl#"
+  xml:base  = "http://www.isi.edu/~pan/damltime/time-entry.owl"
+  xmlns:tzont = "http://www.isi.edu/~pan/damltime/timezone-ont.owl#"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd = "http://www.w3.org/2001/XMLSchema#">
+
+  <owl:Ontology rdf:about="">
+    <rdfs:comment>
+      An entry sub-ontology of time (OWL-Time).
+    </rdfs:comment>
+  </owl:Ontology>
+
+<!-- Temporal Concepts -->
+
+  <owl:Class rdf:ID="Instant"> 
+    <rdfs:subClassOf rdf:resource="#TemporalEntity"/>
+    <rdfs:subClassOf rdf:resource="#InstantThing"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Interval"> 
+    <rdfs:subClassOf rdf:resource="#TemporalEntity"/>
+    <rdfs:subClassOf rdf:resource="#IntervalThing"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="InstantEvent"> 
+    <rdfs:subClassOf rdf:resource="#InstantThing"/>
+    <rdfs:subClassOf rdf:resource="#Event"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="IntervalEvent"> 
+    <rdfs:subClassOf rdf:resource="#IntervalThing"/>
+    <rdfs:subClassOf rdf:resource="#Event"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="TemporalEntity">
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#Instant" />
+      <owl:Class rdf:about="#Interval" />
+    </owl:unionOf>
+    <rdfs:subClassOf rdf:resource="#TemporalThing"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Event">
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#InstantEvent" />
+      <owl:Class rdf:about="#IntervalEvent" />
+    </owl:unionOf>
+    <rdfs:subClassOf rdf:resource="#TemporalThing"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="InstantThing">
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#Instant" />
+      <owl:Class rdf:about="#InstantEvent" />
+    </owl:unionOf>
+    <rdfs:subClassOf rdf:resource="#TemporalThing"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="IntervalThing">
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#Interval" />
+      <owl:Class rdf:about="#IntervalEvent" />
+    </owl:unionOf>
+    <rdfs:subClassOf rdf:resource="#TemporalThing"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="TemporalThing">
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#InstantThing" />
+      <owl:Class rdf:about="#IntervalThing" />
+    </owl:unionOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ProperInterval"> 
+    <rdfs:subClassOf rdf:resource="#Interval"/>
+    <owl:disjointWith rdf:resource="#Instant"/>
+    <rdfs:subClassOf rdf:resource="#ProperIntervalThing"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="ProperIntervalThing"> 
+    <rdfs:subClassOf rdf:resource="#IntervalThing"/>
+    <owl:disjointWith rdf:resource="#InstantThing"/>
+  </owl:Class>
+
+<!-- Topological Temporal Relations -->
+
+  <owl:ObjectProperty rdf:ID="before">
+    <rdf:type rdf:resource="&owl;TransitiveProperty" />
+    <rdfs:domain rdf:resource="#TemporalThing" />
+    <rdfs:range  rdf:resource="#TemporalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="after">
+    <owl:inverseOf rdf:resource="#before" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="begins">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:domain rdf:resource="#TemporalThing" />
+    <rdfs:range  rdf:resource="#InstantThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="ends">
+    <rdf:type rdf:resource="&owl;FunctionalProperty" />
+    <rdfs:domain rdf:resource="#TemporalThing" />
+    <rdfs:range  rdf:resource="#InstantThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="inside">
+    <rdfs:domain rdf:resource="#IntervalThing" />
+    <rdfs:range  rdf:resource="#InstantThing" />
+  </owl:ObjectProperty>
+
+<!-- Interval Thing Relations -->
+
+  <owl:ObjectProperty rdf:ID="intEquals">
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intBefore">
+    <rdfs:subPropertyOf rdf:resource="#before" />
+    <rdfs:subPropertyOf rdf:resource="#nonoverlap" />
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intMeets">
+    <rdfs:subPropertyOf rdf:resource="#nonoverlap" />
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intOverlaps">
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intStarts">
+    <rdfs:subPropertyOf rdf:resource="#startsOrDuring" />
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intDuring">
+    <rdfs:subPropertyOf rdf:resource="#startsOrDuring" />
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intFinishes">
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intAfter">
+    <owl:inverseOf rdf:resource="#intBefore" />
+    <rdfs:subPropertyOf rdf:resource="#nonoverlap" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intMetBy">
+    <owl:inverseOf rdf:resource="#intMeets" />
+    <rdfs:subPropertyOf rdf:resource="#nonoverlap" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intOverlappedBy">
+    <owl:inverseOf rdf:resource="#intOverlaps" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intStartedBy">
+    <owl:inverseOf rdf:resource="#intStarts" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intContains">
+    <owl:inverseOf rdf:resource="#intDuring" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="intFinishedBy">
+    <owl:inverseOf rdf:resource="#intFinishes" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="startsOrDuring">
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="nonoverlap">
+    <rdfs:domain rdf:resource="#ProperIntervalThing" />
+    <rdfs:range  rdf:resource="#ProperIntervalThing" />
+  </owl:ObjectProperty>
+
+<!-- Duration Description -->
+
+  <owl:Class rdf:ID="DurationDescription"> 
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#years" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#months" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#weeks" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#days" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hours" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#minutes" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#seconds" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:DatatypeProperty rdf:ID="years">
+    <rdfs:domain rdf:resource="#DurationDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="months">
+    <rdfs:domain rdf:resource="#DurationDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="weeks">
+    <rdfs:domain rdf:resource="#DurationDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="days">
+    <rdfs:domain rdf:resource="#DurationDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="hours">
+    <rdfs:domain rdf:resource="#DurationDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="minutes">
+    <rdfs:domain rdf:resource="#DurationDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="seconds">
+    <rdfs:domain rdf:resource="#DurationDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:ID="durationDescriptionOf">
+    <rdfs:domain rdf:resource="#TemporalThing" />
+    <rdfs:range  rdf:resource="#DurationDescription" />
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="durationDescriptionDataType">
+    <!-- the user can use either this durationDescriptionDataType or 
+      the above durationDescriptionOf to specify a duration description
+      for a temporal thing. -->       
+    <rdfs:domain rdf:resource="#TemporalThing" />
+    <rdfs:range  rdf:resource="&xsd;duration" />
+  </owl:DatatypeProperty>
+
+  <owl:Class rdf:ID="InstantThingPair"> 
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#firstInstantThing" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#secondInstantThing" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <owl:ObjectProperty rdf:ID="firstInstantThing">
+    <rdfs:domain rdf:resource="#InstantThingPair" />
+    <rdfs:range  rdf:resource="#InstantThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="secondInstantThing">
+    <rdfs:domain rdf:resource="#InstantThingPair" />
+    <rdfs:range  rdf:resource="#InstantThing" />
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="instantPairDurationDescriptionOf">
+    <rdfs:domain rdf:resource="#InstantThingPair" />
+    <rdfs:range  rdf:resource="#DurationDescription" />
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="instantPairDurationDescriptionDataType">
+    <!-- the user can use either this instantPairDurationDescriptionDataType or 
+      the above instantPairDurationDescriptionOf to specify a duration description
+      for two instant things. -->       
+    <rdfs:domain rdf:resource="#InstantThingPair" />
+    <rdfs:range  rdf:resource="&xsd;duration" />
+  </owl:DatatypeProperty>
+
+<!-- Calendar-Clock Description -->
+
+  <owl:Class rdf:ID="CalendarClockInterval"> 
+    <rdfs:subClassOf rdf:resource="#ProperInterval"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="TemporalUnit"> 
+    <owl:oneOf rdf:parseType="Collection">
+      <TemporalUnit rdf:about="#unitSecond" />
+      <TemporalUnit rdf:about="#unitMinute" />
+      <TemporalUnit rdf:about="#unitHour" />
+      <TemporalUnit rdf:about="#unitDay" />
+      <TemporalUnit rdf:about="#unitWeek" />
+      <TemporalUnit rdf:about="#unitMonth" />
+      <TemporalUnit rdf:about="#unitYear" />
+    </owl:oneOf>
+  </owl:Class>
+
+  <owl:Class rdf:ID="CalendarClockDescription"> 
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#unitType" />
+     	  <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf> 
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#year" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#month" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#week" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#day" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#dayOfWeekField" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#dayOfYearField" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#hour" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#minute" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#second" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#timeZone" />
+     	  <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+  <owl:ObjectProperty rdf:ID="unitType">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="#TemporalUnit" />
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="year">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;gYear" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="month">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;gMonth" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="week">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="day">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;gDay" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="dayOfWeekField">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="dayOfYearField">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="hour">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="minute">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;nonNegativeInteger" />
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:ID="second">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range  rdf:resource="&xsd;decimal" />
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:ID="timeZone">
+    <rdfs:domain rdf:resource="#CalendarClockDescription" />
+    <rdfs:range>  
+    	<owl:Class rdf:about="&tzont;TimeZone" />
+    </rdfs:range>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="inCalendarClock">
+    <!-- an instant thing is in a calendar-clock interval -->
+    <rdfs:domain rdf:resource="#InstantThing" />
+    <rdfs:range  rdf:resource="#CalendarClockDescription" />
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="inCalendarClockDataType">
+    <!-- the user can use either this inCalendarClockDataType or 
+      the above inCalendarClock to specify an instant thing is 
+      in a calendar-clock interval -->       
+    <rdfs:domain rdf:resource="#InstantThing" />
+    <rdfs:range  rdf:resource="&xsd;dateTime" />
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:ID="calendarClockDescriptionOf">
+    <rdfs:domain rdf:resource="#CalendarClockInterval" />
+    <rdfs:range  rdf:resource="#CalendarClockDescription" />
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:ID="calendarClockDescriptionDataType">
+    <!-- the user can use either this calendarClockDescriptionDataType or 
+      the above calendarClockDescriptionOf to specify a calendar-clock
+      description for a calendar-clock interval. -->       
+    <rdfs:domain rdf:resource="#CalendarClockInterval" />
+    <rdfs:range  rdf:resource="&xsd;dateTime" />
+  </owl:DatatypeProperty>
+
+</rdf:RDF>

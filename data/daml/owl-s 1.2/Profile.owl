@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE uridef [
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl">
+  <!ENTITY expr "http://www.daml.org/services/owl-s/1.2/generic/Expression.owl">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema">
+  <!ENTITY service "http://www.daml.org/services/owl-s/1.2/Service.owl">
+  <!ENTITY process "http://www.daml.org/services/owl-s/1.2/Process.owl">
+  <!ENTITY DEFAULT "http://www.daml.org/services/owl-s/1.2/Profile.owl">
+]>
+
+<!--
+This document uses entity types as a shorthand for URIs.
+For a version with unexpanded entities, try loading this source
+into Internet Explorer.
+-->
+
+<rdf:RDF
+  xmlns:rdf=	"&rdf;#"
+  xmlns:rdfs=	"&rdfs;#"  
+  xmlns:owl=	"&owl;#"
+  xmlns:service="&service;#"
+  xmlns:process="&process;#"
+  xmlns=	"&DEFAULT;#"
+  xml:base=	"&DEFAULT;">
+
+  <owl:Ontology rdf:about="">
+    <owl:versionInfo>
+      $Id: Profile.owl,v 1.55 2006/12/15 01:39:55 martin Exp $
+    </owl:versionInfo> 
+    <rdfs:comment>
+      OWL ontology for Advertisements (i.e. Profiles).
+      This file belongs to the OWL-S Release.
+      Initial version created by Terry Payne (trp@ecs.soton.ac.uk).
+      Modified by Massimo Paolucci (paolucci@cs.cmu.edu)
+      Modified by David Martin and other members of the OWL-S Coalition.
+
+    </rdfs:comment> 
+    <rdfs:seeAlso rdf:resource="http://www.daml.org/services/owl-s/1.2/ServiceCategory.owl" /> 
+    <rdfs:seeAlso rdf:resource="http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl" /> 
+    <rdfs:seeAlso rdf:resource="http://www.daml.org/services/owl-s/1.2/ProfileAdditionalParameters.owl" /> 
+    <rdfs:seeAlso rdf:resource="http://www.daml.org/services/owl-s/1.2/ProfileDeprecatedElements.owl" /> 
+    <rdfs:seeAlso rdf:resource="http://www.daml.org/services/owl-s/1.2/ActorDefault.owl" /> 
+<!--  
+  -->
+    <owl:imports>
+	<owl:Ontology rdf:about="&service;" /> 
+    </owl:imports>
+    <owl:imports>
+	<owl:Ontology rdf:about="&process;" /> 
+    </owl:imports>
+  </owl:Ontology>
+  
+
+<!--  ############ ########### ############ ############ ########### --> 
+
+<!--  
+  Organization of this file:
+  1. Log of changes 
+  2. Definition of Profile
+     It provides a definition of the Profile class
+  3. Non-Functional Properties
+     It provides a definition of properties such as name of the
+     service, contact information, quality of the service, and
+     additional information that may help to evaluate the service
+  4. Functional Properties
+     Input/Output/Precondition/Effects that help with the
+     specification of what the service provides
+  5. Deprecated 
+     Classes and properties that were of relevance in the previous
+     versions of the profile, but they are no longer relevant as of
+     version 0.7.  They are maintained here as deprecated, but will be
+     removed removed in following versions of the service profile
+  --> 
+
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############    LOG OF CHANGES from 1.1 to 1.2     ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+
+  <!--
+    * Moved ServiceCategory (and related elements) to
+      ServiceCategory.owl.
+
+    * Moved ServiceParameter to ServiceParameter.owl.
+
+    * Moved ServiceProduct to ProfileDeprecatedElements.owl.
+  -->
+
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############    LOG OF CHANGES from 0.7 to 0.9     ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+  
+  <!--
+    * Remove Deprecated functions and save them in a separate file for reference.
+      These were deprecated in version 0.7 (see below) and have now been removed
+      from this file
+    * Migration of example and useful service parameters to a separate file.
+      Version 0.7 introduced several useful classes that were derived from top
+      level profile classes such as serviceParameter.  These have now been moved
+      to a supplementary file.
+    * Removal of Actor proterties
+      The Actor class and its properties have been moved to a separate file.  It
+      represents actors within a service description.  Alternative concepts
+      can be used to represent individuals.  Examples include FOAF or vCard.
+    * Renaming of the ParameterDescription to FunctionalPropertyDescription
+    * Creation of the following FunctionalPropertyDescription classes:
+		InputDescription,
+		OutputDescription,
+		PreconditionDescription
+		EffectDescription
+      where each has an explicit range restriction.  All of these classes are
+      now disjoint.
+      * Renaming parameterName to functionalPropertyName.
+      
+    -->
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############    LOG OF CHANGES from 0.6 to 0.7     ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+  
+  <!--
+    * Deprecations:
+       - OfferedService
+       - NeededService
+       - ServiceRequester
+       - ServiceProvider
+       - serviceType
+       - intendedPurpose
+       - role
+       - requestedBy
+       - providedBy
+       - domainResource
+       - geographicRadius
+       - degreeOfQuality
+       - qualityGuarantee
+       - communicationThru
+       - Location
+    
+    * ParameterDescription 
+       - parameterName turned from OWL:#Thing to XSD:string.  The name
+                       of a parameter is just a string
+       - restrictedTo: added maxCardinality restriction to 1
+       - refersTo: added maxCardinality restriction to 1
+    
+    * Added ContactInformation to collect information about whom to
+       refer to when using the service
+    
+    * Added title property to Actor
+    
+    * Added examples of service categories
+       - Naics
+       - UNSPSC
+    
+    * Added examples of Service Parameters
+       - MaxResponseTime
+       - AverageResponseTime
+       - GeographicRadius
+    
+    * Added examples of QualityRating
+       - D&B
+  -->
+  
+  
+
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############               PROFILE                 ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+
+  
+  <!-- 
+      Profile is a subclass of ServiceProfile.  It is used to
+      acknowledge that there may be different ways to profile services
+      that are different from the way we expressed it so far.
+    -->
+  
+  
+  <owl:Class rdf:ID="Profile">
+    <rdfs:label>Profile</rdfs:label> 
+    <rdfs:subClassOf rdf:resource="&service;#ServiceProfile" /> 
+    <rdfs:comment>
+      Definition of Profile
+    </rdfs:comment>
+  </owl:Class>
+  
+  
+  
+  
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############                PROFILE                ########### --> 
+<!--  ############      NON FUNCTIONAL PROPERTIES        ########### --> 
+<!--  ############                                       ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+
+  <!--
+  	The Service Name refers to the name of the service that is being
+  	offered.
+    -->
+  <owl:DatatypeProperty rdf:ID="serviceName">
+    <rdfs:domain rdf:resource="#Profile"/>
+  </owl:DatatypeProperty>
+  
+  <!-- there is only one name per profile -->
+
+  <owl:Class rdf:about="#Profile">
+    <rdfs:comment>
+    A profile can have only one name
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="#serviceName"/>
+        <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  <!--
+  	The TextDescription provides a brief description of the service.
+  	It summarisese what the service offers, or to describe what
+	service is requested.
+    -->
+  <owl:DatatypeProperty rdf:ID="textDescription">
+    <rdfs:domain rdf:resource="#Profile"/>
+  </owl:DatatypeProperty>
+  
+  <!-- there is only one text description per profile -->
+
+  <owl:Class rdf:about="#Profile">
+    <rdfs:comment>
+    A profile can have only one text description
+    </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+	<owl:onProperty rdf:resource="#textDescription"/>
+        <owl:cardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:cardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+
+  
+
+  <!--
+    Contact information is used to record contact information
+    about the entity that issued the Profile.  It once refered to Actor,
+    that records address and other info that allows a receiver of the
+    profile to contact directly the issuer.  However, this class has migrated
+    to a separate ActorDefault.daml ontology.
+
+    Previous versions of the OWL-S profile defined the range as follows:
+    <rdfs:range rdf:resource="#Actor"/>
+    
+    This definition has migrated to ActorDefault.daml
+
+    -->
+  
+  <owl:ObjectProperty rdf:ID="contactInformation">
+    <rdfs:domain rdf:resource="#Profile"/>
+  </owl:ObjectProperty>
+
+
+  <!--
+    has_process is a pointer the process that is associated with the
+    service.
+    -->
+  <owl:ObjectProperty rdf:ID="has_process">
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="&process;#Process"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="#has_process"/>
+    
+  
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  #######                                                 ###### --> 
+<!--  #######    SERVICE PROFILE FUNCTIONALITY DESCRIPTION    ###### --> 
+<!--  #######                                                 ###### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+
+<!--
+  This ontology has no classes for modelling IOPE's. Profile
+  instances will be able to define IOPE's using the schema
+  offered by the Process.owl ontology.
+	
+  The hasParameter property relates Profile instances to 
+  process:Parameter instances. In particular, there are subproperties
+  of hasParameter for process:Input and process:Output:
+	  *hasInput
+	  *hasOutput
+
+  In addition, the following properties relate Profile to
+  expr:Condition and process:Result:
+	  *hasPrecondition
+	  *hasResult.
+-->
+
+  <owl:ObjectProperty rdf:ID="hasParameter">
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="&process;#Parameter"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasInput">
+    <rdfs:subPropertyOf rdf:resource="#hasParameter"/>
+    <rdfs:range rdf:resource="&process;#Input"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasOutput">
+    <rdfs:subPropertyOf rdf:resource="#hasParameter"/>
+    <rdfs:range rdf:resource="&process;#Output"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasPrecondition">
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="&expr;#Condition"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:ID="hasResult">
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="&process;#Result"/>
+  </owl:ObjectProperty>
+
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+  
+  
+  
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+<!--  ############ ########### ############ ############ ########### --> 
+  
+ 
+  
+<!--   ############ ########### ############ ############ ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############           Related Ontologies          ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############ ########### ############ ############ ########### --> 
+
+
+<!-- 
+      The Actor concept has been moved to ActorDefault.owl.
+
+      ServiceCategory and related elements have been moved to
+      ServiceCategory.owl.
+
+      ServiceParameter and related elements have been moved to
+      ServiceParameter.owl.
+  -->
+
+<!--   ############ ########### ############ ############ ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############              DEPRECATED               ########### --> 
+<!--   ############                                       ########### --> 
+<!--   ############ ########### ############ ############ ########### --> 
+
+
+  <!-- 
+       Deprecated concepts have been moved to ProfileDeprecatedElements.owl.
+  -->
+
+</rdf:RDF>
+
