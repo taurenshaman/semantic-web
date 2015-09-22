@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.chuci.info/schema/thing#"
+     xml:base="http://www.chuci.info/schema/thing"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#">
+  <owl:Ontology rdf:about="http://www.chuci.info/schema/thing">
+    <dct:title xml:lang="en-US">An basic ontology about concepts of common things.</dct:title>
+    <dct:title xml:lang="zh-CN">有关事物/物质/物的基础本体</dct:title>
+    <dct:creator>taurenjerin@qq.com</dct:creator>
+    <dct:created>2013-9-24</dct:created>
+    <dct:modified>2013-10-30</dct:modified>
+    <vann:preferredNamespaceUri>http://www.chuci.info/schema/thing</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>thing</vann:preferredNamespacePrefix>
+    <vs:moreinfo xml:lang="zh-CN">该本体参考了食物本体http://data.lirmm.fr/ontologies/food</vs:moreinfo>
+  </owl:Ontology>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+  <!-- http://www.chuci.info/schema/thing#equivalentConcept -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/thing#equivalentConcept">
+    <rdfs:label xml:lang="en">equivalent concept</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">等价概念</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">用于指向使用skos:Concept描述的等价的概念。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </owl:ObjectProperty>
+
+  
+
+
+  <!-- http://www.chuci.info/schema/thing#isPartOf -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/thing#isPartOf">
+    <rdfs:label xml:lang="en">is part of</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">属于</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">一个基础属性，表示某物是另一物的一部分，对于Thing的派生类，可以设置派生属性。比如isFruitOf可以用来表示苹果是苹果树的果实。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+  </owl:ObjectProperty>
+
+  
+
+  <!-- http://www.chuci.info/schema/thing#placeOfOrigin -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/thing#placeOfOrigin">
+    <rdfs:label xml:lang="en">place of origin</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">产地</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#thing -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/thing#thing">
+    <rdfs:label xml:lang="en">thing</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">物质</rdfs:label>
+    <rdfs:comment xml:lang="en">Thing that is an ingredient of another thing.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">物质是另一种物质的成分。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#containsIngredient -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/thing#containsIngredient">
+    <rdfs:label xml:lang="en">contains ingredient</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">包含成分</rdfs:label>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#ingredientListAsText -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#ingredientListAsText">
+    <rdfs:label xml:lang="en-US">ingredient list as text</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">成分列表文本</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- http://www.chuci.info/schema/thing#code -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#code">
+    <rdfs:label xml:lang="en">code</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">代码</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+  
+  <!-- http://www.chuci.info/schema/thing#rank -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#rank">
+    <rdfs:label xml:lang="en-US">rank</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">顺序</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Rank of an ingredient in an ingredient list ordered by quantity.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">成分列表按数量排序后，某一成分的顺序。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#minNetWeight -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#minNetWeight">
+    <rdfs:label xml:lang="en">min net weight</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最小净重</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#netWeight -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#netWeight">
+    <rdfs:label xml:lang="en">net weight</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">净重</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#maxNetWeight -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#maxNetWeight">
+    <rdfs:label xml:lang="en">max net weight</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最大净重</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#netWeightUnit -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#netWeightUnit">
+    <rdfs:label xml:lang="en">net weight unit</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">净重的单位</rdfs:label>
+    <rdfs:comment xml:lang="en">net weight unit. Usually it's in g.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">净重的单位。通常是克。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#minNetVolume -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#minNetVolume">
+    <rdfs:label xml:lang="en">min net volume</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最小容量</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#netVolume -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#netVolume">
+    <rdfs:label xml:lang="en">net volume</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">净容量</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#maxNetVolume -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#maxNetVolume">
+    <rdfs:label xml:lang="en">max net volume</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最大容量</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#netVolumeUnit -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#netVolumeUnit">
+    <rdfs:label xml:lang="en">net volume unit</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">净容量的单位</rdfs:label>
+    <rdfs:comment xml:lang="en">net volume unit. Usually it's in g.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">净容量的单位。通常是毫升。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#maxQuantity -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#maxQuantity">
+    <rdfs:label xml:lang="en">max quantity</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最大数量</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#minQuantity -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#minQuantity">
+    <rdfs:label xml:lang="en">min quantity</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最小数量</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#quantity -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#quantity">
+    <rdfs:label xml:lang="en">quantity</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">数量</rdfs:label>
+    <rdfs:comment xml:lang="zh-CN">通常thing:quantity与thing:percent二选一。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#maxPercent -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#maxPercent">
+    <rdfs:label xml:lang="en">max percent</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最大百分比</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#minPercent -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#minPercent">
+    <rdfs:label xml:lang="en">min percent</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最小百分比</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#percent -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#percent">
+    <rdfs:label xml:lang="en-US">percent</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">百分比</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Quantity of ingredient in percentage % of the total amount of ingredients in a Thing. </rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">在某种【物质】的成分中占总量的百分比。通常thing:quantity与thing:percent二选一。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#standardQuantity -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#standardQuantity">
+    <rdfs:label xml:lang="en">standard quantity</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">度量标准的数量</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">通常和thing:standardUnit一起使用。比如，对于每100克XXX含有碳水化合物YYY克，它的对应值就是100。</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#unit -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#unit">
+    <rdfs:label xml:lang="en">unit</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">单位</rdfs:label>
+    <rdfs:comment xml:lang="en">Unit used when describing this thing。</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">描述这种物质时使用的单位。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+    <rdfs:range rdf:resource="&xsd;string"/>
+  </owl:DatatypeProperty>
+
+  
+  
+  <!-- http://www.chuci.info/schema/thing#standardUnit -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/thing#standardUnit">
+    <rdfs:label xml:lang="en">standard unit</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">度量标准的单位</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">通常和thing:standardQuantity一起使用。比如，对于每100毫升XXX含有碳水化合物YYY克，它的对应值就是毫升。</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/thing#Ingredient"/>
+    <rdfs:range rdf:resource="&rdfs;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+  <!-- http://www.chuci.info/schema/thing#Thing -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/thing#Thing">
+    <rdfs:label xml:lang="en">Thing</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">物</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">一个基础概念，表示物质。</rdfs:comment>
+  </owl:Class>
+
+
+
+  <!-- http://www.chuci.info/schema/thing#AbstractThing  -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/thing#AbstractThing">
+    <rdfs:label xml:lang="en">Abstract Thing</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">抽象物质</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">可以表示若干类（具体或抽象）物质的统称，比如绿茶（绿茶是抽象的，但是绿茶中的龙井茶却是具体的）。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+  </owl:Class>
+
+  
+
+  
+  <!-- http://www.chuci.info/schema/thing#FictitiousThing  -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/thing#FictitiousThing">
+    <rdfs:label xml:lang="en">Fictitious Thing</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">虚拟物质</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">可以表示虚构的、假定的或者无法真实存在的概念类物质，如游戏中的金币。</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/thing#AbstractThing"/>
+  </owl:Class>
+
+
+  
+
+  <!-- http://www.chuci.info/schema/thing#Ingredient -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/thing#Ingredient">
+    <rdfs:label xml:lang="en">Ingredient</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">成分</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/thing#Thing"/>
+  </owl:Class>
+
+
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

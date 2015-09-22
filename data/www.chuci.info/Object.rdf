@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:obj="http://www.chuci.info/schema/object#"
+  xml:base="http://www.chuci.info/schema/object">
+
+  <owl:Ontology rdf:about="http://www.chuci.info/schema/object">
+    <dct:title xml:lang="en-US">Basic Common Object Vocabulary</dct:title>
+    <dct:title xml:lang="zh-CN">基本的通用对象词汇集</dct:title>
+    <dct:description xml:lang="en-US">This vocabulary is used to describe basic and common data.</dct:description>
+    <dct:description xml:lang="zh-CN">这个RDF词汇集用于描述基本的、通用的数据对象。</dct:description>
+    <dct:creator>李晓喆</dct:creator>
+    <dct:issued>2012-06-11</dct:issued>
+    <dct:modified>2012-06-25</dct:modified>
+    <vann:preferredNamespaceUri>http://www.chuci.info/schema/object</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>obj</vann:preferredNamespacePrefix>
+  </owl:Ontology>
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+  
+  <rdf:Description rdf:about="#id">
+    <rdfs:label xml:lang="en">id</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">ID</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The id for an object.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">对象的GUID。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/object"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/object"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <!-- S10 -->
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <!-- For non-OWL aware applications -->
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+
+  
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+  <!-- http://www.chuci.info/schema/object#inWorld -->
+
+  <rdf:Description rdf:about="http://www.chuci.info/schema/object#inWorld">
+    <rdfs:label xml:lang="en">in world</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">所属世界</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/object#Object"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/world#World"/>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/object"/>
+	
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+	<!-- For non-OWL aware applications -->
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+  <rdf:Description rdf:about="#Object">
+    <rdfs:label xml:lang="en-US">Object</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">对象</rdfs:label>
+    <rdfs:comment xml:lang="en-US">An object to describe some kind of data.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用于描述某一类数据的对象。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/object"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+</rdf:RDF>

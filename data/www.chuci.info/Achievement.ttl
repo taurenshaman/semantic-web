@@ -1,0 +1,259 @@
+@prefix : <http://www.chuci.info/schema/achievement#> .
+@prefix bio: <http://purl.org/vocab/bio/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix status: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix achievement: <http://www.chuci.info/schema/achievement#> .
+@base <http://www.chuci.info/schema/achievement> .
+
+<http://www.chuci.info/schema/achievement> rdf:type owl:Ontology ;
+                                           
+                                           <http://purl.org/dc/terms/date> "2012-12-8"^^xsd:dateTime ;
+                                           
+                                           <http://purl.org/dc/terms/title> "An ontology about achievements."@en-us ;
+                                           
+                                           <http://purl.org/dc/terms/creator> "jerin13j@yahoo.com.cn" ;
+                                           
+                                           <http://purl.org/dc/terms/title> "成就本体"@zh-cn ;
+                                           
+                                           owl:imports bio:null ,
+                                                       vann:null ,
+                                                       <http://www.w3.org/2003/06/sw-vocab-status/ns> ,
+                                                       foaf:null .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.chuci.info/schema/achievement#precedingAchievement
+
+:precedingAchievement rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "Preceding achievement"@en-us ,
+                                 "前置成就"@zh-cn ;
+                      
+                      rdfs:comment "When you earn some preceding achievements, the achievement will auto be earned."@en-us ,
+                                   "必须完成某些成就之后，才会达成改成就。"@zh-cn ;
+                      
+                      rdfs:isDefinedBy <http://www.chuci.info/schema/achievement> ;
+                      
+                      rdfs:domain :Achievement ;
+                      
+                      rdfs:range :Achievement .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.chuci.info/schema/achievement#points
+
+:points rdf:type owl:DatatypeProperty ;
+        
+        rdfs:label "points"@en-us ,
+                   "点数"@zh-cn ;
+        
+        status:term_status "testing" ;
+        
+        rdfs:isDefinedBy <http://www.chuci.info/schema/achievement> ;
+        
+        rdfs:domain :Achievement ;
+        
+        rdfs:range xsd:nonNegativeInteger .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/vocab/bio/0.1/IndividualEvent
+
+bio:IndividualEvent rdf:type owl:Class .
+
+
+
+###  http://www.chuci.info/schema/achievement#Achievement
+
+:Achievement rdf:type owl:Class ;
+             
+             rdfs:label "Achievement"@en-us ,
+                        "成就"@zh-cn ;
+             
+             status:term_status "testing" ;
+             
+             rdfs:comment "Define a achievement. Besides the properties defined in this ontology, a achievement should also include the following: obj:id, dct:references, dct:title, dct:description, foaf:logo, foaf:title."@en-us ,
+                          "定义成就。除了该本体定义的属性，还应包括：obj:id、dct:references、dct:title、dct:description、foaf:logo、foaf:title。"@zh-cn ;
+             
+             rdfs:isDefinedBy <http://www.chuci.info/schema/achievement> .
+
+
+
+###  http://www.chuci.info/schema/achievement#AchievementEvent
+
+:AchievementEvent rdf:type owl:Class ;
+                  
+                  rdfs:label "Achievement event"@en-us ,
+                             "成就事件"@zh-cn ;
+                  
+                  rdfs:subClassOf bio:IndividualEvent ;
+                  
+                  rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" ;
+                  
+                  rdfs:comment "Describe a event about completing one achievement, which mainly include two properties: bio:principal and bio:data."@en-us ;
+                  
+                  status:term_status "testing" ;
+                  
+                  rdfs:comment "形容一个成就完成的事件，主要包括bio:principal和bio:data两个属性。"@zh-cn .
+
+
+
+###  http://www.chuci.info/schema/achievement#Badge
+
+:Badge rdf:type owl:Class ;
+       
+       rdfs:label "Badge"@en-us ,
+                  "徽章"@zh-cn ;
+       
+       rdfs:subClassOf :Achievement ;
+       
+       rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" ;
+       
+       rdfs:comment "因为难度、成绩等原因通常包括三种但不限于三种：金质徽章、银质徽章、铜质徽章。"@zh-cn .
+
+
+
+###  http://www.chuci.info/schema/achievement#BronzeBadge
+
+:BronzeBadge rdf:type owl:Class ;
+             
+             rdfs:label "Bronze Badge"@en-us ,
+                        "铜质徽章"@zh-cn ;
+             
+             rdfs:subClassOf :Badge ;
+             
+             rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" .
+
+
+
+###  http://www.chuci.info/schema/achievement#BronzeMedal
+
+:BronzeMedal rdf:type owl:Class ;
+             
+             rdfs:label "Bronze Medal"@en-us ,
+                        "铜牌"@zh-cn ;
+             
+             rdfs:subClassOf :Medal ;
+             
+             rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" .
+
+
+
+###  http://www.chuci.info/schema/achievement#GoldBadge
+
+:GoldBadge rdf:type owl:Class ;
+           
+           rdfs:label "Gold Badge"@en-us ,
+                      "金质徽章"@zh-cn ;
+           
+           rdfs:subClassOf :Badge ;
+           
+           rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" .
+
+
+
+###  http://www.chuci.info/schema/achievement#GoldMedal
+
+:GoldMedal rdf:type owl:Class ;
+           
+           rdfs:label "Gold Medal"@en-us ,
+                      "金牌"@zh-cn ;
+           
+           rdfs:subClassOf :Medal ;
+           
+           rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" .
+
+
+
+###  http://www.chuci.info/schema/achievement#Medal
+
+:Medal rdf:type owl:Class ;
+       
+       rdfs:label "Medal"@en-us ,
+                  "奖牌"@zh-cn ;
+       
+       rdfs:subClassOf :Achievement ;
+       
+       rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" ;
+       
+       rdfs:comment "因为难度、成绩等原因通常包括三种但不限于三种：金牌、银牌、铜牌。"@zh-cn .
+
+
+
+###  http://www.chuci.info/schema/achievement#SilverBadge
+
+:SilverBadge rdf:type owl:Class ;
+             
+             rdfs:label "Silver Badge"@en-us ,
+                        "银质徽章"@zh-cn ;
+             
+             rdfs:subClassOf :Badge ;
+             
+             rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" .
+
+
+
+###  http://www.chuci.info/schema/achievement#SilverMedal
+
+:SilverMedal rdf:type owl:Class ;
+             
+             rdfs:label "Silver Medal"@en-us ,
+                        "银牌"@zh-cn ;
+             
+             rdfs:subClassOf :Medal ;
+             
+             rdfs:isDefinedBy "http://www.chuci.info/schema/achievement" .
+
+
+
+
+###  Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net
+

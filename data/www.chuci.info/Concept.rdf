@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+  xmlns:obj="http://www.chuci.info/schema/concept#"
+  xml:base="http://www.chuci.info/schema/concept">
+
+  <owl:Ontology rdf:about="http://www.chuci.info/schema/concept">
+    <dct:title xml:lang="en-US">An ontology about simple concepts</dct:title>
+    <dct:title xml:lang="zh-CN">简单概念本体</dct:title>
+    <dct:description xml:lang="en-US">An ontology about simple concepts, extends normal keywords to concept.</dct:description>
+    <dct:description xml:lang="zh-CN">简单概念本体，它将普通的关键字标签扩展成了概念。</dct:description>
+    <dct:creator>jerin13j@yahoo.com.cn</dct:creator>
+    <dct:issued>2013-1-25</dct:issued>
+    <dct:modified>2013-4-17</dct:modified>
+    <vann:preferredNamespaceUri>http://www.chuci.info/schema/concept</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>concept</vann:preferredNamespacePrefix>
+    <vs:moreinfo xml:lang="zh-CN">该本体参考了http://www.holygoat.co.uk/owl/redwood/0.1/tags/</vs:moreinfo>
+  </owl:Ontology>
+
+  <!-- Classes -->
+
+  <owl:Class rdf:about="#Concept">
+    <rdfs:label xml:lang="en-US">Concept</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">概念</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:comment xml:lang="en-US">A natural-language concept which is used to annotate another resource. Other useful properties：obj:id、dct:references、skos:notation、skos:definition、skos:note、skos:member、skos:broader、skos:narrower</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">用于注释一个资源的自然语言概念。其它可能用到的属性：obj:id、dct:references、skos:notation、skos:definition、skos:note、skos:member、skos:broader、skos:narrower。</rdfs:comment>
+    <skos:definition xml:lang="en-US">A natural-language concept which is used to annotate another resource. Other useful properties：obj:id、dct:references、skos:notation、skos:definition、skos:note、skos:member、skos:broader、skos:narrower</skos:definition>
+    <skos:definition xml:lang="zh-CN">用于注释一个资源的自然语言概念。其它可能用到的属性：obj:id、dct:references、skos:notation、skos:definition、skos:note、skos:member、skos:broader、skos:narrower。</skos:definition>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Tag">
+    <rdfs:label xml:lang="en-US">Tag</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">标记</rdfs:label>
+    <rdfs:comment xml:lang="en-US">A reified class which defines an instance of a tagging by an agent of a resource with one or more tags. It's used to tag an resource with Concept in other resources.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">一个物化的类，它通过资源代理和若干个标签定义了一个标记的实例。这个类主要用于在其他资源中，使用[概念]进行标记。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:Class>
+
+  <!-- Properties of Concept -->
+  
+  <owl:DatatypeProperty rdf:about="#name">
+    <rdfs:label xml:lang="en-US">name</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">概念名称</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The name of a tag. Note that we can't relate this to skos:prefLabel because we cannot guarantee that tags have unique labels in a given conceptual scheme. Or can we?</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">概念的名称。注意，我们并没有将之关联到skos:prefLabel，因为我们无法保证在给定概念体系中概念有一个唯一的名称。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="#equivalentConcept">
+    <rdfs:label xml:lang="en-US">equivalent concept</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">等价概念</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The two tags are asserted to be equivalent --- that is, that whenever one is associated with a resource, the other tag can be logically inferred to also be associated. Be very careful with this. I'm not sure if this should be a subproperty of owl:sameAs.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">两个概念被声明成等价的，也就是，每当一个概念与一资源相关联，从逻辑上将另一概念也与该资源是相关联的。请小心：不确定是否应将该属性作为owl:sameAs的子属性。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#sameAs"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#relatedConcept">
+    <rdfs:label xml:lang="en-US">related concept</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">相关概念</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The two tags are asserted as being related. This might be symmetric, but it certainly isn't transitive.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">两个概念被声明成相关的，这可能具有对称性，但肯定不具备传递性。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#related"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#relatedSchema">
+    <rdfs:label xml:lang="en-US">related schema</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">相关的知识架构</rdfs:label>
+    <rdfs:comment xml:lang="en-US">An ontology related to this concept.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">和这个概念有关的知识架构。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#relatedTerm">
+    <rdfs:label xml:lang="en-US">related term</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">相关的术语</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Terms related to this concept. It may be Class/Property.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">和这个概念有关的术语，可能是属性，也可能是类。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
+
+  <!-- Properties of Tag -->
+
+  <owl:ObjectProperty rdf:about="#taggedBy">
+    <rdfs:label xml:lang="en-US">tagged by</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">被……标记</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The object plays the role of the tagger in the subject Tag.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">由谁标记</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Tag"/>
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
+
+  <owl:DatatypeProperty rdf:about="#taggedOn">
+    <rdfs:label xml:lang="en-US">tagged on</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">标记时间</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The subject Tag occurred at the subject time and date.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">标记的时间和日期。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Tag"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:DatatypeProperty>
+
+  <owl:ObjectProperty rdf:about="#taggedResource">
+    <rdfs:label xml:lang="en-US">tagged resource</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">标记资源</rdfs:label>
+    <rdfs:comment xml:lang="en-US">The object is a resource which plays a role in the subject Tag.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">被标记的对象。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/concept#Tag"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+    <vs:term_status>testing</vs:term_status>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#taggedWithTag">
+    <rdfs:label xml:lang="en-US">tagged with tag</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">用标签标记</rdfs:label>
+    <rdfs:comment xml:lang="en-US">Indicates that the subject has been tagged with the object tag. This does not assert by who, when, or why the tagging occurred. For that information, use a reified Tag resource.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">为被标记的对象指定一个主语。这并不能断言标记发生的人、时间或原因。对于那些信息，使用具体化的Tagging资源。</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/concept#Concept"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2004/02/skos/core#subject"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/concept"/>
+  </owl:ObjectProperty>
+
+</rdf:RDF>

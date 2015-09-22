@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY vann "http://purl.org/vocab/vann/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY obj "http://www.chuci.info/schema/person#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.chuci.info/schema/person#"
+     xml:base="http://www.chuci.info/schema/person"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:obj="http://www.chuci.info/schema/person#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="http://www.chuci.info/schema/person">
+        <dct:issued>2012-06-25</dct:issued>
+        <dct:modified>2013-12-7</dct:modified>
+        <dct:creator>taurenshaman@outlook.com</dct:creator>
+        <dct:title xml:lang="en-us">Person Extension Vocabulary</dct:title>
+        <vann:preferredNamespaceUri>http://www.chuci.info/schema/person</vann:preferredNamespaceUri>
+        <dct:description xml:lang="en-us">This vocabulary is used to extend foaf:Person and add some Chinese features.</dct:description>
+        <vann:preferredNamespacePrefix>person</vann:preferredNamespacePrefix>
+        <dct:title xml:lang="zh-cn">人物的扩展词汇集</dct:title>
+        <dct:description xml:lang="zh-cn">这个RDF词汇集用于对foaf:Person进行扩展，增加中国特色。</dct:description>
+        <owl:imports rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&obj;styleName">
+        <rdfs:label xml:lang="en">Style Name</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">表字</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The style name for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的表字。比如鲁迅字豫山、豫亭。</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="&obj;alias">
+        <rdfs:label xml:lang="en">alias</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">别号</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The style for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的别号。比如李白号青莲居士。</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="&obj;posthumousTitle">
+        <rdfs:label xml:lang="en">Posthumous Title</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">谥号</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The short title for decribing one when the person dead according to the whole life.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人具有一定地位的人死去之后，根据他们的生平事迹与品德修养，评定褒贬，而给予一个寓含善意评价、带有评判性质的称号。比如曾文正（曾国藩）、岳武穆（岳飞）等等。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:domain rdf:resource="http://www.chuci.info/schema/person"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="&obj;penName">
+        <rdfs:label xml:lang="en">Pen Name</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">笔名</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The pen name for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的笔名。比如鲁迅是周树人的笔名。</rdfs:comment>
+        <rdfs:domain rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+    </owl:AnnotationProperty>
+    <owl:AnnotationProperty rdf:about="&obj;usedName">
+        <rdfs:label xml:lang="en">Used Name</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">曾用名</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The used name for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的曾用名。比如周树人（鲁迅）曾用名周樟寿。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:domain rdf:resource="http://www.chuci.info/schema/person"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.chuci.info/schema/person#alias -->
+
+    <owl:DatatypeProperty rdf:about="&obj;alias">
+        <rdfs:label xml:lang="en">alias</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">别号</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The style for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的别号。比如李白号青莲居士。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/person#bitcoinID -->
+
+    <owl:DatatypeProperty rdf:about="&obj;bitcoinID">
+        <rdfs:label xml:lang="en-us">bitcoin ID</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">比特币ID</rdfs:label>
+        <rdfs:comment xml:lang="zh-cn">描述比特币账户地址的一组字符串（可能包括bitcoin前缀，也可能没有），比如bitcoin:1DsyhTz9CSurC5FQMx4tdxey65jBbXyq6w 或者 1DsyhTz9CSurC5FQMx4tdxey65jBbXyq6w</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+    </owl:DatatypeProperty>
+
+  
+
+  <!-- http://www.chuci.info/schema/person#qqID -->
+
+  <owl:DatatypeProperty rdf:about="&obj;qqID">
+    <rdfs:label xml:lang="en-us">QQ ID</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">QQ ID</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">即时通讯软件QQ的账号。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/person#weixinID -->
+
+  <owl:DatatypeProperty rdf:about="&obj;weixinID">
+    <rdfs:label xml:lang="en-us">wechat ID</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">微信ID</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">微信账号。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+  </owl:DatatypeProperty>
+
+
+
+
+  <!-- http://www.chuci.info/schema/person#context -->
+
+  <owl:DatatypeProperty rdf:about="&obj;context">
+    <rdfs:label xml:lang="en">context</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">上下文</rdfs:label>
+    <rdfs:comment xml:lang="en-US">In which context the person belongs to, e.g. novel, cartoon, movie, .etc.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">该人物所处的上下文，比如小说，漫画，电影等等。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person" />
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/person" />
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </owl:DatatypeProperty>
+
+
+  
+
+  <!-- http://www.chuci.info/schema/person#penName -->
+
+    <owl:DatatypeProperty rdf:about="&obj;penName">
+        <rdfs:label xml:lang="en">Pen Name</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">笔名</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The pen name for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的笔名。比如鲁迅是周树人的笔名。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/person#posthumousTitle -->
+
+    <owl:DatatypeProperty rdf:about="&obj;posthumousTitle">
+        <rdfs:label xml:lang="en">Posthumous Title</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">谥号</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The short title for decribing one when the person dead according to the whole life.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人具有一定地位的人死去之后，根据他们的生平事迹与品德修养，评定褒贬，而给予一个寓含善意评价、带有评判性质的称号。比如曾文正（曾国藩）、岳武穆（岳飞）等等。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/person#styleName -->
+
+    <owl:DatatypeProperty rdf:about="&obj;styleName">
+        <rdfs:label xml:lang="en">Style Name</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">表字</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The style name for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的表字。比如鲁迅字豫山、豫亭。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/person#usedName -->
+
+    <owl:DatatypeProperty rdf:about="&obj;usedName">
+        <rdfs:label xml:lang="en">Used Name</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">曾用名</rdfs:label>
+        <rdfs:comment xml:lang="en-us">The used name for a person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">人物的曾用名。比如周树人（鲁迅）曾用名周樟寿。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.chuci.info/schema/person#Person -->
+
+    <owl:Class rdf:about="&obj;Person">
+        <rdfs:label xml:lang="en-us">Person</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">人物</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:comment xml:lang="en-us">An person.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">一个人。</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/person"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
