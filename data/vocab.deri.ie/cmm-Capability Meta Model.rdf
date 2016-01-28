@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:adms="http://www.w3.org/ns/adms#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <owl:Ontology rdf:about="http://vocab.deri.ie/cmm">
+    <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
+    <dcterms:title>Capability Meta Model</dcterms:title>
+    <dcterms:description>This is a capability meta-model that is presented as an rdf schema for describing capabilities as an action category and a set of properties. Additionally, this schema defines the possible property value types that can be considered when modelling capabilities: ConditionalValue, ConstrainedValue, EnumerationValue, DynamicValue and RangeValue.</dcterms:description>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-05-20</dcterms:modified>
+    <vann:preferredNamespaceUri>http://vocab.deri.ie/cmm#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>cmm</vann:preferredNamespacePrefix>
+    <foaf:homepage rdf:resource="http://vocab.deri.ie/cmm.html"/>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2015-05-09</dcterms:created>
+    <dcterms:partOf rdf:resource="http://vocab.deri.ie"/>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
+    <dc:creator rdf:resource="http://vocab.deri.ie/cmm#wasder"/>
+  </owl:Ontology>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/cmm#ttl">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/cmm.ttl</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <adms:SemanticDistribution rdf:about="http://vocab.deri.ie/cmm#rdf">
+    <dcterms:FileFormat></dcterms:FileFormat>
+    <adms:accessURL>http://vocab.deri.ie/cmm.rdf</adms:accessURL>
+    <adms:status rdf:resource="http://purl.org/adms/status/Completed"/>
+  </adms:SemanticDistribution>
+
+  <foaf:Person rdf:about="http://vocab.deri.ie/cmm#wasder">
+    <foaf:name>Wassim Derguech</foaf:name>
+    <foaf:homepage></foaf:homepage>
+  </foaf:Person>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#Constraint">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Constraint</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#Capability">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Capability</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#PropertyValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>PropertyValue</rdfs:label>
+    <rdfs:comment>This concepts defines the possible values a particular property can have.</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#ConditionalValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ConditionalValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#EnumerationValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>EnumerationValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#Expression">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>Expression</rdfs:label>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#ConstrainedValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>ConstrainedValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#DynamicValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>DynamicValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://vocab.deri.ie/cmm#RangeValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label>RangeValue</rdfs:label>
+    <rdfs:subClassOf rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#hasExpression">
+    <rdfs:label>hasExpression</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#Constraint"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#Expression"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#achieves">
+    <rdfs:label>achieves</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#Capability"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#hasMax">
+    <rdfs:label>hasMax</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#RangeValue"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#property">
+    <rdfs:label>property</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#Capability"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#hasMin">
+    <rdfs:label>hasMin</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#RangeValue"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#constrainedBy">
+    <rdfs:label>constrainedBy</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#ConstrainedValue"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#Constraint"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#specifies">
+    <rdfs:label>specifies</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#Capability"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#Capability"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#exprValue">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>exprValue</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#Expression"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#hasEvaluator">
+    <rdfs:label>hasEvaluator</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#ConditionalValue"/>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#DynamicValue"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#Expression"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#hasElement">
+    <rdfs:label>hasElement</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#EnumerationValue"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#PropertyValue"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#hasCondition">
+    <rdfs:label>hasCondition</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#ConditionalValue"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#Constraint"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#extends">
+    <rdfs:label>extends</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#Capability"/>
+    <rdfs:range rdf:resource="http://vocab.deri.ie/cmm#Capability"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://vocab.deri.ie/cmm#exprType">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:label>exprType</rdfs:label>
+    <rdfs:domain rdf:resource="http://vocab.deri.ie/cmm#Expression"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+</rdf:RDF>
