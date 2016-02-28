@@ -1,0 +1,229 @@
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix v1:    <http://www.heppnetz.de/ontologies/goodrelations/v1#> .
+@prefix spec:  <http://xmlns.com/foaf/spec/#> .
+@prefix :      <http://ns.inria.fr/provoc#> .
+@prefix vann:  <http://purl.org/vocommons/voaf#> .
+@prefix ontology: <http://dbpedia.org/ontology/> .
+@prefix org:   <http://www.w3.org/TR/vocab-org/#org:> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix drm:   <http://vocab.data.gov/def/drm#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix v12:   <http://purl.org/goodrelations/v1#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix org2:  <http://www.w3.org/ns/org#> .
+@prefix cc:    <http://creativecommons.org/ns#> .
+
+spec:term_depiction  a  owl:DatatypeProperty ;
+        rdfs:comment  "The depiction property is a relationship between a thing and an Image that depicts it. This property can be used for the image of a product, for instance."@en ;
+        rdfs:domain   v12:ProductOrService , :ProductOrServiceRange .
+
+:consistsOf  a        owl:ObjectProperty ;
+        rdfs:label  "构成部分"@zh-cn ;
+		rdfs:label  "consists of"@en ;
+		rdfs:comment  "指构成一个组件的组件部分。"@zh-cn ;
+		rdfs:comment  "This specifies the components included in a component."@en ;
+        rdfs:domain   :Component ;
+        rdfs:range    :Component .
+
+:hasFunctionality  a  owl:DatatypeProperty ;
+        rdfs:label  "功能性"@zh-cn ;
+		rdfs:label  "has functionality"@en ;
+		rdfs:comment  "指一个组件的功能性/角色。比如“亚硝酸钠”是事物的防腐剂。"@zh-cn ;
+		rdfs:comment  "This specifies the functionalities/roles of a component. For instance \"sodium nitrate\" is a food preservative."@en ;
+        rdfs:domain   :Component ;
+        rdfs:range    xsd:string .
+
+:hasAmbassador  a           owl:ObjectProperty ;
+        rdfs:label  "代表"@zh-cn ;
+		rdfs:label  "has ambassador"@en ;
+		rdfs:comment  "指产品、产品系列、品牌或部门等的代表（ambassador）。"@zh-cn ;
+		rdfs:comment        "This specifies the ambassadors of a product, a range of product, a brand, a division, etc..."@en ;
+        rdfs:domain         <http://schema.org/brand> , org2:Organization , v12:ProductOrService , <http://vivoweb.org/ontology/core#Division> , <http://schema.org/Provider> , v1:Brand , v12:BusinessEntity ;
+        rdfs:range          :Ambassador ;
+        rdfs:subPropertyOf  :hasRepresentative .
+
+:hasVersion  a        owl:DatatypeProperty ;
+        rdfs:label  "版本"@zh-cn ;
+		rdfs:label  "has version"@en ;
+		rdfs:comment  "一个产品或服务可能有不同的版本。"@zh-cn ;
+		rdfs:comment  "A product or service may have different versions."@en ;
+        rdfs:domain   v12:ProductOrService ;
+        rdfs:range    xsd:string .
+
+:hasCreator  a        owl:ObjectProperty ;
+        rdfs:label  "创造者"@zh-cn ;
+		rdfs:label  "has creator"@en ;
+		rdfs:comment  "指创造了产品的主要贡献者。"@zh-cn ;
+		rdfs:comment  "This specifies main contributors of the creation of the product."@en ;
+        rdfs:domain   v12:ProductOrService ;
+        rdfs:range    <http://xmlns.com/foaf/0.1/Person> .
+
+drm:worksFor  a       owl:ObjectProperty ;
+		rdfs:comment  "This specifies persons who are working or who worked for a brand or a business entity."@en ;
+        rdfs:domain   <http://xmlns.com/foaf/0.1/Person> ;
+        rdfs:range    org2:Organization , v1:Brand , <http://schema.org/brand> , v12:BusinessEntity .
+
+:belongsToProductOrServiceRange
+        a             owl:ObjectProperty ;
+		rdfs:label  "所属产品或服务的系列"@zh-cn ;
+		rdfs:label  "belongs to product or service range"@en ;
+		rdfs:comment  "指产品系列。"@zh-cn ;
+        rdfs:comment  "This specifies the range of products."@en ;
+        rdfs:domain   v12:ProductOrService ;
+        rdfs:range    :ProductOrServiceRange .
+
+<http://www.w3.org/2006/vcard/ns#hasLogo>
+        a                       owl:DatatypeProperty ;
+        rdfs:domain             org2:Organization , v1:Brand , :ProductOrServiceRange ;
+        owl:equivalentProperty  spec:term_logo .
+
+dc:creator  a   owl:DatatypeProperty .
+
+:belongsToPackage  a  owl:ObjectProperty ;
+		rdfs:label  "所属包装"@zh-cn ;
+		rdfs:label  "belongs to package"@en ;
+		rdfs:comment  "指包装包含了多个产品，不一定来自相同的pv:Range。"@zh-cn ;
+        rdfs:comment  "This specifies the package that contains several products,, not neceserraly from the same pv:Range."@en ;
+        rdfs:domain   v12:ProductOrService ;
+        rdfs:range    :Package .
+
+:hasModel  a                owl:ObjectProperty ;
+        rdfs:label  "模特"@zh-cn ;
+		rdfs:label  "has model"@en ;
+		rdfs:comment  "指代言了一个产品、产品系列、品牌或部门等的模特。"@zh-cn ;
+		rdfs:comment        "This specifies the models who represent a product, a range of product, a brand, a division, etc..."@en ;
+        rdfs:domain         org2:Organization , v1:Brand , <http://schema.org/brand> , v12:ProductOrService , v12:BusinessEntity ;
+        rdfs:range          :Model ;
+        rdfs:subPropertyOf  :hasRepresentative .
+
+:hasFragranceCreator  a     owl:ObjectProperty ;
+        rdfs:label  "香味创造者"@zh-cn ;
+		rdfs:label  "has fragrance creator"@en ;
+		rdfs:comment  "指香味的创造者。"@zh-cn ;
+		rdfs:comment        "This specifies the creator of a fragrance."@en ;
+        rdfs:domain         v12:ProductOrService ;
+        rdfs:range          <http://xmlns.com/foaf/0.1/Person> ;
+        rdfs:subPropertyOf  :hasCreator .
+
+v1:description  a    owl:DatatypeProperty ;
+        rdfs:domain  v12:ProductOrService ;
+        rdfs:range   xsd:string .
+
+v12:color  a         owl:DatatypeProperty ;
+        rdfs:domain  v12:ProductOrService ;
+        rdfs:range   xsd:string .
+
+:belongsToBrand  a    owl:ObjectProperty ;
+        rdfs:label  "所属品牌"@zh-cn ;
+		rdfs:label  "belongs to brand"@en ;
+		rdfs:comment  "指产品或产品系列所属的品牌。"@zh-cn ;
+		rdfs:comment  "This specifies the brand of a range or a product."@en ;
+        rdfs:domain   v12:ProductOrService , :ProductOrServiceRange ;
+        rdfs:range    v1:Brand .
+
+:hasProvider  a       owl:ObjectProperty ;
+        rdfs:label  "提供者"@zh-cn ;
+		rdfs:label  "has provider"@en ;
+		rdfs:comment  "指由公司招募的产品提供者。比如，Sephora是L'Oréal的一个提供者。"@zh-cn ;
+		rdfs:comment  "This specifies providers of products incurred by a corporation. for instance Sephora is a provider of L'Oréal."@en ;
+        rdfs:domain   v12:ProductOrService ;
+        rdfs:range    <http://schema.org/Provider> .
+
+ontology:formationYear
+        a            owl:DatatypeProperty ;
+        rdfs:domain  v12:ProductOrService ;
+        rdfs:range   xsd:string .
+
+:hasFounder  a        owl:ObjectProperty ;
+        rdfs:label  "创始人"@zh-cn ;
+		rdfs:label  "has founder"@en ;
+		rdfs:comment  "集团的创始人。"@zh-cn ;
+		rdfs:comment  "This specifies the founder of a group."@en ;
+        rdfs:domain   org2:Organization ;
+        rdfs:range    <http://xmlns.com/foaf/0.1/Person> .
+
+dc:source  a          owl:DatatypeProperty , owl:ObjectProperty ;
+        rdfs:comment  "A related resource from which the described resource is derived."@en .
+
+:healthImpact  a      owl:DatatypeProperty ;
+        rdfs:label  "健康影响"@zh-cn ;
+		rdfs:label  "health impact"@en ;
+		rdfs:comment  "一个产品的组件/材料可能对健康造成的影响。"@zh-cn ;
+		rdfs:comment  "A component/ingredient of a product may have an impact according to health."@en ;
+        rdfs:domain   :Component ;
+        rdfs:range    xsd:string .
+
+:hasComponent  a      owl:ObjectProperty ;
+        rdfs:label  "组件"@zh-cn ;
+		rdfs:label  "has component"@en ;
+		rdfs:comment  "指一个产品中包含的组件。"@zh-cn ;
+		rdfs:comment  "This specifies the components included in a product."@en ;
+        rdfs:domain   v12:ProductOrService ;
+        rdfs:range    :Component .
+
+<http://ns.inria.fr/provoc>
+        a                              owl:Ontology ;
+		rdfs:comment  "ProVoc（产品词汇集）是一个能够用于表示和处理网络上的信息的词汇集。该本体考虑到了：1) 公司的基本等级：集团（公司），集团部门，附加到公司或部门的品牌名称。2) 公司产品：产品，（品牌下面的）产品系列，产品的印刷、包装，等等。"@zh-cn ;
+		rdfs:comment                   "ProVoc (Product Vocabulary) is a vocabulary that can be used to represent information and manipulate them through the Web. This ontology reflects: 1) The basic hierarchy of a company: Group (Company), Divisions of a Group, Brand names attached to a Division or a Group, and 2) The production of a company: products, ranges of products (attached to a Brand), the composition of a product, packages of products...\n\n\nWhat contributions ? \n\n- pv:Range\nIn ProVoc we introduce pv:Range.\nGoodRelations defined \"variants\" ( http://wiki.goodrelations-vocabulary.org/Documentation/Product_variants , http://www.heppnetz.de/ontologies/goodrelations/v1.html#isVariantOf ) as following: \"\"A variant is a specialization of a product model and inherits all of its product properties, unless they are defined locally. This allows a very compact modeling of product models that vary only in  a few properties. \"\nAccording to GoodRelations, a variant of a MacBook is for example a MacBook13Inch or MacBook15Inch which vary in screen size and in available USB ports. This is inheritage between a product model and its derivatives, which must meet the standards imposed by the product model (obviously values can be redefined locally). According to the current version of GoodRelations,gr:isVariantOf necessarily exists between two models of product or service. However, ranges of products can hardly be considered as a set of derivatives of a product (or model of product). For example, Elsève is a range of products offering shampoos with some derivatives, but Elsève also offers creams with derivatives, oils with derivatives etc., so apart that such products are related to treatment for hair, they have not much in common. Using gr:isVariantOf between certain 'close' products, we would obtain multiple clusters of related products, to the detriment of a unique range of products. Using pv:Range allows to respect the structure provided by the expert.\nIn conclusion, variants seem to identify similar products (see also http://www.heppnetz.de/ontologies/goodrelations/v1#isSimilarTo which differs from gr:isVariantOf by the fact that the domain and ranks of isSimilarTo are larger), but pv:range has a different vocation.\ngr:isVariantOf has a very broad and subjective semantics (such as gr:isSimilarTo, as Mr. Hepp said clearly here http://www.heppnetz.de/ontologies/goodrelations/v1#isSimilarTo ). For example , with gr:isVariantOf it would be possible to express that a Renault Clio 4 is a variant of a Ford Fiesta ( http://www.autonews.fr/nouveautes/nouveaute/104216-renault-clio-fiesta-prix/ yet they are not of the same brand) whilst they are not of the same brand name.\nFinally, note that a pv:Range does not represent a set of products nor product models. pv:range is used to objectively link a brand to its products (provided by the expert).\nIt would be appropriate to limit the use of gr:isVariantOf to products belonging to a pv:Range.\n\n- pv:Package\nIn ProVoc we introduce the pv:Package class that is used to represent sets of products sold as a single product. For example a cosmetic box containing a BB cream, a lip gloss, and a perfume byl Lancôme. Another example is a food package that contains different products.\n\n- pv:Provider\nIn ProVoc we introduce the pv:Provider that makes a product available in the e-commerce.\n\n- pv:Component\nIn ProVoc we introduce the pv:Component which enables to describe the composition of a product (for instance, a perfume can contain linalool).\n\nWe  introduce more properties and classes in order to refine the model. For instance, pv:Model, pv:Designer, and pv:Ambassador appear as a subclass of foaf:Person.  ProVoc can also be used in order to link products and their components with their impact on health ( see pv:healthImpact).\n\nConcerning classic properties related to the product, such as color, price, reference, description, etc., see Good Relations (http://www.heppnetz.de/projects/goodrelations/).\n"@en , "ProVoc (Product Vocabulary) est un vocabulaire qui peut être utilisé pour représenter des informations et les manipuler à travers le Web. L'ontologie permet de représenter : 1) La hiérarchie d'une société : Groupe (Entreprise), Divisions d'un groupe, Marques d'une division ou d'un groupe, 2) La production d'une société : Gammes de produits (attachées à une marque), produits d'une gamme, packages de produits (un panier alimentaire par exemple), composition des produits...\n\nQuels apports ? \n\n- pv:Range\nDans ProVoc, nous introduisons les gammes de produits pv:Range.\nGoodRelations défini des variantes de produits  (http://wiki.goodrelations-vocabulary.org/Documentation/Product_variants, http://www.heppnetz.de/ontologies/goodrelations/v1.html#isVariantOf) : \"A variant is a specialization of a product model and inherits all of its product properties, unless they are defined locally. This allows a very compact modeling of product models that vary only in  a few properties.\"\nD'après GoodRelations, une variante d'un MacBook est par exemple un MacBook13Inch ou un MacBook15Inch qui varient par leur taille d'écran  et la quantité de ports USB disponibles. Il s'agit d'héritage entre un produit « parent » et ses dérivés qui doivent respecter les normes imposées par le produit « parent » (à moins de redéfinir les valeurs). Dans la version actuelle de GoodRelations, il existe une relation gr:isVariantOf nécessairement entre deux modèles de produits ou service. Or, les gammes de produits peuvent difficilement être traitées comme un ensemble de dérivés d'un produit/modèle commun. Par exemple, Elsève est une gamme proposant des shampooings avec des dérivés, mais Elsève propose aussi des Colorations avec des dérivés,  des Huiles avec des dérivés etc etc, donc à part qu'il s'agit de traitement pour les cheveux, ces  produits n'ont pas grand-chose en commun. En utilisant gr:isVariantOf entre certains produits « proches », on aurait plusieurs clusters de produits apparentés, au détriment d'une gamme unique. L'utilisation de pv:Range permet de respecter la structure fournie par l'expert, non subjective.\nEn conclusion, les variantes semblent pertinentes pour identifier des produits similaires (voir également http://www.heppnetz.de/ontologies/goodrelations/v1#isSimilarTo qui ne se différencie de isVariantOf que par le fait que le domain et le range de isSimilarTo sont plus large), mais les gammes de produits ont une toute autre vocation.\ngr:isVariantOf a une sémantique très large et subjective (comme pour isSimilarTo, d’ailleurs M. Hepp le dit clairement ici http://www.heppnetz.de/ontologies/goodrelations/v1#isSimilarTo). Par exemple, rien n’empêche d’exprimer qu’une Renault Clio 4 est une variante d’une Ford Fiesta (http://www.autonews.fr/nouveautes/nouveaute/104216-renault-clio-fiesta-prix/ pourtant elles ne sont pas de la même marque.  \nEnfin, notons qu'une pv:Range ne représente ni un produit ni un modèle de produit. pv:Range permet de lier une marque à ses produits de façon non subjective (fournie par l’expert). \nIl serait pertinent de limiter l’utilisation de gr:isVariantOf aux produits appartenant à une pv:Range.\n\n- pv:Package\nDans ProVoc nous introduisons la classe pv:Package qui permet de représenter des ensembles de produits vendus comme un unique produit. Par exemple un coffret de cosmétique contenant une BB crème, un gloss, et le parfum La vie est Belle de Lancôme. Un autre exemple est un panier alimentaire contenant différents produits.\n\n- pv:Provider\nDans ProVoc nous introduisons pv:Provider qui représente les fournisseurs de produits (par exemple Carrefour est fournisseur des produits Nutella).\n\n- pv:Component\nDans ProVoc nous introduisons pv:Component qui permet de décrire la composiiton d'un produit (par exemple, un parfum peut contenir du linalool).\n\nD'autres classes et propriétés sont introduites dans ProVoc dans le but de raffiner le modèle. Par exemple, pv:Model, pv:Designer, et pv:Ambassador sont des sous-classes de foaf:Person. ProVoc permet aussi de lier les composants d'un produit avec leur impact sur la santé (pv:healthImpact).\n\nConcernant les propriétés classiques liées directement au produit, telles que la couleur, le prix, la référence, la description, etc, voir Good Relations.\n"@fr ;
+        cc:license                     <http://creativecommons.org/licenses/by/3.0/> ;
+        dc:contributor                 <http://www.viseo.com/en/research/Cedric-Lopez> , <http://www-sop.inria.fr/members/Elena.Cabrio/> , <http://www-sop.inria.fr/members/Fabien.Gandon/> , <http://www.viseo.com/en/research/Frederique-Segond> ;
+        dc:description                 "ProVoc (Product Vocabulary) is a vocabulary that can be used to represent information and manipulate them through the Web. This ontology reflects: 1) The basic hierarchy of a company: Group (Company), Divisions of a Group, Brand names attached to a Division or a Group, and 2) The production of a company: products, ranges of products (attached to a Brand), the composition of a product, packages of products..."@en ;
+		dc:description  "ProVoc（产品词汇集）是一个能够用于表示和处理网络上的信息的词汇集。该本体考虑到了：1) 公司的基本等级：集团（公司），集团部门，附加到公司或部门的品牌名称。2) 公司产品：产品，（品牌下面的）产品系列，产品的印刷、包装，等等。"@zh-cn ;
+        dc:issued                      "2016-01-01"^^xsd:date ;
+        dc:publisher                   <http://wimmics.inria.fr/> , <http://www.viseo.com/> ;
+        dc:rights                      "Copyright © 2016 INRIA and VISEO" ;
+        dc:title                       "Product Vocabulary"@en ;
+		dc:title                       "产品词汇集"@zh-cn ;
+        vann:preferredNamespacePrefix  "pv" ;
+        vann:preferredNamespaceUri     "http://ns.inria.fr/provoc#" ;
+        owl:versionInfo                1.0 .
+
+org2:hasPrimarySite  a      owl:ObjectProperty ;
+        rdfs:domain         org2:Organization ;
+        rdfs:subPropertyOf  org2:hasSite .
+
+:hasTarget  a         owl:DatatypeProperty ;
+        rdfs:label  "目标群"@zh-cn ;
+		rdfs:label  "has target"@en ;
+		rdfs:comment  "一个产品或服务可能有一个目标群，比如，男性或女性。"@zh-cn ;
+		rdfs:comment  "Un produit ou service peut avoir une cible, par exemple féminine ou masculine."@fr , "A product or service may have a target, for example, male or female."@en ;
+        rdfs:domain   v12:ProductOrService .
+
+spec:term_logo  a           owl:DatatypeProperty ;
+        rdfs:domain         org2:Organization , v1:Brand , :ProductOrServiceRange ;
+        rdfs:subPropertyOf  spec:term_depiction .
+
+org2:hasSite  a  owl:ObjectProperty .
+
+:hasPackageDesigner  a      owl:ObjectProperty ;
+        rdfs:label  "包装设计师"@zh-cn ;
+		rdfs:label  "has package designer"@en ;
+		rdfs:comment  "指香味的设计者"@zh-cn ;
+		rdfs:comment        "This specifies the designer of a fragrance."@en ;
+        rdfs:range          :Designer ;
+        rdfs:subPropertyOf  :hasCreator .
+
+:hasRepresentative  a  owl:ObjectProperty ;
+        rdfs:label  "代言"@zh-cn ;
+		rdfs:label  "has representative"@en ;
+		rdfs:comment  "指代言了一个产品、产品系列、品牌或部门等的人。"@zh-cn ;
+		rdfs:comment  "This specifies persons who represent a product, a range of product, a brand, a division, etc..."@en .
+
+:belongsToGroup  a    owl:ObjectProperty ;
+        rdfs:label  "所属集团"@zh-cn ;
+		rdfs:label  "belongs to group"@en ;
+		rdfs:comment  "指包含部门的集团/公司。"@zh-cn ;
+		rdfs:comment  "This specifies the group that contains divisions."@en ;
+        rdfs:domain   <http://vivoweb.org/ontology/core#Division> ;
+        rdfs:range    org2:Organization .
+
+:belongsToDivision  a  owl:ObjectProperty ;
+        rdfs:label  "所属部门"@zh-cn ;
+		rdfs:label  "belongs to division"@en ;
+		rdfs:comment  "指提出品牌的部门。"@zh-cn ;
+		rdfs:comment  "This specifies the division that proposes a brand."@en ;
+        rdfs:domain   v1:Brand ;
+        rdfs:range    <http://vivoweb.org/ontology/core#Division> .
+
+dc:date  a      owl:DatatypeProperty .

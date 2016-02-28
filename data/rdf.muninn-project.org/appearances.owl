@@ -1,0 +1,2648 @@
+<rdf:RDF
+    xmlns       ="http://rdf.muninn-project.org/ontologies/appearances#"
+    xmlns:org="http://rdf.muninn-project.org/ontologies/appearances#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdaGr2="http://RDVocab.info/ElementsGr2/"
+    xmlns:muninn="http://rdf.muninn-project.org/ontologies/muninn#"
+    xmlns:my="http://www.cs.vu.nl/~mcaklein/onto/swrc-ext/2005/05#"
+    xmlns:ow="http://swrc.ontoware.org/ontology#"
+    xmlns:appearances="http://rdf.muninn-project.org/ontologies/appearances#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:foaf="http://xmlns.com/foaf/spec/"
+    xmlns:cidoc="http://www.cidoc-crm.org/rdfs/5.0.4/cidoc-crm#"
+    xmlns:time = "http://www.w3.org/2006/time#"   
+    xmlns:rel="http://purl.org/vocab/relationship/"
+    xmlns:rnews="http://iptc.org/std/rNews/2011-10-07#"
+    xmlns:gnd="http://d-nb.info/gnd/"
+    xmlns:lode="http://linkedevents.org/ontology/"
+    xmlns:dbpedia="http://dbpedia.org/resource/"
+    xmlns:mugshots="http://rdf.muninn-project.org/ontologies/mugshots#"
+    xmlns:fao="http://aims.fao.org/aos/geopolitical.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xml:base="http://rdf.muninn-project.org/ontologies/appearances">
+
+  <owl:Ontology rdf:about="">
+   <dc:title>Sex, Genders, Preferences and Desires Ontology</dc:title> 
+   <dc:description>This ontology is meant to record individual's sex, gender identities as well as their preferences, desires and relationships.</dc:description>
+   <rdfs:label xml:lang="en">Sex, Genders, Preferences and Desires Ontology</rdfs:label>
+   <rdfs:comment xml:lang="en">This ontology is meant to record individual's sex, gender identities as well as their preferences, desires and relationships.</rdfs:comment>
+   <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
+   <dc:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-11-15</dc:date>
+   <vs:term_status>Testing</vs:term_status>
+   <dc:creator rdf:resource="http://rdf.muninn-project.org/ww1/2011/11/11/Person/Warren"/>
+   <dc:creator>
+    <foaf:Person rdf:about="#adriel">
+     <foaf:name>Adriel Dean-Hall</foaf:name>
+     <foaf:firstName>Adriel</foaf:firstName>
+     <foaf:lastName>Dean-Hall</foaf:lastName>
+    </foaf:Person>
+   </dc:creator>
+  </owl:Ontology>
+
+
+<owl:Class rdf:ID="Person">
+ <foaf:name>Person</foaf:name>
+ <rdfs:label xml:lang="en">Natural Person</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:ID="Observation">
+ <foaf:name>Observation</foaf:name>
+ <rdfs:label xml:lang="en">Observation</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:ID="SelfReported">
+ <foaf:name>Self Reported</foaf:name>
+ <rdfs:label xml:lang="en">Self Reported</rdfs:label>
+</owl:Class>
+
+
+
+<owl:ObjectProperty rdf:ID="hasGender">
+ <foaf:name>Gender</foaf:name>
+ <rdfs:label xml:lang="en">Has Gender</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Gender"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasSex">
+ <foaf:name>Sex</foaf:name>
+ <rdfs:label xml:lang="en">Has Sex</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Sex"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="htmlColor">
+ <foaf:name>htmlColor</foaf:name>
+ <rdfs:label xml:lang="en">htmlColor</rdfs:label>  
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#String"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="hasSexualPreference">
+ <foaf:name>hasSexualPreference</foaf:name>
+ <rdfs:label xml:lang="en">has Sexual Preference</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Sex"/>
+ <rdfs:range rdf:resource="#Gender"/>
+ <rdfs:range rdf:resource="#Appearance"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasRomanticPreference">
+ <foaf:name>hasRomanticPreference</foaf:name>
+ <rdfs:label xml:lang="en">has Romantic Preference</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Sex"/>
+ <rdfs:range rdf:resource="#Gender"/>
+ <rdfs:range rdf:resource="#Appearance"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasEntertaimentPreference">
+ <foaf:name>hasEntertaimentPreference</foaf:name>
+ <rdfs:label xml:lang="en">has Entertaiment Preference</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Sex"/>
+ <rdfs:range rdf:resource="#Gender"/>
+ <rdfs:range rdf:resource="#Appearance"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasSexualAversion">
+ <foaf:name>hasSexualAversion</foaf:name>
+ <rdfs:label xml:lang="en">has Sexual Aversion</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Sex"/>
+ <rdfs:range rdf:resource="#Gender"/>
+ <rdfs:range rdf:resource="#Appearance"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasRomanticAversion">
+ <foaf:name>hasRomanticAversion</foaf:name>
+ <rdfs:label xml:lang="en">has Romantic Aversion</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Sex"/>
+ <rdfs:range rdf:resource="#Gender"/>
+ <rdfs:range rdf:resource="#Appearance"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasEntertaimentAversion">
+ <foaf:name>hasEntertaimentAversion</foaf:name>
+ <rdfs:label xml:lang="en">has Entertaiment Aversion</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Sex"/>
+ <rdfs:range rdf:resource="#Gender"/>
+ <rdfs:range rdf:resource="#Appearance"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasAppearance">
+ <foaf:name>hasAppearance</foaf:name>
+ <rdfs:label xml:lang="en">has Appearance</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:range rdf:resource="#Appearance"/>
+</owl:ObjectProperty>
+
+ 
+<owl:Class rdf:ID="Gender">
+ <foaf:name>Gender</foaf:name> 
+ <rdfs:label xml:lang="en">Gender (Generic)</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:ID="GenderStrict">
+    <foaf:name>Gender</foaf:name> 
+   <rdfs:label xml:lang="en">Gender (Strict)</rdfs:label>
+   <rdfs:comment xml:lang="en">Strict F/M coding of Gender types, with restriction.</rdfs:comment>
+   <rdfs:subClassOf rdf:resource="#GenderSimple"/>
+</owl:Class>
+
+
+<GenderStrict rdf:about="http://rdf.muninn-project.org/ontologies/organization#GenderStrict-F">
+ <foaf:name>F</foaf:name>
+ <rdfs:label xml:lang="en">Woman</rdfs:label>
+ <rdfs:label xml:lang="en">Femme</rdfs:label>
+ <rdfs:label xml:lang="en">Frau</rdfs:label> 
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/organization#GenderStrict-M"/>
+ <skos:related rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#GenderSimple-F"/>
+</GenderStrict>
+
+<GenderStrict rdf:about="http://rdf.muninn-project.org/ontologies/organization#GenderStrict-M">
+ <foaf:name>M</foaf:name> 
+ <rdfs:label xml:lang="en">Man</rdfs:label>
+ <rdfs:label xml:lang="en">Homme</rdfs:label>
+ <rdfs:label xml:lang="en">Mann</rdfs:label> 
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/organization#GenderStrict-F"/>
+ <skos:related rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#GenderSimple-M"/>
+</GenderStrict>
+
+<owl:Class rdf:ID="GenderSimple">
+    <foaf:name>Gender</foaf:name>
+   <rdfs:label xml:lang="en">SimplebGender</rdfs:label>
+   <rdfs:comment xml:lang="en">Simple F/M coding of Gender types.</rdfs:comment>
+   <rdfs:subClassOf rdf:resource="#Gender"/>
+</owl:Class>
+
+<GenderSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#GenderSimple-F">
+ <foaf:name>F</foaf:name> 
+ <rdfs:label xml:lang="en">Woman</rdfs:label>
+ <rdfs:label xml:lang="en">Femme</rdfs:label>
+  <rdfs:label xml:lang="en">Frau</rdfs:label> 
+</GenderSimple>
+
+<GenderSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#GenderSimple-M">
+ <foaf:name>M</foaf:name>
+ <rdfs:label xml:lang="en">Man</rdfs:label>
+ <rdfs:label xml:lang="en">Homme</rdfs:label>
+ <rdfs:label xml:lang="en">Mann</rdfs:label> 
+</GenderSimple>
+
+<owl:Class rdf:ID="SexISO5218">
+   <foaf:name>Sex</foaf:name>
+   <rdfs:label xml:lang="en">Sex (ISO/IEC 5218)</rdfs:label>
+   <rdfs:comment xml:lang="en">Strict F/M coding of Gender types, with restriction.</rdfs:comment>
+   <rdfs:subClassOf rdf:resource="#Sex"/>
+   <owl:equivalentClass muninn:wikipedia_version="523615489" rdf:resource="http://dbpedia.org/resource/ISO_5218"/> 
+</owl:Class>
+
+<SexISO5218 rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-2">
+ <foaf:name>2</foaf:name>
+ <rdfs:label xml:lang="en">Woman</rdfs:label>
+ <rdfs:label xml:lang="en">Femme</rdfs:label>
+ <rdfs:label xml:lang="en">Frau</rdfs:label> 
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-1"/>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-0"/>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-9"/>
+</SexISO5218>
+
+<SexISO5218 rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-1">
+ <foaf:name>1</foaf:name>
+ <rdfs:label xml:lang="en">Man</rdfs:label>
+ <rdfs:label xml:lang="en">Homme</rdfs:label>
+ <rdfs:label xml:lang="en">Mann</rdfs:label> 
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-2"/>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-0"/>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-9"/>
+</SexISO5218>
+
+<SexISO5218 rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-0">
+ <foaf:name>0</foaf:name>
+ <rdfs:label xml:lang="en">Gender Unknown</rdfs:label>
+ <rdfs:label xml:lang="en">Sex Inconnu</rdfs:label>
+ <rdfs:label xml:lang="en">Mann</rdfs:label> 
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-2"/>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-1"/>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-9"/>
+</SexISO5218>
+
+<SexISO5218 rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-9">
+ <foaf:name>9</foaf:name>
+ <rdfs:label xml:lang="en">Not Available</rdfs:label>
+</SexISO5218>
+
+<owl:Class rdf:ID="Sex">
+ <foaf:name>Sex</foaf:name>
+</owl:Class>
+
+<owl:Class rdf:ID="SexTyping">
+ <foaf:name>SexGenomeTyping</foaf:name>
+ <rdfs:subClassOf rdf:resource="#Sex"/>
+</owl:Class>
+
+<SexTyping rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SexTypingXX">
+ <foaf:name>XX</foaf:name>
+ <rdfs:label xml:lang="en">XX</rdfs:label>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexTypingXY"/>
+ <owl:sameAs rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-2"/>
+</SexTyping>
+
+<SexTyping rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SexTypingXY">
+ <foaf:name>XY</foaf:name>
+ <rdfs:label xml:lang="en">XY</rdfs:label>
+ <owl:disjointWith rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexTypingXX"/>
+ <owl:sameAs rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-1"/>
+</SexTyping>
+
+<owl:Class rdf:ID="macroEthnicity">
+ <foaf:name>Macro Ethnicity</foaf:name>
+</owl:Class>
+
+<owl:Class rdf:ID="Religion">
+   <foaf:name>Religion</foaf:name>
+   <owl:sameAs rdf:resource="http://rdf.muninn-project.org/ontologies/religion#Religion"/>
+   <owl:subClass rdf:resource="#macroEthnicity"/>
+</owl:Class>
+
+<owl:Class rdf:ID="Nationality">
+ <foaf:name>Nationality</foaf:name>
+ <owl:subClass rdf:resource="#macroEthnicity"/>
+</owl:Class>
+
+  <owl:Class rdf:ID="Race">
+   <foaf:name>Race</foaf:name>
+   <owl:subClass rdf:resource="#macroEthnicity"/>
+  </owl:Class>
+
+  <owl:Class rdf:ID="Appearance">
+   <foaf:name>Appearance</foaf:name>
+  </owl:Class>
+
+<!--
+http://en.wikipedia.org/wiki/Asexuality
+http://en.wikipedia.org/wiki/Bisexuality
+http://en.wikipedia.org/wiki/Heterosexuality
+http://en.wikipedia.org/wiki/Homosexuality
+
+http://en.wikipedia.org/wiki/Fa%27afafine
+http://en.wikipedia.org/wiki/Hijra_%28South_Asia%29
+http://en.wikipedia.org/wiki/Xanith
+-->
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeA1">
+ <foaf:name>A1</foaf:name>
+ <rdfs:label xml:lang="en">Indian</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeA2">
+ <foaf:name>A2</foaf:name>
+ <rdfs:label xml:lang="en">Pakistani</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeA3">
+ <foaf:name>A3</foaf:name>
+ <rdfs:label xml:lang="en">Bangladeshi</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeA9">
+ <foaf:name>A9</foaf:name>
+ <rdfs:label xml:lang="en">Any other Asian ethnic background</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeB1">
+ <foaf:name>B1</foaf:name>
+ <rdfs:label xml:lang="en">Caribbean</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeB2">
+ <foaf:name>B2</foaf:name>
+ <rdfs:label xml:lang="en">African</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeB9">
+ <foaf:name>B9</foaf:name>
+ <rdfs:label xml:lang="en">Any other Black ethnic background</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeM1">
+ <foaf:name>M1</foaf:name>
+ <rdfs:label xml:lang="en">White and Black Caribbean</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeM2">
+ <foaf:name>M2</foaf:name>
+ <rdfs:label xml:lang="en">White and Black African</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeM3">
+ <foaf:name>M3</foaf:name>
+ <rdfs:label xml:lang="en">White and Asian</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeM9">
+ <foaf:name>M9</foaf:name>
+ <rdfs:label xml:lang="en">Any other Mixed ethnic background</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeO1">
+ <foaf:name>O1</foaf:name>
+ <rdfs:label xml:lang="en">Chinese</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeO9">
+ <foaf:name>O9</foaf:name>
+ <rdfs:label xml:lang="en">Any other ethnic group</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeW1">
+ <foaf:name>W1</foaf:name>
+ <rdfs:label xml:lang="en">British</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeW2">
+ <foaf:name>W2</foaf:name>
+ <rdfs:label xml:lang="en">Irish</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeW9">
+ <foaf:name>W9</foaf:name>
+ <rdfs:label xml:lang="en">Any other White ethnic background</rdfs:label>
+</EthnicityUKCensusCode>
+<EthnicityUKCensusCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKCensusCodeNS">
+ <foaf:name>NS</foaf:name>
+ <rdfs:label xml:lang="en">Not Stated</rdfs:label>
+</EthnicityUKCensusCode>
+
+<owl:Class rdf:ID="EthnicityUKCensusCode">
+    <foaf:name>EthnicityUKCensusCode Census Codes</foaf:name>
+   <rdfs:label xml:lang="en">UK CensusCodes</rdfs:label>
+   <rdfs:comment xml:lang="en">S</rdfs:comment>
+   <rdfs:subClassOf rdf:resource="#PerceivedEthnicity"/>
+   <owl:equivalentClass muninn:wikipedia_version="516873922" rdf:resource="http://dbpedia.org/resource/Self_Defined_Ethnicity"/>
+</owl:Class>
+
+<!-- 
+
+
+http://www.fbi.gov/about-us/cjis/fingerprints_biometrics/guidelines-for-preparation-of-fingerprint-cards-and-association-criminal-history-information
+-->
+
+<!-- IC COdes -->
+
+<owl:Class rdf:ID="EthnicityUKICCode">
+    <foaf:name>IC Codes</foaf:name>
+   <rdfs:label xml:lang="en">UK IC-Codes</rdfs:label>
+   <rdfs:comment xml:lang="en">Simple F/M coding of Gender types.</rdfs:comment>
+   <rdfs:subClassOf rdf:resource="#PerceivedEthnicity"/>
+   <owl:equivalentClass muninn:wikipedia_version="524218658" rdf:resource="http://dbpedia.org/resource/IC_codes"/>
+</owl:Class>
+
+
+<EthnicityUKICCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKICCodeIC0">
+ <foaf:name>IC0</foaf:name>
+ <rdfs:label xml:lang="en">Origin unknown</rdfs:label>
+</EthnicityUKICCode>
+
+<EthnicityUKICCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKICCodeIC6">
+ <foaf:name>IC6</foaf:name>
+ <rdfs:label xml:lang="en">Arab person</rdfs:label>
+</EthnicityUKICCode>
+
+<EthnicityUKICCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKICCodeIC5">
+ <foaf:name>IC5</foaf:name>
+ <rdfs:label xml:lang="en">Chinese, Japanese, or South-East Asian person</rdfs:label>
+</EthnicityUKICCode>
+
+<EthnicityUKICCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKICCodeIC4">
+ <foaf:name>IC4</foaf:name>
+ <rdfs:label xml:lang="en">Indian, Pakistani, Nepalese, Maldivian, Sri Lankan, Bangladeshi, or any other (South) Asian person</rdfs:label>
+</EthnicityUKICCode>
+
+<EthnicityUKICCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKICCodeIC3">
+ <foaf:name>IC3</foaf:name>
+ <rdfs:label xml:lang="en">African/Afro-Caribbean person</rdfs:label>
+</EthnicityUKICCode>
+
+
+<EthnicityUKICCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKICCodeIC1">
+ <foaf:name>IC1</foaf:name>
+ <rdfs:label xml:lang="en">White person, northern European type</rdfs:label>
+</EthnicityUKICCode>
+
+<EthnicityUKICCode rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EthnicityUKICCodeIC2">
+ <foaf:name>IC2</foaf:name>
+ <rdfs:label xml:lang="en">Mediterranean European/Hispanic</rdfs:label>
+</EthnicityUKICCode>
+
+
+<!-- Skin  -->
+
+<owl:Class rdf:ID="SkinColor">
+    <foaf:name>Skin Color</foaf:name>
+   <rdfs:label xml:lang="en">Skin Color</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#Appearance"/>
+</owl:Class>
+
+<owl:Class rdf:ID="SkinColorSimple">
+    <foaf:name>Simple Skin Color</foaf:name>
+   <rdfs:label xml:lang="en">Simple Skin Color</rdfs:label>
+   <rdfs:subClassOf rdf:resource="#SkinColor"/>
+</owl:Class>
+
+<SkinColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorSimpleAlbino">
+ <foaf:name>Abino</foaf:name>
+ <rdfs:label xml:lang="en">Simple Skin Color Albino</rdfs:label>
+ <htmlColor>FFFFFF</htmlColor>
+ <owl:rdfValue>Albino</owl:rdfValue>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#VonLuschan1"/>
+</SkinColorSimple>
+
+
+<SkinColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorSimpleWhite">
+ <foaf:name>White</foaf:name>
+ <rdfs:label xml:lang="en">Simple Skin Color White</rdfs:label>
+ <htmlColor>FFFFFF</htmlColor>
+ <owl:rdfValue>White</owl:rdfValue>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#FitzpatrickSkinColorTypeIII"/>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#FitzpatrickSkinColorTypeII"/>
+</SkinColorSimple>
+
+<SkinColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorSimpleBrown">
+ <foaf:name>Brown</foaf:name>
+ <rdfs:label xml:lang="en">Simple Skin Color Brown</rdfs:label>
+ <htmlColor>663300</htmlColor>
+ <owl:rdfValue>Black</owl:rdfValue>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#FitzpatrickSkinColorTypeV"/>
+</SkinColorSimple>
+
+<SkinColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorSimpleOlive">
+ <foaf:name>Olive</foaf:name>
+ <rdfs:label xml:lang="en">Simple Skin Color Olive</rdfs:label>
+ <htmlColor>95945e</htmlColor>
+ <owl:rdfValue>Olive</owl:rdfValue>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#FitzpatrickSkinColorTypeIV"/>
+</SkinColorSimple>
+
+
+<SkinColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorSimpleBlack">
+ <foaf:name>Black</foaf:name>
+ <rdfs:label xml:lang="en">Simple Skin Color Black</rdfs:label>
+ <htmlColor>000000</htmlColor>
+ <owl:rdfValue>Black</owl:rdfValue>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#FitzpatrickSkinColorTypeVI"/>
+</SkinColorSimple>
+
+
+<owl:Class rdf:ID="SkinColorVonLuschan">
+    <foaf:name>Von_Luschan_scale</foaf:name>
+   <rdfs:label xml:lang="en">Skin Color</rdfs:label>
+   <rdfs:subClassOf rdf:resource="#SkinColor"/>
+   <owl:equivalentClass muninn:wikipedia_version="523615489" rdf:resource="http://dbpedia.org/resource/Von_Luschan_scale"/>
+ <foaf:depiction rdf:resource="http://upload.wikimedia.org/wikipedia/commons/1/1e/Felix_von_Luschan_Skin_Color_Chart.JPG"/>
+</owl:Class>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan1">
+ <foaf:name>1</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 1</rdfs:label>
+ <htmlColor>F4F2F5</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan2">
+ <foaf:name>2</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 2</rdfs:label>
+ <htmlColor>EEEDEB</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan3">
+ <foaf:name>3</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 3</rdfs:label>
+ <htmlColor>FAF9F7</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan4">
+ <foaf:name>4</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 4</rdfs:label>
+ <htmlColor>FDFBE6</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan5">
+ <foaf:name>5</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 5</rdfs:label>
+ <htmlColor>FDF6E6</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan6">
+ <foaf:name>6</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 6</rdfs:label>
+ <htmlColor>FEF7E5</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan7">
+ <foaf:name>7</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 7</rdfs:label>
+ <htmlColor>FAF0EF</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan8">
+ <foaf:name>8</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 8</rdfs:label>
+ <htmlColor>F3EAE5</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan9">
+ <foaf:name>9</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 9</rdfs:label>
+ <htmlColor>F4F1EA</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan10">
+ <foaf:name>10</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 10</rdfs:label>
+ <htmlColor>FBFCF4</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan11">
+ <foaf:name>11</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 11</rdfs:label>
+ <htmlColor>FBF7EB</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan12">
+ <foaf:name>12</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 12</rdfs:label>
+ <htmlColor>FEF6E3</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan13">
+ <foaf:name>13</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 13</rdfs:label>
+ <rdfs:comment xml:lang="en">This skin color is the same as number 14. </rdfs:comment>
+ <htmlColor>FFF9E1</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan14">
+ <foaf:name>14</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 14</rdfs:label>
+ <htmlColor>FFF9E1</htmlColor>
+ <rdfs:comment xml:lang="en">This skin color is the same as number 13. </rdfs:comment>
+ <!-- No difference from #13! -->
+</SkinColorVonLuschan>
+
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan15">
+ <foaf:name>15</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 15</rdfs:label>
+ <htmlColor>F1E7C3</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan16">
+ <foaf:name>16</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 16</rdfs:label>
+ <htmlColor>EFE2AD</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan17">
+ <foaf:name>17</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 17</rdfs:label>
+ <htmlColor>E0D293</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan18">
+ <foaf:name>18</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 18</rdfs:label>
+ <htmlColor>EFE39B</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan19">
+ <foaf:name>19</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 19</rdfs:label>
+ <htmlColor>E7D39E</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan20">
+ <foaf:name>20</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 20</rdfs:label>
+ <htmlColor>EED885</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan21">
+ <foaf:name>21</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 21</rdfs:label>
+ <htmlColor>E3C467</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan22">
+ <foaf:name>22</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 22</rdfs:label>
+ <htmlColor>E1C16A</htmlColor>
+</SkinColorVonLuschan>
+
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan23">
+ <foaf:name>23</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 23</rdfs:label>
+ <htmlColor>DFC17B</htmlColor>
+</SkinColorVonLuschan>
+
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan24">
+ <foaf:name>24</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 24</rdfs:label>
+ <htmlColor>DEBB67</htmlColor>
+</SkinColorVonLuschan>
+
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan25">
+ <foaf:name>25</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 25</rdfs:label>
+ <htmlColor>C7A464</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan26">
+ <foaf:name>26</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 26</rdfs:label>
+ <htmlColor>BC9762</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan27">
+ <foaf:name>27</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 27</rdfs:label>
+ <htmlColor>9C6B43</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan28">
+ <foaf:name>28</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 28</rdfs:label>
+ <htmlColor>8E583E</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan29">
+ <foaf:name>29</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 29</rdfs:label>
+ <htmlColor>7B4C2E</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan30">
+ <foaf:name>30</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 30</rdfs:label>
+ <htmlColor>613214</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan31">
+ <foaf:name>31</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 31</rdfs:label>
+ <htmlColor>672E23</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan32">
+ <foaf:name>32</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 32</rdfs:label>
+ <htmlColor>603121</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan33">
+ <foaf:name>33</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 33</rdfs:label>
+ <htmlColor>573229</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan34">
+ <foaf:name>34</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 34</rdfs:label>
+ <htmlColor>402015</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan35">
+ <foaf:name>35</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 35</rdfs:label>
+ <htmlColor>312529</htmlColor>
+</SkinColorVonLuschan>
+
+<SkinColorVonLuschan rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan36">
+ <foaf:name>36</foaf:name>
+ <rdfs:label xml:lang="en">Von Luschan Skin Color 36</rdfs:label>
+ <htmlColor>1B1C2E</htmlColor>
+</SkinColorVonLuschan>
+
+
+<owl:Class rdf:ID="SkinColorFitzpatrickType">
+ <foaf:name>Fitzpatrick scale</foaf:name>
+ <rdfs:label xml:lang="en">Fitzpatrick Scale Type</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#FitzpatrickSkinColor"/>
+ <foaf:isPrimaryTopicOf rdf:resource="http://www.arpansa.gov.au/RadiationProtection/Solaria/Offline/05/07.html"/>
+</owl:Class>
+
+
+<owl:Class rdf:ID="KinseyScale">
+ <foaf:name>Kinsey Scale</foaf:name>
+ <rdfs:label xml:lang="en">Kinsey Scale</rdfs:label>
+ <foaf:isPrimaryTopicOf rdf:resource=""/>
+ <owl:equivalentClass muninn:wikipedia_version="533434457" rdf:resource="http://dbpedia.org/resource/Kinsey_scale" />
+</owl:Class>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScale0">
+ <foaf:name>Exclusively heterosexual</foaf:name>
+ <rdfs:label xml:lang="en">Exclusively heterosexual</rdfs:label>
+ <rdf:value>0</rdf:value>
+</KinseyScale>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScale1">
+ <foaf:name>Predominantly heterosexual, only incidentally homosexual</foaf:name>
+ <rdfs:label xml:lang="en">Predominantly heterosexual, only incidentally homosexual</rdfs:label>
+ <rdf:value>1</rdf:value>
+</KinseyScale>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScale2">
+ <foaf:name>Predominantly heterosexual, but more than incidentally homosexual</foaf:name>
+ <rdfs:label xml:lang="en">Predominantly heterosexual, but more than incidentally homosexual</rdfs:label>
+ <rdf:value>2</rdf:value>
+</KinseyScale>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScale3">
+ <foaf:name>Equally heterosexual and homosexual</foaf:name>
+ <rdfs:label xml:lang="en">Equally heterosexual and homosexual</rdfs:label>
+ <rdf:value>3</rdf:value>
+</KinseyScale>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScale4">
+ <foaf:name>Predominantly homosexual, but more than incidentally heterosexual</foaf:name>
+ <rdfs:label xml:lang="en">Predominantly homosexual, but more than incidentally heterosexual</rdfs:label>
+ <rdf:value>4</rdf:value>
+</KinseyScale>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScale5">
+ <foaf:name>Predominantly homosexual, only incidentally heterosexual</foaf:name>
+ <rdfs:label xml:lang="en">Predominantly homosexual, only incidentally heterosexual</rdfs:label>
+ <rdf:value>5</rdf:value>
+</KinseyScale>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScale6">
+ <foaf:name>Exclusively homosexual</foaf:name>
+ <rdfs:label xml:lang="en">Exclusively homosexual</rdfs:label>
+ <rdf:value>6</rdf:value>
+</KinseyScale>
+
+<KinseyScale rdf:about="http://rdf.muninn-project.org/ontologies/appearances#KinseyScaleX">
+ <foaf:name>Non-sexual</foaf:name>
+ <rdfs:label xml:lang="en">Non-sexual</rdfs:label>
+ <rdf:value>X</rdf:value>
+
+</KinseyScale>
+
+<SkinColorFitzpatrickType rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorFitzpatrickTypeI">
+ <rdfs:label xml:lang="en">Albino</rdfs:label>
+ <rdfs:label xml:lang="en">White</rdfs:label>
+ <rdfs:label xml:lang="en">Very Fair</rdfs:label>
+ <rdfs:label xml:lang="en">Freckles</rdfs:label>
+ <foaf:name>Albino</foaf:name>
+ <rdf:value>I</rdf:value>
+ <skos:equivalent rdf:resource="http://en.wikipedia.org/wiki/Celts_(modern)"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan1"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan2"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan3"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan4"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan5"/>
+</SkinColorFitzpatrickType>
+
+<SkinColorFitzpatrickType rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorFitzpatrickTypeII">
+ <rdfs:label xml:lang="en">White</rdfs:label>
+ <rdfs:label xml:lang="en">Fair</rdfs:label>
+ <rdfs:label xml:lang="en">Light-skinned European</rdfs:label>
+ <foaf:name>White</foaf:name>
+ <rdf:value>II</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan6"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan7"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan8"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan9"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan10"/>
+</SkinColorFitzpatrickType>
+
+<SkinColorFitzpatrickType rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorFitzpatrickTypeIII">
+ <rdfs:label xml:lang="en">Light intermediate</rdfs:label>
+ <rdfs:label xml:lang="en">Dark-skinned European</rdfs:label>
+ <foaf:name>Beige</foaf:name>
+ <rdf:value>III</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan11"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan12"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan13"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan14"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan15"/>
+</SkinColorFitzpatrickType>
+
+<SkinColorFitzpatrickType rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorFitzpatrickTypeIV">
+ <rdfs:label xml:lang="en">Dark intermediate</rdfs:label>
+ <rdfs:label xml:lang="en">Olive Skin</rdfs:label>
+ <rdfs:label xml:lang="en">Mediterranean</rdfs:label>
+ <rdfs:label xml:lang="en">Beige with a brown tint</rdfs:label>
+ <rdfs:label xml:lang="en">Mediterranean Caucasian</rdfs:label>
+ <foaf:name>Beige with a brown tint</foaf:name>
+ <skos:equivalent rdf:resource="http://en.wikipedia.org/wiki/Mediterranean_race"/>
+ <skos:equivalent rdf:resource="http://en.wikipedia.org/wiki/Olive_skin"/>
+ <rdf:value>IV</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan16"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan17"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan18"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan19"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan20"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan21"/>
+</SkinColorFitzpatrickType>
+
+<SkinColorFitzpatrickType rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorFitzpatrickTypeV">
+ <rdfs:label xml:lang="en">Dark</rdfs:label>
+ <rdfs:label xml:lang="en">Brown</rdfs:label>
+ <rdfs:label xml:lang="en">Dark brown</rdfs:label>
+ <foaf:name>Dark brown</foaf:name> 
+ <skos:equivalent rdf:resource="http://en.wikipedia.org/wiki/Brown_people"/>
+ <rdf:value>V</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan22"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan23"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan24"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan25"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan26"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan27"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan28"/>
+</SkinColorFitzpatrickType>
+
+<SkinColorFitzpatrickType rdf:about="http://rdf.muninn-project.org/ontologies/appearances#SkinColorFitzpatrickTypeVI">
+ <rdfs:label xml:lang="en">Very Dark</rdfs:label>
+ <rdfs:label xml:lang="en">Black</rdfs:label>
+ <foaf:name>Black</foaf:name>
+ <skos:equivalent rdf:resource="http://en.wikipedia.org/wiki/Black_people"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan29"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan30"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan31"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan32"/> 
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan33"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan34"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan35"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#SkinColorVonLuschan36"/>
+ <rdf:value>VI</rdf:value>
+</SkinColorFitzpatrickType>
+
+
+<!-- Eye Color -->
+<owl:Class rdf:ID="EyeColor">
+    <foaf:name>Eye Color</foaf:name>
+   <rdfs:label xml:lang="en">Eye Color</rdfs:label>
+ <owl:subClassOf rdf:resource="#Appearance"/>
+ <owl:equivalentClass muninn:wikipedia_version="525009236" rdf:resource="http://dbpedia.org/resource/Eye_color" /> 
+ <!-- <owl:sameAs rdf:resource="Fitzpatrick_scale"/> -->
+ </owl:Class>
+
+<owl:Class rdf:ID="EyeColorICCS">
+ <foaf:name>Iris Color Classification System</foaf:name>
+ <rdfs:label xml:lang="en">Iris Color Classification System</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <rdfs:comment xml:lang="en">Iris Color Classification System</rdfs:comment>
+ <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS1"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS2"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS3"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS4"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS5"/>
+ <foaf:isPrimaryTopicOf rdf:resource="#seddon"/>
+</owl:Class>
+
+<!-- Blue or gray irides were classified as grade 1 or 2.
+These grades were distinguished by assessing the proportion
+of total iris area with brown or yellow pigment,
+compared with standard photographs A and B.
+A green iris was a grade 2 or 3. Similarly, these grades
+depended on the extent of brown or yellow pigment
+in the iris. A predominantly brown iris was graded 3,
+4, or 5, depending on the intensity of the yellowbrown
+pigment compared with standard photographs
+C and D. -->
+
+<EyeColorICCS rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS1">
+  <foaf:name>Blue or gray iris with brown or yellow specks</foaf:name>
+ <rdfs:label xml:lang="en">Blue with Brown Specks (ICCS #1)</rdfs:label>
+ <rdfs:label xml:lang="en">Gray with Brown Specks (ICCS #1)</rdfs:label>
+ <rdfs:label xml:lang="en">Blue with Yellow Specks (ICCS #1)</rdfs:label>
+ <rdfs:label xml:lang="en">Gray with Yellow Specks (ICCS #1)</rdfs:label>
+ <rdf:value>1</rdf:value>
+</EyeColorICCS>
+
+<EyeColorICCS rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS2">
+  <foaf:name>Blue, gray, or green iris with brown or yellow specks</foaf:name>
+ <rdfs:label xml:lang="en">Blue with Brown Specks (ICCS #2)</rdfs:label>
+ <rdfs:label xml:lang="en">Gray with Brown Specks (ICCS #2)</rdfs:label>
+ <rdfs:label xml:lang="en">Green with Brown Specks (ICCS #2)</rdfs:label>
+ <rdfs:label xml:lang="en">Blue with Yellow Specks (ICCS #2)</rdfs:label>
+ <rdfs:label xml:lang="en">Gray with Yellow Specks (ICCS #2)</rdfs:label>
+ <rdfs:label xml:lang="en">Green with Yellow Specks (ICCS #2)</rdfs:label>
+ <rdf:value>2</rdf:value>
+</EyeColorICCS>
+
+<EyeColorICCS rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS3">
+ <foaf:name>Green or light brown iris with brown or yellow specks</foaf:name>
+ <rdfs:label xml:lang="en">Light Brown with Brown Specks (ICCS #3)</rdfs:label>
+ <rdfs:label xml:lang="en">Green with Brown Specks (ICCS #3)</rdfs:label>
+ <rdfs:label xml:lang="en">Light Brown with Yellow Specks (ICCS #3)</rdfs:label>
+ <rdfs:label xml:lang="en">Green with Yellow Specks (ICCS #3)</rdfs:label>
+ <rdf:value>3</rdf:value>
+</EyeColorICCS>
+
+<EyeColorICCS rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS4">
+ <foaf:name>Brown</foaf:name>
+ <rdfs:label xml:lang="en">Brown (ICCS #4)</rdfs:label>
+ <rdf:value>4</rdf:value>
+</EyeColorICCS>
+
+<EyeColorICCS rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorICCS5">
+ <foaf:name>Brown</foaf:name>
+ <rdfs:label xml:lang="en">Brown (ICCS #5)</rdfs:label>
+ <rdf:value>5</rdf:value>
+</EyeColorICCS>
+
+
+
+<owl:Class rdf:ID="EyeColorSimple">
+ <foaf:name>Simple Eye Color</foaf:name>
+ <rdfs:label xml:lang="en">Simple Eye Color Reference</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <rdfs:comment xml:lang="en">Simple eye color reference.</rdfs:comment>
+</owl:Class>
+
+<!-- auburn, light brown, dark brown and black tints). 
+1 = blue, 2 = grey, 3 = green, 4 = yellow, 5 = tan and 
+6 = chocolate.24–26  -->
+
+<owl:Class rdf:ID="EyeColorRiddell">
+ <foaf:name>Riddell Eye Color Reference</foaf:name>
+ <rdfs:label xml:lang="en">Riddell Eye Color Reference</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <rdfs:comment xml:lang="en">Riddell Eye Color Reference. The Riddell standard makes use of a three part scale that marks up the main colour of the eye, the diffuse color of the eye and any colour spots within the eye.</rdfs:comment>
+ <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+ <foaf:isPrimaryTopicOf rdf:resource="#AHG_AHG2288"/>
+</owl:Class>
+
+<owl:DataProperty rdf:ID="RiddellGeneralColor">
+ <foaf:name>Riddell General Color</foaf:name> 
+ <rdfs:label xml:lang="en">Riddell General Eye Color</rdfs:label>
+ <rdfs:domain rdf:resource="#EyeColorRiddell"/>
+ <rdfs:range rdf:resource="#RiddellColor"/>
+</owl:DataProperty>
+
+<owl:DataProperty rdf:ID="RiddellDiffuseColor">
+ <foaf:name>Riddell Diffuse Color</foaf:name> 
+ <rdfs:label xml:lang="en">Riddell Diffuse Eye Color</rdfs:label>
+ <rdfs:domain rdf:resource="#EyeColorRiddell"/>
+ <rdfs:range rdf:resource="#RiddellColor"/>
+</owl:DataProperty>
+
+<owl:DataProperty rdf:ID="RiddellSpotsColor">
+ <foaf:name>Riddell Spots Color</foaf:name> 
+ <rdfs:label xml:lang="en">Riddell Spots Eye Color</rdfs:label>
+ <rdfs:domain rdf:resource="#EyeColorRiddell"/>
+ <rdfs:range rdf:resource="#RiddellColor"/>
+</owl:DataProperty>
+
+
+<owl:Class rdf:ID="RiddellColor">
+ <foaf:name>RiddellColorScheme</foaf:name>
+ <rdfs:label xml:lang="en">Riddell Color Reference</rdfs:label>
+ <rdfs:comment xml:lang="en">Riddell Color Reference.</rdfs:comment>
+ <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+ <foaf:isPrimaryTopicOf rdf:resource="#wilde1862"/>
+</owl:Class>
+
+<RiddellColor rdf:about="http://rdf.muninn-project.org/ontologies/appearances#RiddellColorBlue">
+  <foaf:name>Blue</foaf:name>
+ <rdfs:label xml:lang="en">Blue (Riddell)</rdfs:label>
+ <rdf:value>1</rdf:value>
+</RiddellColor>
+
+<RiddellColor rdf:about="http://rdf.muninn-project.org/ontologies/appearances#RiddellColorGrey">
+  <foaf:name>Grey</foaf:name>
+ <rdfs:label xml:lang="en">Grey (Riddell)</rdfs:label>
+ <rdf:value>2</rdf:value>
+</RiddellColor>
+
+<RiddellColor rdf:about="http://rdf.muninn-project.org/ontologies/appearances#RiddellColorGreen">
+  <foaf:name>Green</foaf:name>
+ <rdfs:label xml:lang="en">Green (Riddell)</rdfs:label>
+ <rdf:value>3</rdf:value>
+</RiddellColor>
+
+<RiddellColor rdf:about="http://rdf.muninn-project.org/ontologies/appearances#RiddellColorYellow">
+  <foaf:name>Yellow</foaf:name>
+ <rdfs:label xml:lang="en">Yellow (Riddell)</rdfs:label>
+ <rdf:value>4</rdf:value>
+</RiddellColor>
+
+<RiddellColor rdf:about="http://rdf.muninn-project.org/ontologies/appearances#RiddellColorTan">
+  <foaf:name>Tan</foaf:name>
+ <rdfs:label xml:lang="en">Tan (Riddell)</rdfs:label>
+ <rdf:value>5</rdf:value>
+</RiddellColor>
+
+<RiddellColor rdf:about="http://rdf.muninn-project.org/ontologies/appearances#RiddellColorChocolate">
+  <foaf:name>Chocolate</foaf:name>
+ <rdfs:label xml:lang="en">Chocolate (Riddell)</rdfs:label>
+ <rdf:value>6</rdf:value>
+</RiddellColor>
+
+<RiddellColor rdf:about="http://rdf.muninn-project.org/ontologies/appearances#RiddellColorNil">
+  <foaf:name>Nil</foaf:name>
+ <rdfs:label xml:lang="en">No color (Riddell)</rdfs:label>
+ <rdf:value>0</rdf:value>
+</RiddellColor>
+
+
+<owl:Class rdf:ID="EyeColorWilde">
+ <foaf:name>Wilde Eye Color Reference</foaf:name>
+ <rdfs:label xml:lang="en">Wilde Eye Color Reference</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <rdfs:comment xml:lang="en">Wilde Eye Color Reference.</rdfs:comment>
+ <dc:creator rdf:resource="http://dbpedia.org/resource/William_Wilde"/>
+ <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeLight"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeHazel"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeDark"/>
+ <foaf:isPrimaryTopicOf rdf:resource="#wilde1862"/>
+</owl:Class>
+
+
+<EyeColorWilde rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeBlue">
+  <foaf:name>Blue</foaf:name>
+ <rdfs:label xml:lang="en">Blue (Wilde)</rdfs:label>
+ <rdf:value>Blue</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeLight"/>
+</EyeColorWilde>
+
+<EyeColorWilde rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeGray">
+  <foaf:name>Gray</foaf:name>
+ <rdfs:label xml:lang="en">Gray (Wilde)</rdfs:label>
+ <rdf:value>Gray</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeLight"/>
+</EyeColorWilde>
+
+<EyeColorWilde rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeHazel">
+  <foaf:name>Hazel</foaf:name>
+ <rdfs:label xml:lang="en">Hazel (Wilde)</rdfs:label>
+ <rdf:value>Hazel</rdf:value>
+</EyeColorWilde>
+
+<EyeColorWilde rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeDark">
+  <foaf:name>Dark</foaf:name>
+ <rdfs:label xml:lang="en">Dark (Wilde)</rdfs:label>
+ <rdf:value>Dark</rdf:value>
+</EyeColorWilde>
+
+<EyeColorWilde rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeBrown">
+  <foaf:name>Brown</foaf:name>
+ <rdfs:label xml:lang="en">Brown (Wilde)</rdfs:label>
+ <rdf:value>Brown</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeDark"/>
+</EyeColorWilde>
+
+<EyeColorWilde rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeBlack">
+  <foaf:name>Black</foaf:name>
+ <rdfs:label xml:lang="en">Black (Wilde)</rdfs:label>
+ <rdf:value>Black</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorWildeDark"/>
+</EyeColorWilde>
+
+<owl:Class rdf:ID="EyeColorPetrequin">
+ <foaf:name>Pétrequin Eye Color Reference</foaf:name>
+ <rdfs:label xml:lang="en">Pétrequin Eye Color Reference</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <rdfs:comment xml:lang="en">Pétrequin Eye Color Reference.</rdfs:comment>
+ <!-- http://fr.wikipedia.org/wiki/Joseph-Pierre_P%C3%A9trequin -->
+ <dc:createdBy rdf:resource="#j_petrequin"/>
+ <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinGris"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinBleus"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinRoux"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinBruns"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinNoirs"/>
+ <foaf:isPrimaryTopicOf rdf:resource="#petrequin"/>
+</owl:Class>
+
+<EyeColorPetrequin rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinGris">
+  <foaf:name>Gris</foaf:name>
+ <rdfs:label xml:lang="fr">Gris (Pétrequin)</rdfs:label>
+ <rdfs:label xml:lang="en">Grey (Pétrequin)</rdfs:label>
+ <rdfs:label xml:lang="en">Gray (Pétrequin)</rdfs:label>
+ <rdf:value>Gris</rdf:value>
+</EyeColorPetrequin>
+
+<EyeColorPetrequin rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinBleus">
+  <foaf:name>Bleus</foaf:name>
+ <rdfs:label xml:lang="fr">Bleus (Pétrequin)</rdfs:label>
+ <rdfs:label xml:lang="en">Blue (Pétrequin)</rdfs:label>
+ <rdf:value>Bleus</rdf:value>
+</EyeColorPetrequin>
+
+<EyeColorPetrequin rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinRoux">
+  <foaf:name>Roux</foaf:name>
+ <rdfs:label xml:lang="fr">Roux (Pétrequin)</rdfs:label>
+ <rdfs:label xml:lang="en">Red (Pétrequin)</rdfs:label>
+ <rdf:value>Roux</rdf:value>
+</EyeColorPetrequin>
+
+<EyeColorPetrequin rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinBruns">
+  <foaf:name>Bruns</foaf:name>
+ <rdfs:label xml:lang="fr">Bruns (Pétrequin)</rdfs:label>
+ <rdfs:label xml:lang="en">Brown (Pétrequin)</rdfs:label>
+ <rdf:value>Brown</rdf:value>
+</EyeColorPetrequin>
+
+<EyeColorPetrequin rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorPetrequinNoirs">
+  <foaf:name>Noirs</foaf:name>
+ <rdfs:label xml:lang="fr">Noirs (Pétrequin)</rdfs:label>
+ <rdfs:label xml:lang="en">Black (Pétrequin)</rdfs:label>
+ <rdf:value>Noirs</rdf:value>
+</EyeColorPetrequin>
+
+
+<owl:Class rdf:ID="EyeColorGrieveMorant">
+ <foaf:name>EyeColorGrieveMorant</foaf:name>
+ <rdfs:label xml:lang="en"> Grieve Morant Eye Color Reference</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <rdfs:comment xml:lang="en">Grieve Morant Eye Color Reference.</rdfs:comment>
+ <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#ConceptScheme"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBlueGreyThanBrown"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBrownThanBlueGrey"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantPureBrown"/>
+ <foaf:isPrimaryTopicOf rdf:resource="#AHG_AHG2354"/>
+   <!-- Martin equivalences are backwards -->
+</owl:Class>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown">
+  <foaf:name>No Brown</foaf:name>
+ <rdfs:label xml:lang="en">No Brown</rdfs:label>
+ <rdf:value>Black</rdf:value>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBlueGreyThanBrown">
+  <foaf:name>More Blue or Grey than Brown</foaf:name>
+ <rdfs:label xml:lang="en">More Blue or Grey than Brown</rdfs:label>
+ <rdf:value>Black</rdf:value>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBrownThanBlueGrey">
+  <foaf:name>More Brown Than Blue or Grey</foaf:name>
+ <rdfs:label xml:lang="en">More Brown Than Blue or Grey</rdfs:label>
+ <rdf:value>Black</rdf:value>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantPureBrown">
+  <foaf:name>Pure Brown</foaf:name>
+ <rdfs:label xml:lang="en">Pure Brown</rdfs:label>
+ <rdf:value>Black</rdf:value>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantA">
+  <foaf:name>Light Blue</foaf:name>
+ <rdfs:label xml:lang="en">Light Blue</rdfs:label>
+ <rdf:value>A</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz1"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantB">
+ <foaf:name>Light Grey</foaf:name>
+ <rdfs:label xml:lang="en">Light Grey</rdfs:label>
+ <rdf:value>B</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz5"/>
+ <skos:note>This color is rather lighter than MartinSchultz3Eye.</skos:note>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantC">
+ <foaf:name>Dark Blue</foaf:name>
+ <rdfs:label xml:lang="en">Dark Blue</rdfs:label>
+ <rdf:value>C</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz3"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantD">
+ <foaf:name>Dark Grey</foaf:name>
+ <rdfs:label xml:lang="en">Dark Grey</rdfs:label>
+ <rdf:value>D</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz5"/>
+ <skos:note>This color is rather darker than MartinSchultz5Eye.</skos:note>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantE">
+ <foaf:name>Traces of Brown</foaf:name>
+ <rdfs:label xml:lang="en">Traces of Brown</rdfs:label>
+ <rdf:value>E</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBlueGreyThanBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz4"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantF">
+ <foaf:name>More Brown</foaf:name>
+ <rdfs:label xml:lang="en">More Brown</rdfs:label>
+ <rdf:value>F</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBlueGreyThanBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz7"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantG">
+ <foaf:name>Still more Brown</foaf:name>
+ <rdfs:label xml:lang="en">Still more Brown</rdfs:label>
+ <rdf:value>G</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBlueGreyThanBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz8"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantH">
+ <foaf:name>Most Brown</foaf:name>
+ <rdfs:label xml:lang="en">Most Brown</rdfs:label>
+ <rdf:value>H</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBlueGreyThanBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz8"/>
+ <skos:note>This color has more brown pigment than MartinSchultz8Eye.</skos:note>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantI">
+ <foaf:name>Least Brown</foaf:name>
+ <rdfs:label xml:lang="en">Least Brown</rdfs:label>
+ <rdf:value>I</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBrownThanBlueGrey"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz10"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantJ">
+ <foaf:name>More Brown</foaf:name>
+ <rdfs:label xml:lang="en">More Brown (J)</rdfs:label>
+ <rdf:value>J</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBrownThanBlueGrey"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz12"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantK">
+ <foaf:name>Most Brown</foaf:name>
+ <rdfs:label xml:lang="en">Most Brown (K)</rdfs:label>
+ <rdf:value>K</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantMoreBrownThanBlueGrey"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz12"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantL">
+ <foaf:name>Light</foaf:name>
+ <rdfs:label xml:lang="en">Light</rdfs:label>
+ <rdf:value>L</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz13"/>
+ <skos:note>This color is lighter than MartinSchultz13Eye.</skos:note>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantM">
+ <foaf:name>Medium</foaf:name>
+ <rdfs:label xml:lang="en">Medium</rdfs:label>
+ <rdf:value>M</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz13"/>
+</EyeColorGrieveMorant>
+
+<EyeColorGrieveMorant rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantN">
+ <foaf:name>Dark</foaf:name>
+ <rdfs:label xml:lang="en">Dark</rdfs:label>
+ <rdf:value>N</rdf:value>
+ <skos:broader rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorGrieveMorantNoBrown"/>
+ <skos:equivalent rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz14"/>
+</EyeColorGrieveMorant>
+
+
+
+<!-- fact that colour print illustrations could fade with 
+Iris Colour Classiﬁcation System was 
+developed (Fig. 2).27 -->
+
+
+
+<EyeColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorSimpleBlack">
+  <foaf:name>Black</foaf:name>
+ <rdfs:label xml:lang="en">Black</rdfs:label>
+ <rdf:value>Black</rdf:value>
+</EyeColorSimple>
+
+<EyeColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorSimpleBlue">
+  <foaf:name>Blue</foaf:name>
+ <rdfs:label xml:lang="en">Blue</rdfs:label>
+ <rdf:value>Blue</rdf:value>
+</EyeColorSimple>
+
+<EyeColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorSimpleGrey">
+  <foaf:name>Grey</foaf:name>
+ <rdfs:label xml:lang="en">Grey</rdfs:label>
+ <rdf:value>Grey</rdf:value>
+</EyeColorSimple>
+
+<EyeColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorSimpleBrown">
+  <foaf:name>Brown</foaf:name>
+ <rdfs:label xml:lang="en">Brown</rdfs:label>
+ <rdf:value>Brown</rdf:value>
+</EyeColorSimple>
+
+<EyeColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorSimpleGreen">
+  <foaf:name>Green</foaf:name>
+ <rdfs:label xml:lang="en">Green</rdfs:label>
+ <rdf:value>Green</rdf:value>
+</EyeColorSimple>
+
+<EyeColorSimple rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorSimpleRed">
+  <foaf:name>Red</foaf:name>
+ <rdfs:label xml:lang="en">Red</rdfs:label>
+ <rdf:value>Red</rdf:value>
+</EyeColorSimple>
+
+<owl:Class rdf:ID="EyeColorFBI">
+ <foaf:name>EyeColorFBI</foaf:name>
+ <rdfs:label xml:lang="en">FBI Eye Color Reference</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <rdfs:comment xml:lang="en">FBI Eye Color Reference - Essentially the same as used by the RCMP.</rdfs:comment> 
+ <skos:inScheme rdf:resource="#FBIStandards"/>
+</owl:Class>
+
+<EyeColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorFBIBLK">
+  <foaf:name>BLK</foaf:name>
+ <rdfs:label xml:lang="en">Black</rdfs:label>
+ <rdf:value>BLK</rdf:value>
+</EyeColorFBI>
+
+<EyeColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorFBIBLU">
+  <foaf:name>BLU</foaf:name>
+ <rdfs:label xml:lang="en">Blue</rdfs:label>
+ <rdf:value>BLU</rdf:value>
+</EyeColorFBI>
+
+<EyeColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorFBIBRO">
+  <foaf:name>BRO</foaf:name>
+ <rdfs:label xml:lang="en">Brown</rdfs:label>
+ <rdf:value>BRO</rdf:value>
+</EyeColorFBI>
+
+<EyeColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorFBIGRY">
+  <foaf:name>GRY</foaf:name>
+ <rdfs:label xml:lang="en">Gray</rdfs:label>
+ <rdf:value>GRY</rdf:value>
+</EyeColorFBI>
+
+<EyeColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorFBIGRN">
+  <foaf:name>GRN</foaf:name>
+ <rdfs:label xml:lang="en">Green</rdfs:label>
+ <rdf:value>GRN</rdf:value>
+</EyeColorFBI>
+
+<EyeColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorFBIHAZ">
+  <foaf:name>HAZ</foaf:name>
+ <rdfs:label xml:lang="en">Hazel</rdfs:label>
+ <rdf:value>HAZ</rdf:value>
+</EyeColorFBI>
+
+<EyeColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorFBIMAR">
+  <foaf:name>MAR</foaf:name>
+ <rdfs:label xml:lang="en">Maroon</rdfs:label>
+ <rdf:value>MAR</rdf:value>
+</EyeColorFBI>
+
+
+<owl:Class rdf:ID="EyeColorNebraskaDMV">
+    <foaf:name>EyeColorNebraskaDMV</foaf:name>
+   <rdfs:label xml:lang="en">EyeColorNebraskaDMV</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <skos:inScheme rdf:resource="#NebraskaDMVStandards"/>
+</owl:Class>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVBlack">
+ <foaf:name>BLK</foaf:name>
+ <rdfs:label xml:lang="en">Black</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVBlue">
+ <foaf:name>BLU</foaf:name>
+ <rdfs:label xml:lang="en">Blue</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVBrown">
+ <foaf:name>BRO</foaf:name>
+ <rdfs:label xml:lang="en">Brown</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVGray">
+ <foaf:name>GRY</foaf:name>
+ <rdfs:label xml:lang="en">Gray</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVGreen">
+ <foaf:name>GRN</foaf:name>
+ <rdfs:label xml:lang="en">Green</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVHazel">
+ <foaf:name>HAZ</foaf:name>
+ <rdfs:label xml:lang="en">Hazel</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVDichromatic">
+ <foaf:name>DIC</foaf:name>
+ <rdfs:label xml:lang="en">Dichromatic</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVPink">
+ <foaf:name>DNK</foaf:name>
+ <rdfs:label xml:lang="en">Pink</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<EyeColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorNebraskaDMVUnknown">
+ <foaf:name>UNK</foaf:name>
+ <rdfs:label xml:lang="en">Unknown</rdfs:label>
+</EyeColorNebraskaDMV>
+
+<owl:Class rdf:ID="EyeColorMartinSchultz">
+ <foaf:name>EyeColorMartinSchultz</foaf:name>
+ <rdfs:label xml:lang="en">EyeColorMartinSchultz</rdfs:label>
+ <owl:subClassOf rdf:resource="#EyeColor"/>
+ <dc:creator rdf:resource="http://dbpdia.org/resource/Rudolf_Martin_(anthropologist)"/>
+ <!-- http://from.ph/38774 -->
+ <!-- http://images.powerhousemuseum.com/images/zoomify/TLF_mediums/290530.jpg -->
+ <owl:equivalentClass muninn:wikipedia_version="512522477" rdf:resource="http://dbpedia.org/resource/Martin-Schultz_scale" /> 
+</owl:Class>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz1a">
+ <foaf:name>1a</foaf:name>
+ <rdfs:label xml:lang="en">Light Blue Iris (1a)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz1b">
+ <foaf:name>1b</foaf:name>
+ <rdfs:label xml:lang="en">Light Blue Iris (1b)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz1c">
+ <foaf:name>1c</foaf:name>
+ <rdfs:label xml:lang="en">Light Blue Iris (1c)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz2a">
+ <foaf:name>2a</foaf:name>
+ <rdfs:label xml:lang="en">Light Blue Iris (2a)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultzLightBlue">
+ <foaf:name>Light Blue Iris</foaf:name>
+ <rdfs:label xml:lang="en">Light Blue Iris</rdfs:label>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz1a"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz1b"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz1c"/>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz2a"/>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz2b">
+ <foaf:name>2b</foaf:name>
+ <rdfs:label xml:lang="en">Dark Blue Iris (2b)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz3">
+ <foaf:name>3</foaf:name>
+ <rdfs:label xml:lang="en">Blue Gray Iris (3)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz5">
+ <foaf:name>5</foaf:name>
+ <rdfs:label xml:lang="en">Blue Gray Iris (5)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz4a">
+ <foaf:name>4a</foaf:name>
+ <rdfs:label xml:lang="en">Gray Iris (4a)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz4b">
+ <foaf:name>4b</foaf:name>
+ <rdfs:label xml:lang="en">Gray Iris (4b)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz6">
+ <foaf:name>6</foaf:name>
+ <rdfs:label xml:lang="en">Gray (6)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz7">
+ <foaf:name>7</foaf:name>
+ <rdfs:label xml:lang="en">Yellow Brown and Brown Green (7)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz8">
+ <foaf:name>8</foaf:name>
+ <rdfs:label xml:lang="en">Yellow Brown and Brown Green (8)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz9">
+ <foaf:name>9</foaf:name>
+ <rdfs:label xml:lang="en">Yellow Brown and Brown Green (9)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz10">
+ <foaf:name>10</foaf:name>
+ <rdfs:label xml:lang="en">Yellow Brown and Brown Green (10)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz11">
+ <foaf:name>11</foaf:name>
+ <rdfs:label xml:lang="en">Yellow Brown and Brown Green (11)</rdfs:label>
+</EyeColorMartinSchultz>
+
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz12">
+ <foaf:name>12</foaf:name>
+ <rdfs:label xml:lang="en">Dark Brown and Brown Black (12)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz13">
+ <foaf:name>13</foaf:name>
+ <rdfs:label xml:lang="en">Dark Brown and Brown Black (13)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz14">
+ <foaf:name>14</foaf:name>
+ <rdfs:label xml:lang="en">Dark Brown and Brown Black (14)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz15">
+ <foaf:name>15</foaf:name>
+ <rdfs:label xml:lang="en">Dark Brown and Brown Black (15)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<EyeColorMartinSchultz rdf:about="http://rdf.muninn-project.org/ontologies/appearances#EyeColorMartinSchultz16">
+ <foaf:name>16</foaf:name>
+ <rdfs:label xml:lang="en">Dark Brown and Brown Black (16)</rdfs:label>
+</EyeColorMartinSchultz>
+
+<owl:ObjectProperty rdf:ID="hasBodyMeasurement">
+ <foaf:name>Body Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Body Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasAppearance"/> 
+</owl:ObjectProperty>
+
+<skos:ConceptScheme rdf:ID="FBIStandards">
+ <foaf:name>FBI Standards</foaf:name>
+ <rdfs:label xml:lang="en">FBI Standards</rdfs:label>  
+ <dc:creator rdf:resource="#FBI"/>
+</skos:ConceptScheme>
+
+<foaf:Group rdf:about="FBI">
+<foaf:name>Federal Bureau of Investigation</foaf:name>
+<foaf:nick>FBI</foaf:nick>
+<foaf:homepage rdf:resource="http://www.fbi.gov/"/>
+<owl:sameAs muninn:wikipedia_version="525946586" rdf:resource="http://dbpedia.org/resource/Federal_Bureau_of_Investigation"/>
+</foaf:Group>
+
+<skos:ConceptScheme rdf:ID="RCMPStandards">
+ <foaf:name>RCMP Standards</foaf:name>
+ <rdfs:label xml:lang="en">RCMP Standards</rdfs:label>  
+ <dc:creator rdf:resource="#RCMP"/>
+</skos:ConceptScheme>
+
+<foaf:Group rdf:about="RCMP">
+<foaf:name>Royal Canadian Mounted Police</foaf:name>
+<foaf:nick>RCMP</foaf:nick>
+<foaf:homepage rdf:resource="http://www.rcmp-grc.gc.ca/"/>
+<owl:sameAs muninn:wikipedia_version="524420530" rdf:resource="http://dbpedia.org/resource/Royal_Canadian_Mounted_Police"/>
+</foaf:Group>
+
+
+<skos:ConceptScheme rdf:ID="MaleBodyMeasurement">
+ <foaf:name>Male Body Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Male Body Measurement</rdfs:label>  
+ <rdfs:subClassOf resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-1"/>
+</skos:ConceptScheme>
+
+<skos:ConceptScheme rdf:ID="FemaleBodyMeasurement">
+ <foaf:name>Female Body Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Female Body Measurement</rdfs:label>  
+ <rdfs:subClassOf resource="http://rdf.muninn-project.org/ontologies/appearances#SexISO5218-2"/>
+</skos:ConceptScheme>
+
+<!-- Male body measurement -->
+<!-- Picture http://commons.wikimedia.org/wiki/File:Human-gender-neutral.png -->
+<owl:ObjectProperty rdf:ID="hasOverArmMeasurement">
+ <foaf:name>Over Arm Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Over Arm Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/man-overarm.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasOverArmMeasurementMeters">
+ <foaf:name>Over Arm Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Over Arm Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasOverArmMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="hasChestMeasurement">
+ <foaf:name>Over Chest Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Chest Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/man-chest.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasChestMeasurementMeters">
+ <foaf:name>Chest Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Chest Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasChestMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+
+<owl:ObjectProperty rdf:ID="hasWaistMeasurement">
+ <foaf:name>Waist Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Waist Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/man-waist.png"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/female-waist.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasWaistMeasurementMeters">
+ <foaf:name>Waist Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Waist Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasWaistMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasArmMeasurement">
+ <foaf:name>Arm Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Arm Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasArmMeasurementMeters">
+ <foaf:name>Arm Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Arm Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasArmMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasInseamMeasurement">
+ <foaf:name>Inseam Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Inseam Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/female-inseam.png"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/man-inseam.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasInseamMeasurementMeters">
+ <foaf:name>Inseam Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Inseam Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasInseamMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasHipsMeasurement">
+ <foaf:name>Hips Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Hips Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/female-hips.png"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/male-hips.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasHipsMeasurementMeters">
+ <foaf:name>Hips Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Hips Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasHipsMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasNeckMeasurement">
+ <foaf:name>Neck Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Neck Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/man-neck.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasNeckMeasurementMeters">
+ <foaf:name>Neck Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Neck Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasNeckMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasPantLengthMeasurement">
+ <foaf:name>Pant Length Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Pant Length Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/man-pantleg.png"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/female-pantleg.png"/>
+
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasPantLengthMeasurementMeters">
+ <foaf:name>Pant Length Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Pant Length Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasPantLengthMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasThighMeasurement">
+ <foaf:name>Thigh Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Thigh Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/man-thigh.png"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/female-thigh.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasThighMeasurementMeters">
+ <foaf:name>Thigh Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Thigh Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasThighMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasBandMeasurement">
+ <foaf:name>Band Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Band Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/female-band.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasBandMeasurementMeters">
+ <foaf:name>Band Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Band Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBandMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasKneeLengthMeasurement">
+ <foaf:name>Knee Length Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Has Knee Length Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <foaf:depiction rdf:resource="http://rdf.muninn-project.org/ontologies/images/female-kneelength.png"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasKneeLengthMeasurementMeters">
+ <foaf:name>Knee Length Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">Has Knee Length Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasKneeLengthMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasOverArmMeasurementInches">
+ <foaf:name>Over Arm Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Over Arm Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasOverArmMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" />
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasChestMeasurementInches">
+ <foaf:name>Chest Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Chest Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasChestMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasWaistMeasurementInches">
+ <foaf:name>Waist Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Waist Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasWaistMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasArmMeasurementInches">
+ <foaf:name>Arm Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Arm Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasArmMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasInseamMeasurementInches">
+ <foaf:name>Inseam Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Inseam Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasInseamMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasHipsMeasurementInches">
+ <foaf:name>Hips Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Hips Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasHipsMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasNeckMeasurementInches">
+ <foaf:name>Neck Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Neck Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasNeckMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasPantLengthMeasurementInches">
+ <foaf:name>Pant Length Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Pant Length Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasPantLengthMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasThighMeasurementInches">
+ <foaf:name>Thigh Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Thigh Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasThighMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasBandMeasurementInches">
+ <foaf:name>Band Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Band Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasBandMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasKneeLengthMeasurementInches">
+ <foaf:name>Knee Length Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Knee Length Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasKneeLengthMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" /> 
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasHeightMeasurement">
+ <foaf:name>Height Measurement</foaf:name>
+ <rdfs:label xml:lang="en">Height Measurement</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasBodyMeasurement"/> 
+ <skos:inScheme rdf:resource="#FemaleBodyMeasurement"/>
+ <skos:inScheme rdf:resource="#MaleBodyMeasurement"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasHeightMeasurementMeters">
+ <foaf:name>Height Measurement Meters</foaf:name>
+ <rdfs:label xml:lang="en">has Height Measurement in Meters</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person"/>
+ <rdfs:subPropertyOf rdf:resource="#hasHeightMeasurement"/> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+ <skos:inScheme muninn:wikipedia_version="524933016" rdf:resource="http://dbpedia.org/resource/Metre"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:ID="hasHeightMeasurementInches">
+ <foaf:name>Height Measurement Inches</foaf:name>
+ <rdfs:label xml:lang="en">Has Height Measurement in Inches</rdfs:label>  
+ <rdfs:domain rdf:resource="#Person" />
+ <rdfs:subPropertyOf rdf:resource="#hasHeightMeasurement" /> 
+ <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal" />
+ <skos:inScheme muninn:wikipedia_version="523886520" rdf:resource="http://dbpedia.org/resource/Inch" />
+</owl:ObjectProperty>
+
+<owl:Class rdf:ID="HairColor">
+    <foaf:name>Hair Color</foaf:name>
+   <rdfs:label xml:lang="en">Hair Color</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#Appearance"/>
+  <owl:equivalentClass muninn:wikipedia_version="523702648" rdf:resource="http://dbpedia.org/resource/Human_hair_color" /> 
+ 
+</owl:Class>
+
+<owl:Class rdf:ID="HairColorNatural">
+    <foaf:name>Natural Hair Color</foaf:name>
+   <rdfs:label xml:lang="en">Natural Hair Color</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#HairColor"/>
+</owl:Class>
+
+<owl:Class rdf:ID="HairColorDyed">
+    <foaf:name>Dyed Hair Color</foaf:name>
+   <rdfs:label xml:lang="en">Dyed Hair Color</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#HairColor"/>
+ <owl:disjointWith rdf:resource="#HairColorNatural"/>
+</owl:Class>
+
+<owl:Class rdf:ID="HairColorAtlas">
+ <foaf:name>Human Hair Atlas Color</foaf:name>
+ <rdfs:label xml:lang="en">HairColorAtlas</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#HairColor"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasOther"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasAbsent"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlond"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGoldenBrown"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBrown"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGrayBrown"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRed"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRedBrown"/>
+ <skos:hasTopConcept rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasOther"/>
+ <foaf:isPrimaryTopicOf rdf:resource="#Ogle_1999fk"/>
+</owl:Class>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasAbsent">
+ <foaf:name>Color Absent</foaf:name>
+ <rdfs:label xml:lang="en">White (Human Hair Atlas)</rdfs:label>
+ <rdfs:label xml:lang="en">Gray (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D0</rdf:value>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlond">
+ <foaf:name>Blond</foaf:name>
+ <rdfs:label xml:lang="en">Blond (Human Hair Atlas)</rdfs:label>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlondLight">
+ <foaf:name>Light Blond</foaf:name>
+ <rdfs:label xml:lang="en">Light Blond (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D01</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlond"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlondLightMedium">
+ <foaf:name>Light Blond to Medium</foaf:name>
+ <rdfs:label xml:lang="en">Light Blond to Medium (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D02</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlond"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlondMediumDark">
+ <foaf:name>Medium to Dark Blond</foaf:name>
+ <rdfs:label xml:lang="en">Medium to Dark Blond (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D03</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlond"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlondDark">
+ <foaf:name>Dark Blond</foaf:name>
+ <rdfs:label xml:lang="en">Dark Blond (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D04</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBlond"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGoldenBrown">
+ <foaf:name>Golden Brown</foaf:name>
+ <rdfs:label xml:lang="en">Golden Brown (Human Hair Atlas)</rdfs:label>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightGoldenBrown">
+ <foaf:name>Light Golden Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light Golden Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D11</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGoldenBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightMediumGoldenBrown">
+ <foaf:name>Light to Medium Golden Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light to Medium Golden Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D12</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGoldenBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasMediumDarkGoldenBrown">
+ <foaf:name>Medium to Dark Golden Brown</foaf:name>
+ <rdfs:label xml:lang="en">Medium to Dark Golden Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D13</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGoldenBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasDarkGoldenBrown">
+ <foaf:name>Dark Golden Brown</foaf:name>
+ <rdfs:label xml:lang="en">Dark Golden Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D14</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGoldenBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBrown">
+ <foaf:name>Brown</foaf:name>
+ <rdfs:label xml:lang="en">Brown (Human Hair Atlas)</rdfs:label>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightBrown">
+ <foaf:name>Light Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D21</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightMediumBrown">
+ <foaf:name>Light to Medium Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light to Medium Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D22</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasMediumDarkBrown">
+ <foaf:name>Medium to Dark Brown</foaf:name>
+ <rdfs:label xml:lang="en">Medium to Dark Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D23</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasDarkOpaqueBrown">
+ <foaf:name>Dark to Opaque Brown</foaf:name>
+ <rdfs:label xml:lang="en">Dark to Opaque Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D24</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasOpaqueBrown">
+ <foaf:name>Opaque Brown</foaf:name>
+ <rdfs:label xml:lang="en">Opaque Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D25</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGrayBrown">
+ <foaf:name>Gray Brown</foaf:name>
+ <rdfs:label xml:lang="en">Gray Brown (Human Hair Atlas)</rdfs:label>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightGrayBrown">
+ <foaf:name>Light Gray Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light Gray Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D31</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGrayBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightMediumGrayBrown">
+ <foaf:name>Light to Medium Gray Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light to Medium Gray Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D32</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGrayBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasMediumDarkGrayBrown">
+ <foaf:name>Medium to Dark Gray Brown, Black</foaf:name>
+ <rdfs:label xml:lang="en">Medium to Dark Gray Brown, Black (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D33</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGrayBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasDarkOpaqueGrayBrown">
+ <foaf:name>Black, Dark Gray Brown to Opaque Gray Brown</foaf:name>
+ <rdfs:label xml:lang="en">Black, Dark Gray Brown to Opaque Gray Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D34</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasGrayBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRed">
+ <foaf:name>Red</foaf:name>
+ <rdfs:label xml:lang="en">Red (Human Hair Atlas)</rdfs:label>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightRed">
+ <foaf:name>Light Red</foaf:name>
+ <rdfs:label xml:lang="en">Light Red (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D41</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRed"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightMediumRed">
+ <foaf:name>Light to Medium Red</foaf:name>
+ <rdfs:label xml:lang="en">Light to Medium Red (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D42</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRed"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasMediumDarkRed">
+ <foaf:name>Medium to Dark Red</foaf:name>
+ <rdfs:label xml:lang="en">Medium to Dark Red (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D43</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRed"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasDarkRed">
+ <foaf:name>Dark Red</foaf:name>
+ <rdfs:label xml:lang="en">Dark Red (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D44</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRed"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRedBrown">
+ <foaf:name>Red Brown</foaf:name>
+ <rdfs:label xml:lang="en">Red Brown (Human Hair Atlas)</rdfs:label>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightRedBrown">
+ <foaf:name>Light Red Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light Red Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D51</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRedBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasLightMediumRedBrown">
+ <foaf:name>Light to Medium Red Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light to Medium Red Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D52</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRedBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasMediumDarkRedBrown">
+ <foaf:name>Medium to Dark Red Brown</foaf:name>
+ <rdfs:label xml:lang="en">Medium to Dark Red Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D53</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRedBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasDarkRedBrown">
+ <foaf:name>Dark Red Brown</foaf:name>
+ <rdfs:label xml:lang="en">Dark Red Brown (Human Hair Atlas)</rdfs:label>
+ <rdf:value>D54</rdf:value>
+ <skos:narrower rdf:resource="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasRedBrown"/>
+</HairColorAtlas>
+
+<HairColorAtlas rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorAtlasOther">
+ <foaf:name>Other Color</foaf:name>
+ <rdfs:label xml:lang="en">Other Color(Human Hair Atlas)</rdfs:label>
+</HairColorAtlas>
+
+
+<owl:Class rdf:ID="HairColorRCMP">
+ <foaf:name>RCMP Hair Color</foaf:name>
+ <rdfs:label xml:lang="en">RCMP Hair Color</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#HairColor"/>
+ <skos:inScheme rdf:resource="#RCMPStandards"/>
+</owl:Class>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPBald">
+ <foaf:name>Bald</foaf:name>
+ <rdfs:label xml:lang="en">Bald</rdfs:label>
+ <rdf:value>Bald</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPBlack">
+ <foaf:name>Black</foaf:name>
+ <rdfs:label xml:lang="en">Black</rdfs:label>
+ <rdf:value>Black</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPBlond">
+ <foaf:name>Blond</foaf:name>
+ <rdfs:label xml:lang="en">Blond</rdfs:label>
+ <rdf:value>Blond</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPBrown">
+ <foaf:name>Brown</foaf:name>
+ <rdfs:label xml:lang="en">Brown</rdfs:label>
+ <rdf:value>Brown</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPGrey">
+ <foaf:name>Grey</foaf:name>
+ <rdfs:label xml:lang="en">Grey / Gray</rdfs:label>
+ <rdf:value>Grey</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPLightBrown">
+ <foaf:name>Light Brown</foaf:name>
+ <rdfs:label xml:lang="en">Light Brown</rdfs:label>
+ <rdf:value>Light Brown</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPLightRed">
+ <foaf:name>Red</foaf:name>
+ <rdfs:label xml:lang="en">Red</rdfs:label>
+ <rdf:value>Red</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPLightStrawberryRed">
+ <foaf:name>Strawberry Red</foaf:name>
+ <rdfs:label xml:lang="en">Strawberry Red</rdfs:label>
+ <rdf:value>Strawberry Red</rdf:value>
+</HairColorRCMP>
+
+<HairColorRCMP rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorRCMPWhite">
+ <foaf:name>White</foaf:name>
+ <rdfs:label xml:lang="en">White</rdfs:label>
+ <rdf:value>White</rdf:value>
+</HairColorRCMP>
+
+<owl:Class rdf:ID="HairColorFBI">
+ <foaf:name>FBI Hair Color</foaf:name>
+ <rdfs:label xml:lang="en">FBI Hair Color</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#HairColor"/>
+ <skos:inScheme rdf:resource="#FBIStandards"/>
+</owl:Class>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIBLD">
+ <foaf:name>BLD</foaf:name>
+ <rdfs:label xml:lang="en">Bald</rdfs:label>
+ <rdf:value>BLD</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIBLK">
+ <foaf:name>BLK</foaf:name>
+ <rdfs:label xml:lang="en">Black</rdfs:label>
+ <rdf:value>BLK</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIBLN">
+ <foaf:name>BLN</foaf:name>
+ <rdfs:label xml:lang="en">Blonde / Strawberry</rdfs:label>
+ <rdf:value>BLN</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIBLU">
+ <foaf:name>BLU</foaf:name>
+ <rdfs:label xml:lang="en">Blue</rdfs:label>
+ <rdf:value>BLU</rdf:value>
+ <rdf:type rdf:resource="#HairColorDyed"/>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIBRO">
+ <foaf:name>BRO</foaf:name>
+ <rdfs:label xml:lang="en">Brown</rdfs:label>
+ <rdf:value>BRO</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIGRN">
+ <foaf:name>GRN</foaf:name>
+ <rdfs:label xml:lang="en">Green</rdfs:label>
+ <rdf:type rdf:resource="#HairColorDyed"/>
+ <rdf:value>GRN</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIGRY">
+ <foaf:name>GRY</foaf:name>
+ <rdfs:label xml:lang="en">Grey/Gray</rdfs:label>
+ <rdfs:comment xml:lang="en">Includes partially gray.</rdfs:comment>
+ <rdf:value>GRY</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIONG">
+ <foaf:name>ONG</foaf:name>
+ <rdfs:label xml:lang="en">Orange</rdfs:label>
+ <rdf:value>ONG</rdf:value>
+ <rdf:type rdf:resource="#HairColorDyed"/>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIPLE">
+ <foaf:name>PLE</foaf:name>
+ <rdfs:label xml:lang="en">Purple</rdfs:label>
+ <rdf:value>PLE</rdf:value>
+ <rdf:type rdf:resource="#HairColorDyed"/>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIPNK">
+ <foaf:name>PNK</foaf:name>
+ <rdfs:label xml:lang="en">Pink</rdfs:label>
+ <rdf:value>PNK</rdf:value>
+ <rdf:type rdf:resource="#HairColorDyed"/>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIRED">
+ <foaf:name>RED</foaf:name>
+ <rdfs:label xml:lang="en">Red/Auburn</rdfs:label>
+ <rdf:value>RED</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBISDY">
+ <foaf:name>SDY</foaf:name>
+ <rdfs:label xml:lang="en">Sandy</rdfs:label>
+ <rdf:value>SDY</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIWHI">
+ <foaf:name>WHI</foaf:name>
+ <rdfs:label xml:lang="en">White</rdfs:label>
+ <rdf:value>WHI</rdf:value>
+</HairColorFBI>
+
+<HairColorFBI rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorFBIUNKNOWN">
+ <foaf:name>UNKNOWN</foaf:name>
+ <rdfs:label xml:lang="en">Unknown</rdfs:label>
+ <rdf:value>UNKNOWN</rdf:value>
+</HairColorFBI>
+
+
+<owl:Class rdf:ID="HairColorNebraskaDMV">
+ <foaf:name>NebraskaDMVHairColor</foaf:name>
+ <rdfs:label xml:lang="en">NebraskaDMVHairColor</rdfs:label>
+ <rdfs:subClassOf rdf:resource="#HairColor"/>
+ <skos:inScheme rdf:resource="#NebraskaDMVStandards"/>
+</owl:Class>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVGray">
+ <foaf:name>GRY</foaf:name>
+ <rdfs:label xml:lang="en">Gray</rdfs:label>
+</HairColorNebraskaDMV>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVBrown">
+ <foaf:name>BRO</foaf:name>
+ <rdfs:label xml:lang="en">Brown</rdfs:label>
+</HairColorNebraskaDMV>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVWhite">
+ <foaf:name>WHI</foaf:name>
+ <rdfs:label xml:lang="en">White</rdfs:label>
+</HairColorNebraskaDMV>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVBald">
+ <foaf:name>BAL</foaf:name>
+ <rdfs:label xml:lang="en">Bald</rdfs:label>
+</HairColorNebraskaDMV>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVRed">
+ <foaf:name>RED</foaf:name>
+ <rdfs:label xml:lang="en">Red</rdfs:label>
+</HairColorNebraskaDMV>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVSandy">
+ <foaf:name>SDY</foaf:name>
+ <rdfs:label xml:lang="en">Sandy</rdfs:label>
+</HairColorNebraskaDMV>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVBlonde">
+ <foaf:name>BLN</foaf:name>
+ <rdfs:label xml:lang="en">Blonde</rdfs:label>
+</HairColorNebraskaDMV>
+
+<HairColorNebraskaDMV rdf:about="http://rdf.muninn-project.org/ontologies/appearances#HairColorNebraskaDMVUnknown">
+ <foaf:name>UNK</foaf:name>
+ <rdfs:label xml:lang="en">Unknown</rdfs:label>
+</HairColorNebraskaDMV>
+
+<skos:ConceptScheme rdf:ID="NebraskaDMVStandards">
+ <foaf:name>Nebraska DMV Standards</foaf:name>
+ <rdfs:label xml:lang="en">Nebraska DMV Standards</rdfs:label>  
+ <dc:creator rdf:resource="#NebraskaDMV"/>
+ <foaf:isPrimaryTopicOf rdf:resource="http://www.nebraska.gov/demo/mvr/codes.html"/>
+</skos:ConceptScheme>
+
+<foaf:Group rdf:about="NebraskaDMV">
+<foaf:name>Nebraska Department of Motor Vehicle</foaf:name>
+<foaf:nick>DMV</foaf:nick>
+<foaf:homepage rdf:resource="http://www.dmv.state.ne.us/"/>
+</foaf:Group>
+
+
+<!-- References -->
+
+
+<ow:Article rdf:ID="seddon">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Publication"/>
+  <ow:author rdf:resource="#j_m_seddon"/>
+  <ow:author rdf:resource="#c_r_sahagian"/>
+  <ow:author rdf:resource="#r_j_glynn"/>
+  <ow:author rdf:resource="#r_d_sperduto"/>
+  <ow:author rdf:resource="#e_s_gragoudas"/>
+  <my:authorList>
+    <rdf:Seq rdf:about="http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#e7efff97fb9f249c9d8e246e55b655841293452c">
+      <rdf:li rdf:resource="#j_m_seddon"/>
+      <rdf:li rdf:resource="#c_r_sahagian"/>
+      <rdf:li rdf:resource="#r_j_glynn"/>
+      <rdf:li rdf:resource="#r_d_sperduto"/>
+      <rdf:li rdf:resource="#e_s_gragoudas"/>
+    </rdf:Seq>
+  </my:authorList>
+  <ow:date-added>2012-11-29 17:12:32 -0500</ow:date-added>
+  <ow:date-modified>2012-11-29 17:15:03 -0500</ow:date-modified>
+  <ow:journal>Investigative Ophthalmology &amp; Visual Science</ow:journal>
+  <ow:month>August</ow:month>
+  <ow:number>8</ow:number>
+  <ow:pages>1592-1598</ow:pages>
+  <ow:title>Evaluation of an iris color classification system. The Eye Disorders Case-Control Study Group.</ow:title>
+  <ow:volume>31</ow:volume>
+  <ow:year>1990</ow:year>
+  <rdfs:label>J. M. Seddon, C. R. Sahagian, R. J. Glynn, R. D. Sperduto, E. S. Gragoudas. Evaluation of an iris color classification system. The Eye Disorders Case-Control Study Group.. Investigative Ophthalmology &amp; Visual Science 31(8), August, 1990</rdfs:label>
+</ow:Article>
+
+<ow:Book rdf:ID="wilde1862">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Publication"/>
+  <ow:address>Princess-Street, Soho, London</ow:address>
+  <ow:author rdf:resource="http://dbpedia.org/resource/William_Wilde"/>
+  <ow:date-added>2012-11-29 14:27:12 -0500</ow:date-added>
+  <ow:date-modified>2012-11-29 14:30:46 -0500</ow:date-modified>
+  <ow:publisher rdf:resource="#john_churchill"/>
+  <ow:title>An Essay on the malformations and congenital diseases of the organs of sight</ow:title>
+  <ow:url rdf:resource="http://books.google.ca/books?id=V9NTbjjA_o8C&amp;pg=PR5#v=onepage&amp;q&amp;f=false"/>
+  <ow:year>1862</ow:year>
+  <rdfs:label>William Robert Wilde. An Essay on the malformations and congenital diseases of the organs of sight, John Churchill, 1862</rdfs:label>
+</ow:Book>
+
+<ow:Article rdf:ID="petrequin">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Publication"/>
+  <ow:address>13 Montagne Sainte Elisabeth, Bruxelles</ow:address>
+  <ow:author rdf:resource="#j_petrequin"/>
+  <my:authorList>
+    <rdf:Seq rdf:about="http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#daa85e6aef77a7feb6f6d8e71c1dd290e25deb41">
+      <rdf:li rdf:resource="#j_petrequin"/>
+    </rdf:Seq>
+  </my:authorList>
+  <ow:date-added>2012-11-29 14:04:24 -0500</ow:date-added>
+  <ow:date-modified>2012-11-29 14:09:28 -0500</ow:date-modified>
+  <ow:journal>Annales D'oculistique</ow:journal>
+  <ow:pages>120-125</ow:pages>
+  <ow:publisher rdf:resource="#florent_cunier"/>
+  <ow:title>Sur les diverses couleurs de l'iris et leurs proportions dens nos climats.</ow:title>
+  <ow:url rdf:resource="http://books.google.ca/books?id=WLwhAQAAMAAJ&amp;pg=PA3#v=onepage&amp;q&amp;f=false"/>
+  <ow:volume>10</ow:volume>
+  <ow:year>1843</ow:year>
+  <rdfs:label>J. Petrequin. Sur les diverses couleurs de l'iris et leurs proportions dens nos climats.. Annales D'oculistique 10, Florent Cunier, 1843</rdfs:label>
+</ow:Article>
+
+<ow:Article rdf:ID="AHG_AHG2288">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Publication"/>
+  <ow:author rdf:resource="#riddell_w_j_b"/>
+  <my:authorList>
+    <rdf:Seq rdf:about="http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#f05b76dc9e07b58e359dc17dd5175e384b8bfcf4">
+      <rdf:li rdf:resource="#riddell_w_j_b"/>
+    </rdf:Seq>
+  </my:authorList>
+  <ow:date-added>2012-11-29 12:01:29 -0500</ow:date-added>
+  <ow:date-modified>2012-11-29 12:01:29 -0500</ow:date-modified>
+  <ow:doi>10.1111/j.1469-1809.1941.tb02288.x</ow:doi>
+  <ow:issn>2050-1439</ow:issn>
+  <ow:journal>Annals of Eugenics</ow:journal>
+  <ow:number>1</ow:number>
+  <ow:pages>245-259</ow:pages>
+  <ow:publisher rdf:resource="#blackwell_publishing_ltd"/>
+  <ow:title>STUDIES IN THE CLASSIFICATION OF EYE COLOUR</ow:title>
+  <ow:url rdf:resource="http://dx.doi.org/10.1111/j.1469-1809.1941.tb02288.x"/>
+  <ow:volume>11</ow:volume>
+  <ow:year>1941</ow:year>
+  <rdfs:label>RIDDELL, W. J. B.. STUDIES IN THE CLASSIFICATION OF EYE COLOUR. Annals of Eugenics 11(1), Blackwell Publishing Ltd, 1941</rdfs:label>
+</ow:Article>
+
+<ow:Article rdf:ID="AHG_AHG2354">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Publication"/>
+  <ow:author rdf:resource="#grieve_j"/>
+  <ow:author rdf:resource="#morant_g_m"/>
+  <my:authorList>
+    <rdf:Seq rdf:about="http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#d53f411bfcf81f200c5c9f96b2a7464541af494c">
+      <rdf:li rdf:resource="#grieve_j"/>
+      <rdf:li rdf:resource="#morant_g_m"/>
+    </rdf:Seq>
+  </my:authorList>
+  <ow:date-added>2012-11-29 11:44:48 -0500</ow:date-added>
+  <ow:date-modified>2012-11-29 11:44:48 -0500</ow:date-modified>
+  <ow:doi>10.1111/j.1469-1809.1946.tb02354.x</ow:doi>
+  <ow:issn>2050-1439</ow:issn>
+  <ow:journal>Annals of Eugenics</ow:journal>
+  <ow:number>1</ow:number>
+  <ow:pages>161-171</ow:pages>
+  <ow:publisher rdf:resource="#blackwell_publishing_ltd"/>
+  <ow:title>RECORDS OF EYE COLOURS FOR BRITISH POPULATIONS AND A DESCRIPTION OF A NEW EYE-COLOUR SCALE</ow:title>
+  <ow:url rdf:resource="http://dx.doi.org/10.1111/j.1469-1809.1946.tb02354.x"/>
+  <ow:volume>13</ow:volume>
+  <ow:year>1946</ow:year>
+  <rdfs:label>GRIEVE, J., MORANT, G. M.. RECORDS OF EYE COLOURS FOR BRITISH POPULATIONS AND A DESCRIPTION OF A NEW EYE-COLOUR SCALE. Annals of Eugenics 13(1), Blackwell Publishing Ltd, 1946</rdfs:label>
+</ow:Article>
+
+<ow:Book rdf:ID="Ogle_1999fk">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Publication"/>
+  <ow:address>Boca Raton, Fla.</ow:address>
+  <ow:annote>LDR 01103cam 2200277 a 4500 001 4981035 005 20060728201408.0 008 980722s1999 flua b 001 0 eng 906 $a7$bcbc$corignew$d1$eocip$f19$gy-gencatlg 955 $apc17 to ja00 07-22-98; jc04 07-23-98; jc02 to technician 07-23-98; jc03 07-23-98; CIP ver. pv10 02-25-99 035 $9(DLC) 98034752 010 $a 98034752 020 $a0849381347 (alk. paper) 040 $aDLC$cDLC$dDLC 050 00 $aRA1061$b.O37 1999 082 00 $a614/.1$221 100 1 $aOgle, Robert R. 245 10 $aAtlas of human hair microscopic characteristics /$cRobert R. Ogle, Jr., Michelle J. Fox. 260 $aBoca Raton, Fla. :$bCRC Press,$cc1999. 300 $axi, 83 p. :$bill. (some col.) ;$c24 cm. 504 $aIncludes bibliographical references (p. 65-79) and index. 650 0 $aHair$xAnalysis$xAtlases. 650 0 $aForensic dermatology$xAtlases. 700 1 $aFox, Michelle J. 856 42 $3Publisher description$uhttp://www.loc.gov/catdir/enhancements/fy0646/98034752-d.html 991 $bc-GenColl$hRA1061$i.O37 1999$tCopy 1$wBOOKS</ow:annote>
+  <ow:author rdf:resource="#ogle_robert_r"/>
+  <ow:author rdf:resource="#fox_michelle_j"/>
+  <my:authorList>
+    <rdf:Seq rdf:about="http://www.cs.vu.nl/~mcaklein/bib2rdf//tempid#3ac977d8028c35e5daa29914841cdc598a20146e">
+      <rdf:li rdf:resource="#ogle_robert_r"/>
+      <rdf:li rdf:resource="#fox_michelle_j"/>
+    </rdf:Seq>
+  </my:authorList>
+  <ow:call-number>RA1061</ow:call-number>
+  <ow:date-added>2012-11-27 20:54:52 -0500</ow:date-added>
+  <ow:date-modified>2012-11-27 20:54:52 -0500</ow:date-modified>
+  <ow:dewey-call-number>614/.1</ow:dewey-call-number>
+  <ow:genre>Hair</ow:genre>
+  <ow:isbn>0849381347 (alk. paper)</ow:isbn>
+  <ow:library-id>98034752</ow:library-id>
+  <ow:publisher rdf:resource="#crc_press"/>
+  <ow:title>Atlas of human hair microscopic characteristics</ow:title>
+  <ow:url rdf:resource="http://www.loc.gov/catdir/enhancements/fy0646/98034752-d.html"/>
+  <ow:year>1999</ow:year>
+  <rdfs:label>Ogle, Robert R, Fox, Michelle J. Atlas of human hair microscopic characteristics, CRC Press, 1999</rdfs:label>
+</ow:Book>
+
+<foaf:Person rdf:ID="r_j_glynn">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>R. J. Glynn</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="ogle_robert_r">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>Ogle, Robert R</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="morant_g_m">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>MORANT, G. M.</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="c_r_sahagian">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>C. R. Sahagian</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="j_petrequin">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>J. Petrequin</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="e_s_gragoudas">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>E. S. Gragoudas</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="r_d_sperduto">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>R. D. Sperduto</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="riddell_w_j_b">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>RIDDELL, W. J. B.</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="fox_michelle_j">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>Fox, Michelle J</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="grieve_j">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>GRIEVE, J.</foaf:name>
+</foaf:Person>
+
+<foaf:Person rdf:ID="j_m_seddon">
+  <rdf:type rdf:resource="http://swrc.ontoware.org/ontology#Person"/>
+  <foaf:name>J. M. Seddon</foaf:name>
+</foaf:Person>
+
+<ow:Organization rdf:ID="crc_press">
+  <ow:name>CRC Press</ow:name>
+</ow:Organization>
+
+<ow:Organization rdf:ID="florent_cunier">
+  <ow:name>Florent Cunier</ow:name>
+</ow:Organization>
+
+<ow:Organization rdf:ID="blackwell_publishing_ltd">
+  <ow:name>Blackwell Publishing Ltd</ow:name>
+</ow:Organization>
+
+<ow:Organization rdf:ID="john_churchill">
+  <ow:name>John Churchill</ow:name>
+</ow:Organization>
+
+</rdf:RDF>
+<!--
+http://en.wikipedia.org/wiki/Martin%E2%80%93Schultz_scale
+-->

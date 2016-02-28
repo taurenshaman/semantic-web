@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:vann="http://purl.org/vocab/vann/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:voaf="http://purl.org/vocommons/voaf#" xmlns:emotion="http://ns.inria.fr/emoca#">
+	<owl:Ontology rdf:about="http://ns.inria.fr/emoca">
+		<rdf:type rdf:resource="http://purl.org/vocommons/voaf#Vocabulary" />
+		<cc:license rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+		<dcterms:creator>
+			<foaf:Person>
+				<foaf:name>Franck Berthelon</foaf:name>
+			</foaf:Person>
+		</dcterms:creator>
+		<dcterms:contributor>
+			<foaf:Person>
+				<foaf:name>Peter Sander</foaf:name>
+			</foaf:Person>
+		</dcterms:contributor>
+		<dcterms:contributor>
+			<foaf:Person>
+				<foaf:name>Ghislain Atemezing</foaf:name>
+			</foaf:Person>
+		</dcterms:contributor>
+		<dcterms:contributor>
+			<foaf:Person>
+				<foaf:name>Fabien Gandon</foaf:name>
+			</foaf:Person>
+		</dcterms:contributor>
+		<dcterms:description xml:lang="en">EmOCA is used to describe and contextualize emotions</dcterms:description>
+		<dcterms:description xml:lang="zh-cn">EmOCA用于描述以及在上下文中理解感情。</dcterms:description>
+		<dcterms:created>2013-08-30</dcterms:created>
+		<dcterms:modified>2013-11-26</dcterms:modified>
+		<dcterms:publisher rdf:resource="http://dbpedia.org/page/National_Institute_for_Research_in_Computer_Science_and_Control" />
+		<dcterms:title xml:lang="en">Emotion ontology for context awareness</dcterms:title>
+		<dcterms:title xml:lang="zh-cn">上下文敏感的感情词汇集</dcterms:title>
+		<vann:preferredNamespacePrefix>emotion</vann:preferredNamespacePrefix>
+		<vann:preferredNamespaceUri rdf:resource="http://ns.inria.fr/emoca#" />
+		<cc:license rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+		<voaf:classNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">16</voaf:classNumber>
+		<voaf:propertyNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</voaf:propertyNumber>
+		<owl:versionInfo>Version 1.0 - 2013-11-26</owl:versionInfo>
+		<foaf:homepage rdf:resource="http://ns.inria.fr/emoca" />
+	</owl:Ontology>
+	
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+	
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Emotion">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class" />
+		<rdfs:label xml:lang="en">Emotion</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">感情</rdfs:label>
+	</rdfs:Class>
+	
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Coordinate">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class" />
+		<rdfs:label xml:lang="en">Coordinate</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">坐标</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Component">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Coordinate" />
+		<rdfs:label xml:lang="en">Component</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">要素</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Radius">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Coordinate" />
+		<rdfs:label xml:lang="en">Radius</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">半径</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Arousal">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Component" />
+		<rdfs:label xml:lang="en">Arousal</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">激起</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Valence">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Component" />
+		<rdfs:label xml:lang="en">Valence</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">结合价</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Anger">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Emotion" />
+		<rdfs:label xml:lang="en">Anger</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">愤怒</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Disgust">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Emotion" />
+		<rdfs:label xml:lang="en">Disgust</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">厌恶</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Fear">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Emotion" />
+		<rdfs:label xml:lang="en">Fear</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">恐惧</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Joy">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Emotion" />
+		<rdfs:label xml:lang="en">Joy</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">喜悦</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Sadness">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Emotion" />
+		<rdfs:label xml:lang="en">Sadness</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">悲哀</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Surprise">
+		<rdfs:subClassOf rdf:resource="http://ns.inria.fr/emoca#Emotion" />
+		<rdfs:label xml:lang="en">Surprise</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">惊讶</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Trait">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class" />
+		<rdfs:label xml:lang="en">Trait</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">特征</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Impact">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class" />
+		<rdfs:label xml:lang="en">Impact</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">影响</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Stimulus">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class" />
+		<rdfs:label xml:lang="en">Stimulus</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">刺激因素</rdfs:label>
+	</rdfs:Class>
+	
+	<rdfs:Class rdf:about="http://ns.inria.fr/emoca#Person">
+		<rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class" />
+		<rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+		<rdfs:label xml:lang="en">Person</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">人</rdfs:label>
+	</rdfs:Class>
+	
+	
+	
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+	
+	
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#hasEffect">
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Impact" />
+		<rdfs:label xml:lang="en">has effect</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">有效果</rdfs:label>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#hasImpact">
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Trait" />
+		<rdfs:label xml:lang="en">has impact</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">有影响</rdfs:label>
+		<rdfs:range rdf:resource="http://ns.inria.fr/emoca#Impact" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#hasMaximum">
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Coordinate" />
+		<rdfs:label xml:lang="en">has maximum</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">最大值</rdfs:label>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#hasMinimum">
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Coordinate" />
+		<rdfs:label xml:lang="en">has minimum</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">最小值</rdfs:label>
+		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#hasTrait">
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Person" />
+		<rdfs:label xml:lang="en">has trait</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">有特征</rdfs:label>
+		<rdfs:range rdf:resource="http://ns.inria.fr/emoca#Trait" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#involves">
+		<rdfs:label xml:lang="en">involves</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">涉及</rdfs:label>
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Stimulus" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#isDefinedBy">
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Emotion" />
+		<rdfs:label xml:lang="en">is defined by</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">被定义</rdfs:label>
+		<rdfs:range rdf:resource="http://ns.inria.fr/emoca#Coordinate" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#pertainsTo">
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Impact" />
+		<rdfs:label xml:lang="en">pertains to</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">属于</rdfs:label>
+		<rdfs:range rdf:resource="http://ns.inria.fr/emoca#Component" />
+	</rdf:Property>
+	
+	<rdf:Property rdf:about="http://ns.inria.fr/emoca#relatesTo">
+		<rdfs:label xml:lang="en">relates to</rdfs:label>
+		<rdfs:label xml:lang="zh-cn">有关</rdfs:label>
+		<rdfs:domain rdf:resource="http://ns.inria.fr/emoca#Trait" />
+	</rdf:Property>
+</rdf:RDF>

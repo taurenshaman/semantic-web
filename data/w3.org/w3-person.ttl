@@ -1,0 +1,119 @@
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix xml: <http://www.w3.org/XML/1998/namespace>.
+@prefix voaf: <http://purl.org/vocommons/voaf#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix wdrs: <http://www.w3.org/2007/05/powder-s#>.
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix : <http://www.w3.org/ns/person#>.
+
+<http://www.w3.org/ns/person> 	a voaf:Vocabulary, owl:Ontology;
+  dcterms:title "ISA Programme Person Core Vocabulary"@en;
+  dcterms:comment """This vocabulary was not developed by a W3C group and its publication does not imply endorsement 
+      by the W3C Membership. Terms MAY be deprecated or their definitions clarified but they will 
+      not be deleted (see the W3C Persistence Policy). The vocabulary MAY be further developed by a future group.""";
+	dcterms:abstract "The Person Core Vocabulary provides a minimum set of classes and properties for describing a natural person, i.e. the individual as opposed to any role they may play in society or the relationships they have to other people, organisations and property; all of which contribute significantly to the broader concept of identity."@en;
+	dcterms:creator [schema:affiliation <http://www.w3.org/data#W3C>;
+	  rdfs:seeAlso <http://philarcher.org/foaf.rdf#me>;
+  	foaf:homepage <http://www.w3.org/People/all#phila>;
+  	foaf:name "Phil Archer"] ,
+    [schema:affiliation [foaf:homepage <http://ies.jrc.ec.europa.eu/DE>; foaf:name "European Commission, Joint Research Centre "]; 
+  	rdfs:seeAlso <http://andrea-perego.name/foaf/#me>;
+	  foaf:homepage <http://andrea-perego.name/>;
+	  foaf:name "Andrea Perego"];
+  foaf:maker[foaf:name "Core Vocabularies Working Group (Person Task Force)"; foaf:page <http://joinup.ec.europa.eu/asset/core_person/home>];
+	dcterms:description "The Person Core Vocabulary provides a minimum set of classes and properties for describing a natural person, i.e. the individual as opposed to any role they may play in society or the relationships they have to other people, organisations and property; all of which contribute significantly to the broader concept of identity.";
+	dcterms:issued "2012-05-07"^^xsd:date;
+  dcterms:modified "2013-11-17"^^xsd:date;
+  dcterms:modified "2013-12-21"^^xsd:date; # Corrected schema URI to http://www.w3.org/ns/person (no #)
+	vann:preferredNamespacePrefix "person";
+	vann:preferredNamespaceUri "http://www.w3.org/ns/person#";
+	wdrs:describedby <https://joinup.ec.europa.eu/asset/core_person/asset_release/core-person-vocabulary-100>;
+  dcterms:license <https://joinup.ec.europa.eu/category/licence/isa-open-metadata-licence-v11>;
+  dcterms:rights "Copyright &#169; 2012 European Commission".
+
+  <https://joinup.ec.europa.eu/category/licence/isa-open-metadata-licence-v11>
+    dcterms:title "ISA Open Metadata Licence v1.1";
+    cc:attributionName "European Commission";
+    cc:attributionURL <http://ec.europa.eu/>.
+
+:Person dcterms:identifier "person:Person";
+	a rdfs:Class;
+	rdfs:label "Person"@en;
+	rdfs:comment "An individual person who may be dead or alive, but not imaginary. It is that restriction that makes person:Person a sub class of both foaf:Person and schema:Person which both cover imaginary characters as well as real people."@en;
+	rdfs:isDefinedBy <http://www.w3.org/ns/person>;
+	rdfs:subClassOf foaf:Person;
+	rdfs:subClassOf schema:Person.
+  
+:patronymicName dcterms:identifier "person:patronymicName";
+	a rdf:Property, owl:DatatypeProperty;
+	rdfs:label "patronymic name"@en;
+	rdfs:comment "Patronymic names are important in some countries. Iceland does not have a concept of family name in the way that many other European countries do, for example. In Bulgaria and Russia, patronymic names are in every day usage, for example, the &quot;Sergeyevich&quot; (Сергеевич) in &quot;Mikhail Sergeyevich Gorbachev&quot; (Михаил Сергеевич Горбачёв)."@en;
+  rdfs:domain :Person;
+  rdfs:range rdfs:Literal;
+	rdfs:isDefinedBy :.
+
+:birthName dcterms:identifier "person:birthName";
+	a rdf:Property, owl:DatatypeProperty;
+	rdfs:label "birth name"@en;
+	rdfs:comment "All data associated with an individual is subject to change. Names can change for a variety of reasons, either formally or informally, and new information may come to light that means that a correction or clarification can be made to an existing record. Birth names tend to be persistent however and for this reason they are recorded by some public sector information systems. There is no granularity for birth name - the full name should be recorded in a single field."@en;
+  rdfs:domain :Person;
+  rdfs:range rdfs:Literal;
+	rdfs:isDefinedBy :.
+
+:placeOfBirth dcterms:identifier "person:placeOfBirth";
+	a rdf:Property, owl:ObjectProperty;
+	rdfs:comment "A person's place of birth."@en;
+	rdfs:isDefinedBy <http://www.w3.org/ns/person>;
+	rdfs:label "place of birth"@en;
+  rdfs:domain :Person;
+	rdfs:range dcterms:Location;
+  rdfs:range schema:Place.
+
+:placeOfDeath dcterms:identifier "person:placeOfDeath";
+	a rdf:Property, owl:ObjectProperty;
+	rdfs:comment "A person's place of death."@en;
+	rdfs:isDefinedBy <http://www.w3.org/ns/person>;
+	rdfs:label "place of death"@en;
+  rdfs:domain :Person;
+	rdfs:range dcterms:Location;
+  rdfs:range schema:Place.
+
+:countryOfBirth dcterms:identifier "person:countryOfBirth";
+	a rdf:Property,	owl:ObjectProperty;
+	rdfs:comment "The country in which a Person was born."@en;
+	rdfs:isDefinedBy <http://www.w3.org/ns/person>;
+	rdfs:label "country of birth"@en;
+  rdfs:domain :Person;
+	rdfs:range dcterms:Location;
+  rdfs:range schema:Place.
+
+:countryOfDeath dcterms:identifier "person:countryOfDeath";
+	a rdf:Property,	owl:ObjectProperty;
+	rdfs:comment "The country in which a Person died."@en;
+	rdfs:isDefinedBy <http://www.w3.org/ns/person>;
+	rdfs:label "country of death"@en;
+  rdfs:domain :Person;
+	rdfs:range dcterms:Location;
+  rdfs:range schema:Place.
+
+:citizenship dcterms:identifier "person:citizenship";
+	a rdf:Property,	owl:ObjectProperty;
+	rdfs:comment "The citizenship relationship links a Person to a Jurisdiction that has conferred citizenship rights on the individual such as the right to vote, to receive certain protection from the community or the issuance of a passport. Multiple citizenships are recorded as multiple instances of the citizenship relationship."@en;
+	rdfs:isDefinedBy <http://www.w3.org/ns/person>;
+	rdfs:label "citizenship"@en;
+  rdfs:domain :Person;
+  rdfs:range dcterms:Jurisdiction.
+
+:residency dcterms:identifier "person:residency";
+	a rdf:Property,	owl:ObjectProperty;
+	rdfs:comment "Residency typically provides an individual with a subset of the rights of a citizen."@en;
+	rdfs:isDefinedBy <http://www.w3.org/ns/person>;
+	rdfs:label "residency"@en;
+  rdfs:domain :Person;
+  rdfs:range dcterms:Jurisdiction.
