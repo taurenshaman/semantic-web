@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rdf:RDF xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+    <owl:Ontology rdf:about=""/>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityFounderRole">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityRole"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityManagerRole">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityRole"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#Community">
+        <rdfs:comment><![CDATA[Any kind of community of interest, maybe a realy community of practice or maybe a looser formation.]]></rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#relatedCommunity"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/coin#Community"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/ontology#name"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#hasStatus"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityStatus"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#hasMember"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#relevant"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Topic"/>
+                            <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Event"/>
+                            <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Publication"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#hasCommunityEvent"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Event"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#hasInfrastructure"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/coin#Infrastructure"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#description"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityRole">
+        <rdfs:comment><![CDATA[A role a person takes for a community. Exemplary Subclasses have been specified through CommunityManagerRole, CommunityExpertRole. Note that membership of the filler of "playedBy" in the community referenced through "playedIn" is not enforced - this allows the addition of external Roles, e.g. an external advisor.]]></rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#playedBy"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#playedIn"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/coin#Community"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#Topic"/>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#Infrastructure">
+        <rdfs:comment><![CDATA[A rather abstract class for any kind of community infrastructure, e.g. a community portal, discussion boards or the like. Often this will just be a pointer to some URL.]]></rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#url"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#description"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/ontology#name"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityExpertRole">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityRole"/>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/ontology#isAbout"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Topic"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityStatus">
+        <rdfs:comment><![CDATA[The status a community is in wrt. to the community lifecycle. COIN specifies three instances as well known states: InFormationStatus, InOperationStatus, ClosedStatus.]]></rdfs:comment>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#relatedCommunity"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#subTopicOf"/>
+    <owl:TransitiveProperty rdf:about="http://swrc.ontoware.org/coin#subTopicOf"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#playedBy"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#playedIn"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#knows">
+        <rdfs:comment><![CDATA[Exact Interpretation is largely left to the application context. The property is intentionally *NOT* symetric.]]></rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#providesKnowledgeTo">
+        <rdfs:comment><![CDATA[Exact Interpretation is largely left to the application context. The property is intentionally *NOT* inverse to the "receivesKnowledgeFrom" property.]]></rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#hasMember"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#hasStatus"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#relevant"/>
+    <owl:SymmetricProperty rdf:about="http://swrc.ontoware.org/coin#relevant"/>
+    <owl:DatatypeProperty rdf:about="http://swrc.ontoware.org/coin#description"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#hasInfrastructure"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#hasCommunityEvent"/>
+    <owl:ObjectProperty rdf:about="http://swrc.ontoware.org/coin#receivesKnowledgeFrom">
+        <rdfs:comment><![CDATA[Exact Interpretation is largely left to the application context. The property is intentionally *NOT* inverse to the "providesKnowledgeTo" property.]]></rdfs:comment>
+    </owl:ObjectProperty>
+    <owl:DatatypeProperty rdf:about="http://swrc.ontoware.org/coin#url"/>
+    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#knows"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#relevant"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Topic"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Topic">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#subTopicOf"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Topic"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Topic">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#description"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#receivesKnowledgeFrom"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#knows"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swrc.ontoware.org/coin#providesKnowledgeTo"/>
+                <owl:allValuesFrom>
+                    <owl:Class rdf:about="http://swrc.ontoware.org/ontology#Person"/>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <rdf:Description rdf:about="http://swrc.ontoware.org/coin#CommunityInOperationStatus">
+        <rdf:type>
+            <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityStatus"/>
+        </rdf:type>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://swrc.ontoware.org/coin#CommunityClosedStatus">
+        <rdf:type>
+            <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityStatus"/>
+        </rdf:type>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://swrc.ontoware.org/coin#CommunityInOperationStatus">
+        <rdf:type>
+            <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityStatus"/>
+        </rdf:type>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://swrc.ontoware.org/coin#CommunityInFormationStatus">
+        <rdf:type>
+            <owl:Class rdf:about="http://swrc.ontoware.org/coin#CommunityStatus"/>
+        </rdf:type>
+    </rdf:Description>
+</rdf:RDF>

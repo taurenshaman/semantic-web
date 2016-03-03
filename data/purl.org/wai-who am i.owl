@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY wai "http://purl.org/wai#">
+  <!ENTITY base "http://purl.org/wai">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY foaf "http://xmlns.com/foaf/0.1/">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY dct "http://purl.org/dc/terms/">
+]>
+<rdf:RDF
+  xmlns:foaf="&foaf;"
+  xmlns:owl="&owl;"
+  xmlns:rdf="&rdf;"
+  xmlns:rdfs="&rdfs;"
+  xmlns:wai="&wai;"
+  xmlns:xsd="&xsd;"
+  xmlns:dct="&dct;"
+  xml:base="&base;"
+>
+
+  <!-- Ontology Information -->
+
+  <owl:Ontology rdf:about="&wai;">
+    <dct:title xml:lang="en">Roles and Profiles Ontology</dct:title>
+    <dct:title xml:lang="zh-cn">角色和档案本体</dct:title>
+    <rdfs:isDefinedBy rdf:resource="http://purl.org/wai.owl"/>
+    <dct:rights>(c) TreeLogic, 2009</dct:rights>
+    <dct:creator>Luis Polo</dct:creator>
+    <dct:creator>Ivan Mínguez</dct:creator>
+    <dct:contributor>Diego Berrueta</dct:contributor>
+    <dct:contributor>Pablo López</dct:contributor>
+    <dct:contributor>Marcos Sacristán</dct:contributor>
+    <dct:contributor>Emilio Rubiera</dct:contributor>
+    <dct:date>2010-10-11</dct:date>
+  </owl:Ontology>
+
+  <!--    Annotation properties    -->
+
+  <owl:AnnotationProperty rdf:about="&dct;date"/>
+  <owl:AnnotationProperty rdf:about="&dct;title"/>
+  <owl:AnnotationProperty rdf:about="&dct;contributor"/>
+  <owl:AnnotationProperty rdf:about="&dct;creator"/>
+  <owl:AnnotationProperty rdf:about="&dct;description"/>
+  <owl:AnnotationProperty rdf:about="&dct;rights"/>
+  <owl:AnnotationProperty rdf:about="&rdfs;isDefinedBy"/>
+
+  <!-- Classes -->
+
+  <owl:Class rdf:about="#Role">
+    <rdfs:comment xml:lang="en">A property that can be predicated of a person. In WAI ontology, roles are reified as first order individuals and relations between roles and players are expressed by means of the wai:plays property. WAI does not impose any subclassification of roles. The concept is open to be refined according to domain or application requirements.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">这个属性表明了一个人。在WAI本体中，在角色和由wai:plays表示的扮演者中，角色具化为第一序列。WAI并没有实现角色的子分类。这个概念是开放的，可以在域或应用需求中加以具化。</rdfs:comment>
+    <rdfs:label xml:lang="en">Role</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">角色</rdfs:label>
+    <owl:disjointWith rdf:resource="#Profile"/>
+  </owl:Class>
+
+
+  <owl:Class rdf:about="#Profile">
+    <rdfs:comment xml:lang="en">A profile represents a particular person playing a given role. In the literature it is also known as a "qua-individual". WAI extends the meaning of profile to capture "person-as-role", "person-at-context" and "person-in-community".</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">档案描述了一个特定的人正扮演的指定角色。在文献中也被称为“作为个体”。WAI扩展了档案的含义以体现“人物角色”、“上下文中的人”和“社区中的人”。</rdfs:comment>
+    <rdfs:label xml:lang="en">Profile</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">档案</rdfs:label>
+    <owl:disjointWith rdf:resource="#Role"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="#Context">
+    <rdfs:comment xml:lang="en">Contexts are similar to situations or state of affairs providing interpretation coordinates for profiles. In the most simple case, these coordinates are just geographical/spatial or temporal coordinates. WAI does not impose a fixed definition of context. It is deliberately wide in order to enable third-parties the adequation of the meaning of context according to their modeling needs and requirements.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">上下文类似于为档案提供了解释坐标的形势或事态。最简单的情况下，这些坐标仅仅是地理的/空间的或时间坐标。WAI没有实现上下文的混合定义。它故意设计成宽泛的，以使得第三方的构建在其自身的建模需求中，能适应它的上下文含义。</rdfs:comment>
+    <rdfs:label xml:lang="en">Context</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">上下文</rdfs:label>
+  </owl:Class>
+
+
+  <!-- Object Properties -->
+
+  <owl:ObjectProperty rdf:about="#specializes">
+    <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    <rdfs:comment xml:lang="en">This property allows to express hierarchies of roles, through of role specialization: if role A specializes role B, and B specializes C, then role A specializes role C.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">通过特化的角色，这个属性允许表示角色的层级：如果角色A特化了角色B，B特化了角色C，那么A特化了C。</rdfs:comment>
+    <rdfs:label xml:lang="en">specializes</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">特化</rdfs:label>
+    <rdfs:domain rdf:resource="#Role"/>
+    <rdfs:range rdf:resource="#Role"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#requires">
+    <rdfs:comment xml:lang="en">This property relates roles and their requisites, i.e. other roles.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">这个属性关联了角色和它的需求角色。</rdfs:comment>
+    <rdfs:label xml:lang="en">requires</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">需要</rdfs:label>
+    <rdfs:domain rdf:resource="#Role"/>
+    <rdfs:range rdf:resource="#Role"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#atContext">
+    <rdfs:comment xml:lang="en">This property enables to relate a profile with a given context (geographical, temporal, spatial, social, etc.).</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">这个属性能将一个档案关联到给定的上下文中（地理的，时间的，空间的，社会的，等等）。</rdfs:comment>
+    <rdfs:label xml:lang="en">at context</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">在上下文</rdfs:label>
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="#Context"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#plays">
+    <rdfs:comment xml:lang="en">This property relates roles and their players, who can be any foaf:Agent (a person, a group, etc.)</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">这个属性关联了角色和它的扮演者，这些扮演者可以是任意的foaf:Agent（人，组织，等等）。</rdfs:comment>
+    <rdfs:label xml:lang="en">plays</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">扮演</rdfs:label>
+    <rdfs:domain rdf:resource="&foaf;Agent"/>
+    <rdfs:range rdf:resource="#Role"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#profiles">
+    <rdfs:comment xml:lang="en">This property relates people and the featured profiles.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">这个属性关联了人和特定的档案。</rdfs:comment>
+    <rdfs:label xml:lang="en">profiles</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">档案</rdfs:label>
+    <rdfs:domain rdf:resource="&foaf;Agent"/>
+    <rdfs:range rdf:resource="#Profile"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#personalizes">
+    <rdfs:comment xml:lang="en">A role is personalized by means of a profile, which wrap the role in the identity of the person behind the profile.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">通过档案的含义，一个角色能被个人化给这个档案中的人的身份。</rdfs:comment>
+    <rdfs:label xml:lang="en">personalizes</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">个人化</rdfs:label>
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="#Role"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="#participates">
+    <rdfs:comment xml:lang="en">This property encodes the participation relation between profiles and the communities they are member of.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">这个属性编码了档案和所属社区之间的参与关系。</rdfs:comment>
+    <rdfs:label xml:lang="en">participates</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">参与</rdfs:label>
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="&foaf;Group"/>
+  </owl:ObjectProperty>
+
+
+  <!-- Datatype Properties -->
+
+  <owl:DatatypeProperty rdf:about="#isActive">
+    <rdfs:comment xml:lang="en">This property allows to specify which is the user profile that is active, given a interaction between two applications.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">这个属性允许指定哪个是用户的有效档案，给出了两个应用程序之间的交互。</rdfs:comment>
+    <rdfs:label xml:lang="en">is active</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">有效的</rdfs:label>
+    <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#Profile"/>
+    <rdfs:range rdf:resource="&xsd;boolean"/>
+  </owl:DatatypeProperty>
+
+  <!--   Property Chains   -->
+
+  <rdf:Description rdf:about="#plays">
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="#plays"/>
+      <owl:ObjectProperty rdf:about="#specializes"/>
+    </owl:propertyChainAxiom>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#plays">
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="#plays"/>
+      <owl:ObjectProperty rdf:about="#requires"/>
+    </owl:propertyChainAxiom>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="#plays">
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="#profiles"/>
+      <owl:ObjectProperty rdf:about="#personalizes"/>
+    </owl:propertyChainAxiom>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="&foaf;member">
+    <owl:propertyChainAxiom rdf:parseType="Collection">
+      <owl:ObjectProperty rdf:about="#profiles"/>
+      <owl:ObjectProperty rdf:about="#participates"/>
+    </owl:propertyChainAxiom>
+  </rdf:Description>
+
+</rdf:RDF>
