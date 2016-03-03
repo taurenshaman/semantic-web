@@ -1,0 +1,3235 @@
+# Saved by TopBraid on Sun Jun 12 19:33:37 PDT 2011
+# baseURI: http://voag.linkedmodel.org/1.0/schema/voag
+# imports: http://www.linkedmodel.org/1.2/schema/vaem
+# imports: http://www.linkedmodel.org/1.0/schema/dtype
+# imports: http://rdfs.org/ns/void
+
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix dtype:   <http://www.linkedmodel.org/schema/dtype#> .
+@prefix omv:     <http://omv.ontoware.org/2005/05/ontology#> .
+@prefix ontology:  <http://omv.ontoware.org/2005/05/ontology#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix vaem:    <http://www.linkedmodel.org/schema/vaem#> .
+@prefix voag:    <http://voag.linkedmodel.org/schema/voag#> .
+@prefix voag-1.0:  <http://voag.linkedmodel.org/1.0/schema/voag#> .
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+dc:rights
+      rdf:type owl:AnnotationProperty ;
+      rdfs:label "rights"^^xsd:string ;
+      rdfs:range xsd:string .
+
+dc:subject
+      rdf:type owl:AnnotationProperty ;
+      rdfs:label "subject"^^xsd:string ;
+      rdfs:range xsd:string .
+
+dc:title
+      rdf:type owl:AnnotationProperty ;
+      rdfs:label "title"^^xsd:string ;
+      rdfs:range xsd:string .
+
+void:Dataset
+      rdf:type owl:Class ;
+      rdfs:label "VOID Dataset"^^xsd:string ;
+      rdfs:subClassOf voag:GovernedObject ;
+      vaem:description "A set of RDF triples that are published, maintained or aggregated by a single provider."^^xsd:string .
+
+<http://voag.linkedmodel.org/1.0/schema/voag>
+      rdf:type owl:Ontology ;
+      rdfs:label "Vocabulary Of Attribution and Governance"^^xsd:string ;
+      dc:rights "The LinkedModel VOAG Ontology is issued under a Creative Commons Attribution Share Alike 3.0 United States License. Attribution should be made to <a href=\"http://www.topquadrant.com\">TopQuadrant, Inc.</a>."^^xsd:string ;
+      dc:subject "Linked Models Vocabulary of Attribution and Governance (VOAG) Ontology"^^xsd:string ;
+      dc:title "Vocabulary Of Attribution and Governance"^^xsd:string ;
+      voag:hasLicenseType voag:CC-SHAREALIKE_3PT0-US ;
+      voag:intent "Provides a basic vocabulary and schema for intellectual capital rights, attribution and governance. Includes some treatment of provenance.  Typical use of the ontology is to refer to its resources, as opposed to importing the ontology."^^xsd:string ;
+      vaem:acronym "VOAG"^^xsd:string ;
+      vaem:dateCreated "2011-01-31T10:00:00"^^xsd:dateTime ;
+      vaem:description "VOAG stands for \"Vocabulary Of Attribution and Governance\". The ontology is intended to specify licensing, attribution, provenance and governance of an ontology. VOAG captures many common license types and their restrictions. Where a license requires attribution, VOAG provides resources that allow the attribution should be made. Provenance is defined in terms of source and pedigree. A miminal model of governance is provided based on how issues, releases and changes are managed. VOAG does not import, but makes uses of some concepts from VOID (http://vocab.deri.ie/void), notably void:Dataset."^^xsd:string ;
+      vaem:hasCatalogEntry
+              <voag:VOAG_Catalog_Entry> ;
+      vaem:hasRole vaem:SchemaGraph ;
+      vaem:lastUpdated "$LastChangedDate: 2011-06-12 22:12:09 -0700 (Sun, 12 Jun 2011) $"^^xsd:string ;
+      vaem:namespace "http://voag.linkedmodel.org/schema/voag"^^xsd:string ;
+      vaem:namespacePrefix
+              "voag"^^xsd:string ;
+      vaem:revisionNumber "1.0"^^xsd:string ;
+      vaem:specificity "1"^^vaem:integer_1to5 ;
+      vaem:url "http://voag.linkedmodel.org/1.0/owl/schema/voag"^^xsd:anyURI ;
+      vaem:usesNonImportedResource
+              dc:rights , dc:subject , dc:title ;
+      owl:imports <http://rdfs.org/ns/void> , <http://www.linkedmodel.org/1.0/schema/dtype> , <http://www.linkedmodel.org/1.2/schema/vaem> ;
+      owl:versionIRI <http://www.linkedmodel.org/1.1/owl/schema/core> ;
+      owl:versionInfo "$Id: OSG_voag-(v1.0).ttl 5095 2011-06-13 05:12:09Z RalphHodgson $"^^xsd:string .
+
+voag:ACADEMIIC_FREE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Academic Free License, all versions through 3.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://opensource.org/licenses/academic.php" ;
+      vaem:acronym "AcademicFreeLicense"^^xsd:string ;
+      vaem:description "The Academic Free License is a free software license, not copyleft, and incompatible with the GNU GPL. Recent versions contain contract clauses similar to the Open Software License, and should be avoided for the same reasons."^^xsd:string .
+
+voag:ACDL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Apple's Common Documentation License, Version 1.0"^^xsd:string ;
+      voag:url "http://fedoraproject.org/wiki/Licensing/Common_Documentation_License" ;
+      vaem:acronym "ACDL"^^xsd:string ;
+      vaem:description "This is a Free Documentation license that is incompatible with the GNU FDL. It is incompatible because Section (2c) says “You add no other terms or conditions to those of this License”, and the GNU FDL has additional terms not accounted for in the Common Documentation License."^^xsd:string .
+
+voag:AGPL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Affero General Public License version 1"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:supercededBy voag:AGPL_V3PT0 ;
+      voag:url "http://www.affero.org/oagpl.html" ;
+      vaem:acronym "AGPLv1.0"^^xsd:string ;
+      vaem:description "The Affero General Public License is a free software license, copyleft, and incompatible with the GNU GPL. It consists of the GNU GPL version 2, with one additional section that Affero added with FSF approval. The new section, 2(d), covers the distribution of application programs through web services or computer networks. This license has been succeeded by the GNU Affero General Public License version 3; please use that instead."^^xsd:string .
+
+voag:AGPL_V3PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU Affero General Public License (AGPL) version 3"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V2 ;
+      voag:supercedes voag:AGPL_V1PT0 ;
+      voag:url "http://www.gnu.org/licenses/agpl.html" ;
+      vaem:acronym "AGPLv3.0"^^xsd:string ;
+      vaem:description "This is a free software, copyleft license. Its terms effectively consist of the terms of GPLv3, with an additional paragraph in section 13 to allow users who interact with the licensed software over a network to receive the source for that program. GNU AGPL v3.0 should be considered by Developers considering using the GNU AGPL for any software which will commonly be run over a network. Note that the GNU AGPL is not compatible with GPLv2. It is also technically not compatible with GPLv3 in a strict sense: you cannot take code released under the GNU AGPL and convey or modify it however you like under the terms of GPLv3, or vice versa. However, you are allowed to combine separate modules or source files released under both of those licenses in a single project, which will provide many programmers with all the permission they need to make the programs they want. "^^xsd:string .
+
+voag:APACHE_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Apache License, Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.apache.org/licenses/LICENSE-1.0" ;
+      vaem:acronym "apache1"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license with an advertising clause. This creates practical problems like those of the original BSD license, including incompatibility with the GNU GPL"^^xsd:string .
+
+voag:APACHE_V1PT1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Apache License, Version 1.1"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:supercedes voag:APACHE_V1PT0 ;
+      voag:url "http://www.apache.org/licenses/LICENSE-1.1" ;
+      vaem:acronym "apache1.1"^^xsd:string ;
+      vaem:description "This is a permissive non-copyleft free software license. It has a few requirements that render it incompatible with the GNU GPL, such as strong prohibitions on the use of Apache-related names."^^xsd:string .
+
+voag:APACHE_V2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Apache License, Version 2.0"^^xsd:string ;
+      voag:url "http://www.apache.org/licenses/LICENSE-2.0" ;
+      vaem:acronym "apache2"^^xsd:string .
+
+voag:APSL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Apple's Common Documentation License, Version 1.0"^^xsd:string ;
+      voag:url "http://www.opensource.apple.com/license/apsl/"^^xsd:anyURI ;
+      vaem:acronym "APSL"^^xsd:string ;
+      vaem:description "This is a free software license, incompatible with the GNU GPL. We recommend that you not use this license for new software that you write, but it is ok to use and improve the software released under this license"^^xsd:string .
+
+voag:APSL_V1PTX
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Apple Public Source License (APSL), version 1.x"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "https://fedoraproject.org/wiki/Licensing/Apple_Public_Source_License_1.2" ;
+      vaem:acronym "apsl1"^^xsd:string ;
+      vaem:description "Versions 1.0, 1.1 and 1.2 are not free software licenses (follow the link for more explanation). Please don't use these licenses, and we urge you to avoid any software that has been released under them. Version 2.0 of the APSL is a free software license."^^xsd:string .
+
+voag:APSL_V2
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Apple Public Source License (APSL), version 2"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.apple.com/apsl" ;
+      vaem:acronym "apsl2"^^xsd:string .
+
+voag:ARPHIC_PUBLIC_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Arphic Public License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL ;
+      voag:url "http://ftp.gnu.org/gnu/non-gnu/chinese-fonts-truetype/LICENSE" ;
+      vaem:acronym "Arphic"^^xsd:string ;
+      vaem:description "This is a copyleft free software license, incompatible with the GPL. Its normal use is for fonts, and in that use, the incompatibility does not cause a problem."^^xsd:string .
+
+voag:ARTISTIC_LICENSE_2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Artistic License 2.0"^^xsd:string ;
+      voag:url "http://www.perlfoundation.org/artistic_license_2_0" ;
+      vaem:acronym "ArtisticLicense2"^^xsd:string ;
+      vaem:description "This license is a free software license, compatible with the GPL thanks to the relicensing option in section 4(c)(ii)."^^xsd:string .
+
+voag:Accredidation
+      rdf:type owl:Class ;
+      rdfs:label "Accredidation"^^xsd:string ;
+      rdfs:subClassOf voag:Qualifier .
+
+voag:AdministrativeEvent
+      rdf:type owl:Class ;
+      rdfs:label "Administrative Event"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      voag:shortDescription
+              "A \"Governance Event\"."^^xsd:string ;
+      vaem:description "A \"Governance Event\"."^^xsd:string .
+
+voag:Annually
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Annually"^^xsd:string ;
+      dtype:value "annual"^^xsd:string .
+
+voag:AppendChange
+      rdf:type voag:ChangeType ;
+      rdfs:label "Append change"^^xsd:string .
+
+voag:ApprovalEvent
+      rdf:type owl:Class ;
+      rdfs:label "Approval Event"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      vaem:description "A \"Governance Event\"."^^xsd:string ;
+      owl:disjointWith voag:RejectionEvent .
+
+voag:ApprovalProcess
+      rdf:type owl:Class ;
+      rdfs:label "Approval Process"^^xsd:string ;
+      rdfs:subClassOf voag:GovernanceProcess ;
+      vaem:description "A \"Governance Process\"."^^xsd:string .
+
+voag:ApprovedIssue
+      rdf:type voag:IssueStatus ;
+      rdfs:label "Approved Issue"^^xsd:string ;
+      dtype:value "approved"^^xsd:string .
+
+voag:Attribution
+      rdf:type owl:Class ;
+      rdfs:label "Attributed Source"^^xsd:string ;
+      rdfs:subClassOf voag:Qualifier ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:url
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:AttributionLogo ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:name
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom xsd:string ;
+                owl:onProperty voag:pointOfContact
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      voag:shortDescription
+              "The name, url and other details of an attribution."^^xsd:string ;
+      vaem:definition "An 'Attribution' specifies how credit should be given when citing the creators of a piece of work. Attribution must use the specified attribution text and optionally use logos that are provided in the attribution details below., with the names of points of contact."^^xsd:string .
+
+voag:AttributionLogo
+      rdf:type owl:Class ;
+      rdfs:label "Attribution logo"^^xsd:string ;
+      rdfs:subClassOf voag:Logo .
+
+voag:BERKELEY_DATABASE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Berkeley Database License"^^xsd:string ;
+      voag:url "http://www.oracle.com/technology/software/products/berkeley-db/htdocs/oslicense.html" ;
+      vaem:acronym "BerkleyDB"^^xsd:string ;
+      vaem:description "This is a free software license, compatible with the GNU GPL. It is also known as the \"Sleepycat Software Product License\"."^^xsd:string .
+
+voag:BITTORRENT_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "BitTorrent Open Source License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.bittorrent.com/bittorrent-open-source-license" ;
+      vaem:acronym "bittorrent"^^xsd:string ;
+      vaem:description "This is a free software license, but incompatible with the GPL, for the same reasons as the Jabber Open Source License."^^xsd:string .
+
+voag:BOOST_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Boost Software License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.boost.org/LICENSE_1_0.txt" ;
+      vaem:acronym "boost"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license, compatible with the GNU GPL."^^xsd:string .
+
+voag:BSD_ORIGINAL_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Original BSD license"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.xfree86.org/3.3.6/COPYRIGHT2.html#6" ;
+      vaem:acronym "OriginalBSD"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license with a serious flaw: the “obnoxious BSD advertising clause”. The flaw is not fatal; that is, it does not render the software non-free. But it does cause practical problems, including incompatibility with the GNU GPL. If you want to use a simple, permissive non-copyleft free software license, it is much better to use the modified BSD license or the X11 license. However, there is no reason not to use programs that have been released under the original BSD license."^^xsd:string .
+
+voag:BiMonthly
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Bi monthly"^^xsd:string ;
+      dtype:value "bi-monthly"^^xsd:string .
+
+voag:BiQuarterly
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Bi quarterly"^^xsd:string ;
+      dtype:value "bi-quarterly"^^xsd:string .
+
+voag:BiWeekly
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Bi-Weekly"^^xsd:string ;
+      dtype:value "bi-weekly"^^xsd:string .
+
+voag:CC-SHAREALIKE_3PT0-US
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Creative Commons Attribution-Share Alike 3.0 United States License"^^xsd:string ;
+      voag:image "http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png"^^xsd:anyURI ;
+      voag:permits voag:CCP_DerivativeWorks , voag:CCP_Distribution ;
+      voag:requires voag:Attribution , voag:CCR_ShareAlike ;
+      voag:url "http://creativecommons.org/licenses/by-sa/3.0/us/"^^xsd:anyURI .
+
+voag:CC0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "CC0"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://creativecommons.org/publicdomain/zero/1.0/legalcode" ;
+      vaem:acronym "CC0"^^xsd:string ;
+      vaem:description "CC0 is a public domain dedication from Creative Commons. A work released under CC0 is dedicated to the public domain to the fullest extent permitted by law. If that is not possible for any reason, CC0 also provides a simple permissive license as a fallback. Both public domain works and the simple license provided by CC0 are compatible with the GNU GPL. If you want to release your work to the public domain, use CC0."^^xsd:string .
+
+voag:CCBY-ND
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Creative Commons Attribution-NoDerivs 3.0 license (a.k.a. CC BY-ND)"^^xsd:string ;
+      voag:url "http://creativecommons.org/licenses/by-nd/3.0/legalcode" ;
+      vaem:acronym "ccbynd"^^xsd:string ;
+      vaem:description "This is the license used throughout the FSF web site. This license provides much the same permissions as our verbatim copying license, but it's much more detailed. We particularly recommend it for audio and/or video works of opinion. Please be specific about which Creative Commons license is being used."^^xsd:string .
+
+voag:CCBY-SA
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Creative Commons Attribution-Sharealike 2.0 license"^^xsd:string ;
+      voag:url "http://creativecommons.org/licenses/by-sa/2.0/legalcode" ;
+      vaem:acronym "ccbysa"^^xsd:string .
+
+voag:CCBY_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Creative Commons Attribution 2.0 license"^^xsd:string ;
+      voag:url "http://creativecommons.org/licenses/by/2.0/legalcode" ;
+      vaem:acronym "ccby"^^xsd:string .
+
+voag:CCPH_CommercialUse
+      rdf:type voag:CreativeCommonsProhibition ;
+      rdfs:label "Commercial use"^^xsd:string , "Creative Commons Commercial Use"@en-US ;
+      voag:shortDescription
+              "Exercising rights for commercial purposes"@en-US ;
+      vaem:description "Exercising rights for commercial purposes"@en-US .
+
+voag:CCPH_HighIncomeNationUse
+      rdf:type voag:CreativeCommonsProhibition ;
+      rdfs:label "High income nation use"^^xsd:string , "Creative Commons High Income Nation Use"@en-US ;
+      voag:shortDescription
+              "Use in a non-developing country"@en-US ;
+      vaem:description "Use in a non-developing country"@en-US .
+
+voag:CCP_DerivativeWorks
+      rdf:type voag:CreativeCommonsPermission ;
+      rdfs:label "Derivative works"^^xsd:string , "Creative Commons Derivative Works"@en-US ;
+      voag:shortDescription
+              "Distribution of derivative works"@en-US ;
+      vaem:description "Distribution of derivative works"@en-US .
+
+voag:CCP_Distribution
+      rdf:type voag:CreativeCommonsPermission ;
+      rdfs:label "Distribution"^^xsd:string , "Creative Commons Distribution"@en-US ;
+      voag:shortDescription
+              "Creative Commons - distribution, public display, and publicly performance"@en-US ;
+      vaem:description "Creative Commons - distribution, public display, and publicly performance"@en-US .
+
+voag:CCP_Reproduction
+      rdf:type voag:CreativeCommonsPermission ;
+      rdfs:label "Reproduction"^^xsd:string , "Creative Commons Reproduction"@en-US ;
+      voag:shortDescription
+              "making multiple copies"@en-US ;
+      vaem:description "making multiple copies"@en-US .
+
+voag:CCP_Sharing
+      rdf:type voag:CreativeCommonsPermission ;
+      rdfs:label "Sharing"^^xsd:string , "Creative Commons Sharing"@en-US ;
+      voag:shortDescription
+              "permits commercial derivatives, but only non-commercial distribution"@en-US ;
+      vaem:description "permits commercial derivatives, but only non-commercial distribution"@en-US .
+
+voag:CCR_Attribution
+      rdf:type voag:CreativeCommonsRequirement ;
+      rdfs:label "Creative Commons Attribution"@en-US ;
+      vaem:description "Credit to be given to copyright holder and/or author"@en-US .
+
+voag:CCR_Copyleft
+      rdf:type voag:CreativeCommonsRequirement ;
+      rdfs:label "Creative Commons Copyleft"@en-US ;
+      vaem:description "combined works must be licensed under specified terms, similar to those on the original work"@en-US , "Copyleft is a general method for making a program (or other work) free, and requiring all modified and extended versions of the program to be free as well. The simplest way to make a program free software is to put it in the public domain, uncopyrighted. This allows people to share the program and their improvements, if they are so minded. But it also allows uncooperative people to convert the program into proprietary software. They can make changes, many or few, and distribute the result as a proprietary product. People who receive the program in that modified form do not have the freedom that the original author gave them; the middleman has stripped it away.  In the GNU project, Copyleft says that anyone who redistributes the software, with or without changes, must pass along the freedom to further copy and change it. Copyleft guarantees that every user has freedom."^^xsd:string ;
+      vaem:url "http://www.gnu.org/copyleft/copyleft.html"^^xsd:anyURI .
+
+voag:CCR_LesserCopyleft
+      rdf:type voag:CreativeCommonsRequirement ;
+      rdfs:label "Creative Commons Lesser Copyleft"@en-US ;
+      vaem:description "derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms"@en-US .
+
+voag:CCR_Notice
+      rdf:type voag:CreativeCommonsRequirement ;
+      rdfs:label "Creative Commons Notice"@en-US ;
+      vaem:description "copyright and license notices be kept intact"@en-US .
+
+voag:CCR_ShareAlike
+      rdf:type voag:CreativeCommonsRequirement ;
+      rdfs:label "Creative Commons Share Alike"@en-US ;
+      vaem:description "derivative works be licensed under the same terms or compatible terms as the original work"@en-US .
+
+voag:CCR_SourceCode
+      rdf:type voag:CreativeCommonsRequirement ;
+      rdfs:label "Creative Commons Source Code"@en-US ;
+      vaem:description "Source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license."@en-US .
+
+voag:CDDL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Common Development and Distribution License (CDDL), version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensolaris.org/os/licensing/cddllicense.txt" ;
+      vaem:acronym "CDDL"^^xsd:string ;
+      vaem:description "This is a free software license. It has a copyleft with a scope that's similar to the one in the Mozilla Public License, which makes it incompatible with the GNU GPL. This means a module covered by the GPL and a module covered by the CDDL cannot legally be linked together."^^xsd:string .
+
+voag:CECILL_V2
+      rdf:type voag:LicenseModel ;
+      rdfs:label "CeCILL version 2"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.cecill.info/licences.en.html" ;
+      vaem:acronym "CeCILL"^^xsd:string ;
+      vaem:description "The CeCILL is a free software license, explicitly compatible with the GNU GPL. The text of the CeCILL uses a couple of biased terms that ought to be avoided: “intellectual property” (see this article) and “protection” (see this article); this decision was unfortunate, because reading the license tends to spread the presuppositions of those terms. However, this does not cause any particular problem for the programs released under the CeCILL. Section 9.4 of the CeCILL commits the program's developers to certain forms of cooperation with the users, if someone attacks the program with a patent. You might look at that as a problem for the developer; however, if you are sure you would want to cooperate with the users in those ways anyway, then it isn't a problem for you."^^xsd:string .
+
+voag:CLEAR_BSD
+      rdf:type voag:LicenseModel ;
+      rdfs:label "The Clear BSD License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V2 , voag:GNU-GPL_V3 ;
+      voag:url "http://labs.metacarta.com/license-explanation.html#license" ;
+      vaem:acronym "clearbsd"^^xsd:string ;
+      vaem:description "This is a free software license, compatible with both GPLv2 and GPLv3. It is based on the modified BSD license, and adds a term expressly stating it does not grant you any patent licenses. Because of this, we encourage you to be careful about using software under this license; you should first consider whether the licensor might want to sue you for patent infringement. If the developer is disclaiming patent licenses to set up a trap for you, it would be wise to avoid the program."^^xsd:string .
+
+voag:CL_None
+      rdf:type voag:ConfidentialityLevel ;
+      rdfs:label "None"^^xsd:string ;
+      dtype:code 0 ;
+      dtype:order "1"^^xsd:int ;
+      dtype:value "none"^^xsd:string .
+
+voag:CL_Restricted
+      rdf:type voag:ConfidentialityLevel ;
+      rdfs:label "Restricted"^^xsd:string ;
+      voag:shortDescription
+              "During and before World War II, the U.S. had a category of classified information called restricted, which was below confidential. The U.S. no longer has a restricted classification, but many other nations and NATO do. The U.S. treats \"restricted\" information it receives from other governments as confidential. The U.S. does use the term restricted data in a completely different way to refer to nuclear secrets." ;
+      dtype:code 1 ;
+      dtype:order "2"^^xsd:int ;
+      dtype:value "restricted"^^xsd:string ;
+      vaem:description "During and before World War II, the U.S. had a category of classified information called restricted, which was below confidential. The U.S. no longer has a restricted classification, but many other nations and NATO do. The U.S. treats \"restricted\" information it receives from other governments as confidential. The U.S. does use the term restricted data in a completely different way to refer to nuclear secrets." .
+
+voag:CL_Secret
+      rdf:type voag:ConfidentialityLevel ;
+      rdfs:label "Secret"^^xsd:string ;
+      voag:shortDescription
+              "\"Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause serious damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958]." ;
+      dtype:code 5 ;
+      dtype:order "6"^^xsd:int ;
+      dtype:value "secret"^^xsd:string ;
+      vaem:description "\"Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause serious damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958]." .
+
+voag:CL_SensitiveButUnclassified
+      rdf:type voag:ConfidentialityLevel ;
+      rdfs:label "Sensitive but Unclassified"^^xsd:string ;
+      voag:shortDescription
+              "Sensitive but Unclassified (SBU) information should not be disclosed but is not national security information and cannot be classified according to Executive Order (EO)12958, as amended. These materials must be: properly marked, locked up when not under the supervision of an authorized person, and encrypted while in transit over a non-secure network. Some examples are: trade secrets, proprietary information, financial information, personnel and medical records, procurement-sensitive information, IT system security plans, contingency plans, audit logs (recordings of exceptions and other security-related events), vulnerability reports, incident reports and Personally Identifiable Information (PII)."^^xsd:string ;
+      dtype:code 3 ;
+      dtype:order "4"^^xsd:int ;
+      dtype:value "sbu"^^xsd:string ;
+      vaem:description "Sensitive but Unclassified (SBU) information should not be disclosed but is not national security information and cannot be classified according to Executive Order (EO)12958, as amended. These materials must be: properly marked, locked up when not under the supervision of an authorized person, and encrypted while in transit over a non-secure network. Some examples are: trade secrets, proprietary information, financial information, personnel and medical records, procurement-sensitive information, IT system security plans, contingency plans, audit logs (recordings of exceptions and other security-related events), vulnerability reports, incident reports and Personally Identifiable Information (PII)."^^xsd:string .
+
+voag:CL_TopSecret
+      rdf:type voag:ConfidentialityLevel ;
+      rdfs:label "Top secret"^^xsd:string ;
+      voag:shortDescription
+              "\"Top Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause exceptionally grave damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958]." ;
+      dtype:code 6 ;
+      dtype:order "7"^^xsd:int ;
+      dtype:value "topsecret"^^xsd:string ;
+      vaem:description "\"Top Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause exceptionally grave damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958]." .
+
+voag:CL_Unclassified
+      rdf:type voag:ConfidentialityLevel ;
+      rdfs:label "Unclassified"^^xsd:string ;
+      voag:shortDescription
+              "Unclassified is not technically a \"classification\"; this is the default, and refers to information that can be released to individuals without a clearance (Level 0). Information that is unclassified is sometimes restricted in its dissemination as SBU or FOUO. For example, the \"law enforcement bulletins\" often reported by the U.S. media when United States Department of Homeland Security raises the U.S. terror threat level are usually classified as \"U//LES\" or \"Unclassified - Law Enforcement Sensitive.\" This information is only supposed to be released to Law Enforcement groups (Sheriff, Police, etc.) Because the information is unclassified, however, it is sometimes released to the public as well. Information which is unclassified, but which the government does not believe should be subject to Freedom of Information Act requests is often classified as U//FOUO - \"Unclassified - For Official Use Only\". In addition to FOUO information, information can be categorized according to its availability to be distributed (Distribution D may only be released to approved Department of Defense and Government Contractor personnel). Also, the statement of NOFORN (meaning No Foreign Nationals) is applied to any information which may not be released to any non-US Citizen. NOFORN and Distribution statements are often used in conjunction with classified information or alone on SBU information. Documents subject to export controls have a specific warning to that effect." ;
+      dtype:code 2 ;
+      dtype:order "3"^^xsd:int ;
+      dtype:value "unclassified"^^xsd:string ;
+      vaem:description "Unclassified is not technically a \"classification\"; this is the default, and refers to information that can be released to individuals without a clearance (Level 0). Information that is unclassified is sometimes restricted in its dissemination as SBU or FOUO. For example, the \"law enforcement bulletins\" often reported by the U.S. media when United States Department of Homeland Security raises the U.S. terror threat level are usually classified as \"U//LES\" or \"Unclassified - Law Enforcement Sensitive.\" This information is only supposed to be released to Law Enforcement groups (Sheriff, Police, etc.) Because the information is unclassified, however, it is sometimes released to the public as well. Information which is unclassified, but which the government does not believe should be subject to Freedom of Information Act requests is often classified as U//FOUO - \"Unclassified - For Official Use Only\". In addition to FOUO information, information can be categorized according to its availability to be distributed (Distribution D may only be released to approved Department of Defense and Government Contractor personnel). Also, the statement of NOFORN (meaning No Foreign Nationals) is applied to any information which may not be released to any non-US Citizen. NOFORN and Distribution statements are often used in conjunction with classified information or alone on SBU information. Documents subject to export controls have a specific warning to that effect." .
+
+voag:COMMON_PUBLIC_LICENSE_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Common Public License Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V2 , voag:GNU-GPL_V3 ;
+      voag:url "http://www.eclipse.org/legal/cpl-v10.html" ;
+      vaem:acronym "CommonPublicLicense10"^^xsd:string ;
+      vaem:description "This is a free software license. Unfortunately, its weak copyleft and choice of law clause make it incompatible with the GNU GPL."^^xsd:string .
+
+voag:CONDOR_PUBLIC_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Condor Public License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V2 , voag:GNU-GPL_V3 ;
+      voag:url "http://www.cs.wisc.edu/condor/condor-public-license.html#condor" ;
+      vaem:acronym "Condor"^^xsd:string ;
+      vaem:description "Recent versions of Condor (from 6.9.5 on) are released under the Apache License 2.0. Only older versions of Condor use this license. The Condor Public License is a free software license. It has a couple of requirements that make it incompatible with the GNU GPL, including strong restrictions on the use of Condor-related names, and a condition that you must comply with United States export laws."^^xsd:string .
+
+voag:CPAL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Common Public Attribution License 1.0 (CPAL)"^^xsd:string ;
+      voag:url "http://opensource.org/licenses/cpal_1.0" ;
+      vaem:acronym "CPAL"^^xsd:string ;
+      vaem:description "This is a free software license. It is based on the Mozilla Public License, and is incompatible with the GPL for the same reasons: it has several requirements for modified versions that do not exist in the GPL. It also requires you to publish the source of the program if you allow others to use it."^^xsd:string .
+
+voag:CRYPTIX_GENERAL_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Cryptix General License"^^xsd:string ;
+      rdfs:seeAlso voag:X11_LICENSE ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.cryptix.org/LICENSE.TXT" ;
+      vaem:acronym "CryptixGeneralLicense"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license, compatible with the GNU GPL. It is very similar to the X11 license."^^xsd:string .
+
+voag:Catalog
+      rdf:type owl:Class ;
+      rdfs:label "Catalog"^^xsd:string ;
+      rdfs:subClassOf voag:GovernedObject ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:GovernedObject ;
+                owl:onProperty voag:hasCatalogEntry
+              ] ;
+      vaem:definition "An index to a set of resources "^^xsd:string .
+
+voag:ChangeFrequency
+      rdf:type owl:Class ;
+      rdfs:label "Change frequency"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      owl:oneOf (voag:Never voag:Daily voag:Weekly voag:BiWeekly voag:Monthly voag:BiMonthly voag:Quarterly voag:BiQuarterly voag:Annually voag:UncertainFrequency) .
+
+voag:ChangeManagementProcess
+      rdf:type owl:Class ;
+      rdfs:label "Change Management Process"^^xsd:string ;
+      rdfs:subClassOf voag:GovernanceProcess ;
+      voag:shortDescription
+              "A \"Governance Process\"."^^xsd:string ;
+      vaem:description "A \"Governance Process\"."^^xsd:string .
+
+voag:ChangeType
+      rdf:type owl:Class ;
+      rdfs:label "Change type"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      vaem:description "Change Type provides an indicator for how an artifact has or will change in the future. This indicator is important to understanding the stability of an ontology."^^xsd:string .
+
+voag:ClosedIssue
+      rdf:type voag:IssueStatus ;
+      rdfs:label "Closed"^^xsd:string ;
+      dtype:value "closed"^^xsd:string .
+
+voag:ConcurrenceEvent
+      rdf:type owl:Class ;
+      rdfs:label "Concurrence event"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      voag:shortDescription
+              "A Governance Event."^^xsd:string ;
+      vaem:description "A Governance Event."^^xsd:string ;
+      owl:disjointWith voag:NonConcurrenceEvent .
+
+voag:ConfidentialityLevel
+      rdf:type owl:Class ;
+      rdfs:label "Confidentiality level"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      vaem:description "An enumerated codelist for values thath pertain to the security of a set of resources, or a resource. In 'lmc' an ontology can carry a property to denote its confidentiality."^^xsd:string .
+
+voag:CreativeCommonsJurisdiction
+      rdf:type owl:Class ;
+      rdfs:label "Creative commons jurisdiction"^^xsd:string , "Creative Commons Jurisdiction"@en-US ;
+      rdfs:subClassOf owl:Thing ;
+      voag:shortDescription
+              "the legal jurisdiction of a license"@en-US ;
+      vaem:description "the legal jurisdiction of a license"@en-US .
+
+voag:CreativeCommonsPermission
+      rdf:type owl:Class ;
+      rdfs:label "Creative Commons Permission"@en-US ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      voag:shortDescription
+              "An action that may or may not be allowed or desired"@en-US ;
+      vaem:description "An action that may or may not be allowed or desired"@en-US .
+
+voag:CreativeCommonsProhibition
+      rdf:type owl:Class ;
+      rdfs:label "Creative Commons Prohibition"@en-US ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      voag:shortDescription
+              "something you may be asked not to do"@en-US ;
+      vaem:description "something you may be asked not to do"@en-US .
+
+voag:CreativeCommonsRequirement
+      rdf:type owl:Class ;
+      rdfs:label "Requirement"@en-US ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      voag:shortDescription
+              "an action that may or may not be requested of you"@en-US ;
+      vaem:description "An action that may or may not be requested of you"@en-US .
+
+voag:CreativeCommonsWork
+      rdf:type owl:Class ;
+      rdfs:label "Creative commons work"^^xsd:string , "Creative Commons Work"@en-US ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:url
+              ] ;
+      voag:shortDescription
+              "A potentially copyrightable work"@en-US ;
+      vaem:description "A potentially copyrightable work"@en-US .
+
+voag:DSL_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Design Science License (DSL)"^^xsd:string ;
+      voag:url "http://www.gnu.org/licenses/dsl.html" ;
+      vaem:acronym "dsl"^^xsd:string .
+
+voag:Daily
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Daily"^^xsd:string .
+
+voag:DeferredIssue
+      rdf:type voag:IssueStatus ;
+      rdfs:label "Deferred"^^xsd:string ;
+      dtype:value "deferred"^^xsd:string .
+
+voag:DeletionEvent
+      rdf:type owl:Class ;
+      rdfs:label "Deletion Event"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      voag:shortDescription
+              "A \"Archival Event\"."^^xsd:string ;
+      vaem:description "A \"Archival Event\"."^^xsd:string .
+
+voag:DesignatedGovernanceRole
+      rdf:type owl:Class ;
+      rdfs:label "Designated Governance Role"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty voag:performedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:GovernanceRole ;
+                owl:onProperty vaem:hasRole
+              ] ;
+      voag:shortDescription
+              "A \"Assigned Role\" with the following instance(s): \"Assurer\", \"Project Management\", \"Resource & Process Policy\", \"Technical Definitions\", \"User\", \"Verifier\"."^^xsd:string ;
+      vaem:description "A \"Assigned Role\" with the following instance(s): \"Assurer\", \"Project Management\", \"Resource & Process Policy\", \"Technical Definitions\", \"User\", \"Verifier\"."^^xsd:string .
+
+voag:DisapprovedIssue
+      rdf:type voag:IssueStatus ;
+      rdfs:label "Disapproved Issue"^^xsd:string .
+
+voag:Document
+      rdf:type owl:Class ;
+      rdfs:label "Document"^^xsd:string ;
+      rdfs:subClassOf voag:GovernedObject .
+
+voag:DocumentationChange
+      rdf:type voag:ChangeType ;
+      rdfs:label "Documentation change"^^xsd:string .
+
+voag:ECL_V2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Educational Community License 2.0"^^xsd:string ;
+      voag:basedOn voag:APACHE_V2PT0 ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V2 ;
+      voag:url "http://www.opensource.org/licenses/ecl2.php" ;
+      vaem:acronym "ECL2.0"^^xsd:string ;
+      vaem:description "This is a free software license, and it is compatible with GPLv3. It is based on the Apache License 2.0; the scope of the patent license has changed so that when an organization's employee works on a project, the organization does not have to license all of its patents to recipients. This patent license and the indemnification clause in section 9 make this license incompatible with GPLv2."^^xsd:string .
+
+voag:ECOS_V2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "eCos license version 2.0"^^xsd:string ;
+      voag:url "http://www.gnu.org/licenses/ecos-license.html" ;
+      vaem:acronym "eCos20"^^xsd:string ;
+      vaem:description "The eCos license version 2.0 is a GPL-compatible free software license. It consists of the GPL, plus an exception allowing linking to software not under the GPL. This license has the same disadvantages as the LGPL."^^xsd:string .
+
+voag:ECPAT_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Expat License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.jclark.com/xml/copying.txt" ;
+      vaem:acronym "Expat"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license, compatible with the GNU GPL. It is sometimes ambiguously referred to as the MIT License."^^xsd:string .
+
+voag:EIFFEL_FORUM_LICENSE_V2
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Eiffel Forum License, version 2"^^xsd:string ;
+      voag:url "http://www.gnu.org/licenses/eiffel-forum-license-2.html" ;
+      vaem:acronym "Eiffel"^^xsd:string .
+
+voag:EPL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Eclipse Public License Version 1.0"^^xsd:string ;
+      rdfs:seeAlso voag:COMMON_PUBLIC_LICENSE_V1PT0 ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.eclipse.org/legal/epl-v10.html" ;
+      vaem:acronym "EPL"^^xsd:string ;
+      vaem:description "The Eclipse Public License is similar to the Common Public License. The only change is that the EPL removes the broader patent retaliation language regarding patent infringement suits specifically against Contributors to the EPL'd program."^^xsd:string .
+
+voag:EUPL_V1PT1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "European Union Public License (EUPL) version 1.1"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V2 ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.osor.eu/eupl" ;
+      vaem:acronym "EUPL"^^xsd:string ;
+      vaem:description "This is a free software license. By itself, it has a copyleft comparable to the GPL's. However, it allows recipients to distribute the work under the terms of other selected licenses, and some of those—the Eclipse Public License and the Common Public License in particular—only provide a weaker copyleft. Thus, developers can't rely on this license to provide a strong copyleft. The EUPL is compatible with GPLv2, because that is listed as one of the alternative licenses that recipients may use. However, it is incompatible with GPLv3, because recipients are not given permission to use GPLv3's terms, and the EUPL's copyleft conflicts with GPLv3's."^^xsd:string .
+
+voag:EU_DATAGRID_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "EU DataGrid Software License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.org/licenses/eudatagrid.php" ;
+      vaem:acronym "EUDataGrid"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license, compatible with the GNU GPL."^^xsd:string .
+
+voag:EarlyAdoption
+      rdf:type voag:Maturity ;
+      rdfs:label "Early adoption"^^xsd:string .
+
+voag:EnumeratedValue
+      rdf:type owl:Class ;
+      rdfs:label "Metadata Enumerated value"^^xsd:string ;
+      rdfs:subClassOf dtype:EnumeratedValue ;
+      voag:shortDescription
+              "The base class in LMC for enumerated values"^^xsd:string ;
+      vaem:description "The base class in LMC for enumerated values"^^xsd:string .
+
+voag:Event
+      rdf:type owl:Class ;
+      rdfs:label "Event"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:eventDate
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:shortDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:instigatedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:name
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:startDate
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Party ;
+                owl:onProperty voag:instigatedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:endDate
+              ] .
+
+voag:Experimental
+      rdf:type voag:Maturity ;
+      rdfs:label "Experimental"^^xsd:string .
+
+voag:FREEBSD_DL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "FreeBSD Documentation License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-FDL ;
+      voag:url "http://www.freebsd.org/copyright/freebsd-doc-license.html" ;
+      vaem:acronym "FreeBSDDL"^^xsd:string ;
+      vaem:description "This is a permissive non-copyleft free documentation license that is compatible with the GNU FDL."^^xsd:string .
+
+voag:FREETYPE_PROJECT_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Freetype Project License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V2 ;
+      voag:url "http://freetype.fis.uniroma2.it/FTL.TXT" ;
+      vaem:acronym "freetype"^^xsd:string ;
+      vaem:description "This is a free software license, and compatible with GPLv3. It has some attribution requirements which make it incompatible with GPLv2."^^xsd:string .
+
+voag:FREE_ART_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Free Art License"^^xsd:string ;
+      voag:url "http://artlibre.org/licence/lalgb.html" ;
+      vaem:acronym "FreeArt"^^xsd:string .
+
+voag:FREE_BSD_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "FreeBSD license"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.freebsd.org/copyright/freebsd-license.html" ;
+      vaem:acronym "FreeBSD"^^xsd:string ;
+      vaem:description "This is the original BSD license with the advertising clause and another clause removed. (It is also sometimes called the “2-clause BSD license”.) It is a simple, permissive non-copyleft free software license, compatible with the GNU GPL. If you want a simple, permissive non-copyleft free software license, the FreeBSD license is a reasonable choice. However, please don't call it a “BSD” or “BSD-style” license, because that is likely to cause confusion which could lead to use of the flawed original BSD license."^^xsd:string .
+
+voag:Figure
+      rdf:type owl:Class ;
+      rdfs:label "Figure"^^xsd:string ;
+      rdfs:subClassOf voag:Image ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:imageMap
+              ] ;
+      vaem:description "An illustration of some kind."^^xsd:string .
+
+voag:GNU-FDL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU Free Documentation License"^^xsd:string ;
+      voag:url "http://www.gnu.org/licenses/fdl.html" ;
+      vaem:acronym "FDL"^^xsd:string .
+
+voag:GNU-GPL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU General Public License (GPL)"^^xsd:string ;
+      voag:url "http://www.gnu.org/licenses/gpl.html"^^xsd:anyURI ;
+      vaem:acronym "GPL"^^xsd:string ;
+      vaem:description "The GNU GPL can be used for general data which is not software, as long as one can determine what the definition of “source code” refers to in the particular case. As it turns out, the DSL (see below) also requires that you determine what the “source code” is, using approximately the same definition that the GPL uses."^^xsd:string .
+
+voag:GNU-GPL_V2
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU General Public License (GPL) version 2"^^xsd:string ;
+      voag:url "http://www.gnu.org/licenses/old-licenses/gpl-2.0.html" ;
+      vaem:acronym "GPLv2"^^xsd:string .
+
+voag:GNU-GPL_V3
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU General Public License (GPL) version 3"^^xsd:string ;
+      voag:supercedes voag:GNU-GPL_V2 ;
+      voag:url "http://www.gnu.org/licenses/gpl.html"^^xsd:anyURI ;
+      vaem:acronym "GNUGPL"^^xsd:string ;
+      vaem:description "This is the latest version of the GNU GPL: a free software license, and a copyleft license. We recommend it for most software packages. GPLv3 is not compatible with GPLv2 by itself. However, most software released under GPLv2 allows you to use the terms of later versions of the GPL as well. When this is the case, you can use the code under GPLv3 to make the desired combination."^^xsd:string .
+
+voag:GNU-LGPL_V2PT1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU Lesser General Public License (LGPL) version 2.1"^^xsd:string ;
+      voag:supercededBy voag:GNU-LGPL_V3 ;
+      voag:url "http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html" ;
+      vaem:acronym "LGPLv2.1"^^xsd:string ;
+      vaem:description "This is the previous version of the LGPL: a free software license, but not a strong copyleft license, because it permits linking with non-free modules. It is compatible with GPLv2 and GPLv3."^^xsd:string .
+
+voag:GNU-LGPL_V3
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU Lesser General Public License (LGPL) version 3"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.gnu.org/licenses/lgpl.html" ;
+      vaem:acronym "LGPL"^^xsd:string ;
+      vaem:description "This is the latest version of the LGPL: a free software license, but not a strong copyleft license, because it permits linking with non-free modules. It is compatible with GPLv3. Note that LGPLv3 is not compatible with GPLv2 by itself. However, most software released under GPLv2 allows you to use the terms of later versions of the GPL as well. When this is the case, you can use the code under GPLv3 to make the desired combination. "^^xsd:string .
+
+voag:GNU_ALL_PERMISSIVE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU All-Permissive License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.gnu.org/prep/maintain/html_node/License-Notices-for-Other-Files.html" ;
+      vaem:acronym "GNUAllPermissive"^^xsd:string ;
+      vaem:description "This is a simple permissive free software license, compatible with the GNU GPL, which we recommend GNU packages use for README and other small supporting files. All developers can feel free to use it in similar situations. "^^xsd:string .
+
+voag:GNU_VERBATIM_COPYING_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GNU Verbatim Copying License"^^xsd:string ;
+      voag:url "http://www.gnu.org/licenses/licenses.html#VerbatimCopying" ;
+      vaem:acronym "GNUVerbatim"^^xsd:string ;
+      vaem:description "This is the license used throughout the GNU web site. It is very simple, and especially well-suited to written works."^^xsd:string .
+
+voag:GPLPA
+      rdf:type voag:LicenseModel ;
+      rdfs:label "GPL for Computer Programs of the Public Administration"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.celepar.pr.gov.br/modules/conteudo/conteudo.php?conteudo=69" ;
+      vaem:acronym "GPL-PA"^^xsd:string ;
+      vaem:description "The GPL-PA (whose original name in Portuguese is “Licença Pública Geral para Administração Pública”) is non-free for several reasons: (1) It permits use only in “normal circumstances”; (2) It does not allow distribution of source code without binaries; (3) Its permissions lapse after 50 years."^^xsd:string .
+
+voag:GR_Authorizer
+      rdf:type voag:GovernanceRole ;
+      rdfs:label "Authorizer"^^xsd:string ;
+      dtype:value "authorizer"^^xsd:string .
+
+voag:GR_Steward
+      rdf:type voag:GovernanceRole ;
+      rdfs:label "Steward"^^xsd:string ;
+      dtype:value "steward"^^xsd:string .
+
+voag:GR_Submitter
+      rdf:type voag:GovernanceRole ;
+      rdfs:label "Submitter"^^xsd:string ;
+      dtype:value "submitter"^^xsd:string .
+
+voag:Governance
+      rdf:type owl:Class ;
+      rdfs:label "Governance"^^xsd:string ;
+      rdfs:subClassOf voag:Qualifier ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasConfidentiality
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Governance ;
+                owl:onProperty voag:supercedes
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:AssignedRole ;
+                owl:onProperty voag:accountableEntityOf
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Document ;
+                owl:onProperty voag:hasNormativeDocument
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty voag:accountableEntityOf
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Document ;
+                owl:onProperty voag:hasReferenceDocument
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Issue ;
+                owl:onProperty voag:hasIssue
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:ConfidentialityLevel ;
+                owl:onProperty voag:hasConfidentiality
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:GovernanceEvent ;
+                owl:onProperty voag:hasGovernanceEvent
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:isFOSS
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Document ;
+                owl:onProperty voag:hasApplicableDocument
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Party ;
+                owl:onProperty voag:hasOwner
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:GovernanceProtocol ;
+                owl:onProperty voag:hasProtocol
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:ChangeType ;
+                owl:onProperty voag:hasAnticipatedChangeType
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasLicenseType
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:LicenseModel ;
+                owl:onProperty voag:hasLicenseType
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:isITAR
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty voag:hasProtocol
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty voag:hasApprovalStatus
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasOwner
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:ChangeFrequency ;
+                owl:onProperty voag:frequencyOfChange
+              ] ;
+      voag:shortDescription
+              "Governance is about the status tracking and processes that need to exist on information objects and services for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction are obtained at each appropriate stage."^^xsd:string ;
+      vaem:definition "Governance concerns how an artifact is provisioned and managed over its lifecycle. Governance also concerns the status tracking and processes that need to exist on information objects and services for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction are obtained at each appropriate stage."^^xsd:string .
+
+voag:GovernanceEvent
+      rdf:type owl:Class ;
+      rdfs:label "Governance Event"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      voag:shortDescription
+              "A \"Governance Event\"."^^xsd:string ;
+      vaem:description "A \"Governance Event\"."^^xsd:string .
+
+voag:GovernanceProcess
+      rdf:type owl:Class ;
+      rdfs:label "Governance Process"^^xsd:string ;
+      rdfs:subClassOf voag:Process ;
+      voag:shortDescription
+              "A \"Process\"."^^xsd:string ;
+      vaem:description "A \"Process\"."^^xsd:string .
+
+voag:GovernanceProtocol
+      rdf:type owl:Class ;
+      rdfs:label "Governance Protocol"^^xsd:string ;
+      rdfs:subClassOf voag:Qualifier ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:StakeholderGroup ;
+                owl:onProperty voag:isApprovedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:ChangeManagementProcess ;
+                owl:onProperty voag:hasChangeManagementProcess
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "3"^^xsd:int ;
+                owl:onProperty voag:hasProcess
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasChangeManagementProcess
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasApprovalProcess
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:isGovernedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:StakeholderGroup ;
+                owl:onProperty voag:mayNeedConcurrenceFrom
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:ApprovalProcess ;
+                owl:onProperty voag:hasApprovalProcess
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:StakeholderGroup ;
+                owl:onProperty voag:reviewedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasIssueResolutionProcess
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Organization ;
+                owl:onProperty voag:isGovernedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:IssueResolutionProcess ;
+                owl:onProperty voag:hasIssueResolutionProcess
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:onProperty voag:isGovernedBy ;
+                owl:someValuesFrom voag:StakeholderGroup
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:onProperty voag:hasNormativeDocument ;
+                owl:someValuesFrom voag:Document
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:StakeholderGroup ;
+                owl:onProperty voag:isInterestOf
+              ] ;
+      voag:shortDescription
+              "Governance is used  to mean the processes that need to exist for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction for a 'GovernedEntity' is obtained at each appropriate stage."^^xsd:string ;
+      vaem:description "Governance is used  to mean the processes that need to exist for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction for a 'GovernedEntity' is obtained at each appropriate stage."^^xsd:string ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf ([ rdf:type owl:Restriction ;
+                            owl:onProperty voag:isGovernedBy ;
+                            owl:someValuesFrom voag:StakeholderGroup
+                          ] [ rdf:type owl:Restriction ;
+                            owl:onProperty voag:hasProcess ;
+                            owl:someValuesFrom voag:GovernanceProcess
+                          ] [ rdf:type owl:Restriction ;
+                            owl:onProperty voag:hasNormativeDocument ;
+                            owl:someValuesFrom voag:Document
+                          ])
+              ] .
+
+voag:GovernanceRole
+      rdf:type owl:Class ;
+      rdfs:label "Governance Role"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      voag:shortDescription
+              "A \"Role\" with the following instance(s): \"authorizer\", \"steward\", \"submitter\"."^^xsd:string ;
+      vaem:description "A \"Role\" with the following instance(s): \"authorizer\", \"steward\", \"submitter\"."^^xsd:string .
+
+voag:GovernedObject
+      rdf:type owl:Class ;
+      rdfs:label "Governed Object"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:longDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:shortDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:name
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:url
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasProvenance
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:documentedAt
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Provenance ;
+                owl:onProperty voag:hasProvenance
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Governance ;
+                owl:onProperty voag:hasGovernance
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasGovernance
+              ] ;
+      vaem:definition "An abstract class for all governed entities"^^xsd:string .
+
+voag:GovernedService
+      rdf:type owl:Class ;
+      rdfs:label "Governed service"^^xsd:string ;
+      rdfs:subClassOf voag:Service .
+
+voag:Graph
+      rdf:type owl:Class ;
+      rdfs:label "Graph"^^xsd:string ;
+      rdfs:subClassOf void:Dataset ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:attributionText
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:urlOfRDFfile
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Attribution ;
+                owl:onProperty voag:withAttributionTo
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:hasRole
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:ProductLogo ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom vaem:GraphRole ;
+                owl:onProperty vaem:hasRole
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:urlOfTurtleFile
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:curatedGraphURI
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:namespace
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:namespacePrefix
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:downloads
+              ] ;
+      vaem:definition "A set of RDF triples in an ontology graph specified according to VOAG."^^xsd:string .
+
+voag:HESSLA
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Hacktivismo Enhanced-Source Software License Agreement"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.hacktivismo.com/about/hessla.php" ;
+      vaem:acronym "HESSLA"^^xsd:string ;
+      vaem:description "This is not a free software license, because it restricts what jobs people can use the software for, and restricts in substantive ways what jobs modified versions of the program can do."^^xsd:string .
+
+voag:IBM_PUBLIC_LICENSE_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "IBM Public License, Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.org/licenses/ibmpl.php" ;
+      vaem:acronym "IBMPL"^^xsd:string ;
+      vaem:description "This is a free software license. Unfortunately, it has a choice of law clause which makes it incompatible with the GNU GPL."^^xsd:string .
+
+voag:IJG_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Independent JPEG Group License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://dev.w3.org/cvsweb/Amaya/libjpeg/Attic/README?rev=1.2" ;
+      vaem:acronym "IJG"^^xsd:string ;
+      vaem:description "This is a free software license, and compatible with the GNU GPL. The authors have assured us that developers who document changes as required by the GPL will also comply with the similar requirement in this license."^^xsd:string .
+
+voag:IMATRIX_STANDARD_FUNCTION_LIBRARY_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of the iMatix Standard Function Library"^^xsd:string ;
+      voag:url "http://legacy.imatix.com/html/sfl/sfl4.htm#license" ;
+      vaem:acronym "iMatix"^^xsd:string ;
+      vaem:description "This is a free software license and is GPL compatible."^^xsd:string .
+
+voag:IMLIB2_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of imlib2"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://trac.enlightenment.org/e/browser/trunk/imlib2/COPYING" ;
+      vaem:acronym "imlib"^^xsd:string ;
+      vaem:description "This is a free software license, and GPL-compatible. The author has explained to us that the GPL's options for providing source all mean the source has been \"made available publicly\" in their words."^^xsd:string .
+
+voag:INTEL_OPEN_SOURCE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Intel Open Source License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.org/licenses/intel-open-source-license.html" ;
+      vaem:acronym "intel"^^xsd:string ;
+      vaem:description "This is a Free Software license, compatible with the GNU GPL."^^xsd:string .
+
+voag:IPL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Interbase Public License, Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.borland.com/devsupport/interbase/opensource/IPL.html" ;
+      vaem:acronym "IPL"^^xsd:string ;
+      vaem:description "This is a free software license that is essentially the same as the Mozilla Public License, Version 1.1. Like the MPL, the IPL has some complex restrictions that make it incompatible with the GNU GPL. That is, a module covered by the GPL and a module covered by the IPL cannot legally be linked together."^^xsd:string .
+
+voag:ISC_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "ISC License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.isc.org/software/license" ;
+      vaem:acronym "ISC"^^xsd:string ;
+      vaem:description "This license is sometimes also known as the OpenBSD License. It is a free software license, and compatible with the GNU GPL. This license does have an unfortunate wording choice: it provides recipients with \"Permission to use, copy, modify, and/or distribute this software....\" This is roughly the same language from the license of Pine that the University of Washington later claimed prohibited people from distributing modified versions of the software."^^xsd:string .
+
+voag:Icon
+      rdf:type owl:Class ;
+      rdfs:label "Icon"^^xsd:string ;
+      rdfs:subClassOf voag:Image ;
+      vaem:description "A logo of some kind"^^xsd:string .
+
+voag:Image
+      rdf:type owl:Class ;
+      rdfs:label "Image"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:width
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:caption
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:height
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:image
+              ] ;
+      vaem:description "Image is a class for figures, pictures, logos, and icons  of various kinds"^^xsd:string .
+
+voag:InDevelopment
+      rdf:type voag:Maturity ;
+      rdfs:label "In development"^^xsd:string .
+
+voag:Issue
+      rdf:type owl:Class ;
+      rdfs:label "Issue"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:IssueStatus ;
+                owl:onProperty voag:hasStatus
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:title
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:priority
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty voag:userID
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasStatus
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:longDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:PriorityValue ;
+                owl:onProperty voag:priority
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:BoardDispositionStatus ;
+                owl:onProperty voag:dispositionStatus
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty voag:disposition
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:shortDescription
+              ] ;
+      voag:shortDescription
+              "captures issues such as raising of an issue related to a particular entity in a registry"^^xsd:string ;
+      vaem:description "captures issues such as raising of an issue related to a particular entity in a registry"^^xsd:string .
+
+voag:IssueResolutionProcess
+      rdf:type owl:Class ;
+      rdfs:label "Issue Resolution Process"^^xsd:string ;
+      rdfs:subClassOf voag:GovernanceProcess ;
+      voag:shortDescription
+              "A \"Governance Process\"."^^xsd:string ;
+      vaem:description "A \"Governance Process\"."^^xsd:string .
+
+voag:IssueStatus
+      rdf:type owl:Class ;
+      rdfs:label "Issue Status"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      voag:shortDescription
+              "The status of an issue: \"Closed\", \"Deferred\", \"Non issue\", \"Open\", \"Resolved\"."^^xsd:string ;
+      vaem:description "The status of an issue: \"Closed\", \"Deferred\", \"Non issue\", \"Open\", \"Resolved\"."^^xsd:string .
+
+voag:JAHIA_COMMUNITY_SOURCE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Jahia Community Source License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.jahia.org/jahia/Jahia/pid/145" ;
+      vaem:acronym "Jahia"^^xsd:string ;
+      vaem:description "The Jahia Community Source License is not a free software license. Use of the source code is limited to research purposes."^^xsd:string .
+
+voag:JOSL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Jabber Open Source License, Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://code.google.com/p/jabber-net/source/browse/branches/RELEASE_1_0/LICENSE.txt" ;
+      vaem:acronym "josl"^^xsd:string ;
+      vaem:description "The license is a free software license, incompatible with the GPL. It permits relicensing under a certain class of licenses, those which include all the requirements of the Jabber license. The GPL is not a member of that class, so the Jabber license does not permit relicensing under the GPL. Therefore, it is not compatible."^^xsd:string .
+
+voag:JSON_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "The JSON License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.json.org/license.html" ;
+      vaem:acronym "JSON"^^xsd:string ;
+      vaem:description "This is the license of the original implementation of the JSON data interchange format. This license uses the Expat license as a base, but adds a clause mandating: “The Software shall be used for Good, not Evil.” This is a restriction on usage and thus conflicts with freedom 0. The restriction might be unenforcible, but we cannot presume that. Thus, the license is nonfree."^^xsd:string .
+
+voag:LPPL_V1PT2
+      rdf:type voag:LicenseModel ;
+      rdfs:label "LaTeX Project Public License 1.2"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.latex-project.org/lppl/lppl-1-2.txt" ;
+      vaem:acronym "LPPL-1.2"^^xsd:string ;
+      vaem:description "This license is an incomplete statement of the distribution terms for LaTeX. As far as it goes, it is a free software license, but incompatible with the GPL because it has many requirements that are not in the GPL.  This license contains complex and annoying restrictions on how to publish a modified version, including one requirement that falls just barely on the good side of the line of what is acceptable: that any modified file must have a new name. The reason this requirement is acceptable for LaTeX is that TeX has a facility to allow you to map file names, to specify “use file bar when file foo is requested”. With this facility, the requirement is merely annoying; without the facility, the same requirement would be a serious obstacle, and we would have to conclude it makes the program non-free. This condition may cause trouble with some major modifications. For example, if you wanted to port an LPPL-covered work to another system that lacked a similar remapping facility, but still required users to request this file by name, you would need to implement a remapping facility too to keep this software free. That would be a nuisance, but the fact that a license would make code nonfree if transplanted into a very different context does not make it nonfree in the original context. The LPPL says that some files, in certain versions of LaTeX, may have additional restrictions, which could render them non-free. For this reason, it may take some careful checking to produce a version of LaTeX that is free software. The LPPL makes the controversial claim that simply having files on a machine where a few other people could log in and access them in itself constitutes distribution. We believe courts would not uphold this claim, but it is not good for people to start making the claim. Note: These comments are for version 1.2 (3 Sep 1999) of the LPPL."^^xsd:string .
+
+voag:LPPL_V1PT3A
+      rdf:type voag:LicenseModel ;
+      rdfs:label "LaTeX Project Public License 1.3a"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:supercedes voag:LPPL_V1PT2 ;
+      voag:url "http://www.latex-project.org/lppl/lppl-1-3a.txt" ;
+      vaem:acronym "LPPL-1.3a"^^xsd:string ;
+      vaem:description "GNU have not written a full analysis of this license, but it is a free software license, with less stringent requirements on distribution than LPPL 1.2 (described next). It is still incompatible with the GPL because some modified versions must include a copy of or pointer to an unmodified version."^^xsd:string .
+
+voag:LUCENT_PUBLIC_LICENSE_V1PT02
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Lucent Public License Version 1.02 (Plan 9 license)"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://plan9.bell-labs.com/plan9dist/license.html" ;
+      vaem:acronym "lucent102"^^xsd:string ;
+      vaem:description "This is a free software license, but it is incompatible with the GNU GPL because of its choice of law clause. We recommend that you not use this license for new software that you write, but it is ok to use and improve Plan 9 under this license."^^xsd:string .
+
+voag:LicenseModel
+      rdf:type owl:Class ;
+      rdfs:label "License Model"^^xsd:string ;
+      rdfs:subClassOf voag:GovernedObject ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:image
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:LicenseModel ;
+                owl:onProperty voag:compatibleWith
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:url
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:LicenseModel ;
+                owl:onProperty voag:basedOn
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:acronym
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:LicenseModel ;
+                owl:onProperty voag:incompatibleWith
+              ] ;
+      vaem:definition "A License Model describes the licensing conditions associated with a software artifact."^^xsd:string .
+
+voag:LinkedModelCatalog
+      rdf:type owl:Class ;
+      rdfs:label "Linked model catalog"^^xsd:string ;
+      rdfs:subClassOf voag:Catalog ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasOntologyArchitectureDiagram
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Graph ;
+                owl:onProperty voag:hasCatalogEntry
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Figure ;
+                owl:onProperty voag:hasOntologyArchitectureDiagram
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:urlOfRDFfile
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:urlOfTurtleFile
+              ] .
+
+voag:LinkedModelLogo-200x80
+      rdf:type voag:Logo ;
+      rdfs:label "LinkedModel ICON 200 x 80"^^xsd:string ;
+      voag:caption "LinkedModel Standard ICON"^^xsd:string ;
+      voag:height "80"^^xsd:string ;
+      voag:image "http://www.linkedmodel.org/lib/lm/images/logos/linkedmodels-logo.gif"^^xsd:anyURI ;
+      voag:width "200"^^xsd:string ;
+      vaem:description "LinkedModel Logo"^^xsd:string .
+
+voag:Logo
+      rdf:type owl:Class ;
+      rdfs:label "Logo"^^xsd:string ;
+      rdfs:subClassOf voag:Image ;
+      vaem:description "Logo is ..."^^xsd:string .
+
+voag:MODIFIED_BSD_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Modified BSD license"^^xsd:string ;
+      rdfs:seeAlso voag:BSD_ORIGINAL_LICENSE ;
+      voag:url "http://www.xfree86.org/3.3.6/COPYRIGHT2.html#5" ;
+      vaem:acronym "ModifiedBSD"^^xsd:string ;
+      vaem:description "This is the original BSD license, modified by removal of the advertising clause. It is a simple, permissive non-copyleft free software license, compatible with the GNU GPL. If you want a simple, permissive non-copyleft free software license, the modified BSD license is a reasonable choice. However, it is risky to recommend use of “the BSD license”, because confusion could easily occur and lead to use of the flawed original BSD license. To avoid this risk, you can suggest the X11 license instead. The X11 license and the revised BSD license are more or less equivalent. This license is sometimes referred to as the 3-clause BSD license."^^xsd:string .
+
+voag:MPL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Mozilla Public License (MPL)"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.mozilla.org/MPL/MPL-1.1.html" ;
+      vaem:acronym "MPL"^^xsd:string ;
+      vaem:description "This is a free software license which is not a strong copyleft; unlike the X11 license, it has some complex restrictions that make it incompatible with the GNU GPL. That is, a module covered by the GPL and a module covered by the MPL cannot legally be linked together. GNU urge you not to use the MPL for this reason. However, MPL 1.1 has a provision (section 13) that allows a program (or parts of it) to offer a choice of another license as well. If part of a program allows the GNU GPL as an alternate choice, or any other GPL-compatible license as an alternate choice, that part of the program has a GPL-compatible license."^^xsd:string .
+
+voag:MS-LPL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Microsoft Limited Public License (Ms-LPL)"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.microsoft.com/resources/sharedsource/licensingbasics/limitedpubliclicense.mspx" ;
+      vaem:acronym "Ms-LPL"^^xsd:string ;
+      vaem:description "This license is non-free because of section 3(F), which requires that any modified software you make from the original code must run on Windows. The Microsoft Public License does not have this restriction."^^xsd:string .
+
+voag:MS-LRL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Microsoft Limited Reciprocal License (Ms-LRL)"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.microsoft.com/resources/sharedsource/licensingbasics/limitedreciprocallicense.mspx" ;
+      vaem:acronym "Ms-LRL"^^xsd:string ;
+      vaem:description "This license is non-free because of section 3(G), which requires that any modified software you make from the original code must run on Windows. The Microsoft Reciprocal License does not have this restriction."^^xsd:string .
+
+voag:MS-PL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Microsoft Public License (Ms-PL)"^^xsd:string ;
+      voag:url "http://www.microsoft.com/opensource/licenses.mspx#Ms-PL" ;
+      vaem:acronym "ms-pl"^^xsd:string ;
+      vaem:description "This is a free software license; it has a copyleft that is not strong, but incompatible with the GNU GPL. GNU urge you not to use the Ms-PL for this reason."^^xsd:string .
+
+voag:MS-RL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Microsoft Reciprocal License (Ms-RL)"^^xsd:string ;
+      voag:basedOn voag:MS-PL ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.microsoft.com/opensource/licenses.mspx#Ms-RL" ;
+      vaem:acronym "ms-rl"^^xsd:string ;
+      vaem:description "This is a free software license. It's based on the Microsoft Public License, and has an additional clause to make the copyleft just a little bit stronger. It's also incompatible with the GNU GPL, and GNU urge you not to use the Ms-RL for this reason."^^xsd:string .
+
+voag:MS-RRL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Microsoft Reference License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.microsoft.com/resources/sharedsource/licensingbasics/referencelicense.mspx" ;
+      vaem:acronym "Ms-RL"^^xsd:string ;
+      vaem:description "This is a non-free license: you are not allowed to modify the software at all, and you are only allowed to share it under very particular circumstances."^^xsd:string .
+
+voag:MS-SSL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Microsoft's Shared Source CLI, C#, and Jscript License"^^xsd:string ;
+      voag:url "http://fedoraproject.org/wiki/Licensing/Microsoft_Shared_Source_License" ;
+      vaem:acronym "Ms-SS"^^xsd:string ;
+      vaem:description "This license does not permit commercial distribution, and only allows commercial use under certain circumstances.  Microsoft has other licenses which it describes as “Shared Source”, some of which have different restrictions."^^xsd:string .
+
+voag:Maturity
+      rdf:type owl:Class ;
+      rdfs:label "Maturity"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue ;
+      owl:unionOf (voag:WidelyAdopted voag:SomeAdoption voag:EarlyAdoption voag:Proposed voag:UnknownMaturity voag:Experimental voag:InDevelopment) .
+
+voag:ModificationChange
+      rdf:type voag:ChangeType ;
+      rdfs:label "Modification change"^^xsd:string .
+
+voag:Monthly
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Monthly"^^xsd:string .
+
+voag:NASA_OPEN_SOURCE_AGREEMENT
+      rdf:type voag:LicenseModel ;
+      rdfs:label "NASA Open Source Agreement"^^xsd:string ;
+      voag:url "http://www.opensource.org/licenses/nasa1.3" ;
+      vaem:acronym "NASA"^^xsd:string ;
+      vaem:description "The NASA Open Source Agreement, version 1.3, is not a free software license because it includes a provision requiring changes to be your “original creation”. Free software development depends on combining code from third parties, and the NASA license doesn't permit this. GNU urge you not to use this license. In addition, if you are a United States citizen, please write to NASA and call for the use of a truly free software license."^^xsd:string .
+
+voag:NCSA_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "NCSA/University of Illinois Open Source License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.org/licenses/UoI-NCSA.php" ;
+      vaem:acronym "NCSA"^^xsd:string ;
+      vaem:description "This license is based on the terms of the Expat and modified BSD licenses. It is a simple, permissive non-copyleft free software license, compatible with the GNU GPL."^^xsd:string .
+
+voag:NOKIA_OPEN_SOURCE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Nokia Open Source License"^^xsd:string ;
+      rdfs:seeAlso voag:MPL ;
+      voag:url "http://opensource.org/licenses/nokia.html" ;
+      vaem:acronym "Nokia"^^xsd:string ;
+      vaem:description "This is similar to the Mozilla Public License: a free software license incompatible with the GNU GPL."^^xsd:string .
+
+voag:NOSL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Netizen Open Source License (NOSL), Version 1.0"^^xsd:string ;
+      rdfs:seeAlso voag:MPL ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://bits.netizen.com.au/licenses/NOSL/nosl.txt" ;
+      vaem:acronym "NOSL"^^xsd:string ;
+      vaem:description "This is a free software license that is essentially the same as the Mozilla Public License, Version 1.1. Like the MPL, the NOSL has some complex restrictions that make it incompatible with the GNU GPL. That is, a module covered by the GPL and a module covered by the NOSL cannot legally be linked together. GNU urge you not to use the NOSL for this reason."^^xsd:string .
+
+voag:NPL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Netscape Public License (NPL)"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.mozilla.org/NPL/NPL-1.1.html" ;
+      vaem:acronym "NPL"^^xsd:string ;
+      vaem:description "This is a free software license, not a strong copyleft, and incompatible with the GNU GPL. It consists of the Mozilla Public License with an added clause that permits Netscape to use your added code even in their proprietary versions of the program. Of course, they do not give you permission to use their code in the analogous way. GNU urge you not to use the NPL."^^xsd:string .
+
+voag:Never
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Never"^^xsd:string .
+
+voag:NoAttributionSpecified
+      rdf:type voag:Attribution ;
+      rdfs:label "No attribution specified"^^xsd:string .
+
+voag:NoGovernanceSpecified
+      rdf:type voag:Governance ;
+      rdfs:label "No governance specified"^^xsd:string .
+
+voag:NoPedigreeSpecified
+      rdf:type voag:Pedigree ;
+      rdfs:label "No pedigree specified"^^xsd:string .
+
+voag:NoProvenanceSpecified
+      rdf:type voag:Provenance ;
+      rdfs:label "No provenance specified"^^xsd:string .
+
+voag:NonConcurrenceEvent
+      rdf:type owl:Class ;
+      rdfs:label "Non-Concurrence Event"^^xsd:string ;
+      rdfs:subClassOf voag:GovernanceEvent ;
+      voag:shortDescription
+              "A \"Governance Event\"."^^xsd:string ;
+      vaem:description "A \"Governance Event\"."^^xsd:string .
+
+voag:NonIssue
+      rdf:type voag:IssueStatus ;
+      rdfs:label "Non-issue"^^xsd:string ;
+      dtype:value "non-issue"^^xsd:string .
+
+voag:OCL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Open Content License, Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:OPL , voag:GNU-FDL ;
+      voag:url "http://opencontent.org/opl.shtml" ;
+      vaem:acronym "OCL"^^xsd:string ;
+      vaem:description "This license does not qualify as free, because there are restrictions on charging money for copies. GNU recommend you do not use this license. Note that this license is not the same as the Open Publication License. The practice of abbreviating “Open Content License” as “OPL” leads to confusion between them. For clarity, it is better not to use the abbreviation “OPL” for either license. It is worth spelling their names in full to make sure people understand what you say."^^xsd:string .
+
+voag:OPENLDAP_LICENSE_V2PT7
+      rdf:type voag:LicenseModel ;
+      rdfs:label "OpenLDAP License, Version 2.7"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.openldap.org/software/release/license.html" ;
+      vaem:acronym "newOpenLDAP"^^xsd:string ;
+      vaem:description "This is a permissive non-copyleft free software license that is compatible with the GNU GPL."^^xsd:string .
+
+voag:OPEN_DIRECTORY_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Open Directory License (aka dmoz.org License)"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-FDL ;
+      voag:url "http://dmoz.org/license.html" ;
+      vaem:acronym "OpenDirectory"^^xsd:string ;
+      vaem:description "This is not a free documentation license. The primary problems are that your right to redistribute any given version is not permanent and that it requires the user to keep checking back at that site, which is too restrictive of the user's freedom."^^xsd:string .
+
+voag:OPEN_PUBLICATION_LICENSE_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Open Publication License, Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-FDL ;
+      voag:url "http://opencontent.org/openpub/" ;
+      vaem:acronym "RealOPL"^^xsd:string ;
+      vaem:description "This license can be used as a free documentation license. It is a copyleft free documentation license provided the copyright holder does not exercise any of the “LICENSE OPTIONS” listed in Section VI of the license. But if either of the options is invoked, the license becomes non-free. In any case, it is incompatible with the GNU FDL.  This creates a practical pitfall in using or recommending this license: if you recommend “Use the Open Publication License, Version 1.0 but don't enable the options”, it would be easy for the second half of that recommendation to get forgotten; someone might use the license with the options, making a manual non-free, and yet think he or she is following your advice. Likewise, if you use this license without either of the options to make your manual free, someone else might decide to imitate you, then change his or her mind about the options thinking that that is just a detail; the result would be that his or her manual is non-free. Thus, while manuals published under this license do qualify as free documentation if neither license option was used, it is better to use the GNU Free Documentation License and avoid the risk of leading someone else astray. Please note that this license is not the same as the Open Content License. These two licenses are frequently confused, as the Open Content License is often referred to as the “OPL”. For clarity, it is better not to use the abbreviation “OPL” for either license. It is worth spelling their names in full to make sure people understand what you say."^^xsd:string .
+
+voag:OPEN_SOFTWARE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Open Software License, all versions through 3.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.org/licenses/osl-3.0.php" ;
+      vaem:acronym "OSL"^^xsd:string ;
+      vaem:description "The Open Software License is a free software license. It is incompatible with the GNU GPL in several ways. Recent versions of the Open Software License have a term which requires distributors to try to obtain explicit assent to the license. This means that distributing OSL software on ordinary FTP sites, sending patches to ordinary mailing lists, or storing the software in an ordinary version control system, is arguably a violation of the license and would subject you to possible termination of the license. Thus, the Open Software License makes it very difficult to develop software using the ordinary tools of free software development. For this reason, and because it is incompatible with the GPL, GNU recommend that no version of the OSL be used for any software.  GNU urge you not to use the Open Software License for software you write. However, there is no reason to avoid running programs that have been released under this license."^^xsd:string .
+
+voag:OPEN_SSL_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "OpenSSL license"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.sdisw.com/openssl.htm" ;
+      vaem:acronym "OpenSSL"^^xsd:string ;
+      vaem:description "The license of OpenSSL is a conjunction of two licenses, one of them being the license of SSLeay. You must follow both. The combination results in a copyleft free software license that is incompatible with the GNU GPL. It also has an advertising clause like the original BSD license and the Apache license. GNU recommend using GNUTLS instead of OpenSSL in software you write. However, there is no reason not to use OpenSSL and applications that work with OpenSSL."^^xsd:string .
+
+voag:OPL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Open Public License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "https://fedoraproject.org/wiki/Licensing/Open_Public_License" ;
+      vaem:acronym "OPL"^^xsd:string ;
+      vaem:description "This is not a free software license, because it requires sending every published modified version to a specific initial developer. There are also some other words in this license whose meaning we're not sure of that might also be problematic."^^xsd:string .
+
+voag:OpenIssue
+      rdf:type voag:IssueStatus ;
+      rdfs:label "Open"^^xsd:string ;
+      voag:shortDescription
+              "An issue with undetermined disposition,"^^xsd:string ;
+      dtype:value "open"^^xsd:string ;
+      vaem:description "An issue with undetermined disposition,"^^xsd:string .
+
+voag:Organization
+      rdf:type owl:Class ;
+      rdfs:label "Organization"^^xsd:string ;
+      rdfs:subClassOf voag:Party ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:OrganizationLogo ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:url
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasLogo
+              ] .
+
+voag:OrganizationLogo
+      rdf:type owl:Class ;
+      rdfs:label "Organization logo"^^xsd:string ;
+      rdfs:subClassOf voag:Logo ;
+      vaem:description "A logo for an organization"^^xsd:string .
+
+voag:PHORUM_LICENSE_V2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Phorum License, Version 2.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://phorum.org/license.txt" ;
+      vaem:acronym "Phorum"^^xsd:string ;
+      vaem:description "This is a free software license but it is incompatible with the GPL. Section 5 makes the license incompatible with the GPL."^^xsd:string .
+
+voag:PHP_LICENSE_V3PT01
+      rdf:type voag:LicenseModel ;
+      rdfs:label "PHP License, Version 3.01"^^xsd:string ;
+      voag:url "http://www.php.net/license/3_01.txt" ;
+      vaem:acronym "PHP-3.01"^^xsd:string ;
+      vaem:description "This license is used by most of PHP4. It is a non-copyleft free software license. It is incompatible with the GNU GPL because it includes strong restrictions on the use of “PHP” in the name of derived products. GNU recommend that you not use this license for anything except PHP add-ons."^^xsd:string .
+
+voag:PS_Draft
+      rdf:type voag:PublicationStatus ;
+      rdfs:label "Draft Status"^^xsd:string ;
+      dtype:value "draft"^^xsd:string .
+
+voag:PS_Final
+      rdf:type voag:PublicationStatus ;
+      rdfs:label "Final Status"^^xsd:string .
+
+voag:PS_Interim
+      rdf:type voag:PublicationStatus ;
+      rdfs:label "Interim Status"^^xsd:string ;
+      dtype:value "interim"^^xsd:string .
+
+voag:PS_Obsolete
+      rdf:type voag:PublicationStatus ;
+      rdfs:label "Obsolete"^^xsd:string ;
+      dtype:value "obsolete"^^xsd:string .
+
+voag:PS_Review
+      rdf:type voag:PublicationStatus ;
+      rdfs:label "Review"^^xsd:string ;
+      dtype:value "review"^^xsd:string .
+
+voag:PS_Unknown
+      rdf:type voag:PublicationStatus ;
+      rdfs:label "Unknown Status"^^xsd:string ;
+      dtype:value "unknown"^^xsd:string .
+
+voag:PV_HighPriority
+      rdf:type voag:PriorityValue ;
+      rdfs:label "High priority"^^xsd:string ;
+      dtype:value "high"^^xsd:string .
+
+voag:PV_LowPriority
+      rdf:type voag:PriorityValue ;
+      rdfs:label "Low priority"^^xsd:string ;
+      dtype:value "low"^^xsd:string .
+
+voag:PV_MediumPriority
+      rdf:type voag:PriorityValue ;
+      rdfs:label "Medium priority"^^xsd:string ;
+      dtype:value "medium"^^xsd:string .
+
+voag:PV_NotApplicable
+      rdf:type voag:PriorityValue ;
+      rdfs:label "Not Applicable"^^xsd:string ;
+      dtype:value "na"^^xsd:string .
+
+voag:PV_ToBeDetermined
+      rdf:type voag:PriorityValue ;
+      rdfs:label "TBD"^^xsd:string ;
+      dtype:value "tbd"^^xsd:string .
+
+voag:PYTHON_LICENSE_V1PT6B1_THROUGH_2PT0_AND_2PT1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of Python 1.6b1 through 2.0 and 2.1"^^xsd:string ;
+      voag:url "http://www.handle.net/python_licenses/python1.6_9-5-00.html" ;
+      vaem:acronym "PythonOld"^^xsd:string ;
+      vaem:description "This is a free software license but is incompatible with the GNU GPL. The primary incompatibility is that this Python license is governed by the laws of the State of Virginia, in the USA, and the GPL does not permit this."^^xsd:string .
+
+voag:PYTHON_LICENSE_V2PT0PT1_AND_OTHERS
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of Python 2.0.1, 2.1.1, and newer versions"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.python.org/2.0.1/license.html" ;
+      vaem:acronym "Python"^^xsd:string ;
+      vaem:description "This is a free software license and is compatible with the GNU GPL. Please note, however, that intermediate versions of Python (1.6b1, through 2.0 and 2.1) are under a different license."^^xsd:string .
+
+voag:Party
+      rdf:type owl:Class ;
+      rdfs:label "Party"^^xsd:string ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:name
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:shortDescription
+              ] .
+
+voag:Pedigree
+      rdf:type owl:Class ;
+      rdfs:label "Pedigree"^^xsd:string ;
+      rdfs:subClassOf voag:Qualifier ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:shortDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasAccredidation
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:usage
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Maturity ;
+                owl:onProperty voag:hasMaturity
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Accredidation ;
+                owl:onProperty voag:hasAccredidation
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Party ;
+                owl:onProperty voag:usedBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasMaturity
+              ] ;
+      voag:shortDescription
+              "The origin or source of something. The primary purpose of provenance is to capture the time, place, and if appropriate the person responsible, for the creation, production or provisioning of some information object."^^xsd:string ;
+      vaem:definition "Pedigree captures aspects of an artifact that have to do with maturity, quality, salience, and accredidation."^^xsd:string .
+
+voag:Person
+      rdf:type owl:Class ;
+      rdfs:label "Person"^^xsd:string ;
+      rdfs:subClassOf voag:Party .
+
+voag:PriorityValue
+      rdf:type owl:Class ;
+      rdfs:label "Priority value"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue .
+
+voag:Process
+      rdf:type owl:Class ;
+      rdfs:label "Process"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:name
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:longDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:shortDescription
+              ] .
+
+voag:ProductLogo
+      rdf:type owl:Class ;
+      rdfs:label "Product logo"^^xsd:string ;
+      rdfs:subClassOf voag:Logo ;
+      vaem:description "Product logo is used for products, solutions, etc."^^xsd:string .
+
+voag:Proposed
+      rdf:type voag:Maturity ;
+      rdfs:label "Proposed"^^xsd:string .
+
+voag:Provenance
+      rdf:type owl:Class ;
+      rdfs:label "Provenance"^^xsd:string ;
+      rdfs:subClassOf voag:Qualifier ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Party ;
+                owl:onProperty voag:source
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:basedOn
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Pedigree ;
+                owl:onProperty voag:hasPedigree
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:ChangeType ;
+                owl:onProperty voag:hasChangeType
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:int ;
+                owl:onProperty voag:source
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:GovernedObject ;
+                owl:onProperty voag:supercededBy
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:GovernedObject ;
+                owl:onProperty voag:supercedes
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:cardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:timestamp
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:lastUpdated
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:shortDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasPedigree
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:revision
+              ] ;
+      voag:shortDescription
+              "The origin or source of something. The primary purpose of provenance is to capture the time, place, and if appropriate the person responsible, for the creation, production or provisioning of some information object."^^xsd:string ;
+      vaem:definition "Provenance specifies the origin or source of some artifact. The primary purpose of provenance is to capture the time, place, and if appropriate the person responsible, for the creation, production or provisioning of The artifact. Provenance also captures a record of how a version may have been superceded by another version of the artifact."^^xsd:string .
+
+voag:PublicationStatus
+      rdf:type owl:Class ;
+      rdfs:label "Publication Status"^^xsd:string ;
+      rdfs:subClassOf voag:EnumeratedValue .
+
+voag:QPL_LICENSE_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Q Public License (QPL), Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://doc.trolltech.com/3.0/license.html" ;
+      vaem:acronym "QPL"^^xsd:string ;
+      vaem:description "This is a non-copyleft free software license which is incompatible with the GNU GPL. It also causes major practical inconvenience, because modified sources can only be distributed as patches. GNU recommend that you avoid using the QPL for anything that you write, and use QPL-covered software packages only when absolutely necessary. However, this avoidance no longer applies to Qt itself, since Qt is now also released under the GNU GPL. Since the QPL is incompatible with the GNU GPL, you cannot take a GPL-covered program and QPL-covered program and link them together, no matter how.  However, if you have written a program that uses QPL-covered library (called FOO), and you want to release your program under the GNU GPL, you can easily do that, see GNU for more details."^^xsd:string .
+
+voag:Qualifier
+      rdf:type owl:Class ;
+      rdfs:label "Qualifier"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:name
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:longDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:shortDescription
+              ] .
+
+voag:Quarterly
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Quarterly"^^xsd:string .
+
+voag:RDFIcon-32X35
+      rdf:type voag:Icon ;
+      rdfs:label "RDF Icon 32 X 35"^^xsd:string ;
+      voag:caption "RDF Standard ICON"^^xsd:string ;
+      voag:height "35"^^xsd:string ;
+      voag:image "http://www.linkedmodel.org/lib/lm/images/icons/rdf_w3c_icon.48.gif"^^xsd:anyURI ;
+      voag:width "32"^^xsd:string ;
+      vaem:description "RDF Standard"^^xsd:string .
+
+voag:RPL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Reciprocal Public License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.org/licenses/rpl.php" ;
+      vaem:acronym "RPL"^^xsd:string ;
+      vaem:description "The Reciprocal Public License is a non-free license because of three problems. 1. It puts limits on prices charged for an initial copy. 2. It requires notification of the original developer for publication of a modified version. 3. It requires publication of any modified version that an organization uses, even privately."^^xsd:string .
+
+voag:RPSL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "RealNetworks Public Source License (RPSL), Version 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.opensource.org/licenses/real.php" ;
+      vaem:acronym "RPSL"^^xsd:string ;
+      vaem:description "The RPSL is a free software license that is GPL-incompatible for a number of reasons: it requires that derivative works be licensed under the terms of the RPSL, and mandates that any litigation take place in Seattle, Washington."^^xsd:string .
+
+voag:RUBY_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of Ruby"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.ruby-lang.org/en/LICENSE.txt" ;
+      vaem:acronym "RUBY"^^xsd:string ;
+      vaem:description "This is a free software license, compatible with the GPL via an explicit dual-licensing clause. Ruby is copyrighted free software by Yukihiro Matsumoto <matz@netlab.co.jp>."^^xsd:string .
+
+voag:RefactoringChange
+      rdf:type voag:ChangeType ;
+      rdfs:label "Refactoring change"^^xsd:string .
+
+voag:RejectionEvent
+      rdf:type owl:Class ;
+      rdfs:label "Rejection Event"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      voag:shortDescription
+              "A \"Governance Event\"."^^xsd:string ;
+      vaem:description "A \"Governance Event\"."^^xsd:string .
+
+voag:ResolvedIssue
+      rdf:type voag:IssueStatus ;
+      rdfs:label "Resolved"^^xsd:string ;
+      dtype:value "resolved"^^xsd:string .
+
+voag:RetreivalEvent
+      rdf:type owl:Class ;
+      rdfs:label "Retreival Event"^^xsd:string ;
+      rdfs:subClassOf voag:Event ;
+      voag:shortDescription
+              "A \"Archival Event\"."^^xsd:string ;
+      vaem:description "A \"Archival Event\"."^^xsd:string .
+
+voag:ReviewEvent
+      rdf:type owl:Class ;
+      rdfs:label "Review"^^xsd:string ;
+      rdfs:subClassOf voag:GovernanceEvent ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Organization ;
+                owl:onProperty voag:performedBy
+              ] ;
+      voag:shortDescription
+              "A \"Governance Event\"."^^xsd:string ;
+      vaem:description "A \"Governance Event\"."^^xsd:string .
+
+voag:SGI_FREE_SOFTWARE_LICENSE_B_V2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "SGI Free Software License B, version 2.0"^^xsd:string ;
+      rdfs:seeAlso voag:X11_LICENSE ;
+      voag:url "http://oss.sgi.com/projects/FreeB/" ;
+      vaem:acronym "SGIFreeB"^^xsd:string ;
+      vaem:description "The SGI Free Software License B version 2.0 is a free software license. It is essentially identical to the X11 License, with an optional alternative way of providing license notices. Previous versions of the SGI Free Software License B were not free software licenses, despite their name. However, they all included clauses that allow you to upgrade to new versions of the license, if you choose to do so. As a result, if a piece of software was released under any version of the SGI Free License B, you can use it under the terms of this free version."^^xsd:string .
+
+voag:SIL-OFL_V1PT1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "SIL Open Font License 1.1"^^xsd:string ;
+      voag:url "http://scripts.sil.org/OFL_web" ;
+      vaem:acronym "SILOFL"^^xsd:string ;
+      vaem:description "The Open Font License (including its original release, version 1.0) is a free copyleft license for fonts. Its only unusual requirement is that fonts be distributed with some computer program, rather than alone. Since a simple Hello World program will satisfy the requirement, it is harmless. Neither GNU nor SIL recommend the use of this license for anything other than fonts."^^xsd:string .
+
+voag:SISSL_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Sun Industry Standards Source License 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.openoffice.org/licenses/sissl_license.html" ;
+      vaem:acronym "SISSL"^^xsd:string ;
+      vaem:description "This is a free software license, not a strong copyleft, which is incompatible with the GNU GPL because of details rather than any major policy."^^xsd:string .
+
+voag:SML
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Simple Machines License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.simplemachines.org/about/license.php" ;
+      vaem:acronym "SML"^^xsd:string ;
+      vaem:description "Despite the name, this is a software license, and it's non-free for several reasons: (1) You must get the licensor's permission before distributing the software; (2) You cannot sell copies of the software; (3) It's possible that your license can be terminated if you received the software from someone who did not obey the license's terms."^^xsd:string .
+
+voag:SPARQLIcon-80X15
+      rdf:type voag:Icon ;
+      rdfs:label "SPARQL ICON 80 X 15"^^xsd:string ;
+      voag:caption "SPARQL Standard ICON"^^xsd:string ;
+      voag:height "15"^^xsd:string ;
+      voag:image "http://www.linkedmodel.org/lib/lm/images/icons/sw-sparql-blue.png"^^xsd:anyURI ;
+      voag:width "80"^^xsd:string ;
+      vaem:description "SPARQL Standard"^^xsd:string .
+
+voag:SPL
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Sun Public License"^^xsd:string ;
+      rdfs:seeAlso voag:MPL ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://java.sun.com/spl.html" ;
+      vaem:acronym "SPL"^^xsd:string ;
+      vaem:description "This is essentially the same as the Mozilla Public License: a free software license incompatible with the GNU GPL. Do not confuse this with the Sun Community Source License which is not a free software license."^^xsd:string .
+
+voag:STANDARD_ML_OF_NJ_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Standard ML of New Jersey Copyright License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://cm.bell-labs.com/cm/cs/what/smlnj/license.html" ;
+      vaem:acronym "StandardMLofNJ"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license, compatible with the GNU GPL."^^xsd:string .
+
+voag:SYSTEMC_V3PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "SystemC \"Open Source\" License, Version 3.0"^^xsd:string ;
+      voag:url "http://www.systemc.org/about/org_docs/license/" ;
+      vaem:acronym "SystemC-3.0"^^xsd:string ;
+      vaem:description "This license requires all recipients to proactively help the licensor enforce its trademarks. This is an unreasonable condition to place on users' rights, so the license is non-free. It also has other practical problems: some of the requirements are vague, and it uses the term “intellectual property”."^^xsd:string .
+
+voag:SchemaGraph
+      rdf:type owl:Class ;
+      rdfs:label "Schema graph"^^xsd:string ;
+      rdfs:subClassOf voag:Graph ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:hasValue vaem:SchemaGraph ;
+                owl:onProperty vaem:hasRole
+              ] ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf (voag:Graph [ rdf:type owl:Restriction ;
+                            owl:hasValue vaem:SchemaGraph ;
+                            owl:onProperty vaem:hasRole
+                          ])
+              ] .
+
+voag:Service
+      rdf:type owl:Class ;
+      rdfs:label "Service"^^xsd:string ;
+      rdfs:subClassOf owl:Thing ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:shortDescription
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty vaem:name
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:id
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:longDescription
+              ] .
+
+voag:SomeAdoption
+      rdf:type voag:Maturity ;
+      rdfs:label "Some adoption"^^xsd:string .
+
+voag:StakeholderGroup
+      rdf:type owl:Class ;
+      rdfs:label "Stakeholder Group"^^xsd:string ;
+      rdfs:subClassOf voag:Party ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:minCardinality "1"^^xsd:int ;
+                owl:onProperty voag:hasStakeholder
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Person ;
+                owl:onProperty voag:hasStakeholder
+              ] ;
+      voag:shortDescription
+              "A Stakeholder Group is a party of people who have common interests and concerns." ;
+      vaem:description "A Stakeholder Group is a party of people who have common interests and concerns." ;
+      owl:equivalentClass
+              [ rdf:type owl:Restriction ;
+                owl:onProperty voag:hasStakeholder ;
+                owl:someValuesFrom voag:Person
+              ] .
+
+voag:Standard
+      rdf:type owl:Class ;
+      rdfs:label "Standard"^^xsd:string ;
+      rdfs:subClassOf voag:GovernedObject ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Icon ;
+                owl:onProperty voag:hasLogo
+              ] ;
+      vaem:description "An industry, de facto or de jure standard"^^xsd:string .
+
+voag:TopQuadrantAttribution
+      rdf:type voag:Attribution ;
+      rdfs:label "TopQuadrant attribution"^^xsd:string ;
+      voag:hasLogo voag:TopQuadrantLogo-613x150 ;
+      voag:pointOfContact "Ralph Hodgson, TopQuadrant, Inc."^^xsd:string ;
+      voag:url "http://www.topquadrant.com"^^xsd:anyURI ;
+      vaem:name "TopQuadrant, Inc."^^xsd:string .
+
+voag:TopQuadrantLogo-613x150
+      rdf:type voag:AttributionLogo , voag:OrganizationLogo ;
+      rdfs:label "TopQuadrant Logo 613 x 150"^^xsd:string ;
+      voag:height "150"^^xsd:string ;
+      voag:image "http://www.linkedmodel.org/lib/lm/images/logos/TQ_logo_C_2009_SM_print.jpg"^^xsd:anyURI ;
+      voag:width "613"^^xsd:string ;
+      vaem:description "TopQuadrant's logo - diamond with company name to the right"^^xsd:string .
+
+voag:TurtleIcon-32bX35
+      rdf:type voag:Icon ;
+      rdfs:label "Turtle Icon 32 X 35"^^xsd:string ;
+      voag:caption "Turtle ICON"^^xsd:string ;
+      voag:height "35"^^xsd:string ;
+      voag:image "http://www.linkedmodel.org/lib/lm/images/icons/turtle_icon_32x35.jpg"^^xsd:anyURI ;
+      voag:width "32"^^xsd:string ;
+      vaem:description "Turtle is a representation format for RDF/OWL."^^xsd:string .
+
+voag:UNICODE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Unicode, Inc. License Agreement for Data Files and Software"^^xsd:string ;
+      voag:url "http://www.unicode.org/copyright.html#Exhibit1" ;
+      vaem:acronym "Unicode"^^xsd:string ;
+      vaem:description "This is a license that Unicode, Inc. has applied to the Unicode Character Database—various data files that developers can use to help implement the Unicode standard in their own programs. It is a simple permissive license, compatible with all versions of the GPL. If you want to use files covered by this License Agreement in your own software, that shouldn't be any problem, but we recommend that you also include a full copy of its text. Some of the files contain alternative license terms which are nonfree, or no licensing information at all, so including a copy of the License Agreement will help avoid confusion when others want to distribute your software. Of course, you'll also need to follow the conditions in this License Agreement for distributing the files, but those are very straightforward.  Take care to ensure that the files you are using are covered by this License Agreement. Other files published by Unicode, Inc. are covered by the Unicode Terms of Use, a different, nonfree license that appears on the same page but covers different files. A short explanation at the top of this License Agreement details which files it covers. Do not use this License Agreement for your own software. If you want to use a simple permissive license for your project, please use the Expat license; it is by far more common, and widely recognized in the free software community."^^xsd:string .
+
+voag:UNLICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "The Unlicense"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://unlicense.org/" ;
+      vaem:acronym "Unlicense"^^xsd:string ;
+      vaem:description "The Unlicense is a public domain dedication. A work released under the Unlicense is dedicated to the public domain to the fullest extent permitted by law, and also comes with an additional simple license that helps cover any cases where the dedication is inadequate. Both public domain works and the simple license provided by the Unlicense are compatible with the GNU GPL. If you want to release your work to the public domain, we recommend you use CC0. CC0 also provides a public domain dedication with a fallback license, and is more thorough and mature than the Unlicense."^^xsd:string .
+
+voag:UncertainFrequency
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Uncertain frequency"^^xsd:string .
+
+voag:UnknownMaturity
+      rdf:type voag:Maturity ;
+      rdfs:label "Unknown maturity"^^xsd:string .
+
+voag:UtahPublicLicense
+      rdf:type voag:LicenseModel ;
+      rdfs:label "University of Utah Public License"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://www.cs.utah.edu/~gk/teem/txt/LICENSE.txt" ;
+      vaem:acronym "UtahPublicLicense"^^xsd:string ;
+      vaem:description "The University of Utah Public License is a non-free license because it does not allow commercial redistribution. It also purports to restrict commercially running the software and even commercially giving consultation about it. Those restrictions are probably not legally enforceable under US copyright law, but they might be in some countries."^^xsd:string .
+
+voag:VIM_LICENSE_V6PT1_OR_LATER
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of Vim, Version 6.1 or later"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.gnu.org/licenses/vim-license.txt" ;
+      vaem:acronym "Vim"^^xsd:string ;
+      vaem:description "This is a free software license, partially copyleft but not really. It is compatible with the GPL, by an explicit conversion clause."^^xsd:string .
+
+voag:VOAG-OntologyLogo_360x110
+      rdf:type voag:ProductLogo ;
+      rdfs:label "VOAG Logo"^^xsd:string ;
+      voag:caption "VOAG Logo"^^xsd:string ;
+      voag:height "110"^^xsd:string ;
+      voag:image "http://www.linkedmodel.org/lib/lm/images/logos/voag_logo_360x110.png"^^xsd:anyURI ;
+      voag:width "360"^^xsd:string .
+
+voag:VocabGraph
+      rdf:type owl:Class ;
+      rdfs:label "Vocab graph"^^xsd:string ;
+      rdfs:subClassOf voag:Graph ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:hasValue vaem:VocabularyGraph ;
+                owl:onProperty vaem:hasRole
+              ] ;
+      owl:equivalentClass
+              [ rdf:type owl:Class ;
+                owl:intersectionOf (voag:Graph [ rdf:type owl:Restriction ;
+                            owl:hasValue vaem:VocabularyGraph ;
+                            owl:onProperty vaem:hasRole
+                          ])
+              ] .
+
+voag:W3C_SOFTWARE_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "W3C Software Notice and License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231" ;
+      vaem:acronym "W3C"^^xsd:string ;
+      vaem:description "This is a free software license and is GPL compatible."^^xsd:string .
+
+voag:WEBM_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of WebM"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.webmproject.org/license/" ;
+      vaem:acronym "WebM"^^xsd:string ;
+      vaem:description "Google's WebM implementation is covered by the Modified BSD License. Google also provides a separate patent license (confusingly called an “Additional IP Rights Grant”) for patents that Google owns or controls that are necessarily infringed by their implementation of WebM. GPL-covered software can be distributed in compliance with this license's terms: it allows distributors to exercise all of the rights granted by the GPL, while fulfilling all its conditions. Thus, all of WebM's license is free and GPL-compatible. Like most BSD licenses, this license allows you to use the VP8 code with a minimum of restrictions on your use. You can use the code in proprietary software as well as open source software."^^xsd:string .
+
+voag:WTFPL_V2
+      rdf:type voag:LicenseModel ;
+      rdfs:label "WTFPL, Version 2"^^xsd:string ;
+      voag:url "http://sam.zoy.org/wtfpl/COPYING" ;
+      vaem:acronym "WTFPL"^^xsd:string ;
+      vaem:description "This is a free software license, very permissive and GPL-compatible."^^xsd:string .
+
+voag:Weekly
+      rdf:type voag:ChangeFrequency ;
+      rdfs:label "Weekly"^^xsd:string .
+
+voag:WidelyAdopted
+      rdf:type voag:Maturity ;
+      rdfs:label "Widely adopted"^^xsd:string .
+
+voag:X11_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "X11 License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.xfree86.org/3.3.6/COPYRIGHT2.html#3" ;
+      vaem:acronym "X11License"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license, compatible with the GNU GPL. Older versions of XFree86 used the same license, and some of the current variants of XFree86 also do. Later versions of XFree86 are distributed under the XFree86 1.1 license. This license is sometimes called the MIT license, but that term is misleading, since MIT has used many licenses for software."^^xsd:string .
+
+voag:XFREE86_LICENSE_V1PT1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "XFree86 1.1 License"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.xfree86.org/current/LICENSE4.html" ;
+      vaem:acronym "XFree861.1License"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license, compatible with version 3 of the GPL. Note that this license is incompatible with version 2 of the GPL, because of its requirements that apply to all documentation in the distribution that contain acknowledgements. There are currently several variants of XFree86, and only some of them use this license. Some continue to use the X11 license."^^xsd:string .
+
+voag:XINETD_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of xinetd"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://fedoraproject.org/wiki/Licensing/Xinetd_License" ;
+      vaem:acronym "xinetd"^^xsd:string ;
+      vaem:description "This is a copyleft free software license, incompatible with the GPL. It is incompatible because it places extra restrictions on redistribution of modified versions that contradict the redistribution requirements in the GPL."^^xsd:string .
+
+voag:YAHOO_PUBLIC_LICENSE_V1PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Yahoo! Public License 1.0"^^xsd:string ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:url "http://info.yahoo.com/legal/us/yahoo/publiclicense/publiclicense-1813.html" ;
+      vaem:acronym "Yahoo"^^xsd:string ;
+      vaem:description "This is a free software license. It has a copyleft similar to the one found in the Mozilla Public License. It also has a choice of law clause in section 7. These features both make the license GPL-incompatible. The license also unfortunately uses the term “intellectual property”."^^xsd:string .
+
+voag:ZEND_LICENSE_V2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Zend License, Version 2.0"^^xsd:string ;
+      voag:url "http://www.zend.com/license/2_00.txt" ;
+      vaem:acronym "Zend"^^xsd:string ;
+      vaem:description "This license is used by one part of PHP4. It is a non-copyleft free software license which is incompatible with the GNU GPL, and has practical problems like those of the original BSD license. GNU recommend that you not use this license for anything you write."^^xsd:string .
+
+voag:ZLIB_LICENSE
+      rdf:type voag:LicenseModel ;
+      rdfs:label "License of ZLib"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:url "http://www.gzip.org/zlib/zlib_license.html" ;
+      vaem:acronym "ZLib"^^xsd:string ;
+      vaem:description "This is a free software license, and compatible with the GPL."^^xsd:string .
+
+voag:ZOPE_PUBLICE_LICENSE_V1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Zope Public License version 1"^^xsd:string ;
+      rdfs:seeAlso voag:ZOPE_PUBLIC_LICENSE_V2PT0 ;
+      voag:incompatibleWith
+              voag:GNU-GPL_V3 ;
+      voag:supercededBy voag:ZOPE_PUBLIC_LICENSE_V2PT0 ;
+      voag:url "http://www.zope.org/Resources/ZPL" ;
+      vaem:acronym "Zope"^^xsd:string ;
+      vaem:description "This is a simple, fairly permissive non-copyleft free software license with practical problems like those of the original BSD license, including incompatibility with the GNU GPL. GNU urge you not to use the ZPL version 1 for software you write. However, there is no reason to avoid running programs that have been released under this license, such as previous versions of Zope. Version 2.0 of the Zope Public License is GPL-compatible."^^xsd:string .
+
+voag:ZOPE_PUBLIC_LICENSE_V2PT0
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Zope Public License, versions 2.0"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:supercedes voag:ZOPE_PUBLICE_LICENSE_V1 ;
+      voag:url "http://www.zope.org/Resources/ZPL" ;
+      vaem:acronym "Zope20"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license which is compatible with the GNU GPL."^^xsd:string .
+
+voag:ZOPE_PUBLIC_LICENSE_V2PT1
+      rdf:type voag:LicenseModel ;
+      rdfs:label "Zope Public License, versions 2.1"^^xsd:string ;
+      voag:compatibleWith voag:GNU-GPL_V3 ;
+      voag:supercedes voag:ZEND_LICENSE_V2PT0 ;
+      voag:url "http://www.zope.org/Resources/ZPL" ;
+      vaem:acronym "Zope20"^^xsd:string ;
+      vaem:description "This is a simple, permissive non-copyleft free software license which is compatible with the GNU GPL."^^xsd:string .
+
+voag:accountableEntityOf
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "accountable entity of"^^xsd:string ;
+      voag:shortDescription
+              "A reference to who or which organization is accountable for an entity." ;
+      vaem:description "A reference to who or which organization is accountable for an entity." .
+
+voag:accountableFor
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "accountable for"^^xsd:string ;
+      vaem:description "An object property used in governance that refers a resource to the party that is accountable for it."^^xsd:string ;
+      owl:inverseOf voag:accountableEntityOf .
+
+voag:approves
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "approves"^^xsd:string ;
+      rdfs:subPropertyOf voag:governs ;
+      voag:shortDescription
+              "An object property that specifies that a party governs the approval of a resource."^^xsd:string ;
+      vaem:description "An object property that specifies that a party governs the approval of a resource."^^xsd:string ;
+      owl:inverseOf voag:isApprovedBy .
+
+voag:attributionText
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "attribution text"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:basedOn
+      rdf:type rdf:Property ;
+      rdfs:label "based on"^^xsd:string .
+
+voag:caption
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "caption"^^xsd:string ;
+      rdfs:range xsd:string ;
+      vaem:description "A short description, typically used on a table or a figure."^^xsd:string .
+
+voag:compatibleWith
+      rdf:type owl:ObjectProperty , owl:SymmetricProperty ;
+      rdfs:label "compatible with"^^xsd:string .
+
+voag:curatedGraphURI
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "curated graph URI"^^xsd:string ;
+      rdfs:range xsd:anyURI ;
+      vaem:definition "The property 'voag:curatedGraphURI' provides a means to specify the base URI of the specific version of the onotlogy that is being documented.  In each versioned graph the 'vaem:namespace' carries a URI without a version number."^^xsd:string .
+
+voag:deprecated
+      rdf:type rdf:Property , owl:AnnotationProperty ;
+      rdfs:domain voag:LicenseModel ;
+      rdfs:label "deprecated on"^^xsd:string ;
+      rdfs:range vaem:dateUnion .
+
+voag:description
+      rdf:type owl:AnnotationProperty ;
+      rdfs:label "description"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:disposition
+      rdf:type owl:DatatypeProperty ;
+      rdfs:comment "used to connect to the text describing disposition of something, for example, a disposition of an issue" ;
+      rdfs:label "disposition"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:dispositionStatus
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "disposition status"^^xsd:string ;
+      rdfs:subPropertyOf voag:hasApprovalStatus ;
+      voag:shortDescription
+              "An object propoert that denotes the state of a governance issue."^^xsd:string ;
+      vaem:description "An object propoert that denotes the state of a governance issue."^^xsd:string .
+
+voag:documentedAt
+      rdf:type rdf:Property ;
+      rdfs:label "documented at"^^xsd:string ;
+      vaem:definition "The property 'vaem:documentedAt' is intended for general use as the name implies.  In some cases the property could have scalar values and in other cases may need to refer to a first class concept that holds more information about a documentation resource.  For this reason, the  type of this property is set as 'rdf:Property' and the property is rangeless."^^xsd:string .
+
+voag:downloads
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "downloads"^^xsd:string ;
+      rdfs:range xsd:integer .
+
+voag:endDate
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "end date"^^xsd:string ;
+      rdfs:range vaem:dateUnion .
+
+voag:eventDate
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "event date"^^xsd:string ;
+      rdfs:range vaem:dateUnion .
+
+voag:exclude
+      rdf:type owl:AnnotationProperty ;
+      rdfs:label "exclude"^^xsd:string ;
+      rdfs:range xsd:boolean .
+
+voag:frequencyOfChange
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "frequency of change"^^xsd:string .
+
+voag:givesConcurrenceFor
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "gives concurrence for"^^xsd:string ;
+      rdfs:subPropertyOf voag:governs ;
+      voag:shortDescription
+              "An object property that specifies what a party may need to give consent, in the form of agreement, either written or verbally for in the approval of some govenance concern. This is the inverse property of 'mayNeedConcurrenceFrom' and, as such, may be deprecated in the future."^^xsd:string ;
+      vaem:description "An object property that specifies what a party may need to give consent, in the form of agreement, either written or verbally for in the approval of some govenance concern. This is the inverse property of 'mayNeedConcurrenceFrom' and, as such, may be deprecated in the future."^^xsd:string ;
+      owl:inverseOf voag:mayNeedConcurrenceFrom .
+
+voag:governs
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "governs"^^xsd:string ;
+      voag:shortDescription
+              "A super-property of governance properties: 'approves', 'gives concurrence for', 'reviews' and 'witness to'."^^xsd:string ;
+      vaem:description "A super-property of governance properties: 'approves', 'gives concurrence for', 'reviews' and 'witness to'."^^xsd:string ;
+      owl:inverseOf voag:isGovernedBy .
+
+voag:hasAccredidation
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has accredidation"^^xsd:string .
+
+voag:hasAnticipatedChangeType
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has anticipated change type"^^xsd:string .
+
+voag:hasApplicableDocument
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has applicable document"^^xsd:string ;
+      voag:shortDescription
+              "A document that is of help to application of the subject matter. Documents include specifications, models, standards, guidelines, handbooks and other special publications."^^xsd:string ;
+      vaem:description "A document that is of help to application of the subject matter. Documents include specifications, models, standards, guidelines, handbooks and other special publications."^^xsd:string .
+
+voag:hasApprovalProcess
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has approval process"^^xsd:string ;
+      voag:shortDescription
+              "An object property that specifies a process that is used for approval in a 'Governance Protocol'."^^xsd:string ;
+      vaem:description "An object property that specifies a process that is used for approval in a 'Governance Protocol'."^^xsd:string .
+
+voag:hasApprovalStatus
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has approval status"^^xsd:string ;
+      voag:shortDescription
+              "An object property that referes to an enumerated value that denotes the state of an approval."^^xsd:string ;
+      vaem:description "An object property that referes to an enumerated value that denotes the state of an approval."^^xsd:string .
+
+voag:hasCatalogEntry
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has catalog entry"^^xsd:string .
+
+voag:hasCategory
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has category"^^xsd:string .
+
+voag:hasChangeManagementProcess
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has change management process"^^xsd:string ;
+      rdfs:subPropertyOf voag:hasProcess ;
+      voag:shortDescription
+              "An object property that specifies a process that is used for managing change in a 'Governance Protocol'."^^xsd:string ;
+      vaem:description "An object property that specifies a process that is used for managing change in a 'Governance Protocol'."^^xsd:string .
+
+voag:hasChangeType
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has change type"^^xsd:string .
+
+voag:hasConfidentiality
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has confidentiality"^^xsd:string ;
+      voag:shortDescription
+              "An object property that specifies a level of confidentiality. Typicall the range of this property will be 'voag:Confidentiality'."^^xsd:string ;
+      vaem:description "An object property that specifies a level of confidentiality. Typicall the range of this property will be 'voag:Confidentiality'."^^xsd:string .
+
+voag:hasGovernance
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has governance"^^xsd:string .
+
+voag:hasGovernanceEvent
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has governance event"^^xsd:string ;
+      voag:shortDescription
+              "An event associated with governance processes." ;
+      vaem:description "An event associated with governance processes." .
+
+voag:hasIdentifier
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has identifier"^^xsd:string .
+
+voag:hasIssue
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has issue"^^xsd:string ;
+      rdfs:range voag:Issue ;
+      voag:shortDescription
+              "A pointer to an issue that exists on a subject of interest." ;
+      vaem:description "A pointer to an issue that exists on a subject of interest." .
+
+voag:hasIssueResolutionProcess
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has issue resolution process"^^xsd:string ;
+      rdfs:subPropertyOf voag:hasProcess .
+
+voag:hasLicenseType
+      rdf:type owl:ObjectProperty ;
+      rdfs:domain voag:CreativeCommonsWork ;
+      rdfs:label "has license type"@en-US ;
+      rdfs:range voag:LicenseModel .
+
+voag:hasLogo
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has logo"^^xsd:string ;
+      rdfs:range voag:Logo ;
+      vaem:description "A property to reference an image that is used as a logo."^^xsd:string .
+
+voag:hasMaturity
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has maturity"^^xsd:string .
+
+voag:hasNormativeDocument
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has normative document"^^xsd:string .
+
+voag:hasOntologyArchitectureDiagram
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has ontology architecture diagram"^^xsd:string .
+
+voag:hasOwner
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has owner"^^xsd:string .
+
+voag:hasPedigree
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has pedigree"^^xsd:string ;
+      vaem:description "A reference to a description about the pedigree of something."^^xsd:string .
+
+voag:hasProcess
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has process"^^xsd:string ;
+      voag:shortDescription
+              "A reference to a process description." ;
+      vaem:description "A reference to a process description." .
+
+voag:hasProtocol
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has protocol"^^xsd:string ;
+      voag:shortDescription
+              "A pointer to a record that holds governance information for one or more governed entities. Often governance can be shared across entities." ;
+      vaem:description "A pointer to a record that holds governance information for one or more governed entities. Often governance can be shared across entities." .
+
+voag:hasProvenance
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has provenance"^^xsd:string ;
+      voag:shortDescription
+              "A pointer to a provenance record that details the source, version and time of some subject of interest." ;
+      vaem:description "A pointer to a provenance record that details the source, version and time of some subject of interest." .
+
+voag:hasReferenceDocument
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has reference document"^^xsd:string .
+
+voag:hasStakeholder
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has stakeholder"^^xsd:string .
+
+voag:hasStatus
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has status"^^xsd:string .
+
+voag:hasSteward
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has steward"^^xsd:string ;
+      voag:shortDescription
+              "A pointer to the person that is a curator." ;
+      vaem:description "A pointer to the person that is a curator." .
+
+voag:hasValue
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "has value"^^xsd:string ;
+      rdfs:range rdfs:Resource .
+
+voag:height
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "height"^^xsd:string ;
+      rdfs:range xsd:string ;
+      vaem:description "Height is typically used to specify an image's height attribute."^^xsd:string .
+
+voag:id
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "id"^^xsd:string ;
+      rdfs:range xsd:anySimpleType .
+
+voag:image
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "image"^^xsd:string ;
+      rdfs:range xsd:anyURI ;
+      vaem:description "The property 'vaem:image' points  to an image using a URL. "^^xsd:string .
+
+voag:imageMap
+      rdf:type rdf:Property ;
+      rdfs:label "image map"^^xsd:string .
+
+voag:incompatibleWith
+      rdf:type owl:ObjectProperty , owl:SymmetricProperty ;
+      rdfs:label "incompatible with"^^xsd:string .
+
+voag:instigatedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "instigated by"^^xsd:string .
+
+voag:instigatingEvent
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "instigating event"^^xsd:string .
+
+voag:intent
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "intent"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:interestIn
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "interest in"^^xsd:string ;
+      owl:inverseOf voag:isInterestOf .
+
+voag:isApprovedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "is approved by"^^xsd:string ;
+      rdfs:subPropertyOf voag:isGovernedBy ;
+      voag:shortDescription
+              "References to which parties approve an entity." ;
+      vaem:description "References to which parties approve an entity." .
+
+voag:isFOSS
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "is FOSS"^^xsd:string ;
+      rdfs:range xsd:boolean ;
+      vaem:description "A boolean property to specify whether or not software is free or open source. Free and open-source software (F/OSS, FOSS) or free/libre/open-source software (FLOSS) is software that is liberally licensed to grant the right of users to use, study, change, and improve its design through the availability of its source code."^^xsd:string .
+
+voag:isGovernedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "is governed by"^^xsd:string ;
+      voag:shortDescription
+              "A pointer to who is responsible for the governance of some entity of interest. This is a two-way reference with the inverse property 'governs'." ;
+      vaem:description "A pointer to who is responsible for the governance of some entity of interest. This is a two-way reference with the inverse property 'governs'." .
+
+voag:isITAR
+      rdf:type owl:DeprecatedProperty , owl:DatatypeProperty ;
+      rdfs:label "is ITAR"^^xsd:string ;
+      rdfs:range xsd:boolean ;
+      voag:shortDescription
+              "International Traffic in Arms Regulations (ITAR) is a set of United States government regulations that control the export and import of defense-related articles and services on the United States Munitions List. These regulations implement the provisions of the Arms Export Control Act, and are described in Title 22 (Foreign Relations), Chapter I (Department of State), Subchapter M of the Code of Federal Regulations. The Department of State interprets and enforces ITAR. Its goal is to advance national strategic objectives and U.S. foreign policy via the trade controls. For practical purposes, ITAR regulations dictate that information and material pertaining to defense and military related technologies may only be shared with US Persons unless approval from the Department of State is received or a special exemption is used." ;
+      vaem:description "International Traffic in Arms Regulations (ITAR) is a set of United States government regulations that control the export and import of defense-related articles and services on the United States Munitions List. These regulations implement the provisions of the Arms Export Control Act, and are described in Title 22 (Foreign Relations), Chapter I (Department of State), Subchapter M of the Code of Federal Regulations. The Department of State interprets and enforces ITAR. Its goal is to advance national strategic objectives and U.S. foreign policy via the trade controls. For practical purposes, ITAR regulations dictate that information and material pertaining to defense and military related technologies may only be shared with US Persons unless approval from the Department of State is received or a special exemption is used." .
+
+voag:isInterestOf
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "interest of"^^xsd:string ;
+      voag:shortDescription
+              "A pointer to parties who have an interest in an entity. This is a two-way reference with the inverse property 'interestIn'." ;
+      vaem:description "A pointer to parties who have an interest in an entity. This is a two-way reference with the inverse property 'interestIn'." .
+
+voag:jurisdiction
+      rdf:type owl:ObjectProperty , rdf:Property ;
+      rdfs:domain voag:LicenseModel ;
+      rdfs:label "jurisdiction"^^xsd:string , "jurisdiction"@en-US ;
+      rdfs:range voag:CreativeCommonsJurisdiction .
+
+voag:legalcode
+      rdf:type owl:ObjectProperty , rdf:Property ;
+      rdfs:domain voag:LicenseModel ;
+      rdfs:label "legalcode"^^xsd:string ;
+      rdfs:range rdfs:Resource .
+
+voag:licence
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "licence"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:longDescription
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "long description"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:mayNeedConcurrenceFrom
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "may need concurrence from"^^xsd:string ;
+      rdfs:subPropertyOf voag:isGovernedBy ;
+      voag:shortDescription
+              "An object property that specifies that a party may need to give consent, in the form of agreement, either written or verbally to the approval of some govenance concern."^^xsd:string ;
+      vaem:description "An object property that specifies that a party may need to give consent, in the form of agreement, either written or verbally to the approval of some govenance concern."^^xsd:string ;
+      owl:inverseOf voag:givesConcurrenceFor .
+
+voag:morePermissions
+      rdf:type owl:ObjectProperty , rdf:Property ;
+      rdfs:domain voag:CreativeCommonsWork ;
+      rdfs:label "more permissions"^^xsd:string ;
+      rdfs:range rdfs:Resource .
+
+voag:normativeReference
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "normative reference"^^xsd:string .
+
+voag:obsoletedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "obsoleted by"^^xsd:string .
+
+voag:ownedBy
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "owned by"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:owner
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "owner"^^xsd:string .
+
+voag:owns
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "owns"^^xsd:string .
+
+voag:participant
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "participant"^^xsd:string .
+
+voag:performedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "performed by"^^xsd:string .
+
+voag:permits
+      rdf:type rdf:Property , owl:ObjectProperty ;
+      rdfs:domain voag:LicenseModel ;
+      rdfs:label "permits"^^xsd:string , "permits"@en-US ;
+      rdfs:range voag:CreativeCommonsPermission .
+
+voag:pointOfContact
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "point of contact"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:preparedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "prepared by"^^xsd:string ;
+      rdfs:subPropertyOf voag:isGovernedBy .
+
+voag:priority
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "priority"^^xsd:string .
+
+voag:prohibits
+      rdf:type rdf:Property , owl:ObjectProperty ;
+      rdfs:domain voag:LicenseModel ;
+      rdfs:label "prohibits"^^xsd:string , "prohibits"@en-US ;
+      rdfs:range voag:CreativeCommonsProhibition .
+
+voag:proprietary
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "proprietary"^^xsd:string ;
+      rdfs:range xsd:boolean ;
+      voag:shortDescription
+              "A boolean flag to indicate if an information asset is propretary." ;
+      vaem:description "A boolean flag to indicate if an information asset is propretary." .
+
+voag:relatedIssue
+      rdf:type owl:ObjectProperty ;
+      rdfs:comment "This property connects two issue events. Issues connected by this property must be about the same subject" ;
+      rdfs:domain voag:Issue ;
+      rdfs:label "related issue"^^xsd:string ;
+      rdfs:range voag:Issue .
+
+voag:relatedTo
+      rdf:type owl:SymmetricProperty , owl:ObjectProperty ;
+      rdfs:label "related to"^^xsd:string .
+
+voag:releaseDate
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "release date"^^xsd:string ;
+      rdfs:range vaem:dateUnion .
+
+voag:requires
+      rdf:type owl:ObjectProperty , rdf:Property ;
+      rdfs:domain voag:LicenseModel ;
+      rdfs:label "requires"@en-US , "requires"^^xsd:string ;
+      rdfs:range voag:CreativeCommonsRequirement .
+
+voag:reviewedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "reviewed by"^^xsd:string ;
+      rdfs:subPropertyOf voag:isGovernedBy ;
+      voag:shortDescription
+              "References to which parties review a data or information asset." ;
+      vaem:description "References to which parties review a data or information asset." ;
+      owl:inverseOf voag:reviews .
+
+voag:reviews
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "reviews"^^xsd:string ;
+      rdfs:subPropertyOf voag:governs ;
+      owl:inverseOf voag:reviewedBy .
+
+voag:revision
+      rdf:type owl:DatatypeProperty , owl:AnnotationProperty ;
+      rdfs:label "revision"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:revisionNumber
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "revision number"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:rights
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "subject"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:shortDescription
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "short description"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:source
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "source"^^xsd:string .
+
+voag:startDate
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "start date"^^xsd:string ;
+      rdfs:range vaem:dateUnion .
+
+voag:subject
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "subject"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:submittedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "submitted by"^^xsd:string ;
+      rdfs:subPropertyOf voag:isGovernedBy .
+
+voag:supercededBy
+      rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+      rdfs:label "superceded by"^^xsd:string ;
+      voag:shortDescription
+              "A pointer to one or more 'GovernedEntities' that are replaced by this entity." ;
+      vaem:description "A pointer to one or more 'GovernedEntities' that replace this entity."^^xsd:string ;
+      owl:inverseOf voag:supercedes .
+
+voag:supercedes
+      rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+      rdfs:label "supercedes"^^xsd:string ;
+      voag:shortDescription
+              "A pointer to one or more 'GovernedEntities' that are replaced by this entity." ;
+      vaem:description "A pointer to one or more 'GovernedEntities' that are replaced by this entity." ;
+      owl:inverseOf voag:supercededBy .
+
+voag:supervisedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "supervised by"^^xsd:string ;
+      rdfs:subPropertyOf voag:isGovernedBy .
+
+voag:timestamp
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "timestamp"^^xsd:string ;
+      rdfs:range xsd:dateTime .
+
+voag:title
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "title"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:url
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "url"^^xsd:string ;
+      rdfs:range xsd:anyURI .
+
+voag:urlForHTML
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "url for HTML"^^xsd:string ;
+      rdfs:range xsd:anyURI .
+
+voag:urlOfRDFfile
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "url address of RDF file"^^xsd:string ;
+      rdfs:range xsd:anyURI ;
+      vaem:description "Used to refer to a an RDF XML representation of an ontology"^^xsd:string .
+
+voag:urlOfTurtleFile
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "url of turtle file"^^xsd:string ;
+      rdfs:range xsd:anyURI ;
+      vaem:description "Used to refer to a Turtle (N3) representation of an ontology"^^xsd:string .
+
+voag:usage
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "usage"^^xsd:string ;
+      rdfs:range xsd:string .
+
+voag:useGuidelines
+      rdf:type rdf:Property ;
+      rdfs:domain voag:CreativeCommonsWork ;
+      rdfs:label "use guidelines"^^xsd:string ;
+      rdfs:range rdfs:Resource .
+
+voag:usedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "used by"^^xsd:string ;
+      vaem:description "The property 'usedBy' is a general property to record a dependency. One use is in stating how a schema or a vocabulary is used by another ontology graph."^^xsd:string .
+
+voag:userID
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "user ID"^^xsd:string ;
+      rdfs:range xsd:anySimpleType .
+
+voag:width
+      rdf:type owl:DatatypeProperty ;
+      rdfs:label "width"^^xsd:string ;
+      vaem:description "Width is typically used to specify an image's width attribute."^^xsd:string .
+
+voag:withAttributionTo
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "with attribution to"^^xsd:string .
+
+voag:witnessTo
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "witness to"^^xsd:string ;
+      rdfs:subPropertyOf voag:governs ;
+      owl:inverseOf voag:witnessedBy .
+
+voag:witnessedBy
+      rdf:type owl:ObjectProperty ;
+      rdfs:label "wintnessed by"^^xsd:string ;
+      rdfs:subPropertyOf voag:isGovernedBy .
+
+vaem:description
+      rdf:type owl:AnnotationProperty ;
+      rdfs:label "description"^^xsd:string ;
+      rdfs:range xsd:string .
+
+owl:Ontology
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:int ;
+                owl:onProperty voag:hasLicenseType
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:Graph ;
+                owl:onProperty voag:hasCatalogEntry
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:allValuesFrom voag:LicenseModel ;
+                owl:onProperty voag:hasLicenseType
+              ] ;
+      rdfs:subClassOf
+              [ rdf:type owl:Restriction ;
+                owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                owl:onProperty voag:hasCatalogEntry
+              ] .

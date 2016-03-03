@@ -1,0 +1,2990 @@
+# baseURI: http://voag.linkedmodel.org/2.0/schema/voag
+# imports: http://rdfs.org/ns/void
+# imports: http://www.linkedmodel.org/schema/dtype
+# imports: http://www.linkedmodel.org/schema/vaem
+
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
+@prefix voag: <http://voag.linkedmodel.org/voag/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dct:description
+  rdfs:label "description"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+dct:subject
+  rdf:type owl:AnnotationProperty ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "subject"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+dct:title
+  rdf:type owl:AnnotationProperty ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "title"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+void:Dataset
+  rdf:type owl:Class ;
+  dct:description "A set of RDF triples that are published, maintained or aggregated by a single provider."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "VOID Dataset"^^xsd:string ;
+  rdfs:subClassOf voag:GovernedObject ;
+.
+<http://voag.linkedmodel.org/2.0/schema/voag>
+  rdf:type owl:Ontology ;
+  dct:author "Ralph Hodgson"^^xsd:string ;
+  dct:modified "2015-03-30"^^xsd:date ;
+  vaem:hasGraphMetadata voag:GMD_VOAG ;
+  owl:imports <http://rdfs.org/ns/void> ;
+  owl:imports <http://www.linkedmodel.org/schema/dtype> ;
+  owl:imports <http://www.linkedmodel.org/schema/vaem> ;
+  owl:versionIRI <http://voag.linkedmodel.org/2.0/schema/voag> ;
+.
+voag:Accreditation
+  rdf:type owl:Class ;
+  dct:description "A minimal representation of accredidation"^^xsd:string ;
+  voag:wasInfluencedBy "http://en.wikipedia.org/wiki/Accreditation"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Accreditation"^^xsd:string ;
+  rdfs:subClassOf voag:Qualifier ;
+.
+voag:AdditionalClause
+  rdf:type owl:Class ;
+  rdfs:label "Additional clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:AdjunctClause
+  rdf:type owl:Class ;
+  rdfs:label "Adjunct clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:AdministrativeEvent
+  rdf:type owl:Class ;
+  dct:description "An event that is associated with the admistration aspect of governance. Typically these are curation events."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Administrative Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+.
+voag:Annually
+  rdf:type voag:ChangeFrequency ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "annual"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Annually"^^xsd:string ;
+.
+voag:AppendChange
+  rdf:type voag:ChangeType ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Append change"^^xsd:string ;
+.
+voag:ApprovalEvent
+  rdf:type owl:Class ;
+  dct:description "An approval."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Approval Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+  owl:disjointWith voag:RejectionEvent ;
+.
+voag:ApprovalProcess
+  rdf:type owl:Class ;
+  dct:description "A minimal representation of an approval process."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Approval Process"^^xsd:string ;
+  rdfs:subClassOf voag:GovernanceProcess ;
+.
+voag:ApprovedIssue
+  rdf:type voag:IssueStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "approved"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Approved Issue"^^xsd:string ;
+.
+voag:ArchivalEvent
+  rdf:type owl:Class ;
+  dct:description "An archival occurrence."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Archival Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+.
+voag:AttorneyFeesClause
+  rdf:type owl:Class ;
+  rdfs:label "Attorney fees clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:Attribution
+  rdf:type owl:Class ;
+  dct:description "An 'Attribution' specifies how credit should be given when citing the creators of a piece of work. Attribution must use the specified attribution text and optionally use logos that are provided in the attribution details below., with the names of points of contact."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Attributed Source"^^xsd:string ;
+  rdfs:subClassOf voag:Qualifier ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:AttributionLogo ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom xsd:string ;
+      owl:onProperty voag:pointOfContact ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:url ;
+    ] ;
+.
+voag:AttributionLogo
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Attribution logo"^^xsd:string ;
+  rdfs:subClassOf voag:Logo ;
+.
+voag:AttributionRightsClause
+  rdf:type owl:Class ;
+  rdfs:label "Attribution rights clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:BiMonthly
+  rdf:type voag:ChangeFrequency ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "bi-monthly"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Bi monthly"^^xsd:string ;
+.
+voag:BiQuarterly
+  rdf:type voag:ChangeFrequency ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "bi-quarterly"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Bi quarterly"^^xsd:string ;
+.
+voag:BiWeekly
+  rdf:type voag:ChangeFrequency ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "bi-weekly"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Bi-Weekly"^^xsd:string ;
+.
+voag:CC-SHAREALIKE_3PT0-US
+  rdf:type voag:License ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:label "Creative Commons Attribution-Share Alike 3.0 United States License"^^xsd:string ;
+.
+voag:CCPH_CommercialUse
+  rdf:type voag:CreativeCommonsProhibition ;
+  dct:description "Exercising rights for commercial purposes"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Commercial Use"@en-US ;
+.
+voag:CCPH_HighIncomeNationUse
+  rdf:type voag:CreativeCommonsProhibition ;
+  dct:description "Use in a non-developing country"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons High Income Nation Use"@en-US ;
+  rdfs:label "High income nation use"^^xsd:string ;
+.
+voag:CCP_DerivativeWorks
+  rdf:type voag:CreativeCommonsPermission ;
+  dct:description "Distribution of derivative works"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Derivative Works"@en-US ;
+  rdfs:label "Derivative works"^^xsd:string ;
+.
+voag:CCP_Distribution
+  rdf:type voag:CreativeCommonsPermission ;
+  dct:description "Creative Commons - distribution, public display, and publicly performance"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Distribution"@en-US ;
+  rdfs:label "Distribution"^^xsd:string ;
+.
+voag:CCP_Reproduction
+  rdf:type voag:CreativeCommonsPermission ;
+  dct:description "making multiple copies"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Reproduction"@en-US ;
+  rdfs:label "Reproduction"^^xsd:string ;
+.
+voag:CCP_Sharing
+  rdf:type voag:CreativeCommonsPermission ;
+  dct:description "permits commercial derivatives, but only non-commercial distribution"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Sharing"@en-US ;
+  rdfs:label "Sharing"^^xsd:string ;
+.
+voag:CCR_Attribution
+  rdf:type voag:CreativeCommonsRequirement ;
+  dct:description "Credit to be given to copyright holder and/or author"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Attribution"@en-US ;
+.
+voag:CCR_Copyleft
+  rdf:type voag:CreativeCommonsRequirement ;
+  dct:description "Copyleft is a general method for making a program (or other work) free, and requiring all modified and extended versions of the program to be free as well. The simplest way to make a program free software is to put it in the public domain, uncopyrighted. This allows people to share the program and their improvements, if they are so minded. But it also allows uncooperative people to convert the program into proprietary software. They can make changes, many or few, and distribute the result as a proprietary product. People who receive the program in that modified form do not have the freedom that the original author gave them; the middleman has stripped it away.  In the GNU project, Copyleft says that anyone who redistributes the software, with or without changes, must pass along the freedom to further copy and change it. Copyleft guarantees that every user has freedom."^^xsd:string ;
+  dct:description "combined works must be licensed under specified terms, similar to those on the original work"@en-US ;
+  vaem:url "http://www.gnu.org/copyleft/copyleft.html"^^xsd:anyURI ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Copyleft"@en-US ;
+.
+voag:CCR_LesserCopyleft
+  rdf:type voag:CreativeCommonsRequirement ;
+  dct:description "derivative works must be licensed under specified terms, with at least the same conditions as the original work; combinations with the work may be licensed under different terms"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Lesser Copyleft"@en-US ;
+.
+voag:CCR_Notice
+  rdf:type voag:CreativeCommonsRequirement ;
+  dct:description "copyright and license notices be kept intact"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Notice"@en-US ;
+.
+voag:CCR_ShareAlike
+  rdf:type voag:CreativeCommonsRequirement ;
+  dct:description "derivative works be licensed under the same terms or compatible terms as the original work"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Share Alike"@en-US ;
+.
+voag:CCR_SourceCode
+  rdf:type voag:CreativeCommonsRequirement ;
+  dct:description "Source code (the preferred form for making modifications) must be provided when exercising some rights granted by the license."@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Source Code"@en-US ;
+.
+voag:CL_None
+  rdf:type voag:ConfidentialityLevel ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:code 0 ;
+  dtype:order "1"^^xsd:int ;
+  dtype:value "none"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "None"^^xsd:string ;
+.
+voag:CL_Restricted
+  rdf:type voag:ConfidentialityLevel ;
+  dct:description "During and before World War II, the U.S. had a category of classified information called restricted, which was below confidential. The U.S. no longer has a restricted classification, but many other nations and NATO do. The U.S. treats \"restricted\" information it receives from other governments as confidential. The U.S. does use the term restricted data in a completely different way to refer to nuclear secrets." ;
+  dtype:code 1 ;
+  dtype:order "2"^^xsd:int ;
+  dtype:value "restricted"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Restricted"^^xsd:string ;
+.
+voag:CL_Secret
+  rdf:type voag:ConfidentialityLevel ;
+  dct:description "\"Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause serious damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958]." ;
+  dtype:code 5 ;
+  dtype:order "6"^^xsd:int ;
+  dtype:value "secret"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Secret"^^xsd:string ;
+.
+voag:CL_SensitiveButUnclassified
+  rdf:type voag:ConfidentialityLevel ;
+  dct:description "Sensitive but Unclassified (SBU) information should not be disclosed but is not national security information and cannot be classified according to Executive Order (EO)12958, as amended. These materials must be: properly marked, locked up when not under the supervision of an authorized person, and encrypted while in transit over a non-secure network. Some examples are: trade secrets, proprietary information, financial information, personnel and medical records, procurement-sensitive information, IT system security plans, contingency plans, audit logs (recordings of exceptions and other security-related events), vulnerability reports, incident reports and Personally Identifiable Information (PII)."^^xsd:string ;
+  dtype:code 3 ;
+  dtype:order "4"^^xsd:int ;
+  dtype:value "sbu"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Sensitive but Unclassified"^^xsd:string ;
+.
+voag:CL_TopSecret
+  rdf:type voag:ConfidentialityLevel ;
+  dct:description "\"Top Secret\" shall be applied to information, the unauthorized disclosure of which reasonably could be expected to cause exceptionally grave damage to the national security that the original classification authority is able to identify or describe [US Executive Order 12958]." ;
+  dtype:code 6 ;
+  dtype:order "7"^^xsd:int ;
+  dtype:value "topsecret"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Top secret"^^xsd:string ;
+.
+voag:CL_Unclassified
+  rdf:type voag:ConfidentialityLevel ;
+  dct:description "Unclassified is not technically a \"classification\"; this is the default, and refers to information that can be released to individuals without a clearance (Level 0). Information that is unclassified is sometimes restricted in its dissemination as SBU or FOUO. For example, the \"law enforcement bulletins\" often reported by the U.S. media when United States Department of Homeland Security raises the U.S. terror threat level are usually classified as \"U//LES\" or \"Unclassified - Law Enforcement Sensitive.\" This information is only supposed to be released to Law Enforcement groups (Sheriff, Police, etc.) Because the information is unclassified, however, it is sometimes released to the public as well. Information which is unclassified, but which the government does not believe should be subject to Freedom of Information Act requests is often classified as U//FOUO - \"Unclassified - For Official Use Only\". In addition to FOUO information, information can be categorized according to its availability to be distributed (Distribution D may only be released to approved Department of Defense and Government Contractor personnel). Also, the statement of NOFORN (meaning No Foreign Nationals) is applied to any information which may not be released to any non-US Citizen. NOFORN and Distribution statements are often used in conjunction with classified information or alone on SBU information. Documents subject to export controls have a specific warning to that effect." ;
+  dtype:code 2 ;
+  dtype:order "3"^^xsd:int ;
+  dtype:value "unclassified"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Unclassified"^^xsd:string ;
+.
+voag:Catalog
+  rdf:type owl:Class ;
+  dct:description "An index to a set of resources "^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Catalog"^^xsd:string ;
+  rdfs:subClassOf voag:GovernedObject ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+.
+voag:ChangeFrequency
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Change frequency"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+  owl:oneOf (
+      voag:Never
+      voag:Daily
+      voag:Weekly
+      voag:BiWeekly
+      voag:Monthly
+      voag:BiMonthly
+      voag:Quarterly
+      voag:BiQuarterly
+      voag:Annually
+      voag:UncertainFrequency
+    ) ;
+.
+voag:ChangeManagementProcess
+  rdf:type owl:Class ;
+  dct:description "A minimal representation of a change management process."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Change Management Process"^^xsd:string ;
+  rdfs:subClassOf voag:GovernanceProcess ;
+.
+voag:ChangeType
+  rdf:type owl:Class ;
+  dct:description "Change Type provides an indicator for how an artifact has or will change in the future. This indicator is important to understanding the stability of an ontology."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Change type"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:Clause
+  rdf:type owl:Class ;
+  rdfs:label "License clause"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:clauseNumber ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:title ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:description ;
+    ] ;
+.
+voag:ClosedIssue
+  rdf:type voag:IssueStatus ;
+  dtype:value "closed"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Closed"^^xsd:string ;
+.
+voag:ConcurrenceEvent
+  rdf:type owl:Class ;
+  dct:description "A concurrence."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Concurrence event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+  owl:disjointWith voag:NonConcurrenceEvent ;
+.
+voag:ConfidentialityLevel
+  rdf:type owl:Class ;
+  dct:description "An enumerated codelist for values thath pertain to the security of a set of resources, or a resource. In 'lmc' an ontology can carry a property to denote its confidentiality."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Confidentiality level"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:CopyrightGrantClause
+  rdf:type owl:Class ;
+  vaem:description "A permission that a Licensor grants."^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:label "Cpyright grant clause"^^xsd:string ;
+  rdfs:subClassOf voag:GrantClause ;
+.
+voag:CreativeCommonsJurisdiction
+  rdf:type owl:Class ;
+  dct:description "the legal jurisdiction of a license"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Jurisdiction"@en-US ;
+  rdfs:label "Creative commons jurisdiction"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+.
+voag:CreativeCommonsPermission
+  rdf:type owl:Class ;
+  dct:description "An action that may or may not be allowed or desired"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Permission"@en-US ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:CreativeCommonsProhibition
+  rdf:type owl:Class ;
+  dct:description "something you may be asked not to do"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Prohibition"@en-US ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:CreativeCommonsRequirement
+  rdf:type owl:Class ;
+  dct:description "An action that may or may not be requested of you"@en-US ;
+  dct:description "an action that may or may not be requested of you"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Requirement"@en-US ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:CreativeCommonsWork
+  rdf:type owl:Class ;
+  dct:description "A potentially copyrightable work"@en-US ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Creative Commons Work"@en-US ;
+  rdfs:label "Creative commons work"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:url ;
+    ] ;
+.
+voag:Daily
+  rdf:type voag:ChangeFrequency ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Daily"^^xsd:string ;
+.
+voag:DeferredIssue
+  rdf:type voag:IssueStatus ;
+  dtype:value "deferred"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Deferred"^^xsd:string ;
+.
+voag:DefinitionClause
+  rdf:type owl:Class ;
+  rdfs:label "Definition clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:DeletionEvent
+  rdf:type owl:Class ;
+  dct:description "A deletion."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Deletion Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+.
+voag:DesignatedGovernanceRole
+  rdf:type owl:Class ;
+  dct:description "An\"Assigned Role\" with the following instance(s): \"Assurer\", \"Project Management\", \"Resource & Process Policy\", \"Technical Definitions\", \"User\", \"Verifier\"."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Designated Governance Role"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:GovernanceRole ;
+      owl:onProperty vaem:hasGraphRole ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty voag:performedBy ;
+    ] ;
+.
+voag:DisapprovedIssue
+  rdf:type voag:IssueStatus ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Disapproved Issue"^^xsd:string ;
+.
+voag:DisclaimerClause
+  rdf:type owl:Class ;
+  rdfs:label "Disclaimer clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:DistributionClause
+  rdf:type owl:Class ;
+  dct:description "A Distiribution Clause covers the use, distribution, or communication of the Original Work or Derivative Works in any way such that the Original Work or Derivative Works may be used by anyone other than You, whether those works are distributed or communicated to those persons or made available as an application intended for use over a network."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Distribution Clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:Document
+  rdf:type owl:Class ;
+  dct:description "A minimal representaiton of a 'document'."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Document"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty dct:description ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:title ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:dateCreated ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:lastUpdated ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:url ;
+    ] ;
+.
+voag:DocumentationChange
+  rdf:type voag:ChangeType ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Documentation change"^^xsd:string ;
+.
+voag:EarlyAdoption
+  rdf:type voag:Maturity ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Early adoption"^^xsd:string ;
+.
+voag:EnumeratedValue
+  rdf:type owl:Class ;
+  dct:description "The base class in LMC for enumerated values"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Metadata Enumerated value"^^xsd:string ;
+  rdfs:subClassOf dtype:EnumeratedValue ;
+.
+voag:Event
+  rdf:type owl:Class ;
+  dct:description "A governance-related event."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Event"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Party ;
+      owl:onProperty voag:instigatedBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty voag:endDate ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty voag:eventDate ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty voag:instigatedBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty voag:startDate ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty dct:description ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+.
+voag:ExclusionClause
+  rdf:type owl:Class ;
+  rdfs:label "Exclusion lclause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:Experimental
+  rdf:type voag:Maturity ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Experimental"^^xsd:string ;
+.
+voag:Figure
+  rdf:type owl:Class ;
+  dct:description "An illustration of some kind."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Figure"^^xsd:string ;
+  rdfs:subClassOf voag:Image ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:imageMap ;
+    ] ;
+.
+voag:GMD_VOAG
+  rdf:type vaem:GraphMetaData ;
+  dct:modified "2015-03-31"^^xsd:date ;
+  dct:subject "Licensing, Attribution and Governance"^^xsd:string ;
+  dct:title "Schema for \"Vocabulary Of Attribution and Governance (VOAG)\" - Version 2.0"^^xsd:string ;
+  vaem:description """VOAG stands for <i>Vocabulary Of Attribution and Governance</i>. The ontology is intended to specify licensing, attribution, provenance and governance of an ontology.  A miminal model of governance defines how issues, releases and changes are managed. VOAG does not import, but makes uses of some concepts from <a href=\"http://vocab.deri.ie/void\">VOID</a>, notably <code class=\"boxed\">void:Dataset</code>.  Provenance is defined in terms of source and pedigree. Some use of <a href=\"http://www.w3.org/TR/prov-o/\">PROVO</a>, the W3C provenance ontology, is made, but not by import.
+
+The VOAG schema has a companion VOAG reference data graph that holds license types. This specifies many common license types and their restrictions. Where a license requires attribution, VOAG provides resources that allow the attribution should be made. Documentation of this graph can be found at <a href=\"http://voag.linkedmodel.org/doc/2015/REFDATA_voag-license-types-v2.0.html\">VOAG Licenses Documentation</a>."""^^xsd:string ;
+  vaem:hasGraphRole vaem:SchemaGraph ;
+  vaem:hasLicenseType <http://voag.linkedmodel.org/voag#CC-SHAREALIKE_3PT0-US> ;
+  vaem:hasOwner vaem:TopQuadrant ;
+  vaem:hasSteward vaem:TopQuadrant ;
+  vaem:intent "VOAG is a schema for intellectual capital rights, attribution and governance. Uses the PROVO ontology for provenance.  Typical use of the ontology is to refer to its resources, as opposed to importing the ontology."^^xsd:string ;
+  vaem:latestPublishedVersion "http://voag.linkedmodel.org/2.0/doc/2015/SCHEMA_voag-v2.0.html"^^xsd:anyURI ;
+  vaem:logo "http://www.linkedmodel.org/lib/lm/images/logos/voag_logo_360x110.png"^^xsd:anyURI ;
+  vaem:name "voag"^^xsd:string ;
+  vaem:namespace "http://voag.linkedmodel.org/voag/"^^xsd:anyURI ;
+  vaem:namespacePrefix "voag"^^xsd:string ;
+  vaem:owner "TopQuadrant, Inc."^^xsd:string ;
+  vaem:previousPublishedVersion "http://linkedmodel.org/doc/voag/1.0/"^^xsd:anyURI ;
+  vaem:rdfxmlFileURL "http://voag.linkedmodel.org/2.0/schema/SCHEMA_voag-v2.0.rdf"^^xsd:anyURI ;
+  vaem:revision "2.0"^^xsd:string ;
+  vaem:title "Vocabulary Of Attribution and Governance (VOAG) Schema Version 2.0"^^xsd:string ;
+  vaem:turtleFileURL "http://voag.linkedmodel.org/2.0/schema/SCHEMA_voag-v2.0.ttl"^^xsd:anyURI ;
+  vaem:usesNonImportedResource dct:author ;
+  vaem:usesNonImportedResource dct:contributor ;
+  vaem:usesNonImportedResource dct:description ;
+  vaem:usesNonImportedResource dct:subject ;
+  vaem:usesNonImportedResource dct:title ;
+  vaem:usesNonImportedResource voag:TopQuadrantAttribution ;
+  vaem:usesNonImportedResource prov:Entity ;
+  vaem:usesNonImportedResource prov:wasInfluencedBy ;
+  vaem:withAttributionTo voag:TopQuadrantAttribution ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Schema for \"Vocabulary Of Attribution and Governance (VOAG)\" - Version 2.0"^^xsd:string ;
+  rdfs:seeAlso <http://voag.linkedmodel.org/2.0/doc/2015/VOCAB_voag-v2.0.html> ;
+.
+voag:GR_Authorizer
+  rdf:type voag:GovernanceRole ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "authorizer"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Authorizer"^^xsd:string ;
+.
+voag:GR_Steward
+  rdf:type voag:GovernanceRole ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "steward"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Steward"^^xsd:string ;
+.
+voag:GR_Submitter
+  rdf:type voag:GovernanceRole ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "submitter"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Submitter"^^xsd:string ;
+.
+voag:GeneralProvisionsClause
+  rdf:type owl:Class ;
+  rdfs:label "General provisions clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:Governance
+  rdf:type owl:Class ;
+  dct:description "Governance is mainly concerned with how an artifact is provisioned and managed over its lifecycle. Governance also concerns the status tracking and processes that need to exist on information objects and services for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction are obtained at each appropriate stage."^^xsd:string ;
+  voag:wasInfluencedBy "http://en.wikipedia.org/wiki/Governance"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governance"^^xsd:string ;
+  rdfs:subClassOf voag:Qualifier ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:ChangeFrequency ;
+      owl:onProperty voag:frequencyOfChange ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:ChangeType ;
+      owl:onProperty voag:hasAnticipatedChangeType ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:ConfidentialityLevel ;
+      owl:onProperty voag:hasConfidentiality ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Document ;
+      owl:onProperty voag:hasApplicableDocument ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Document ;
+      owl:onProperty voag:hasNormativeDocument ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Document ;
+      owl:onProperty voag:hasReferenceDocument ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Governance ;
+      owl:onProperty voag:supercedes ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:GovernanceEvent ;
+      owl:onProperty voag:hasGovernanceEvent ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:GovernanceProtocol ;
+      owl:onProperty voag:hasProtocol ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Issue ;
+      owl:onProperty voag:hasIssue ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Party ;
+      owl:onProperty voag:hasOwner ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty voag:hasApprovalStatus ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty voag:hasProtocol ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasConfidentiality ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasOwner ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:isFOSS ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:isITAR ;
+    ] ;
+.
+voag:GovernanceEvent
+  rdf:type owl:Class ;
+  dct:description "Another event that is associated with governance."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governance Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+.
+voag:GovernanceProcess
+  rdf:type owl:Class ;
+  dct:description "A minimal representaton of governance process."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governance Process"^^xsd:string ;
+  rdfs:subClassOf voag:Process ;
+.
+voag:GovernanceProtocol
+  rdf:type owl:Class ;
+  dct:description "Governance is used  to mean the processes that need to exist for a successful initiaitve, mission, program, or project. Such governance needs to outline the relationships between all internal and external groups involved, describe the proper flow of information regarding to all stakeholders, ensure the appropriate review of issues encountered and ensure that required approvals and direction for a 'GovernedEntity' is obtained at each appropriate stage."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governance Protocol"^^xsd:string ;
+  rdfs:subClassOf voag:Qualifier ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:ApprovalProcess ;
+      owl:onProperty voag:hasApprovalProcess ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:ChangeManagementProcess ;
+      owl:onProperty voag:hasChangeManagementProcess ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:IssueResolutionProcess ;
+      owl:onProperty voag:hasIssueResolutionProcess ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Organization ;
+      owl:onProperty voag:isGovernedBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:StakeholderGroup ;
+      owl:onProperty voag:isApprovedBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:StakeholderGroup ;
+      owl:onProperty voag:isInterestOf ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:StakeholderGroup ;
+      owl:onProperty voag:mayNeedConcurrenceFrom ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:StakeholderGroup ;
+      owl:onProperty voag:reviewedBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:isGovernedBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "3"^^xsd:int ;
+      owl:onProperty voag:hasProcess ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasApprovalProcess ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasChangeManagementProcess ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasIssueResolutionProcess ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty voag:hasNormativeDocument ;
+      owl:someValuesFrom voag:Document ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:onProperty voag:isGovernedBy ;
+      owl:someValuesFrom voag:StakeholderGroup ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      dct:description "self-explanatory"^^xsd:string ;
+      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+      owl:intersectionOf (
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty voag:isGovernedBy ;
+            owl:someValuesFrom voag:StakeholderGroup ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty voag:hasProcess ;
+            owl:someValuesFrom voag:GovernanceProcess ;
+          ]
+          [
+            rdf:type owl:Restriction ;
+            owl:onProperty voag:hasNormativeDocument ;
+            owl:someValuesFrom voag:Document ;
+          ]
+        ) ;
+    ] ;
+.
+voag:GovernanceRole
+  rdf:type owl:Class ;
+  dct:description "A \"Role\" with the following instance(s): \"authorizer\", \"steward\", \"submitter\"."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governance Role"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:GovernedObject
+  rdf:type owl:Class ;
+  dct:description "An abstract class for all governed entities. This is a subclass of the provenance ontology 'entity'."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governed Object"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf prov:Entity ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Governance ;
+      owl:onProperty voag:hasGovernance ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Provenance ;
+      owl:onProperty voag:hasProvenance ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty dct:description ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:documentedAt ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasGovernance ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasProvenance ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:normativeURL ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:title ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:dateCreated ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:lastUpdated ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:revision ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:url ;
+    ] ;
+.
+voag:GovernedService
+  rdf:type owl:Class ;
+  dct:description "A miniminal representaiton of a governed service."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governed service"^^xsd:string ;
+  rdfs:subClassOf voag:Service ;
+  owl:disjointWith voag:NonGovernedService ;
+.
+voag:GrantClause
+  rdf:type owl:Class ;
+  vaem:description "A grant is a permission to perform some action."^^xsd:string ;
+  rdfs:label "Grant clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:description ;
+    ] ;
+.
+voag:Graph
+  rdf:type owl:Class ;
+  dct:description "A set of RDF triples in an ontology graph specified according to VOAG."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Graph"^^xsd:string ;
+  rdfs:subClassOf void:Dataset ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Attribution ;
+      owl:onProperty vaem:withAttributionTo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:License ;
+      owl:onProperty vaem:hasLicenseType ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:ProductLogo ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom vaem:Aspect ;
+      owl:onProperty vaem:aspectScope ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom vaem:Discipline ;
+      owl:onProperty vaem:disciplineScope ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom vaem:Domain ;
+      owl:onProperty vaem:domainScope ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom vaem:GraphRole ;
+      owl:onProperty vaem:hasGraphRole ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom vaem:Viewpoint ;
+      owl:onProperty vaem:viewpointScope ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:attributionText ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:curatedGraphURI ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:namespace ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:namespacePrefix ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:downloads ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:urlOfRDFfile ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:urlOfTurtleFile ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:hasGraphRole ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:hasLicenseType ;
+    ] ;
+.
+voag:Icon
+  rdf:type owl:Class ;
+  dct:description "A logo of some kind"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Icon"^^xsd:string ;
+  rdfs:subClassOf voag:Image ;
+.
+voag:Image
+  rdf:type owl:Class ;
+  dct:description "Image is a class for figures, pictures, logos, and icons  of various kinds"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Image"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:image ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:caption ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:height ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:width ;
+    ] ;
+.
+voag:InDevelopment
+  rdf:type voag:Maturity ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "In development"^^xsd:string ;
+.
+voag:Issue
+  rdf:type owl:Class ;
+  dct:description "Captures issues such as raising of an issue related to a particular entity in a registry"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Issue"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:BoardDispositionStatus ;
+      owl:onProperty voag:dispositionStatus ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:IssueStatus ;
+      owl:onProperty voag:hasStatus ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:PriorityValue ;
+      owl:onProperty voag:priority ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty voag:disposition ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:int ;
+      owl:onProperty voag:userID ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasStatus ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:title ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty voag:priority ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty dct:description ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+.
+voag:IssueResolutionProcess
+  rdf:type owl:Class ;
+  dct:description "A minimal representation of an issue resolution process."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Issue Resolution Process"^^xsd:string ;
+  rdfs:subClassOf voag:GovernanceProcess ;
+.
+voag:IssueStatus
+  rdf:type owl:Class ;
+  dct:description "The status of an issue: \"Closed\", \"Deferred\", \"Non issue\", \"Open\", \"Resolved\"."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Issue Status"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:JuristricationClause
+  rdf:type owl:Class ;
+  rdfs:label "Juristrication clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:License
+  rdf:type owl:Class ;
+  dct:description "A License describes the licensing conditions associated with a software artifact."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "License Model"^^xsd:string ;
+  rdfs:subClassOf voag:GovernedObject ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:License ;
+      owl:onProperty voag:compatibleWith ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:License ;
+      owl:onProperty voag:derivedFrom ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:License ;
+      owl:onProperty voag:incompatibleWith ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:int ;
+      owl:onProperty voag:image ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:DistributionClause ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:url ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:acronym ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasClause ;
+    ] ;
+.
+voag:LimitationOfLiabilityClause
+  rdf:type owl:Class ;
+  rdfs:label "Limitation of liability clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:LinkedModelLogo-200x80
+  rdf:type voag:Logo ;
+  dct:description "LinkedModel Logo"^^xsd:string ;
+  voag:caption "LinkedModel Standard ICON"^^xsd:string ;
+  voag:height "80"^^xsd:string ;
+  voag:image "http://www.linkedmodel.org/lib/lm/images/logos/linkedmodels-logo.gif"^^xsd:anyURI ;
+  voag:width "200"^^xsd:string ;
+  rdfs:label "LinkedModel ICON 200 x 80"^^xsd:string ;
+.
+voag:Logo
+  rdf:type owl:Class ;
+  dct:description "Logo is ..."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Logo"^^xsd:string ;
+  rdfs:subClassOf voag:Image ;
+.
+voag:Maturity
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Maturity"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+  owl:unionOf (
+      voag:WidelyAdopted
+      voag:SomeAdoption
+      voag:EarlyAdoption
+      voag:Proposed
+      voag:UnknownMaturity
+      voag:Experimental
+      voag:InDevelopment
+    ) ;
+.
+voag:MiscClause
+  rdf:type owl:Class ;
+  rdfs:label "Misc clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:ModificationChange
+  rdf:type voag:ChangeType ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Modification change"^^xsd:string ;
+.
+voag:ModificationClause
+  rdf:type owl:Class ;
+  rdfs:label "Modification clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:Monthly
+  rdf:type voag:ChangeFrequency ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Monthly"^^xsd:string ;
+.
+voag:Never
+  rdf:type voag:ChangeFrequency ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Never"^^xsd:string ;
+.
+voag:NoAttributionSpecified
+  rdf:type voag:Attribution ;
+  dct:description "None."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "No attribution specified"^^xsd:string ;
+.
+voag:NoGovernanceSpecified
+  rdf:type voag:Governance ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "No governance specified"^^xsd:string ;
+.
+voag:NoPedigreeSpecified
+  rdf:type voag:Pedigree ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "No pedigree specified"^^xsd:string ;
+.
+voag:NoProvenanceSpecified
+  rdf:type voag:Provenance ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "No provenance specified"^^xsd:string ;
+.
+voag:NonConcurrenceEvent
+  rdf:type owl:Class ;
+  dct:description "A \"Governance Event\"."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Non-Concurrence Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+.
+voag:NonGovernedService
+  rdf:type owl:Class ;
+  dct:description "A miniminal representaiton of a non-governed service."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Governed service"^^xsd:string ;
+  rdfs:subClassOf voag:Service ;
+  owl:disjointWith voag:GovernedService ;
+.
+voag:NonIssue
+  rdf:type voag:IssueStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "non-issue"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Non-issue"^^xsd:string ;
+.
+voag:OpenIssue
+  rdf:type voag:IssueStatus ;
+  dct:description "An issue with undetermined disposition,"^^xsd:string ;
+  dtype:value "open"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Open"^^xsd:string ;
+.
+voag:Organization
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Organization"^^xsd:string ;
+  rdfs:subClassOf voag:Party ;
+  rdfs:subClassOf prov:Organization ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:OrganizationLogo ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:url ;
+    ] ;
+.
+voag:OrganizationLogo
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Organization logo"^^xsd:string ;
+  rdfs:subClassOf voag:Logo ;
+.
+voag:PS_Draft
+  rdf:type voag:PublicationStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "draft"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Draft Status"^^xsd:string ;
+.
+voag:PS_Final
+  rdf:type voag:PublicationStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Final Status"^^xsd:string ;
+.
+voag:PS_Interim
+  rdf:type voag:PublicationStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "interim"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Interim Status"^^xsd:string ;
+.
+voag:PS_Obsolete
+  rdf:type voag:PublicationStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "obsolete"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Obsolete"^^xsd:string ;
+.
+voag:PS_Review
+  rdf:type voag:PublicationStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "review"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Review"^^xsd:string ;
+.
+voag:PS_Unknown
+  rdf:type voag:PublicationStatus ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "unknown"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Unknown Status"^^xsd:string ;
+.
+voag:PV_HighPriority
+  rdf:type voag:PriorityValue ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "high"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "High priority"^^xsd:string ;
+.
+voag:PV_LowPriority
+  rdf:type voag:PriorityValue ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "low"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Low priority"^^xsd:string ;
+.
+voag:PV_MediumPriority
+  rdf:type voag:PriorityValue ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "medium"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Medium priority"^^xsd:string ;
+.
+voag:PV_NotApplicable
+  rdf:type voag:PriorityValue ;
+  dct:description "self-explanatory"^^xsd:string ;
+  dtype:value "na"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Not Applicable"^^xsd:string ;
+.
+voag:PV_ToBeDetermined
+  rdf:type voag:PriorityValue ;
+  dct:description "To be determined."^^xsd:string ;
+  dtype:value "tbd"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "TBD"^^xsd:string ;
+.
+voag:Party
+  rdf:type owl:Class ;
+  dct:description "A party is an abstract superclass for an 'organization', 'person' or 'stakeholder group'"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Party"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+.
+voag:PatentGrantClause
+  rdf:type owl:Class ;
+  vaem:description "A permission that a Licensor grants."^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:label "Patent grant clause"^^xsd:string ;
+  rdfs:subClassOf voag:GrantClause ;
+.
+voag:Pedigree
+  rdf:type owl:Class ;
+  dct:description "Pedigree captures aspects of an artifact that have to do with maturity, quality, salience, and accredidation."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Pedigree"^^xsd:string ;
+  rdfs:subClassOf voag:Qualifier ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Accreditation ;
+      owl:onProperty voag:hasAccredidation ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Maturity ;
+      owl:onProperty voag:hasMaturity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Party ;
+      owl:onProperty voag:usedBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasAccredidation ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasMaturity ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:usage ;
+    ] ;
+.
+voag:Person
+  rdf:type owl:Class ;
+  dct:description "A minimal representation of a person. This class is expected to be extended by other ontologies."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Person"^^xsd:string ;
+  rdfs:subClassOf voag:Party ;
+  rdfs:subClassOf prov:Person ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+.
+voag:PriorityValue
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Priority value"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:Process
+  rdf:type owl:Class ;
+  dct:description "Minimal representation of process."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Process"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+.
+voag:ProductLogo
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Product logo"^^xsd:string ;
+  rdfs:subClassOf voag:Logo ;
+.
+voag:Proposed
+  rdf:type voag:Maturity ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Proposed"^^xsd:string ;
+.
+voag:ProtectionClause
+  rdf:type owl:Class ;
+  rdfs:label "Protection clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:Provenance
+  rdf:type owl:Class ;
+  dct:description "Provenance specifies the origin or source of some artifact. The primary purpose of provenance is to capture the time, place, and if appropriate the person responsible, for the creation, production or provisioning of The artifact. Provenance also captures a record of how a version may have been superceded by another version of the artifact."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Provenance"^^xsd:string ;
+  rdfs:subClassOf voag:Qualifier ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:ChangeType ;
+      owl:onProperty voag:hasChangeType ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:GovernedObject ;
+      owl:onProperty voag:supercededBy ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:GovernedObject ;
+      owl:onProperty voag:supercedes ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Pedigree ;
+      owl:onProperty voag:hasPedigree ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom [
+          rdf:type owl:Class ;
+          dct:description "self-explanatory"^^xsd:string ;
+          rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+          owl:unionOf (
+              voag:Party
+              voag:Document
+            ) ;
+        ] ;
+      owl:onProperty voag:source ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:cardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:timestamp ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasPedigree ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:lastUpdated ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:revision ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:derivedFrom ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:source ;
+    ] ;
+.
+voag:PublicationStatus
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Publication Status"^^xsd:string ;
+  rdfs:subClassOf voag:EnumeratedValue ;
+.
+voag:Qualifier
+  rdf:type owl:Class ;
+  dct:description "Abstract qualifier class."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Qualifier"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+.
+voag:Quarterly
+  rdf:type voag:ChangeFrequency ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Quarterly"^^xsd:string ;
+.
+voag:RDFIcon-32X35
+  rdf:type voag:Icon ;
+  dct:description "RDF Standard"^^xsd:string ;
+  voag:caption "RDF Standard ICON"^^xsd:string ;
+  voag:height "35"^^xsd:string ;
+  voag:image "http://www.linkedmodel.org/lib/lm/images/icons/rdf_w3c_icon.48.gif"^^xsd:anyURI ;
+  voag:width "32"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "RDF Icon 32 X 35"^^xsd:string ;
+.
+voag:RefactoringChange
+  rdf:type voag:ChangeType ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Refactoring change"^^xsd:string ;
+.
+voag:RejectionEvent
+  rdf:type owl:Class ;
+  dct:description "A \"Governance Event\"."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Rejection Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+.
+voag:ResolvedIssue
+  rdf:type voag:IssueStatus ;
+  dtype:value "resolved"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Resolved"^^xsd:string ;
+.
+voag:RestrictionsClause
+  rdf:type owl:Class ;
+  rdfs:label "Restrictions clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:RetreivalEvent
+  rdf:type owl:Class ;
+  dct:description "A retrieval occurrence."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Retreival Event"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+.
+voag:ReviewEvent
+  rdf:type owl:Class ;
+  dct:description "A review occurrence."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Review"^^xsd:string ;
+  rdfs:subClassOf voag:Event ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Organization ;
+      owl:onProperty voag:performedBy ;
+    ] ;
+.
+voag:RightToUseClause
+  rdf:type owl:Class ;
+  rdfs:label "Right to use clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:SPARQLIcon-80X15
+  rdf:type voag:Icon ;
+  dct:description "SPARQL Standard"^^xsd:string ;
+  voag:caption "SPARQL Standard ICON"^^xsd:string ;
+  voag:height "15"^^xsd:string ;
+  voag:image "http://www.linkedmodel.org/lib/lm/images/icons/sw-sparql-blue.png"^^xsd:anyURI ;
+  voag:width "80"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "SPARQL ICON 80 X 15"^^xsd:string ;
+.
+voag:SchemaGraph
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Schema graph"^^xsd:string ;
+  rdfs:subClassOf voag:Graph ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue vaem:SchemaGraph ;
+      owl:onProperty vaem:hasGraphRole ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      dct:description "self-explanatory"^^xsd:string ;
+      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+      owl:intersectionOf (
+          voag:Graph
+          [
+            rdf:type owl:Restriction ;
+            owl:hasValue vaem:SchemaGraph ;
+            owl:onProperty vaem:hasGraphRole ;
+          ]
+        ) ;
+    ] ;
+.
+voag:Service
+  rdf:type owl:Class ;
+  dct:description "A minimal representation of service."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Service"^^xsd:string ;
+  rdfs:subClassOf owl:Thing ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:id ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty vaem:name ;
+    ] ;
+.
+voag:SomeAdoption
+  rdf:type voag:Maturity ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Some adoption"^^xsd:string ;
+.
+voag:SourceCodeGrantClause
+  rdf:type owl:Class ;
+  vaem:description "A permission that a Licensor grants."^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:label "Source code grant clause"^^xsd:string ;
+  rdfs:subClassOf voag:GrantClause ;
+.
+voag:StakeholderGroup
+  rdf:type owl:Class ;
+  dct:description "A Stakeholder Group is a party of people who have common interests and concerns."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Stakeholder Group"^^xsd:string ;
+  rdfs:subClassOf voag:Party ;
+  rdfs:subClassOf prov:Organization ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Person ;
+      owl:onProperty voag:hasStakeholder ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:minCardinality "1"^^xsd:int ;
+      owl:onProperty voag:hasStakeholder ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Restriction ;
+      owl:onProperty voag:hasStakeholder ;
+      owl:someValuesFrom voag:Person ;
+    ] ;
+.
+voag:Standard
+  rdf:type owl:Class ;
+  dct:description "An industry, de facto or de jure standard"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Standard"^^xsd:string ;
+  rdfs:subClassOf voag:GovernedObject ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom voag:Icon ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+      owl:onProperty voag:hasLogo ;
+    ] ;
+.
+voag:TerminationClause
+  rdf:type owl:Class ;
+  rdfs:label "Termination clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:TopQuadrantAttribution
+  rdf:type voag:Attribution ;
+  dct:description "Attribution must be given to TopQuadrant."^^xsd:string ;
+  voag:hasLogo voag:TopQuadrantLogo-613x150 ;
+  voag:pointOfContact "Ralph Hodgson, TopQuadrant, Inc."^^xsd:string ;
+  voag:url "http://www.topquadrant.com"^^xsd:anyURI ;
+  vaem:name "TopQuadrant, Inc."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "TopQuadrant attribution"^^xsd:string ;
+.
+voag:TopQuadrantLogo-613x150
+  rdf:type voag:AttributionLogo ;
+  rdf:type voag:OrganizationLogo ;
+  dct:description "TopQuadrant's logo - diamond with company name to the right"^^xsd:string ;
+  voag:height "150"^^xsd:string ;
+  voag:image "http://www.linkedmodel.org/lib/lm/images/logos/TQ_logo_C_2009_SM_print.jpg"^^xsd:anyURI ;
+  voag:width "613"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "TopQuadrant Logo 613 x 150"^^xsd:string ;
+.
+voag:TurtleIcon-32bX35
+  rdf:type voag:Icon ;
+  dct:description "Turtle is a representation format for RDF/OWL."^^xsd:string ;
+  voag:caption "Turtle ICON"^^xsd:string ;
+  voag:height "35"^^xsd:string ;
+  voag:image "http://www.linkedmodel.org/lib/lm/images/icons/turtle_icon_32x35.jpg"^^xsd:anyURI ;
+  voag:width "32"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Turtle Icon 32 X 35"^^xsd:string ;
+.
+voag:UncertainFrequency
+  rdf:type voag:ChangeFrequency ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Uncertain frequency"^^xsd:string ;
+.
+voag:UnknownMaturity
+  rdf:type voag:Maturity ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Unknown maturity"^^xsd:string ;
+.
+voag:UsageClause
+  rdf:type owl:Class ;
+  rdfs:label "Usage clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:VOAG-OntologyLogo_360x110
+  rdf:type voag:ProductLogo ;
+  voag:caption "VOAG Logo"^^xsd:string ;
+  voag:height "55"^^xsd:string ;
+  voag:image "http://www.linkedmodel.org/lib/lm/images/logos/voag_logo_360x110.png"^^xsd:anyURI ;
+  voag:width "180"^^xsd:string ;
+  rdfs:label "VOAG Logo"^^xsd:string ;
+.
+voag:VersionClause
+  rdf:type owl:Class ;
+  rdfs:label "Version clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:VocabGraph
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Vocab graph"^^xsd:string ;
+  rdfs:subClassOf voag:Graph ;
+  rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:hasValue vaem:VocabularyGraph ;
+      owl:onProperty vaem:hasGraphRole ;
+    ] ;
+  owl:equivalentClass [
+      rdf:type owl:Class ;
+      dct:description "self-explanatory"^^xsd:string ;
+      rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+      owl:intersectionOf (
+          voag:Graph
+          [
+            rdf:type owl:Restriction ;
+            owl:hasValue vaem:VocabularyGraph ;
+            owl:onProperty vaem:hasGraphRole ;
+          ]
+        ) ;
+    ] ;
+.
+voag:WarrantyClause
+  rdf:type owl:Class ;
+  rdfs:label "Warranty clause"^^xsd:string ;
+  rdfs:subClassOf voag:Clause ;
+.
+voag:Weekly
+  rdf:type voag:ChangeFrequency ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Weekly"^^xsd:string ;
+.
+voag:WidelyAdopted
+  rdf:type voag:Maturity ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "Widely adopted"^^xsd:string ;
+.
+voag:accountableFor
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property used in governance that refers a resource to the party that is accountable for it."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "accountable for"^^xsd:string ;
+.
+voag:approves
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property that specifies that a party governs the approval of a resource."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "approves"^^xsd:string ;
+  rdfs:subPropertyOf voag:governs ;
+  owl:inverseOf voag:isApprovedBy ;
+.
+voag:attributionText
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "attribution text"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:caption
+  rdf:type owl:DatatypeProperty ;
+  dct:description "A short description, typically used on a table or a figure."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "caption"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:clauseNumber
+  rdf:type owl:DatatypeProperty ;
+  rdfs:domain voag:Clause ;
+  rdfs:label "clause number"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+voag:compatibleWith
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:SymmetricProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "compatible with"^^xsd:string ;
+.
+voag:curatedGraphURI
+  rdf:type owl:DatatypeProperty ;
+  dct:description "The property 'voag:curatedGraphURI' provides a means to specify the base URI of the specific version of the onotlogy that is being documented.  In each versioned graph the 'vaem:namespace' carries a URI without a version number."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "curated graph URI"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.
+voag:deprecated
+  rdf:type rdf:Property ;
+  rdf:type owl:AnnotationProperty ;
+  rdfs:domain voag:License ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "deprecated on"^^xsd:string ;
+  rdfs:range vaem:dateUnion ;
+.
+voag:derivedFrom
+  rdf:type rdf:Property ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "derived from"^^xsd:string ;
+.
+voag:disposition
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:comment "used to connect to the text describing disposition of something, for example, a disposition of an issue" ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "disposition"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:dispositionStatus
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object propoert that denotes the state of a governance issue."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "disposition status"^^xsd:string ;
+  rdfs:subPropertyOf voag:hasApprovalStatus ;
+.
+voag:documentedAt
+  rdf:type rdf:Property ;
+  dct:description "The property 'vaem:documentedAt' is intended for general use as the name implies.  In some cases the property could have scalar values and in other cases may need to refer to a first class concept that holds more information about a documentation resource.  For this reason, the  type of this property is set as 'rdf:Property' and the property is rangeless."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "documented at"^^xsd:string ;
+.
+voag:downloads
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "downloads"^^xsd:string ;
+  rdfs:range xsd:integer ;
+.
+voag:endDate
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "end date"^^xsd:string ;
+  rdfs:range vaem:dateUnion ;
+.
+voag:eventDate
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "event date"^^xsd:string ;
+  rdfs:range vaem:dateUnion ;
+.
+voag:exclude
+  rdf:type owl:AnnotationProperty ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "exclude"^^xsd:string ;
+  rdfs:range xsd:boolean ;
+.
+voag:frequencyOfChange
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "frequency of change"^^xsd:string ;
+.
+voag:givesConcurrenceFor
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property that specifies what a party may need to give consent, in the form of agreement, either written or verbally for in the approval of some govenance concern. This is the inverse property of 'mayNeedConcurrenceFrom' and, as such, may be deprecated in the future."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "gives concurrence for"^^xsd:string ;
+  rdfs:subPropertyOf voag:governs ;
+  owl:inverseOf voag:mayNeedConcurrenceFrom ;
+.
+voag:governs
+  rdf:type owl:ObjectProperty ;
+  dct:description "A super-property of governance properties: 'approves', 'gives concurrence for', 'reviews' and 'witness to'."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "governs"^^xsd:string ;
+  owl:inverseOf voag:isGovernedBy ;
+.
+voag:hasAccredidation
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has accredidation"^^xsd:string ;
+.
+voag:hasAnticipatedChangeType
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has anticipated change type"^^xsd:string ;
+.
+voag:hasApplicableDocument
+  rdf:type owl:ObjectProperty ;
+  dct:description "A document that is of help to application of the subject matter. Documents include specifications, models, standards, guidelines, handbooks and other special publications."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has applicable document"^^xsd:string ;
+.
+voag:hasApprovalProcess
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property that specifies a process that is used for approval in a 'Governance Protocol'."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has approval process"^^xsd:string ;
+.
+voag:hasApprovalStatus
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property that referes to an enumerated value that denotes the state of an approval."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has approval status"^^xsd:string ;
+.
+voag:hasCategory
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has category"^^xsd:string ;
+.
+voag:hasChangeManagementProcess
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property that specifies a process that is used for managing change in a 'Governance Protocol'."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has change management process"^^xsd:string ;
+  rdfs:subPropertyOf voag:hasProcess ;
+.
+voag:hasChangeType
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has change type"^^xsd:string ;
+.
+voag:hasClause
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has clause"^^xsd:string ;
+  rdfs:range voag:Clause ;
+.
+voag:hasConfidentiality
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property that specifies a level of confidentiality. Typicall the range of this property will be 'voag:Confidentiality'."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has confidentiality"^^xsd:string ;
+.
+voag:hasGovernance
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has governance"^^xsd:string ;
+.
+voag:hasGovernanceEvent
+  rdf:type owl:ObjectProperty ;
+  dct:description "An event associated with governance processes." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has governance event"^^xsd:string ;
+.
+voag:hasIdentifier
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has identifier"^^xsd:string ;
+.
+voag:hasIssue
+  rdf:type owl:ObjectProperty ;
+  dct:description "A pointer to an issue that exists on a subject of interest." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has issue"^^xsd:string ;
+  rdfs:range voag:Issue ;
+.
+voag:hasIssueResolutionProcess
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has issue resolution process"^^xsd:string ;
+  rdfs:subPropertyOf voag:hasProcess ;
+.
+voag:hasLogo
+  rdf:type owl:ObjectProperty ;
+  dct:description "A property to reference an image that is used as a logo."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has logo"^^xsd:string ;
+  rdfs:range voag:Logo ;
+.
+voag:hasMaturity
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has maturity"^^xsd:string ;
+.
+voag:hasNormativeDocument
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has normative document"^^xsd:string ;
+.
+voag:hasOntologyArchitectureDiagram
+  rdf:type owl:ObjectProperty ;
+  dct:description "An optional property that references a, ontology architecture diagram of the graph that is being governed."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has ontology architecture diagram"^^xsd:string ;
+.
+voag:hasOwner
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has owner"^^xsd:string ;
+.
+voag:hasPedigree
+  rdf:type owl:ObjectProperty ;
+  dct:description "A reference to a description about the pedigree of something."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has pedigree"^^xsd:string ;
+.
+voag:hasProcess
+  rdf:type owl:ObjectProperty ;
+  dct:description "A reference to a process description."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has process"^^xsd:string ;
+.
+voag:hasProtocol
+  rdf:type owl:ObjectProperty ;
+  dct:description "A pointer to a record that holds governance information for one or more governed entities. Often governance can be shared across entities."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has protocol"^^xsd:string ;
+.
+voag:hasProvenance
+  rdf:type owl:ObjectProperty ;
+  dct:description "A pointer to a provenance record that details the source, version and time of some subject of interest."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has provenance"^^xsd:string ;
+.
+voag:hasReferenceDocument
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has reference document"^^xsd:string ;
+.
+voag:hasStakeholder
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has stakeholder"^^xsd:string ;
+.
+voag:hasStatus
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has status"^^xsd:string ;
+.
+voag:hasSteward
+  rdf:type owl:ObjectProperty ;
+  dct:description "A pointer to the person that is a curator."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "has steward"^^xsd:string ;
+.
+voag:height
+  rdf:type owl:DatatypeProperty ;
+  dct:description "Height is typically used to specify an image's height attribute."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "height"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:id
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "id"^^xsd:string ;
+  rdfs:range xsd:anySimpleType ;
+.
+voag:image
+  rdf:type owl:DatatypeProperty ;
+  dct:description "The property 'vaem:image' points  to an image using a URL. "^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "image"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.
+voag:imageMap
+  rdf:type rdf:Property ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "image map"^^xsd:string ;
+.
+voag:incompatibleWith
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:SymmetricProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "incompatible with"^^xsd:string ;
+.
+voag:instigatedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "instigated by"^^xsd:string ;
+.
+voag:instigatingEvent
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "instigating event"^^xsd:string ;
+.
+voag:intent
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "intent"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:interestIn
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "interest in"^^xsd:string ;
+  owl:inverseOf voag:isInterestOf ;
+.
+voag:isApprovedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "References to which parties approve an entity." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "is approved by"^^xsd:string ;
+  rdfs:subPropertyOf voag:isGovernedBy ;
+.
+voag:isFOSS
+  rdf:type owl:DatatypeProperty ;
+  dct:description "A boolean property to specify whether or not software is free or open source. Free and open-source software (F/OSS, FOSS) or free/libre/open-source software (FLOSS) is software that is liberally licensed to grant the right of users to use, study, change, and improve its design through the availability of its source code."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "is FOSS"^^xsd:string ;
+  rdfs:range xsd:boolean ;
+.
+voag:isGovernedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "A pointer to who is responsible for the governance of some entity of interest. This is a two-way reference with the inverse property 'governs'." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "is governed by"^^xsd:string ;
+.
+voag:isITAR
+  rdf:type owl:DatatypeProperty ;
+  rdf:type owl:DeprecatedProperty ;
+  dct:description "International Traffic in Arms Regulations (ITAR) is a set of United States government regulations that control the export and import of defense-related articles and services on the United States Munitions List. These regulations implement the provisions of the Arms Export Control Act, and are described in Title 22 (Foreign Relations), Chapter I (Department of State), Subchapter M of the Code of Federal Regulations. The Department of State interprets and enforces ITAR. Its goal is to advance national strategic objectives and U.S. foreign policy via the trade controls. For practical purposes, ITAR regulations dictate that information and material pertaining to defense and military related technologies may only be shared with US Persons unless approval from the Department of State is received or a special exemption is used." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "is ITAR"^^xsd:string ;
+  rdfs:range xsd:boolean ;
+.
+voag:isInterestOf
+  rdf:type owl:ObjectProperty ;
+  dct:description "A pointer to parties who have an interest in an entity. This is a two-way reference with the inverse property 'interestIn'." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "interest of"^^xsd:string ;
+.
+voag:jurisdiction
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "jurisdiction"@en-US ;
+  rdfs:label "jurisdiction"^^xsd:string ;
+  rdfs:range voag:CreativeCommonsJurisdiction ;
+.
+voag:legalcode
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "legalcode"^^xsd:string ;
+  rdfs:range rdfs:Resource ;
+.
+voag:licence
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "licence"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:mayNeedConcurrenceFrom
+  rdf:type owl:ObjectProperty ;
+  dct:description "An object property that specifies that a party may need to give consent, in the form of agreement, either written or verbally to the approval of some govenance concern."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "may need concurrence from"^^xsd:string ;
+  rdfs:subPropertyOf voag:isGovernedBy ;
+  owl:inverseOf voag:givesConcurrenceFor ;
+.
+voag:morePermissions
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:CreativeCommonsWork ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "more permissions"^^xsd:string ;
+  rdfs:range rdfs:Resource ;
+.
+voag:normativeReference
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "normative reference"^^xsd:string ;
+.
+voag:normativeURL
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "normative URL"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.
+voag:obsoletedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "obsoleted by"^^xsd:string ;
+.
+voag:ownedBy
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "owned by"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:owner
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "owner"^^xsd:string ;
+.
+voag:owns
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "owns"^^xsd:string ;
+.
+voag:participant
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "participant"^^xsd:string ;
+.
+voag:performedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "performed by"^^xsd:string ;
+.
+voag:permits
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "permits"@en-US ;
+  rdfs:label "permits"^^xsd:string ;
+  rdfs:range voag:CreativeCommonsPermission ;
+.
+voag:pointOfContact
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "point of contact"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:preparedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "prepared by"^^xsd:string ;
+  rdfs:subPropertyOf voag:isGovernedBy ;
+.
+voag:priority
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "priority"^^xsd:string ;
+.
+voag:prohibits
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "prohibits"@en-US ;
+  rdfs:label "prohibits"^^xsd:string ;
+  rdfs:range voag:CreativeCommonsProhibition ;
+.
+voag:proprietary
+  rdf:type owl:DatatypeProperty ;
+  dct:description "A boolean flag to indicate if an information asset is propretary." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "proprietary"^^xsd:string ;
+  rdfs:range xsd:boolean ;
+.
+voag:relatedIssue
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:comment "This property connects two issue events. Issues connected by this property must be about the same subject" ;
+  rdfs:domain voag:Issue ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "related issue"^^xsd:string ;
+  rdfs:range voag:Issue ;
+.
+voag:relatedTo
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:SymmetricProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "related to"^^xsd:string ;
+.
+voag:releaseDate
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "release date"^^xsd:string ;
+  rdfs:range vaem:dateUnion ;
+.
+voag:requires
+  rdf:type rdf:Property ;
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:License ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "requires"@en-US ;
+  rdfs:label "requires"^^xsd:string ;
+  rdfs:range voag:CreativeCommonsRequirement ;
+.
+voag:reviewedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "References to the parties that review a data or information asset."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "reviewed by"^^xsd:string ;
+  rdfs:subPropertyOf voag:isGovernedBy ;
+  owl:inverseOf voag:reviews ;
+.
+voag:reviews
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "reviews"^^xsd:string ;
+  rdfs:subPropertyOf voag:governs ;
+  owl:inverseOf voag:reviewedBy ;
+.
+voag:rights
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "subject"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:source
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "source"^^xsd:string ;
+.
+voag:startDate
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "start date"^^xsd:string ;
+  rdfs:range vaem:dateUnion ;
+.
+voag:subject
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "subject"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:submittedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "submitted by"^^xsd:string ;
+  rdfs:subPropertyOf voag:isGovernedBy ;
+.
+voag:supercededBy
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
+  dct:description "A pointer to one or more 'GovernedEntities' that replace this entity."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "superceded by"^^xsd:string ;
+  owl:inverseOf voag:supercedes ;
+.
+voag:supercedes
+  rdf:type owl:ObjectProperty ;
+  rdf:type owl:TransitiveProperty ;
+  dct:description "A pointer to one or more 'GovernedEntities' that are replaced by this entity." ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "supercedes"^^xsd:string ;
+  owl:inverseOf voag:supercededBy ;
+.
+voag:supervisedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "supervised by"^^xsd:string ;
+  rdfs:subPropertyOf voag:isGovernedBy ;
+.
+voag:timestamp
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "timestamp"^^xsd:string ;
+  rdfs:range xsd:dateTime ;
+.
+voag:title
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "title"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:url
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "url"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.
+voag:urlForHTML
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "url for HTML"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.
+voag:urlOfRDFfile
+  rdf:type owl:DatatypeProperty ;
+  dct:description "Used to refer to a an RDF XML representation of an ontology"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "url address of RDF file"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.
+voag:urlOfTurtleFile
+  rdf:type owl:DatatypeProperty ;
+  dct:description "Used to refer to a Turtle (N3) representation of an ontology"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "url of turtle file"^^xsd:string ;
+  rdfs:range xsd:anyURI ;
+.
+voag:usage
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "usage"^^xsd:string ;
+  rdfs:range xsd:string ;
+.
+voag:useGuidelines
+  rdf:type rdf:Property ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:domain voag:CreativeCommonsWork ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "use guidelines"^^xsd:string ;
+  rdfs:range rdfs:Resource ;
+.
+voag:usedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "The property 'usedBy' is a general property to record a dependency. One use is in stating how a schema or a vocabulary is used by another ontology graph."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "used by"^^xsd:string ;
+.
+voag:userID
+  rdf:type owl:DatatypeProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "user ID"^^xsd:string ;
+  rdfs:range xsd:anySimpleType ;
+.
+voag:wasInfluencedBy
+  rdf:type owl:AnnotationProperty ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:seeAlso prov:wasInfluencedBy ;
+.
+voag:width
+  rdf:type owl:DatatypeProperty ;
+  dct:description "Width is typically used to specify an image's width attribute."^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "width"^^xsd:string ;
+.
+voag:withRespectTo
+  rdf:type owl:ObjectProperty ;
+  rdfs:domain voag:AdjunctClause ;
+  rdfs:label "with respect to"^^xsd:string ;
+  rdfs:range voag:Clause ;
+.
+voag:witnessTo
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "witness to"^^xsd:string ;
+  rdfs:subPropertyOf voag:governs ;
+  owl:inverseOf voag:witnessedBy ;
+.
+voag:witnessedBy
+  rdf:type owl:ObjectProperty ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/2.0/schema/voag> ;
+  rdfs:isDefinedBy <http://voag.linkedmodel.org/schema/voag> ;
+  rdfs:label "wintnessed by"^^xsd:string ;
+  rdfs:subPropertyOf voag:isGovernedBy ;
+.
+prov:Entity
+  rdf:type owl:Class ;
+  dct:description "self-explanatory"^^xsd:string ;
+  rdfs:label "Entity"^^xsd:string ;
+.
+prov:wasInfluencedBy
+  rdf:type rdf:Property ;
+  rdfs:isDefinedBy <http://www.w3.org/TR/prov-o/> ;
+  rdfs:seeAlso prov:wasInfluencedBy ;
+.
+(
+  voag:WidelyAdopted
+  voag:SomeAdoption
+  voag:EarlyAdoption
+  voag:Proposed
+  voag:UnknownMaturity
+  voag:Experimental
+  voag:InDevelopment
+).
