@@ -1,0 +1,99 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix prog: <http://purl.org/prog/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://neologism.ecs.soton.ac.uk/prog> a owl:Ontology;
+    dcterms:title "The Event Programme Vocabulary";
+    dcterms:description "This Vocabulary provides the means to create a document which describes a large event or other connected series of events. The primary purpose is to help humans comprehend the programme, not describe absolute truth. A single event (or even series) may have multiple programmes.";
+    dcterms:modified "2014-04-01"^^xsd:date;
+    vann:preferredNamespaceUri "http://purl.org/prog/";
+    vann:preferredNamespacePrefix "prog";
+    foaf:homepage <http://neologism.ecs.soton.ac.uk/prog.html>;
+    dcterms:created "2012-12-11"^^xsd:date;
+    dcterms:publisher "http://neologism.ecs.soton.ac.uk/prog#University%20of%20Southampton";
+    dcterms:partOf <http://neologism.ecs.soton.ac.uk>;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    dcterms:status <http://purl.org/adms/status/UnderDevelopment>;
+    dc:creator <http://neologism.ecs.soton.ac.uk/prog#cjg> .
+
+<http://neologism.ecs.soton.ac.uk/prog#ttl>
+    dcterms:FileFormat <> .
+
+<http://neologism.ecs.soton.ac.uk/prog#rdf>
+    dcterms:FileFormat <> .
+
+<http://neologism.ecs.soton.ac.uk/prog#cjg> a foaf:Person;
+    foaf:name "Christopher Gutteridge";
+    foaf:homepage <http://users.ecs.soton.ac.uk/cjg/>;
+    foaf:mbox <mailto:cjg@ecs.soton.ac.uk> .
+
+<http://neologism.ecs.soton.ac.uk/prog#University%20of%20Southampton> a dcterms:Agent;
+    foaf:member <http://neologism.ecs.soton.ac.uk/prog#cjg>;
+    foaf:name "University of Southampton";
+    foaf:homepage <http://www.soton.ac.uk/> .
+
+prog:Activity a rdfs:Class, owl:Class;
+    rdfs:label "Activity";
+    rdfs:comment """This class represents the abstract content of an event, which may be repeated many times, once or never. For example a training course, or a play. The primary purpose is to indicate that several events will have very similar content, to aid planning what to attend. It does not indicate that there is any reason people could not attend more than one realisation. It should not be used to abstract a repeating event, such as morning coffee or a monthly meeting.
+
+
+Multiple Events may reference that they are realises of the same Activity. 
+Activities are not Events and may not have a time or place.""" .
+
+prog:Programme a rdfs:Class, owl:Class;
+    rdfs:label "Programme";
+    rdfs:comment """A programme is a description of the parts of a complex event to aid understanding it. A single event may be described by several programmes, for example one may give a break down by day, another by rooms, another by topic.
+
+A programme should not have Timeslots or Events if it subprogrammes. In effect this means there are two subclasses of Programme, but there's no need to express that in the data.
+
+A simple application only needs to operate on a single Programme at once.""" .
+
+prog:TimeSlot a rdfs:Class, owl:Class;
+    rdfs:label "TimeSlot";
+    rdfs:comment """This is a property of a Programme to facilitate understanding by humans. There is no semantic relationship between events in the programme and TimeSlots as complex programmes often have events which ignore the published timeslots. A timeslot is effectively an event with nothing but a time interval and label.
+
+A Timeslot must have an rdfs:label and a event:time linking it to a tl:Interval.
+
+Timeslots are purely cosmetic and it is not recommended that events should not be artificially fitted into them.""" .
+
+prog:has_event a rdf:Property;
+    rdfs:label "programme includes event";
+    rdfs:comment "Indicates that an Event is part of the specified programme, but not streamed in any particular way. This should not relate a programme to the event it is a programme of. This is used for events in programmes without streams, or for events which are listed in all streams, such as 'Lunch','Check into Accomodation' or 'Plenary'." .
+
+prog:has_programme a rdf:Property;
+    rdfs:label "event is described by programme";
+    rdfs:comment "Connects an ev:Event with a prog:Programme which describes it." .
+
+prog:has_sidebar_event a rdf:Property;
+    rdfs:label "programme includes sidebar event";
+    rdfs:comment "Indicates that an Event is part of the specified programme, but is not part of the normal grid and should be listed separately. Evening events, for example, may be included in this way. Other users include all-day events such as 'exhibition in main hall', for which you do not want to use up 'real-estate' in a grid-display of this programme." .
+
+prog:has_streamed_event a rdf:Property;
+    rdfs:label "programme includes streamed event";
+    rdfs:comment "Indicates that an Event is part of the specified programme, and should appear in any relevant 'streams' based on its subject or location. If it matches no things for which the programme is prog:streamed_by_location, prog:streamed_by_parent_event or prog:streamed_by_subject then a tool may choose to report this as broken data." .
+
+prog:has_timeslot a rdf:Property;
+    rdfs:label "programme has timeslot";
+    rdfs:comment "Indicates that a TimeSlot is part of the specified programme." .
+
+prog:realises a rdf:Property;
+    rdfs:label "event realises activity";
+    rdfs:comment "Relates a concrete event:Event to the prog:Activity that it is a realisation of. For example this would relate the training course on Thursday to the prog:Activity of the laser safety lecure. All realisations of the laser safety lecture have generally the same content, although details may vary. It is not expected that a normal attendee will attend more than one realisation of an Activity, although certainly not precluded at the level of detail we're working with here." .
+
+prog:streamed_by_location a rdf:Property;
+    rdfs:label "programme has a stream for location";
+    rdfs:comment "Indicates that one of the streams in this visualisation is events with a event:place relating them to the geo:SpatialThing indicated. This is the most common way an programme is designed." .
+
+prog:streamed_by_parent_event a rdf:Property;
+    rdfs:label "programme has a stream for sub-events of";
+    rdfs:comment "Indicates that one of the streams in this visualisation is events that are event:sub_event of the event:Event indicated. This can be used to show several workshops in an event. This should only apply to things which are immediately stated explicitly as event:sub_event, it is assumed that the consumer will not treat this property as transitive, unless they are doing something weird or clever." .
+
+prog:streamed_by_subject a rdf:Property;
+    rdfs:label "programme has a stream for subject";
+    rdfs:comment "Indicates that one of the streams in this visualisation is events with a dcterms:subject relating them to the skos:Concept indicated." .

@@ -1,0 +1,722 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://neologism.ecs.soton.ac.uk/bibo> a owl:Ontology;
+    dcterms:title "The Bibliographic Ontology";
+    dcterms:description """The Bibliographic Ontology describes
+bibliographic things on the semantic Web in RDF.  This ontology can be
+used as a citation ontology, as a document classification ontology, or
+simply as a way to describe any kind of document in RDF. It has been
+inspired by many existing document description metadata formats, and
+can be used as a common ground for converting other bibliographic data
+sources.""";
+    dcterms:modified "2013-03-23"^^xsd:date;
+    vann:preferredNamespaceUri "http://purl.org/ontology/bibo/";
+    vann:preferredNamespacePrefix "bibo";
+    foaf:homepage <http://neologism.ecs.soton.ac.uk/bibo.html>;
+    dcterms:created "2013-03-23"^^xsd:date;
+    dcterms:publisher "http://neologism.ecs.soton.ac.uk/bibo#University%20of%20Southampton";
+    dcterms:partOf <http://neologism.ecs.soton.ac.uk>;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    dcterms:status <http://purl.org/adms/status/UnderDevelopment>;
+    dc:creator <http://neologism.ecs.soton.ac.uk/bibo#cjg> .
+
+<http://neologism.ecs.soton.ac.uk/bibo#ttl>
+    dcterms:FileFormat <> .
+
+<http://neologism.ecs.soton.ac.uk/bibo#rdf>
+    dcterms:FileFormat <> .
+
+<http://neologism.ecs.soton.ac.uk/bibo#cjg> a foaf:Person;
+    foaf:name "Christopher Gutteridge";
+    foaf:homepage <http://users.ecs.soton.ac.uk/cjg/>;
+    foaf:mbox <mailto:cjg@ecs.soton.ac.uk> .
+
+<http://neologism.ecs.soton.ac.uk/bibo#University%20of%20Southampton> a dcterms:Agent;
+    foaf:member <http://neologism.ecs.soton.ac.uk/bibo#cjg>;
+    foaf:name "University of Southampton";
+    foaf:homepage <http://www.soton.ac.uk/> .
+
+bibo:AudioDocument a rdfs:Class, owl:Class;
+    rdfs:label "audio document";
+    rdfs:comment "An audio document; aka record.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Article a rdfs:Class, owl:Class;
+    rdfs:label "Article";
+    rdfs:comment "A written composition in prose, usually nonfiction, on a specific topic, forming an independent part of a book or other publication, as a newspaper or magazine.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:AcademicArticle a rdfs:Class, owl:Class;
+    rdfs:label "Academic Article";
+    rdfs:comment "A scholarly academic article, typically published in a journal.";
+    rdfs:subClassOf bibo:Article .
+
+bibo:AudioVisualDocument a rdfs:Class, owl:Class;
+    rdfs:label "audio-visual document";
+    rdfs:comment "An audio-visual document; film, video, and so forth.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Bill a rdfs:Class, owl:Class;
+    rdfs:label "Bill";
+    rdfs:comment "Draft legislation presented for discussion to a legal body.";
+    rdfs:subClassOf bibo:Legislation .
+
+bibo:Book a rdfs:Class, owl:Class;
+    rdfs:label "Book";
+    rdfs:comment "A written or printed work of fiction or nonfiction, usually on sheets of paper fastened or bound together within covers.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:BookSection a rdfs:Class, owl:Class;
+    rdfs:label "Book Section";
+    rdfs:comment "A section of a book.";
+    rdfs:subClassOf bibo:DocumentPart .
+
+bibo:Brief a rdfs:Class, owl:Class;
+    rdfs:label "Brief";
+    rdfs:comment "A written argument submitted to a court.";
+    rdfs:subClassOf bibo:LegalCaseDocument .
+
+bibo:Chapter a rdfs:Class, owl:Class;
+    rdfs:label "Chapter";
+    rdfs:comment "A chapter of a book.";
+    rdfs:subClassOf bibo:BookSection .
+
+bibo:Code a rdfs:Class, owl:Class;
+    rdfs:label "Code";
+    rdfs:comment "A collection of statutes.";
+    rdfs:subClassOf bibo:Periodical .
+
+bibo:CollectedDocument a rdfs:Class, owl:Class;
+    rdfs:label "Collected Document";
+    rdfs:comment "A document that simultaneously contains other documents.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Collection a rdfs:Class, owl:Class;
+    rdfs:label "Collection";
+    rdfs:comment "A collection of Documents or Collections" .
+
+bibo:Conference a rdfs:Class, owl:Class;
+    rdfs:label "Conference";
+    rdfs:comment "A meeting for consultation or discussion." .
+
+bibo:CourtReporter a rdfs:Class, owl:Class;
+    rdfs:label "Court Reporter";
+    rdfs:comment "A collection of legal cases.";
+    rdfs:subClassOf bibo:Periodical .
+
+bibo:Document a rdfs:Class, owl:Class;
+    rdfs:label "Document";
+    rdfs:comment "A document (noun) is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information." .
+
+bibo:DocumentPart a rdfs:Class, owl:Class;
+    rdfs:label "document part";
+    rdfs:comment "a distinct part of a larger document or collected document.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:DocumentStatus a rdfs:Class, owl:Class;
+    rdfs:label "Document Status";
+    rdfs:comment "The status of the publication of a document." .
+
+bibo:EditedBook a rdfs:Class, owl:Class;
+    rdfs:label "Edited Book";
+    rdfs:comment "An edited book.";
+    rdfs:subClassOf bibo:CollectedDocument .
+
+bibo:Email a rdfs:Class, owl:Class;
+    rdfs:label "EMail";
+    rdfs:comment "A written communication addressed to a person or organization and transmitted electronically.";
+    rdfs:subClassOf bibo:PersonalCommunicationDocument .
+
+bibo:Event a rdfs:Class, owl:Class;
+    rdfs:label "Event" .
+
+bibo:Excerpt a rdfs:Class, owl:Class;
+    rdfs:label "Excerpt";
+    rdfs:comment "A passage selected from a larger work.";
+    rdfs:subClassOf bibo:DocumentPart .
+
+bibo:Film a rdfs:Class, owl:Class;
+    rdfs:label "Film";
+    rdfs:comment "aka movie.";
+    rdfs:subClassOf bibo:AudioVisualDocument .
+
+bibo:Hearing a rdfs:Class, owl:Class;
+    rdfs:label "Hearing";
+    rdfs:comment "An instance or a session in which testimony and arguments are presented, esp. before an official, as a judge in a lawsuit." .
+
+bibo:Image a rdfs:Class, owl:Class;
+    rdfs:label "Image";
+    rdfs:comment "A document that presents visual or diagrammatic information.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Interview a rdfs:Class, owl:Class;
+    rdfs:label "Interview";
+    rdfs:comment "A formalized discussion between two or more people." .
+
+bibo:Issue a rdfs:Class, owl:Class;
+    rdfs:label "Issue";
+    rdfs:comment "something that is printed or published and distributed, esp. a given number of a periodical";
+    rdfs:subClassOf bibo:CollectedDocument .
+
+bibo:Journal a rdfs:Class, owl:Class;
+    rdfs:label "Journal";
+    rdfs:comment "A periodical of scholarly journal Articles.";
+    rdfs:subClassOf bibo:Periodical .
+
+bibo:LegalCaseDocument a rdfs:Class, owl:Class;
+    rdfs:label "Legal Case Document";
+    rdfs:comment "A document accompanying a legal case.";
+    rdfs:subClassOf bibo:LegalDocument .
+
+bibo:LegalDecision a rdfs:Class, owl:Class;
+    rdfs:label "Decision";
+    rdfs:comment "A document containing an authoritative determination (as a decree or judgment) made after consideration of facts or law.";
+    rdfs:subClassOf bibo:LegalCaseDocument .
+
+bibo:LegalDocument a rdfs:Class, owl:Class;
+    rdfs:label "Legal Document";
+    rdfs:comment "A legal document; for example, a court decision, a brief, and so forth.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Legislation a rdfs:Class, owl:Class;
+    rdfs:label "Legislation";
+    rdfs:comment "A legal document proposing or enacting a law or a group of laws.";
+    rdfs:subClassOf bibo:LegalDocument .
+
+bibo:Letter a rdfs:Class, owl:Class;
+    rdfs:label "Letter";
+    rdfs:comment "A written or printed communication addressed to a person or organization and usually transmitted by mail.";
+    rdfs:subClassOf bibo:PersonalCommunicationDocument .
+
+bibo:Magazine a rdfs:Class, owl:Class;
+    rdfs:label "Magazine";
+    rdfs:comment "A periodical of magazine Articles. A magazine is a publication that is issued periodically, usually bound in a paper cover, and typically contains essays, stories, poems, etc., by many writers, and often photographs and drawings, frequently specializing in a particular subject or area, as hobbies, news, or sports.";
+    rdfs:subClassOf bibo:Periodical .
+
+bibo:Manual a rdfs:Class, owl:Class;
+    rdfs:label "Manual";
+    rdfs:comment "A small reference book, especially one giving instructions.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Manuscript a rdfs:Class, owl:Class;
+    rdfs:label "Manuscript";
+    rdfs:comment "An unpublished Document, which may also be submitted to a publisher for publication.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Map a rdfs:Class, owl:Class;
+    rdfs:label "Map";
+    rdfs:comment "A graphical depiction of geographic features.";
+    rdfs:subClassOf bibo:Image .
+
+bibo:MultiVolumeBook a rdfs:Class, owl:Class;
+    rdfs:label "Series";
+    rdfs:comment "A loose, thematic, collection of Documents, often Books.";
+    rdfs:subClassOf bibo:Collection .
+
+bibo:Newspaper a rdfs:Class, owl:Class;
+    rdfs:label "Newspaper";
+    rdfs:comment "A periodical of documents, usually issued daily or weekly, containing current news, editorials, feature articles, and usually advertising.";
+    rdfs:subClassOf bibo:Periodical .
+
+bibo:Note a rdfs:Class, owl:Class;
+    rdfs:label "Note";
+    rdfs:comment "Notes or annotations about a resource.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Patent a rdfs:Class, owl:Class;
+    rdfs:label "Patent";
+    rdfs:comment "A document describing the exclusive right granted by a government to an inventor to manufacture, use, or sell an invention for a certain number of years.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Performance a rdfs:Class, owl:Class;
+    rdfs:label "Performance";
+    rdfs:comment "A public performance." .
+
+bibo:Periodical a rdfs:Class, owl:Class;
+    rdfs:label "Periodical";
+    rdfs:comment "A group of related documents issued at regular intervals.";
+    rdfs:subClassOf bibo:Collection .
+
+bibo:PersonalCommunication a rdfs:Class, owl:Class;
+    rdfs:label "Personal Communication";
+    rdfs:comment "A communication between an agent and one or more specific recipients." .
+
+bibo:PersonalCommunicationDocument a rdfs:Class, owl:Class;
+    rdfs:label "Personal Communication Document";
+    rdfs:comment "A personal communication manifested in some document.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Proceedings a rdfs:Class, owl:Class;
+    rdfs:label "Proceedings";
+    rdfs:comment "A compilation of documents published from an event, such as a conference.";
+    rdfs:subClassOf bibo:Book .
+
+bibo:Quote a rdfs:Class, owl:Class;
+    rdfs:label "Quote";
+    rdfs:comment "An excerpted collection of words.";
+    rdfs:subClassOf bibo:Excerpt .
+
+bibo:ReferenceSource a rdfs:Class, owl:Class;
+    rdfs:label "Reference Source";
+    rdfs:comment "A document that presents authoritative reference information, such as a dictionary or encylopedia .";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Report a rdfs:Class, owl:Class;
+    rdfs:label "Report";
+    rdfs:comment "A document describing an account or statement describing in detail an event, situation, or the like, usually as the result of observation, inquiry, etc..";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Series a rdfs:Class, owl:Class;
+    rdfs:label "Series";
+    rdfs:comment "A loose, thematic, collection of Documents, often Books.";
+    rdfs:subClassOf bibo:Collection .
+
+bibo:Slide a rdfs:Class, owl:Class;
+    rdfs:label "Slide";
+    rdfs:comment "A slide in a slideshow";
+    rdfs:subClassOf bibo:DocumentPart .
+
+bibo:Slideshow a rdfs:Class, owl:Class;
+    rdfs:label "Slideshow";
+    rdfs:comment "A presentation of a series of slides, usually presented in front of an audience with written text and images.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Standard a rdfs:Class, owl:Class;
+    rdfs:label "Standard";
+    rdfs:comment "A document describing a standard";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Statute a rdfs:Class, owl:Class;
+    rdfs:label "Statute";
+    rdfs:comment "A bill enacted into law.";
+    rdfs:subClassOf bibo:Legislation .
+
+bibo:Thesis a rdfs:Class, owl:Class;
+    rdfs:label "Thesis";
+    rdfs:comment "A document created to summarize research findings associated with the completion of an academic degree.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:ThesisDegree a rdfs:Class, owl:Class;
+    rdfs:label "Thesis degree";
+    rdfs:comment "The academic degree of a Thesis" .
+
+bibo:Webpage a rdfs:Class, owl:Class;
+    rdfs:label "Webpage";
+    rdfs:comment "A web page is an online document available (at least initially) on the world wide web. A web page is written first and foremost to appear on the web, as distinct from other online resources such as books, manuscripts or audio documents which use the web primarily as a distribution mechanism alongside other more traditional methods such as print.";
+    rdfs:subClassOf bibo:Document .
+
+bibo:Website a rdfs:Class, owl:Class;
+    rdfs:label "Website";
+    rdfs:comment "A group of Webpages accessible on the Web.";
+    rdfs:subClassOf bibo:Collection .
+
+bibo:Workshop a rdfs:Class, owl:Class;
+    rdfs:label "Workshop";
+    rdfs:comment "A seminar, discussion group, or the like, that emphasizes zxchange of ideas and the demonstration and application of techniques, skills, etc." .
+
+bibo:abstract a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "abstract";
+    rdfs:comment "A summary of the resource.";
+    rdfs:domain rdfs:Resource;
+    rdfs:range rdfs:Literal .
+
+bibo:argued a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "date argued";
+    rdfs:comment "The date on which a legal case is argued before a court. Date is of format xsd:date";
+    rdfs:domain bibo:LegalDocument;
+    rdfs:range rdfs:Literal .
+
+bibo:asin a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "asin";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:chapter a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "chapter";
+    rdfs:comment "An chapter number";
+    rdfs:domain bibo:BookSection;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:locator .
+
+bibo:coden a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "coden";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:content a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "content";
+    rdfs:comment "This property is for a plain-text rendering of the content of a Document. While the plain-text content of an entire document could be described by this property.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal .
+
+bibo:doi a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "doi";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:eanucc13 a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "eanucc13";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:edition a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "edition";
+    rdfs:comment "The name defining a special edition of a document. Normally its a literal value composed of a version number and words.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal .
+
+bibo:eissn a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "eissn";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:gtin14 a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "gtin14";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:handle a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "handle";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:identifier a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "identifier";
+    rdfs:range rdfs:Literal .
+
+bibo:isbn a rdf:Property;
+    rdfs:label "isbn";
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:isbn10 a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "isbn10";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:isbn .
+
+bibo:isbn13 a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "isbn13";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:isbn .
+
+bibo:issn a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "issn";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:issue a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "issue";
+    rdfs:comment "An issue number";
+    rdfs:domain bibo:Issue;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:locator .
+
+bibo:lccn a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "lccn";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:locator a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "locator";
+    rdfs:comment "A description (often numeric) that locates an item within a containing document or collection.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal .
+
+bibo:numPages a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "number of pages";
+    rdfs:comment "The number of pages contained in a document";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal .
+
+bibo:numVolumes a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "number of volumes";
+    rdfs:comment "The number of volumes contained in a collection of documents (usually a series, periodical, etc.).";
+    rdfs:domain bibo:Collection;
+    rdfs:range rdfs:Literal .
+
+bibo:number a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "number";
+    rdfs:comment "A generic item or document number. Not to be confused with issue number.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal .
+
+bibo:oclcnum a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "oclcnum";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:pageEnd a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "page end";
+    rdfs:comment "Ending page number within a continuous page range.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:locator .
+
+bibo:pageStart a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "page start";
+    rdfs:comment "Starting page number within a continuous page range.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:locator .
+
+bibo:pages a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "pages";
+    rdfs:comment "A string of non-contiguous page spans that locate a Document within a Collection. Example: 23-25, 34, 54-56. For continuous page ranges, use the pageStart and pageEnd properties.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:locator .
+
+bibo:pmid a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "pmid";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:prefixName a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "prefix name";
+    rdfs:comment "The prefix of a name";
+    rdfs:domain foaf:Agent;
+    rdfs:range rdfs:Literal .
+
+bibo:section a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "section";
+    rdfs:comment "A section number";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:locator .
+
+bibo:shortDescription a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "shortDescription";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal .
+
+bibo:shortTitle a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "short title";
+    rdfs:comment "The abbreviation of a title.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal .
+
+bibo:sici a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "sici";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:suffixName a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "suffix name";
+    rdfs:comment "The suffix of a name";
+    rdfs:domain foaf:Agent;
+    rdfs:range rdfs:Literal .
+
+bibo:upc a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "upc";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:uri a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "uri";
+    rdfs:comment "Universal Resource Identifier of a document";
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:identifier .
+
+bibo:volume a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "volume";
+    rdfs:comment "A volume number";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Literal;
+    rdfs:subPropertyOf bibo:locator .
+
+bibo:affirmedBy a rdf:Property;
+    rdfs:label "affirmedBy";
+    rdfs:comment "A legal decision that affirms a ruling.";
+    rdfs:domain bibo:LegalDecision;
+    rdfs:range bibo:LegalDecision;
+    rdfs:subPropertyOf bibo:subsequentLegalDecision .
+
+bibo:annotates a rdf:Property;
+    rdfs:label "annotates";
+    rdfs:comment "Critical or explanatory note for a Document.";
+    rdfs:domain bibo:Note;
+    rdfs:range rdfs:Resource;
+    rdfs:subPropertyOf dcterms:relation .
+
+bibo:authorList a rdf:Property;
+    rdfs:label "list of authors";
+    rdfs:comment "An ordered list of authors. Normally, this list is seen as a priority list that order authors by importance.";
+    rdfs:domain bibo:Document;
+    rdfs:subPropertyOf bibo:contributorList .
+
+bibo:citedBy a rdf:Property;
+    rdfs:label "cited by";
+    rdfs:comment """Relates a document to another document that cites the
+first document.""";
+    rdfs:domain bibo:Document;
+    rdfs:range bibo:Document .
+
+bibo:cites a rdf:Property;
+    rdfs:label "cites";
+    rdfs:comment """Relates a document to another document that is cited
+by the first document as reference, comment, review, quotation or for
+another purpose.""";
+    rdfs:domain bibo:Document;
+    rdfs:range bibo:Document;
+    rdfs:subPropertyOf dcterms:references .
+
+bibo:contributorList a rdf:Property;
+    rdfs:label "list of contributors";
+    rdfs:comment "An ordered list of contributors. Normally, this list is seen as a priority list that order contributors by importance.";
+    rdfs:domain bibo:Document .
+
+bibo:court a rdf:Property;
+    rdfs:label "court";
+    rdfs:comment "A court associated with a legal document; for example, that which issues a decision.";
+    rdfs:domain bibo:LegalDocument;
+    rdfs:range foaf:Organization .
+
+bibo:degree a rdf:Property;
+    rdfs:label "status";
+    rdfs:comment "The thesis degree.";
+    rdfs:domain bibo:Thesis;
+    rdfs:range bibo:ThesisDegree .
+
+bibo:director a rdf:Property;
+    rdfs:label "director";
+    rdfs:comment "A Film director.";
+    rdfs:domain bibo:AudioVisualDocument;
+    rdfs:range foaf:Agent;
+    rdfs:subPropertyOf dcterms:contributor .
+
+bibo:distributor a rdf:Property;
+    rdfs:label "distributor";
+    rdfs:comment "Distributor of a document or a collection of documents.";
+    rdfs:range foaf:Agent .
+
+bibo:editor a rdf:Property;
+    rdfs:label "editor";
+    rdfs:comment "A person having managerial and sometimes policy-making responsibility for the editorial part of a publishing firm or of a newspaper, magazine, or other publication.";
+    rdfs:range foaf:Agent;
+    rdfs:subPropertyOf dcterms:contributor .
+
+bibo:editorList a rdf:Property;
+    rdfs:label "list of editors";
+    rdfs:comment "An ordered list of editors. Normally, this list is seen as a priority list that order editors by importance.";
+    rdfs:domain bibo:Document;
+    rdfs:subPropertyOf bibo:contributorList .
+
+bibo:interviewee a rdf:Property;
+    rdfs:label "interviewee";
+    rdfs:comment "An agent that is interviewed by another agent.";
+    rdfs:domain foaf:Agent;
+    rdfs:range foaf:Agent;
+    rdfs:subPropertyOf dcterms:contributor .
+
+bibo:interviewer a rdf:Property;
+    rdfs:label "interviewer";
+    rdfs:comment "An agent that interview another agent.";
+    rdfs:domain foaf:Agent;
+    rdfs:range foaf:Agent;
+    rdfs:subPropertyOf dcterms:contributor .
+
+bibo:issuer a rdf:Property;
+    rdfs:label "issuer";
+    rdfs:comment "An entity responsible for issuing often informally published documents such as press releases, reports, etc.";
+    rdfs:range foaf:Agent;
+    rdfs:subPropertyOf dcterms:publisher .
+
+bibo:organizer a rdf:Property;
+    rdfs:label "organizer";
+    rdfs:comment "The organizer of an event; includes conference organizers, but also government agencies or other bodies that are responsible for conducting hearings.";
+    rdfs:range foaf:Agent .
+
+bibo:owner a rdf:Property;
+    rdfs:label "owner";
+    rdfs:comment "Owner of a document or a collection of documents.";
+    rdfs:range foaf:Agent .
+
+bibo:performer a rdf:Property;
+    rdfs:label "performer";
+    rdfs:domain bibo:Performance;
+    rdfs:range foaf:Agent;
+    rdfs:subPropertyOf dcterms:contributor .
+
+bibo:presentedAt a rdf:Property;
+    rdfs:label "presented at";
+    rdfs:comment "Relates a document to an event; for example, a paper to a conference.";
+    rdfs:domain bibo:Document;
+    rdfs:range bibo:Event .
+
+bibo:presents a rdf:Property;
+    rdfs:label "presented at";
+    rdfs:comment "Relates an event to associated documents; for example, conference to a paper.";
+    rdfs:domain bibo:Event;
+    rdfs:range bibo:Document .
+
+bibo:producer a rdf:Property;
+    rdfs:label "producer";
+    rdfs:comment "Producer of a document or a collection of documents.";
+    rdfs:range foaf:Agent .
+
+bibo:recipient a rdf:Property;
+    rdfs:label "recipient";
+    rdfs:comment "An agent that receives a communication document.";
+    rdfs:domain bibo:PersonalCommunicationDocument;
+    rdfs:range foaf:Agent .
+
+bibo:reproducedIn a rdf:Property;
+    rdfs:label "reproducedIn";
+    rdfs:comment "The resource in which another resource is reproduced.";
+    rdfs:domain bibo:Document;
+    rdfs:range bibo:Document;
+    rdfs:subPropertyOf dcterms:isPartOf .
+
+bibo:reversedBy a rdf:Property;
+    rdfs:label "reversedBy";
+    rdfs:comment "A legal decision that reverses a ruling.";
+    rdfs:domain bibo:LegalDecision;
+    rdfs:range bibo:LegalDecision;
+    rdfs:subPropertyOf bibo:subsequentLegalDecision .
+
+bibo:reviewOf a rdf:Property;
+    rdfs:label "review of";
+    rdfs:comment "Relates a review document to a reviewed thing (resource, item, etc.).";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Resource;
+    rdfs:subPropertyOf dcterms:relation .
+
+bibo:status a rdf:Property;
+    rdfs:label "status";
+    rdfs:comment "The publication status of (typically academic) content.";
+    rdfs:domain bibo:Document;
+    rdfs:range bibo:DocumentStatus .
+
+bibo:subsequentLegalDecision a rdf:Property;
+    rdfs:label "subsequentLegalDecision";
+    rdfs:comment "A legal decision on appeal that takes action on a case (affirming it, reversing it, etc.).";
+    rdfs:domain bibo:LegalDecision;
+    rdfs:range bibo:LegalDecision;
+    rdfs:subPropertyOf dcterms:isReferencedBy .
+
+bibo:transcriptOf a rdf:Property;
+    rdfs:label "transcript of";
+    rdfs:comment "Relates a document to some transcribed original.";
+    rdfs:domain bibo:Document;
+    rdfs:range rdfs:Resource;
+    rdfs:subPropertyOf dcterms:relation .
+
+bibo:translationOf a rdf:Property;
+    rdfs:label "translation of";
+    rdfs:comment "Relates a translated document to the original document.";
+    rdfs:domain bibo:Document;
+    rdfs:range bibo:Document;
+    rdfs:subPropertyOf dcterms:isVersionOf .
+
+bibo:translator a rdf:Property;
+    rdfs:label "translator";
+    rdfs:comment "A person who translates written document from one language to another.";
+    rdfs:range foaf:Agent;
+    rdfs:subPropertyOf dcterms:contributor .

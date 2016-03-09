@@ -1,0 +1,61 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix uihints: <http://purl.org/NET/ui-hints/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://neologism.ecs.soton.ac.uk/uihints> a owl:Ontology;
+    dcterms:title "UI Hints";
+    dcterms:description "A vocabulary for providing information useful when displaying things in a user interface.";
+    dcterms:modified "2014-01-07"^^xsd:date;
+    vann:preferredNamespaceUri "http://purl.org/NET/ui-hints/";
+    vann:preferredNamespacePrefix "uihints";
+    foaf:homepage <http://neologism.ecs.soton.ac.uk/uihints.html>;
+    dcterms:created "2013-12-09"^^xsd:date;
+    dcterms:publisher "http://neologism.ecs.soton.ac.uk/uihints#University%20of%20Oxford";
+    dcterms:partOf <http://neologism.ecs.soton.ac.uk>;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    dcterms:status <http://purl.org/adms/status/UnderDevelopment>;
+    dc:creator <http://neologism.ecs.soton.ac.uk/uihints#alex> .
+
+<http://neologism.ecs.soton.ac.uk/uihints#ttl>
+    dcterms:FileFormat <> .
+
+<http://neologism.ecs.soton.ac.uk/uihints#rdf>
+    dcterms:FileFormat <> .
+
+<http://neologism.ecs.soton.ac.uk/uihints#alex> a foaf:Person;
+    foaf:name "Alexander Dutton";
+    foaf:homepage <http://alexdutton.co.uk/>;
+    foaf:mbox <mailto:alexander.dutton@it.ox.ac.uk> .
+
+<http://neologism.ecs.soton.ac.uk/uihints#University%20of%20Oxford> a dcterms:Agent;
+    foaf:member <http://neologism.ecs.soton.ac.uk/uihints#alex>;
+    foaf:name "University of Oxford";
+    foaf:homepage <http://www.ox.ac.uk/> .
+
+uihints:color a rdf:Property;
+    rdfs:label "color";
+    rdfs:comment "A CSS color for the foreground when displaying this item." .
+
+uihints:teaser a rdf:Property;
+    rdfs:label "teaser text";
+    rdfs:comment "A short bit of text used when linking to more information about a thing." .
+
+uihints:fontAwesome a rdf:Property;
+    rdfs:label "FontAwesome icon name";
+    rdfs:comment "A FontAwesome icon name, without the 'fa-' prefix." .
+
+uihints:backgroundColor a rdf:Property;
+    rdfs:label "background color";
+    rdfs:comment "A CSS color for the background when displaying this item." .
+
+uihints:sortKey a rdf:Property, owl:DatatypeProperty, owl:FunctionalProperty;
+    rdfs:label "sort key";
+    rdfs:comment "A literal of a type with a complete ordering that can be used for ordering the subject in a list.";
+    rdfs:domain owl:Thing;
+    rdfs:range rdfs:Literal .

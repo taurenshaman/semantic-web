@@ -1,0 +1,169 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix oo: <http://purl.org/openorg/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://neologism.ecs.soton.ac.uk/oo> a owl:Ontology;
+    dcterms:title "Open Organisations";
+    dcterms:description "This vocabulary provides supplementary terms for organisations wishing to publish open data about themselves.";
+    dc:license "http://creativecommons.org/licenses/by/3.0/";
+    dcterms:modified "2013-04-17"^^xsd:date;
+    vann:preferredNamespaceUri "http://purl.org/openorg/";
+    vann:preferredNamespacePrefix "oo";
+    foaf:homepage <http://neologism.ecs.soton.ac.uk/oo.html>;
+    dcterms:created "2012-12-11"^^xsd:date;
+    dcterms:publisher "http://neologism.ecs.soton.ac.uk/oo#University%20of%20Southampton";
+    dcterms:partOf <http://neologism.ecs.soton.ac.uk>;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    dcterms:status <http://purl.org/adms/status/UnderDevelopment>;
+    dc:creator
+        <http://neologism.ecs.soton.ac.uk/oo#cjg>,
+        <http://neologism.ecs.soton.ac.uk/oo#alex>,
+        <http://neologism.ecs.soton.ac.uk/oo#ash> .
+
+<http://neologism.ecs.soton.ac.uk/oo#ttl>
+    dcterms:FileFormat <>;
+    dcterms:license <http://creativecommons.org/licenses/by/3.0/> .
+
+<http://neologism.ecs.soton.ac.uk/oo#rdf>
+    dcterms:FileFormat <>;
+    dcterms:license <http://creativecommons.org/licenses/by/3.0/> .
+
+<http://neologism.ecs.soton.ac.uk/oo#cjg> a foaf:Person;
+    foaf:name "Christopher Gutteridge";
+    foaf:homepage <http://users.ecs.soton.ac.uk/cjg/>;
+    foaf:mbox <mailto:cjg@ecs.soton.ac.uk> .
+
+<http://neologism.ecs.soton.ac.uk/oo#University%20of%20Southampton> a dcterms:Agent;
+    foaf:member
+        <http://neologism.ecs.soton.ac.uk/oo#cjg>,
+        <http://neologism.ecs.soton.ac.uk/oo#ash>;
+    foaf:name "University of Southampton";
+    foaf:homepage <http://www.soton.ac.uk/> .
+
+<http://neologism.ecs.soton.ac.uk/oo#alex> a foaf:Person;
+    foaf:name "Alexander Dutton";
+    foaf:homepage <http://alexdutton.co.uk/>;
+    foaf:mbox <mailto:alexander.dutton@it.ox.ac.uk> .
+
+<http://neologism.ecs.soton.ac.uk/oo#University%20of%20Oxford> a dcterms:Agent;
+    foaf:member <http://neologism.ecs.soton.ac.uk/oo#alex>;
+    foaf:name "University of Oxford";
+    foaf:homepage <http://www.ox.ac.uk/> .
+
+<http://neologism.ecs.soton.ac.uk/oo#ash> a foaf:Person;
+    foaf:name "Ashley Smith";
+    foaf:homepage <http://users.ecs.soton.ac.uk/ads04r>;
+    foaf:mbox <mailto:ads04r@ecs.soton.ac.uk> .
+
+oo:OrganizationProfileDocument a rdfs:Class, owl:Class;
+    rdfs:label "Organization Profile Document";
+    rdfs:comment "An RDF document describing a specific organisation. ";
+    rdfs:subClassOf foaf:Document;
+    owl:disjointWith foaf:PersonalProfileDocument .
+
+oo:Capability a rdfs:Class, owl:Class;
+    rdfs:label "Capability";
+    rdfs:comment "A capability of a facility or organization. This is subtley different from a service, in that it means that it is capable of performing a certain task or technique. It may be useful to list capabilities when bidding for research contracts and grants." .
+
+oo:Service a rdfs:Class, owl:Class;
+    rdfs:label "Service";
+    rdfs:comment "A service. This term has been defined for the purposes of defining services offered by university research facilities, but isn't restricted to universities or research. This term is in testing and may be superceeded by the Cerif vocab." .
+
+oo:Facility a rdfs:Class, owl:Class;
+    rdfs:label "Facility";
+    rdfs:comment "A facility. A facility is a grouping of equipment and/or people that can perform specific tasks. This term has been coined to use in relation to research facilites at universities, but is not restricted to only research facilities. This term is in testing and may be superceeded by the Cerif vocab." .
+
+oo:Equipment a rdfs:Class, owl:Class;
+    rdfs:label "Equipment";
+    rdfs:comment "An item of equipment. This term is in testing and may be superceeded by the Cerif vocab." .
+
+oo:contact a rdf:Property;
+    rdfs:label "Contact";
+    rdfs:comment "A mechanism of contacting someone who knows about this resource. Suggested targets of this property are a foaf:Agent, a Document (eg. the webpage listing contact methods), a vcard address or a mailto: URI. " .
+
+oo:corrections a rdf:Property;
+    rdfs:label "Corrections";
+    rdfs:comment "A sub-property of oo:contact indicating a route to have corrections made to data relating to this resource. Intended for use on a dataset, but it may be used on any URI -- for example you may use it to indicate that certain records in a dataset have different people to contact them to get it fixed. ";
+    rdfs:subPropertyOf oo:contact .
+
+oo:organization a rdf:Property;
+    rdfs:label "organization";
+    rdfs:comment "Relates something to an organization. Intended for use to link things other than people and organizations to an organization, for example, equipment, key datasets (places, members).";
+    rdfs:range foaf:Organization .
+
+oo:formalOrganization a rdf:Property;
+    rdfs:label "Formal Organization";
+    rdfs:comment "Relates something to a Formal Organiation. " .
+
+oo:organizationalUnit a rdf:Property;
+    rdfs:label "Organizational Unit";
+    rdfs:comment "Relates something to a part of an organization." .
+
+oo:twitterHashtag a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "twitter hashtag";
+    rdfs:comment """This is used to relate a concept to the Twitter hashtag people are using to talk about that thing.
+
+We've created the twitterHashtag in the open org namespace. A hashtag can be related to a concept, location, event, or anything. A combination of hashtags may be used in one literal to indicate that it is that combination of hashtags which is associated with that resource.
+
+Having two oo:twitterHashtag properties, however, would indicate that either is used to refer to the same thing (not recommended).
+
+<oo:twitterHashtag>#myconf2010<oo:twitterHashtag>
+
+or, to indicate a combo hashtag:
+
+<oo:twitterHashtag>#myconf2010 #track2<oo:twitterHashtag>
+
+Instead of a string literal this may also point to a URI used to identify the hashtag. """;
+    rdfs:range xsd:string .
+
+oo:mapIcon a rdf:Property;
+    rdfs:label "map icon";
+    rdfs:comment "link a geospatial feature to a an icon to use to indicate its location. The \"point\" should be the bottom center of the image. ";
+    rdfs:range foaf:Image .
+
+oo:capacity a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "capacity";
+    rdfs:comment """This is used to indicate the capacity of a thing when performing its default function. Ideally a more semantically meaningful predicate should be used, describing the capacity of something in a particular function.
+
+This may be used to associate:
+
+    a classroom, theatre, cinema or resturant with the number of people it seats
+    a bar or other entertainment venue with the fire limit for the venue
+    a school with how many students it can teach
+    a pencil case with how many pencils it can hold. 
+
+You should be able to assume that resources of the same type, described in the same dataset, have capacities calculated in a more-or-less similar way.
+
+It should only be treated as a rough guide. """;
+    rdfs:range rdfs:Literal .
+
+oo:access a rdf:Property, owl:DatatypeProperty;
+    rdfs:label "access information";
+    rdfs:comment "This relates a place (geo:SpatialThing) with a text description of how to access this thing. It may be that there is limited wheel chair access, a certain entrance is required or any other access information to tell a person planning to visit this place. ";
+    rdfs:range rdfs:Literal .
+
+oo:sparql a rdf:Property;
+    rdfs:label "SPARQL Endpoint";
+    rdfs:comment "This relates an organization to a SPARQL endpoint which allows you to query open data about or produced by that organization.";
+    rdfs:domain foaf:Organization .
+
+oo:primaryContact a rdf:Property;
+    rdfs:label "Primary Contact";
+    rdfs:comment "A mechanism of contacting the primary person or group regarding this resource. Suggested targets of this property are a foaf:Agent, a Document (eg. the webpage listing contact methods), a vcard address or a mailto: URI. This is not set as a function property as you may have edge cases where you want to list a primaryContact tel: and mailto: although this isn't recommended.";
+    rdfs:subPropertyOf oo:contact .
+
+oo:contactForm a rdf:Property;
+    rdfs:label "contact form";
+    rdfs:comment "a link from an agent to an HTML page or form that can be used to contact that agent. If a fragment identifier is used, it should refer to an @id of an HTML FORM element in the linked page.";
+    rdfs:domain foaf:Agent;
+    rdfs:range rdfs:Resource .
+
+oo:NoLicenseDefined
+    rdfs:label "No License Defined";
+    rdfs:comment "This term is intended to be a target for dcterms:license to specifically indicate that a license has not been defined for a resource." .
