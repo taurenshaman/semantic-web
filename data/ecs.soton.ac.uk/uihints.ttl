@@ -1,4 +1,4 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+﻿@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -9,8 +9,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://neologism.ecs.soton.ac.uk/uihints> a owl:Ontology;
-    dcterms:title "UI Hints";
-    dcterms:description "A vocabulary for providing information useful when displaying things in a user interface.";
+    dcterms:title "UI Hints"@en;
+    dcterms:title "用户界面提示"@zh-cn;
+	dcterms:description "A vocabulary for providing information useful when displaying things in a user interface."@en;
+	dcterms:description "为在一个用户界面上显示内容提供有用信息的词汇集。"@zh-cn;
     dcterms:modified "2014-01-07"^^xsd:date;
     vann:preferredNamespaceUri "http://purl.org/NET/ui-hints/";
     vann:preferredNamespacePrefix "uihints";
@@ -23,10 +25,10 @@
     dc:creator <http://neologism.ecs.soton.ac.uk/uihints#alex> .
 
 <http://neologism.ecs.soton.ac.uk/uihints#ttl>
-    dcterms:FileFormat <> .
+    dcterms:FileFormat <http://neologism.ecs.soton.ac.uk/uihints.ttl> .
 
 <http://neologism.ecs.soton.ac.uk/uihints#rdf>
-    dcterms:FileFormat <> .
+    dcterms:FileFormat <http://neologism.ecs.soton.ac.uk/uihints.rdf> .
 
 <http://neologism.ecs.soton.ac.uk/uihints#alex> a foaf:Person;
     foaf:name "Alexander Dutton";
@@ -39,23 +41,33 @@
     foaf:homepage <http://www.ox.ac.uk/> .
 
 uihints:color a rdf:Property;
-    rdfs:label "color";
-    rdfs:comment "A CSS color for the foreground when displaying this item." .
+    rdfs:label "color"@en;
+	rdfs:label "颜色"@zh-cn;
+    rdfs:comment "A CSS color for the foreground when displaying this item."@en;
+	rdfs:comment "显示该条目的前景CSS颜色。"@zh-cn .
 
 uihints:teaser a rdf:Property;
-    rdfs:label "teaser text";
-    rdfs:comment "A short bit of text used when linking to more information about a thing." .
+    rdfs:label "teaser text"@en;
+	rdfs:label "预告文本"@zh-cn;
+    rdfs:comment "A short bit of text used when linking to more information about a thing."@en;
+	rdfs:comment "链接到关于某事物更多信息的简短文本。"@zh-cn .
 
 uihints:fontAwesome a rdf:Property;
-    rdfs:label "FontAwesome icon name";
-    rdfs:comment "A FontAwesome icon name, without the 'fa-' prefix." .
+    rdfs:label "FontAwesome icon name"@en;
+	rdfs:label "字体极佳的图标名称"@zh-cn;
+    rdfs:comment "A FontAwesome icon name, without the 'fa-' prefix."@en;
+	rdfs:comment "字体极佳的图标名称，不带有'fa-'前缀。"@zh-cn .
 
 uihints:backgroundColor a rdf:Property;
-    rdfs:label "background color";
-    rdfs:comment "A CSS color for the background when displaying this item." .
+    rdfs:label "background color"@en;
+	rdfs:label "背景颜色"@zh-cn;
+    rdfs:comment "A CSS color for the background when displaying this item."@en;
+	rdfs:comment "显示该条目的背景CSS颜色。"@zh-cn .
 
 uihints:sortKey a rdf:Property, owl:DatatypeProperty, owl:FunctionalProperty;
-    rdfs:label "sort key";
-    rdfs:comment "A literal of a type with a complete ordering that can be used for ordering the subject in a list.";
+    rdfs:label "sort key"@en;
+	rdfs:label "排序键"@zh-cn;
+    rdfs:comment "A literal of a type with a complete ordering that can be used for ordering the subject in a list."@en;
+	rdfs:comment "可以用于对列表中的主题进行排序的带有完整排序的文字。"@zh-cn;
     rdfs:domain owl:Thing;
     rdfs:range rdfs:Literal .

@@ -9,8 +9,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://neologism.ecs.soton.ac.uk/oo> a owl:Ontology;
-    dcterms:title "Open Organisations";
-    dcterms:description "This vocabulary provides supplementary terms for organisations wishing to publish open data about themselves.";
+    dcterms:title "Open Organisations"@en;
+	dcterms:title "开放组织"@zh-cn;
+    dcterms:description "This vocabulary provides supplementary terms for organisations wishing to publish open data about themselves."@en;
+	dcterms:description "这个词汇集为有意愿发布有关它们自己的开放数据的组织提供了补充术语。"@zh-cn;
     dc:license "http://creativecommons.org/licenses/by/3.0/";
     dcterms:modified "2013-04-17"^^xsd:date;
     vann:preferredNamespaceUri "http://purl.org/openorg/";
@@ -27,11 +29,11 @@
         <http://neologism.ecs.soton.ac.uk/oo#ash> .
 
 <http://neologism.ecs.soton.ac.uk/oo#ttl>
-    dcterms:FileFormat <>;
+    dcterms:FileFormat <http://neologism.ecs.soton.ac.uk/oo.ttl>;
     dcterms:license <http://creativecommons.org/licenses/by/3.0/> .
 
 <http://neologism.ecs.soton.ac.uk/oo#rdf>
-    dcterms:FileFormat <>;
+    dcterms:FileFormat <http://neologism.ecs.soton.ac.uk/oo.rdf>;
     dcterms:license <http://creativecommons.org/licenses/by/3.0/> .
 
 <http://neologism.ecs.soton.ac.uk/oo#cjg> a foaf:Person;
@@ -62,51 +64,72 @@
     foaf:mbox <mailto:ads04r@ecs.soton.ac.uk> .
 
 oo:OrganizationProfileDocument a rdfs:Class, owl:Class;
-    rdfs:label "Organization Profile Document";
-    rdfs:comment "An RDF document describing a specific organisation. ";
-    rdfs:subClassOf foaf:Document;
+    rdfs:label "Organization Profile Document"@en;
+	rdfs:label "组织档案文档"@zh-cn;
+    rdfs:comment "An RDF document describing a specific organisation. "@en;
+    rdfs:comment "用于描述指定组织的RDF文档。"@zh-cn;
+	rdfs:subClassOf foaf:Document;
     owl:disjointWith foaf:PersonalProfileDocument .
 
 oo:Capability a rdfs:Class, owl:Class;
-    rdfs:label "Capability";
-    rdfs:comment "A capability of a facility or organization. This is subtley different from a service, in that it means that it is capable of performing a certain task or technique. It may be useful to list capabilities when bidding for research contracts and grants." .
+    rdfs:label "Capability"@en;
+	rdfs:label "能力"@zh-cn;
+    rdfs:comment "A capability of a facility or organization. This is subtley different from a service, in that it means that it is capable of performing a certain task or technique. It may be useful to list capabilities when bidding for research contracts and grants."@en;
+	rdfs:comment "设备或组织的能力。它和服务有些细微差别，即它有能力执行特定任务或技术。在投标研究合同和拨款时，可能对罗列能力有用。"@zh-cn .
 
 oo:Service a rdfs:Class, owl:Class;
-    rdfs:label "Service";
-    rdfs:comment "A service. This term has been defined for the purposes of defining services offered by university research facilities, but isn't restricted to universities or research. This term is in testing and may be superceeded by the Cerif vocab." .
+    rdfs:label "Service"@en;
+	rdfs:label "服务"@zh-cn;
+    rdfs:comment "A service. This term has been defined for the purposes of defining services offered by university research facilities, but isn't restricted to universities or research. This term is in testing and may be superceeded by the Cerif vocab."@en;
+	rdfs:comment "一个服务。这个术语是为了定义由大学研究所设备提供的服务，但是不局限于大学或研究所。这个术语处于测试阶段，可能会被Cerif词汇集替代。"@zh-cn .
 
 oo:Facility a rdfs:Class, owl:Class;
-    rdfs:label "Facility";
-    rdfs:comment "A facility. A facility is a grouping of equipment and/or people that can perform specific tasks. This term has been coined to use in relation to research facilites at universities, but is not restricted to only research facilities. This term is in testing and may be superceeded by the Cerif vocab." .
+    rdfs:label "Facility"@en;
+	rdfs:label "设备"@zh-cn;
+    rdfs:comment "A facility. A facility is a grouping of equipment and/or people that can perform specific tasks. This term has been coined to use in relation to research facilites at universities, but is not restricted to only research facilities. This term is in testing and may be superceeded by the Cerif vocab."@en;
+	rdfs:comment "一个设备。设备是能执行特定任务的一组器材和/或人。创造这个术语是与使用大学研究所的设备有关，但是不局限于研究所设备。这个术语处于测试阶段，可能会被Cerif词汇集替代。"@zh-cn .
 
 oo:Equipment a rdfs:Class, owl:Class;
-    rdfs:label "Equipment";
-    rdfs:comment "An item of equipment. This term is in testing and may be superceeded by the Cerif vocab." .
+    rdfs:label "Equipment"@en;
+	rdfs:label "器材"@zh-cn;
+    rdfs:comment "An item of equipment. This term is in testing and may be superceeded by the Cerif vocab.";
+	rdfs:comment "器材的一项。这个术语处于测试阶段，可能会被Cerif词汇集替代。"@zh-cn .
 
 oo:contact a rdf:Property;
-    rdfs:label "Contact";
-    rdfs:comment "A mechanism of contacting someone who knows about this resource. Suggested targets of this property are a foaf:Agent, a Document (eg. the webpage listing contact methods), a vcard address or a mailto: URI. " .
+    rdfs:label "Contact"@en;
+	rdfs:label "联络"@zh-cn;
+    rdfs:comment "A mechanism of contacting someone who knows about this resource. Suggested targets of this property are a foaf:Agent, a Document (eg. the webpage listing contact methods), a vcard address or a mailto: URI. "@en;
+	rdfs:comment "联络到某个指定这个资源的人的一个机制。这个属性的推荐目标是foaf:Agent、文档（如列出联络方法的网页）、vcard地址或mailto:链接。"@zh-cn .
 
 oo:corrections a rdf:Property;
-    rdfs:label "Corrections";
-    rdfs:comment "A sub-property of oo:contact indicating a route to have corrections made to data relating to this resource. Intended for use on a dataset, but it may be used on any URI -- for example you may use it to indicate that certain records in a dataset have different people to contact them to get it fixed. ";
-    rdfs:subPropertyOf oo:contact .
+    rdfs:label "Corrections"@en;
+	rdfs:label "修正"@zh-cn;
+    rdfs:comment "A sub-property of oo:contact indicating a route to have corrections made to data relating to this resource. Intended for use on a dataset, but it may be used on any URI -- for example you may use it to indicate that certain records in a dataset have different people to contact them to get it fixed. "@en;
+    rdfs:comment "oo:contact的一个子属性，指出了一个对和这个资源有关数据进行修正的路由。为了在数据集上使用而准备，但是可以用在任何URI上----比如你可能用它指出在一个数据集中的特定记录有不同的人能联系到他们来修补记录。"@zh-cn;
+	rdfs:subPropertyOf oo:contact .
 
 oo:organization a rdf:Property;
-    rdfs:label "organization";
-    rdfs:comment "Relates something to an organization. Intended for use to link things other than people and organizations to an organization, for example, equipment, key datasets (places, members).";
+    rdfs:label "organization"@en;
+	rdfs:label "组织"@zh-cn;
+    rdfs:comment "Relates something to an organization. Intended for use to link things other than people and organizations to an organization, for example, equipment, key datasets (places, members)."@en;
+	rdfs:comment "将某些事物关联到一个组织上。为了将事物而不是人或组织连接到组织而使用，比如，器材，关键数据集（地点，成员）。"@zh-cn;
     rdfs:range foaf:Organization .
 
 oo:formalOrganization a rdf:Property;
-    rdfs:label "Formal Organization";
-    rdfs:comment "Relates something to a Formal Organiation. " .
+    rdfs:label "Formal Organization"@en;
+	rdfs:label "正式组织"@zh-cn;
+    rdfs:comment "Relates something to a Formal Organiation. "@en;
+	rdfs:comment "将某些事物关联到一个正式组织上。"@zh-cn .
 
 oo:organizationalUnit a rdf:Property;
-    rdfs:label "Organizational Unit";
-    rdfs:comment "Relates something to a part of an organization." .
+    rdfs:label "Organizational Unit"@en;
+	rdfs:label "组织单元"@zh-cn;
+    rdfs:comment "Relates something to a part of an organization."@en;
+	rdfs:comment "将某些事物关联到一个组织部分上。"@zh-cn .
 
 oo:twitterHashtag a rdf:Property, owl:DatatypeProperty;
-    rdfs:label "twitter hashtag";
+    rdfs:label "twitter hashtag"@en;
+	rdfs:label "twitter哈希标签"@zh-cn;
     rdfs:comment """This is used to relate a concept to the Twitter hashtag people are using to talk about that thing.
 
 We've created the twitterHashtag in the open org namespace. A hashtag can be related to a concept, location, event, or anything. A combination of hashtags may be used in one literal to indicate that it is that combination of hashtags which is associated with that resource.
@@ -119,16 +142,23 @@ or, to indicate a combo hashtag:
 
 <oo:twitterHashtag>#myconf2010 #track2<oo:twitterHashtag>
 
-Instead of a string literal this may also point to a URI used to identify the hashtag. """;
-    rdfs:range xsd:string .
+Instead of a string literal this may also point to a URI used to identify the hashtag. """@en;
+    rdfs:comment """用于将一个概念关联到人们正在讨论事物的Twitter哈希标签上。
+	我们在开放组织命名空间中定义了twitterHashtag。哈希标签能关联到概念、地点、事件或任何事物上。可以在文字中使用哈希标签组合，以指出这个组合关联到了那个资源上。
+	然而，使用两个oo:twitterHashtag属性，将说明任何一个都指向同一个事物（不推荐）。
+	<oo:twitterHashtag>#myconf2010<oo:twitterHashtag>或者<oo:twitterHashtag>#myconf2010 #track2<oo:twitterHashtag>，而不是字符串文字。"""@zh-cn;
+	rdfs:range xsd:string .
 
 oo:mapIcon a rdf:Property;
-    rdfs:label "map icon";
-    rdfs:comment "link a geospatial feature to a an icon to use to indicate its location. The \"point\" should be the bottom center of the image. ";
+    rdfs:label "map icon"@en;
+	rdfs:label "地图图标"@zh-cn;
+    rdfs:comment "link a geospatial feature to a an icon to use to indicate its location. The \"point\" should be the bottom center of the image. "@en;
+	rdfs:comment "将地理空间特性连接到用于指明未知的图标上。\"点\"应该位于图片底部的中央位置。"@zh-cn;
     rdfs:range foaf:Image .
 
 oo:capacity a rdf:Property, owl:DatatypeProperty;
-    rdfs:label "capacity";
+    rdfs:label "capacity"@en;
+	rdfs:label "能力"@zh-cn;
     rdfs:comment """This is used to indicate the capacity of a thing when performing its default function. Ideally a more semantically meaningful predicate should be used, describing the capacity of something in a particular function.
 
 This may be used to associate:
@@ -140,30 +170,48 @@ This may be used to associate:
 
 You should be able to assume that resources of the same type, described in the same dataset, have capacities calculated in a more-or-less similar way.
 
-It should only be treated as a rough guide. """;
+It should only be treated as a rough guide. """@en;
+    rdfs:comment """在事物执行它的默认功能的时候，用于指出它的能力。理论上应该是用一个更具语义意义的谓词来描述在特定功能中某物的能力。
+	可以用于关联：
+		教室，歌剧院，电影院或带有人们座位号码的餐馆；
+		酒吧或其它有防火限制的娱乐场所；
+		知道能教授多少学生的学校；
+		注明能盛放多少支笔的笔盒。
+	你应该假定资源是相同类型的，在同一数据集中描述，有以几乎类似的方式计算的能力。
+	应该仅仅视为粗略指导。"""@zh-cn;
     rdfs:range rdfs:Literal .
 
 oo:access a rdf:Property, owl:DatatypeProperty;
-    rdfs:label "access information";
-    rdfs:comment "This relates a place (geo:SpatialThing) with a text description of how to access this thing. It may be that there is limited wheel chair access, a certain entrance is required or any other access information to tell a person planning to visit this place. ";
-    rdfs:range rdfs:Literal .
+    rdfs:label "access information"@en;
+	rdfs:label "访问信息"@zh-cn;
+    rdfs:comment "This relates a place (geo:SpatialThing) with a text description of how to access this thing. It may be that there is limited wheel chair access, a certain entrance is required or any other access information to tell a person planning to visit this place. "@en;
+    rdfs:comment "将一个带有文本描述的地点（geo:SpatialThing）关联到如何访问这个事物上。可能会限制轮椅访问，需要一个特定入口，或者任意其它需要告诉计划访问这个地点的人的信息。"@zh-cn;
+	rdfs:range rdfs:Literal .
 
 oo:sparql a rdf:Property;
-    rdfs:label "SPARQL Endpoint";
-    rdfs:comment "This relates an organization to a SPARQL endpoint which allows you to query open data about or produced by that organization.";
+    rdfs:label "SPARQL Endpoint"@en;
+	rdfs:label "SPARQL节点"@zh-cn;
+    rdfs:comment "This relates an organization to a SPARQL endpoint which allows you to query open data about or produced by that organization."@en;
+	rdfs:comment "将组织关联到一个SPARQL节点，它允许你查询有关这个组织或由这个组织产生的开放数据。"@zh-cn;
     rdfs:domain foaf:Organization .
 
 oo:primaryContact a rdf:Property;
-    rdfs:label "Primary Contact";
-    rdfs:comment "A mechanism of contacting the primary person or group regarding this resource. Suggested targets of this property are a foaf:Agent, a Document (eg. the webpage listing contact methods), a vcard address or a mailto: URI. This is not set as a function property as you may have edge cases where you want to list a primaryContact tel: and mailto: although this isn't recommended.";
-    rdfs:subPropertyOf oo:contact .
+    rdfs:label "Primary Contact"@en;
+	rdfs:label "主要联络"@zh-cn;
+    rdfs:comment "A mechanism of contacting the primary person or group regarding this resource. Suggested targets of this property are a foaf:Agent, a Document (eg. the webpage listing contact methods), a vcard address or a mailto: URI. This is not set as a function property as you may have edge cases where you want to list a primaryContact tel: and mailto: although this isn't recommended."@en;
+    rdfs:comment "联络到有关这个资源的主要人或组的机制。这个属性的推荐目标是foaf:Agent、文档（如列出联络方法的网页）、vcard地址或mailto:链接。没有将其设置为功能属性，因为你可能有一些边缘案例想列出tel:和mailto:作为主要联络，虽然并不推荐这样做。"@zh-cn;
+	rdfs:subPropertyOf oo:contact .
 
 oo:contactForm a rdf:Property;
-    rdfs:label "contact form";
-    rdfs:comment "a link from an agent to an HTML page or form that can be used to contact that agent. If a fragment identifier is used, it should refer to an @id of an HTML FORM element in the linked page.";
+    rdfs:label "contact form"@en;
+	rdfs:label "联络表格"@zh-cn;
+    rdfs:comment "a link from an agent to an HTML page or form that can be used to contact that agent. If a fragment identifier is used, it should refer to an @id of an HTML FORM element in the linked page."@en;
+	rdfs:comment "从代理到一个HTML页面或表格的链接，用以联络那个代理。如果使用了片段标识符，应该指向连接页面上的HTML表格元素的@id。"@zh-cn;
     rdfs:domain foaf:Agent;
     rdfs:range rdfs:Resource .
 
 oo:NoLicenseDefined
-    rdfs:label "No License Defined";
-    rdfs:comment "This term is intended to be a target for dcterms:license to specifically indicate that a license has not been defined for a resource." .
+    rdfs:label "No License Defined"@en;
+	rdfs:label "未定义版权"@zh-cn;
+    rdfs:comment "This term is intended to be a target for dcterms:license to specifically indicate that a license has not been defined for a resource."@en;
+	rdfs:comment "这个术语是为了一个dcterms:license目标，特别指出没有为资源定义一个版权。"@zh-cn .

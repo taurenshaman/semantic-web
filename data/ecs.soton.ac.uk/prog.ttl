@@ -1,4 +1,4 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+﻿@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -9,8 +9,10 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <http://neologism.ecs.soton.ac.uk/prog> a owl:Ontology;
-    dcterms:title "The Event Programme Vocabulary";
-    dcterms:description "This Vocabulary provides the means to create a document which describes a large event or other connected series of events. The primary purpose is to help humans comprehend the programme, not describe absolute truth. A single event (or even series) may have multiple programmes.";
+    dcterms:title "The Event Programme Vocabulary"@en;
+	dcterms:title "事件程序词汇集"@zh-cn;
+    dcterms:description "This Vocabulary provides the means to create a document which describes a large event or other connected series of events. The primary purpose is to help humans comprehend the programme, not describe absolute truth. A single event (or even series) may have multiple programmes."@en;
+	dcterms:description "这个词汇集提供了一个创建描述大型事件及相关事件系列的文档的机制。其主要目的是帮助人类理解程序，而不是描述绝对真理。一个单独事件（或事件系列）可能包含多个程序。"@zh-cn;
     dcterms:modified "2014-04-01"^^xsd:date;
     vann:preferredNamespaceUri "http://purl.org/prog/";
     vann:preferredNamespacePrefix "prog";
@@ -23,10 +25,10 @@
     dc:creator <http://neologism.ecs.soton.ac.uk/prog#cjg> .
 
 <http://neologism.ecs.soton.ac.uk/prog#ttl>
-    dcterms:FileFormat <> .
+    dcterms:FileFormat <http://neologism.ecs.soton.ac.uk/prog.ttl> .
 
 <http://neologism.ecs.soton.ac.uk/prog#rdf>
-    dcterms:FileFormat <> .
+    dcterms:FileFormat <http://neologism.ecs.soton.ac.uk/prog.rdf> .
 
 <http://neologism.ecs.soton.ac.uk/prog#cjg> a foaf:Person;
     foaf:name "Christopher Gutteridge";
@@ -39,61 +41,89 @@
     foaf:homepage <http://www.soton.ac.uk/> .
 
 prog:Activity a rdfs:Class, owl:Class;
-    rdfs:label "Activity";
+    rdfs:label "Activity"@en;
+	rdfs:label "活动"@zh-cn;
     rdfs:comment """This class represents the abstract content of an event, which may be repeated many times, once or never. For example a training course, or a play. The primary purpose is to indicate that several events will have very similar content, to aid planning what to attend. It does not indicate that there is any reason people could not attend more than one realisation. It should not be used to abstract a repeating event, such as morning coffee or a monthly meeting.
-
-
 Multiple Events may reference that they are realises of the same Activity. 
-Activities are not Events and may not have a time or place.""" .
+Activities are not Events and may not have a time or place."""@en;
+	rdfs:comment """这个类表示了一个事件的抽象内容，这些内容可能会重复多次、一次或从不重复。比如一个训练课程或表演。主要目的是表明多个事件可能有非常相似的内容，有助于计划要参与什么。它并不会明确人们不能参与多个实现的任意原因。它不应该用于抽象或重复性的事件中，比如早晨的咖啡或每月例会。
+	多个事件可能会指出它们意味着同一个活动。
+	活动不是事件，可能没有时间或地点。"""@zh-cn .
 
 prog:Programme a rdfs:Class, owl:Class;
-    rdfs:label "Programme";
+    rdfs:label "Programme"@en;
+	rdfs:label "程序"@zh-cn;
     rdfs:comment """A programme is a description of the parts of a complex event to aid understanding it. A single event may be described by several programmes, for example one may give a break down by day, another by rooms, another by topic.
 
 A programme should not have Timeslots or Events if it subprogrammes. In effect this means there are two subclasses of Programme, but there's no need to express that in the data.
 
-A simple application only needs to operate on a single Programme at once.""" .
+A simple application only needs to operate on a single Programme at once."""@en;
+	rdfs:comment """程序是对一个复杂事件的组成的描述，有助于理解这个事件。一个单独事件可能被多个程序描述，比如按天分类的程序，按房间分类的程序，按主题分类的程序。
+	一个程序如果有子程序，那它不应该有时间槽或事件。实际上这意味着程序有两个子类，但这里不需要在数据中表示出来。
+	一个简单的应用每次只需要处理一个程序。"""@zh-cn .
 
 prog:TimeSlot a rdfs:Class, owl:Class;
-    rdfs:label "TimeSlot";
+    rdfs:label "TimeSlot"@en;
+	rdfs:label "时间槽"@zh-cn;
     rdfs:comment """This is a property of a Programme to facilitate understanding by humans. There is no semantic relationship between events in the programme and TimeSlots as complex programmes often have events which ignore the published timeslots. A timeslot is effectively an event with nothing but a time interval and label.
 
 A Timeslot must have an rdfs:label and a event:time linking it to a tl:Interval.
 
-Timeslots are purely cosmetic and it is not recommended that events should not be artificially fitted into them.""" .
+Timeslots are purely cosmetic and it is not recommended that events should not be artificially fitted into them."""@en;
+	rdfs:comment """程序的这个属性能促进人类理解。程序和时间槽中的事件之间没有语义关系，而复杂程序通常有忽略时间槽的事件。实际上，时间槽就是一个除了时间段和标签什么都没有的事件。
+	时间槽必须有rdfs:label和event:time两个属性已将它连接到tl:Interval。
+	时间槽是纯表面上的，并不推荐事件不进行非自动填充。"""@zh-cn .
 
 prog:has_event a rdf:Property;
-    rdfs:label "programme includes event";
-    rdfs:comment "Indicates that an Event is part of the specified programme, but not streamed in any particular way. This should not relate a programme to the event it is a programme of. This is used for events in programmes without streams, or for events which are listed in all streams, such as 'Lunch','Check into Accomodation' or 'Plenary'." .
+    rdfs:label "programme includes event"@en;
+	rdfs:label "程序包含的事件"@zh-cn;
+    rdfs:comment "Indicates that an Event is part of the specified programme, but not streamed in any particular way. This should not relate a programme to the event it is a programme of. This is used for events in programmes without streams, or for events which are listed in all streams, such as 'Lunch','Check into Accomodation' or 'Plenary'."@en;
+	rdfs:comment "指出了某事件是指定程序的一部分，但是不需要以任意形式分组。不需要将程序关联到事件上，而这个事件是程序的。用于程序中不需要分组的事件，或者用于在所有组中都会列出的事件，比如‘午餐’，‘检查住宿’或者‘全员大会’。"@zh-cn .
 
 prog:has_programme a rdf:Property;
-    rdfs:label "event is described by programme";
-    rdfs:comment "Connects an ev:Event with a prog:Programme which describes it." .
+    rdfs:label "event is described by programme"@en;
+	rdfs:label "描述事件的程序"@zh-cn;
+    rdfs:comment "Connects an ev:Event with a prog:Programme which describes it."@en;
+	rdfs:comment "将ev:Event和描述它的prog:Programme联系在一起。"@zh-cn .
 
 prog:has_sidebar_event a rdf:Property;
-    rdfs:label "programme includes sidebar event";
-    rdfs:comment "Indicates that an Event is part of the specified programme, but is not part of the normal grid and should be listed separately. Evening events, for example, may be included in this way. Other users include all-day events such as 'exhibition in main hall', for which you do not want to use up 'real-estate' in a grid-display of this programme." .
+    rdfs:label "programme includes sidebar event"@en;
+	rdfs:label "程序所包含的补充事件"@zh-cn;
+    rdfs:comment "Indicates that an Event is part of the specified programme, but is not part of the normal grid and should be listed separately. Evening events, for example, may be included in this way. Other users include all-day events such as 'exhibition in main hall', for which you do not want to use up 'real-estate' in a grid-display of this programme."@en;
+	rdfs:comment "指出了某事件是指定程序的一部分，但他不是正常表格的一部分，应该单独列出。比如晚间事件可能以这种形式包含。其它用户包括全天事件，比如‘主厅的展览’，对于这些你不会想在显示此程序的表格显示中使用‘地产’。"@zh-cn .
 
 prog:has_streamed_event a rdf:Property;
-    rdfs:label "programme includes streamed event";
-    rdfs:comment "Indicates that an Event is part of the specified programme, and should appear in any relevant 'streams' based on its subject or location. If it matches no things for which the programme is prog:streamed_by_location, prog:streamed_by_parent_event or prog:streamed_by_subject then a tool may choose to report this as broken data." .
+    rdfs:label "programme includes streamed event"@en;
+	rdfs:label "程序所包含的组事件"@zh-cn;
+    rdfs:comment "Indicates that an Event is part of the specified programme, and should appear in any relevant 'streams' based on its subject or location. If it matches no things for which the programme is prog:streamed_by_location, prog:streamed_by_parent_event or prog:streamed_by_subject then a tool may choose to report this as broken data."@en;
+	rdfs:comment "指出了某事件是指定程序的一部分，并且需要出现于任何基于它的主题或地点的相关组中。对于prog:streamed_by_location、prog:streamed_by_parent_event或prog:streamed_by_subject等程序，如果没有任何匹配，那么应该选择一个工具汇报这些破碎数据。"@zh-cn .
 
 prog:has_timeslot a rdf:Property;
-    rdfs:label "programme has timeslot";
-    rdfs:comment "Indicates that a TimeSlot is part of the specified programme." .
+    rdfs:label "programme has timeslot"@en;
+	rdfs:label "程序的时间槽"@zh-cn;
+    rdfs:comment "Indicates that a TimeSlot is part of the specified programme."@en;
+	rdfs:comment "指出了某时间槽是指定程序的一部分。"@zh-cn .
 
 prog:realises a rdf:Property;
-    rdfs:label "event realises activity";
-    rdfs:comment "Relates a concrete event:Event to the prog:Activity that it is a realisation of. For example this would relate the training course on Thursday to the prog:Activity of the laser safety lecure. All realisations of the laser safety lecture have generally the same content, although details may vary. It is not expected that a normal attendee will attend more than one realisation of an Activity, although certainly not precluded at the level of detail we're working with here." .
+    rdfs:label "event realises activity"@en;
+	rdfs:label "事件实现的活动"@zh-cn;
+    rdfs:comment "Relates a concrete event:Event to the prog:Activity that it is a realisation of. For example this would relate the training course on Thursday to the prog:Activity of the laser safety lecure. All realisations of the laser safety lecture have generally the same content, although details may vary. It is not expected that a normal attendee will attend more than one realisation of an Activity, although certainly not precluded at the level of detail we're working with here."@en;
+	rdfs:comment "将具体的event:Event和它实现的prog:Activity关联起来。比如，会将周二的训练课程和激光防护演讲的prog:Activity关联起来。激光防护演讲的所有实现一般有相同的内容，虽然具体的细节会不一样。虽然肯定不会妨碍我们在此谈论的细节级别，但是不能期望一个普通的参与者会参与一个活动的多个实现。"@zh-cn .
 
 prog:streamed_by_location a rdf:Property;
-    rdfs:label "programme has a stream for location";
-    rdfs:comment "Indicates that one of the streams in this visualisation is events with a event:place relating them to the geo:SpatialThing indicated. This is the most common way an programme is designed." .
+    rdfs:label "programme has a stream for location"@en;
+	rdfs:label "按地点分组"@zh-cn;
+    rdfs:comment "Indicates that one of the streams in this visualisation is events with a event:place relating them to the geo:SpatialThing indicated. This is the most common way an programme is designed."@en;
+	rdfs:comment "指出了可视化中的分组之一，将event:place和指定的geo:SpatialThing关联在一起。这是程序设计出来的最通用的方式。"@zh-cn .
 
 prog:streamed_by_parent_event a rdf:Property;
-    rdfs:label "programme has a stream for sub-events of";
-    rdfs:comment "Indicates that one of the streams in this visualisation is events that are event:sub_event of the event:Event indicated. This can be used to show several workshops in an event. This should only apply to things which are immediately stated explicitly as event:sub_event, it is assumed that the consumer will not treat this property as transitive, unless they are doing something weird or clever." .
+    rdfs:label "programme has a stream for sub-events of"@en;
+	rdfs:label "对子事件分组"@zh-cn;
+    rdfs:comment "Indicates that one of the streams in this visualisation is events that are event:sub_event of the event:Event indicated. This can be used to show several workshops in an event. This should only apply to things which are immediately stated explicitly as event:sub_event, it is assumed that the consumer will not treat this property as transitive, unless they are doing something weird or clever."@en;
+	rdfs:comment "指出了可视化中的分组之一，将event:sub_event和指定的event:Event关联在一起。可以用于显示一个事件中的多个部分。仅适于运用到那些能立即明确声明为event:sub_event的事物，假定消费者不会将这个属性视为传递属性，除非他们做的事比较古怪或灵巧。"@zh-cn .
 
 prog:streamed_by_subject a rdf:Property;
-    rdfs:label "programme has a stream for subject";
-    rdfs:comment "Indicates that one of the streams in this visualisation is events with a dcterms:subject relating them to the skos:Concept indicated." .
+    rdfs:label "programme has a stream for subject"@en;
+	rdfs:label "按主题分组"@zh-cn;
+    rdfs:comment "Indicates that one of the streams in this visualisation is events with a dcterms:subject relating them to the skos:Concept indicated."@en;
+	rdfs:comment "指出了可视化中的分组之一，将带有dcterms:subject的事件和指定的skos:Concept关联在一起。"@zh-cn .
