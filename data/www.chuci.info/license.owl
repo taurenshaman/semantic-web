@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY terms "http://purl.org/dc/terms/" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.chuci.info/schema/license#"
+     xml:base="http://www.chuci.info/schema/license"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <owl:Ontology rdf:about="http://www.chuci.info/schema/license">
+    <terms:created rdf:datatype="&xsd;date">2016-4-4</terms:created>
+    <terms:modified rdf:datatype="&xsd;date">2016-4-4</terms:modified>
+    <dc:creator>taurenjerin@qq.com</dc:creator>
+    <dc:title xml:lang="zh-cn">关于许可证/执照方面的本体词汇集</dc:title>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://purl.org/goodrelations/v1"/>
+  </owl:Ontology>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatype properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+  <!-- http://www.chuci.info/schema/license#name -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/license#name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">名称</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/org#identifier"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/license#License"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+
+  
+  
+  <!-- http://www.chuci.info/schema/license#number -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/license#number">
+    <rdfs:label xml:lang="en">number</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">编号</rdfs:label>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/org#identifier"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/license#License"/>
+    <rdfs:range rdf:resource="&rdfs;string"/>
+  </owl:DatatypeProperty>
+  
+
+  <!-- http://www.chuci.info/schema/license#distributedBy -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/license#distributedBy">
+    <rdfs:label xml:lang="en">distributed by</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">颁发主体</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/license#License"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/business#Organization"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/license#validFrom -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/license#validFrom">
+    <rdfs:label xml:lang="en">valid from</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">有效期（起始）</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/license#License"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.chuci.info/schema/license#validTo -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/license#validTo">
+    <rdfs:label xml:lang="en">valid to</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">有效期（截止）</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/license#License"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/license#scope -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/license#scope">
+    <rdfs:label xml:lang="en-us">scope</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">业务范围</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/license"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/license#License"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/license#holder -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/license#holder">
+    <rdfs:label xml:lang="en-us">holder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">持有人</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/license"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/license#License"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/business#BusinessEntity"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+  <!-- http://www.chuci.info/schema/license#License -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/license#License">
+    <rdfs:label xml:lang="en">License</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">许可证/执照</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">由于各种原因，需要由当地政府或主管部门颁发的准入许可证或执照。</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/license"/>
+  </owl:Class>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+</rdf:RDF>
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY terms "http://purl.org/dc/terms/" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.chuci.info/schema/technology#"
+     xml:base="http://www.chuci.info/schema/technology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <owl:Ontology rdf:about="http://www.chuci.info/schema/technology">
+    <terms:created rdf:datatype="&xsd;date">2016-4-4</terms:created>
+    <terms:modified rdf:datatype="&xsd;date">2016-4-4</terms:modified>
+    <dc:creator>taurenjerin@qq.com</dc:creator>
+    <dc:title xml:lang="zh-cn">关于技术方面的本体词汇集</dc:title>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://purl.org/goodrelations/v1"/>
+  </owl:Ontology>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatype properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+  <!-- http://www.chuci.info/schema/technology#name -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/technology#name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">名称</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/technology#Application"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+  </owl:DatatypeProperty>
+  
+  
+  <!-- http://www.chuci.info/schema/technology#identity -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/technology#identity">
+    <rdfs:label xml:lang="en">identity</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">标识</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/org#identifier"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/technology#Application"/>
+    <rdfs:range rdf:resource="&rdfs;string"/>
+  </owl:DatatypeProperty>
+  
+
+  <!-- http://www.chuci.info/schema/technology#publisher -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/technology#publisher">
+    <rdfs:label xml:lang="en">publisher</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">发布者</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/technology#Application"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/business#BusinessEntity"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!-- http://www.chuci.info/schema/technology#uri -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/technology#uri">
+    <rdfs:label xml:lang="en">app uri</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">应用获取地址</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/technology#Application"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.chuci.info/schema/technology#publishedAt -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/technology#publishedAt">
+    <rdfs:label xml:lang="en">published at</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">发布时间</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/technology#Application"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.chuci.info/schema/technology#version -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/technology#version">
+    <rdfs:label xml:lang="en-us">version</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">版本</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/technology#Application"/>
+    <rdfs:range rdf:resource="&rdfs;string"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.chuci.info/schema/technology#lastVersion -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/technology#lastVersion">
+    <rdfs:label xml:lang="en-us">last version</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">上一版本</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/technology#Application"/>
+    <rdfs:range rdf:resource="&rdfs;string"/>
+  </owl:DatatypeProperty>
+
+
+
+  <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+  <!-- http://www.chuci.info/schema/technology#Application -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/technology#Application">
+    <rdfs:label xml:lang="en">Application</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">应用</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/business#Product"/>
+  </owl:Class>
+
+
+  <!-- http://www.chuci.info/schema/technology#WebSite -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/technology#WebSite">
+    <rdfs:label xml:lang="en">Web Site</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">网站</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/business#Application"/>
+  </owl:Class>
+
+
+  <!-- http://www.chuci.info/schema/technology#DesktopSoftware -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/technology#DesktopSoftware">
+    <rdfs:label xml:lang="en">desktop software</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">桌面软件</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/business#Application"/>
+  </owl:Class>
+
+
+  <!-- http://www.chuci.info/schema/technology#AndroidApp -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/technology#AndroidApp">
+    <rdfs:label xml:lang="en">Android App</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">安卓应用</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/business#Application"/>
+  </owl:Class>
+
+  
+  <!-- http://www.chuci.info/schema/technology#IOSApp -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/technology#IOSApp">
+    <rdfs:label xml:lang="en">IOS App</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">iOS应用</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/business#Application"/>
+  </owl:Class>
+
+  
+  <!-- http://www.chuci.info/schema/technology#UniversalWindowsApp -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/technology#UniversalWindowsApp">
+    <rdfs:label xml:lang="en">Universal Windows App</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">通用Windows应用</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/technology"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/business#Application"/>
+  </owl:Class>
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+</rdf:RDF>
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
