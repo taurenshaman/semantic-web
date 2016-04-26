@@ -1,12 +1,13 @@
-ÓïÒåÍøsemantic-web
+è¯­ä¹‰ç½‘semantic-web
 ============
 
-¸ÃÏîÄ¿´æ´¢ÁËÀ´×ÔÍøÂçÉÏµÄ¸÷ÖÖÀàĞÍµÄ±¾Ìå´Ê»ã¼¯£¬Ï£Íû´ó¼Ò¹±Ï×Á¦Á¿½øĞĞ·­Òë¡£  
+è¯¥é¡¹ç›®å­˜å‚¨äº†æ¥è‡ªç½‘ç»œä¸Šçš„å„ç§ç±»å‹çš„æœ¬ä½“è¯æ±‡é›†ï¼Œå¸Œæœ›å¤§å®¶è´¡çŒ®åŠ›é‡è¿›è¡Œç¿»è¯‘ã€‚  
 Storing ontologies/vocabularies from the web. Wish anybody can translate some of them.  
 
-ÖĞÎÄÓïÒåÍøÏîÄ¿--³ş´Ç£¨×¨×¢ÓÚÖĞÎÄºÍÓïÒåµÄ»ù´¡·şÎñ¡¢ÖªÊ¶Æ½Ì¨¡££©£º  
+ä¸­æ–‡è¯­ä¹‰ç½‘é¡¹ç›®--æ¥šè¾ï¼ˆä¸“æ³¨äºä¸­æ–‡å’Œè¯­ä¹‰çš„åŸºç¡€æœåŠ¡ã€çŸ¥è¯†å¹³å°ã€‚ï¼‰ï¼š  
 A basic service and knowledge platform focusing on chinese+semantic+knowledge.  
-http://www.chuci.info 
+http://www.chuci.info  
+
 ============
 Ontologies repositories on github:  
 plant: https://github.com/Planteome/plant-ontology  
