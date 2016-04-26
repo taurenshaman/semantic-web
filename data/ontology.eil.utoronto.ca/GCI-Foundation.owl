@@ -1,0 +1,1379 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl">
+    <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="cc" IRI="http://creativecommons.org/ns#"/>
+    <Prefix name="dc" IRI="http://purl.org/dc/terms/"/>
+    <Prefix name="gd" IRI="http://www.linkedgeodata.org/ontology/"/>
+    <Prefix name="gn" IRI="http://www.geonames.org/ontology/ontology_v3.1.rdf#"/>
+    <Prefix name="gs" IRI="http://ontology.eil.utoronto.ca/govstat.owl#"/>
+    <Prefix name="kp" IRI="http://ontology.eil.utoronto.ca/trust.owl#"/>
+    <Prefix name="om" IRI="http://www.wurvoc.org/vocabularies/om-1.8/"/>
+    <Prefix name="ot" IRI="http://www.w3.org/2006/time#"/>
+    <Prefix name="pr" IRI="http://www.w3.org/ns/prov#"/>
+    <Prefix name="sc" IRI="http://schema.org/"/>
+    <Prefix name="gci" IRI="http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#"/>
+    <Prefix name="org" IRI="http://ontology.eil.utoronto.ca/organization.owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="adms" IRI="http://www.w3.org/ns/adms#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="vann" IRI="http://purl.org/vocab/vann/"/>
+    <Prefix name="vcard" IRI="http://www.w3.org/2006/vcard/ns#"/>
+    <Prefix name="iso37120" IRI="http://ontology.eil.utoronto.ca/ISO37120.owl#"/>
+    <Import>http://www.w3.org/2006/time</Import>
+    <Import>http://ontology.eil.utoronto.ca/trust.owl</Import>
+    <Import>http://ontology.eil.utoronto.ca/icontact.owl</Import>
+    <Import>http://ontology.eil.utoronto.ca/organization.owl</Import>
+    <Import>http://ontology.eil.utoronto.ca/govstat.owl</Import>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="cc:license"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">http://creativecommons.org/licenses/by/3.0/</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Global City Indicator Foundation Ontology</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:title"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Global City Indicator Foundation Ontology</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">1.4: 3 February 2016
+- Added microgram per cubic metre as a Unit_of_measure
+- Added Decibel as a subclass of om:Sound_power_level
+- Added Sum which is a subclassof Quantity
+
+1.3: 1 June 2015
+- Added Monetary_unit and Monetary_ratio_unit for financial indicators.
+
+1.2: 16 May 2015
+- Fixed missing PROV-O and OM properties due to their removal as an imported ontology
+
+1.1: 28 April 2015
+- Added Population multiplier unit of measure</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Global City Indicator Foundation Ontology developed by the Information Engineering Group, Mechanical &amp; Industrial Engineering, University of Toronto. 
+
+Contains the foundation ontologies required to represent ISO 37120 city indicators, including Placenames, Time, Measurement, Provenance, Statistics, Validity and Trust.
+
+See: Fox, M.S., (2013), &quot;A Foundation Ontology for Global City Indicators&quot;, Global City Institute Working Paper, Vol. 1, No.4, pp. 1-45. Global Cities Institute, University of Toronto.
+
+Latest Version: http://eil.utoronto.ca/smartcities/papers/GCI-Foundation-Ontology.pdf
+
+Designed to represent the ISO 37120 Sustainable development of communities — Indicators for city services and quality of life.
+
+Contact: Mark S. Fox, msf@eil.utoronto.ca</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespacePrefix"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">gci</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="adms:relatedDocumentation"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">http://eil.utoronto.ca/smartcities/papers/GCI-Foundation-Ontology.pdf</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Mark S. Fox (msf@eil.utoronto.ca)</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#CDN_dollar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cardinality_scale"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cardinality_unit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CityService"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Decibel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Dollar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Euro"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Fixed_zero_cardinality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GCIThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GCI_measure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GCI_measurement"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GCI_measurement_scale"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GCI_quantity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GCI_statistics"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monetary_ratio_unit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monetary_scale"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Monetary_unit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Population"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Population_Product_Unit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Population_cardinality_unit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Population_measure"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Population_ratio_unit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Population_size"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Service"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#US_dollar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Unit_Summation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#gigapc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#kilopc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#megapc"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#microgram_per_cubic_metre"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="iso37120:ISO37120_Indicator"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="sc:City"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="sc:Country"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="sc:State"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="gn:Feature"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ot:Interval"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="pr:Activity"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="om:Compount_unit"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="om:Measure"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="om:Sound_power_level"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="om:Unit_multiplication"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="om:Unit_of_measure"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="om:cubic_metre"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="om:microgram"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#cardinality_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#defined_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#denominator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#for_city"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#for_city_service"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#for_time_interval"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#gci_population_property"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_Primary_Residence"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#located_in"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#numerator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#student_def"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#teacher_def"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#term"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="gn:locatedIn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="pr:generatedAtTime"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="pr:wasAttributedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="pr:wasDerivedFrom"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="pr:wasGeneratedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="om:phenomenon"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="om:term_1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="om:term_2"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty abbreviatedIRI="om:value"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#for_Year"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#gciDataProperty"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#testDataProp"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="om:numerical_value"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="geo:6252001"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="gn:6251999"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class abbreviatedIRI="org:Activity"/>
+        <Class abbreviatedIRI="pr:Activity"/>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#CDN_dollar"/>
+        <Class IRI="#Dollar"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CDN_dollar"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="http://ontology.eil.utoronto.ca/icontact.owl#hasCountry"/>
+            <Class abbreviatedIRI="sc:Country"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CDN_dollar"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">$</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cardinality_scale"/>
+        <Class IRI="#GCI_measurement_scale"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cardinality_scale"/>
+        <Class abbreviatedIRI="om:Ratio_scale"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cardinality_scale"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:unit_of_measure"/>
+            <Class IRI="#Cardinality_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cardinality_scale"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:zero_element"/>
+            <Class abbreviatedIRI="om:Fixed_zero_point"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cardinality_unit"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cardinality_unit"/>
+        <Class abbreviatedIRI="om:Singular_unit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CityService"/>
+        <Class IRI="#Service"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Decibel"/>
+        <Class abbreviatedIRI="om:Sound_power_level"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Dollar"/>
+        <Class IRI="#Monetary_unit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Euro"/>
+        <Class IRI="#Monetary_unit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Euro"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">€</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Fixed_zero_cardinality"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_measure"/>
+        <Class IRI="#GCI_measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_measure"/>
+        <Class abbreviatedIRI="om:Measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_measurement"/>
+        <Class IRI="#GCIThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_measurement_scale"/>
+        <Class IRI="#GCI_measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_quantity"/>
+        <Class IRI="#GCI_measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_quantity"/>
+        <Class abbreviatedIRI="om:Quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_quantity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#for_city"/>
+            <Class abbreviatedIRI="sc:City"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_quantity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#for_city_service"/>
+            <Class IRI="#CityService"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_quantity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#for_time_interval"/>
+            <Class abbreviatedIRI="ot:Interval"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_statistics"/>
+        <Class IRI="#GCIThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_unit_of_measure"/>
+        <Class IRI="#GCI_measurement"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GCI_unit_of_measure"/>
+        <Class abbreviatedIRI="om:Unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_ratio_unit"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_ratio_unit"/>
+        <Class abbreviatedIRI="om:Unit_division"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_ratio_unit"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:denominator"/>
+            <Class IRI="#Monetary_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_ratio_unit"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:numerator"/>
+            <Class IRI="#Monetary_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_scale"/>
+        <Class IRI="#GCI_measurement_scale"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_scale"/>
+        <Class abbreviatedIRI="om:Ratio_scale"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_scale"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:unit_of_measure"/>
+            <Class IRI="#Monetary_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_unit"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_unit"/>
+        <Class abbreviatedIRI="om:Singular_unit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Monetary_unit"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="http://ontology.eil.utoronto.ca/icontact.owl#hasCountry"/>
+            <Class abbreviatedIRI="sc:Country"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population"/>
+        <Class IRI="#GCI_statistics"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_Product_Unit"/>
+        <Class abbreviatedIRI="om:Unit_multiplication"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_Product_Unit"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:term_2"/>
+            <Class IRI="#Population_size"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_cardinality_unit"/>
+        <Class IRI="#Cardinality_unit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_cardinality_unit"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">pc</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_measure"/>
+        <Class IRI="#GCI_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_ratio_unit"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_ratio_unit"/>
+        <Class abbreviatedIRI="om:Unit_division"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_ratio_unit"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:denominator"/>
+            <Class IRI="#Population_cardinality_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_ratio_unit"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:numerator"/>
+            <Class IRI="#Population_cardinality_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_size"/>
+        <Class IRI="#GCI_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_size"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#cardinality_of"/>
+            <Class abbreviatedIRI="gs:Population"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population_size"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:unit_of_measure"/>
+            <Class IRI="#Population_cardinality_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Service"/>
+        <Class IRI="#GCIThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#US_dollar"/>
+        <Class IRI="#Dollar"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#US_dollar"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">$</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Unit_Summation"/>
+        <Class abbreviatedIRI="om:Quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Unit_Summation"/>
+        <ObjectMinCardinality cardinality="2">
+            <ObjectProperty IRI="#term"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#gigapc"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#gigapc"/>
+        <Class abbreviatedIRI="om:Unit_multiple_or_submultiple"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#gigapc"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:prefix"/>
+            <Class abbreviatedIRI="om:giga"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#gigapc"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:singular_unit"/>
+            <Class IRI="#Population_cardinality_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#gigapc"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">gigapc</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#kilopc"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#kilopc"/>
+        <Class abbreviatedIRI="om:Unit_multiple_or_submultiple"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#kilopc"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:prefix"/>
+            <Class abbreviatedIRI="om:kilo"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#kilopc"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:singular_unit"/>
+            <Class IRI="#Population_cardinality_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#kilopc"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">kilopc</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#megapc"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#megapc"/>
+        <Class abbreviatedIRI="om:Unit_multiple_or_submultiple"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#megapc"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:prefix"/>
+            <Class abbreviatedIRI="om:mega"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#megapc"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:singular_unit"/>
+            <Class IRI="#Population_cardinality_unit"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#megapc"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">megapc</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#microgram_per_cubic_metre"/>
+        <Class abbreviatedIRI="om:Unit_division"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#microgram_per_cubic_metre"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#denominator"/>
+            <Class abbreviatedIRI="om:cubic_metre"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#microgram_per_cubic_metre"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#numerator"/>
+            <Class abbreviatedIRI="om:microgram"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#microgram_per_cubic_metre"/>
+        <DataHasValue>
+            <DataProperty abbreviatedIRI="om:symbol"/>
+            <Literal datatypeIRI="&rdf;PlainLiteral">ug/c3</Literal>
+        </DataHasValue>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="iso37120:ISO37120_Indicator"/>
+        <Class IRI="#GCI_quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="gs:Population"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#defined_by"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="gs:Population"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#located_in"/>
+            <Class abbreviatedIRI="gn:Feature"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="gs:Population"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#for_time_interval"/>
+            <Class abbreviatedIRI="ot:Interval"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="sc:City"/>
+        <Class abbreviatedIRI="gn:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="sc:Country"/>
+        <Class abbreviatedIRI="gn:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="sc:State"/>
+        <Class abbreviatedIRI="gn:Feature"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="pr:Entity"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty abbreviatedIRI="pr:wasAttributedTo"/>
+            <Class abbreviatedIRI="pr:Agent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="pr:Entity"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty abbreviatedIRI="pr:wasGeneratedBy"/>
+            <Class abbreviatedIRI="pr:Agent"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="pr:Entity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty abbreviatedIRI="pr:generatedAtTime"/>
+            <Class abbreviatedIRI="ot:DateTimeDescription"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="pr:Entity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty abbreviatedIRI="pr:wasDerivedFrom"/>
+            <Class abbreviatedIRI="pr:Entity"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="pr:Person"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#has_Primary_Residence"/>
+            <Class IRI="http://ontology.eil.utoronto.ca/icontact.owl#Address"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Compount_unit"/>
+        <Class abbreviatedIRI="om:Unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Measure"/>
+        <Class IRI="http://ontology.eil.utoronto.ca/kp#KP_prop"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Measure"/>
+        <Class abbreviatedIRI="pr:Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Measure"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty abbreviatedIRI="om:unit_of_measure"/>
+            <Class abbreviatedIRI="om:Unit_of_measure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Measure"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty abbreviatedIRI="om:numerical_value"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Quantity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty abbreviatedIRI="om:unit_of_measure"/>
+            <Class abbreviatedIRI="om:Unit_of_measure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Quantity"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty abbreviatedIRI="om:value"/>
+            <Class abbreviatedIRI="om:Measure"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Singular_unit"/>
+        <Class abbreviatedIRI="om:Unit_of_measure"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Sound_power_level"/>
+        <Class abbreviatedIRI="om:Quantity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Unit_division"/>
+        <Class abbreviatedIRI="om:Compount_unit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Unit_multiplication"/>
+        <Class abbreviatedIRI="om:Compount_unit"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Unit_multiplication"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:term_1"/>
+            <Class abbreviatedIRI="om:Quantity"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:Unit_multiplication"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty abbreviatedIRI="om:term_2"/>
+            <Class abbreviatedIRI="om:Quantity"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:cubic_metre"/>
+        <Class abbreviatedIRI="om:Unit_multiple_or_submultiple"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="om:microgram"/>
+        <Class abbreviatedIRI="om:Unit_multiple_or_submultiple"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#GCI_measure"/>
+        <Class IRI="#GCI_measurement_scale"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_measure"/>
+        <Class IRI="#GCI_quantity"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_measure"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_measurement"/>
+        <Class IRI="#GCI_statistics"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_measurement"/>
+        <Class IRI="#Service"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_measurement_scale"/>
+        <Class IRI="#GCI_quantity"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_measurement_scale"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_quantity"/>
+        <Class IRI="#GCI_unit_of_measure"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#GCI_statistics"/>
+        <Class IRI="#Service"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#gigapc"/>
+        <Class IRI="#kilopc"/>
+        <Class IRI="#megapc"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class abbreviatedIRI="sc:Country"/>
+        <NamedIndividual IRI="geo:6252001"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="sc:Country"/>
+        <NamedIndividual IRI="gn:6251999"/>
+    </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#cardinality_of"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#defined_by"/>
+        <ObjectProperty IRI="#gci_population_property"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#denominator"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#for_city"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#for_city"/>
+        <ObjectProperty abbreviatedIRI="om:phenomenon"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#for_city_service"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#for_time_interval"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#gci_population_property"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has_Primary_Residence"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#located_in"/>
+        <ObjectProperty IRI="#gci_population_property"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#numerator"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#student_def"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#teacher_def"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#term"/>
+        <ObjectProperty IRI="#gciObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#cardinality_of"/>
+        <Class IRI="#Population_size"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#defined_by"/>
+        <Class abbreviatedIRI="gs:Population"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#for_city"/>
+        <Class IRI="#GCI_quantity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#located_in"/>
+        <Class abbreviatedIRI="gs:Population"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="om:phenomenon"/>
+        <Class abbreviatedIRI="om:Quantity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty abbreviatedIRI="om:value"/>
+        <Class abbreviatedIRI="om:Quantity"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#cardinality_of"/>
+        <Class abbreviatedIRI="gs:Population"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#for_city"/>
+        <Class abbreviatedIRI="sc:City"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#located_in"/>
+        <Class abbreviatedIRI="gn:Feature"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="om:value"/>
+        <Class abbreviatedIRI="om:Measure"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#for_Year"/>
+        <DataProperty IRI="#gciDataProperty"/>
+    </SubDataPropertyOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>geo:6252001</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">United States</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>gn:6251999</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Canada</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CDN_dollar</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Canadian Dollar</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#Cardinality_scale</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The gci:Cardinality_unit is a ratio scale: gci:Cardinality_scale, which is a subclass of om:Ratio_scale and is has a zero element (namely zero).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cardinality_scale</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Cardinality Scale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Cardinality_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Just as the meter is the unit of measure for length, a gci:Cardinality_unit is the unit of measure for the size of a set. The gci:Cardinality_unit is a ratio scale: gci:Cardinality_scale, which is a subclass of om:Ratio_scale and is has a zero element (namely zero).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cardinality_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Cardinality Unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#CityService</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">City Service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#Fixed_zero_cardinality</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Zero point for the cardinality scale.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Fixed_zero_cardinality</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Fixed Zero Cardinality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#GCIThing</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Acts as class that groups all Global City Indicator Classes. Makes it easier to peruse in Protege.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GCI_quantity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">All ISO37120 Indicators are a subclass of the GCI_Quantity.  They then inherit all of the properties including placenames, populations, provenance, trust, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GCI_quantity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">GCI Quantity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#Monetary_ratio_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The ratio of two Monetary Units, e.g., debt to revenue ratio.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Monetary_ratio_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Monetary Ratio Unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#Monetary_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Represents any time of monetary unit, such as dollars, euros, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Monetary_unit</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Monetary Unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#Population_Product_Unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">It is the product of some number (term_1) and a population count (term_2).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Population_Product_Unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Population Product Unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Population_cardinality_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gci:Population_cardinality_unit which is the unit of measure for the cardinality of set defined by a Population (defined in the next section), and associate the symbol “pc” with it.  For example, 1100pc represents a population cardinality (or size) of 1100. We can take full advantage of prefix notations available in OM to scale the numbers by defining units of measures: gci:kilopc, gci:megapc and gci:gigapc which are multiples of gci:Population_cardinality_unit. 1.1 kilopc represents 1100 pc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Population_measure</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gci:Cardinality_unit is the unit of measure for the size of a set. The gci:Cardinality_unit is a ratio scale: gci:Cardinality_scale, which is a subclass of om:Ratio_scale and is has a zero element (namely zero).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Population_measure</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Population Measure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Population_ratio_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gci:Population_ratio_unit is defined to be a subclass of om:Unit_division.  It has two properties:
+•	om:numerator whose range is restricted to being a gci:Population_cardinality_unit.
+•	om:denominator whose range is restricted to being a gci:Population_cardinality_unit.
+In other words, a population ratio is derived from two population cardinalities.
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Population_ratio_unit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Population Ratio Unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Population_size</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gci:Population_size is a subclass of om:Quantity.  Its om:unit_of_measure is the gci:Population_cardinality_unit.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Population_size</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Population Size</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Service</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#US_dollar</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">United States Dollar</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#Unit_Summation</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Denotes the summation of two or more quantities.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Unit_Summation</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Sum</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#for_Year</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The year for which the indicator applies.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#for_Year</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">for year</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#for_city</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The city for which the indicator has been defined. The indicator is a om:Quantity that points to a om:Phenomenon using the om:phenomenon object property.  Therefore for_City is a subclass of om:phenomenon.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#for_city</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">for city</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>#for_city_service</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The city service that this indicator applies to.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#for_city_service</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">for city service</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#gigapc</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Gigapc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#kilopc</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Kilopc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#megapc</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Megapc</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#term</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">term</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>gs:Population</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">gs:Population must identify the area in which the population resides, i.e., the city, and  what characterizes a member of the population, namely the characteristics of a Student or Teacher. For example, the characteristics of a Teacher could be:
+•	Fulltime, defined as teaching 30 or more hours per week, and
+•	Teaches at the primary or secondary level, where primary spans grades 1 thru 8 and secondary spans 9 thru 12.
+
+As depicted in Figure 11, we have extended the GovStat ontology as follows:
+•	Added a property to gs:Population, gs:located_in, that identifies the area that the Population is drawn from.
+•	Added a property to gs:Population, gs:defined_by, that identifies the class that all members of the Population are subsumed by.
+</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>sc:City</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From schema.org - general City concept.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>sc:City</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">City</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>sc:Country</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From schema.org - general concept of Country.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>sc:Country</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Country</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>sc:State</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From schema.org - general concept of State.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>sc:State</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">State</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>gn:Feature</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From Geonames ontology.  Covers all types of geonames.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>gn:Feature</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Feature</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>pr:Entity</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">An Entity as defined in the PROV provenance ontology.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>pr:Entity</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Entity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>om:Compount_unit</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">OM compound unit that is used to represent divisions, ratios, etc.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:Compount_unit</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Compound Unit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>om:Measure</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">om:Measure is the superclass of all values pointed to by the property om: value.  Its individuals hold the actual indicator values.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:Measure</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Measure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>om:Quantity</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From the OM ontology.  Defines quantities such as Length, and in GCI all indicators are a subclass of Quantity and inherit its property of om:value and om:unit_of_measure.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:Quantity</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Quantity</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>om:Ratio_scale</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From OM ontology.  Ratio scale (versus ordinal, nominal).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:Ratio_scale</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Ratio Scale</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:Sound_power_level</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">sound power level</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="om:symbol"/>
+        <AbbreviatedIRI>om:Sound_power_level</AbbreviatedIRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">L_W</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>om:Unit_multiple_or_submultiple</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From the OM ontology. Denotes multiples of a unit, such as kilo or giga X.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:Unit_multiple_or_submultiple</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Unit Multiple or Submultiple</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>om:Unit_of_measure</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Defines the units that the instance of Measure uses, e.g., meters or pc (population count)</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:Unit_of_measure</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Unit of Measure</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <AbbreviatedIRI>om:numerical_value</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">From OM ontology, the numerical value of a Measure.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>om:numerical_value</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">numerical value</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>om:value</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">OM object property that links a Quantity to a Measure.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <AbbreviatedIRI>om:value</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">value</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

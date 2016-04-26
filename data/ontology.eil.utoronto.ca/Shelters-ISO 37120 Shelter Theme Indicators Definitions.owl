@@ -1,0 +1,579 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dc "http://purl.org/dc/terms/" >
+    <!ENTITY adms "http://www.w3.org/ns/adms#" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY vann "http://purl.org/vocab/vann/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY cc "http://creativecommons.org/ns#" >
+    <!ENTITY voaf "http://purl.org/vocommons/voag#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY om "http://www.wurvoc.org/vocabularies/om-1.8/" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY gs "http://ontology.eil.utoronto.ca/govstat.owl#" >
+    <!ENTITY vs "http://www.w3.org/2003/06/sw-vocab-status/ns#" >
+    <!ENTITY iso37120 "http://ontology.eil.utoronto.ca/ISO37120.owl#" >
+    <!ENTITY ic "http://ontology.eil.utoronto.ca/icontact.owl#" >
+    <!ENTITY isos "http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#" >
+    <!ENTITY gci "http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:adms="http://www.w3.org/ns/adms#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:voaf="http://purl.org/vocommons/voag#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:gs="http://ontology.eil.utoronto.ca/govstat.owl#"
+     xmlns:gci="http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:ic="http://ontology.eil.utoronto.ca/icontact.owl#"
+     xmlns:iso37120="http://ontology.eil.utoronto.ca/ISO37120.owl#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
+     xmlns:om="http://www.wurvoc.org/vocabularies/om-1.8/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dc="http://purl.org/dc/terms/"
+     xmlns:isos="http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#">
+    <Ontology rdf:about="http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl">
+        <dc:modified rdf:datatype="&xsd;dateTime">2015-05-14</dc:modified>
+        <versionInfo xml:lang="en">0.1.7
+Sept 3, 2015
+
+Added
+
+City_population gci:defined_by exactly 1 Person
+
+Changed 
+
+15.3 Household_popluation gci:defined_by gcis:Household from isos:15.3_Household since 15.3_household is no difference than gcis:Household
+
+
+0.1.6 June 22, 2015
+Added gci:Shelter_GCI class
+all shelter indicators (15.1, 15.2, 15.3) are subclass of Shelter_GCI
+
+0.1.5 May 28, 2015
+Imported GCI-Shelters ontology and changed class hierchy to link gcis ontology and isos.
+
+Still deciding: classes like Slum_population and Slum_population_size could be put into gcis ontology. Making new 15.1_slum_population and 15.1_slum_population_size which is a subclass of the former may increase the reusability of gcis. Same with Average_household_size
+
+0.1.4 May 21, 2015
+Renamed some of the class URIs for consistency purpose.
+
+0.1.3 May 19, 2015
+
+- Generalized 15.x_Population and 15.x_Population_size for 15.1 and 15.2 to City_poplation and City_population_size respectively. The new classes will be under ISO37120_Shelter_Thing for now. Will move to Shelter ontology later.
+- Changed the following class names to avoid confusion:
+Slum_household to Slum_household_population
+Slum_household_definition to Slum_household
+-Moved Slum_household_population and Number_of_slum_household to be subclass of 15.1_Thing. Only Slum_household definition should be generalized.
+
+------
+0.1.2 May 14, 2015
+
+- Removed 15.1_Slum_Population class and 15.1_Slum_person class
+- Added gci:unit_of_measurement to number_of_slum_household class</versionInfo>
+        <dc:rights xml:lang="en">Copyright @ 2015 Mark S. Fox</dc:rights>
+        <dc:title xml:lang="en">ISO37120 Shelters Indicators</dc:title>
+        <rdfs:comment xml:lang="en">Ontology for ISO37120 Shelter indicators. Section 15.</rdfs:comment>
+        <dc:description xml:lang="en">This file provides definitions for all the indicators in the Shelters theme of the ISO37120 standard.
+
+It is based on the Global Cities Indicator Shelters ontology described in:
+Wang, Y., and Fox, M.S., (2015), &quot;A Shelter Ontology for Global City Indicators (ISO37120)&quot;, Working Paper, Enterprise Integration Lab, University of Toronto.
+
+And on the Global City Indicator Foundation ontology described in:
+Fox, M.S., (2013), &quot;A Foundation Ontology for Global City Indicators&quot;, Global City Institute Working Paper, Global Cities Institute, University of Toronto.
+
+The latest versions of these papers can be found at:
+http://eil.utoronto.ca/applications/smartcities/
+
+Developed by the Enterprise Integration Lab, Mechanical &amp; Industrial Engineering, University of Toronto. http://eil.utoronto.ca
+
+Contact: Mark S. Fox, msf@eil.utoronto.ca
+Contact: Yetian Wang, yetian.wang@mail.utoronto.ca</dc:description>
+        <dc:creator xml:lang="en">Yetian Wang and Mark S. Fox</dc:creator>
+        <vann:preferredNamespaceUri xml:lang="en">http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl</vann:preferredNamespaceUri>
+        <vann:preferredNamespacePrefix xml:lang="en">isos</vann:preferredNamespacePrefix>
+        <imports rdf:resource="http://ontology.eil.utoronto.ca/ISO37120.owl"/>
+        <imports rdf:resource="http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl"/>
+        <imports rdf:resource="http://ontology.eil.utoronto.ca/GCI/Shelters/GCI-Shelters.owl"/>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#City -->
+
+    <Class rdf:about="&gci;City"/>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/Foundation/GCI-Foundation.owl#Shelter_GCI -->
+
+    <Class rdf:about="&gci;Shelter_GCI"/>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#City_population -->
+
+    <Class rdf:about="&isos;City_population">
+        <rdfs:subClassOf rdf:resource="&gci;Population"/>
+        <rdfs:subClassOf rdf:resource="&isos;GCIShelterThing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;defined_by"/>
+                <onClass rdf:resource="http://www.w3.org/ns/prov#Person"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;located_in"/>
+                <onClass rdf:resource="&gci;City"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#City_population_size -->
+
+    <Class rdf:about="&isos;City_population_size">
+        <rdfs:subClassOf rdf:resource="&gci;Population_size"/>
+        <rdfs:subClassOf rdf:resource="&isos;GCIShelterThing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_cardinality_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;cardinality_of"/>
+                <onClass rdf:resource="&isos;City_population"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#GCIShelterThing -->
+
+    <Class rdf:about="&isos;GCIShelterThing">
+        <rdfs:label xml:lang="en">ISO37120_Shelter_Thing</rdfs:label>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.1_Slum_household_population -->
+
+    <Class rdf:about="&isos;15.1_Slum_household_population">
+        <rdfs:label xml:lang="en">15.1_Slum_household_population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.1_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;located_in"/>
+                <onClass rdf:resource="&gci;City"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;defined_by"/>
+                <onClass rdf:resource="http://ontology.eil.utoronto.ca/GCI/Shelters/GCI-Shelters.owl#Slum_household"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.1_Slum_household_population_size -->
+
+    <Class rdf:about="&isos;15.1_Slum_household_population_size">
+        <rdfs:label xml:lang="en">15.1_Slum_household_population_size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population_size"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.1_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;cardinality_of"/>
+                <onClass rdf:resource="&isos;15.1_Slum_household_population"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_cardinality_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.1_Slum_population_size -->
+
+    <Class rdf:about="&isos;15.1_Slum_population_size">
+        <rdfs:label xml:lang="en">15.1_Slum_population_size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population_size"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.1_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;term_2"/>
+                <onClass rdf:resource="http://ontology.eil.utoronto.ca/GCI/Shelters/GCI-Shelters.owl#Average_household_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;term_1"/>
+                <onClass rdf:resource="&isos;15.1_Slum_household_population_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.1_Thing -->
+
+    <Class rdf:about="&isos;15.1_Thing">
+        <rdfs:label xml:lang="en">15.1_Thing</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;GCIShelterThing"/>
+        <dc:description xml:lang="en">The percentage of city population living in slums shall be calculated as the number of people living in slums (numerator) divided by the city population (denominator). The result shall then be multiplied by 100 and expressed as a percentage</dc:description>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.1_average_household_size -->
+
+    <Class rdf:about="&isos;15.1_average_household_size">
+        <rdfs:label xml:lang="en">15.1_average_household_size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;GCIShelterThing"/>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.1_slum_household -->
+
+    <Class rdf:about="&isos;15.1_slum_household">
+        <rdfs:label xml:lang="en">15.1_slum_household</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;GCIShelterThing"/>
+        <dc:description xml:lang="en">See ISO37120 15.1.2 for definition of slum household. This class should be moved under 15.1_Thing since the slum household could be specific to ISO37120 indicators</dc:description>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.2_Homeless_person -->
+
+    <Class rdf:about="&isos;15.2_Homeless_person">
+        <rdfs:label xml:lang="en">15.2_Homeless_person</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;15.2_Thing"/>
+        <rdfs:subClassOf rdf:resource="http://ontology.eil.utoronto.ca/GCI/Shelters/GCI-Shelters.owl#Homeless_person"/>
+        <dc:description xml:lang="en">See definition of homelessness in ISO37120 15.2.2</dc:description>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.2_Homeless_population -->
+
+    <Class rdf:about="&isos;15.2_Homeless_population">
+        <rdfs:label xml:lang="en">15.2_Homeless_population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.2_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;located_in"/>
+                <onClass rdf:resource="&gci;City"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;defined_by"/>
+                <onClass rdf:resource="&isos;15.2_Homeless_person"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.2_Homeless_population_size -->
+
+    <Class rdf:about="&isos;15.2_Homeless_population_size">
+        <rdfs:label xml:lang="en">15.2_Homeless_population_size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population_size"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.2_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;cardinality_of"/>
+                <onClass rdf:resource="&isos;15.2_Homeless_population"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_cardinality_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.2_Thing -->
+
+    <Class rdf:about="&isos;15.2_Thing">
+        <rdfs:label xml:lang="en">15.2_Thing</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;GCIShelterThing"/>
+        <dc:description xml:lang="en">The number of homeless per 100000 population shall be calculated as the total number of homeless people (numerator) divided by one 100 000th of the city’s total population (denominator). The result shall be expressed as the number of homeless per 100 000 population.</dc:description>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.3_Household -->
+
+    <Class rdf:about="&isos;15.3_Household">
+        <rdfs:label xml:lang="en">15.3_Household</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;15.3_Thing"/>
+        <rdfs:subClassOf rdf:resource="http://ontology.eil.utoronto.ca/GCI/Shelters/GCI-Shelters.owl#Household"/>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.3_Household_population -->
+
+    <Class rdf:about="&isos;15.3_Household_population">
+        <rdfs:label xml:lang="en">15.3_Household_population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.3_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;defined_by"/>
+                <onClass rdf:resource="http://ontology.eil.utoronto.ca/GCI/Shelters/GCI-Shelters.owl#Household"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;located_in"/>
+                <onClass rdf:resource="&gci;City"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Maybe we can emerge this with 15.1_population since essentially they are the same</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.3_Household_population_size -->
+
+    <Class rdf:about="&isos;15.3_Household_population_size">
+        <rdfs:label xml:lang="en">15.3_Household_population_size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population_size"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.3_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;cardinality_of"/>
+                <onClass rdf:resource="&isos;15.3_Household_population"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_cardinality_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">should have unit_of_measure pc</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.3_Household_unregistered_legal_titles -->
+
+    <Class rdf:about="&isos;15.3_Household_unregistered_legal_titles">
+        <rdfs:label xml:lang="en">15.3_Household_unregistered_legal_titles</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;15.3_Thing"/>
+        <rdfs:subClassOf rdf:resource="http://ontology.eil.utoronto.ca/GCI/Shelters/GCI-Shelters.owl#Household_unregistered_legal_titles"/>
+        <dc:description xml:lang="en">households that exist without registered legal titles. See ISO37120 15.3.2</dc:description>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.3_Household_unregistered_legal_titles_population -->
+
+    <Class rdf:about="&isos;15.3_Household_unregistered_legal_titles_population">
+        <rdfs:label xml:lang="en">15.3_Household_unregistered_legal_titles_population</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.3_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;defined_by"/>
+                <onClass rdf:resource="&isos;15.3_Household_unregistered_legal_titles"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;located_in"/>
+                <onClass rdf:resource="&gci;City"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.3_Household_unregistered_legal_titles_population_size -->
+
+    <Class rdf:about="&isos;15.3_Household_unregistered_legal_titles_population_size">
+        <rdfs:label xml:lang="en">15.3_Household_unregistered_legal_titles_population_size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&gci;Population_size"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.3_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&gci;cardinality_of"/>
+                <onClass rdf:resource="&isos;15.3_Household_unregistered_legal_titles_population"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_cardinality_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/GCI/ISO37120/Shelters.owl#15.3_Thing -->
+
+    <Class rdf:about="&isos;15.3_Thing">
+        <rdfs:label xml:lang="en">15.3_Thing</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&isos;GCIShelterThing"/>
+        <dc:description xml:lang="en">The percentage of households that exist without registered legal titles shall be calculated as the number of households that exist without registered legal titles (numerators) divided by the total number of households (denominator). The result shall then be multiplied by 100 and expressed as a percentage.</dc:description>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/ISO37120.owl#15.1 -->
+
+    <Class rdf:about="&iso37120;15.1">
+        <rdfs:subClassOf rdf:resource="&gci;Shelter_GCI"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.1_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_ratio_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;denominator"/>
+                <onClass rdf:resource="&isos;City_population_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;numerator"/>
+                <onClass rdf:resource="&isos;15.1_Slum_population_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/ISO37120.owl#15.2 -->
+
+    <Class rdf:about="&iso37120;15.2">
+        <rdfs:subClassOf rdf:resource="&gci;Shelter_GCI"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.2_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;denominator"/>
+                <onClass rdf:resource="&isos;City_population_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_ratio_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;numerator"/>
+                <onClass rdf:resource="&isos;15.2_Homeless_population_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://ontology.eil.utoronto.ca/ISO37120.owl#15.3 -->
+
+    <Class rdf:about="&iso37120;15.3">
+        <rdfs:subClassOf rdf:resource="&gci;Shelter_GCI"/>
+        <rdfs:subClassOf rdf:resource="&isos;15.3_Thing"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;unit_of_measure"/>
+                <onClass rdf:resource="&gci;Population_ratio_unit"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;numerator"/>
+                <onClass rdf:resource="&isos;15.3_Household_unregistered_legal_titles_population_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&om;denominator"/>
+                <onClass rdf:resource="&isos;15.3_Household_population_size"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

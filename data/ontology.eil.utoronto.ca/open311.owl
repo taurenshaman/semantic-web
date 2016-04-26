@@ -1,0 +1,2545 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://ontology.eil.utoronto.ca/open311.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://ontology.eil.utoronto.ca/open311.owl">
+    <Prefix name="" IRI="http://ontology.eil.utoronto.ca/open311#"/>
+    <Prefix name="cc" IRI="http://creativecommons.org/ns#"/>
+    <Prefix name="geo" IRI="http://www.w3.org/2003/01/geo/wgs84_pos#"/>
+    <Prefix name="org" IRI="http://ontology.eil.utoronto.ca/organization.owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="adms" IRI="http://www.w3.org/ns/adms#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="time" IRI="http://www.w3.org/2006/time#"/>
+    <Prefix name="vann" IRI="http://purl.org/vocab/vann/"/>
+    <Prefix name="terms" IRI="http://purl.org/dc/terms/"/>
+    <Prefix name="open311" IRI="http://ontology.eil.utoronto.ca/open311#"/>
+    <Prefix name="owl2xml" IRI="http://www.w3.org/2006/12/owl2-xml#"/>
+    <Prefix name="spatial" IRI="http://geovocab.org/spatial#"/>
+    <Prefix name="geonames" IRI="http://www.geonames.org/ontology/ontology_v3.1.rdf#"/>
+    <Prefix name="icontact" IRI="http://ontology.eil.utoronto.ca/icontact.owl#"/>
+    <Import>http://www.w3.org/2006/time</Import>
+    <Import>http://ontology.eil.utoronto.ca/icontact.owl</Import>
+    <Import>http://ontology.eil.utoronto.ca/organization.owl</Import>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="cc:license"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">http://creativecommons.org/licenses/by/3.0/</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespacePrefix"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">o311</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Version 1.2: 11 April 2015 - annotations and labels added
+Version 1.1: 3 August 2014 - edits provided by Oscar Corcho</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:creator"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Soroosh Nalchigar (soroosh@cs.toronto.edu)
+Mark Fox (msf@eil.utoronto.ca)</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="adms:relatedDocumentation"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">http://ontology.eil.utoronto.ca/open311.html</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespaceUri"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">http://ontology.eil.utoronto.ca/open311.owl#</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Open 311 Ontology
+
+This ontology generalizes the concepts that appear in 311 open data files published by several cities (Toronto, New York, Chicago, Vancouver) across North America.  It provides a generis representation of 311 data that other cities can map their data onto and be used as a means of achieving interoperability.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="adms:relatedDocumentation"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Nalchigar, S, and Fox, M.S., (2014), &quot;An Ontology for Open 311 Data&quot;, Proceedings of the AAAI Workshop on Semantic Cities: Beyond Opend Data to Models, Standards and Reasoning&quot;, Association for the Advancement of Artificial Intelligence.
+
+http://eil.utoronto.ca/smartcities/papers/nalchigar-AAAI14.pdf</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="terms:title"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Open 311 Ontology: An Ontology for publishing a city&apos;s non-emergency events.</Literal>
+    </Annotation>
+    <Declaration>
+        <Class abbreviatedIRI="spatial:Feature"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="icontact:Address"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Abandoned"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Action"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Add"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Adjust"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Agency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AirQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#All-WayStopSign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Alley"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AlleyLight"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Animal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bag"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Basin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Basket"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BeesOrWasp"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BicycleSignal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bin"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Blocked"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Boulevard"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Box"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bridge"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Building"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#BusStop"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cardboard"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cart"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Clean"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Commercial"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Complain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Compliment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Cut"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Damaged"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DeadAnimal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ElectionSign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Exchange"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExchangeToExtraLarge"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExchangeToLarge"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExchangeToMedium"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ExchangeToSmall"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Expressway"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#GarbageContainer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Graffiti"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Grass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HouseOfWorship"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#IllegalIssue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InformationSign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Insect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Inspect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Install"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Investigate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Laneway"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Leaking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Left-RightTurnSignal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Light"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Locate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LocationType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Maintain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MessageCategory"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Missed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mold"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mulching"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Noise"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Odour"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Overflow"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Overgrown"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Park"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pedestria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pedestrian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Permit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pickup"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pile"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Planting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Plants"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Posting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pothole"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Private"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Protect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Prune"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Public"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PublicParking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RegulatorySign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Reinstall"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Relocate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Remove"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Repair"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Replace"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Report"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Request"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RequestForAction"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RequestForInformation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RequestForInvestigation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Residential"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ResidentialParking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Road"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RoadSymbol"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Roadside"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rodent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SafetyReview"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SandingOrSalting"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SchoolZone"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ServiceRequest"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sewer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sidewalk"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Signal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sinking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Smoking"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SnowClearing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SpsPoint"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Station"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StopSign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Street"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#StreetLight"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Subject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Taxi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemporaryConditionSign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TimingReview"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TrafficSignal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TransportationRoutes"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Tree"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Type"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Walkway"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WarningSign"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Waste"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WaterPonding"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WaterQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Weed"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WrongDelivery"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#311Open311Thing"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="org:Division"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="org:Organization"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.geonames.org/ontology#Feature"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="time:DateTimeInterval"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has311MessageCategory"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has311Subject"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has311Type"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAddress"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasCloseDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasDueDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasOpenDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasSPS"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasUpdateDate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isHandledBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSubmittedBy"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isSubmittedTo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#need311Action"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#supportingMaterial"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#AddressType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Borough"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#CommunityBorad"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#CrossStreet"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Details"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#EventID"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Intersection"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#LocationType"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Neighborhood"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Source"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Status"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#StatusNotes"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Ward"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#XCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#YCoordinate"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#311DataProperty"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#311TypeCode"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#311TypeName"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="vann:preferredNamespacePrefix"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="adms:relatedDocumentation"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Abandoned"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Action"/>
+        <Class IRI="#311Open311Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Add"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Adjust"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agency"/>
+        <Class IRI="#311Open311Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agency"/>
+        <Class abbreviatedIRI="org:Organization"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AirQuality"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#All-WayStopSign"/>
+        <Class IRI="#Sign"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Alley"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlleyLight"/>
+        <Class IRI="#Light"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Animal"/>
+        <Class IRI="#Pest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bag"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Basin"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Basket"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BeesOrWasp"/>
+        <Class IRI="#Insect"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BicycleSignal"/>
+        <Class IRI="#Signal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bin"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Blocked"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Boulevard"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Box"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Bridge"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Building"/>
+        <Class IRI="#Residential"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#BusStop"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cardboard"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cart"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Clean"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Commercial"/>
+        <Class IRI="#LocationType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Complain"/>
+        <Class IRI="#MessageCategory"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Compliment"/>
+        <Class IRI="#MessageCategory"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Cut"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Damaged"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DeadAnimal"/>
+        <Class IRI="#Animal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ElectionSign"/>
+        <Class IRI="#Sign"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Exchange"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExchangeToExtraLarge"/>
+        <Class IRI="#Exchange"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExchangeToLarge"/>
+        <Class IRI="#Exchange"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExchangeToMedium"/>
+        <Class IRI="#Exchange"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ExchangeToSmall"/>
+        <Class IRI="#Exchange"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Expressway"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#GarbageContainer"/>
+        <Class IRI="#Subject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Graffiti"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Grass"/>
+        <Class IRI="#Plants"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HouseOfWorship"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#IllegalIssue"/>
+        <Class IRI="#Complain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InformationSign"/>
+        <Class IRI="#Sign"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Insect"/>
+        <Class IRI="#Pest"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Inspect"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Install"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Investigate"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Laneway"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Leaking"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Left-RightTurnSignal"/>
+        <Class IRI="#Signal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Light"/>
+        <Class IRI="#RoadSymbol"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Locate"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LocationType"/>
+        <Class IRI="#311Open311Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Maintain"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#MessageCategory"/>
+        <Class IRI="#311Open311Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Missed"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mold"/>
+        <Class IRI="#Plants"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Mulching"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Noise"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Odour"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Overflow"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Overgrown"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Park"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pedestria"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pedestrian"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Permit"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pest"/>
+        <Class IRI="#Subject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pickup"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pile"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Planting"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Plants"/>
+        <Class IRI="#Subject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Posting"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pothole"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Private"/>
+        <Class IRI="#LocationType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Protect"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Prune"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Public"/>
+        <Class IRI="#LocationType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PublicParking"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RegulatorySign"/>
+        <Class IRI="#Sign"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Reinstall"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Relocate"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Remove"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Repair"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Replace"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Report"/>
+        <Class IRI="#MessageCategory"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Request"/>
+        <Class IRI="#MessageCategory"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RequestForAction"/>
+        <Class IRI="#Request"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RequestForInformation"/>
+        <Class IRI="#Request"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RequestForInvestigation"/>
+        <Class IRI="#Request"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Residential"/>
+        <Class IRI="#LocationType"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ResidentialParking"/>
+        <Class IRI="#Residential"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Road"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RoadSymbol"/>
+        <Class IRI="#Subject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Roadside"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rodent"/>
+        <Class IRI="#Animal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SafetyReview"/>
+        <Class IRI="#RequestForInvestigation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SandingOrSalting"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SchoolZone"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <Class IRI="#311Open311Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#hasUpdateDate"/>
+            <Class abbreviatedIRI="time:DateTimeInterval"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#has311Type"/>
+            <Class IRI="#Type"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasAddress"/>
+            <Class abbreviatedIRI="icontact:Address"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasCity"/>
+            <Class abbreviatedIRI="spatial:Feature"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#hasOpenDate"/>
+            <Class abbreviatedIRI="time:DateTimeInterval"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#isHandledBy"/>
+            <Class IRI="#Agency"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasCloseDate"/>
+            <Class abbreviatedIRI="time:DateTimeInterval"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <ObjectMaxCardinality cardinality="1">
+            <ObjectProperty IRI="#hasDueDate"/>
+            <Class abbreviatedIRI="time:DateTimeInterval"/>
+        </ObjectMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#EventID"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#Source"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#Status"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#AddressType"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#Borough"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#CommunityBorad"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="2">
+            <DataProperty IRI="#CrossStreet"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#Details"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#Intersection"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#LocationType"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#Neighborhood"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ServiceRequest"/>
+        <DataMaxCardinality cardinality="1">
+            <DataProperty IRI="#Ward"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataMaxCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sewer"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sidewalk"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sign"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Signal"/>
+        <Class IRI="#RoadSymbol"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sinking"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Smoking"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SnowClearing"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpsPoint"/>
+        <Class IRI="#311Open311Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpsPoint"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#XCoordinate"/>
+            <Datatype abbreviatedIRI="owl:real"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SpsPoint"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#YCoordinate"/>
+            <Datatype abbreviatedIRI="owl:real"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Station"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StopSign"/>
+        <Class IRI="#Sign"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Street"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#StreetLight"/>
+        <Class IRI="#Light"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Subject"/>
+        <Class IRI="#311Open311Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Taxi"/>
+        <Class IRI="#Complain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TemporaryConditionSign"/>
+        <Class IRI="#Sign"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TimingReview"/>
+        <Class IRI="#RequestForInvestigation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TrafficSignal"/>
+        <Class IRI="#Signal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TransportationRoutes"/>
+        <Class IRI="#Public"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Tree"/>
+        <Class IRI="#Plants"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Type"/>
+        <Class IRI="#Subject"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Type"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#has311Subject"/>
+            <Class IRI="#Subject"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Type"/>
+        <ObjectMinCardinality cardinality="1">
+            <ObjectProperty IRI="#need311Action"/>
+            <Class IRI="#Action"/>
+        </ObjectMinCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Type"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#has311MessageCategory"/>
+            <Class IRI="#MessageCategory"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Type"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#311TypeCode"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Type"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#311TypeName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Walkway"/>
+        <Class IRI="#TransportationRoutes"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WarningSign"/>
+        <Class IRI="#Sign"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Waste"/>
+        <Class IRI="#GarbageContainer"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WaterPonding"/>
+        <Class IRI="#Action"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WaterQuality"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Weed"/>
+        <Class IRI="#Plants"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WrongDelivery"/>
+        <Class IRI="#Report"/>
+    </SubClassOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has311MessageCategory"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has311Subject"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has311Type"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasAddress"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasCity"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasCloseDate"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasDueDate"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasOpenDate"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasSPS"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasUpdateDate"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isHandledBy"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isSubmittedBy"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isSubmittedTo"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#need311Action"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#supportingMaterial"/>
+        <ObjectProperty IRI="#311Open311ObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has311MessageCategory"/>
+        <Class IRI="#Type"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has311Subject"/>
+        <Class IRI="#Type"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has311Type"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCity"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasCloseDate"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasDueDate"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasOpenDate"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasSPS"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasUpdateDate"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isHandledBy"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isSubmittedBy"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isSubmittedTo"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#need311Action"/>
+        <Class IRI="#Type"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#supportingMaterial"/>
+        <Class IRI="#ServiceRequest"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has311MessageCategory"/>
+        <Class IRI="#MessageCategory"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has311Subject"/>
+        <Class IRI="#Subject"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has311Type"/>
+        <Class IRI="#Type"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCity"/>
+        <Class IRI="http://www.geonames.org/ontology#Feature"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasCloseDate"/>
+        <Class abbreviatedIRI="time:DateTimeInterval"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasDueDate"/>
+        <Class abbreviatedIRI="time:DateTimeInterval"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasOpenDate"/>
+        <Class abbreviatedIRI="time:DateTimeInterval"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasSPS"/>
+        <Class IRI="#SpsPoint"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasUpdateDate"/>
+        <Class abbreviatedIRI="time:DateTimeInterval"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isHandledBy"/>
+        <Class IRI="#Agency"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isSubmittedBy"/>
+        <Class abbreviatedIRI="foaf:Person"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isSubmittedTo"/>
+        <Class abbreviatedIRI="org:Division"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#need311Action"/>
+        <Class IRI="#Action"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#AddressType"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Borough"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#CommunityBorad"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#CrossStreet"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Details"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#EventID"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Intersection"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#LocationType"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Neighborhood"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Source"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Status"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#StatusNotes"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Ward"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#XCoordinate"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#YCoordinate"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#311TypeCode"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#311TypeName"/>
+        <DataProperty IRI="#311DataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#AddressType"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Borough"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#CommunityBorad"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#CrossStreet"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Details"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#EventID"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Intersection"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#LocationType"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Neighborhood"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Source"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Status"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Ward"/>
+        <Class IRI="#ServiceRequest"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#XCoordinate"/>
+        <Class IRI="#SpsPoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#YCoordinate"/>
+        <Class IRI="#SpsPoint"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#311TypeCode"/>
+        <Class IRI="#Type"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#311TypeName"/>
+        <Class IRI="#Type"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#AddressType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Borough"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#CommunityBorad"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#CrossStreet"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Details"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#EventID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Intersection"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#LocationType"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Neighborhood"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Source"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Status"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Ward"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#XCoordinate"/>
+        <Datatype abbreviatedIRI="owl:real"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#YCoordinate"/>
+        <Datatype abbreviatedIRI="owl:real"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#311TypeCode"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#311TypeName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Abandoned</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Abandoned</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <IRI>#Action</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The class action represent different types of actions that the reponsible agency can take to respond to the corresponding service request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Action</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Add</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Add</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#AddressType</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Type of the address of the service request (e.g., BLOCKFACE).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Adjust</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Adjust</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <IRI>#Agency</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">This class represents the agency under which the service request is handled.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Agency</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Agency</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AirQuality</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Air Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#All-WayStopSign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">All Way Stop Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Alley</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Alley</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#AlleyLight</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Alley Light</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Animal</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Animal Pest</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Bag</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Bag</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Basin</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Basin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Basket</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Basket</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BeesOrWasp</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Bees or Wasps</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BicycleSignal</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Bicycle Signal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Bin</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Bin</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Blocked</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Blocked</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Borough</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Borough of the service request (e.g., MANHATTAN).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Boulevard</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Boulevard</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Box</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Box</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Bridge</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Bridge</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Building</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Building</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#BusStop</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Bus Stop</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cardboard</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Cardboard</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cart</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Cart</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Clean</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Clean</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Commercial</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Commercial</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CommunityBorad</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The community board of the service request (e.g., 04 MANHATTAN).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Complain</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Complain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Compliment</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Compliment</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#CrossStreet</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The two cross streets nearest to the location of event.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Cut</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Cut</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Damaged</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Damaged</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#DeadAnimal</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Dead Animal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Details</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">This data property provides further information about the service request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ElectionSign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Election Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#EventID</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The unique ID for each instance of service request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Exchange</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Exchange</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ExchangeToExtraLarge</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Exchange to Extra Large</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ExchangeToLarge</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Exchange to Large</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ExchangeToMedium</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Exchange to Medium</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ExchangeToSmall</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Exchange to Small</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Expressway</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Expressway</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#GarbageContainer</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Garbage Container</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Graffiti</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Graffiti</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Grass</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Grass</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#HouseOfWorship</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">House of Worship</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#IllegalIssue</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Illegal Issue</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#InformationSign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Information Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Insect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Insect Pest</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Inspect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Inspect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Install</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Install</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Intersection</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The intersection streets close to the location of service request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Investigate</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Investigate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Laneway</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Laneway</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Leaking</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Leaking</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Left-RightTurnSignal</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Left-Right Turn Signal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Light</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Light</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Locate</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Locate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <IRI>#LocationType</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The type of the location of the service request (e.g., RESIDENTIAL BUILDING).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#LocationType</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Location Type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Maintain</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Maintain</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <IRI>#MessageCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Messages are categorized as to the nature of the response expected.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#MessageCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Message Category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Missed</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Missed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Mold</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Mold</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Mulching</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Mulching</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Neighborhood</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The neighborhood of the service request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Noise</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Noise</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Odour</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Odour</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Overflow</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Overflow</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Overgrown</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Overgrown</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Park</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Park</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pedestrian</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Pedestrian</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Permit</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Permit</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pest</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Pest</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pickup</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Pickup</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pile</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Pile</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Planting</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Planting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Plants</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Plants</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Posting</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Posting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Pothole</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Pothole</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Private</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Private</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Protect</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Protect</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Prune</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Prune</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Public</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Public</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#PublicParking</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Public Parking</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RegulatorySign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Regulatory Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Reinstall</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Reinstall</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Relocate</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Relocate</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Remove</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Remove</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Repair</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Repair</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Replace</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Replace</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Report</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Report</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Request</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Request</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RequestForAction</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Request for Action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RequestForInformation</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Request for Information</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RequestForInvestigation</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Request for Investigation</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Residential</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Residential</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ResidentialParking</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Residential Parking</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Road</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Road</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#RoadSymbol</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Road Symbol</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Roadside</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Roadside</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Rodent</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Rodent</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SandingOrSalting</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Sanding or Salting</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SchoolZone</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">School Zone</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <IRI>#ServiceRequest</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The class of all service requests submitted to City 311.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#ServiceRequest</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Service Request</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sewer</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Sewar</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sidewalk</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Sidewalk</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Signal</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Signal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Sinking</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Sinking</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Smoking</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Smoking</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SnowClearing</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Snow Clearing</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Source</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Represents how the service request was made (e.g., voice in).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#SpsPoint</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The class of State Plane Coordinate System points used to specify location of service requests.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#SpsPoint</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">SPS Point</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Station</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Station</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Status</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Text, representing the status of the service request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#StatusNotes</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Text, explaining why status was changed to current state or additional details on current status.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StopSign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Stop Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Street</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Street</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#StreetLight</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Street Light</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <IRI>#Subject</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The subject of the Service Request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Subject</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Subject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Taxi</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Taxi</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TemporaryConditionSign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Temporary Conditions Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TrafficSignal</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Traffic Signal</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#TransportationRoutes</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Transportation Routes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Tree</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Tree</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="terms:description"/>
+        <IRI>#Type</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The class of all service request types. Identifies the category of the service request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Type</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Walkway</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Walkway</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#Ward</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">This is same as &quot;police districts&quot;, &quot;community area&quot;, and &quot;supervisor district&quot; in different data sets.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WarningSign</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Warning Sign</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Waste</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Waste</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WaterPonding</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Waterponding</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WaterQuality</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Water Quality</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#Weed</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Weed</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#WrongDelivery</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Wrong Delivery</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#XCoordinate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The X coordinate of the service request, according to State Plane Coordinate System.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#YCoordinate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The Y coordinate of the service request, according to State Plane Coordinate System.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has311MessageCategory</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">It links the class Type to  the class  MessageCategory, to represent what category does each type belong to.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#has311MessageCategory</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has 311 message category</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has311Subject</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">This data property connects the class Type to the class Subject which presents what the corresponding Type is about.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#has311Subject</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has 311 subject</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#has311Type</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">It links a serviceRequest to a type, showing the type of service requests.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#has311Type</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has 311 type</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasAddress</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has address</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCity</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has city</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasCloseDate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The range of this property is DateTimeInterval from Time Ontology in OWL. According to its description,  only DateTimeInterval can have DateTimeDescription.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasCloseDate</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has close date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasDueDate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">This object property connects the Class ServiceRequest to the class  DateTimeInterval from Time Ontology in OWL, in order to represent when is the due date of the submitted requests. According to Time Ontology description,  only DateTimeInterval can have DateTimeDescription.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasDueDate</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has due date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasOpenDate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">See the annotation for similar object properties, e.g., hasDueDate.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasOpenDate</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has open date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasSPS</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">It links a serviceRequest to a &quot;spsPoint&quot; and a &quot;geo:Point&quot;, identifying the exact location of the service requests.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasSPS</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has SPS</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#hasUpdateDate</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">The range of this property is DateTimeInterval from Time Ontology in OWL. According to its description,  only DateTimeInterval can have DateTimeDescription.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#hasUpdateDate</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has update date</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isHandledBy</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Links a serviceRequest (domain) to a agency (range), identifying the 311 agency that handles the request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isHandledBy</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is handled by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isSubmittedBy</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Person who submitted the service request (i.e., citizen).</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isSubmittedBy</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is submitted by</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#isSubmittedTo</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Links a serviceRequest (domain) to a division (range), identifying the 311 division that is responsible for the request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#isSubmittedTo</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is submitted to</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#need311Action</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">It connects the class Type to the class Action and represents the action that the Agency needs to undertake in response to the ServiceRequest.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#need311Action</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">needs 311 action</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#supportingMaterial</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Links to any materiel that suppports the request.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#supportingMaterial</IRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">supporting material</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#311TypeCode</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">Represent the unique code of each service request type.</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <IRI>#311TypeName</IRI>
+        <Literal datatypeIRI="&rdf;PlainLiteral">text, showing the type of service request (e.g., Road - Pot hole).</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

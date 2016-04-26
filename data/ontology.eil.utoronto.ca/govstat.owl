@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://ontology.eil.utoronto.ca/govstat.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="http://ontology.eil.utoronto.ca/govstat.owl">
+    <Prefix name="" IRI="http://ontology.eil.utoronto.ca/govstat.owl#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="govstat" IRI="http://ontology.eil.utoronto.ca/govstat.owl#"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:isDefinedBy"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral"> http://ils.unc.edu/govstat/papers/govstatontology.doc.</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">A version of the GovStat Ontology develped by M. Pattuelli.
+
+Pattuelli, M.C., (2003), “The GovStat Ontology: Technical Report”. The GovStat Project, Integration Design Laboratory, School of Information and Library Science, University of North Carolina at Chapel Hill,</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">0</Literal>
+    </Annotation>
+    <Declaration>
+        <Class IRI="#GovStateThing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mean"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Observation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Parameter"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Population"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sample"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sample_mean"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Sample_standard_deviation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Standard_deviation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Statistic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Variable"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#for_data_prop"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#for_object_prop"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#is_an_estimate_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#is_characteristic_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#is_composed_of"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#is_described_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#is_part_of"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#govStatDataProperty"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Mean"/>
+        <Class IRI="#Parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Observation"/>
+        <Class IRI="#GovStateThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Parameter"/>
+        <Class IRI="#GovStateThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population"/>
+        <Class IRI="#GovStateThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Population"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#is_described_by"/>
+            <Class IRI="#Parameter"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sample"/>
+        <Class IRI="#GovStateThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sample"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#is_composed_of"/>
+            <Class IRI="#Observation"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sample"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#is_described_by"/>
+            <Class IRI="#Statistic"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sample"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#is_part_of"/>
+            <Class IRI="#Population"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sample_mean"/>
+        <Class IRI="#Statistic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Sample_standard_deviation"/>
+        <Class IRI="#Statistic"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Standard_deviation"/>
+        <Class IRI="#Parameter"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Statistic"/>
+        <Class IRI="#GovStateThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Statistic"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#is_an_estimate_of"/>
+            <Class IRI="#Parameter"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Variable"/>
+        <Class IRI="#GovStateThing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Variable"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#is_characteristic_of"/>
+            <Class IRI="#Observation"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Mean"/>
+        <Class IRI="#Standard_deviation"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Observation"/>
+        <Class IRI="#Parameter"/>
+        <Class IRI="#Population"/>
+        <Class IRI="#Sample"/>
+        <Class IRI="#Statistic"/>
+        <Class IRI="#Variable"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Sample_mean"/>
+        <Class IRI="#Sample_standard_deviation"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#for_data_prop"/>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#for_object_prop"/>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#is_an_estimate_of"/>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#is_characteristic_of"/>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#is_composed_of"/>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#is_described_by"/>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#is_part_of"/>
+        <ObjectProperty IRI="#govStatObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#for_data_prop"/>
+        <Class IRI="#Variable"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#for_object_prop"/>
+        <Class IRI="#Variable"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#is_an_estimate_of"/>
+        <Class IRI="#Statistic"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#is_characteristic_of"/>
+        <Class IRI="#Variable"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#is_composed_of"/>
+        <Class IRI="#Sample"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#is_part_of"/>
+        <Class IRI="#Sample"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#for_data_prop"/>
+        <Class abbreviatedIRI="owl:DataTypeProperty"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#for_object_prop"/>
+        <Class abbreviatedIRI="owl:ObjectProperty"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_an_estimate_of"/>
+        <Class IRI="#Parameter"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_characteristic_of"/>
+        <Class IRI="#Observation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_composed_of"/>
+        <Class IRI="#Observation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#is_part_of"/>
+        <Class IRI="#Population"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
