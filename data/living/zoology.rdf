@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE rdf:RDF [
-	<!ENTITY biol    "http://purl.org/NET/biol/ns#"      >
-	<!ENTITY botany  "http://purl.org/NET/biol/botany#"  >
-	<!ENTITY zoology "http://purl.org/NET/biol/zoology#" >
+  <!ENTITY biol    "http://purl.org/NET/biol/ns#"      >
+  <!ENTITY botany  "http://purl.org/NET/biol/botany#"  >
+  <!ENTITY zoology "http://purl.org/NET/biol/zoology#" >
 ]>
 
 <rdf:RDF xml:lang="en-GB"
@@ -14,908 +14,1031 @@
 	xmlns:foaf="http://xmlns.com/foaf/0.1/"
 	xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#"
 	xml:base="&zoology;">
-	
-	<owl:Ontology rdf:about="&zoology;">
-		<dc:title>Biological Taxonomy Vocabulary 0.2 (Zoology)</dc:title>
-		<dc:creator>
-			<foaf:Person rdf:about="http://tobyinkster.co.uk/#i">
-				<foaf:name>Toby Inkster</foaf:name>
-				<foaf:page rdf:resource="http://tobyinkster.co.uk/" />
-			</foaf:Person>
-		</dc:creator>
-		<rdfs:seeAlso rdf:resource="&botany;" />
-		<rdfs:seeAlso rdf:resource="&biol;" />
-		<dc:source>
-			<owl:Thing rdf:about="http://en.wikipedia.org/wiki/Taxonomic_rank#All_taxonomic_ranks">
-				<dc:title>All taxonomic ranks</dc:title>
-				<dc:isPartOf>
-					<owl:Thing rdf:about="http://en.wikipedia.org/wiki/Taxonomic_rank">
-						<dc:title>Taxonomic rank</dc:title>
-						<dc:date>2008-04-28</dc:date>
-					</owl:Thing>
-				</dc:isPartOf>
-			</owl:Thing>
-		</dc:source>
-		<dc:modified>2009-03-18</dc:modified>
-	</owl:Ontology>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="hasTaxonomy">
-		<rdfs:label>hasTaxonomy</rdfs:label>
-		<rdfs:range rdf:resource="#Taxonomy" />
-		<rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
-		<rdfs:subPropertyOf rdf:resource="&biol;hasTaxonomy" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdfs:Class vs:term_status="testing" rdf:ID="Taxonomy">
-		<rdfs:label>Taxonomy</rdfs:label>
-		<dc:description>A hierarchical classification for a form of life.</dc:description>
-		<rdfs:subClassOf rdf:resource="&biol;ZooTaxonomy" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdfs:Class>	
-
-	<rdf:Property vs:term_status="testing" rdf:about="&biol;name">
-		<rdfs:label>name</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;name" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-	
-	<rdf:Property vs:term_status="testing" rdf:about="&biol;commonName">
-		<rdfs:label>commonName</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;commonName" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-	
-	<rdf:Property vs:term_status="testing" rdf:ID="superdomain">
-		<rdfs:label>superdomain</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="domain">
-		<rdfs:label>domain</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subdomain">
-		<rdfs:label>subdomain</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infradomain">
-		<rdfs:label>infradomain</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="empire">
-		<rdfs:label>empire</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superkingdom">
-		<rdfs:label>superkingdom</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="suprakingdom">
-		<rdfs:label>suprakingdom</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="midkingdom">
-		<rdfs:label>midkingdom</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="kingdom">
-		<rdfs:label>kingdom</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;kingdom" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subkingdom">
-		<rdfs:label>subkingdom</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="interkingdom">
-		<rdfs:label>interkingdom</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="branch">
-		<rdfs:label>branch</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infrakingdom">
-		<rdfs:label>infrakingdom</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superphylum">
-		<rdfs:label>superphylum</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="supraphylum">
-		<rdfs:label>supraphylum</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="midphylum">
-		<rdfs:label>midphylum</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="phylum">
-		<rdfs:label>phylum</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;phylum" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subphylum">
-		<rdfs:label>subphylum</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infraphylum">
-		<rdfs:label>infraphylum</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="claudius">
-		<rdfs:label>claudius</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superclass">
-		<rdfs:label>superclass</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="grade">
-		<rdfs:label>grade</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="class">
-		<rdfs:label>class</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;class" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subclass">
-		<rdfs:label>subclass</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infraclass">
-		<rdfs:label>infraclass</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="parvclass">
-		<rdfs:label>parvclass</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superdivision">
-		<rdfs:label>superdivision</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="division">
-		<rdfs:label>division</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subdivision">
-		<rdfs:label>subdivision</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="section">
-		<rdfs:label>section</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subsection">
-		<rdfs:label>subsection</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="group">
-		<rdfs:label>group</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subgroup">
-		<rdfs:label>subgroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superlegion">
-		<rdfs:label>superlegion</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="legion">
-		<rdfs:label>legion</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="sublegion">
-		<rdfs:label>sublegion</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infralegion">
-		<rdfs:label>infralegion</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="supercohort">
-		<rdfs:label>supercohort</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subcohort">
-		<rdfs:label>subcohort</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="magnorder">
-		<rdfs:label>magnorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superorder">
-		<rdfs:label>superorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="series">
-		<rdfs:label>series</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subseries">
-		<rdfs:label>subseries</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="grandorder">
-		<rdfs:label>grandorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="gigaorder">
-		<rdfs:label>gigaorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="megaorder">
-		<rdfs:label>megaorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="mirorder">
-		<rdfs:label>mirorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="order">
-		<rdfs:label>order</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;order" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="hyperorder">
-		<rdfs:label>hyperorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="suborder">
-		<rdfs:label>suborder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infraorder">
-		<rdfs:label>infraorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="parvorder">
-		<rdfs:label>parvorder</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="falanx">
-		<rdfs:label>falanx</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="cohort">
-		<rdfs:label>cohort</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superfamily">
-		<rdfs:label>superfamily</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="familyGroup">
-		<rdfs:label>familyGroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="family">
-		<rdfs:label>family</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;family" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subfamilyGroup">
-		<rdfs:label>subfamilyGroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subfamily">
-		<rdfs:label>subfamily</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infrafamily">
-		<rdfs:label>infrafamily</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="supertribe">
-		<rdfs:label>supertribe</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="tribe">
-		<rdfs:label>tribe</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subtribe">
-		<rdfs:label>subtribe</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infratribe">
-		<rdfs:label>infratribe</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="supergenus">
-		<rdfs:label>supergenus</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="genusGroup">
-		<rdfs:label>genusGroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="genus">
-		<rdfs:label>genus</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;genus" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subgenus">
-		<rdfs:label>subgenus</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infragenus">
-		<rdfs:label>infragenus</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superspecies">
-		<rdfs:label>superspecies</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="complex">
-		<rdfs:label>complex</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="speciesGroup">
-		<rdfs:label>speciesGroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="speciesSubgroup">
-		<rdfs:label>speciesSubgroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="synklepton">
-		<rdfs:label>synklepton</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="species">
-		<rdfs:label>species</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;species" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="microspecies">
-		<rdfs:label>microspecies</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="klepton">
-		<rdfs:label>klepton</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="aggregate">
-		<rdfs:label>aggregate</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subspecies">
-		<rdfs:label>subspecies</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infraspecies">
-		<rdfs:label>infraspecies</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="hybrid">
-		<rdfs:label>hybrid</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="convariety">
-		<rdfs:label>convariety</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="supervariety">
-		<rdfs:label>supervariety</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="variety">
-		<rdfs:label>variety</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subvariety">
-		<rdfs:label>subvariety</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infravariety">
-		<rdfs:label>infravariety</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="nation">
-		<rdfs:label>nation</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="superform">
-		<rdfs:label>superform</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="form">
-		<rdfs:label>form</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="subform">
-		<rdfs:label>subform</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="infraform">
-		<rdfs:label>infraform</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="cultivarGroup">
-		<rdfs:label>cultivarGroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="cultivar">
-		<rdfs:label>cultivar</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="groupOfBreeds">
-		<rdfs:label>groupOfBreeds</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="sectionOfBreeds">
-		<rdfs:label>sectionOfBreeds</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="breed">
-		<rdfs:label>breed</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="strain">
-		<rdfs:label>strain</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="aberration">
-		<rdfs:label>aberration</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="serogroup">
-		<rdfs:label>serogroup</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="serovar">
-		<rdfs:label>serovar</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="biovar">
-		<rdfs:label>biovar</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="pathovar">
-		<rdfs:label>pathovar</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="population">
-		<rdfs:label>population</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="lusus">
-		<rdfs:label>lusus</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;rank" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="seeAlso">
-		<rdfs:label>seeAlso</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document" />
-		<rdfs:subPropertyOf rdf:resource="&biol;seeAlso" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
-
-	<rdf:Property vs:term_status="testing" rdf:ID="authority">
-		<rdfs:label>authority</rdfs:label>
-		<rdfs:domain rdf:resource="#Taxonomy" />
-		<rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
-		<rdfs:subPropertyOf rdf:resource="&biol;authority" />
-		<rdfs:comment>...</rdfs:comment>
-	</rdf:Property>
+
+  <owl:Ontology rdf:about="&zoology;">
+    <dc:title xml:lang="en">Biological Taxonomy Vocabulary 0.2 (Zoology)</dc:title>
+    <dc:title xml:lang="zh-cn">生物分类词汇集0.2（动物）</dc:title>
+    <dc:creator>
+      <foaf:Person rdf:about="http://tobyinkster.co.uk/#i">
+        <foaf:name>Toby Inkster</foaf:name>
+        <foaf:page rdf:resource="http://tobyinkster.co.uk/" />
+      </foaf:Person>
+    </dc:creator>
+    <rdfs:seeAlso rdf:resource="&botany;" />
+    <rdfs:seeAlso rdf:resource="&biol;" />
+    <dc:source>
+      <owl:Thing rdf:about="http://en.wikipedia.org/wiki/Taxonomic_rank#All_taxonomic_ranks">
+        <dc:title>All taxonomic ranks</dc:title>
+        <dc:isPartOf>
+          <owl:Thing rdf:about="http://en.wikipedia.org/wiki/Taxonomic_rank">
+            <dc:title>Taxonomic rank</dc:title>
+            <dc:date>2008-04-28</dc:date>
+          </owl:Thing>
+        </dc:isPartOf>
+      </owl:Thing>
+    </dc:source>
+    <dc:modified>2009-03-18</dc:modified>
+  </owl:Ontology>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="hasTaxonomy">
+    <rdfs:label xml:lang="en">hasTaxonomy</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">分类</rdfs:label>
+    <rdfs:range rdf:resource="#Taxonomy" />
+    <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Agent" />
+    <rdfs:subPropertyOf rdf:resource="&biol;hasTaxonomy" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdfs:Class vs:term_status="testing" rdf:ID="Taxonomy">
+    <rdfs:label xml:lang="en">Taxonomy</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">分类</rdfs:label>
+    <dc:description xml:lang="en">A hierarchical classification for a form of life.</dc:description>
+    <dc:description xml:lang="zh-cn">对一种生命形态的层次分类。</dc:description>
+    <rdfs:subClassOf rdf:resource="&biol;ZooTaxonomy" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdfs:Class>
+
+  <!--<rdf:Property vs:term_status="testing" rdf:about="&biol;name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;name" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:about="&biol;commonName">
+    <rdfs:label xml:lang="en">commonName</rdfs:label>
+    <rdfs:label xml:lang="zh-cn"></rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;commonName" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>-->
+  
+  <!-- 层级顺序：http://purl.org/NET/biol/zoology -->
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superdomain">
+    <rdfs:label xml:lang="en">superdomain</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超域</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="domain">
+    <rdfs:label xml:lang="en">domain</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">域</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subdomain">
+    <rdfs:label xml:lang="en">subdomain</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚域</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infradomain">
+    <rdfs:label xml:lang="en">infradomain</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次域</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="empire">
+    <rdfs:label xml:lang="en">empire</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">最高域</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superkingdom">
+    <rdfs:label xml:lang="en">superkingdom</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超界</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="suprakingdom">
+    <rdfs:label xml:lang="en">suprakingdom</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">上层界</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="midkingdom">
+    <rdfs:label xml:lang="en">midkingdom</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">中层界</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="kingdom">
+    <rdfs:label xml:lang="en">kingdom</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">界</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;kingdom" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subkingdom">
+    <rdfs:label xml:lang="en">subkingdom</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚界</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="interkingdom">
+    <rdfs:label xml:lang="en">interkingdom</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">interkingdom</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="branch">
+    <rdfs:label xml:lang="en">branch</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">分支</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infrakingdom">
+    <rdfs:label xml:lang="en">infrakingdom</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次界</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superphylum">
+    <rdfs:label xml:lang="en">superphylum</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">动物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="supraphylum">
+    <rdfs:label xml:lang="en">supraphylum</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">上层门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">动物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="midphylum">
+    <rdfs:label xml:lang="en">midphylum</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">中层门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">动物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="phylum">
+    <rdfs:label xml:lang="en">phylum</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">动物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;phylum" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subphylum">
+    <rdfs:label xml:lang="en">subphylum</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">动物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infraphylum">
+    <rdfs:label xml:lang="en">infraphylum</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">动物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="claudius">
+    <rdfs:label xml:lang="en">claudius</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">claudius</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superclass">
+    <rdfs:label xml:lang="en">superclass</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超纲</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="grade">
+    <rdfs:label xml:lang="en">grade</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">级</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="class">
+    <rdfs:label xml:lang="en">class</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">纲</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;class" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subclass">
+    <rdfs:label xml:lang="en">subclass</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚纲</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infraclass">
+    <rdfs:label xml:lang="en">infraclass</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次纲</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="parvclass">
+    <rdfs:label xml:lang="en">parvclass</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">小纲</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superdivision">
+    <rdfs:label xml:lang="en">superdivision</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">植物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="division">
+    <rdfs:label xml:lang="en">division</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">植物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subdivision">
+    <rdfs:label xml:lang="en">subdivision</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚门</rdfs:label>
+    <rdfs:comment xml:lang="zh-cn">植物</rdfs:comment>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="section">
+    <rdfs:label xml:lang="en">section</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">派</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subsection">
+    <rdfs:label xml:lang="en">subsection</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚派</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="group">
+    <rdfs:label xml:lang="en">group</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">群</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subgroup">
+    <rdfs:label xml:lang="en">subgroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚群</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superlegion">
+    <rdfs:label xml:lang="en">superlegion</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超团</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="legion">
+    <rdfs:label xml:lang="en">legion</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">团</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="sublegion">
+    <rdfs:label xml:lang="en">sublegion</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚团</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infralegion">
+    <rdfs:label xml:lang="en">infralegion</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次团</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="supercohort">
+    <rdfs:label xml:lang="en">supercohort</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超股</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subcohort">
+    <rdfs:label xml:lang="en">subcohort</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚股</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="magnorder">
+    <rdfs:label xml:lang="en">magnorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">magnorder</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superorder">
+    <rdfs:label xml:lang="en">superorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超目</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="series">
+    <rdfs:label xml:lang="en">series</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">系</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subseries">
+    <rdfs:label xml:lang="en">subseries</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚系</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="grandorder">
+    <rdfs:label xml:lang="en">grandorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">grandorder</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="gigaorder">
+    <rdfs:label xml:lang="en">gigaorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">京目</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="megaorder">
+    <rdfs:label xml:lang="en">megaorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">兆目</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="mirorder">
+    <rdfs:label xml:lang="en">mirorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">mirorder</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="order">
+    <rdfs:label xml:lang="en">order</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">目</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;order" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="hyperorder">
+    <rdfs:label xml:lang="en">hyperorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">hyperorder</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="suborder">
+    <rdfs:label xml:lang="en">suborder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚目</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infraorder">
+    <rdfs:label xml:lang="en">infraorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次目</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="parvorder">
+    <rdfs:label xml:lang="en">parvorder</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">小目</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="falanx">
+    <rdfs:label xml:lang="en">falanx</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">falanx</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="cohort">
+    <rdfs:label xml:lang="en">cohort</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">股</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superfamily">
+    <rdfs:label xml:lang="en">superfamily</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超科</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="familyGroup">
+    <rdfs:label xml:lang="en">familyGroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">科组</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="family">
+    <rdfs:label xml:lang="en">family</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">科</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;family" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subfamilyGroup">
+    <rdfs:label xml:lang="en">subfamilyGroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚科组</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subfamily">
+    <rdfs:label xml:lang="en">subfamily</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚科</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infrafamily">
+    <rdfs:label xml:lang="en">infrafamily</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次科</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="supertribe">
+    <rdfs:label xml:lang="en">supertribe</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超族</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="tribe">
+    <rdfs:label xml:lang="en">tribe</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">族</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subtribe">
+    <rdfs:label xml:lang="en">subtribe</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚族</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infratribe">
+    <rdfs:label xml:lang="en">infratribe</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次族</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="supergenus">
+    <rdfs:label xml:lang="en">supergenus</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超属</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="genusGroup">
+    <rdfs:label xml:lang="en">genusGroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">属组</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="genus">
+    <rdfs:label xml:lang="en">genus</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">属</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;genus" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subgenus">
+    <rdfs:label xml:lang="en">subgenus</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚属</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infragenus">
+    <rdfs:label xml:lang="en">infragenus</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次属</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superspecies">
+    <rdfs:label xml:lang="en">superspecies</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="complex">
+    <rdfs:label xml:lang="en">complex</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">复杂种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="speciesGroup">
+    <rdfs:label xml:lang="en">speciesGroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">种组</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="speciesSubgroup">
+    <rdfs:label xml:lang="en">speciesSubgroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">种子组</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="synklepton">
+    <rdfs:label xml:lang="en">synklepton</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">synklepton</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="species">
+    <rdfs:label xml:lang="en">species</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;species" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="microspecies">
+    <rdfs:label xml:lang="en">microspecies</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">小种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="klepton">
+    <rdfs:label xml:lang="en">klepton</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">klepton</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="aggregate">
+    <rdfs:label xml:lang="en">aggregate</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">聚集体</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subspecies">
+    <rdfs:label xml:lang="en">subspecies</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infraspecies">
+    <rdfs:label xml:lang="en">infraspecies</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="hybrid">
+    <rdfs:label xml:lang="en">hybrid</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">杂种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="convariety">
+    <rdfs:label xml:lang="en">convariety</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">联合变种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="supervariety">
+    <rdfs:label xml:lang="en">supervariety</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超变种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="variety">
+    <rdfs:label xml:lang="en">variety</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">变种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subvariety">
+    <rdfs:label xml:lang="en">subvariety</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚变种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infravariety">
+    <rdfs:label xml:lang="en">infravariety</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次变种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="nation">
+    <rdfs:label xml:lang="en">nation</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">nation</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="superform">
+    <rdfs:label xml:lang="en">superform</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">超型</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="form">
+    <rdfs:label xml:lang="en">form</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">型</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="subform">
+    <rdfs:label xml:lang="en">subform</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">亚型</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="infraform">
+    <rdfs:label xml:lang="en">infraform</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">次型</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="cultivarGroup">
+    <rdfs:label xml:lang="en">cultivarGroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">栽培种组</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="cultivar">
+    <rdfs:label xml:lang="en">cultivar</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">栽培种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="groupOfBreeds">
+    <rdfs:label xml:lang="en">groupOfBreeds</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">育种组</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="sectionOfBreeds">
+    <rdfs:label xml:lang="en">sectionOfBreeds</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">育种派</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="breed">
+    <rdfs:label xml:lang="en">breed</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">育种</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="strain">
+    <rdfs:label xml:lang="en">strain</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">菌株</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="aberration">
+    <rdfs:label xml:lang="en">aberration</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">畸变</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="serogroup">
+    <rdfs:label xml:lang="en">serogroup</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">血清群</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="serovar">
+    <rdfs:label xml:lang="en">serovar</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">血清变型</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="biovar">
+    <rdfs:label xml:lang="en">biovar</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">生物变型</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="pathovar">
+    <rdfs:label xml:lang="en">pathovar</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">致病变型</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="population">
+    <rdfs:label xml:lang="en">population</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">种群</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="lusus">
+    <rdfs:label xml:lang="en">lusus</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">畸形物</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;rank" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="seeAlso">
+    <rdfs:label xml:lang="en">seeAlso</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">另见</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Document" />
+    <rdfs:subPropertyOf rdf:resource="&biol;seeAlso" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
+
+  <rdf:Property vs:term_status="testing" rdf:ID="authority">
+    <rdfs:label xml:lang="en">authority</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">专家</rdfs:label>
+    <rdfs:domain rdf:resource="#Taxonomy" />
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string" />
+    <rdfs:subPropertyOf rdf:resource="&biol;authority" />
+    <rdfs:comment>...</rdfs:comment>
+  </rdf:Property>
 
 </rdf:RDF>
