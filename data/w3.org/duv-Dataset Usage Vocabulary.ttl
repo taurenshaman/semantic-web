@@ -1,0 +1,94 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix biro:    <http://purl.org/spar/biro/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix disco:   <http://rdf-vocabulary.ddialliance.org/discovery#> .
+@prefix pav:     <http://purl.org/pav/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix frbr:    <http://purl.org/vocab/frbr/core#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix voaf:    <http://purl.org/vocommons/voaf#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dqv:     <http://www.w3.org/ns/dqv#> .
+@prefix duv:        <http://www.w3.org/ns/duv#> .
+
+######################################
+### Metadata section              ####
+######################################
+
+<http://www.w3.org/ns/duv> a voaf:Vocabulary;
+    dct:title "Dataset Usage Vocabulary";
+    dct:description "The Dataset Usage Vocabulary (DUV) is used to describe consumer experiences, citations, and feedback about datasets from the human perspective."@en;
+    vann:preferredNamespaceUri "http://www.w3.org/ns/duv";
+    vann:preferredNamespacePrefix "duv";
+    rdfs:isDefinedBy <http://www.w3.org/TR/vocab-duv/> ;
+    dct:created "2015-12-17"^^xsd:date;
+    dct:modified "2016-08-30"^^xsd:date;
+    dct:publisher <http://www.w3.org/data#W3C>;
+    dct:type <http://purl.org/adms/assettype/Ontology>;
+    dct:creator [foaf:name "Bernadette Farias Lóscio"], [foaf:name "Eric G. Stephan"], [foaf:name "Sumit Purohit"] .
+
+
+#### Classes here ####
+######################
+
+duv:RatingFeedback a owl:Class, rdfs:Class ;
+  rdfs:label "Rating Feedback"@en ;
+  rdfs:comment "Predefined criteria used to express a user opinion about a dataset or distribution using a discrete range of values."@en ;
+  rdfs:subclassOf duv:UserFeedback .
+
+duv:Usage a owl:Class, rdfs:Class ;
+  rdfs:label "Usage"@en ;
+  rdfs:comment "A helpful description of actions that can be performed on a given dataset or distribution."@en .
+ 
+duv:UsageTool a owl:Class, rdfs:Class ;
+  rdfs:label "UsageTool"@en ;
+  rdfs:comment "A synopsis describing the way a tool can use a dataset or distribution."@en .
+
+duv:UserFeedback a owl:Class, rdfs:Class ;
+  rdfs:label "User Feedback"@en ;
+  rdfs:comment "User feedback on the dataset. Expresses whether the dataset was useful or not, for example."@en .
+
+
+##### Properties here #####
+###########################
+
+
+duv:hasFeedback a rdf:Property ;
+    rdfs:label "has dataset feedback"@en ;
+    rdfs:comment "User feedback associated with Dataset or distribution"@en ;
+    vann:usageNote "dcat:Dataset (subject) duv:hasFeedback (predicate) duv:UserFeedback (object)"@en ;
+    vann:usageNote "dcat:Distribution (subject) duv:hasFeedback (predicate) duv:UserFeedback (object)"@en ; 
+.
+
+duv:hasUsage a rdf:Property ;
+    rdfs:label "has dataset/distribution usage"@en ;
+    rdfs:comment "Dataset/distribution usage guidance or instructions."@en ;
+.
+
+duv:hasDistributor a rdf:Property ;
+    rdfs:label "has distributor"@en ;
+    rdfs:comment "The distributor is the organization that makes the dataset available for downloading and use."@en ;
+    vann:usageNote "dcat:Dataset (subject) duv:hasDistributor (predicate) foaf:Agent (object)"@en ;
+    vann:usageNote "dcat:Distribution (subject) duv:hasDistributor (predicate) foaf:Agent (object)"@en .
+
+duv:hasRating a rdf:Property ;
+    rdfs:label "has rating"@en ;
+    rdfs:comment "Rating Feedback has rating opinion"@en ;
+.
+
+duv:hasUsageTool a rdf:Property ;
+    rdfs:label "has usage tool"@en ;
+    rdfs:comment "Describes the tool that provides the Usage "@en ;
+.
+    
+duv:refersTo a rdf:Property ;
+    rdfs:label "refers to dataset"@en ;
+    rdfs:comment "Dataset associated with Usage. "@en ;
+.
+

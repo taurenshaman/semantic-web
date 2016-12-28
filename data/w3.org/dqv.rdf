@@ -1,0 +1,208 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:daq="http://purl.org/eis/vocab/daq#"
+    xmlns:voaf="http://purl.org/vocommons/voaf#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:oa="http://www.w3.org/ns/oa#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:dqv="http://www.w3.org/ns/dqv#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:duv="http://www.w3.org/ns/duv#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:qb="http://purl.org/linked-data/cube#"
+    xmlns:vann="http://purl.org/vocab/vann/"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#QualityMeasurement">
+    <rdfs:subClassOf rdf:resource="http://purl.org/linked-data/cube#Observation"/>
+    <vann:usageNote xml:lang="en">The unit of measure in quality measurement should be specified through the property sdmx-attribute:unitMeasure as recommended by RDF Data Cube. The Ontology of units of Measure (OM) by Rijgersberg Et Al provides a list of HTTP dereferenceable unit of measures, which can be exploited as values for sdmx-attribute:unitMeasure.</vann:usageNote>
+    <owl:equivalentClass rdf:resource="http://purl.org/eis/vocab/daq#Observation"/>
+    <rdfs:comment xml:lang="en">Represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric.</rdfs:comment>
+    <rdfs:label xml:lang="en">Quality Measurement</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#QualityMeasurementDataset">
+    <owl:equivalentClass rdf:resource="http://purl.org/eis/vocab/daq#QualityGraph"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/linked-data/cube#DataSet"/>
+    <rdfs:comment xml:lang="en">Represents a dataset of quality measurements, evaluations of one or more datasets (or dataset distributions) against specific quality metrics.</rdfs:comment>
+    <rdfs:label xml:lang="en">Quality Measurement Dataset</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#QualityPolicy">
+    <rdfs:comment xml:lang="en">Represents a policy or agreement that is chiefly governed by data quality concerns.</rdfs:comment>
+    <rdfs:label xml:lang="en">Quality Policy</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#QualityMetadata">
+    <vann:usageNote xml:lang="en">QualityMetadata containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment technique. Implementers can use (RDF) graph containment. They may also use an appropriate property of their choice — for example (a subproperty of) dcterms:hasPart — to link instances of dqv:QualityMetadata with instances of other DQV classes.</vann:usageNote>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/03/trix/rdfg-1/Graph"/>
+    <rdfs:comment xml:lang="en">Represents quality metadata, it is defined to group quality certificates, policies, measurements and annotations under a named graph.</rdfs:comment>
+    <rdfs:label xml:lang="en">Quality Metadata</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#UserQualityFeedback">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/duv#UserFeedback"/>
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#QualityAnnotation"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Represents feedback that users have on the quality of datasets or distributions. Besides dqv:qualityAssessment, which is the motivation required by all quality annotations, one of the predefined instances of oa:Motivation should be indicated as motivation to distinguish among the different kinds of feedback, e.g., classifications, questions.</rdfs:comment>
+    <rdfs:label xml:lang="en">User Quality feedback</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#QualityAnnotation">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:hasValue>
+          <oa:Motivation rdf:about="http://www.w3.org/ns/dqv#qualityAssessment">
+            <skos:broader rdf:resource="http://www.w3.org/ns/oa#assessing"/>
+            <vann:usageNote xml:lang="en">Whenever DQV implementers need to extend the motivations for quality annotations, they should follow the instructions provided by the Web Annotation Data Model, and the concepts in the extension should be defined as specializations of dqv:qualityAssessment.</vann:usageNote>
+            <skos:definition xml:lang="en">Motivation that must be specified for quality annotations.</skos:definition>
+            <skos:prefLabel xml:lang="en">Quality assessment</skos:prefLabel>
+          </oa:Motivation>
+        </owl:hasValue>
+        <owl:onProperty rdf:resource="http://www.w3.org/ns/oa#motivation"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/oa#Annotation"/>
+    <rdfs:comment xml:lang="en">Represents quality annotations, including ratings, quality certificates or feedback that can be associated to datasets or distributions. Quality annotations must have one oa:motivatedBy statement with an instance of oa:Motivation (and skos:Concept) that reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment.</rdfs:comment>
+    <rdfs:label xml:lang="en">Quality Annotation</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#Metric">
+    <owl:equivalentClass rdf:resource="http://purl.org/eis/vocab/daq#Metric"/>
+    <rdfs:comment xml:lang="en">Represents a standard to measure a quality dimension. An observation (instance of dqv:QualityMeasurement) assigns a value in a given unit to a Metric.</rdfs:comment>
+    <rdfs:label xml:lang="en">Metric</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#Dimension">
+    <owl:equivalentClass rdf:resource="http://purl.org/eis/vocab/daq#Dimension"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:comment xml:lang="en">Represents criteria relevant for assessing quality. Each quality dimension must have one or more metric to measure it. A dimension is linked with a category using the dqv:inCategory property.</rdfs:comment>
+    <rdfs:label xml:lang="en">Dimension</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#Category">
+    <owl:equivalentClass rdf:resource="http://purl.org/eis/vocab/daq#Category"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <rdfs:comment xml:lang="en">Represents a group of quality dimensions in which a common type of information is used as quality indicator.</rdfs:comment>
+    <rdfs:label xml:lang="en">Category</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdfs:Class rdf:about="http://www.w3.org/ns/dqv#QualityCertificate">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/dqv#QualityAnnotation"/>
+    <rdfs:comment xml:lang="en">An annotation that associates a resource (especially, a dataset or a distribution) to another resource (for example, a document) that certifies the resource's quality according to a set of quality assessment rules.</rdfs:comment>
+    <rdfs:label xml:lang="en">Quality Certificate</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdfs:Class>
+  <rdf:Property rdf:about="http://www.w3.org/ns/dqv#hasQualityMetadata">
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dqv#QualityMetadata"/>
+    <rdfs:comment xml:lang="en">Refers to a grouping of quality information such as certificates, policies, measurements and annotations as a named graph. Quality information represented in such a grouping can pertain to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset or dcat:Distribution.</rdfs:comment>
+    <rdfs:label xml:lang="en">has quality metadata</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/ns/dqv#hasQualityAnnotation">
+    <rdfs:subPropertyOf rdf:parseType="Resource">
+      <owl:inverseOf rdf:resource="http://www.w3.org/ns/oa#hasTarget"/>
+    </rdfs:subPropertyOf>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dqv#QualityAnnotation"/>
+    <rdfs:comment xml:lang="en">Refers to a quality annotation. Quality annotation can be applied to any kind of resource, e.g., a dataset, a linkset, a graph, a set of triples. However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset or dcat:Distribution.</rdfs:comment>
+    <rdfs:label xml:lang="en">has quality annotation</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/ns/dqv#hasQualityMeasurement">
+    <owl:inverseOf>
+      <qb:DimensionProperty rdf:about="http://www.w3.org/ns/dqv#computedOn">
+        <owl:inverseOf rdf:resource="http://www.w3.org/ns/dqv#hasQualityMeasurement"/>
+        <owl:equivalentProperty rdf:resource="http://purl.org/eis/vocab/daq#computedOn"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Resource"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+        <rdfs:comment xml:lang="en">Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset or dcat:Distribution.</rdfs:comment>
+        <rdfs:label xml:lang="en">computed on</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+      </qb:DimensionProperty>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <rdfs:comment xml:lang="en">Refers to the performed quality measurements. Quality measurements can be performed to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset or dcat:Distribution.</rdfs:comment>
+    <rdfs:label xml:lang="en">has quality measurement</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/ns/dqv#inDimension">
+    <vann:usageNote xml:lang="en">Dimensions are meant to systematically organize metrics, quality certificates and quality annotations. The Data Quality Vocabulary defines no specific cardinality constraints for dqv:inDimension, since distinct quality frameworks might have different perspectives over a metric. A metric may therefore be associated to more than one dimension. However, those who define new quality metrics should try to avoid this as much as possible and assign only one dimension to the metrics they define. More than one dimension can be indicated for each quality annotation or certificate.</vann:usageNote>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dqv#Dimension"/>
+    <rdfs:comment xml:lang="en">Represents the dimensions a quality metric, certificate and annotation allow a measurement of.</rdfs:comment>
+    <rdfs:label xml:lang="en">in dimension</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/ns/dqv#expectedDataType">
+    <owl:equivalentProperty rdf:resource="http://purl.org/eis/vocab/daq#expectedDataType"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anySimpleType"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dqv#Metric"/>
+    <rdfs:comment xml:lang="en">Represents the expected data type for metric's observed value (e.g. xsd:boolean, xsd:double etc...)</rdfs:comment>
+    <rdfs:label xml:lang="en">expected data type</rdfs:label>
+  </rdf:Property>
+  <rdf:Property rdf:about="http://www.w3.org/ns/dqv#inCategory">
+    <vann:usageNote xml:lang="en">Categories are meant to systematically organize dimensions. The Data Quality Vocabulary defines no specific cardinality constraints for dqv:inCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality metrics should try to avoid this as much as possible and assign only one category to the dimensions they define.</vann:usageNote>
+    <owl:inverseOf rdf:resource="http://purl.org/eis/vocab/daq#hasDimension"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dqv#Category"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dqv#Dimension"/>
+    <rdfs:comment xml:lang="en">Represents the category a dimension is grouped in.</rdfs:comment>
+    <rdfs:label xml:lang="en">in category</rdfs:label>
+  </rdf:Property>
+  <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/dqv#value">
+    <owl:equivalentProperty rdf:resource="http://purl.org/eis/vocab/daq#value"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/ns/dqv#QualityMeasurement"/>
+    <rdfs:comment xml:lang="en">Refers to values computed by metric.</rdfs:comment>
+    <rdfs:label xml:lang="en">value</rdfs:label>
+    <rdf:type rdf:resource="http://purl.org/linked-data/cube#MeasureProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </owl:DatatypeProperty>
+  <qb:DimensionProperty rdf:about="http://www.w3.org/ns/dqv#isMeasurementOf">
+    <owl:equivalentProperty rdf:resource="http://purl.org/eis/vocab/daq#metric"/>
+    <rdfs:range rdf:resource="http://www.w3.org/ns/dqv#Metric"/>
+    <rdfs:domain rdf:resource="http://purl.org/linked-data/cube#Observation"/>
+    <rdfs:comment xml:lang="en">Indicates the metric being observed.</rdfs:comment>
+    <rdfs:label xml:lang="en">is measurement of</rdfs:label>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </qb:DimensionProperty>
+  <rdf:Description>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/ns/dqv#inDimension"/>
+    <owl:inverseOf rdf:resource="http://purl.org/eis/vocab/daq#hasMetric"/>
+  </rdf:Description>
+  <voaf:Vocabulary rdf:about="http://www.w3.org/ns/dqv">
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2015-12-17</dcterms:created>
+    <dcterms:contributor rdf:parseType="Resource">
+      <foaf:name>Christophe Guéret</foaf:name>
+    </dcterms:contributor>
+    <dcterms:contributor rdf:parseType="Resource">
+      <foaf:name>Makx Dekkers</foaf:name>
+    </dcterms:contributor>
+    <dcterms:creator rdf:parseType="Resource">
+      <foaf:name>Riccardo Albertoni</foaf:name>
+    </dcterms:creator>
+    <dcterms:title xml:lang="en">Data Quality Vocabulary</dcterms:title>
+    <dcterms:contributor rdf:parseType="Resource">
+      <foaf:name>Deirdre Lee</foaf:name>
+    </dcterms:contributor>
+    <dcterms:description xml:lang="en">The Data Quality Vocabulary (DQV) is seen as an extension to DCAT to cover the quality of the data, how frequently is it updated, whether it accepts user corrections, persistence commitments etc. When used by publishers, this vocabulary will foster trust in the data amongst developers.</dcterms:description>
+    <dcterms:contributor rdf:parseType="Resource">
+      <foaf:name>Jeremy Debattista</foaf:name>
+    </dcterms:contributor>
+    <dcterms:contributor rdf:parseType="Resource">
+      <foaf:name>Amrapali Zaveri</foaf:name>
+    </dcterms:contributor>
+    <vann:preferredNamespaceUri>http://www.w3.org/ns/dqv#</vann:preferredNamespaceUri>
+    <foaf:homepage rdf:resource="http://www.w3.org/TR/vocab-dqv/"/>
+    <vann:preferredNamespacePrefix>dqv</vann:preferredNamespacePrefix>
+    <dcterms:contributor rdf:parseType="Resource">
+      <foaf:name>Nandana Mihindukulasooriya</foaf:name>
+    </dcterms:contributor>
+    <dcterms:creator rdf:parseType="Resource">
+      <foaf:name>Antoine Isaac</foaf:name>
+    </dcterms:creator>
+    <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-08-26</dcterms:modified>
+    <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2016-12-15</dcterms:modified>
+    <dcterms:publisher rdf:resource="http://www.w3.org/data#W3C"/>
+  </voaf:Vocabulary>
+  <dqv:Dimension rdf:about="http://www.w3.org/ns/dqv#precision">
+    <skos:definition xml:lang="en">Precision is a quality dimension, which refers to the recorded level of details. It represents the exactness of a measurement or description. It is equivalent the notion of Precision from ISO 25012.</skos:definition>
+    <skos:prefLabel xml:lang="en">Precision</skos:prefLabel>
+  </dqv:Dimension>
+</rdf:RDF>

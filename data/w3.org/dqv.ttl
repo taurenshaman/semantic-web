@@ -1,0 +1,186 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann:    <http://purl.org/vocab/vann/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix qb:      <http://purl.org/linked-data/cube#> .
+@prefix daq:     <http://purl.org/eis/vocab/daq#> .
+@prefix voaf:    <http://purl.org/vocommons/voaf#> .
+@prefix oa:      <http://www.w3.org/ns/oa#> .
+@prefix duv:     <http://www.w3.org/ns/duv#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+@prefix dqv:     <http://www.w3.org/ns/dqv#> .
+
+############################
+### Metadata section #######
+############################
+<http://www.w3.org/ns/dqv> a voaf:Vocabulary;
+    dcterms:title "Data Quality Vocabulary"@en;
+    dcterms:description "The Data Quality Vocabulary (DQV) is seen as an extension to DCAT to cover the quality of the data, how frequently is it updated, whether it accepts user corrections, persistence commitments etc. When used by publishers, this vocabulary will foster trust in the data amongst developers."@en;
+    vann:preferredNamespaceUri "http://www.w3.org/ns/dqv#";
+    vann:preferredNamespacePrefix "dqv";
+    foaf:homepage <http://www.w3.org/TR/vocab-dqv/> ;
+    dcterms:created "2015-12-17"^^xsd:date;
+    dcterms:modified "2016-08-26"^^xsd:date;
+    dcterms:modified "2016-12-15"^^xsd:date;
+    dcterms:publisher <http://www.w3.org/data#W3C>;
+    dcterms:type <http://purl.org/adms/assettype/Ontology>;
+    dcterms:creator [foaf:name "Antoine Isaac"], [foaf:name "Riccardo Albertoni"] ;
+    dcterms:contributor [foaf:name "Jeremy Debattista"], [foaf:name "Makx Dekkers"],  [foaf:name "Christophe Guéret"], [foaf:name "Deirdre Lee"], [foaf:name "Nandana Mihindukulasooriya"], [foaf:name "Amrapali Zaveri"] .
+
+######################
+### Classes here #####
+######################
+
+dqv:QualityMeasurement a owl:Class, rdfs:Class ;
+  rdfs:label "Quality Measurement"@en ;
+  rdfs:comment "Represents the evaluation of a given dataset (or dataset distribution) against a specific quality metric."@en ;
+  owl:equivalentClass daq:Observation;
+  vann:usageNote "The unit of measure in quality measurement should be specified through the property sdmx-attribute:unitMeasure as recommended by RDF Data Cube. The Ontology of units of Measure (OM) by Rijgersberg Et Al provides a list of HTTP dereferenceable unit of measures, which can be exploited as values for sdmx-attribute:unitMeasure."@en ;
+  rdfs:subClassOf qb:Observation .
+
+dqv:Metric a owl:Class, rdfs:Class;
+  rdfs:label "Metric"@en ;
+  rdfs:comment "Represents a standard to measure a quality dimension. An observation (instance of dqv:QualityMeasurement) assigns a value in a given unit to a Metric."@en ;
+  owl:equivalentClass daq:Metric .
+
+dqv:Dimension a owl:Class, rdfs:Class ;
+  rdfs:label "Dimension"@en ;
+  rdfs:comment "Represents criteria relevant for assessing quality. Each quality dimension must have one or more metric to measure it. A dimension is linked with a category using the dqv:inCategory property."@en ;
+  rdfs:subClassOf skos:Concept ;
+  owl:equivalentClass daq:Dimension .
+
+dqv:Category a owl:Class, rdfs:Class ;
+  rdfs:label "Category"@en ;
+  rdfs:comment "Represents a group of quality dimensions in which a common type of information is used as quality indicator."@en ;
+  rdfs:subClassOf skos:Concept ;
+  owl:equivalentClass daq:Category .
+
+dqv:QualityMeasurementDataset a owl:Class, rdfs:Class ;
+  rdfs:label "Quality Measurement Dataset"@en ;
+  rdfs:comment "Represents a dataset of quality measurements, evaluations of one or more datasets (or dataset distributions) against specific quality metrics."@en ;
+  rdfs:subClassOf qb:DataSet ;
+  owl:equivalentClass daq:QualityGraph .
+
+dqv:QualityPolicy a owl:Class, rdfs:Class ;
+  rdfs:label "Quality Policy"@en ;
+  rdfs:comment "Represents a policy or agreement that is chiefly governed by data quality concerns."@en ;
+  .
+
+dqv:QualityAnnotation a owl:Class, rdfs:Class ;
+  rdfs:label "Quality Annotation"@en ;
+  rdfs:comment "Represents quality annotations, including ratings, quality certificates or feedback that can be associated to datasets or distributions. Quality annotations must have one oa:motivatedBy statement with an instance of oa:Motivation (and skos:Concept) that reflects a quality assessment purpose. We define this instance as dqv:qualityAssessment."@en ;
+  rdfs:subClassOf oa:Annotation ;
+  owl:equivalentClass
+    [ rdf:type owl:Restriction ;
+      owl:onProperty oa:motivation ;
+      owl:hasValue dqv:qualityAssessment
+    ] .
+
+dqv:QualityCertificate a owl:Class, rdfs:Class ;
+  rdfs:label "Quality Certificate"@en ;
+  rdfs:comment "An annotation that associates a resource (especially, a dataset or a distribution) to another resource (for example, a document) that certifies the resource's quality according to a set of quality assessment rules."@en ;
+  rdfs:subClassOf dqv:QualityAnnotation.
+
+dqv:UserQualityFeedback a owl:Class, rdfs:Class ;
+  rdfs:label "User Quality feedback"@en ;
+  rdfs:comment "Represents feedback that users have on the quality of datasets or distributions. Besides dqv:qualityAssessment, which is the motivation required by all quality annotations, one of the predefined instances of oa:Motivation should be indicated as motivation to distinguish among the different kinds of feedback, e.g., classifications, questions."@en ;
+  rdfs:subClassOf dqv:QualityAnnotation, duv:UserFeedback .
+
+dqv:QualityMetadata a owl:Class, rdfs:Class ;
+  rdfs:label "Quality Metadata"@en ;
+  rdfs:comment "Represents quality metadata, it is defined to group quality certificates, policies, measurements and annotations under a named graph."@en ;
+  rdfs:subClassOf <http://www.w3.org/2004/03/trix/rdfg-1/Graph> ;
+  vann:usageNote "QualityMetadata containers do not necessary include all types of quality statements DQV can support. Implementers decide the granularity of containment. In the current version of DQV, we also leave open the choice of the containment technique. Implementers can use (RDF) graph containment. They may also use an appropriate property of their choice — for example (a subproperty of) dcterms:hasPart — to link instances of dqv:QualityMetadata with instances of other DQV classes."@en
+.
+
+
+
+###########################
+### Properties here #######
+###########################
+
+dqv:isMeasurementOf a rdf:Property, qb:DimensionProperty ;
+  rdfs:label "is measurement of"@en ;
+  rdfs:comment "Indicates the metric being observed."@en ;
+  rdfs:domain qb:Observation ;
+  rdfs:range dqv:Metric ;
+  owl:equivalentProperty daq:metric .
+
+# this property is still defined in the qb: namespace, the re-definition is therefore commented for now
+# dqv:dataSet a rdf:Property ;
+#  rdfs:label "data set"@en ;
+#  rdfs:comment "Indicates the dataset to which a quality measure (which is an RDF Data Cube observation) belongs."@en ;
+#  rdfs:domain qb:Observation ;
+#  rdfs:range qb:DataSet .
+
+dqv:computedOn a rdf:Property, qb:DimensionProperty ;
+  rdfs:label "computed on"@en ;
+  rdfs:comment "Refers to the resource (e.g., a dataset, a linkset, a graph, a set of triples) on which the quality measurement is performed. In the DQV context, this property is generally expected to be used in statements in which objects are instances of dcat:Dataset or dcat:Distribution."@en ;
+  rdfs:domain dqv:QualityMeasurement ;
+  rdfs:range  rdfs:Resource ; #introduced for compatibility with RDF Data Cube
+  owl:equivalentProperty daq:computedOn;
+  owl:inverseOf dqv:hasQualityMeasurement .
+
+dqv:value a rdf:Property, qb:MeasureProperty, owl:DatatypeProperty ;
+  rdfs:label "value"@en ;
+  rdfs:comment "Refers to values computed by metric."@en ;
+  rdfs:domain dqv:QualityMeasurement ;
+  owl:equivalentProperty daq:value .
+
+dqv:expectedDataType a rdf:Property ;
+  rdfs:label "expected data type"@en ;
+  rdfs:comment "Represents the expected data type for metric's observed value (e.g. xsd:boolean, xsd:double etc...)"@en ;
+  rdfs:domain dqv:Metric ;
+  rdfs:range xsd:anySimpleType ;
+  owl:equivalentProperty daq:expectedDataType .
+
+dqv:inCategory a rdf:Property ;
+  rdfs:label "in category"@en ;
+  rdfs:comment "Represents the category a dimension is grouped in."@en ;
+  rdfs:domain dqv:Dimension ;
+  rdfs:range dqv:Category ;
+  owl:inverseOf daq:hasDimension ;
+  vann:usageNote "Categories are meant to systematically organize dimensions. The Data Quality Vocabulary defines no specific cardinality constraints for dqv:inCategory, since distinct quality frameworks might have different perspectives over a dimension. A dimension may therefore be associated to more than one category. However, those who define new quality metrics should try to avoid this as much as possible and assign only one category to the dimensions they define."@en .
+
+dqv:inDimension a rdf:Property ;
+  rdfs:label "in dimension"@en ;
+  rdfs:comment "Represents the dimensions a quality metric, certificate and annotation allow a measurement of."@en ;
+  rdfs:range dqv:Dimension ;
+  vann:usageNote "Dimensions are meant to systematically organize metrics, quality certificates and quality annotations. The Data Quality Vocabulary defines no specific cardinality constraints for dqv:inDimension, since distinct quality frameworks might have different perspectives over a metric. A metric may therefore be associated to more than one dimension. However, those who define new quality metrics should try to avoid this as much as possible and assign only one dimension to the metrics they define. More than one dimension can be indicated for each quality annotation or certificate."@en .
+
+[ owl:inverseOf daq:hasMetric]  rdfs:subPropertyOf dqv:inDimension .
+
+dqv:hasQualityMeasurement a rdf:Property ;
+  rdfs:label "has quality measurement"@en ;
+  rdfs:comment "Refers to the performed quality measurements. Quality measurements can be performed to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset or dcat:Distribution."@en ;
+  rdfs:range dqv:QualityMeasurement ;
+  owl:inverseOf dqv:computedOn .
+
+dqv:hasQualityMetadata a rdf:Property ;
+  rdfs:label "has quality metadata"@en ;
+  rdfs:comment "Refers to a grouping of quality information such as certificates, policies, measurements and annotations as a named graph. Quality information represented in such a grouping can pertain to any kind of resource (e.g., a dataset, a linkset, a graph, a set of triples). However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset or dcat:Distribution."@en ;
+  rdfs:range dqv:QualityMetadata .
+
+dqv:hasQualityAnnotation a rdf:Property ;
+  rdfs:label "has quality annotation"@en ;
+  rdfs:comment "Refers to a quality annotation. Quality annotation can be applied to any kind of resource, e.g., a dataset, a linkset, a graph, a set of triples. However, in the DQV context, this property is generally expected to be used in statements in which subjects are instances of dcat:Dataset or dcat:Distribution."@en ;
+  rdfs:range dqv:QualityAnnotation ;
+  rdfs:subPropertyOf [ owl:inverseOf oa:hasTarget] .
+
+###########################
+### Instances here #######
+###########################
+
+dqv:qualityAssessment a oa:Motivation ;
+  skos:prefLabel "Quality assessment"@en ;
+  skos:definition "Motivation that must be specified for quality annotations."@en ;
+  vann:usageNote  "Whenever DQV implementers need to extend the motivations for quality annotations, they should follow the instructions provided by the Web Annotation Data Model, and the concepts in the extension should be defined as specializations of dqv:qualityAssessment."@en ;
+  skos:broader oa:assessing .
+
+dqv:precision a dqv:Dimension ;
+  skos:prefLabel "Precision"@en ;
+  skos:definition "Precision is a quality dimension, which refers to the recorded level of details. It represents the exactness of a measurement or description. It is equivalent the notion of Precision from ISO 25012."@en .
