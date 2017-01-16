@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY info-mark "http://www.chuci.info/schema/info-mark#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.chuci.info/schema/info-mark#"
+     xml:base="http://www.chuci.info/schema/info-mark"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:info-mark="http://www.chuci.info/schema/info-mark#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	 xmlns:dc="http://purl.org/dc/elements/1.1/"
+	 xmlns:terms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="http://www.chuci.info/schema/info-mark">
+        <rdfs:label xml:lang="en-us">Information mark ontology</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">信息内容评分本体</rdfs:label>
+        <rdfs:comment xml:lang="en-us">An ontology used to mark some information.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">有关给信息内容进行评分的本体。</rdfs:comment>
+		<terms:created rdf:datatype="&xsd;date">2013-8-18</terms:created>
+        <terms:modified rdf:datatype="&xsd;date">2013-8-18</terms:modified>
+        <dc:creator>taurenjerin@qq.com</dc:creator>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.chuci.info/schema/info-mark#authenticityScore -->
+
+    <owl:DatatypeProperty rdf:about="&info-mark;authenticityScore">
+        <rdfs:label xml:lang="en-us">Authenticity score</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">真实性得分</rdfs:label>
+        <rdfs:comment xml:lang="zh-cn">有关真实性的得分。</rdfs:comment>
+        <rdfs:domain rdf:resource="&info-mark;Mark"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/info-mark#innovationScore -->
+
+    <owl:DatatypeProperty rdf:about="&info-mark;innovationScore">
+        <rdfs:label xml:lang="en-us">Innovation score</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">创新得分</rdfs:label>
+        <rdfs:comment xml:lang="zh-cn">有关创新的得分。</rdfs:comment>
+        <rdfs:domain rdf:resource="&info-mark;Mark"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/info-mark#originalityScore -->
+
+    <owl:DatatypeProperty rdf:about="&info-mark;originalityScore">
+        <rdfs:label xml:lang="en-us">Originality score</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">原创性得分</rdfs:label>
+        <rdfs:comment xml:lang="zh-cn">有关原创性的得分。转载、摘抄，必为0。</rdfs:comment>
+        <rdfs:domain rdf:resource="&info-mark;Mark"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/info-mark#professionalTechnologicalScore -->
+
+    <owl:DatatypeProperty rdf:about="&info-mark;professionalTechnologicalScore">
+        <rdfs:label xml:lang="en-us">Professional technological score</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">专业技术分</rdfs:label>
+        <rdfs:comment xml:lang="zh-cn">有关专业技术方面的得分。</rdfs:comment>
+        <rdfs:domain rdf:resource="&info-mark;Mark"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.chuci.info/schema/info-mark#visionScore -->
+
+    <owl:DatatypeProperty rdf:about="&info-mark;visionScore">
+        <rdfs:label xml:lang="en-us">Vision score</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">视觉呈现得分</rdfs:label>
+        <rdfs:comment xml:lang="zh-cn">有关视觉呈现的得分，包括：文字功底，视频或图片的清晰度等。</rdfs:comment>
+        <rdfs:domain rdf:resource="&info-mark;Mark"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.chuci.info/schema/info-mark#Mark -->
+
+    <owl:Class rdf:about="&info-mark;Mark">
+        <rdfs:label xml:lang="en-us">Mark</rdfs:label>
+        <rdfs:label xml:lang="zh-cn">评分</rdfs:label>
+        <rdfs:comment xml:lang="en-us">A mark event about a resource.</rdfs:comment>
+        <rdfs:comment xml:lang="zh-cn">对一个资源的评分。其它信息应该包括相关的资源、更新时间和人物等，如果不包括操作主体人物，则可以视为若干个评分后的平均分。</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+

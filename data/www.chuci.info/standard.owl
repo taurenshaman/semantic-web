@@ -1,0 +1,697 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+  <!ENTITY dct "http://purl.org/dc/terms/" >
+  <!ENTITY vann "http://purl.org/vocab/vann/" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY vs "http://www.w3.org/2003/06/sw-vocab-status/ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.chuci.info/schema/standard#"
+     xml:base="http://www.chuci.info/schema/standard"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#">
+  <owl:Ontology rdf:about="http://www.chuci.info/schema/standard">
+    <dct:title xml:lang="en-us">An ontology about standards.</dct:title>
+    <dct:title xml:lang="zh-cn">有关标准的本体</dct:title>
+    <dct:creator>taurenjerin@qq.com</dct:creator>
+    <dct:created>2016-4-24</dct:created>
+    <dct:modified>2016-6-18</dct:modified>
+    <vann:preferredNamespacePrefix>chucistandard</vann:preferredNamespacePrefix>
+    <vann:preferredNamespaceUri>http://www.chuci.info/schema/standard</vann:preferredNamespaceUri>
+  </owl:Ontology>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+  
+
+  <!-- http://www.chuci.info/schema/standard#name -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#name">
+    <rdfs:label xml:lang="en">name</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">名称</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="&rdfs;Literal"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- http://www.chuci.info/schema/standard#code -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#code">
+    <rdfs:label xml:lang="en">code</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">代码</rdfs:label>
+    <rdfs:comment xml:lang="en">Standard code or number.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">标准号或代码。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+	<rdfs:range rdf:resource="&rdfs;string"/>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+  
+  
+  <!-- category/classification -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#ics">
+    <rdfs:label xml:lang="en">ICS</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">国际标准分类号</rdfs:label>
+    <rdfs:comment xml:lang="en">International standard classification</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">国际标准分类号</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+	<rdfs:range rdf:resource="&rdfs;string"/>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#ccs">
+    <rdfs:label xml:lang="en">CCS</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">中国标准分类号</rdfs:label>
+    <rdfs:comment xml:lang="en">Chinese standard classification</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">中国标准分类号</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+	<rdfs:range rdf:resource="&rdfs;string"/>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+
+  
+
+  <!-- date -->
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#issuanceDate">
+    <rdfs:label xml:lang="en">issuance date</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">颁发日期</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#firstIssuanceDate">
+    <rdfs:label xml:lang="en">first issuance date</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">首次发布日期</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#reviewAffirmanceDate">
+    <rdfs:label xml:lang="en">review affirmance date</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">复审确认日期</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#trialDate">
+    <rdfs:label xml:lang="en">trial date</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">试行日期</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#executeDate">
+    <rdfs:label xml:lang="en">execute date</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">施行日期</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+  
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#revocatoryDate">
+    <rdfs:label xml:lang="en">revocatory date</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">废止日期</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+  
+  
+  
+  <owl:DatatypeProperty rdf:about="http://www.chuci.info/schema/standard#planNumber">
+    <rdfs:label xml:lang="en">plan number</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">计划编号</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#NationalStandardOfChina"/>
+    <rdfs:range rdf:resource="&rdfs;string"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:DatatypeProperty>
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // RDF properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+	 
+	 
+  <rdf:Property rdf:about="http://www.chuci.info/schema/standard#date">
+    <rdfs:label xml:lang="en">Date</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">日期</rdfs:label>
+    <rdfs:comment xml:lang="en">The date at which an event occurred.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">事件发生的日期。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+    <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </rdf:Property>
+  
+  
+  
+  <rdf:Property rdf:about="http://www.chuci.info/schema/standard#place">
+    <rdfs:label xml:lang="en">Place</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">地点</rdfs:label>
+    <rdfs:comment xml:lang="en">The place at which an event occurred.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">事件发生的地点。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </rdf:Property>
+
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+	 
+  <!-- agents -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#draftingAgent">
+    <rdfs:label xml:lang="en">drafting agents</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">起草主体</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/business#Organization"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#governor">
+    <rdfs:label xml:lang="en">governor</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">主管部门</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/business#Organization"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#technicalAgent">
+    <rdfs:label xml:lang="en">technical agents</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">技术主体</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/business#Organization"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#distributedBy">
+    <rdfs:label xml:lang="en">distributed by</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">颁发主体</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/business#Organization"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+
+
+  <!-- http://www.chuci.info/schema/standard#status -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#status">
+    <rdfs:label xml:lang="en">status</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">状态</rdfs:label>
+    <rdfs:comment xml:lang="en">Status of standard: active or revocatory.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">标准的状态：现行或废止。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#StandardStatus"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#kind -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#kind">
+    <rdfs:label xml:lang="en">kind</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">性质</rdfs:label>
+    <rdfs:comment xml:lang="en">Kind of standard: mandatory; recommendatory, steering.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">标准的性质：强制性；推荐性；指导性。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#StandardKind"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#category -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#category">
+    <rdfs:label xml:lang="en">category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">类别</rdfs:label>
+    <rdfs:comment xml:lang="en">Category of standard: product, basis, method, management, security, health, environmental protection, others.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">标准的类别：产品；基础；方法；管理；安全；卫生；环保；其他。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+
+
+  <!-- replaces, replaced by -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#replaces">
+    <rdfs:label xml:lang="en">replaces</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">替代</rdfs:label>
+	<rdfs:comment xml:lang="en">Replaces the old ones.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">替代了旧标准。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#replacedBy">
+    <rdfs:label xml:lang="en">replaced by</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">被……替代</rdfs:label>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+
+  
+  <!-- http://www.chuci.info/schema/standard#event -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#event">
+    <rdfs:label xml:lang="en">Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">事件</rdfs:label>
+    <rdfs:comment xml:lang="en">An event associated with a standard.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-CN">和标准有关联的事件。</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:ObjectProperty>
+  
+  
+  <!-- adopted standard -->
+
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#adoptedInternationalStandard">
+    <rdfs:label xml:lang="en">adopted international standard</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">采用了国际标准</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#AdoptedStandard"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#applicationDegree">
+    <rdfs:label xml:lang="en">application degree</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">采用程度</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#AdoptedStandard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#ApplicationDegree"/>
+  </owl:ObjectProperty>
+  
+  <owl:ObjectProperty rdf:about="http://www.chuci.info/schema/standard#categoryOfInternationalStandard">
+    <rdfs:label xml:lang="en">category Of International Standard</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">国际标准类别</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:domain rdf:resource="http://www.chuci.info/schema/standard#AdoptedStandard"/>
+    <rdfs:range rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+  </owl:ObjectProperty>
+
+
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+  <!-- Standard -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#Standard">
+    <rdfs:label xml:lang="en">Standard</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">标准</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#IndustryStandard">
+    <rdfs:label xml:lang="en">Industry Standard</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">行业标准</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#RegionalStandard">
+    <rdfs:label xml:lang="en">Regional Standard</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">区域性标准</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#NationalStandardOfChina">
+    <rdfs:label xml:lang="en">National Standard of China</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">中国国家标准</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#RegionalStandard"/>
+  </owl:Class>
+
+  
+  
+  <!-- http://www.chuci.info/schema/standard#StandardKind -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#StandardKind">
+    <rdfs:label xml:lang="en">Standard Kind</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">标准性质</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:Class>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#StandardStatus -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#StandardStatus">
+    <rdfs:label xml:lang="en">Standard Status</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">标准状态</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:Class>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#StandardCategory -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#StandardCategory">
+    <rdfs:label xml:lang="en">Standard Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">标准类别</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:Class>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#InternationalStandardCategory -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#InternationalStandardCategory">
+    <rdfs:label xml:lang="en">International Standard Category</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">国际标准类别</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:Class>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#ApplicationDegree -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#ApplicationDegree">
+    <rdfs:label xml:lang="en">Application Degree</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">采用程度</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:Class>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#AdoptedStandard -->
+
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#AdoptedStandard">
+    <rdfs:label xml:lang="en">Adopted International Standard</rdfs:label>
+    <rdfs:label xml:lang="zh-cn">采用的标准</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Standard"/>
+  </owl:Class>
+  
+  
+  <!-- http://www.chuci.info/schema/standard#Event -->
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#Event">
+    <rdfs:label xml:lang="en">Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">事件</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+    <rdfs:subClassOf rdf:resource="http://sw.opencyc.org/2009/04/07/concept/en/Event"/>
+    <rdfs:subClassOf rdf:resource="http://linkedevents.org/ontology/Event"/>
+    <rdfs:subClassOf rdf:resource="http://purl.org/dc/dcmitype/Event"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#IssuanceEvent">
+    <rdfs:label xml:lang="en">Issuance Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">发布事件</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#ReviewAffirmanceEvent">
+    <rdfs:label xml:lang="en">Review Affirmance Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">复审确认事件</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#TrialEvent">
+    <rdfs:label xml:lang="en">Trial Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">试行事件</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#ExecuteEvent">
+    <rdfs:label xml:lang="en">Execute Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">施行事件</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+  </owl:Class>
+  
+  <owl:Class rdf:about="http://www.chuci.info/schema/standard#RevocatoryEvent">
+    <rdfs:label xml:lang="en">Revocatory Event</rdfs:label>
+    <rdfs:label xml:lang="zh-CN">废止事件</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+    <rdfs:subClassOf rdf:resource="http://www.chuci.info/schema/standard#Event"/>
+  </owl:Class>
+  
+  
+  <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+  
+  
+  
+  
+  
+  <!-- 标准性质/Standard Kind -->
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#Mandatory">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardKind"/>
+    <rdfs:label xml:lang="en">Mandatory</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">强制性</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#Recommendatory">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardKind"/>
+    <rdfs:label xml:lang="en">Recommendatory</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">推荐性</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#Steering">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardKind"/>
+    <rdfs:label xml:lang="en">Steering</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">指导性</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <!-- 标准状态/Standard Status -->
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#StatusActive">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardStatus"/>
+    <rdfs:label xml:lang="en">Active</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">现行</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#StatusRevocatory">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardStatus"/>
+    <rdfs:label xml:lang="en">Revocatory</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">废止</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <!-- 标准类别/Standard Category -->
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategoryProduct">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">product</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">产品</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategoryBasis">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">basis</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">基础</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategoryMethod">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">method</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">方法</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategoryManagement">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">management</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">管理</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategorySecurity">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">security</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">安全</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategoryHealth">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">health</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">卫生</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategoryEnvironmentalProtection">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">environmental protection</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">环保</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#CategoryOthers">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#StandardCategory"/>
+    <rdfs:label xml:lang="en">others</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">其他</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  
+  <!-- 国际标准类别/International Standard Category -->
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ISC-Null">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+    <rdfs:label xml:lang="en">Null</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">无</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ISC-ISOStandard">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+    <rdfs:label xml:lang="en">ISO Standard</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">ISO标准</rdfs:label>
+	<rdfs:comment xml:lang="en">ISO: International Organization for Standardization.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">ISO：国际标准化组织。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ISC-IECStandard">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+    <rdfs:label xml:lang="en">IEC Standard</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">IEC标准</rdfs:label>
+	<rdfs:comment xml:lang="en">IEC: International Electrotechnical Commission.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">IEC：国际电工委员会。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ISC-ISOIECStandard">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+    <rdfs:label xml:lang="en">ISO/IEC Standard</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">ISO/IEC标准</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ISC-StandardConfirmedByISO">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+    <rdfs:label xml:lang="en">Standard Confirmed By ISO</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">ISO确认的标准</rdfs:label>
+	<rdfs:comment xml:lang="en">Standard Confirmed By International Organization for Standardization.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">国际标准化组织确认的标准。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ISC-ITUStandard">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+    <rdfs:label xml:lang="en">ITU Standard</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">ITU标准</rdfs:label>
+	<rdfs:comment xml:lang="en">ITU: International Telecommunications Union.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">ITU：国际电信同盟。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ISC-OtherStandard">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#InternationalStandardCategory"/>
+    <rdfs:label xml:lang="en">Other Standard</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">其他标准</rdfs:label>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  
+  <!-- 采用程度/Application Degree -->
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ADIdentical">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#ApplicationDegree"/>
+    <rdfs:label xml:lang="en">IDT</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">等同</rdfs:label>
+	<rdfs:comment xml:lang="en">Identical.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">等同。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ADModerate">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#ApplicationDegree"/>
+    <rdfs:label xml:lang="en">MOD</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">修改采用</rdfs:label>
+	<rdfs:comment xml:lang="en">Moderate.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">修改采用。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ADNotEquivalent">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#ApplicationDegree"/>
+    <rdfs:label xml:lang="en">NEQ</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">非等效</rdfs:label>
+	<rdfs:comment xml:lang="en">Not equivalent.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">非等效。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+  
+  <owl:NamedIndividual rdf:about="http://www.chuci.info/schema/standard#ADEquivalent">
+    <rdf:type rdf:resource="http://www.chuci.info/schema/standard#ApplicationDegree"/>
+    <rdfs:label xml:lang="en">EQV</rdfs:label>
+	<rdfs:label xml:lang="zh-cn">等效</rdfs:label>
+	<rdfs:comment xml:lang="en">Equivalent.</rdfs:comment>
+    <rdfs:comment xml:lang="zh-cn">等效。</rdfs:comment>
+	<rdfs:isDefinedBy rdf:resource="http://www.chuci.info/schema/standard"/>
+  </owl:NamedIndividual>
+
+  
+</rdf:RDF>
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
