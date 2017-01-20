@@ -1,0 +1,353 @@
+@base <http://purl.org/ontology/fo/> .
+
+@prefix dcmit: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dctypes: <http://purl.org/dc/dcmitype/> .
+@prefix fo: <http://purl.org/ontology/fo/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix v: <http://rdf.data-vocabulary.org/#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+@prefix provenance:  <http://www.bbc.co.uk/ontologies/provenance/> .
+
+############################################################################
+# General description of the schema
+############################################################################
+
+fo:
+	a owl:Ontology , provenance:Ontology ;
+	dcterms:title "Food Ontology"@en-gb ;
+	rdfs:label "Food Ontology"^^xsd:string ;
+	rdfs:comment "A simple vocabulary for describing recipes, ingredients, menus and diets."@en-gb ;
+	foaf:maker <#rija>, <#oliver>, <#philip>, <#andrew>, <#rob> ;
+	dcterms:created "2011-07-08"^^xsd:date ;
+	dcterms:license <http://creativecommons.org/licenses/by/4.0#id> ;
+	provenance:canonicalLocation
+              "https://repo.dev.bbc.co.uk/services/linked-data/ontologies/domain/kl/food/food-ontology-1-1.ttl"^^xsd:string ;
+    provenance:changeReason
+              "Fix a typo of occassion"^^xsd:string ;
+    dc:date "Date: 2014/03/18 16:30:00 " ;
+    provenance:slug "fo"^^xsd:string ;
+    provenance:version "1.1"^^xsd:double ;
+    provenance:public "true"^^xsd:boolean ;
+    owl:imports vs: , dc: , dcterms: , foaf: , provenance: ;
+    owl:priorVersion <http://purl.org/ontology/fo/1.0> ;
+    owl:versionIRI <http://purl.org/ontology/fo/1.1> ;
+    owl:versionInfo "1.1"^^xsd:string .
+
+
+<#rija> a foaf:Person ;
+	foaf:name "Rija Menage" .
+
+<#oliver> a foaf:Person ;
+	foaf:name "Oliver Bartlett" .
+
+<#philip> a foaf:Person ;
+	foaf:name "Philip Lamond" .
+
+<#andrew> a foaf:Person ;
+	foaf:name "Andrew Robinson" .
+
+<#rob> a foaf:Person ;
+	foaf:name "Rob Styles" .
+
+############################################################################
+# Classes
+############################################################################
+
+fo:Recipe a owl:Class ;
+	owl:sameAs v:Recipe ;
+	rdfs:label "Recipe"@en-gb ;
+	rdfs:comment "A Recipe is a combination of ingredients and a method, created by a chef, that produces a food."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Method a owl:Class ;
+	rdfs:subClassOf rdf:Seq ;
+	rdfs:label "Method"@en-gb ;
+	rdfs:comment "A Method is the way in which ingredients are combined, using particular techniques, in order to produce a food. A method is part of a recipe and is also an rdf:Seq."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Step a owl:Class ;
+	rdfs:label "Step"@en-gb ;
+	rdfs:comment "A Step is the lowest level of instruction used in a recipe. A sequence of steps form a method."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:StageSequence a owl:Class ;
+	rdfs:subClassOf rdf:Seq ;
+	rdfs:label "StageSequence"@en-gb ;
+	rdfs:comment "Where a recipe has a number of stage, for example where a recipe states 'for the sauce' a stage sequence provides a way to sequence the stages (rdf:Seq) into the desired order."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Stage a owl:Class ;
+	rdfs:label "Stage"@en-gb ;
+	rdfs:comment "A Stage is a part of a recipe that may have its own ingredient list and/or method. It allows the different parts of a multi-part recipe to be modelled seperately, yet as part of the same recipe."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:IngredientList a owl:Class ;
+	rdfs:subClassOf rdf:Seq ;
+	rdfs:label "IngredientList"@en-gb ;
+	rdfs:comment "An IngredientList is a sequence (rdf:Seq) of ingredients in the order they should be listed in the recipe."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Ingredient a owl:Class ;
+	owl:sameAs v:Ingredient ;
+	rdfs:label "Ingredient"@en-gb ;
+	rdfs:comment "An Ingredient is the combination of a quantity and a food, giving the amount of something that should be used in the recipe."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Food a owl:Class ;
+	rdfs:label "Food"@en-gb ;
+	rdfs:comment "A Food is something that can be eaten. It may be a basic food such as salt or it may be the more complex result of another recipe, for example chicken stock. A recipe uses foods as part of ingredients and also produces foods to be eaten."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Collection a owl:Class ;
+	rdfs:subClassOf dcmit:Collection ;
+	rdfs:label "Collection"@en-gb ;
+	rdfs:comment "A Collection is a group of recipes that are brought together because they have something in common. Some collections may result from automated queries such as all recipes that share a particular ingredient, other collections may be the result of editorial selection."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Diet a owl:Class ;
+	rdfs:label "Diet"@en-gb ;
+	rdfs:comment "A Diet is a way of selecting food that achieves a particular effect, such as eating in way that is pregnancy-friendly or avoiding foods that contain shellfish."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Menu a owl:Class ;
+	rdfs:subClassOf fo:Collection ;
+	rdfs:label "Menu"@en-gb ;
+	rdfs:comment "A Menu is a collection of recipes, usually one or more per course, that have been selected to go well together. A Menu may also be related to a particular cuisine or occasion."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:ShoppingCategory a owl:Class ;
+	rdfs:label "ShoppingCategory"@en-gb ;
+	rdfs:comment "A Shopping Category is a classification given to a food to indicate where it may be found when shopping."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Technique a owl:Class ;
+	rdfs:label "Technique"@en-gb ;
+	rdfs:comment "A Technique is a way of working with an ingredient to produce a desired effect, for example, whipping cream."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Cuisine a owl:Class ;
+	rdfs:label "Cuisine"@en-gb ;
+	rdfs:comment "A Cuisine is a particular style of food, often based on a region. These classifications are often highly subjective."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Course a owl:Class ;
+	rdfs:label "Course"@en-gb ;
+	rdfs:comment "A Course is the sequence of a dish within a meal. For example a basic dinner party may consists of Starter, Main and Dessert courses."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Occasion a owl:Class ;
+	rdfs:label "Occasion"@en-gb ;
+	rdfs:comment "An Occasion is a recognised event or type of event that a particular food may be suitable for. An exmaple of a particular occassion might be Chinese New Year, whereas a more general occassion might a birthday."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:Season a owl:Class ;
+	rdfs:label "Season"@en-gb ;
+	rdfs:comment "A Season is a period of time that recurs annually during which a food is typically available or at its best."@en-gb ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+############################################################################
+# Object Properties
+############################################################################
+
+fo:ingredients a owl:ObjectProperty ;
+	rdfs:label "ingredients"@en-gb ;
+	rdfs:comment "The ingredients property relates a recipe or recipe stage to an ingredient list."@en-gb ;
+	rdfs:range fo:IngredientList ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:food a owl:ObjectProperty ;
+	rdfs:label "food"@en-gb ;
+	rdfs:comment "The food property relates an ingredient to the food that is required."@en-gb ;
+	rdfs:range fo:Food ;
+	rdfs:domain fo:Ingredient ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:shopping_category a owl:ObjectProperty ;
+	rdfs:label "shopping category"@en-gb ;
+	rdfs:comment "The shopping category property relates a food to the shopping category where that food is likely to be found when shopping for it."@en-gb ;
+	rdfs:range fo:ShoppingCategory ;
+	rdfs:domain fo:Food ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:method a owl:ObjectProperty ;
+	rdfs:label "method"@en-gb ;
+	rdfs:comment "The method property relates a recipe or stage to the method used to make it."@en-gb ;
+	rdfs:range fo:Method ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:produces a owl:ObjectProperty ;
+	rdfs:label "produces"@en-gb ;
+	rdfs:comment "The produces property relates a recipe to the food it produces."@en-gb ;
+	rdfs:range fo:Food ;
+	rdfs:domain fo:Recipe ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:stages a owl:ObjectProperty ;
+	rdfs:label "stages"@en-gb ;
+	rdfs:comment "The stages property relates a recipe to the sequence of stages it contains."@en-gb ;
+	rdfs:range fo:StageSequence ;
+	rdfs:domain fo:Recipe ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:canape a owl:ObjectProperty ;
+	rdfs:label "canape"@en-gb ;
+	rdfs:comment "The canape property relates a menu to a recipe that may be served as a canape."@en-gb ;
+	rdfs:range fo:Recipe ;
+	rdfs:domain fo:Menu ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:starter a owl:ObjectProperty ;
+	rdfs:label "starter"@en-gb ;
+	rdfs:comment "The starter property relates a menu to a recipe that may be served as a starter."@en-gb ;
+	rdfs:range fo:Recipe ;
+	rdfs:domain fo:Menu ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:main_course a owl:ObjectProperty ;
+	rdfs:label "main course"@en-gb ;
+	rdfs:comment "The main course property relates a menu to a recipe that may be served as a main course."@en-gb ;
+	rdfs:range fo:Recipe ;
+	rdfs:domain fo:Menu ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:side_dish a owl:ObjectProperty ;
+	rdfs:label "side dish"@en-gb ;
+	rdfs:comment "The side dish property relates a menu to a recipe that may be served as a side dish."@en-gb ;
+	rdfs:range fo:Recipe ;
+	rdfs:domain fo:Menu ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:dessert a owl:ObjectProperty ;
+	rdfs:label "dessert"@en-gb ;
+	rdfs:comment "The dessert property relates a menu to a recipe that may be served as a dessert."@en-gb ;
+	rdfs:range fo:Recipe ;
+	rdfs:domain fo:Menu ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:diet a owl:ObjectProperty ;
+	rdfs:label "diet"@en-gb ;
+	rdfs:comment "The diet property relates a recipe to a diet it may be suitable for."@en-gb ;
+	rdfs:range fo:Diet ;
+	rdfs:domain fo:Recipe ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:cuisine a owl:ObjectProperty ;
+	rdfs:label "cuisine"@en-gb ;
+	rdfs:comment "The cuisine property classifies a recipe as being an example of that cuisine."@en-gb ;
+	rdfs:range fo:Cuisine ;
+	rdfs:domain fo:Recipe ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:occasion a owl:ObjectProperty ;
+	rdfs:label "occassion"@en-gb ;
+	rdfs:comment "The occassion property relates a recipe to an occasion it may be appropriate for."@en-gb ;
+	rdfs:range fo:Occasion ;
+	rdfs:domain fo:Recipe ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:required_technique a owl:ObjectProperty ;
+	rdfs:label "required technique"@en-gb ;
+	rdfs:comment "The required technique property indicates that a particular technique is required in order to complete a recipe, method or step."@en-gb ;
+	rdfs:range fo:Technique ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:serve_as a owl:ObjectProperty ;
+	rdfs:label "serve as"@en-gb ;
+	rdfs:comment "The serve as property relates a recipe to the course in a meal that it may be served as."@en-gb ;
+	rdfs:range fo:Course ;
+	rdfs:domain fo:Recipe ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:at_its_best a owl:ObjectProperty ;
+	rdfs:label "at its best"@en-gb ;
+	rdfs:comment "The at its best property tells us in what season a particular food is at its best."@en-gb ;
+	rdfs:range fo:Season ;
+	rdfs:domain fo:Food ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+############################################################################
+# Datatype Properties
+############################################################################
+
+fo:serves a owl:DatatypeProperty ;
+	rdfs:label "serves"@en-gb ;
+	rdfs:comment "The server property indicates what the recipe is intended to serve, this is often a human readable integer range such as '6-8'."@en-gb ;
+	rdfs:range xsd:string ;
+	rdfs:domain fo:Recipe ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:quantity a owl:DatatypeProperty ;
+	rdfs:label "quantity"@en-gb ;
+	rdfs:comment "A quantity provides a non-negative integer quantity that can be used as a measure of the food stuff for the ingredient."@en-gb ;
+	rdfs:range xsd:nonNegativeInteger ;
+	rdfs:domain fo:Ingredient ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:metric_quantity a owl:DatatypeProperty ;
+	rdfs:label "metric quantity"@en-gb ;
+	rdfs:comment "A metric quantity provides a value and metric unit in a human readable string for use in measuring out an ingredient."@en-gb ;
+	rdfs:range xsd:string ;
+	rdfs:domain fo:Ingredient ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:imperial_quantity a owl:DatatypeProperty ;
+	rdfs:label "imperial quantity"@en-gb ;
+	rdfs:comment "A metric quantity provides a value and imperial unit in a human readable string for use in measuring out an ingredient."@en-gb ;
+	rdfs:range xsd:string ;
+	rdfs:domain fo:Ingredient ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+fo:instruction a owl:DatatypeProperty ;
+	rdfs:label "instruction"@en-gb ;
+	rdfs:comment "An instruction provides the human-readable text associated with a step in the method for a recipe."@en-gb ;
+	rdfs:range xsd:string ;
+	rdfs:domain fo:Step ;
+	vs:term_status "testing" ;
+	rdfs:isDefinedBy fo: .
+
+

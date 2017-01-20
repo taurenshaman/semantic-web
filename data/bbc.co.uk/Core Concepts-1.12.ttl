@@ -1,0 +1,358 @@
+<http://www.bbc.co.uk/ontologies/coreconcepts/Theme>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This concept is used to represent intangible things or abstract concepts.  For example, Financial Crisis, Midwifery, Happiness."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Theme"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Thing> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/Organisation>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The class of organisations in the BBC. E.g., Businesses."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Organisation"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Thing> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/dateOfBirth>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "A person's date of birth."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "dateOfBirth"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/Person>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The class of people in the BBC. Subclasses of this can be all types of people such as politicians, athletes, historic figures, contributors in programmes e.t.c."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Person"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Thing> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/Place>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The class of places in the BBC."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Place"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Thing> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/occupation>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This property associates a person with a thematic area he or she worked in, for example Annie Lennox with Music."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "occupation"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Theme> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/slug>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "Human readable keywords that may be used in a programmatic fashion e.g., manchester-city."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "slug"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#string> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts>
+      a       <http://www.w3.org/2002/07/owl#Ontology> , <http://www.bbc.co.uk/ontologies/provenance/Ontology> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The generic BBC ontology for people, places, events, organisations, themes which represent things that make sense across the BBC. This model is meant to be generic enough, and allow clients (domain experts) link their own concepts e.g., athletes or politicians using rdfs:sublClassOf the particular concept."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Core Concepts Ontology"@en-gb ;
+      <http://purl.org/dc/elements/1.1/creator>
+              <mailto:LinkedData@bbc.co.uk> ;
+      <http://purl.org/dc/elements/1.1/date>
+              "2015-10-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
+      <http://purl.org/dc/terms/license>
+              <http://creativecommons.org/licenses/by/4.0/> ;
+      <http://www.bbc.co.uk/ontologies/provenance/canonicalLocation>
+              "https://github.com/bbc/ontologies/blob/master/core/coreconcepts.ttl"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://www.bbc.co.uk/ontologies/provenance/changeReason>
+              "Adding property core:label and clarifying usage of preferredLabel."@en-gb ;
+      <http://www.bbc.co.uk/ontologies/provenance/provided>
+              "2015-10-12T10:51:43+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://www.bbc.co.uk/ontologies/provenance/provider>
+              <mailto:Matthew.Gamble@bbc.co.uk> ;
+      <http://www.bbc.co.uk/ontologies/provenance/public>
+              "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+      <http://www.bbc.co.uk/ontologies/provenance/slug>
+              "coreconcepts"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://www.bbc.co.uk/ontologies/provenance/version>
+              "1.12"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://www.w3.org/2002/07/owl#imports>
+              <http://purl.org/dc/elements/1.1/> , <http://purl.org/dc/terms/> , <http://www.bbc.co.uk/ontologies/provenance> ;
+      <http://www.w3.org/2002/07/owl#priorVersion>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/1.11> ;
+      <http://www.w3.org/2002/07/owl#versionIRI>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/1.12> ;
+      <http://www.w3.org/2002/07/owl#versionInfo>
+              "1.12"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/eventPlace>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "place as location of an event"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Event> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "eventPlace" ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Place> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/placeOfDeath>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "A person's place of death"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "placeOfDeath"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Place> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This is a high level property aiming to associate any core thing to any other core thing. For example that Tom Daley is notablyAssociatedWith diving or Glastonbury is notablyAssociatedWith music."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "notablyAssociatedWith"@en-gb .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/eventPerson>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "person as agent in an event"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Event> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "eventPerson" ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/gender>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This property is required to distinguish people by gender."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "gender"@en-gb .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/sameAs>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "Indicates that something is the same as something else, but in a way that is slightly weaker than owl:sameAs. It's purpose is to connect separate identities of the same thing, whilst keeping separation between the original statements of each."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "sameAs"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/label>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The a label for a thing. A thing may have one label per language."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "label"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#string> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/shortLabel>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "A short label for a thing usually needed for presentation purposes."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "shortLabel"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#string> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/eventTheme>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "theme as factor in an event"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Event> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "eventTheme" ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Theme> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/placeOfBirth>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "A person's place of birth."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "placeOfBirth"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Place> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/Thing>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The superclass of all things the BBC creates or talks about."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Thing"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/disambiguationHint>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "One or two words to distinguish between entities that have similar labels - often displayed to both internal and external audiences."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "disambiguationHint"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#string> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/Event>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The class of events in the BBC. This is a generic class to represent events (music events, historic events, sports events, politics events, e.t.c.)."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Event"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Thing> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/primaryTopic>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "Represents the fact that a thing (usually concept, e.g., Tom Daley) is the primary topic of a web document."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "primaryTopic"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Thing> ;
+      <http://www.w3.org/2002/07/owl#inverseOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/primaryTopicOf> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/preferredLabel>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The BBC editorially preferred label for a thing. A thing may have one and only one preferredLabel"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "preferredLabel"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#string> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/label> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/eventOrganisation>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "organisation as agent in an event"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Event> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "eventOrganisation" ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Organisation> ;
+      <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/notablyAssociatedWith> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/dateOfDeath>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "A person's date of death."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "dateOfDeath"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#dateTime> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/knownFor>
+      a       <http://www.w3.org/2002/07/owl#DatatypeProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "A short summary of what a person is notably known for"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/Person> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "knownFor"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.w3.org/2001/XMLSchema#string> .
+
+<http://www.bbc.co.uk/ontologies/coreconcepts/primaryTopicOf>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "Represents the fact that a thing (usually concept, e.g., Tom Daley) is the primary topic of a web document."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/coreconcepts> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "primaryTopicOf"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/bbc/WebDocument> ;
+      <http://www.w3.org/2002/07/owl#inverseOf>
+              <http://www.bbc.co.uk/ontologies/coreconcepts/primaryTopic> .

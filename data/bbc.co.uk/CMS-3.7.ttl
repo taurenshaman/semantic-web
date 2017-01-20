@@ -1,0 +1,294 @@
+<http://www.bbc.co.uk/ontologies/cms/PipsLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator type is used for creating locators for PIPS, the system that manages the Programmes Information Pages."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "PipsLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/VivoApiLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This class of locators is used to retrieve things through the Vivo API."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "VivoApiLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/NewsIDM>
+      a       <http://www.bbc.co.uk/ontologies/cms/System> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The identifier for the news instance data manager which will be used to denote the ownership of news relevant thing-graphs  provided to LDP via the NewsIDM."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "NewsIDM"@en-gb .
+
+<http://www.bbc.co.uk/ontologies/cms>
+      a       <http://www.w3.org/2002/07/owl#Ontology> , <http://www.bbc.co.uk/ontologies/provenance/Ontology> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "An ontology to represent the content management systems and their interaction with the triplestore. For instance, how should an entity in the triplestore, e.g., the URI for Manchester United, be linked to an external CMS that provides more information about Manchester United, e.g., sports statistics, or how should a creative work URI in the triplestore refer to the CMS it was created. The CMS ontology provides the Linked Data Platform customers with pointers to additional information about a thing in other systems."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "CMS Ontology"@en-gb ;
+      <http://purl.org/dc/elements/1.1/creator>
+              <mailto:LinkedData@bbc.co.uk> ;
+      <http://purl.org/dc/elements/1.1/date>
+              "2012-12-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+      <http://purl.org/dc/terms/license>
+              <http://creativecommons.org/licenses/by/4.0/> ;
+      <http://purl.org/dc/terms/modified>
+              "2016-02-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+      <http://www.bbc.co.uk/ontologies/provenance/canonicalLocation>
+              "https://github.com/bbc/ontologies/blob/master/core/cms.ttl"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://www.bbc.co.uk/ontologies/provenance/changeReason>
+              "Added Travel and Weather locator type"@en-gb ;
+      <http://www.bbc.co.uk/ontologies/provenance/provided>
+              "2016-02-03T15:20:48+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <http://www.bbc.co.uk/ontologies/provenance/provider>
+              <mailto:Matthew.Gamble@bbc.co.uk> ;
+      <http://www.bbc.co.uk/ontologies/provenance/public>
+              "true"^^<http://www.w3.org/2001/XMLSchema#boolean> ;
+      <http://www.bbc.co.uk/ontologies/provenance/slug>
+              "cms"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://www.bbc.co.uk/ontologies/provenance/version>
+              "3.7"^^<http://www.w3.org/2001/XMLSchema#string> ;
+      <http://www.w3.org/2002/07/owl#imports>
+              <http://purl.org/dc/elements/1.1/> , <http://purl.org/dc/terms/> , <http://www.bbc.co.uk/ontologies/provenance> ;
+      <http://www.w3.org/2002/07/owl#priorVersion>
+              <http://www.bbc.co.uk/ontologies/cms/3.6> ;
+      <http://www.w3.org/2002/07/owl#versionIRI>
+              <http://www.bbc.co.uk/ontologies/cms/3.7> ;
+      <http://www.w3.org/2002/07/owl#versionInfo>
+              "3.7"^^<http://www.w3.org/2001/XMLSchema#string> .
+
+<http://www.bbc.co.uk/ontologies/cms/Locator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This class represents all identifiers required for locating a representation of the thing in another BBC system. Thing locators usually follow the pattern <urn:LocatorType:localID> for example <urn:sports-stats:11269354> or <urn:cps:7f0da524-08bd-4d7e-848e-f50ccca6d87c> (see the subclasses of Locator for all available locator types) where the last fragment of the URI is the native id of the system."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Locator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://www.bbc.co.uk/ontologies/cms/Sports-DataLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator is used to create locators for the sports-data system."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Sports-DataLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/MusicBootstrapLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This types is needed to instantiate locators used by the Music bootstrap service."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "MusicBootstrapLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/MusicArtistsIngest>
+      a       <http://www.bbc.co.uk/ontologies/cms/System> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The identifier for the music artists management system which will be used to denote the ownership of music artists thing-graphs provided to LDP via the music artists ingest."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "MusicArtistsIngest"@en-gb .
+
+<http://www.bbc.co.uk/ontologies/cms/WeatherLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This class of locators is used to retrieve things through the Weather API."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "WeatherLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/PulsarLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator is used to create locators for Pulsar."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "PulsarLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/ManagedThing>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This is the class of things managed by a data management system interfacing with thing graph. Anything declared as a ManagedThing is managed in thing graph as opposed to being managed in a dataset and a thing graph must contain exactly one managed thing."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "ManagedThing"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://www.bbc.co.uk/ontologies/cms/iScriptLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This class of locators is used to retrieve things sent to LDP from iScript."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "iScriptLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/CPSLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator type is used for creating locators for the Content Publishing System which is largely used to create the News and Sport stories on the website."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "CPSLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/Sports-StatsLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator is used to create locators for the sports-stats system."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "Sports-StatsLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/iKLLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator is used identify content from Knowledge and Learning."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "iKLLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/TTDLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator is used to identify categories in the Things To Do API."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "TTDLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/LocationServicesIngest>
+      a       <http://www.bbc.co.uk/ontologies/cms/System> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The identifier for location services which will be used to denote the ownership of location thing-graphs  provided to LDP via location services ingest."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "LocationServicesIngest"@en-gb .
+
+<http://www.bbc.co.uk/ontologies/cms/TravelLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This class of locators is used to retrieve things through the Travel API."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "TravelLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/iSiteLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This locator is used identify content from iSite."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "iSiteLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/locator>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "Associates a thing or creative work with a locator in a CMS."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "locator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/System>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This is the class of systems that manage data in the Linked Data Platform."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "System"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://www.bbc.co.uk/ontologies/cms/LocationServicesLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This is needed to instantiate locators used by the Location Services Ingestion system."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "LocationServicesLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .
+
+<http://www.bbc.co.uk/ontologies/cms/managedThing>
+      a       <http://www.w3.org/2002/07/owl#ObjectProperty> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This property is needed to express the relationship between a cms:ManagedThing and its graph in the API results. In the triplestore the ThingGraph is implicitly related to the ManagedThing because the ThingGraph contains the ManagedThing metadata. However, we need an explicit relationship to provide this to our API clients and this is the purpose of cms:managedThing."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#domain>
+              <http://www.bbc.co.uk/ontologies/provenance/ThingGraph> ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "managedThing"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#range>
+              <http://www.bbc.co.uk/ontologies/cms/ManagedThing> .
+
+<http://www.bbc.co.uk/ontologies/cms/LDM>
+      a       <http://www.bbc.co.uk/ontologies/cms/System> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "The identifier for the linked data manager which will be used to denote the ownership of thing-graphs provided to LDP via the LDM."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "LDM"@en-gb .
+
+<http://www.bbc.co.uk/ontologies/cms/ContentApiLocator>
+      a       <http://www.w3.org/2002/07/owl#Class> ;
+      <http://www.w3.org/2000/01/rdf-schema#comment>
+              "This class of locators is used to retrieve things through the Content API."@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#isDefinedBy>
+              <http://www.bbc.co.uk/ontologies/cms> ;
+      <http://www.w3.org/2000/01/rdf-schema#label>
+              "ContentApiLocator"@en-gb ;
+      <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+              <http://www.bbc.co.uk/ontologies/cms/Locator> .

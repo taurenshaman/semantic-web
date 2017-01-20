@@ -1,0 +1,116 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix qudt: <http://data.qudt.org/qudt/owl/1.0.0/qudt.owl#> . #QUDT quantities
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+
+#Core roles and activities (for devices and systems), this is related to actor module and could specialize it but now here defined as new vocabulary
+seas:BuildingEnergyOntology a owl:Ontology , voaf:Ontology ;
+  dc:title "seas-BuildingEnergyOntology ontology"@en ;
+  dc:description "The Seas Building specific energy related properties with quantities and units for the ITEA SEAS (Smart Energy Aware Systems) project."@en ;
+  dc:issued "2016-01-26"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/BuildingEnergyOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+  
+#Units of nominal energy consumption
+seas:KiloWattPerSquareMeterGFA a qudt:PowerPerAreaUnit, seas:Unit;
+  rdfs:label "KiloWattPerSquareMeterGFA"@en ; 
+  qudt:abbreviation "kW/(m^2-GFA)";  
+  qudt:description "kWatt per gross floor area in square meters (GFA) (brm in finland)."@en ;
+  qudt:quantityKind seas:NominalEnergyConsumption;
+  qudt:conversionMultiplier 1.0e3;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology. 
+
+seas:WattPerSquareMeterGFA a qudt:PowerPerAreaUnit;
+  rdfs:label "WattPerSquareMeterGFA"@en ; 
+  qudt:abbreviation "W/(m^2-BRM)"@fi;  
+  qudt:abbreviation "W/(m^2-GFA)"@en;  
+  qudt:description "Watt per gross floor area in square meters (GFA) (brm in finland)."@en ;
+  qudt:quantityKind seas:NominalEnergyConsumption;
+  qudt:conversionMultiplier 1.0e0;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology.   
+  
+seas:WattPerSquareMeterKelvin a qudt:CoefficientOfHeatTransferUnit;
+  rdfs:label "WattPerSquareMeterKelvin"@en ; 
+  qudt:abbreviation "W/(m^2-K)";
+  qudt:description "Unit of U value in Watt per Square Meter Kelvin"@en ;
+  qudt:quantityKind seas:UValue;
+  qudt:conversionMultiplier 1.0e0;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology. 
+     
+seas:QubicMeter a seas:Unit, qudt:VolumeUnit;
+  rdfs:label "QubicMeter"@en ; 
+  qudt:abbreviation "m^3";
+  qudt:description "Volume in qubic meters."@en ;
+  qudt:quantityKind seas:Volume;
+  qudt:conversionMultiplier 1.0e0;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology.   
+
+seas:SquareMeter a seas:Unit, qudt:AreaUnit;
+  rdfs:label "SquareMeter"@en ; 
+  qudt:abbreviation "m^2";
+  qudt:description "Area in square meters."@en ;
+  qudt:quantityKind seas:Area;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology.    
+
+#Building related quantities
+seas:NominalEnergyConsumption a owl:Class;  
+  rdfs:label "NominalEnergyConsumption"@en ;
+  rdfs:label "Ominaisenergiankulutus"@fi ;  
+  rdfs:comment "Energy consumption of a building per gross floor area."@en ;
+  rdfs:subClassOf qudt:PowerPerArea, seas:Quantity; 
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology. 
+  
+seas:UValue a owl:Class; 
+  rdfs:label "Transmittance"@en;
+  rdfs:label "UValue"@en ;
+  rdfs:comment "Also known as Thermal Transmittance. The overall heat transfer coefficient U is a measure of the overall ability of a series of conductive and convective barriers to transfer heat."@en ;
+  rdfs:subClassOf qudt:CoefficientOfHeatTransfer, seas:Quantity; 
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology.      
+
+seas:GrossFloorArea a owl:Class; 
+  rdfs:label "GrossFloorArea"@en ;
+  rdfs:comment "Gross floor area is generally defined by the area within the perimeter of the walls bounding the space."@en ;
+  rdfs:subClassOf seas:Area;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingEnergyOntology .  
+

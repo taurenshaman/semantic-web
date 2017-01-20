@@ -1,0 +1,323 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix qudt: <http://data.qudt.org/qudt/owl/1.0.0/qudt.owl#> . #QUDT quantities
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+seas:MarketOntology rdf:type voaf:Ontology , owl:Ontology ;
+  dc:title "seas-MarketOntology ontology"@en ;
+  dc:description "The Seas Market Ontology for the ITEA SEAS (Smart Energy Aware Systems) project."@en ;
+  dc:issued "2016-05-10"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/MarketOntology/0.10> ;
+  owl:versionInfo "v0.10" .
+  
+#Some domain independent dimensionless quantities and units
+seas:Ratio a owl:Class;
+  rdfs:label "Ratio"@en ;
+  rdfs:comment "Dimensionless ratio."@en ;
+  rdfs:subClassOf seas:Quantity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+      
+seas:Percent a seas:Unit;
+  rdfs:label "Percent"@en ;
+  rdfs:comment "Ratio expressed as percentage."@en ;
+  rdfs:sameAs qudt:Percent;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.   
+     
+seas:Count a owl:Class;
+  rdfs:label "Count"@en ;
+  rdfs:comment "Unitless numeric count."@en ;
+  rdfs:subClassOf seas:Quantity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.   
+  
+#Some general market related concepts and classifications and their descriptions TBD by experts
+seas:Market a owl:Class ;
+  rdfs:label "Market"@en ;
+  rdfs:comment "From Wikipedia: A market is one of the many varieties of systems, institutions, procedures, social relations and infrastructures whereby parties engage in exchange. While parties may exchange goods and services by barter, most markets rely on sellers offering their goods or services (including labor) in exchange for money from buyers. It can be said that a market is the process by which the prices of goods and services are established. Markets facilitate trade and enables the distribution and allocation of resources in a society. Markets allow any trade-able item to be evaluated and priced. A market emerges more or less spontaneously or may be constructed deliberately by human interaction in order to enable the exchange of rights (cf. ownership) of services and goods."@en ;
+  rdfs:subClassOf seas:System;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.   
+
+seas:MarketArtifact a owl:Class ;
+  rdfs:label "MarketArtifact"@en ;
+  rdfs:comment "Data artifact related to markets"@en ;
+  rdfs:subClassOf seas:Resource;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.    
+  
+seas:owns a owl:ObjectProperty, owl:InverseFunctionalProperty;
+  rdfs:label "owns"@en ;
+  rdfs:comment "Dclarens ownership"@en ;
+  rdfs:domain seas:Entity;
+  rdfs:range seas:Entity;
+  rdfs:seeAlso <http://schema.org/Product#owns>;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.       
+
+seas:isOwnedBy a owl:ObjectProperty;
+  rdfs:label "isOwnedBy"@en ;
+  rdfs:comment "Declares being owned by"@en ;
+  owl:inverseOf seas:owns;
+  rdfs:domain seas:Entity;
+  rdfs:range seas:Entity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.     
+
+#Market categories  
+seas:RetailMarket a owl:Class ;
+  rdfs:label "RetailMarket"@en ;
+  rdfs:comment "Retail is the process of selling consumer goods and/or services to consumers. "@en ;
+  rdfs:subClassOf seas:Market;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.     
+  
+seas:CapacityMarket a owl:Class ;
+  rdfs:label "CapacityMarket"@en ;
+  rdfs:comment "Capacity markets provide an additional incentive for developers and owners of generating capacity (i.e. power plants or demand response providers) to make their capacity available to electric markets where price signals alone would not. Capacity providers are paid on a kilowatt per year basis for the capacity that a power plant can generate or, in the case of demand response, the capacity of power that can be reduced."@en ;
+  rdfs:subClassOf seas:Market;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.       
+  
+seas:WholesaleMarket a owl:Class ;
+  rdfs:label "WholesaleMarket"@en ;
+  rdfs:comment "Wholesaling is the sale of goods or merchandise to retailers; to industrial, commercial, institutional, or other professional business users; or to other wholesalers and related subordinated services.In general, it is the sale of goods to anyone other than a standard consumer. "@en ;
+  rdfs:subClassOf seas:Market;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+  
+seas:LongTermMarket a owl:Class ;
+  rdfs:label "LongTermMarket"@en ;
+  rdfs:comment "Description TBD "@en ;
+  rdfs:subClassOf seas:WholesaleMarket;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+  
+seas:IntradayMarket a owl:Class ;
+  rdfs:label "IntradayMarket"@en ;
+  rdfs:comment "The Intraday market offers the opportunity to continuously trade power products in hourly intervals as well as freely definably block orders up to 5 minutes prior to delivery."@en ;
+  rdfs:subClassOf seas:WholesaleMarket;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.        
+  
+seas:DayAheadMarket a owl:Class ;
+  rdfs:label "DayAheadMarket"@en ;
+  rdfs:comment "The day-ahead market is an auction where power is traded for delivery during the next day."@en ;
+  rdfs:subClassOf seas:WholesaleMarket;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.     
+  
+#Some basic data resources 
+seas:Price a owl:Class ;
+  rdfs:label "Price"@en ;
+  rdfs:comment "Price of something (commodity) such as electricity market. May have price components defined with seas:hasPart relation."@en ;  
+  rdfs:subClassOf seas:Evaluation;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.        
+  
+seas:PriceComponent a owl:Class ;
+  rdfs:label "PriceComponent"@en ;
+  rdfs:comment "Partial price component (tax etc...) that can be included in price evaluation with seas:contains relation."@en ;  
+  rdfs:subClassOf seas:Evaluation;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology. 
+
+seas:BasePrice a owl:Class ;
+  rdfs:label "BasePrice"@en ;
+  rdfs:comment "Typically fixed base price that can be added components such as tax, incentive etc..."@en ;
+  rdfs:subClassOf seas:PriceComponent;   
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.     
+  
+seas:Incentive a owl:Class ;
+  rdfs:label "Incentive"@en ;
+  rdfs:comment "An incentive is something that motivates an individual to perform an action. Here we concern mainly financial (price) incentives but the incentive could be also a commodity as return of activity."@en ;
+  rdfs:subClassOf seas:PriceComponent;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.     
+  
+seas:Tax a owl:Class ;
+  rdfs:label "Incentive"@en ;
+  rdfs:comment "Amount of tax in price evaluated either as persentage or absolute currency."@en ;
+  rdfs:subClassOf seas:PriceComponent;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.       
+
+seas:Commodity a owl:Class;
+  rdfs:label "Commodity"@en ;
+  rdfs:comment "A commodity is a substantially fungible marketable entity."@en ;
+  rdfs:subClassOf seas:Quantity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.   
+
+seas:Currency a owl:Class;
+  rdfs:label "Currency"@en ;
+  rdfs:comment "Currency is a system of money (monetary units) in common use."@en ;
+  rdfs:subClassOf seas:Quantity, qudt:Currency;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+  
+#Market artifacts
+seas:Transaction a owl:Class ;
+  rdfs:label "Transaction"@en ;
+  rdfs:comment "The exchange of something such as goods and services etc. "@en ;
+  vs:term_status "testing" ;
+  rdfs:subClassOf seas:MarketArtifact;  
+  rdfs:isDefinedBy seas:MarketOntology.     
+  
+seas:Contract a owl:Class ;
+  rdfs:label "Contract"@en ;
+  rdfs:comment "Contract related data, this can becomes quite complex. Now we assume it only to include the data needed to specify the contract not agreements behind it."@en ;
+  rdfs:subClassOf seas:MarketArtifact;    
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+
+seas:Offer a owl:Class ;
+  rdfs:label "Offer"@en ;
+  rdfs:comment "The data related to selling activity. This can become quite complex and depends on market. TBD modelled as state of contract."@en ;
+  rdfs:seeAlso <http://purl.org/goodrelations/v1#offers>;
+  vs:term_status "testing" ;
+  rdfs:subClassOf seas:MarketArtifact;    
+  rdfs:isDefinedBy seas:MarketOntology.     
+  
+seas:Bid a owl:Class ;
+  rdfs:label "Bid"@en ;
+  rdfs:comment "The data related to buying activity. This can become quite complex and depends on market. TBD modelled as state of contract."@en ;
+  vs:term_status "testing" ;
+  rdfs:subClassOf seas:MarketArtifact;    
+  rdfs:isDefinedBy seas:MarketOntology.      
+   
+#Just plain buying and selling without thinking about the price mechanisms.  Note that the data resources are linked to this based on seas:Activity concept
+seas:MarketActivity a owl:Class ;
+  rdfs:label "MarketActivity"@en ;
+  rdfs:comment "A market related action. There are different types of markets and mecahanisms how the price is set but at the moment those are not analysed further."@en ;
+  rdfs:subClassOf seas:Activity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.    
+
+seas:Trading a owl:Class ;
+  rdfs:label "Trading"@en ;
+  rdfs:comment "Trading at market price."@en ;
+  rdfs:subClassOf seas:MarketActivity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology. 
+  
+seas:Buying a owl:Class ;
+  rdfs:label "Buying"@en ;
+  rdfs:comment "Buying at market price."@en ;
+  rdfs:subClassOf seas:Trading;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.   
+
+seas:Selling a owl:Class ;
+  rdfs:label "Selling"@en ;
+  rdfs:comment "Selling at market price."@en ;
+  rdfs:subClassOf seas:Trading;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.        
+  
+#These are more complex market activities  
+seas:Clearing a owl:Class ;
+  rdfs:comment"In economics, market clearing is the process by which, in an economic market, the supply of whatever is traded is equated to the demand, so that there is no leftover supply or demand"@en ;
+  rdfs:label "Clearing"@en ;
+  rdfs:subClassOf seas:MarketActivity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+  
+seas:Balancing a owl:Class ;
+  rdfs:comment "Entso-e: Balancing refers to the situation after markets have closed (gate closure) in which a Balance responsible party acts to ensure that demand is equal to supply, in and near real time."@en ;
+  rdfs:label "Balancing"@en ;
+  rdfs:subClassOf seas:MarketActivity; 
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.   
+
+#Supporting energy system related concetps such as functions / activities /services needed mainly by wholesale energy markets
+     
+seas:Flexibility a owl:Class ;
+  rdfs:label "Flexibility"@en ;
+  rdfs:comment "Description TBD "@en ;
+  rdfs:subClassOf seas:Service;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.     
+
+seas:AncilliaryServices a owl:Class ;
+  rdfs:label "AncilliaryServices"@en ;
+  rdfs:comment "Wikipedia: Ancillary services are the specialty services and functions provided by the electric grid that facilitate and support the continuous flow of electricity so that supply will continually meet demand.  Entso-e: These include black start capability (the ability to restart a grid following a blackout); frequency response (to maintain system frequency with automatic and very fast responses); fast reserve (which can provide additional energy when needed); the provision of reactive power and various other services."@en ;
+  rdfs:subClassOf seas:Service;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+  
+#Somen common energy quantities and units now defined with help of qudt
+    
+seas:TaxRatio a owl:Class;
+  rdfs:label "TaxRatio"@en ;
+  rdfs:comment "Ratio of tax from price."@en ;
+  rdfs:subClassOf seas:Ratio;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.    
+  
+seas:CurrencyPerKwh a owl:Class;
+  rdfs:label "CurrencyPerKwh"@en ;
+  rdfs:comment "Currency per kwh."@en ;
+  rdfs:subClassOf seas:PricePerEnergy;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.    
+
+seas:CurrencyUnit a owl:Class;
+  rdfs:label "CurrencyUnit"@en ;
+  rdfs:comment "A monetary units in common use, the names and codes are defined in ISO 4217."@en ;
+  rdfs:seeAlso qudt:FinancialUnit, <http://www.iso.org/iso/home/standards/currency_codes.htm>;
+  rdfs:subClassOf seas:Unit, qudt:FinancialUnit;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.      
+
+seas:Euro a seas:CurrencyUnit;
+  rdfs:label "Euro"@en ;
+  rdfs:comment "Euro (sign: €; code: EUR) is the official currency of the eurozone."@en ;
+  rdfs:sameAs qudt:Euro;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.    
+
+#Unit of energy price is a complex unit that is derved both from currency unit and energy quantity   
+#It might be better to do a combined seas unit that has time/commodity/currency as separate aspects
+seas:PricePerEnergy a owl:Class;
+  rdfs:label "PricePerEnergy"@en ;
+  rdfs:comment "Quantity kind for energy price in currency per amount energy. Energy price value has a composite unit that consists of unit of currency and unit of energy"@en ;
+  rdfs:subClassOf seas:Quantity, qudt:FinancialQuantityKind;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:MarketOntology.    
+
+  

@@ -1,0 +1,337 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix ifc: <http://www.buildingsmart-tech.org/ifcOWL/IFC2X3_TC1#>. #IFC owl ontology
+@prefix fiemser:<http://sites.google.com/site/smartappliancesproject/ontologies/fiemser#>. #Fiemser building ontology
+@prefix saref: <http://ontology.tno.nl/saref#>. #SAREF smart building appliances ontology
+@prefix gbxml:<http://www.gbxml.org/schema#>.     #GBXML XML schema
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+seas:BuildingOntology rdf:type voaf:Ontology , owl:Ontology ;
+  dc:title "seas-BuildingOntology ontology"@en ;
+  dc:description "The Seas Building BIM related vocabulary for the ITEA SEAS (Smart Energy Aware Systems) project. This ontology is targeted for defining structure of buildings (or more general facilities) and zones related to control and measurment with links to various BIM (Building Information Model) related standards."@en ;
+  dc:issued "2016-01-26"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/BuildingOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+
+#General measurement and control concepts that are needed this could be linked to connection point ontology
+seas:Site a owl:Class ;
+  rdfs:label "Site"@en ;
+  rdfs:comment "Site is a a specific locale with associated information describing its scope and context."@en ;
+  rdfs:subClassOf seas:Entity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.  
+  
+seas:Zone a owl:Class ;
+  rdfs:label "Zone"@en ;
+  rdfs:comment "A general aggregation of administration, control, monitoring or measurement."@en ;
+  rdfs:subClassOf seas:System;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.      
+
+seas:mesurementPointOf a owl:ObjectProperty;
+  rdfs:label "measurementPointOf"@en ;
+  rdfs:comment "Specifies scope of administration, control or mesurement. Mainly either PointOfControl and PointOfMeasurment."@en ;
+  rdfs:subPropertyOf seas:connectionPointOf;
+  rdfs:domain seas:ConnectionPoint; 
+  rdfs:range seas:Zone;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology . 
+  
+seas:controlPointOf a owl:ObjectProperty;
+  rdfs:label "controlPointOf"@en ;
+  rdfs:comment "Specifies scope of administration, control or mesurement. Mainly either PointOfControl and PointOfMeasurment."@en ;
+  rdfs:subPropertyOF seas:connectionPointOf;
+  rdfs:domain seas:ConnectionPoint; 
+  rdfs:range seas:Zone;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology .   
+  
+seas:PointOfControl a owl:Class ;
+  rdfs:label "PointOfControl"@en ;
+  rdfs:comment "Access role associated with controlling a specific zone"@en ;
+  rdfs:subClassOf seas:ConnectionPoint;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.    
+
+seas:PointOfMeasurement a owl:Class ;
+  rdfs:label "PointOfMeasurement"@en ;
+  rdfs:comment "Access role of measurement information associated with a specific zone"@en ;
+  rdfs:subClassOf seas:ConnectionPoint;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.      
+
+
+#These simplify defining relations between  connection points when we do not know the  underlying system connecitons  
+seas:subMeasurement a owl:ObjectProperty; 
+  rdfs:comment "The measurement in subMeasurement is contained in the value of higher level measurement"@en ;
+  rdfs:subPropertyOf seas:contains;
+  rdfs:domain seas:PointOfMeasurement;  
+  rdfs:range seas:PointOfMeasurement;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology .     
+  
+seas:subControl a owl:ObjectProperty;
+  rdfs:comment "Controlling the control point in subControl is already handled by the higher level control poin"@en ;
+  rdfs:subPropertyOf seas:contains;
+  rdfs:domain seas:PointOfControl;
+  rdfs:range seas:PointOfControl;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology .  
+ 
+#Building structure core concepts  
+#Building structure, seas does not define separate parameters quantitites such as coordinates or volumes
+#Those can be defined as an an seas:Evaluation 
+seas:SiteOfBuilding a owl:Class ;
+  rdfs:label "SiteOfBuilding"@en ;
+  rdfs:comment "Building site is a a locale containing one or more separate buildings."@en ;
+  rdfs:subClassOf seas:Site,seas:BuildingSpatialStructure;
+  rdf:seeAlso ifc:Site;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.   
+
+seas:ZoneOfBuilding a owl:Class ;
+  rdfs:label "ZoneOfBuilding"@en ;
+  rdfs:comment "An area of administration, control, monitoring or measurement inside a building."@en ;
+  rdfs:subClassOf seas:Zone;
+    rdfs:subClassOf [
+      rdf:type owl:Restriction ;
+      owl:allValuesFrom [
+          rdf:type owl:Class ;
+          owl:unionOf (
+              seas:BuildingSpace 
+			  seas:BuildingSurface 
+			  seas:BuildingSystem 
+			  seas:BuildingItem 
+            ) ;
+        ] ;
+      owl:onProperty seas:contains ;
+    ] ;
+  vs:term_status "testing" ;
+  rdf:seeAlso fiemser:BuildingZone, fiemser:BuildingPartition;
+  rdfs:isDefinedBy seas:BuildingOntology.   
+
+seas:Construction a owl:Class ;
+  rdfs:label "Construction"@en ;
+  rdfs:comment "Constructions are structures connected with the ground which are made of construction materials and components and/or for which construction work is carried out."@en ;
+  rdfs:subClassOf seas:PhysicalEntity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.  
+
+seas:CivilEngineeringWork a owl:Class ;
+  rdfs:label "CivilEngnineeringWork"@en ;
+  rdfs:comment "Civil engineering works are all constructions not classified under buildings : railways, roads, bridges, highways, airport runways, dams etc."@en ;
+  rdfs:subClassOf seas:Construction;
+  rdf:seeAlso ifc:Building, fiemser:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.  
+  
+seas:Building a owl:Class ;
+  rdfs:label "Building"@en ;
+  rdfs:comment "Buildings are roofed constructions which can be used separately, have been built for permanent purposes, can be entered by persons and are suitable or intended for protecting persons, animals or objects."@en ;
+  rdfs:subClassOf seas:BuildingSpatialStructure, seas:Construction;
+  rdf:seeAlso ifc:Building, fiemser:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.  
+  
+seas:BuildingStorey a owl:Class ;
+  rdfs:label "BuildingStorey"@en ;
+  rdfs:comment "The storey represents a (nearly) horizontal aggregation of spaces that are vertically bound"@en;
+  rdfs:subClassOf seas:BuildingSpatialStructure;
+  vs:term_status "testing" ;
+  rdf:seeAlso ifc:BuildingStorey;  
+  rdfs:isDefinedBy seas:BuildingOntology.    
+  
+seas:BuildingRelated a owl:Class ; #From saref
+  rdfs:label "BuildingRelated"@en ;
+  rdfs:comment "Is a category that includes devices and systems as described by building related data models, such as FIEMSER "@en ;
+  rdfs:subClassOf seas:DeviceCategory;
+  rdfs:seeAlso saref:BuildingRelated;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.      
+  
+seas:BuildingSpatialStructure a owl:Class ;
+  rdfs:label "BuildingSpatialStructure"@en ;
+  rdfs:comment "A man made structure with spatial properties"@en ;
+  rdfs:subClassOf seas:BuildingSpace; 
+  vs:term_status "testing" ;
+  rdf:seeAlso ifc:IfcSpatialStructureElementType;
+  rdfs:isDefinedBy seas:BuildingOntology.  
+
+seas:BuildingSpace a owl:Class ;
+  rdfs:label "BuildingSpace"@en ;
+  rdfs:comment "A Space is a 3D volume bounded by surfaces. According to the FIEMSER definition, a building space in SAREF defines the physical spaces of the building. A building space contains building items such as devices. "@en ;
+  rdfs:subClassOf seas:PhysicalEntity; 
+  vs:term_status "testing" ;
+  rdf:seeAlso gbxml:BuildingSpace;    
+  rdfs:isDefinedBy seas:BuildingOntology.  
+
+seas:isAdjacentToSpace a owl:ObjectProperty;
+  rdfs:label "isAdjacentToSpace"@en ;
+  rdfs:comment "Surface is adjacent to a building space (or room)."@en ;
+  rdfs:domain seas:BuildingSurface;
+  rdfs:range seas:BuildingSpace;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology . 
+  
+seas:BuildingSurface a owl:Class ;
+  rdfs:label "BuildingSurface"@en ;
+  rdfs:comment "Surfaces such as surface of a wall element that encloses a space. In GbXML a surface can consist of several surfaces."@en ;
+  rdfs:subClassOf seas:PhysicalEntity;
+  vs:term_status "testing" ;
+  rdfs:seeAlso gbxml:Surface;
+  rdfs:isDefinedBy seas:BuildingOntology.  
+
+seas:hasOpening a owl:ObjectProperty;
+  rdfs:comment "hasOpening"@en ;
+  rdfs:subPropertyOf seas:isPartOf;
+  rdfs:domain seas:BuildingSurface;
+  rdfs:range seas:SurfaceOpening;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology .   
+  
+seas:SurfaceOpening a owl:Class ;
+  rdfs:label "SurfaceOpening"@en ;
+  rdfs:comment "A opening in a surface such as window or door"@en ;
+  rdfs:subClassOf seas:PhysicalEntity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.    
+  
+seas:BuildingItem a owl:Class ; 
+  rdfs:label "BuildingItem"@en ;
+  rdfs:comment "A generalization of all the objects contained in building spaces that can have an unique location"@en ;
+  owl:unionOf(seas:Device seas:Resident seas:Furnishing);
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.
+  
+seas:BuildingSystem a owl:Class ;
+  rdfs:label "BuildingSystem"@en ;
+  rdfs:comment "Any system not directly identifiable as a single building item inside building. It can contains several BuildingItems"@en ;
+  rdfs:subClassOf seas:System;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.      
+  
+#A few more specific terms mainly to help the user  
+#GbXML defines a more specific types (such as interior wall) for these
+
+
+seas:BuildingPartition a owl:Class ;
+  rdfs:label "BuildingPartition"@en ;
+  rdfs:comment "A collection of secific (restriction to be added) rooms such as apartement or wing."@en ;
+  rdfs:subClassOf seas:ZoneOfBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.   
+
+seas:Room a owl:Class ;
+  rdfs:label "Room"@en ;
+  rdfs:comment "A room in a building space enclosed by surfaces, this could also be modelled as role of space, not subclass of the space itself."@en ;
+  rdfs:subClassOf seas:BuildingSpace;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.   
+  
+seas:Wall a owl:Class ;
+  rdfs:label "Wall"@en ;
+  rdfs:comment "A Wall is (tilted more than 60 percent) vertical surface could be divided to interior, exterior and underground wall"@en ;
+  rdfs:subClassOf seas:BuildingSurface;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.    
+  
+seas:Floor a owl:Class ;
+  rdfs:label "Floor"@en ;
+  rdfs:comment "A floor is a upwards tilted horzontal surface, could be divided to interior, exposed (outside) or raised flooor."@en ;
+  rdfs:subClassOf seas:BuildingSurface;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.    
+
+seas:Ceiling a owl:Class ;
+  rdfs:label "Ceiling"@en ;
+  rdfs:comment "Ceiling is a downwards tilted horizontal surface"@en ;
+  rdfs:subClassOf seas:BuildingSurface;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.    
+  
+seas:Roof a owl:Class ;
+  rdfs:label "Roof"@en ;
+  rdfs:comment "A roof upwards tilted surface tilted up part of upper envelope of building."@en ;
+  rdfs:subClassOf seas:BuildingSurface;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.      
+      
+seas:Door a owl:Class ;
+  rdfs:label "Door"@en ;
+  rdfs:comment "A door opening in a wall use for access between spaces."@en ;
+  rdfs:subClassOf seas:SurfaceOpening;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.     
+
+seas:Window a owl:Class ;
+  rdfs:label "Window"@en ;
+  rdfs:comment "A window is a typically opaque opening not used as access between spaces."@en ;
+  rdfs:subClassOf seas:SurfaceOpening;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.     
+
+#Different types entities of interest inside building that are not part of it 
+    
+seas:Furnishing a owl:Class ; 
+  rdfs:label "Furnishing"@en ;
+  rdfs:comment "Other things such as furniture, decorations and other possibly movable articles that are typically not devices"@en ;
+  rdfs:subClassOf seas:PhysicalEntity;
+  vs:term_status "testing" ;
+  rdf:seeAlso ifc:IfcFurnishingElement;
+  rdfs:isDefinedBy seas:BuildingOntology.     
+
+seas:Resident a owl:Class ;
+  rdfs:label "Resident"@en ;
+  rdfs:comment "A resident of a building (might include also pets?)"@en ;
+  rdfs:subClassOf seas:Role;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology. 
+
+#To be moved to external vocabulary  
+seas:hasComfortProfile a owl:ObjectProperty ;
+  rdfs:label "hasComfortProfile"@en ;
+  rdfs:comment "Shortcut for linking comfort profile settings for typically the resident but is open to other roles such as visitors or building owner."@en ;
+  rdfs:domain seas:Role;
+  rdfs:range seas:ComfortProfile;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.  
+  
+seas:ComfortProfile a owl:Class ;
+  rdfs:label "ComfortProfile"@en ;
+  rdfs:comment "Comfort profile settings for the resident is defined as evaluations (a seas:profile is an evaluation). The comfortprofile is related to a room or other space with its featureOfInterest. The generatedBy links to activity that produced it."@en ;
+  rdfs:subClassOf seas:Profile;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingOntology.   
+  

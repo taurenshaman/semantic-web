@@ -1,0 +1,265 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+
+#Core roles and activities (for devices and systems), this is related to actor module and could specialize it but now here defined as new vocabulary
+seas:BuildingLoadsOntology a owl:Ontology , voaf:Ontology ;
+  dc:title "seas-BuildingLoadsOntology ontology"@en ;
+  dc:description "The Seas Building specific energy load categories for the ITEA SEAS (Smart Energy Aware Systems) project."@en ;
+  dc:issued "2016-02-22"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/BuildingLoadsOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+
+#Categorization of various energy loads such as systems or devices inside a building, these can be either heat or electricity loads
+#It might be better to directly type the individuals either heat or electricity loads than try to categorize at class level as
+#electric or water radiators etc.
+ 
+#Basic concepts 
+
+ seas:BuildingEnergyLoad a owl:Class ;
+  rdfs:label "BuildingEnergyLoad"@en ;
+  rdfs:comment "Energy load in a building"@en ;
+  rdfs:subClassOf seas:BuildingSystem, seas:EnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.   
+ 
+ 
+ seas:Lighting a owl:Class ;
+  rdfs:label "Lighting"@en ;
+  rdfs:label "Valaistus"@fi;
+  rdfs:comment "Wikipedia: Lighting or illumination is the deliberate use of light to achieve a practical or aesthetic effect."@en ;
+  rdfs:subClassOf seas:BuildingEnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.   
+ 
+ seas:HVAC a owl:Class ;
+  rdfs:label "HVAC"@en ;
+  rdfs:label "LVI"@fi;
+  rdfs:comment "Wikipeida: HVAC (heating, ventilating, and air conditioning; also heating, ventilation, and air conditioning) is the technology of indoor and vehicular environmental comfort. Its goal is to provide thermal comfort and acceptable indoor air quality."@en ;
+  rdfs:subClassOf seas:BuildingEnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.  
+
+ seas:Ventilation a owl:Class ;
+  rdfs:label "Ventilation"@en ;
+  rdfs:label "Ilmanvaihto"@fi;
+  rdfs:comment "ventilation"@en ;
+  rdfs:subClassOf seas:HVAC, seas:BuildingEnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.   
+  
+ seas:Heating a owl:Class ;
+  rdfs:label "Heating"@en ;
+  rdfs:label "Lämmitys"@fi;
+  rdfs:comment "Heating"@en ;
+  rdfs:subClassOf seas:HVAC, seas:BuildingEnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.     
+  
+ seas:AirConditioning a owl:Class ;
+  rdfs:label "AirConditioning"@en ;
+  rdfs:label "Ilmastointi"@fi;
+  rdfs:comment "Air conditioning"@en ;
+  rdfs:subClassOf seas:HVAC, seas:BuildingEnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.      
+
+ seas:Cooling a owl:Class ;
+  rdfs:label "Cooling"@en ;
+  rdfs:label "Jäähdytys"@fi;
+  rdfs:comment "Cooling"@en ;
+  rdfs:subClassOf seas:AirConditioning;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.   
+  
+ seas:CentralHeating a owl:Class ;
+  rdfs:label "CentralHeating"@en ;
+  rdfs:comment "The class of SEAS central (for several building spaces) heating systems part of HVAC. The energy source can be either district heating, electricity, heat pumps or direct burning of fuels such as wood or oil."@en ;
+  rdfs:subClassOf seas:Heating;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.  
+  
+seas:CentralCooling a owl:Class ;
+  rdfs:label "CentralCooling"@en ;
+  rdfs:comment "The class of SEAS central (for several building spaces) cooling systems part of HVAC. The energy source is typically either electricity, but heat pumps or lower outside temperature can also be used."@en ;
+  rdfs:subClassOf seas:Cooling;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.   
+  
+seas:AirHeating a owl:Class ;
+  rdfs:label "AirHeating"@en ;
+  rdfs:comment "A (forced)-air central heating system is one which uses air as its heat transfer medium into space. "@en ;
+  rdfs:subClassOf seas:CentralHeating;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.    
+  
+seas:UnderFloorHeating a owl:Class ;
+  rdfs:label "UnderFloorHeating"@en ;
+  rdfs:comment "A type of central heating system using the under floor heaters instead of separate radiators as the means of providing the heat energy to space. "@en ;
+  rdfs:subClassOf seas:CentralHeating;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.    
+ 
+ seas:SpaceHeater a owl:Class ; 
+  rdfs:label "SpaceHeater"@en ;
+  rdfs:comment "An  applicance provideing heat to a building space by radiation or convection. It is typically part of central heating system."@en ;
+  rdfs:subClassOf seas:Appliance, seas:Heating;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.  
+  
+ seas:SpaceCooler a owl:Class ; 
+  rdfs:label "SpaceCooler"@en ;
+  rdfs:comment "An applicance providing cooling to a building space. It is typically part of central cooling system."@en ;
+  rdfs:subClassOf seas:Appliance, seas:Cooling;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.  
+
+ seas:WaterBoiler a owl:Class ; 
+  rdfs:label "WaterBoiler"@en ;
+  rdfs:comment "An storage tank for proiding heated water for use or central heating, often uses electric energy as heat source."@en ;
+  rdfs:subClassOf seas:EnergyStorage, seas:HVAC;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.  
+  
+ seas:SolarPanel a owl:Class ; 
+  rdfs:label "SolarPanel"@en ;
+  rdfs:comment "A panel outside house converting solar radiation energy to other types of heat/thermal or electric energy."@en ;
+  rdfs:subClassOf seas:EnergyGenerator;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.  
+
+ seas:HeatEnergyGenerator a owl:Class ; 
+  rdfs:label "HeatEnergyGenerator"@en ;
+  rdfs:comment "A generator turning other type of energy into heat."@en ;
+  rdfs:subClassOf seas:EnergyGenerator ;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.    
+    
+ seas:SolarThermalCollector a owl:Class ; 
+  rdfs:label "SolarThermalCollector"@en ;
+  rdfs:comment "A panel outside house converting solar radiation energy into heated water."@en ;
+  rdfs:subClassOf seas:SolarPanel, seas:HeatEnergyGenerator;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.    
+
+ seas:ElectricEnergyGenerator a owl:Class ; 
+  rdfs:label "ElectricEnergyGenerator"@en ;
+  rdfs:comment "A generator turning other type of energy into electricity."@en ;
+  rdfs:subClassOf seas:EnergyGenerator ;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.     
+  
+ seas:PhotovoltaicPanel a owl:Class ; 
+  rdfs:label "PhotoVoltaicPanel"@en ;
+  rdfs:label "PV"@en;
+  rdfs:comment "A panel outside house converting solar radiation to electricity using PV."@en ;
+  rdfs:subClassOf seas:SolarPanel,seas:ElectricEnergyGenerator;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.     
+  
+ seas:ElectricRadiator a owl:Class ; 
+  rdfs:label "ElectricRadiator"@en ;
+  rdfs:comment "An electric radiator"@en ;
+  rdfs:subClassOf seas:SpaceHeater,seas:EnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.  
+  
+seas:HotWaterRadiator a owl:Class ; 
+  rdfs:label "HotWaterRadiator"@en ;
+  rdfs:comment "A hot water / liquid /steam radiator."@en ;
+  rdfs:subClassOf seas:SpaceHeater, seas:EnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.    
+
+seas:UnderFloorHeater a owl:Class ; 
+  rdfs:label "UnderFloorHeater"@en ;
+  rdfs:comment "Also known as radiant heat, underfloor heating uses a network of pipes, tubing or heating cables, buried in or attached beneath a floor to allow heat to rise into the room."@en ;
+  rdfs:subClassOf seas:SpaceHeater, seas:EnergyLoad;
+  vs:term_status "testing" ;  
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.      
+  
+seas:SaunaStove a owl:Class ;
+  rdfs:label "SaunaStove"@en ;
+  rdfs:label "Kiuas"@fi ;
+  rdfs:comment "A heat and steam source in a sauna not usually part of central heating. Heat can be generated either electric or burning wood directly."@en ;
+  rdfs:subClassOf seas:SpaceHeater;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.      
+
+seas:HeatPump a owl:Class ;
+  rdfs:label "HeatPump"@en ;
+  rdfs:comment "A heat pump is a system which transfers heat from outside to inside a building, using vapor compression refrigration consuming also electric energy. "@en ;
+  rdfs:subClassOf seas:SpaceHeater, seas:SpaceCooler, seas:EnergyLoad, seas:EnergyGenerator;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.      
+  
+seas:AirSourceHeatPump a owl:Class ;
+  rdfs:label "AirSourceHeatPump"@en ;
+  rdfs:comment "A heat pump using heat from outside air."@en ;
+  rdfs:subClassOf seas:HeatPump;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.    
+
+seas:GeothermalHeatPump a owl:Class ;
+  rdfs:label "GeothermalHeatPump"@en ;
+  rdfs:comment "A heat pump using geothermal heat from the ground."@en ;
+  rdfs:subClassOf seas:HeatPump;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.       
+
+#States (Activities) that have effect on energy
+
+seas:PowerOnState a owl:Class ;
+  rdfs:label "PowerOnState"@en ;
+  rdfs:comment "State of being power on"@en ;
+  rdfs:subClassOf seas:BooleanState;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingLoadsOntology. 
+  
+seas:HeatingState a owl:Class ;
+  rdfs:label "HeatingState"@en ;
+  rdfs:comment "State of heating"@en ;
+  rdfs:subClassOf seas:BooleanState;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingLoadsOntology. 
+    
+seas:CoolingState a owl:Class ;
+  rdfs:label "CoolingState"@en ;
+  rdfs:comment "State of cooling"@en ;
+  rdfs:subClassOf seas:BooleanState;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingLoadsOntology.   
+  

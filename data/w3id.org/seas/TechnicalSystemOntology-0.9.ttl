@@ -1,0 +1,223 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix saref: <https://w3id.org/saref#>. #SAREF smart building appliances ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+seas:TechnicalSystemOntology rdf:type voaf:Ontology , owl:Ontology ;
+  dc:title "seas-TechnicalSystemOntology ontology"@en ;
+  dc:description "The Seas Technical System Ontology for the ITEA SEAS (Smart Energy Aware Systems) project. This vocabulary presents some abstract system level concepts that help to define common patterns to ease creating similar queries across more specific ontologies"@en ;
+  dc:issued "2016-05-10"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/TechnicalSystemOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+  
+  
+#Systems and subsystems in general in system vocabulary
+seas:System a owl:Class ;
+  rdfs:label "System"@en ;
+  rdfs:comment "System is an  concrete or abstract set of things composing a complex whole."@en ;
+  rdfs:subClassOf seas:Entity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.  
+
+#Technical system is a specific class of systems 
+seas:TechnicalSystem a owl:Class ;
+  rdfs:label "TechnicalSystem"@en ;
+  rdfs:comment "Technical system is an  concrete or abstract set of things working together as parts of a technical mechanism or an interconnecting network."@en ;
+  rdfs:subClassOf seas:System;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.  
+  
+seas:Device a owl:Class ;
+  rdfs:label "Device"@en ;
+  rdfs:comment "Device is a physical/concrete electronic or mechanic system created for to provide one or more abstract of concrete functions"@en ;
+  rdfs:subClassOf seas:TechnicalSystem; 
+  rdfs:seeAlso saref:Device;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.    
+  
+seas:DeviceCategory a owl:Class ; #From saref
+  rdfs:label "DeviceCategory"@en ;
+  rdfs:comment "A Device Category provides a way to classify devices according to a certain point of view, for example, the point of view of the user of the device vs. the device's manufacturer, or the domain in which the device is used (e.g., smart appliances vs. building domain vs. smart grid domain), etc."@en ;
+  rdfs:subClassOf seas:Role;
+  rdfs:seeAlso saref:DeviceCategory;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.     
+  
+#General device categorizations more are defined in specific knowledge modules such as seas-building
+#This is similar to saref but instead of function or energy profile seas-specific concepts activity and energy profile 
+#described as seas: evaluation are used
+seas:FunctionRelated a owl:Class ; 
+  rdfs:label "FunctionRelated"@en ;
+  rdfs:comment "It is a category that considers role of devices, sensors etc. in terms of actions and resources. The category should be able to be reasoned from the activities the device has"@en ;
+  rdfs:subClassOf seas:DeviceCategory;
+  rdfs:seeAlso saref:FunctionRelated;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.     
+  
+seas:EnergyRelated a owl:Class ; #From saref
+  rdfs:label "EnergyRelated"@en ;
+  rdfs:comment "It is a category that considers devices based on energy consumption information and profiles to optimize energy efficiency."@en ;
+  rdfs:subClassOf seas:DeviceCategory;
+  rdfs:seeAlso saref:EnergyRelated;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.  
+
+ seas:Appliance a owl:Class ; 
+  rdfs:label "Appliance"@en ;
+  rdfs:comment "An appliance is a category of electrical/mechanical machines at home which uses energy to accomplish some household activities, such as cooking or cleaning. "@en ;
+  rdfs:subClassOf seas:FunctionRelated,seas:Device;
+  rdfs:seeAlso saref:Applicance;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.    
+
+#The actions of actuating activity are modelled with seas:Evaluation as input resource that can be a single value or complex timeseries  
+seas:ActuatingActivity a owl:Class ; 
+  rdfs:label "ActuatingActivity"@en ;
+  rdfs:comment "Actuating action allows to do level adjustments of an actuator in a certain range (e.g., 0-100), such as dimming a light or set the speed of an electric motor."@en ;
+  rdfs:subClassOf seas:Activity;
+  rdfs:seeAlso saref:ActuatingFunction;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.     
+    
+#Combines boolean actuating activities such as on/off, open/close or start/stop. Input resource of evaluation should be have boolean quantity values.
+#What this means on/off, open/close etc. is something could be be defined by the specific boolean quantity 
+#For now we just will rely on the naming of actvities sucha as OnOffActivity to be compatible with saref
+seas:BooleanActuatingActivity a owl:Class ;  
+  rdfs:label "BooleanActuatingActivity"@en ;
+  rdfs:comment "Activity that defines something as boolean value, i.e. it is active when the evaluation value is false"@en ;
+  rdfs:subClassOf seas:ActuatingActivity;
+  rdfs:seeAlso saref:OnOffFunction;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.    
+  
+seas:OnOffActivity a owl:Class ;  
+  rdfs:label "OnOffActivity"@en ;
+  rdfs:comment "Activity that defines something to be actuated on or off"@en ;
+  rdfs:subClassOf seas:BooleanActuatingActivity;
+  rdfs:seeAlso saref:OnOffFunction;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.    
+  
+seas:OpenCloseActivity a owl:Class ;  
+  rdfs:label "OpenCloseActivity"@en ;
+  rdfs:comment "Activity that defines something to be actuated open or close"@en ;
+  rdfs:subClassOf seas:BooleanActuatingActivity;
+  rdfs:seeAlso saref:OpenCloseFunction;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.      
+
+#The boolean control commands are described by the input or output resource i.e. evaluation with boolean values
+#As these are boolean values the result of two controls is their truth value at the time
+
+seas:State a owl:Class ; 
+  rdfs:label "BooleanState"@en ;
+  rdfs:comment "Can be true of false, is used to model commands like on/off."@en ;
+  rdfs:subClassOf seas:Quantity; #States can be used as quantity in evaluations
+  rdfs:seeAlso saref:State;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.     
+  
+seas:BooleanState a seas:State ; 
+  rdfs:label "BooleanState"@en ;
+  rdfs:comment "Can be true of false, is used to model commands like on/off."@en ;
+  rdfs:seeAlso saref:OnOffState,saref:OpenCloseState;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.     
+
+seas:EnumeratedState a seas:State ; 
+  rdfs:label "EnumeratedState"@en ;
+  rdfs:comment "Can have multiple enumerated values."@en ;
+  rdfs:seeAlso saref:MultiLevelState;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.       
+       
+#Networks and services, this is a really abstract way to represent this using seas:Evaluation to structure the data
+#For consistency and simplicity, all commands and input/output data is transferred as seas:evaluation.
+#This leaves the question how to model input parameterisation (select capabilities)
+#This has to be aligned with seas:Cosaa service descriptions that describe technical service interface.
+#Restricted this to network nodes so that it would not be in conflict with the proposed system vocabulary 
+
+seas:NetworkNode a owl:Class ;
+  rdfs:label "NetworkNode"@en ;
+  rdfs:comment "Node is the abstract role of a device or system in some topology. "@en ;
+  rdfs:subClassOf seas:Role;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology .  
+  
+seas:offersService a owl:ObjectProperty;
+  rdfs:comment "offersService"@en ;
+  rdfs:Domain seas:NetworkNode;
+  rdfs:Range seas:Service;  
+  rdfs:seeAlso <http://purl.org/goodrelations/v1#offers>;    
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology .   
+  
+seas:Service a owl:Class ; #Individuals of this are service descriptoions not service instances!
+  rdfs:label "Service"@en ;
+  rdfs:comment "Service is abstract entity, typically an activity described as capabilities and offered by a node"@en ;
+  rdfs:subClassOf seas:AbstractEntity;
+  rdfs:seeAlso saref:Service, <http://purl.org/goodrelations/v1#Offering>;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology.      
+  
+seas:hasCapability a owl:ObjectProperty;
+  rdfs:comment "hasCapability"@en ;
+  rdfs:subPropertyOf seas:contains;
+  rdfs:Domain seas:Service;
+  rdfs:Range seas:Activity; #In future we could extend this with other capabilities than Activity 
+  rdfs:seeAlso <http://purl.org/goodrelations/v1#hasBusinessFunction>;    
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology .   
+
+#Input and output data resources for activities
+seas:hasDataResource a owl:ObjectProperty;
+  rdfs:comment "A data resource relatd to activity"@en ;
+  rdfs:Domain seas:Activity;
+  rdfs:Range seas:Evaluation;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology .  
+  
+seas:hasOutput a owl:ObjectProperty;
+  rdfs:comment "A resource generated by activity (inverse of generatedBy in seas-eval)"@en ;
+  rdfs:subPropertyOf seas:hasDataResource;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology .  
+  
+seas:hasInput a owl:ObjectProperty;
+  rdfs:comment "A resource used as input by acitivity inverse of handledBy (to be added to seas-eval)"@en ;
+  rdfs:subPropertyOf seas:hasDataResource;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:TechnicalSystemOntology .    
+  

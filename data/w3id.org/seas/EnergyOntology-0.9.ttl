@@ -1,0 +1,125 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix saref: <http://ontology.tno.nl/saref#>. #SAREF smart building appliances ontology
+@prefix qudt: <http://data.qudt.org/qudt/owl/1.0.0/qudt.owl#> . #QUDT quantities
+@prefix qudt-unit: <http://data.qudt.org/qudt/owl/1.0.0/unit.owl#> . #QUDT units
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+seas:EnergyOntology rdf:type voaf:Ontology , owl:Ontology ;
+  dc:title "seas-EnergyOntology ontology"@en ;
+  dc:description "The Seas Energy Ontology for the ITEA SEAS (Smart Energy Aware Systems) project."@en ;
+  dc:issued "2015-10-10"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/EnergyOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+
+ 
+#SEnergy and Power, subcategories to be defined in other vocabularies
+#Just some of the most common units are defined heera and this should be combined with mdq
+seas:Energy a owl:Class;
+  rdfs:label "Energy"@en ;
+  rdfs:seeAlso saref:Energy ;
+  rdfs:comment "Energy is still also defined as qudt quantity" ;
+  rdfs:isDefinedBy seas:EnergyOntology ;   
+  rdfs:subClassOf seas:Quantity,qudt:EnergyAndWork, seas:Commodity.
+
+seas:Power a owl:Class;
+  rdfs:label "Power"@en ;
+  rdfs:seeAlso saref:Power ;
+  rdfs:comment "Power is still also defined qudt quantity" ;
+  rdfs:isDefinedBy seas:EnergyOntology ;   
+  rdfs:subClassOf seas:Quantity, qudt:Power, seas:Commodity.
+  
+seas:EnergyUnit a owl:Class;
+  rdfs:label "EnergyUnit"@en ;
+  rdfs:comment "Energy unit." ;
+  rdfs:isDefinedBy seas:EnergyOntology ;   
+  rdfs:subClassOf seas:Unit,qudt:EnergyAndWorkUnit.    
+
+seas:PowerUnit a owl:Class;
+  rdfs:label "PowerUnit"@en ;
+  rdfs:comment "Power unit." ;
+  rdfs:isDefinedBy seas:EnergyOntology ;   
+  rdfs:subClassOf seas:Unit,qudt:PowerUnit.    
+  
+seas:KiloWattHour a seas:EnergyUnit;
+  rdfs:label "KiloWattHour"@en ;
+  rdfs:sameAs qudt-unit:KilowattHour;
+  rdfs:comment "Kilowatt hour";
+  rdfs:isDefinedBy seas:EnergyOntology ;   
+  rdfs:subClassOf seas:EnergyUnit.  
+  
+seas:KiloWatt a seas:PowerUnit;
+  rdfs:label "KiloWatt"@en ;
+  rdfs:sameAs qudt-unit:Kilowatt;
+  rdfs:comment "Kilowatt";
+  rdfs:isDefinedBy seas:EnergyOntology ;   
+  rdfs:subClassOf seas:PowerUnit.    
+  
+seas:Watt a seas:PowerUnit;
+  rdfs:label "Watt"@en ;
+  rdfs:sameAs qudt-unit:Watt;
+  rdfs:comment "Watt";
+  rdfs:isDefinedBy seas:EnergyOntology ;   
+  rdfs:subClassOf seas:PowerUnit.    
+  
+#As energy resource in general can sometimes be a load, storage or generator  
+seas:EnergyResource a owl:Class ;
+  rdfs:label "EnergyResource"@en ;
+  rdfs:comment "An energy related physical system"@en ;
+  rdfs:subClassOf seas:System;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:EnergyOntology .  
+  
+seas:EnergyLoad a owl:Class ;
+  rdfs:label "EnergyLoad"@en ;
+  rdfs:comment "An energy load"@en ;
+  rdfs:subClassOf seas:EnergyResource;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:EnergyOntology .    
+  
+seas:EnergyGenerator a owl:Class ;
+  rdfs:label "EnergyGenerator"@en ;
+  rdfs:comment "An energy generator"@en ;
+  rdfs:subClassOf seas:EnergyResource;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:EnergyOntology .    
+
+seas:EnergyStorage a owl:Class ;
+  rdfs:label "EnergyStorage"@en ;
+  rdfs:comment "An energy storage"@en ;
+  rdfs:subClassOf seas:EnergyResource;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:EnergyOntology .    
+  

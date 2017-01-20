@@ -1,0 +1,121 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+
+#Core roles and activities (for devices and systems), this is related to actor module and could specialize it but now here defined as new vocabulary
+seas:ActorOntology a owl:Ontology , voaf:Ontology ;
+  dc:title "seas-ActorOntology ontology"@en ;
+  dc:description "The Seas Actor Ontology for the ITEA SEAS (Smart Energy Aware Systems) project."@en ;
+  dc:issued "2016-01-26"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/ActorOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+  
+seas:Activity a owl:Class ; 
+  rdfs:label "Activity"@en ;
+  rdfs:comment "Activity is a continuous task or process that an entity can be performing"@en ;
+  rdfs:subClassOf seas:AbstractEntity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology.      
+
+seas:ForecastingActivity a owl:Class ; 
+  rdfs:label "ForecastingActivity"@en ;
+  rdfs:comment "Activity that forecasts something "@en ;
+  rdfs:subClassOf seas:Activity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology.       
+
+seas:PlanningActivity a owl:Class ; 
+  rdfs:label "PlanningActivity"@en ;
+  rdfs:comment "Activity that creates plans "@en ;
+  rdfs:subClassOf seas:Activity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology.    
+  
+seas:OptimizationActivity a owl:Class ; 
+  rdfs:label "OptimizationActivity"@en ;
+  rdfs:comment "Activity that opimizes something "@en ;
+  rdfs:subClassOf seas:Activity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology.       
+
+seas:ControlActivity a owl:Class ; 
+  rdfs:label "ControlActivity"@en ;
+  rdfs:comment "Activity that in general controls something "@en ;
+  rdfs:subClassOf seas:Activity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology.      
+
+seas:AssessmentActivity a owl:Class ; 
+  rdfs:label "AssessmentActivity"@en ;
+  rdfs:comment "Activity that assesses something "@en ;
+  rdfs:subClassOf seas:Activity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology.     
+ 
+#Profile and role are similar, Role is related to set of activitiesa Profile set of evaluations 
+#Rather than associating activities/evaluations to individual or its category diretly this allow to associate those in
+#Context of some system or domain (an individual can have several roles/profiles)
+#For example we could define that only certain roles can have a specific activity.
+seas:Role a owl:Class ;
+  rdfs:label "Role"@en ;
+  rdfs:comment "Abstract role of a Endurant in some (system/domain) context"@en ;
+  rdfs:subClassOf seas:AbstractEntity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology .  
+  
+ seas:hasRole a owl:ObjectProperty;
+  rdfs:label "hasRole"@en ;
+  rdfs:comment "Entity has an abstract role"@en ;
+  vs:term_status "testing" ;
+  rdfs:subPropertyOf seas:contains;
+  rdfs:range seas:Role;
+  rdfs:isDefinedBy seas:ActorOntology .  
+  
+seas:Profile a owl:Class ;
+  rdfs:label "Profile"@en ;
+  rdfs:comment "Characteristics of a system in several measurable aspects with a specific temporalContext"@en ;
+  rdfs:seeAlso seas:Profile;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:ActorOntology .  
+
+ seas:hasProfile a owl:ObjectProperty;
+  rdfs:label "hasProfile"@en ;
+  rdfs:comment "hasProfile"@en ;
+  vs:term_status "testing" ;
+  rdfs:subPropertyOf seas:contains;
+  rdfs:range seas:Profile;
+  rdfs:isDefinedBy seas:ActorOntology .  
+

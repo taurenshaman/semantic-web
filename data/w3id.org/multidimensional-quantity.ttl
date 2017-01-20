@@ -1,0 +1,907 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix prov: <http://www.w3.org/ns/prov#>.
+
+@prefix lindt: <https://w3id.org/lindt#>.
+
+@prefix mdq: <https://w3id.org/multidimensional-quantity/resource/>.
+@base <https://w3id.org/multidimensional-quantity/resource/> .
+
+# ontology 
+
+mdq:Ontology a owl:Ontology , voaf:Vocabulary ;
+  dc:title "The Multidimensional Quantity Ontology"@en ;
+  dc:description """The Multidimensional Quantity ontology."""@en ;
+  dc:creator <http://maxime-lefrancois.info/me#> ;
+  dc:issued "2015-09-10"^^xsd:date ;
+  dc:modified "2016-03-12"^^xsd:date ;
+  vann:preferredNamespacePrefix "mdq" ;
+  vann:preferredNamespaceUri <https://w3id.org/multidimensional-quantity/resource/> ;
+  owl:versionInfo "v1.0" .
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# Dimension Vocabulary
+
+
+mdq:DimensionVocabulary a voaf:Vocabulary ;
+  dc:title "The Dimension Vocabulary"@en ;
+  dc:description "A Vocabulary to describe dimensions and units of measure."@en ;
+  dc:creator <http://maxime-lefrancois.info/me#> ;
+  dc:issued "2015-09-10"^^xsd:date .
+
+mdq:Dimension a owl:Class ; # mdq:Length a mdq:Dimension
+  rdfs:label "Dimension" ;
+  rdfs:comment "The class of dimensions. Examples of dimensions include: temperature, time, electric current, power, energy, integer."@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:GroupDimension a owl:Class ; 
+  rdfs:label "GroupDimension" ;
+  rdfs:comment "The class of dimensions. Examples of dimensions include: temperature, time, electric current, power, energy, integer."@en ;
+  rdfs:subClassOf mdq:Dimension ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:TotallyOrderedGroupDimension a owl:Class ; # mdq:LengthDimension a mdq:Dimension
+  rdfs:label "Dimension" ;
+  rdfs:comment "The class of dimensions. Examples of dimensions include: temperature, time, electric current, power, energy, integer."@en ;
+  rdfs:subClassOf mdq:GroupDimension ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:additiveIdentityValue a owl:DatatypeProperty ; 
+  rdfs:label "additiveIdentityValue" ;
+  rdfs:comment "Links a dimension to its additive identity value, often an instance of a delta unit datatype."@en ;
+  rdfs:domain mdq:GroupDimension ;
+  rdfs:range rdfs:Literal ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:unit a owl:AnnotationProperty ;
+  rdfs:label "unit" ;
+  rdfs:comment "Links a dimension to a unit datatype that may be used to specify elements of this dimension."@en ;
+  rdfs:domain mdq:Dimension ;
+  rdfs:range rdfs:Datatype ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:deltaUnit a owl:AnnotationProperty ;
+  rdfs:label "deltaUnit" ;
+  rdfs:comment "Links a dimension to a unit datatype that may be used to specify delta. For instance xsd:duration is a delta unit on the time dimension."@en ;
+  rdfs:domain mdq:Dimension ;
+  rdfs:range rdfs:Datatype ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+
+mdq:primitiveOfProperty a owl:AnnotationProperty ;
+  rdfs:label "primitiveOfProperty" ;
+  rdfs:comment "Links a dimension to a property that links any dimension to the derivative dimension with respect to this first dimension."@en ;
+  rdfs:domain mdq:Dimension ;
+  rdfs:range rdf:Property ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:primitiveProperty a owl:AnnotationProperty ;
+  rdfs:label "primitiveProperty" ;
+  rdfs:comment "Links a dimension to a property that links any dimension to the primitive dimension with respect to this first dimension."@en ;
+  rdfs:domain mdq:Dimension ;
+  rdfs:range rdf:Property ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:derivativeOfProperty a owl:AnnotationProperty ;
+  rdfs:label "derivativeOfProperty" ;
+  rdfs:comment "Links a dimension to a property that links any dimension to the primitive dimension with respect to this first dimension."@en ;
+  rdfs:domain mdq:Dimension ;
+  rdfs:range rdf:Property ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:derivativeProperty a owl:AnnotationProperty ;
+  rdfs:label "derivativeProperty" ;
+  rdfs:comment "Links a dimension to a property that links any dimension to the derivative dimension with respect to this first dimension."@en ;
+  rdfs:domain mdq:Dimension ;
+  rdfs:range rdf:Property ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+
+mdq:distributionsClass a owl:AnnotationProperty ;
+  rdfs:label "distributionsClass" ;
+  rdfs:comment "Links a dimension to the class of distributions on this dimension."@en ;
+  rdfs:domain mdq:Dimension ;
+  rdfs:range rdf:Property ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# Dimensional Entity Vocabulary
+
+mdq:DistributionVocabulary a voaf:Vocabulary ;
+  dc:title "The Distribution Vocabulary"@en ;
+  dc:description "A Vocabulary to describe distributions on a dimension: points, intervals, probability distributions."@en ;
+  dc:creator <http://maxime-lefrancois.info/me#> ;
+  dc:issued "2015-09-10"^^xsd:date .
+
+# Distribution
+
+mdq:Distribution a owl:Class ; # mdq:LengthDistribution
+  rdfs:label "Distribution" ;
+  rdfs:comment "The class of distributions, which are defined on one and only one dimension. Any value on that dimension is contained in the Dimensional Distribution with a certain probability."@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:dimension a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "dimension"@en ;
+  rdfs:comment "Links a distribution to its one and only dimension."@en ;
+  rdfs:domain mdq:Distribution ;
+  rdfs:range mdq:Dimension ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:contains a owl:DatatypeProperty ;
+  rdfs:label "contains" ;
+  rdfs:comment "Links a distribution to a value it contains with probability 100 %."@en ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:excludes a owl:DatatypeProperty ;
+  rdfs:label "excludes" ;
+  rdfs:comment "Links a distribution to a value it contains with probability 0 %."@en ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:EmptyDistribution a owl:Class ; # mdq:LengthBooleanDistribution
+  rdfs:label "EmptyDistribution" ;
+  rdfs:comment "The class of empty distributions on a dimension. Every value of the dimension is excluded."@en ;
+  rdfs:subClassOf mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:FullDistribution a owl:Class ; # mdq:LengthFullDistribution
+  rdfs:label "FullDistribution" ;
+  rdfs:comment "The class of full distributions on a dimension. Every value of the dimension is contained."@en ;
+  rdfs:subClassOf mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:value a owl:DatatypeProperty ;
+  rdfs:label "value" ;
+  rdfs:comment "Links a distribution to the one and only value it contains."@en ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:subDistributionOf a owl:ObjectProperty  ;
+  rdfs:label "subDistributionOf" ;
+  rdfs:comment "Links a distribution to one of its super distributions. All the values included in the sub distribution are included in the super distribution."@en ;
+  rdfs:domain mdq:Distribution ;
+  rdfs:range mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:equivalentDistribution a owl:ObjectProperty ;
+  rdfs:label "equivalentDistribution" ;
+  rdfs:comment "Links a distribution to one of its equivalent distributions. They both contain exactly the same values."@en ;
+  rdfs:domain mdq:Distribution ;
+  rdfs:range mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:intersectionOfDistributions a owl:ObjectProperty ;
+  rdfs:label "intersectionOfDistributions" ;
+  rdfs:comment "Links a distribution to a list of distributions it is the intersection of."@en ;
+  rdfs:domain mdq:Distribution ;
+  rdfs:range rdf:List ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:unionOfDistributions a owl:ObjectProperty ;
+  rdfs:label "unionOfDistributions" ;
+  rdfs:comment "Links a distribution to a list of distributions it is the union of."@en ;
+  rdfs:domain mdq:Distribution ;
+  rdfs:range rdf:List ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+
+mdq:lowerBound a owl:DatatypeProperty ;
+  rdfs:label "lowerBound" ;
+  rdfs:comment "Links a distribution to a value such that all smaller values are excluded with probability 100 %." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:upperBound a owl:DatatypeProperty ;
+  rdfs:label "upperBound" ;
+  rdfs:comment "Links a distribution to a value such that all greater values are excluded with probability 100 %." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:minimum a owl:DatatypeProperty ;
+  rdfs:label "minimum" ;
+  rdfs:comment "Links a distribution to its greatest lower bound." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:maximum a owl:DatatypeProperty ;
+  rdfs:label "maximum" ;
+  rdfs:comment "Links a distribution to its least upper bound." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:range a owl:DatatypeProperty ;
+  rdfs:label "range" ;
+  rdfs:comment "The delta between the minimum to the maximum values."@en ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:Interval a owl:Class ; # mdq:LengthInterval
+  rdfs:label "Interval"@en ;
+  rdfs:comment "The class of intervals. An interval contains its maximum, its minimum, and all the points in between."@en ;
+  rdfs:subClassOf mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:minimumIncluded a owl:DatatypeProperty ;
+  rdfs:label "minimumIncluded" ;
+  rdfs:comment "Links a distribution to its greatest lower bound, that it contains." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:minimumExcludes a owl:DatatypeProperty ;
+  rdfs:label "minimumIncluded" ;
+  rdfs:comment "Links a distribution to its greatest lower bound, that it excludes." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:maximumIncluded a owl:DatatypeProperty ;
+  rdfs:label "maximumIncluded" ;
+  rdfs:comment "Links a distribution to its least upper bound, that it contains." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:maximumExcluded a owl:DatatypeProperty ;
+  rdfs:label "maximumExcluded" ;
+  rdfs:comment "Links a distribution to its least upper bound, that it excludes." ;
+  rdfs:domain mdq:Distribution ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# Facets
+
+mdq:Facet a owl:Class ; # mdq:LengthFacet
+  rdfs:label "Facet" ;
+  rdfs:comment "The class of facets, which are assigned a dimension."@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:facetDimension a owl:ObjectProperty ;
+  rdfs:label "facetDimension" ;
+  rdfs:comment "Links a facet to its dimension."@en ;
+  rdfs:domain mdq:Facet ;
+  rdfs:range mdq:Dimension ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionProperty a owl:AnnotationProperty ;
+  rdfs:label "projectionProperty" ;
+  rdfs:comment "Links a facet to the property that links any F-space to its projection on that facet."@en ;
+  rdfs:domain mdq:Facet ;
+  rdfs:range rdf:Property ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:projectionSubDistributionOfProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionSubDistributionOfProperty"@en ;
+      rdfs:comment """Links a facet to a property that links a F-space to another F-space that has a bigger projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionContainsProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionContainsProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to a value that is contained in its projection along this facet. """@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionExcludesProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionExcludesProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to a value that is excluded in its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionEmptyClass a owl:AnnotationProperty ;
+      rdfs:label "projectionEmptyClass"@en ;
+      rdfs:comment """Links a facet to the class of F-spaces that have empty projections on this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionFullClass a owl:AnnotationProperty ;
+      rdfs:label "projectionFullClass"@en ;
+      rdfs:comment """Links a facet to the class of F-spaces that have full projections on this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionValueProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionValueProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the single value that is included in its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+      
+mdq:projectionLowerBoundProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionLowerBoundProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to a lower bound of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+      
+mdq:projectionUpperBoundProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionUpperBoundProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to a upper bound of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionIntervalClass a owl:AnnotationProperty ;
+      rdfs:label "projectionIntervalClass"@en ;
+      rdfs:comment """Links a facet to the class of F-space whose projection along this facet is an interval."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionMinimumProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionMinimumProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the minimum of its projection along this facet."""@en ;
+      rdfs:domain mdq:FacetedSpace ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+      
+mdq:projectionMaximumProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionMaximumProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the maximum of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+      
+mdq:projectionRangeProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionRangeProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the range of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology .      
+
+mdq:projectionMinimumIncludedProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionMinimumIncludedProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the included minimum of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionMinimumExcludedProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionMinimumExcludedProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the excluded minimum of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionMaximumIncludedProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionMaximumIncludedProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the included maximum of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:projectionMaximumExcludedProperty a owl:AnnotationProperty ;
+      rdfs:label "projectionMaximumExcludedProperty"@en ;
+      rdfs:comment """Links a facet to a property that links any F-space to the excluded maximum of its projection along this facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:seriesProperty a owl:AnnotationProperty ;
+      rdfs:label "seriesProperty" ;
+      rdfs:comment """Links a facet to a property that links any P-space to a series decomposition along that facet."""@en ;
+      rdfs:domain mdq:Facet ;
+      rdfs:range rdf:Property ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+
+
+mdq:seriesProperty a owl:ObjectProperty ;
+  rdfs:label "seriesProperty" ;
+  rdfs:comment "Links a facet to the property that links any F-space to a F-space series of restrictions on that facet."@en ;
+  rdfs:domain mdq:Facet ;
+  rdfs:range rdf:Property ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# Spaces
+
+mdq:FacetedSpace a owl:Class ; # mdq:LengthDistribution
+  rdfs:label "FacetedSpace" ;
+  rdfs:comment "The class of faceted spaces, which are sets of faceted points."@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:subSpaceOf a owl:ObjectProperty ;
+  rdfs:label "subSpaceOf" ;
+  rdfs:comment "Links a F-space to one of its super F-spaces."@en ;
+  rdfs:domain mdq:Facet ;
+  rdfs:range mdq:Facet ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:equivalentSpace a owl:ObjectProperty ;
+  rdfs:label "equivalentSpace" ;
+  rdfs:comment "Links a distribution to one of its equivalent distributions. They both contain exactly the same values."@en ;
+  rdfs:domain mdq:FacetedSpace ;
+  rdfs:range mdq:FacetedSpace ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:intersectionOfSpaces a owl:ObjectProperty ;
+  rdfs:label "intersectionOfSpaces" ;
+  rdfs:comment "Links a distribution to a list of distributions it is the intersection of."@en ;
+  rdfs:domain mdq:FacetedSpace ;
+  rdfs:range rdf:List ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:unionOfSpaces a owl:ObjectProperty ;
+  rdfs:label "unionOfSpaces" ;
+  rdfs:comment "Links a distribution to a list of distributions it is the union of."@en ;
+  rdfs:domain mdq:FacetedSpace ;
+  rdfs:range rdf:List ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# Spaces Restriction
+
+mdq:Restriction a owl:Class ; 
+  rdfs:subClassOf mdq:FacetedSpace ;
+  rdfs:label "Restriction" ;
+  rdfs:comment "The class of restrictions of faceted spaces."@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:base a owl:ObjectProperty ; 
+  rdfs:label "base" ;
+  rdfs:comment "The restricted F-space."@en ;
+  rdfs:domain mdq:Restriction ;
+  rdfs:range mdq:FacetedSpace ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# F-space series Ontology
+
+mdq:FacetedSpaceSeries a owl:Class ;
+  rdfs:label "FacetedSpaceSeries"@en ;
+  rdfs:comment "The class of F-space series."@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:series a owl:AnnotationProperty ;
+  rdfs:label "series"@en ;
+  rdfs:comment "Links a F-space series to the actual RDF list of F-spaces."@en ;
+  rdfs:domain mdq:FacetedSpaceSeries ;
+  rdfs:range rdf:List ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology . 
+
+
+mdq:firstStart a owl:DatatypeProperty ;
+      rdfs:label "firstStart" ;
+      rdfs:comment "Links a F-space series to the minimum of the f-projection of its first F-space in the series."@en ;
+      rdfs:domain mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:firstRange a owl:DatatypeProperty ;
+      rdfs:label "firstRange" ;
+      rdfs:comment "Links a F-space series to the range of the f-projection of its first F-space in the series."@en ;
+      rdfs:domain mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:firstEnd a owl:DatatypeProperty ;
+      rdfs:label "firstEnd" ;
+      rdfs:comment "Links a F-space series to the end of the f-projection of its first F-space in the series."@en ;
+      rdfs:domain mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+
+mdq:SameStartSeries a owl:Class ;
+      rdfs:label "SameStartSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection minimum of each F-space in the series is equal."@en ;
+       rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:SameRangeSeries a owl:Class ;
+      rdfs:label "SameRangeSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection range of each F-space in the series is equal."@en ;
+      rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:SameEndSeries a owl:Class ;
+      rdfs:label "SameEndSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection maximum of each F-space in the series is equal."@en ;
+      rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+
+mdq:consecutiveStartOffset a owl:DatatypeProperty ;
+      rdfs:label "consecutiveStartOffset" ;
+      rdfs:comment "Links a F-space series to the offset between the f-projection minimum of a F-space in the series, and the f-projection minimum of the consecutive F-space in the series."@en ;
+      rdfs:domain mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:consecutiveRangeOffset a owl:DatatypeProperty ;
+      rdfs:label "consecutiveRangeOffset" ;
+      rdfs:comment "Links a F-space series to the offset between the f-projection range of a F-space in the series, and the f-projection range of the consecutive F-space in the series."@en ;
+      rdfs:domain mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:consecutiveEndOffset a owl:DatatypeProperty ;
+      rdfs:label "consecutiveEndOffset" ;
+      rdfs:comment "Links a F-space series to the offset between the f-projection maximum of a F-space in the series, and the f-projection maximum of the consecutive F-space in the series."@en ;
+      rdfs:domain mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+
+mdq:PointedSeries a owl:Class ;
+      rdfs:label "PointedSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection of each F-space in the series is a singleton."@en ;
+      rdfs:subClassOf mdq:SameRangeSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:JoinedSeries a owl:Class ;
+      rdfs:label "JoinedSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection maximum of each F-space in the series is equal to the f-projection minimum of the consecutive resource in the series."@en ;
+      rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+
+mdq:StartIncludedSeries a owl:Class ;
+      rdfs:label "StartIncludedSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection minimum of each F-space in the series is contained in the f-projection."@en ;
+      rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:StartExcludedSeries a owl:Class ;
+      rdfs:label "StartExcludedSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection minimum of each F-space in the series is excluded in the f-projection."@en ;
+      rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:EndIncludedSeries a owl:Class ;
+      rdfs:label "EndIncludedSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection maximum of each F-space in the series is contained in the f-projection."@en ;
+      rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+mdq:EndExcludedSeries a owl:Class ;
+      rdfs:label "EndExcludedSeries" ;
+      rdfs:comment "The class of F-space series such that the f-projection maximum of each F-space in the series is excluded in the f-projection."@en ;
+      rdfs:subClassOf mdq:FacetedSpaceSeries ;
+      vs:term_status "testing" ;
+      rdfs:isDefinedBy mdq:Ontology . 
+
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# Evaluation ontology
+
+mdq:Evaluation a owl:Class ;
+  rdfs:label "Evaluation"@en ;
+  rdfs:comment """The class of evaluations of resources. An evaluation is itself a quantified entity."""@en ;
+  rdfs:subClassOf prov:Entity ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:generatedBy a owl:ObjectProperty ;
+  rdfs:label "generatedBy"@en ;
+  rdfs:comment "The activity that generated the evaluation."@en ;
+  rdfs:subPropertyOf prov:generatedBy ;
+  rdfs:domain mdq:Evaluation ;
+  rdfs:range prov:Activity ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:FacetedSpaceEvaluation a owl:Class ;
+  rdfs:label "FacetedSpaceEvaluation" ;
+  rdfs:comment "The class of evaluations of F-spaces. An evaluation of a F-spaces is linked to the evaluated F-space, and is a F-space itself."@en ;
+  rdfs:subClassOf mdq:Evaluation , mdq:FacetedSpace ;
+  rdfs:subClassOf [ owl:onProperty mdq:evaluates ; owl:someValuesFrom mdq:FacetedSpace ] ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:evaluates a owl:ObjectProperty ;
+  rdfs:label "evaluates"@en ;
+  rdfs:comment "Links a F-space evaluation to the F-space it evaluates."@en ;
+  rdfs:domain mdq:FacetedSpaceEvaluation ;
+  rdfs:range mdq:FacetedSpace ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+
+#######################################
+#######################################
+#######################################
+#######################################
+#######################################
+# systems, Connections, ConnectionPoints
+
+mdq:System a owl:Class ;
+  rdfs:label "System"@en ;
+  rdfs:comment "The class of systems. Systems are also Quantities, i.e., they are multidimensional points with a multidimensional domain. Systems can be connected to other systems via connection points."@en ;
+  rdfs:subClassOf mdq:FacetedSpace ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:Connection a owl:Class ;
+  rdfs:label "Connection"@en ;
+  rdfs:comment "The class of connections between two systems. Connections are also Quantities, i.e., they are multidimensional points with a multidimensional domain."@en ;
+  rdfs:subClassOf mdq:FacetedSpace ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:ConnectionPoint a owl:Class ;
+  rdfs:label "ConnectionPoint"@en ;
+  rdfs:comment "The class of connection points of a system, via which it may be connected to other systems. Connection Points are also Quantities, i.e., they are multidimensional points with a multidimensional domain."@en ;
+  rdfs:subClassOf mdq:FacetedSpace ;
+  rdfs:subClassOf [ owl:onProperty mdq:connectionPointOf ; owl:cardinality 1 ] ; # a connection point belongs to exactly one system.
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+
+
+# object properties
+
+
+
+mdq:connectedSystem a rdf:Property ;
+  rdfs:label "connectedSystem"@en ;
+  rdfs:comment "Links a connection to one of the two systems it connects."@en ;
+  rdfs:domain mdq:Connection ;
+  rdfs:range mdq:System ;
+  owl:inverseOf mdq:connectedSystemOf ;
+#  owl:propertyChainAxiom ( mdq:connectedPoint mdq:connectionPointOf ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedSystem1 a rdf:Property, owl:FunctionalProperty ;
+  rdfs:label "connectedSystem1"@en ;
+  rdfs:comment "Links a connection to the first system it connects."@en ;
+  rdfs:subPropertyOf mdq:connectedSystem ;
+  rdfs:domain mdq:Connection ;
+  rdfs:range mdq:System ;
+  owl:inverseOf mdq:connectedSystem1Of ;
+#  owl:propertyChainAxiom ( mdq:connectedPoint1 mdq:connectionPointOf ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedSystem2 a rdf:Property, owl:FunctionalProperty ;
+  rdfs:label "connectedSystem2"@en ;
+  rdfs:comment "Links a connection to the second system it connects."@en ;
+  rdfs:subPropertyOf mdq:connectedSystem ;
+  rdfs:domain mdq:Connection ;
+  rdfs:range mdq:System ;
+  owl:inverseOf mdq:connectedSystem2Of ;
+#  owl:propertyChainAxiom ( mdq:connectedPoint2 mdq:connectionPointOf ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedSystemOf a rdf:Property ;
+  rdfs:label "connectedSystemOf"@en ;
+  rdfs:comment "Links a system to one of its connections to another systems."@en ;
+  owl:inverseOf mdq:connectedSystem ;
+  rdfs:domain mdq:System ;
+  rdfs:range mdq:Connection ;
+#  owl:propertyChainAxiom ( mdq:connectionPoint mdq:connectedPointOf ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedSystem1Of a rdf:Property ;
+  rdfs:label "connectedSystem1Of"@en ;
+  rdfs:comment "Links a system to a connection for which it is the first connected system."@en ;
+  rdfs:subPropertyOf mdq:connectedSystemOf ;
+  rdfs:domain mdq:System ;
+  rdfs:range mdq:Connection ;
+  owl:inverseOf mdq:connectedSystem1 ;
+#  owl:propertyChainAxiom ( mdq:connectionPoint mdq:connectedPoint1Of ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedSystem2Of a rdf:Property ;
+  rdfs:label "connectedSystem2Of"@en ;
+  rdfs:comment "Links a system to a connection for which it is the second connected system."@en ;
+  rdfs:subPropertyOf mdq:connectedSystemOf ;
+  rdfs:domain mdq:System ;
+  rdfs:range mdq:Connection ;
+  owl:inverseOf mdq:connectedSystem2 ;
+#  owl:propertyChainAxiom ( mdq:connectionPoint mdq:connectedPoint2Of ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+
+mdq:connectionPoint a rdf:Property, owl:InverseFunctionalProperty ;
+  rdfs:label "connectionPoint"@en ;
+  rdfs:comment "Links a system to one of its connection points."@en ;
+  rdfs:domain mdq:System ;
+  rdfs:range mdq:ConnectionPoint ;
+  owl:inverseOf mdq:connectionPointOf ;
+#  owl:propertyChainAxiom ( mdq:connectedSystem1Of mdq:connectedPoint1Of ) ;
+#  owl:propertyChainAxiom ( mdq:connectedSystem2Of mdq:connectedPoint2Of ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectionPointOf a rdf:Property, owl:FunctionalProperty ;
+  rdfs:label "connectionPointOf"@en ;
+  rdfs:comment "Links a connection point to the one and only system it belongs to."@en ;
+  rdfs:domain mdq:ConnectionPoint ;
+  rdfs:range mdq:System ;
+  owl:inverseOf mdq:connectionPoint ;
+#  owl:propertyChainAxiom ( mdq:connectedPoint1Of mdq:connectedSystem1Of ) ;
+#  owl:propertyChainAxiom ( mdq:connectedPoint2Of mdq:connectedSystem2Of ) ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedPoint a rdf:Property ;
+  rdfs:label "connectedPoint"@en ;
+  rdfs:comment "Links a connection to one of the two connection points it connects."@en ;
+  rdfs:domain mdq:Connection ;
+  rdfs:range mdq:ConnectionPoint ;
+  owl:inverseOf mdq:connectedPointOf ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedPoint1 a rdf:Property, owl:FunctionalProperty ;
+  rdfs:label "connectedPoint1"@en ;
+  rdfs:comment "Links a connection to the first connection point it connects."@en ;
+  rdfs:subPropertyOf mdq:connectedPoint ;
+  rdfs:domain mdq:Connection ;
+  rdfs:range mdq:ConnectionPoint ;
+  owl:inverseOf mdq:connectedPoint1Of ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedPoint2 a rdf:Property, owl:FunctionalProperty ;
+  rdfs:label "connectedPoint2"@en ;
+  rdfs:comment "Links a connection to the second connection point it connects."@en ;
+  rdfs:subPropertyOf mdq:connectedPoint ;
+  rdfs:domain mdq:Connection ;
+  rdfs:range mdq:ConnectionPoint ;
+  owl:inverseOf mdq:connectedPoint2Of ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedPointOf a rdf:Property ;
+  rdfs:label "connectedPointOf"@en ;
+  rdfs:comment "Links a connection point to one of its connections to another connection point."@en ;
+  owl:inverseOf mdq:connectedPoint ;
+  rdfs:domain mdq:ConnectionPoint ;
+  rdfs:range mdq:Connection ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedPoint1Of a rdf:Property ;
+  rdfs:label "connectedPoint1Of"@en ;
+  rdfs:comment "Links a connection point to a connection for which it is the first connection point."@en ;
+  rdfs:subPropertyOf mdq:connectedPointOf ;
+  rdfs:domain mdq:ConnectionPoint ;
+  rdfs:range mdq:Connection ;
+  owl:inverseOf mdq:connectedPoint1 ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+
+mdq:connectedPoint2Of a rdf:Property ;
+  rdfs:label "connectedPoint2Of"@en ;
+  rdfs:comment "Links a connection point to a connection for which it is the second connection point."@en ;
+  rdfs:subPropertyOf mdq:connectedPointOf ;
+  rdfs:domain mdq:ConnectionPoint ;
+  rdfs:range mdq:Connection ;
+  owl:inverseOf mdq:connectedPoint2 ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy mdq:Ontology .
+

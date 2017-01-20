@@ -1,0 +1,271 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+
+#Core roles and activities (for devices and systems), this is related to actor module and could specialize it but now here defined as new vocabulary
+seas:BuildingCategoriesOntology a owl:Ontology , voaf:Ontology ;
+  dc:title "seas-BuildingCategoriesOntology ontology"@en ;
+  dc:description "The Seas Building Categories for the ITEA SEAS (Smart Energy Aware Systems) project. This module presents subcategories for classifying building related concepts."@en ;
+  dc:issued "2016-01-26"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/BuildingCategoriesOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+ 
+#Building categories based on its energy efficiency related to its insulation etc.
+#The actual values for classes depend on the country specific regulations and geographical location
+
+seas:NormHouse a owl:Class ; 
+  rdfs:label "NormHouse"@en ;
+  rdfs:label "Normitalo"@fi ;  
+  rdfs:comment "A building fulfilling the minimal criteria for energy efficiency."@en ;
+  rdfs:subClassOf seas:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.   
+
+seas:LowEnergyHouse a owl:Class ;
+  rdfs:label "LowEnergyHouse"@en ;
+  rdfs:label "Matalaenergiatalo"@fi ;  
+  rdfs:comment "A house typically consuming half the energy than a norm house."@en ;
+  rdfs:subClassOf seas:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.     
+
+seas:PassiveHouse a owl:Class ;
+  rdfs:label "PassiveHouse"@en ;
+  rdfs:label "Passiivitalo"@fi ;  
+  rdfs:comment "A house typically consuming a quater of the energy than a norm house."@en ;
+  rdfs:subClassOf seas:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.      
+
+#Building categorization based on its net energy efficiency  
+seas:ZeroEnergyBuilding a owl:Class ;
+  rdfs:label "ZeroEnergyBuilding"@en ;
+  rdfs:label "Nollaenergiatalo"@fi ;  
+  rdfs:comment "A net zero-energy building (ZEB) is a building that over a year does not use more energy than it generates. "@en ;
+  rdfs:subClassOf seas:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+  
+seas:PlusEnergyBuilding a owl:Class ;
+  rdfs:label "PlusEnergyBuilding"@en ;
+  rdfs:label "Plusenergiatalo"@fi ;  
+  rdfs:comment "A net plus-energy building ´is a building that over a year does generates more energy than it uses. "@en ;
+  rdfs:subClassOf seas:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+     
+#Building categorization based on occupancy and activities 
+#There is no single accepted categorization avilable, some types selected from:
+#International building occupancy based categories (USA)
+#The Classification of Types of Constructions (EU)
+#Finnish building categorization VTJ2000 (Finland)
+
+seas:ResidentalBuilding a owl:Class ;
+  rdfs:label "ResidentalBuilding"@en ;
+  rdfs:label "Asuinrakennus"@fi ;  
+  rdfs:comment "A residential building is a building at least half of which is used for residential purposes. "@en ;
+  rdfs:subClassOf seas:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.   
+  
+seas:HolidayBuilding a owl:Class ;
+  rdfs:label "HolidayBuilding"@en ; 
+  rdfs:label "VapaaAjanRakennus"@fi ;  
+  rdfs:comment "A secondary residential building used only occasionally during vacations such as a summerhouse or cottage. "@en ;
+  rdfs:subClassOf seas:ResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.   
+  
+seas:NonResidentalBuilding a owl:Class ;
+  rdfs:label "NonResidentalBuilding"@en ;
+  rdfs:comment "A  non-residential building is a building at least half of which is used for other than residential purposes. "@en ;
+  rdfs:subClassOf seas:Building;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.     
+
+seas:MercantileBuilding a owl:Class ;
+  rdfs:label "MercantileBuilding"@en ;
+  rdfs:label "Liikerakennus"@fi;  
+  rdfs:comment "Places where goods are displayed and sold. Examples: grocery stores, department stores, and gas stations."@en ;
+  rdfs:subClassOf seas:NonResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.  
+  
+seas:OfficeBuilding a owl:Class ;
+  rdfs:label "BusinessBuilding"@en ;
+  rdfs:label "Toimistorakennus"@fi;  
+  rdfs:comment "Places where services are provided. Examples: banks, insurance agencies"@en ;
+  rdfs:subClassOf seas:NonResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+   
+seas:AssemblyBuilding a owl:Class ;
+  rdfs:label "AssemblyBuilding"@en ;
+  rdfs:label "Kokoontumisrakennus"@fi ;  
+  rdfs:comment "places used for people gathering for entertainment, worship, and eating or drinking. Examples: churches, restaurants"@en;
+  rdfs:subClassOf seas:NonResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+
+seas:InstitutionalBuilding a owl:Class ;
+  rdfs:label "InstitutionalBuilding"@en ;  
+  rdfs:label "HoitoalanRakennus"@fi;    
+  rdfs:comment "Institutions such as hospitals providing medical and surgical treatment and nursing care for ill or injured people"@en ;
+  rdfs:subClassOf seas:NonResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.     
+  
+seas:EducationalBuilding a owl:Class ;
+  rdfs:label "EducationalBuilding"@en ;
+  rdfs:label "Opetusrakennus"@fi ;  
+  rdfs:comment "Schools and day care centers."@en ;
+  rdfs:subClassOf seas:NonResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.      
+           
+seas:IndustrialBuilding a owl:Class ;
+  rdfs:label "IndustrialBuilding"@en ;
+  rdfs:comment "Buildings used for industrial production, e.g. factories, workshops, slaughterhouses, breweries, assembly plants, etc."@en ;
+  rdfs:subClassOf seas:NonResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+
+seas:PowerplantBuilding a owl:Class ;
+  rdfs:label "PowerplantBuilding"@en ;
+  rdfs:label "VoimalaRakennus"@fi ;  
+  rdfs:comment "Places housing any type of a power plants"@en ;
+  rdfs:subClassOf seas:IndustrialBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.      
+  
+seas:StorageBuilding a owl:Class ;
+  rdfs:label "StorageBuilding"@en ;
+  rdfs:label "VarastoRakennus"@fi ;  
+  rdfs:comment "Places where items are stored. Examples: warehouses, reservoirs and silos."@en ;
+  rdfs:subClassOf seas:NonResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+
+#Different types of residental buildings
+seas:SmallHouse a owl:Class ;
+  rdfs:label "SmallHouse"@en ;
+  rdfs:label "Pientalo"@en ;  
+  rdfs:comment "A detached small residental building"@en ;
+  rdfs:subClassOf seas:ResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.   
+
+seas:SmallHouse a owl:Class ;
+  rdfs:label "SmallHouse"@en ;
+  rdfs:label "Pientalo"@en ;  
+  rdfs:comment "A detached small residental building"@en ;
+  rdfs:subClassOf seas:ResidentalBuilding;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.   
+  
+seas:OneDwellingBuilding a owl:Class ;
+  rdfs:label "OneDwellingBuilding"@en ;
+  rdfs:label "YhdenAsunnonTalo"@en ;  
+  rdfs:comment "Detached house"@en ;
+  rdfs:subClassOf seas:SmallHouse;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.   
+  
+#Different types of rooms based on their main functional purpose
+seas:LivingRoom a owl:Class ;
+  rdfs:label "LivingRoom"@en ;
+  rdfs:comment "LivingRoom is the main room of daytime activity."@en ;
+  rdfs:subClassOf seas:Room;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.      
+
+seas:Kitchen a owl:Class ;
+  rdfs:label "Kitchen"@en ;
+  rdfs:comment "Kitchen is a room used mainly for cooking and possibly eating."@en ;
+  rdfs:subClassOf seas:Room;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.      
+  
+seas:Bedroom a owl:Class ;
+  rdfs:label "Bedroom"@en ;
+  rdfs:comment "Bedroom is used mainly for sleeping."@en ;
+  rdfs:subClassOf seas:Room;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.   
+  
+seas:Bathroom a owl:Class ;
+  rdfs:label "Bathroom"@en ;
+  rdfs:comment "Bathroom is mainly used for bathing & washing up related activities."@en ;
+  rdfs:subClassOf seas:Room;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.      
+  
+seas:Sauna a owl:Class ;
+  rdfs:label "Sauna"@en ;
+  rdfs:comment "Sauna is a special type bathroom for enjoying heated steam."@en ;
+  rdfs:subClassOf seas:Bathroom;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.      
+  
+seas:StorageRoom a owl:Class ;
+  rdfs:label "StorageRoom"@en ;
+  rdfs:comment "Room for storage."@en ;
+  rdfs:subClassOf seas:Room;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+  
+seas:Garage a owl:Class ;
+  rdfs:label "Garage"@en ;
+  rdfs:comment "Room for garage."@en ;
+  rdfs:subClassOf seas:Room;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.     
+  
+seas:UtilityRoom a owl:Class ;
+  rdfs:label "UtilityRoom"@en ;
+  rdfs:comment "Room for other special utilities and hobbies."@en ;
+  rdfs:subClassOf seas:Room;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.     
+  
+seas:Balcony a owl:Class ;
+  rdfs:label "Balcony"@en ;
+  rdfs:comment "An accessible structure extending from a building, especially outside a window."@en ;
+  rdfs:subClassOf seas:BuildingSpace;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:BuildingCategoriesOntology.    
+
+  

@@ -1,0 +1,215 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix qudt: <http://data.qudt.org/qudt/owl/1.0.0/qudt.owl#> . #QUDT quantities
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+seas:WeatherOntology rdf:type voaf:Ontology , owl:Ontology ;
+  dc:title "seas-WeatherOntology ontology"@en ;
+  dc:description "The Seas Weather vocabulary for the ITEA SEAS (Smart Energy Aware Systems) project."@en ;
+  dc:issued "2015-10-10"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:contributor <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/WeatherOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+
+#A Feature is an abstraction of real world phenomena that has a location
+#It could be a geographical area or a building that has defined location or address
+
+seas:featureOfInterest a owl:ObjectProperty ; 
+  rdfs:label "featureOfInterest"@en ;
+  rdfs:comment "Feature(with location) that this forecast is for"@en ;
+  vs:term_status "testing" ;
+  rdfs:domain seas:WeatherForecast;  
+  rdfs:isDefinedBy seas:WeatherOntology. 
+    
+##### WeatherForecast is defined as seas:Evaluation, quantities with qudt   
+  
+seas:WeatherForecast a owl:Class ;
+  rdfs:label "WeatherForecast"@en ;
+  rdfs:label "Sääennuste"@fi ;
+  rdfs:comment "A description for a various weather phenomena to be at specified time or time period"@en ;
+  rdfs:subClassOf seas:Evaluation; #Add MDQ here
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .
+  
+seas:WeatherForecastParameters a owl:Class ;
+  rdfs:label "WeatherForecastParameters"@en ;
+  rdfs:label "SääennusteenParametris"@fi ;
+  rdfs:comment "A description for weather forecast parameters"@en ;
+  rdfs:subClassOf seas:Evaluation;
+  rdfs:subClassOf [ owl:onProperty seas:quantity ;  owl:allValuesFrom seas:WeatherPhenomenon] ;  #This might not be correct for seas:Evaluation
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .
+  
+
+seas:weatherDescription a owl:DatatypeProperty;
+  rdfs:label "weatherDescription"@en ;
+  rdfs:comment "Human understandable description of a weather forecast. This might be generated automatically"@en ;
+  rdfs:isDefinedBy seas:WeatherOntology ;
+  vs:term_status "testing" ;
+  rdfs:domain seas:WeatherForecast;
+  rdfs:range xsd:string.    
+  
+#Weather service related concepts (these are not required but describe a generic weather service data contract)  
+seas:WeatherServiceProvider a owl:Class ; #seas:Actor
+  rdfs:label "WeatherServiceProvider"@en ;
+  rdfs:label "SääennusteenTarjoaja"@fi ;
+  rdfs:comment "Provides weather related services such as forecasting or weather history data."@en ;
+  rdfs:subClassOf seas:ServiceProvider; 
+  rdfs:subClassOf [ owl:onProperty seas:offersService ;  owl:someValuesFrom seas:WeatherService] ;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology.    
+
+seas:WeatherForecasting a owl:Class ; #seas:Activity
+  rdfs:label "WeatherForecasting"@en ;
+  rdfs:label "SäänEnnustaminen"@fi ;
+  rdfs:comment "Forecasting of a various weather phenomena to be at specified time or time period"@en ;
+  rdfs:subClassOf seas:Activity; 
+  rdfs:subClassOf [ owl:onProperty seas:hasInput ;  owl:allValuesFrom seas:WeatherForecastParameters] ;  
+  rdfs:subClassOf [ owl:onProperty seas:hasOutput ;  owl:allValuesFrom seas:WeatherForecast] ;    
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology.    
+
+seas:WeatherService a owl:Class ; #Sets constraints on weather  service and its capabilities 
+  rdfs:label "WeatherService"@en ;
+  rdfs:label "Sääpalvelu"@fi ;
+  rdfs:comment "A class of service providing weather data"@en ;
+  rdfs:subClassOf seas:Service; 
+  rdfs:subClassOf [ owl:onProperty seas:hasCapability ;  owl:someValuesFrom seas:WeatherForecasting] ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology.    
+      
+#  WeatherPhenomenon
+
+seas:WeatherPhenomenon a owl:Class ;
+  rdfs:label "WeatherPhenomenon"@en ;
+  rdfs:comment "The class of weather phenomena"@en ;
+  rdfs:subClassOf seas:Phenomenon;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .
+
+  
+# Cloudiness
+seas:Cloudiness a owl:Class ;
+  rdfs:label "Cloudiness"@en ;
+  rdfs:label "Pilvisyys"@fi ;
+  rdfs:comment "The class of cloudiness weather phenomena"@en ;
+  rdfs:subClassOf seas:WeatherPhenomenon;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .
+  
+ seas:CloudCoverIndex a owl:Class ;
+  rdfs:label "CloudCoverIndex"@en ;
+  rdfs:label "PilvisyysIndeksi"@fi ;
+  rdfs:comment "Quantity of cloudiness expressed as ratio (0-1) or percentage (0-100)"@en ;
+  rdfs:subClassOf seas:Cloudiness ;
+  rdfs:subClassOf seas:Ratio;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .
+  
+# Temperature 
+
+seas:AirTemperature a owl:Class ;
+  rdfs:label "AirTemperature"@en ;
+  rdfs:label "IlmanLämpötila"@fi ;
+  rdfs:comment "Quantity of air temperature expressed in Kelvin, DegreeCelcius of Farenheit"@en ;
+  rdfs:subClassOf seas:WeatherPhenomenon ;
+  rdfs:subClassOf qudt:ThermodynamicTemperature;  
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .
+  
+# Wind 
+
+seas:Wind a owl:Class ;
+  rdfs:label "Wind"@en ;
+  rdfs:label "Tuulisuus"@fi ;
+  rdfs:comment "The class of wind related weather phenomena"@en ;
+  rdfs:subClassOf seas:WeatherPhenomenon;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology.
+
+seas:WindDirection a owl:Class ;
+  rdfs:label "WindDirection"@en ;
+  rdfs:label "TuulenSuunta"@fi ;
+  rdfs:comment "The wind direction expressed as compass direction 0-360"@en ;
+  rdfs:subClassOf seas:Wind ;
+  rdfs:subClassOf qudt:PlaneAngle;    
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .
+
+seas:WindSpeed a owl:Class ;
+  rdfs:label "WindSpeed"@en ;
+  rdfs:label "TuulenNopeus"@fi ;
+  rdfs:comment "The wind speed typically expressed as meters per second"@en ;
+  rdfs:subClassOf seas:Wind ;
+  rdfs:subClassOf qudt:Speed;    
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .  
+
+  # Solar
+  
+ seas:SolarPhenomenon a owl:Class ;
+  rdfs:label "SolarPhenomenon"@en ;
+  rdfs:label "Aurinkoisuus"@fi ;
+  rdfs:comment "The class of solar related weather phenomena"@en ;
+  rdfs:subClassOf seas:WeatherPhenomenon;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology . 
+  
+  seas:SolarIrradiance a owl:Class ;
+  rdfs:label "SolarIrradiance"@en ;
+  rdfs:label "AuringonSäteilyteho"@fi ;
+  rdfs:comment "Solar Irradiance presented as power in watts per square meter"@en ;
+  rdfs:subClassOf seas:SolarPhenomenon ;
+  rdfs:subClassOf qudt:Irradiance;    
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .  
+
+  seas:Sunrise a owl:Class ; 
+  rdfs:label "Sunrise"@en ;
+  rdfs:label "AuringonNousu"@fi ;
+  rdfs:comment "Event of sun rising (at specific location in Earth)"@en ;
+  rdfs:subClassOf seas:Evaluation ;
+  rdfs:subClassOf seas:SolarPhenomenon ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology . 
+
+  seas:Sunset a owl:Class ;
+  rdfs:label "Suset"@en ;
+  rdfs:label "AuringonLasku"@fi ;
+  rdfs:comment "Event of sun setting (at specific location in Earth)"@en ;
+  rdfs:subClassOf seas:Evaluation ;
+  rdfs:subClassOf seas:SolarPhenomenon ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:WeatherOntology .   
+ 

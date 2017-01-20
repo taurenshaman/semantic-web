@@ -1,0 +1,131 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix qudt: <http://data.qudt.org/qudt/owl/1.0.0/qudt.owl#> . #QUDT quantities
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+seas:UpperOntology rdf:type voaf:Ontology , owl:Ontology ;
+  dc:title "seas-UpperOntology ontology"@en ;
+  dc:description "The Seas Upper vocabulary for the ITEA SEAS (Smart Energy Aware Systems) project. This module presents abstract meta level concepts that could link SEAS model to exsisting upper ontologies and may help to clarify conceptually and align their definitions. These are not yet formalized fully and can contain logical erros."@en ;
+  dc:issued "2015-10-10"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:contributor <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/UpperOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+  
+
+seas:Entity a owl:Class ;
+  rdfs:label "Entity"@en ;
+  rdfs:comment "Can be used instead of thing to constraint only entities defined by seas ontology"@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:UpperOntology.   
+  
+seas:Perdurant a owl:Class ;
+  rdfs:label "Perdurant"@en;
+  rdfs:comment "Also known as occurrents, accidents or happenings, perdurants are those entities for which only a part exists if we look at them at any given snapshot in time. When we freeze time we can only see a part of the perdurant. Perdurants are often what we know as processes, for example: running. If we freeze time then we only see a part of the running, without any previous knowledge one might not even be able to determine the actual process as being a process of running. Other examples include an activation, a kiss, or a procedure."@en;
+  rdfs:subClassOf seas:Entity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:UpperOntology.   
+  
+seas:Endurant a owl:Class ;
+  rdfs:label "Endurant"@en ;
+  rdfs:comment """Also known as continuants, or in some cases as substance, endurants are those entities that can be observed-perceived as a complete concept, at no matter which given snapshot of time. Were we to freeze time we would still be able to perceive/conceive the entire endurant.
+  Examples include material objects (such as an apple or a human), and abstract fiat objects (such as an organization, or the border of a country)."""@en ;
+  vs:term_status "testing" ;
+  rdfs:subClassOf seas:Entity;  
+  rdfs:isDefinedBy seas:UpperOntology.       
+
+seas:Quality a owl:Class ;
+  rdfs:label "Quality"@en ;
+  rdfs:comment "Qualities do not exist on their own, but they need another entity (in many formal ontologies this entity is restricted to be an endurant) which they occupy. Examples of qualities and the values they assume include colors (red color), or temperatures (warm)."@en ;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:UpperOntology.    
+  
+seas:Phenomenon a owl:Class ;
+  rdfs:label "Phenomenon"@en ;
+  rdfs:comment "In seas phenomenon is understood as something that can be observed."@en ;
+  rdfs:subClassOf seas:Entity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:UpperOntology.      
+  
+seas:PhysicalEntity a owl:Class ;
+  rdfs:label "PhysicalEntity"@en ;
+  rdfs:comment "PhysicalEntity has material existence"@en ;
+  vs:term_status "testing" ;
+  rdfs:subClassOf seas:Endurant;  
+  rdfs:isDefinedBy seas:UpperOntology.     
+  
+seas:AbstractEntity a owl:Class ;
+  rdfs:label "AbstractEntity"@en ;
+  rdfs:comment "Abstract entity has no material existence"@en ;
+  vs:term_status "testing" ;
+  rdfs:subClassOf seas:Entity; 
+  owl:disjointWith seas:PhysicalEntity; 
+  rdfs:isDefinedBy seas:UpperOntology.       
+  
+seas:Link a owl:Class ;
+  rdfs:label "Link"@en ;
+  rdfs:comment "A relation between two entities. "@en ;
+  rdfs:subClassOf seas:Entity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:UpperOntology .      
+  
+seas:Topology a owl:Class ;
+  rdfs:label "Topology"@en ;
+  rdfs:comment "A collection of entities and their links."@en ;
+  rdfs:subClassOf seas:Entity;
+  vs:term_status "testing" ;
+  rdfs:isDefinedBy seas:UpperOntology .        
+
+# Some helpful whole/part properties that are related to UML aggragation and containment 
+# See also https://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/
+  
+seas:hasPart a owl:ObjectProperty, owl:TransitiveProperty;
+  rdfs:label "hasPart"@en ;
+  rdfs:comment "hasPart"@en ;
+  vs:term_status "testing" ;
+  rdfs:seeAlso "http://www.obofoundry.org/ro/#OBO_REL:part_of";
+  rdfs:isDefinedBy seas:UpperOntology .   
+  
+seas:hasDirectPart a owl:ObjectProperty;
+  rdfs:label "hasDirectPart"@en ;
+  rdfs:comment "Is directly part of something (not part of its parts)"@en ;
+  vs:term_status "testing" ;
+  rdfs:subPropertyOf seas:hasPart;
+  rdfs:isDefinedBy seas:UpperOntology .   
+
+seas:contains a owl:ObjectProperty, owl:TransitiveProperty;
+  rdfs:comment "Contains something that exsist individually but is not part of it such as a person in a room"@en ;
+  vs:term_status "testing" ;
+  rdfs:seeAlso "http://www.obofoundry.org/ro/#OBO_REL:part_of";
+  rdfs:isDefinedBy seas:UpperOntology .     
+

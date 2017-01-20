@@ -1,0 +1,72 @@
+# Copyright 2016 ITEA 12004 SEAS Project.
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . #Resource data framework
+@prefix owl: <http://www.w3.org/2002/07/owl#> .              #Owl ontology language
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .      #RDF schema 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .           #XML standard datatypes
+@prefix dc: <http://purl.org/dc/terms/> .     #Dublin Core Metadata Initiative terms
+@prefix vann: <http://purl.org/vocab/vann/> .  #A vocabulary for annotating vocabulary descriptions
+@prefix voaf: <http://purl.org/vocommons/voaf#> . #A vocabulary of a friend, for describing relations between linked vocabularies
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> . #Semantic web vocabulary status ontology
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+@prefix seas: <https://w3id.org/seas/>.
+@base <https://w3id.org/seas/>.
+
+#SEAS architecture related concepts
+seas:ArchitectureOntology rdf:type voaf:Ontology , owl:Ontology ;
+  dc:title "seas-ArchitectureOntology ontology"@en ;
+  dc:description "The Seas Architecture Ontology for the ITEA SEAS (Smart Energy Aware Systems) project."@en ;
+  dc:issued "2016-01-26"^^xsd:date ;
+  dc:modified "2016-05-26"^^xsd:date ;
+  dc:author <http://www.vtt.fi/JarmoKalaoja> ;
+  dc:author <http://www.maxime-lefrancois.info/me#> ;
+  dc:contributor <http://zimmer.aprilfoolsreview.com/antoine#me> ;
+  dc:contributor [a foaf:Person ; foaf:name "Erkki Siira" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Takoua Ghariani" ] ;
+  dc:contributor [a foaf:Person ; foaf:name "Marc Girod-Genet" ] ;
+  vann:preferredNamespacePrefix "seas" ;
+  vann:preferredNamespaceUri <https://w3id.org/seas/> ;  
+  owl:versionIRI <https://w3id.org/seas/ArchitectureOntology/0.9> ;
+  owl:versionInfo "v0.9" .
+   
+seas:ResourceManager a owl:Class ;
+  rdfs:label "ResourceManager"@en ;
+  rdfs:comment "The class of SEAS resource managers."@en ;
+  rdfs:isDefinedBy seas:ArchitectureOntology ;
+  rdfs:subClassOf seas:Node ;
+  vs:term_status "testing" .  
+
+seas:ServiceProvider a owl:Class ;
+  rdfs:label "ServiceProvider"@en ;
+  rdfs:comment "The class of SEAS service providers."@en ;
+  rdfs:isDefinedBy seas:ArchitectureOntology ;
+  rdfs:subClassOf seas:Role ;
+  vs:term_status "testing" .  
+  
+seas:EndNode a owl:Class ;
+  rdfs:label "EndNode"@en ;
+  rdfs:comment "The class of SEAS end nodes."@en ;
+  rdfs:isDefinedBy seas:ArchitectureOntology ;
+  rdfs:subClassOf seas:Node ;
+  vs:term_status "testing" .  
+  
+seas:IPCapableEndNode a owl:Class ;
+  rdfs:label "IPCapableEndNode"@en ;
+  rdfs:comment "The class of IP capable SEAS end nodes."@en ;
+  rdfs:isDefinedBy seas:ArchitectureOntology ;
+  rdfs:subClassOf seas:EndNode ;
+  vs:term_status "testing" .  
+      
