@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY frbr  "http://purl.org/vocab/frbr/core#" >
+    <!ENTITY frbrext  "http://purl.org/vocab/frbr/extended#" >
+    <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY foaf  "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl  "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY vocabid  "http://purl.org/vocab/frbr/frbr-extended-20050810" >
+	  <!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+    <!ENTITY cc  "http://web.resource.org/cc/" >
+]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dctype="http://purl.org/dc/dcmitype/"
+  xmlns:cc="http://web.resource.org/cc/"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+>
+	<owl:Ontology rdf:about="http://purl.org/vocab/frbr/extended#" dc:date="2005-08-10">
+    <dc:title xml:lang="en">Expression of Extended FRBR Concepts in RDF</dc:title>
+
+		<dc:identifier>&vocabid;</dc:identifier>
+		<dct:isVersionOf rdf:resource="&frbrext;"/>
+		<dc:creator>Ian Davis &lt;http://purl.org/NET/iand&gt;</dc:creator>
+		<dc:creator>Richard Newman</dc:creator>
+		<dc:rights>Copyright © 2005 Richard Newman and Ian Davis</dc:rights>
+		<dct:replaces rdf:resource="http://purl.org/vocab/frbr/frbr-extended-20050729"/>
+		<vann:preferredNamespaceUri>&frbrext;</vann:preferredNamespaceUri>
+		<vann:preferredNamespacePrefix>frbre</vann:preferredNamespacePrefix>
+		<dct:hasFormat>
+			<rdf:Description rdf:about="&vocabid;.html">
+				<dc:format>
+					<dct:IMT>
+						<rdf:value>text/html</rdf:value>
+						<rdfs:label xml:lang="en">HTML</rdfs:label>
+					</dct:IMT>
+				</dc:format>
+			</rdf:Description>
+		</dct:hasFormat>
+		<dct:hasFormat>
+			<rdf:Description rdf:about="&vocabid;.rdf">
+				<dc:format>
+					<dct:IMT>
+						<rdf:value>application/rdf+xml</rdf:value>
+						<rdfs:label xml:lang="en">RDF</rdfs:label>
+					</dct:IMT>
+				</dc:format>
+			</rdf:Description>
+		</dct:hasFormat>
+
+    <dct:issued>2005-07-29</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy properties and updated documentation" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+
+	</owl:Ontology>
+
+  <!-- Using new UK law licence -->
+	<cc:Work rdf:about="">
+		<cc:license rdf:resource="http://creativecommons.org/licenses/by/2.0/uk/"/>
+		<dc:type rdf:resource="http://purl.org/dc/dcmitype/Text"/>
+	</cc:Work>
+	<cc:License rdf:about="http://creativecommons.org/licenses/by/2.0/uk/">
+		<cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+		<cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+		<cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+		<cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+		<cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+	</cc:License>
+
+
+  <!-- A redefinition of Work to split into two types -->
+	<owl:Class rdf:about="&frbr;Work">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbrext;ReferentialWork"/>
+          <owl:Class rdf:about="&frbrext;AutonomousWork"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+	</owl:Class>
+
+
+  <!-- A redefinition of Expression to split into two types -->
+	<owl:Class rdf:about="&frbr;Expression">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbrext;ReferentialExpression"/>
+          <owl:Class rdf:about="&frbrext;AutonomousExpression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+	</owl:Class>
+
+
+
+	<owl:Class rdf:about="&frbrext;AutonomousWork">
+		<rdfs:label xml:lang="en">autonomous work</rdfs:label>
+    <rdfs:subClassOf rdf:resource="&frbr;Work"/>
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+
+    <owl:disjointWith rdf:resource="&frbrext;ReferentialWork"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class>
+            <owl:complementOf rdf:resource="&frbrext;ReferentialWork"/>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbrext;ReferentialWork">
+		<rdfs:label xml:lang="en">referential work</rdfs:label>
+    <rdfs:comment xml:lang="en">A referential work is one which has little meaning when not studied in conjunction with the work it refers to.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Work"/>
+
+    <owl:disjointWith rdf:resource="&frbrext;AutonomousWork"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="&xsd;int">1</owl:minCardinality> <!-- should this be nonNegativeInteger ? -->
+            <owl:onProperty rdf:resource="&frbr;isReferentiallyRelatedToWork"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+	</owl:Class>
+
+
+	<owl:Class rdf:about="&frbrext;AutonomousExpression">
+		<rdfs:label xml:lang="en">autonomous expression</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Expression"/>
+
+    <owl:disjointWith rdf:resource="&frbrext;ReferentialExpression"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Expression"/>
+          <owl:Class>
+            <owl:complementOf rdf:resource="&frbrext;ReferentialExpression"/>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+
+    <skos:historyNote rdf:value="Changed complementOf to refer to ReferentialExpression instead of ReferentialWork" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbrext;ReferentialExpression">
+		<rdfs:label xml:lang="en">referential expression</rdfs:label>
+		<rdfs:comment xml:lang="en">A referential expression is one which has little meaning when not studied in conjunction with the expression it refers to.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Expression"/>
+
+    <owl:disjointWith rdf:resource="&frbrext;AutonomousExpression"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Expression"/>
+          <owl:Restriction>
+            <owl:minCardinality rdf:datatype="&xsd;int">1</owl:minCardinality> <!-- should this be nonNegativeInteger ? -->
+            <owl:onProperty rdf:resource="&frbr;isReferentiallyRelatedToExpression"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+	</owl:Class>
+
+
+  <!-- Properties -->
+
+  <owl:ObjectProperty rdf:about="&frbrext;complementsExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">complements expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;complementsWork"> <!-- domain ?? -->
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">complements work</rdfs:label>
+    <rdfs:comment xml:lang="en">Referential: cadenza, libretto, choreography, ending for unfinished work, etc.
+Autonomous: incidental music, musical setting for a text, pendant, etc.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasDependentPartExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has dependent part expression</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;hasPartExpression"/>
+    <owl:inverseOf rdf:resource="&frbrext;isDependentPartOfExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasDependentPartWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has dependent part work</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;hasPartWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasIndependentPartExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has independent part expression</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;hasPartExpression"/>
+    <owl:inverseOf rdf:resource="&frbrext;isIndependentPartOfExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasPartExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has part expression</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <owl:inverseOf rdf:resource="&frbrext;isPartOfExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasPartItem">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has part item</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Item"/>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <owl:inverseOf rdf:resource="&frbrext;isPartOfItem"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasPartManifestation">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has part manifestation</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Manifestation"/>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <owl:inverseOf rdf:resource="&frbrext;isPartOfManifestation"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasPartWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has part work</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <owl:inverseOf rdf:resource="&frbrext;isPartOfWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAnAbridgementOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is an abridgement of expression</rdfs:label>
+    <rdfs:comment xml:lang="en">Between expressions of the SAME WORK.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAnAdaptationOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is an adaptation of expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAnAdaptationOfWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is adaption of work</rdfs:label>
+    <rdfs:comment xml:lang="en">Adaptation, paraphrase, free translation, variation (music), harmonisation (music), fantasy (music), etc.
+The subject is not dependent on the object for meaning.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAnAlternativeManifestationTo">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is an alternative manifestation to</rdfs:label>
+    <rdfs:comment xml:lang="en">Alternate is an Americanism.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Endeavour"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToManifestation"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAnArrangementOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is an arrangement of expression</rdfs:label>
+    <rdfs:comment xml:lang="en">Between expressions of the SAME WORK.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAnImitationOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is an imitation of expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAReconfigurationOfItem">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a reconfiguration of item</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToItem"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAReferentialSuccessorToExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a referential successor to expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isReferentiallyRelatedToExpression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isASuccessorToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAReferentialSuccessorToWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a referential successor to work</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isASuccessorToWork"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isReferentiallyRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAReproductionOfItem">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a reproduction of item</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToItem"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAReproductionOfManifestation">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a reproduction of manifestation</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Endeavour"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToManifestation"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isARevisionOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a revision of expression</rdfs:label>
+    <rdfs:comment xml:lang="en">Between expressions of the SAME WORK.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isASuccessorToExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a successor to expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isASuccessorToWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a sucessor to work</rdfs:label>
+    <rdfs:comment xml:lang="en">Referential: sequel, etc.
+Autonomous: sequel, succeeding work, etc.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isASummaryOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a summary of expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isASummaryOfWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a summary of work</rdfs:label>
+    <rdfs:comment xml:lang="en">Digest, abstract, etc.
+The subject is not dependent on the object for meaning.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isATransformationOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a transformation of expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isATransformationOfWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a transformation of work</rdfs:label>
+    <rdfs:comment xml:lang="en">Dramatisation, novelisation, versification, screenplay, etc.
+The subject is not dependent on the object for meaning.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToWork"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isATranslationOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is a translation of expression</rdfs:label>
+    <rdfs:comment xml:lang="en">Between expressions of the SAME WORK.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isAutonomouslyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAutonomouslyRelatedToExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is autonomously related to expression</rdfs:label>
+    <rdfs:comment xml:lang="en">A relation between two expressions which does not result in the subject becoming a referential expression (i.e. one which has little meaning without the object).</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAutonomouslyRelatedToWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is autonomously related to work</rdfs:label>
+    <rdfs:comment xml:lang="en">The subject is not dependent on the object for meaning.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToWork"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isDependentPartOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is dependent part of expression</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isPartOfExpression"/>
+    <owl:inverseOf rdf:resource="&frbrext;hasDependentPartExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isDependentPartOfWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is dependent part of work</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isPartOfWork"/>
+    <owl:inverseOf rdf:resource="&frbrext;hasDependentPartWork"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isIndependentPartOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is independent part of expression</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isPartOfExpression"/>
+    <owl:inverseOf rdf:resource="&frbrext;hasIndependentPartExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isIndependentPartOfWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is independent part of work</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isPartOfWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isPartOfExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is part of expression</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <owl:inverseOf rdf:resource="&frbrext;hasPartExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isPartOfItem"> <!-- @@   # not a good name -->
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is part of item</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Item"/>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <owl:inverseOf rdf:resource="&frbrext;hasPartItem"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isPartOfManifestation">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is part of manifestation</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Manifestation"/>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <owl:inverseOf rdf:resource="&frbrext;hasPartManifestation"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isPartOfWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is part of work</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isReferentiallyRelatedToExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is referentially related to expression</rdfs:label>
+    <rdfs:comment xml:lang="en">A relation between two expressions which results in the subject becoming a referential expression (i.e. one which has little meaning without the object).</rdfs:comment>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isReferentiallyRelatedToWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is referentially related to work</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbrext;Work"/>
+          <owl:Class rdf:about="&frbrext;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isRelatedToExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is related to expression</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isRelatedToItem">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is related to item</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isRelatedToManifestation">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is related to manifestation</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;isRelatedToWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is related to work</rdfs:label>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;referentiallyComplementsExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">referentially complements expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;complementsExpression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isReferentiallyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;referentiallyComplementsWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">referentially complements work</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isReferentiallyRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;referentiallySupplementsExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">referentially supplements expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;supplementsExpression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isReferentiallyRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;referentiallySupplementsWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">referentially supplements work</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;supplementsWork"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isReferentiallyRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;supplementsExpression">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">supplements expression</rdfs:label>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToExpression"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;supplementsWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">supplements work</rdfs:label>
+    <rdfs:comment xml:lang="en">Referential: index, concordance, teacher's guide, gloss, supplement, appendix, etc.
+Autonomous: supplement, appendix, etc.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbrext;isRelatedToWork"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbrext;isAnImitationOfWork">  <!-- domain? Endeavour? -->
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">is an imitation of work</rdfs:label>
+    <rdfs:comment xml:lang="en">Parody, imitation, travesty, etc.
+The subject is not dependent on the object for meaning.</rdfs:comment>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <owl:inverseOf rdf:resource="&frbrext;isAutonomouslyRelatedToWork"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbrext;hasIndependentPartWork">
+		<rdfs:isDefinedBy rdf:resource="&frbrext;"/>
+    <rdfs:label xml:lang="en">has independent part work</rdfs:label>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <owl:inverseOf rdf:resource="&frbrext;isIndependentPartOfWork"/>
+  </owl:ObjectProperty>
+
+
+
+</rdf:RDF>

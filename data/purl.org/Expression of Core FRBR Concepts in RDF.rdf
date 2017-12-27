@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY frbr  "http://purl.org/vocab/frbr/core#" >
+    <!ENTITY frbrext  "http://purl.org/vocab/frbr/extended#" >
+    <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY foaf  "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY owl  "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY cc  "http://web.resource.org/cc/" >
+    <!ENTITY vocabid  "http://purl.org/vocab/frbr/frbr-core-20050810" >
+	  <!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
+]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:vann="http://purl.org/vocab/vann/"
+  xmlns:dct="http://purl.org/dc/terms/"
+  xmlns:dctype="http://purl.org/dc/dcmitype/"
+  xmlns:cc="http://web.resource.org/cc/"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+	<owl:Ontology rdf:about="http://purl.org/vocab/frbr/core#" dc:date="2005-08-10">
+    <dc:title xml:lang="en">Expression of Core FRBR Concepts in RDF</dc:title>
+    <rdfs:comment xml:lang="en">
+      This vocabulary is an expression in RDF of the concepts and relations described in the
+      IFLA report on the Functional Requirements for Bibliographic Records (FRBR).
+    </rdfs:comment>
+    <rdfs:comment xml:lang="en">
+      This vocabulary is a work in progress, it includes RDF classes for the group 1, 2 and 3 entities
+      described by the FRBR report and properties corresponding to the core relationships between
+      those entities. It does not yet describe attributes of the entities. Where possible, appropriate
+      relationships with other vocabularies are included in order to place this vocabulary in the
+      context of existing RDF work.
+    </rdfs:comment>
+		<dc:identifier>&vocabid;</dc:identifier>
+		<dct:isVersionOf rdf:resource="&frbr;"/>
+		<dc:creator>Ian Davis &lt;http://purl.org/NET/iand&gt;</dc:creator>
+		<dc:creator>Richard Newman</dc:creator>
+		<dc:contributor>Bruce D'Arcus</dc:contributor>
+		<dc:rights>Copyright © 2005 Richard Newman and Ian Davis</dc:rights>
+		<dct:replaces rdf:resource="http://purl.org/vocab/frbr/frbr-core-20050809"/>
+		<vann:preferredNamespaceUri>&frbr;</vann:preferredNamespaceUri>
+		<vann:preferredNamespacePrefix>frbr</vann:preferredNamespacePrefix>
+
+		<dct:hasFormat>
+			<dctype:Text rdf:about="&vocabid;.html">
+				<dc:format>
+					<dct:IMT>
+						<rdf:value>text/html</rdf:value>
+						<rdfs:label xml:lang="en">HTML</rdfs:label>
+					</dct:IMT>
+				</dc:format>
+			</dctype:Text>
+		</dct:hasFormat>
+
+		<dct:hasFormat>
+			<dctype:Text rdf:about="&vocabid;.rdf">
+				<dc:format>
+					<dct:IMT>
+						<rdf:value>application/rdf+xml</rdf:value>
+						<rdfs:label xml:lang="en">RDF</rdfs:label>
+					</dct:IMT>
+				</dc:format>
+			</dctype:Text>
+		</dct:hasFormat>
+
+    <skos:example rdf:resource="./frbr-example-film-20050809.html"/>
+
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Sorted properties and classes alphabetically by URI" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added experimental paraphrases to property and class descriptions" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Fixed type in film example and added creator and date" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added alternate, alternateOf, reconfiguration, reconfigurationOf properties" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Made domains and ranges of many properties more specific" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Item is now not a subclass of geo:SpatialThing" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+
+	</owl:Ontology>
+
+  <!-- Using new UK law licence -->
+	<cc:Work rdf:about="">
+		<cc:license rdf:resource="http://creativecommons.org/licenses/by/2.0/uk/"/>
+	</cc:Work>
+	<cc:License rdf:about="http://creativecommons.org/licenses/by/2.0/uk/">
+		<cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+		<cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+		<cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+		<cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+		<cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+	</cc:License>
+
+
+
+
+	<!-- some OWL DL constructs -->
+
+	<owl:ObjectProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+	<owl:ObjectProperty rdf:about="http://purl.org/dc/terms/hasFormat"/>
+
+	<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf"/>
+	<owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/replaces"/>
+	<owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/type"/>
+
+	<owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+	<owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+	<owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+	<owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+	<owl:DatatypeProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+
+	<owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+	<owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+	<owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/changes"/>
+
+	<owl:DatatypeProperty rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#value"/>
+
+	<owl:Class rdf:about="http://www.isi.edu/~pan/damltime/time-entry.owl#Event"/>
+	<owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+	<owl:Class rdf:about="http://xmlns.com/wordnet/1.6/Work~2"/>
+	<owl:Class rdf:about="http://purl.org/dc/terms/IMT"/>
+	<owl:Class rdf:about="http://www.w3.org/2004/02/skos/core#Concept"/>
+
+	<owl:Class rdf:about="http://purl.org/dc/dcmitype/Text"/>
+
+	<owl:Class rdf:about="&cc;License"/>
+	<owl:Class rdf:about="&cc;Permission"/>
+	<owl:Class rdf:about="&cc;Requirement"/>
+	<owl:ObjectProperty rdf:about="&cc;permits"/>
+	<owl:ObjectProperty rdf:about="&cc;requires"/>
+	<owl:AnnotationProperty rdf:about="&cc;license"/>
+	<cc:Permission rdf:about="&cc;Reproduction"/>
+	<cc:Permission rdf:about="&cc;Distribution"/>
+	<cc:Requirement rdf:about="&cc;Notice"/>
+	<cc:Requirement rdf:about="&cc;Attribution"/>
+	<cc:Permission rdf:about="&cc;DerivativeWorks"/>
+
+
+
+	<owl:Class rdf:about="&frbr;Endeavour">
+		<rdfs:label xml:lang="en">endeavour</rdfs:label>
+    <skos:definition  xml:lang="en">Any of the products of artistic or creative endeavour.</skos:definition >
+    <rdfs:comment xml:lang="en">This class represents any one of the FRBR group one entities.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+
+    <owl:disjointWith rdf:resource="&frbr;ResponsibleEntity"/>
+    <owl:disjointWith rdf:resource="&frbr;Subject"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Expression"/>
+          <owl:Class rdf:about="&frbr;Item"/>
+          <owl:Class rdf:about="&frbr;Manifestation"/>
+          <owl:Class rdf:about="&frbr;Work"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+
+	</owl:Class>
+
+
+
+
+	<owl:Class rdf:about="&frbr;Work">
+		<rdfs:label xml:lang="en">work</rdfs:label>
+    <skos:definition xml:lang="en">An abstract notion of an artistic or intellectual creation.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group one entity 'Work'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Endeavour"/>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/wordnet/1.6/Work~2"/>
+
+    <owl:disjointWith rdf:resource="&frbr;Expression"/>
+    <owl:disjointWith rdf:resource="&frbr;Manifestation"/>
+    <owl:disjointWith rdf:resource="&frbr;Item"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Made subclass of wordnet:Work~2" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbr;Expression">
+		<rdfs:label xml:lang="en">expression</rdfs:label>
+    <skos:definition xml:lang="en">A realization of a single work usually in a physical form.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group one entity 'Expression'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+
+    <rdfs:subClassOf rdf:resource="&frbr;Endeavour"/>
+
+    <owl:disjointWith rdf:resource="&frbr;Work"/>
+    <owl:disjointWith rdf:resource="&frbr;Item"/>
+    <owl:disjointWith rdf:resource="&frbr;Manifestation"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+
+	<owl:Class rdf:about="&frbr;Manifestation">
+		<rdfs:label xml:lang="en">manifestation</rdfs:label>
+    <skos:definition xml:lang="en">The physical embodiment of one or more expressions.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group one entity 'Manifestation'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Endeavour"/>
+    <owl:disjointWith rdf:resource="&frbr;Work"/>
+    <owl:disjointWith rdf:resource="&frbr;Expression"/>
+    <owl:disjointWith rdf:resource="&frbr;Item"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbr;Item">
+		<rdfs:label xml:lang="en">item</rdfs:label>
+    <skos:definition xml:lang="en">An exemplar of a single manifestation.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group one entity 'Item'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Endeavour"/>
+<!--
+    removed to allow for electronic items
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+-->
+
+    <owl:disjointWith rdf:resource="&frbr;Work"/>
+    <owl:disjointWith rdf:resource="&frbr;Expression"/>
+    <owl:disjointWith rdf:resource="&frbr;Manifestation"/>
+
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Made subclass of geo:SpatialThing" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Removed subclass of geo:SpatialThing" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbr;ResponsibleEntity">
+		<rdfs:label xml:lang="en">responsible entity</rdfs:label>
+    <skos:definition xml:lang="en">One responsible for the creation, production, distribution or maintenance of artistic or creative content.</skos:definition>
+    <rdfs:comment xml:lang="en">This class represents any of the FRBR group two entities.</rdfs:comment>
+
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:disjointWith rdf:resource="&frbr;Endeavour"/>
+    <owl:disjointWith rdf:resource="&frbr;Subject"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;CorporateBody"/>
+          <owl:Class rdf:about="&foaf;Person"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbr;Person">
+		<rdfs:label xml:lang="en">person</rdfs:label>
+    <skos:definition xml:lang="en">A living or dead individual.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group two entity 'Person'.</rdfs:comment>
+
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:disjointWith rdf:resource="&frbr;Endeavour"/>
+    <owl:disjointWith rdf:resource="&frbr;Subject"/>
+    <owl:equivalentClass rdf:resource="&foaf;Person"/>
+    <dct:issued>2005-08-08</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="&frbr;CorporateBody">
+    <rdfs:label xml:lang="en">corporate body</rdfs:label>
+    <skos:definition xml:lang="en">An organization or group of individuals and/or other organizations.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group two entity 'Corporate Body'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;ResponsibleEntity"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&foaf;Organization"/>
+          <owl:Class rdf:about="&foaf;Group"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:Class>
+
+	<owl:Class rdf:about="&frbr;Subject">
+		<rdfs:label xml:lang="en">subject</rdfs:label>
+    <skos:definition xml:lang="en">Something that may serve as the subject of a work.</skos:definition>
+    <rdfs:comment xml:lang="en">This class represents any of the FRBR group three entities.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+
+    <owl:disjointWith rdf:resource="&frbr;ResponsibleEntity"/>
+    <owl:disjointWith rdf:resource="&frbr;Endeavour"/>
+
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Event"/>
+          <owl:Class rdf:about="&frbr;Object"/>
+          <owl:Class rdf:about="&frbr;Place"/>
+          <owl:Class rdf:about="&frbr;Concept"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+
+	<owl:Class rdf:about="&frbr;Concept">
+		<rdfs:label xml:lang="en">concept</rdfs:label>
+    <skos:definition xml:lang="en">An abstract idea or notion.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group three entity 'Concept'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Subject"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+
+    <owl:disjointWith rdf:resource="&frbr;Object"/>
+    <owl:disjointWith rdf:resource="&frbr;Event"/>
+    <owl:disjointWith rdf:resource="&frbr;Place"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Made subclass of skos:Concept" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbr;Object">
+		<rdfs:label xml:lang="en">object</rdfs:label>
+    <skos:definition xml:lang="en">A tangible or material thing.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group three entity 'Object'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Subject"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    <owl:disjointWith rdf:resource="&frbr;Event"/>
+    <owl:disjointWith rdf:resource="&frbr;Place"/>
+    <owl:disjointWith rdf:resource="&frbr;Concept"/>
+
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Made subclass of geo:SpatialThing" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+
+	<owl:Class rdf:about="&frbr;Event">
+		<rdfs:label xml:lang="en">event</rdfs:label>
+    <skos:definition xml:lang="en">An action or occurrence.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group three entity 'Event'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Subject"/>
+    <rdfs:subClassOf rdf:resource="http://www.isi.edu/~pan/damltime/time-entry.owl#Event"/>
+    <owl:disjointWith rdf:resource="&frbr;Place"/>
+    <owl:disjointWith rdf:resource="&frbr;Object"/>
+    <owl:disjointWith rdf:resource="&frbr;Concept"/>
+
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Made subclass of owltime:Event" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+	<owl:Class rdf:about="&frbr;Place">
+		<rdfs:label xml:lang="en">place</rdfs:label>
+    <skos:definition xml:lang="en">A location.</skos:definition>
+		<rdfs:comment xml:lang="en">This class corresponds to the FRBR group three entity 'Place'.</rdfs:comment>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:subClassOf rdf:resource="&frbr;Subject"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing"/>
+    <owl:disjointWith rdf:resource="&frbr;Event"/>
+    <owl:disjointWith rdf:resource="&frbr;Object"/>
+    <owl:disjointWith rdf:resource="&frbr;Concept"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added comment" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Made subclass of geo:SpatialThing" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Extracted definition from existing comment" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+	</owl:Class>
+
+
+
+  <!-- Properties -->
+  <owl:ObjectProperty rdf:about="&frbr;relatedEndeavour">
+    <rdfs:label xml:lang="en">related endeavour</rdfs:label>
+    <skos:definition xml:lang="en">Another endeavour that is related in some way to an endeavour.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Endeavour"/>
+    <rdfs:range rdf:resource="&frbr;Endeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <!-- High level relationships -->
+  <owl:ObjectProperty rdf:about="&frbr;realization">
+    <rdfs:label xml:lang="en">realization</rdfs:label>
+    <skos:definition xml:lang="en">An expression that is an intellectual or artistic realization of a work.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <owl:inverseOf rdf:resource="&frbr;realizationOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;realizationOf">
+    <rdfs:label xml:lang="en">realization of</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <skos:definition xml:lang="en">The work that has been realized by an expression.</skos:definition>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <owl:inverseOf rdf:resource="&frbr;realization"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;embodiment">
+    <rdfs:label xml:lang="en">embodiment</rdfs:label>
+    <skos:definition xml:lang="en">A manifestation that embodies an expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <owl:inverseOf rdf:resource="&frbr;embodimentOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;embodimentOf">
+    <rdfs:label xml:lang="en">embodiment of</rdfs:label>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <skos:definition xml:lang="en">An expression that is embodied by a manifestation.</skos:definition>
+    <rdfs:domain rdf:resource="&frbr;Manifestation"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <owl:inverseOf rdf:resource="&frbr;embodiment"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;exemplar">
+    <rdfs:label xml:lang="en">exemplar</rdfs:label>
+    <skos:definition xml:lang="en">An item that is an exemplar of a manifestation.</skos:definition>
+  	<rdfs:isDefinedBy rdf:resource="&frbr;"/>    <rdfs:domain rdf:resource="&frbr;Manifestation"/>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <owl:inverseOf rdf:resource="&frbr;exemplarOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;exemplarOf">
+    <rdfs:label xml:lang="en">exemplar of</rdfs:label>
+    <skos:definition xml:lang="en">The manifestation that is exemplified by a item.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Item"/>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <owl:inverseOf rdf:resource="&frbr;exemplar"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <!-- Other group 1 relationships -->
+
+
+  <owl:ObjectProperty rdf:about="&frbr;reproduction">
+    <rdfs:label xml:lang="en">reproduction</rdfs:label>
+    <skos:definition xml:lang="en">A reproduction of a manifestation or item.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;reproductionOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Manifestation"/>
+          <owl:Class rdf:about="&frbr;Item"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Manifestation"/>
+          <owl:Class rdf:about="&frbr;Item"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Manifestation or Item" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;reproductionOf">
+    <rdfs:label xml:lang="en">reproduction of</rdfs:label>
+    <skos:definition xml:lang="en">A manifestation or item that is reproduced.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;reproduction"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Manifestation"/>
+          <owl:Class rdf:about="&frbr;Item"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Manifestation"/>
+          <owl:Class rdf:about="&frbr;Item"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Manifestation or Item" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;successor">
+    <rdfs:label xml:lang="en">successor</rdfs:label>
+    <skos:definition xml:lang="en">A successor to a work or expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;successorOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;successorOf">
+    <rdfs:label xml:lang="en">successor of</rdfs:label>
+    <skos:definition xml:lang="en">A work or expression that is succeeded.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;successor"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;supplement">
+    <rdfs:label xml:lang="en">supplement</rdfs:label>
+    <skos:definition xml:lang="en">A supplement to a work or expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;supplementOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;supplementOf">
+    <rdfs:label xml:lang="en">supplement of</rdfs:label>
+    <skos:definition xml:lang="en">A work or expression that is supplemented.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;supplement"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+
+  <owl:ObjectProperty rdf:about="&frbr;complement">
+    <rdfs:label xml:lang="en">complement</rdfs:label>
+    <skos:definition xml:lang="en">A complement to a work or expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;complementOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;complementOf">
+    <rdfs:label xml:lang="en">complement of</rdfs:label>
+    <skos:definition xml:lang="en">A work or expression that is complemented.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;complement"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;summarization">
+    <rdfs:label xml:lang="en">summarization</rdfs:label>
+    <skos:definition xml:lang="en">A summarization of a work or expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;summarizationOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;summarizationOf">
+    <rdfs:label xml:lang="en">summarization of</rdfs:label>
+    <skos:definition xml:lang="en">A work or expression that is summarized.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;summarization"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;adaption">
+    <rdfs:label xml:lang="en">adaption</rdfs:label>
+    <skos:definition xml:lang="en">An adaption of a work or expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;adaptionOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;adaptionOf">
+    <rdfs:label xml:lang="en">adaption of</rdfs:label>
+    <skos:definition xml:lang="en">A work or expression that is adapted.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;adaption"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;transformation">
+    <rdfs:label xml:lang="en">transformation</rdfs:label>
+    <skos:definition xml:lang="en">A transformation of a work or expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;transformationOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;transformationOf">
+    <rdfs:label xml:lang="en">transformation of</rdfs:label>
+    <skos:definition xml:lang="en">A work or expression that is transformed.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;transformation"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;imitation">
+    <rdfs:label xml:lang="en">imitation</rdfs:label>
+    <skos:definition xml:lang="en">An imitation of a work or expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;imitationOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;imitationOf">
+    <rdfs:label xml:lang="en">imitation of</rdfs:label>
+    <skos:definition xml:lang="en">A work or expression that is imitated.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;imitation"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Work"/>
+          <owl:Class rdf:about="&frbr;Expression"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Work or Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;abridgement">
+    <rdfs:label xml:lang="en">abridgement</rdfs:label>
+    <skos:definition xml:lang="en">An abridgment of an expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;abridgementOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;abridgementOf">
+    <rdfs:label xml:lang="en">abridgement of</rdfs:label>
+    <skos:definition xml:lang="en">An expression that is abridged.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;abridgement"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;revision">
+    <rdfs:label xml:lang="en">revision</rdfs:label>
+    <skos:definition xml:lang="en">A revision of an expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;revisionOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;revisionOf">
+    <rdfs:label xml:lang="en">revision of</rdfs:label>
+    <skos:definition xml:lang="en">An expression that is revised.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;revision"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;translation">
+    <rdfs:label xml:lang="en">translation</rdfs:label>
+    <skos:definition xml:lang="en">A translation of an expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;translationOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;translationOf">
+    <rdfs:label xml:lang="en">translation of</rdfs:label>
+    <skos:definition xml:lang="en">An expression that is translated.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;translation"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;arrangement">
+    <rdfs:label xml:lang="en">arrangement</rdfs:label>
+    <skos:definition xml:lang="en">An arrangement of an expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;arrangementOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;arrangementOf">
+    <rdfs:label xml:lang="en">arrangement of</rdfs:label>
+    <skos:definition xml:lang="en">An expression that is arranged.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;arrangement"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+    <skos:historyNote rdf:value="Added domain and range of Expression" dc:date="2005-08-10" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;alternate">
+    <rdfs:label xml:lang="en">alternate</rdfs:label>
+    <skos:definition xml:lang="en">An alternative to a manifestation.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Manifestation"/>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <owl:inverseOf rdf:resource="&frbr;alternateOf"/>
+    <dct:issued>2005-08-10</dct:issued>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;alternateOf">
+    <rdfs:label xml:lang="en">alternate of</rdfs:label>
+    <skos:definition xml:lang="en">A manifestation that is alternated.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Manifestation"/>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <owl:inverseOf rdf:resource="&frbr;alternate"/>
+    <dct:issued>2005-08-10</dct:issued>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;reconfiguration">
+    <rdfs:label xml:lang="en">reconfiguration</rdfs:label>
+    <skos:definition xml:lang="en">A recongifuration of an item.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Item"/>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <owl:inverseOf rdf:resource="&frbr;reconfigurationOf"/>
+    <dct:issued>2005-08-10</dct:issued>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;reconfigurationOf">
+    <rdfs:label xml:lang="en">reconfiguration of</rdfs:label>
+    <skos:definition xml:lang="en">An item that is reconfigured.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Item"/>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <owl:inverseOf rdf:resource="&frbr;reconfiguration"/>
+    <dct:issued>2005-08-10</dct:issued>
+  </owl:ObjectProperty>
+
+
+  <!-- Whole/Part relationships -->
+
+  <owl:ObjectProperty rdf:about="&frbr;part">
+    <rdfs:label xml:lang="en">part</rdfs:label>
+    <skos:definition xml:lang="en">A part of an endeavour.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;partOf"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;partOf">
+    <rdfs:label xml:lang="en">part of</rdfs:label>
+    <skos:definition xml:lang="en">An endeavour incorporating an endeavour.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <owl:inverseOf rdf:resource="&frbr;part"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;relatedEndeavour"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <!-- ResponsibleEntity to Endeavour relationships -->
+
+
+  <owl:ObjectProperty rdf:about="&frbr;responsibleEntity">
+    <rdfs:label xml:lang="en">responsible entity</rdfs:label>
+    <skos:definition xml:lang="en">An entity in some way responsible for an endeavour.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Endeavour"/>
+    <rdfs:range rdf:resource="&frbr;ResponsibleEntity"/>
+    <owl:inverseOf rdf:resource="&frbr;responsibleEntityOf"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;responsibleEntityOf">
+    <rdfs:label xml:lang="en">responsible entity of</rdfs:label>
+    <skos:definition xml:lang="en">An endeavour that is the responsibility of an entity.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:range rdf:resource="&frbr;Endeavour"/>
+    <owl:inverseOf rdf:resource="&frbr;responsibleEntity"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;creator">
+    <rdfs:label xml:lang="en">creator</rdfs:label>
+    <skos:definition xml:lang="en">An entity in some way responsible for the creation of a work.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntity"/>
+    <owl:inverseOf rdf:resource="&frbr;creatorOf"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;creatorOf">
+    <rdfs:label xml:lang="en">creator of</rdfs:label>
+    <skos:definition xml:lang="en">A work that was in some way created by of an entity.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:range rdf:resource="&frbr;Work"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntityOf"/>
+    <owl:inverseOf rdf:resource="&frbr;creator"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;realizer">
+    <rdfs:label xml:lang="en">realizer</rdfs:label>
+    <skos:definition xml:lang="en">An entity in some way responsible for realizing an expression.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Expression"/>
+    <rdfs:range rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntity"/>
+    <owl:inverseOf rdf:resource="&frbr;realizerOf"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;realizerOf">
+    <rdfs:label xml:lang="en">realizer of</rdfs:label>
+    <skos:definition xml:lang="en">An expression that was in some way realized by an entity.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:range rdf:resource="&frbr;Expression"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntityOf"/>
+    <owl:inverseOf rdf:resource="&frbr;realizer"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;producer">
+    <rdfs:label xml:lang="en">producer</rdfs:label>
+    <skos:definition xml:lang="en">An entity in some way responsible for producing a manifestation.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Manifestation"/>
+    <rdfs:range rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntity"/>
+    <owl:inverseOf rdf:resource="&frbr;producerOf"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+  <owl:ObjectProperty rdf:about="&frbr;producerOf">
+    <rdfs:label xml:lang="en">producer of</rdfs:label>
+    <skos:definition xml:lang="en">A manifestation that was in some way produced an entity.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:range rdf:resource="&frbr;Manifestation"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntityOf"/>
+    <owl:inverseOf rdf:resource="&frbr;producer"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;owner">
+    <rdfs:label xml:lang="en">owner</rdfs:label>
+    <skos:definition xml:lang="en">An entity that owns an item.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Item"/>
+    <rdfs:range rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntity"/>
+    <owl:inverseOf rdf:resource="&frbr;ownerOf"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+  <owl:ObjectProperty rdf:about="&frbr;ownerOf">
+    <rdfs:label xml:lang="en">owner of</rdfs:label>
+    <skos:definition xml:lang="en">An item that is in some way owned an entity.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;ResponsibleEntity"/>
+    <rdfs:range rdf:resource="&frbr;Item"/>
+    <rdfs:subPropertyOf rdf:resource="&frbr;responsibleEntityOf"/>
+    <owl:inverseOf rdf:resource="&frbr;owner"/>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+
+
+  <!-- Subject relations -->
+
+  <owl:ObjectProperty rdf:about="&frbr;subject">
+    <rdfs:label xml:lang="en">subject</rdfs:label>
+    <skos:definition xml:lang="en">The subject of a work.</skos:definition>
+		<rdfs:isDefinedBy rdf:resource="&frbr;"/>
+    <rdfs:domain rdf:resource="&frbr;Work"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="&frbr;Endeavour"/>
+          <owl:Class rdf:about="&frbr;ResponsibleEntity"/>
+          <owl:Class rdf:about="&frbr;Subject"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+    <dct:issued>2005-07-15</dct:issued>
+    <skos:changeNote rdf:value="Added isDefinedBy property referring to FRBR core namespace" dc:date="2005-08-08" dc:creator="Ian Davis"/>
+    <skos:changeNote rdf:value="Added definition" dc:date="2005-08-09" dc:creator="Ian Davis"/>
+  </owl:ObjectProperty>
+
+
+
+  <!-- Groundings in other vocabularies -->
+
+  <owl:Class rdf:about="&foaf;Organization">
+    <rdfs:subClassOf rdf:resource="&frbr;CorporateBody"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="&foaf;Group">
+    <rdfs:subClassOf rdf:resource="&frbr;CorporateBody"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="&foaf;Person">
+    <rdfs:subClassOf rdf:resource="&frbr;ResponsibleEntity"/>
+  </owl:Class>
+
+
+</rdf:RDF>
