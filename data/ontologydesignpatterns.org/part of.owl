@@ -20,7 +20,9 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://www.ontologydesignpatterns.org/cp/owl/partof.owl">
-        <rdfs:label rdf:datatype="&rdf;PlainLiteral">part of</rdfs:label>
+        <rdfs:label xml:lang="en">Ontology about part and whole.</rdfs:label>
+		<rdfs:label xml:lang="zh-CN">关于部分与整体的本体</rdfs:label>
+		<rdfs:label rdf:datatype="&rdf;PlainLiteral">part of</rdfs:label>
         <rdfs:label rdf:datatype="&rdf;PlainLiteral">part-whole</rdfs:label>
         <owl:versionInfo rdf:datatype="&xsd;string">1.1 added rdfs:isDefinedBy for all named entities</owl:versionInfo>
         <cpannotationschema:scenarios rdf:datatype="&xsd;string">Brain and heart are parts of the human body, substantia nigra is part of brain.</cpannotationschema:scenarios>
@@ -70,7 +72,9 @@
     <owl:ObjectProperty rdf:about="&partof;hasPart">
         <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:label xml:lang="en">has part</rdfs:label>
+		<rdfs:label xml:lang="zh-CN">有部分</rdfs:label>
         <rdfs:comment>A transitive relation expressing parthood between any entities, e.g. &#39;the human body has a brain as part&#39;. When specializing this pattern, take care of restricting the domain and range appropriately, since it could be counterintuitive to use this relation arbitrarily, e.g. between animals and planets. For an intransitive partof pattern, see &#39;componency&#39;.</rdfs:comment>
+		<rdfs:comment xml:lang="zh-CN">用于描述任何实体间部分与整体的传递性关系，比如人体有一个名为大脑的部分。当使用这个模式的时候，应该注意对domain和range进行适当的约束，因为随意使用这种关系可能会违背常理，比如在动物和行星之间。对于非传递性的整体部分模式，请参考&#39;componency&#39;。</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/partof.owl"/>
         <owl:inverseOf rdf:resource="&partof;isPartOf"/>
         <rdfs:range rdf:resource="&owl;Thing"/>
@@ -84,7 +88,9 @@
     <owl:ObjectProperty rdf:about="&partof;isPartOf">
         <rdf:type rdf:resource="&owl;TransitiveProperty"/>
         <rdfs:label xml:lang="en">is part of</rdfs:label>
-        <rdfs:comment>A transitive relation expressing parthood between any entities, e.g. &#39;brain is a part of the human body&#39;. When specializing this pattern, take care of restricting the domain and range appropriately, since it could be counterintuitive to use this relation arbitrarily, e.g. between animals and planets. For an intransitive partof pattern, see &#39;componency&#39;.</rdfs:comment>
+		<rdfs:label xml:lang="zh-CN">所属整体</rdfs:label>
+        <rdfs:comment xml:lang="en">A transitive relation expressing parthood between any entities, e.g. &#39;brain is a part of the human body&#39;. When specializing this pattern, take care of restricting the domain and range appropriately, since it could be counterintuitive to use this relation arbitrarily, e.g. between animals and planets. For an intransitive partof pattern, see &#39;componency&#39;.</rdfs:comment>
+		<rdfs:comment xml:lang="zh-CN">用于描述任何实体间部分与整体的传递性关系，比如大脑是人体的一部分。当使用这个模式的时候，应该注意对domain和range进行适当的约束，因为随意使用这种关系可能会违背常理，比如在动物和行星之间。对于非传递性的整体部分模式，请参考&#39;componency&#39;。</rdfs:comment>
         <rdfs:isDefinedBy rdf:resource="http://www.ontologydesignpatterns.org/cp/owl/partof.owl"/>
         <rdfs:domain rdf:resource="&owl;Thing"/>
         <rdfs:range rdf:resource="&owl;Thing"/>
