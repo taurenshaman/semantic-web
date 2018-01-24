@@ -12,4 +12,5 @@ http://www.chuci.info
 Ontologies repositories on github:  
 human disease: https://github.com/DiseaseOntology/HumanDiseaseOntology  
 plant: https://github.com/Planteome/plant-ontology  
+Semantic science: https://github.com/micheldumontier/semanticscience
 w3id.org: https://github.com/perma-id/w3id.org
