@@ -10,5 +10,6 @@ http://www.chuci.info
 
 ============
 Ontologies repositories on github:  
-plant: https://github.com/Planteome/plant-ontology  
 human disease: https://github.com/DiseaseOntology/HumanDiseaseOntology  
+plant: https://github.com/Planteome/plant-ontology  
+w3id.org: https://github.com/perma-id/w3id.org
