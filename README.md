@@ -14,6 +14,7 @@ human disease: https://github.com/DiseaseOntology/HumanDiseaseOntology
 plant: https://github.com/Planteome/plant-ontology  
 schema.org: https://github.com/schemaorg/schemaorg  
 Semantic science: https://github.com/micheldumontier/semanticscience  
+UMBEL (Upper Mapping and Binding Exchange Layer): https://github.com/structureddynamics/UMBEL  
 w3id.org: https://github.com/perma-id/w3id.org  
 
 
