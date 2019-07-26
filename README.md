@@ -10,10 +10,12 @@ http://www.chuci.info
 
 ============
 Ontologies repositories on github:  
-plant: https://github.com/Planteome/plant-ontology  
-Semantic science: https://github.com/micheldumontier/semanticscience
-w3id.org: https://github.com/perma-id/w3id.org  
 human disease: https://github.com/DiseaseOntology/HumanDiseaseOntology  
+plant: https://github.com/Planteome/plant-ontology  
+schema.org: https://github.com/schemaorg/schemaorg  
+Semantic science: https://github.com/micheldumontier/semanticscience  
+w3id.org: https://github.com/perma-id/w3id.org  
+
 
 # Institute for Formal Ontology and Medical Information Science (IFOMIS)
 1. The Basic Formal Ontology (BFO): https://github.com/BFO-ontology/BFO
