@@ -1,0 +1,75 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<>
+    <http://creativecommons.org/ns#attributionName> "Andrei Sambra" ;
+    <http://creativecommons.org/ns#attributionURL> <> ;
+    <http://creativecommons.org/ns#license> <http://creativecommons.org/licenses/by-sa/2.0/uk/deed.en_GB> ;
+    <http://purl.org/dc/terms/issued> "2015-06-19"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    a <http://www.w3.org/2002/07/owl#Ontology> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Solid Web Application"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "Solid网络应用"@zh-cn ;
+    <http://xmlns.com/foaf/0.1/maker> <https://deiu.me/profile#me> .
+
+<#Application>
+    a <http://www.w3.org/2000/01/rdf-schema#Class> ;
+    <http://www.w3.org/2000/01/rdf-schema#comment> "A Solid Web application."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "一个Solid网络应用。"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Application"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "应用"@zh-cn .
+
+<#Configuration>
+    a <http://www.w3.org/2000/01/rdf-schema#Class> ;
+    <http://www.w3.org/2000/01/rdf-schema#comment> "A set of configuration data for a Solid Web application."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "针对Solid网络应用的一组配置数据。"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Configuration data"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "配置数据"@zh-cn .
+
+<#PreferencesWorkspace>
+    a <http://www.w3.org/2000/01/rdf-schema#Class> ;
+    <http://www.w3.org/2000/01/rdf-schema#comment> "A special workspace that contains configuration resources for Solid Web application."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "一个包含了Solid网络应用配置资源的特殊工作区。"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Configuration Workspace"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "配置的工作区"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://www.w3.org/ns/pim/space#Workspace> .
+
+<#configuration>
+    a rdf:Property ;
+    <http://www.w3.org/2000/01/rdf-schema#comment> "The configuration data for a given app."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "给定应用的配置数据。"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#domain> <#Application> ;
+    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Configuration"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "配置"@zh-cn .
+
+<#dataSource>
+    a rdf:Property ;
+    <http://www.w3.org/2000/01/rdf-schema#comment> "A container (workspace) in which the app stores data."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "应用存储数据的容器（工作区）。"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#domain> <#Configuration> ;
+    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Data source"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "数据源"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/ns/pim/space#Workspace> .
+
+<#index>
+    a rdf:Property ;
+    <http://www.w3.org/2000/01/rdf-schema#comment> "An index resource that contains references to resources managed by the app."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "一个索引资源，包含了由应用管理的资源引用。"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#domain> <#Application> ;
+    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Data index"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "数据索引"@zh-cn .
+
+<#commonType>
+    a rdf:Property ;
+    <http://www.w3.org/2000/01/rdf-schema#comment> "A common type of data that the app uses. An app can publish a list of common  types that can be used by other apps."@en ;
+	<http://www.w3.org/2000/01/rdf-schema#comment> "应用所使用的数据的通用类型。一个应用可以发布一系列可以被其它应用使用的常用类型。"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#domain> <#Application> ;
+    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <> ;
+    <http://www.w3.org/2000/01/rdf-schema#label> "Common type"@en ;
+	<http://www.w3.org/2000/01/rdf-schema#label> "通用类型"@zh-cn ;
+    <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> .
+

@@ -1,0 +1,647 @@
+{
+  "@context": {
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "vs": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+    "defines": {
+      "@reverse": "rdfs:isDefinedBy"
+    },
+    "comment": "rdfs:comment",
+    "label": "rdfs:label",
+    "domain": {
+      "@id": "rdfs:domain",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "rdfs:range",
+      "@type": "@id"
+    },
+    "subClassOf": {
+      "@id": "rdfs:subClassOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "subPropertyOf": {
+      "@id": "rdfs:subPropertyOf",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "seeAlso": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "status": "vs:term_status"
+  },
+  "@id": "http://www.w3.org/ns/hydra/core",
+  "defines": [
+    {
+      "@id": "hydra:Resource",
+      "@type": "hydra:Class",
+      "comment": "The class of dereferenceable resources.",
+      "label": "Hydra Resource",
+      "subClassOf": [
+        "rdfs:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:Class",
+      "@type": [
+        "hydra:Resource",
+        "rdfs:Class"
+      ],
+      "comment": "The class of Hydra classes. Hydra classes and their instances are dereferenceable resources.",
+      "label": "Hydra Class",
+      "subClassOf": [
+        "hydra:Resource",
+        "rdfs:Class"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:Link",
+      "@type": "hydra:Class",
+      "comment": "The class of properties representing links.",
+      "label": "Link",
+      "subClassOf": [
+        "hydra:Resource",
+        "rdf:Property"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:apiDocumentation",
+      "@type": "hydra:Link",
+      "comment": "A link to the API documentation",
+      "domain": "hydra:Resource",
+      "label": "apiDocumentation",
+      "range": "hydra:ApiDocumentation",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:ApiDocumentation",
+      "@type": "hydra:Class",
+      "comment": "The Hydra API documentation class",
+      "label": "ApiDocumentation",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:entrypoint",
+      "@type": "hydra:Link",
+      "comment": "A link to main entry point of the Web API",
+      "domain": "hydra:ApiDocumentation",
+      "label": "entrypoint",
+      "range": "hydra:Resource",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:supportedClass",
+      "@type": "hydra:Link",
+      "comment": "A class known to be supported by the Web API",
+      "domain": "hydra:ApiDocumentation",
+      "label": "supported classes",
+      "range": "hydra:Class",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:possibleStatus",
+      "@type": "hydra:Link",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "hydra:ApiDocumentation"
+        },
+        {
+          "@id": "hydra:Operation"
+        }
+      ],
+      "comment": "A status that might be returned by the Web API (other statuses should be expected and properly handled as well)",
+      "label": "possible status",
+      "range": "hydra:Status",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:supportedProperty",
+      "@type": "hydra:Link",
+      "comment": "The properties known to be supported by a Hydra class",
+      "domain": "hydra:Class",
+      "label": "supported properties",
+      "range": "hydra:SupportedProperty",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:SupportedProperty",
+      "@type": "hydra:Class",
+      "comment": "A property known to be supported by a Hydra class.",
+      "label": "Supported Property",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:property",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "hydra:SupportedProperty"
+        },
+        {
+          "@id": "hydra:IriTemplateMapping"
+        }
+      ],
+      "comment": "A property",
+      "label": "property",
+      "range": "rdf:Property",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:required",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "hydra:SupportedProperty"
+        },
+        {
+          "@id": "hydra:IriTemplateMapping"
+        }
+      ],
+      "comment": "True if the property is required, false otherwise.",
+      "label": "required",
+      "range": "xsd:boolean",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:readable",
+      "@type": "rdf:Property",
+      "comment": "True if the client can retrieve the property's value, false otherwise.",
+      "domain": "hydra:SupportedProperty",
+      "label": "readable",
+      "range": "xsd:boolean",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:writeable",
+      "@type": "rdf:Property",
+      "comment": "True if the client can change the property's value, false otherwise.",
+      "domain": "hydra:SupportedProperty",
+      "label": "writeable",
+      "range": "xsd:boolean",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:supportedOperation",
+      "@type": "hydra:Link",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "hydra:Class"
+        },
+        {
+          "@id": "hydra:Link"
+        }
+      ],
+      "comment": "An operation supported by instances of the specific Hydra class or the target of the Hydra link",
+      "label": "supported operation",
+      "range": "hydra:Operation",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:operation",
+      "@type": "hydra:Link",
+      "comment": "An operation supported by the Hydra resource",
+      "domain": "hydra:Resource",
+      "label": "operation",
+      "range": "hydra:Operation",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:Operation",
+      "@type": "hydra:Class",
+      "comment": "An operation.",
+      "label": "Operation",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:method",
+      "@type": "rdf:Property",
+      "comment": "The HTTP method.",
+      "domain": "hydra:Operation",
+      "label": "method",
+      "range": "xsd:string",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:expects",
+      "@type": "hydra:Link",
+      "comment": "The information expected by the Web API.",
+      "domain": "hydra:Operation",
+      "label": "expects",
+      "range": "hydra:Class",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:returns",
+      "@type": "hydra:Link",
+      "comment": "The information returned by the Web API on success",
+      "domain": "hydra:Operation",
+      "label": "returns",
+      "range": "hydra:Class",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:Status",
+      "@type": "hydra:Class",
+      "comment": "Additional information about a status code that might be returned.",
+      "label": "Status code description",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:statusCode",
+      "@type": "rdf:Property",
+      "comment": "The HTTP status code",
+      "domain": "hydra:Status",
+      "label": "status code",
+      "range": "xsd:integer",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:title",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "hydra:ApiDocumentation"
+        },
+        {
+          "@id": "hydra:Status"
+        },
+        {
+          "@id": "hydra:Class"
+        },
+        {
+          "@id": "hydra:SupportedProperty"
+        },
+        {
+          "@id": "hydra:Operation"
+        },
+        {
+          "@id": "hydra:Link"
+        }
+      ],
+      "comment": "A title, often used along with a description.",
+      "label": "title",
+      "range": "xsd:string",
+      "subPropertyOf": [
+        "rdfs:label"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:description",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "hydra:ApiDocumentation"
+        },
+        {
+          "@id": "hydra:Status"
+        },
+        {
+          "@id": "hydra:Class"
+        },
+        {
+          "@id": "hydra:SupportedProperty"
+        },
+        {
+          "@id": "hydra:Operation"
+        },
+        {
+          "@id": "hydra:Link"
+        }
+      ],
+      "comment": "A description.",
+      "label": "description",
+      "range": "xsd:string",
+      "subPropertyOf": [
+        "rdfs:comment"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:Error",
+      "@type": "hydra:Class",
+      "comment": "A runtime error, used to report information beyond the returned status code.",
+      "label": "Error",
+      "subClassOf": [
+        "hydra:Status"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:Collection",
+      "@type": "hydra:Class",
+      "comment": "A collection holding references to a number of related resources.",
+      "label": "Collection",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:collection",
+      "@type": "hydra:Link",
+      "comment": "Collections somehow related to this resource.",
+      "domain": "hydra:Resource",
+      "label": "collection",
+      "range": "hydra:Collection",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:manages",
+      "comment": "Semantics of each member provided by the collection.",
+      "domain": "hydra:Collection",
+      "label": "manages",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:subject",
+      "comment": "The subject.",
+      "label": "subject",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:object",
+      "comment": "The object.",
+      "label": "object",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:member",
+      "@type": "hydra:Link",
+      "comment": "A member of the collection",
+      "domain": "hydra:Collection",
+      "label": "member",
+      "range": "hydra:Resource",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:view",
+      "@type": "hydra:Link",
+      "comment": "A specific view of a resource.",
+      "domain": "hydra:Resource",
+      "label": "view",
+      "range": "hydra:Resource",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:PartialCollectionView",
+      "@type": "hydra:Class",
+      "comment": "A PartialCollectionView describes a partial view of a Collection. Multiple PartialCollectionViews can be connected with the the next/previous properties to allow a client to retrieve all members of the collection.",
+      "label": "PartialCollectionView",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:totalItems",
+      "@type": "rdf:Property",
+      "comment": "The total number of items referenced by a collection.",
+      "domain": "hydra:Collection",
+      "label": "total items",
+      "range": "xsd:integer",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:first",
+      "@type": "hydra:Link",
+      "comment": "The first resource of an interlinked set of resources.",
+      "domain": "hydra:Resource",
+      "label": "first",
+      "range": "hydra:Resource",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:last",
+      "@type": "hydra:Link",
+      "comment": "The last resource of an interlinked set of resources.",
+      "domain": "hydra:Resource",
+      "label": "last",
+      "range": "hydra:Resource",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:next",
+      "@type": "hydra:Link",
+      "comment": "The resource following the current instance in an interlinked set of resources.",
+      "domain": "hydra:Resource",
+      "label": "next",
+      "range": "hydra:Resource",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:previous",
+      "@type": "hydra:Link",
+      "comment": "The resource preceding the current instance in an interlinked set of resources.",
+      "domain": "hydra:Resource",
+      "label": "previous",
+      "range": "hydra:Resource",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:search",
+      "@type": "hydra:TemplatedLink",
+      "comment": "A IRI template that can be used to query a collection.",
+      "domain": "hydra:Resource",
+      "label": "search",
+      "range": "hydra:IriTemplate",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:freetextQuery",
+      "@type": "rdf:Property",
+      "comment": "A property representing a freetext query.",
+      "domain": "hydra:Resource",
+      "label": "freetext query",
+      "range": "xsd:string",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:TemplatedLink",
+      "@type": "hydra:Class",
+      "comment": "A templated link.",
+      "label": "Templated Link",
+      "subClassOf": [
+        "hydra:Resource",
+        "rdf:Property"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:IriTemplate",
+      "@type": "hydra:Class",
+      "comment": "The class of IRI templates.",
+      "label": "IRI Template",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:template",
+      "@type": "rdf:Property",
+      "comment": "A templated string with placeholders. The literal's datatype indicates the template syntax; if not specified, hydra:Rfc6570Template is assumed.",
+      "domain": "hydra:IriTemplate",
+      "label": "template",
+      "range": "hydra:Rfc6570Template",
+      "seeAlso": "hydra:Rfc6570Template",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:Rfc6570Template",
+      "@type": "rdfs:Datatype",
+      "comment": "An IRI template as defined by RFC6570.",
+      "label": "RFC6570 IRI template",
+      "range": "xsd:string",
+      "seeAlso": "http://tools.ietf.org/html/rfc6570",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:variableRepresentation",
+      "@type": "rdf:Property",
+      "comment": "The representation format to use when expanding the IRI template.",
+      "domain": "hydra:IriTemplateMapping",
+      "label": "variable representation",
+      "range": "hydra:VariableRepresentation",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:VariableRepresentation",
+      "@type": "hydra:Class",
+      "comment": "A representation specifies how to serialize variable values into strings.",
+      "label": "VariableRepresentation",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:BasicRepresentation",
+      "@type": "hydra:VariableRepresentation",
+      "comment": "A representation that serializes just the lexical form of a variable value, but omits language and type information.",
+      "label": "BasicRepresentation",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:ExplicitRepresentation",
+      "@type": "hydra:VariableRepresentation",
+      "comment": "A representation that serializes a variable value including its language and type information and thus differentiating between IRIs and literals.",
+      "label": "ExplicitRepresentation",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:mapping",
+      "@type": "rdf:Property",
+      "comment": "A variable-to-property mapping of the IRI template.",
+      "domain": "hydra:IriTemplate",
+      "label": "mapping",
+      "range": "hydra:IriTemplateMapping",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:IriTemplateMapping",
+      "@type": "hydra:Class",
+      "comment": "A mapping from an IRI template variable to a property.",
+      "label": "IriTemplateMapping",
+      "subClassOf": [
+        "hydra:Resource"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:variable",
+      "@type": "rdf:Property",
+      "comment": "An IRI template variable",
+      "domain": "hydra:IriTemplateMapping",
+      "label": "variable",
+      "range": "xsd:string",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:offset",
+      "@type": "rdf:Property",
+      "comment": "Instructs to skip N elements of the set.",
+      "label": "skip",
+      "range": "xsd:nonNegativeInteger",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:limit",
+      "@type": "rdf:Property",
+      "comment": "Instructs to limit set only to N elements.",
+      "label": "take",
+      "range": "xsd:nonNegativeInteger",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:pageIndex",
+      "@type": "rdf:Property",
+      "comment": "Instructs to provide a specific page of the collection at a given index.",
+      "label": "page index",
+      "range": "xsd:nonNegativeInteger",
+      "subPropertyOf": [
+        "hydra:pageReference"
+      ],
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:pageReference",
+      "@type": "rdf:Property",
+      "comment": "Instructs to provide a specific page reference of the collection.",
+      "label": "page reference",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:returnsHeader",
+      "@type": "rdf:Property",
+      "comment": "Name of the header returned by the operation.",
+      "domain": "hydra:Operation",
+      "label": "returns header",
+      "range": "xsd:string",
+      "status": "testing"
+    },
+    {
+      "@id": "hydra:expectsHeader",
+      "@type": "rdf:Property",
+      "comment": "Specification of the header expected by the operation.",
+      "domain": "hydra:Operation",
+      "label": "expects header",
+      "range": "xsd:string",
+      "status": "testing"
+    }
+  ],
+  "@type": "owl:Ontology",
+  "http://creativecommons.org/ns#attributionName": "Hydra W3C Community Group",
+  "http://creativecommons.org/ns#attributionURL": {
+    "@id": "http://www.hydra-cg.com/"
+  },
+  "http://creativecommons.org/ns#license": {
+    "@id": "http://creativecommons.org/licenses/by/4.0/"
+  },
+  "http://purl.org/dc/terms/description": "The Hydra Core Vocabulary is a lightweight vocabulary to create hypermedia-driven Web APIs. By specifying a number of concepts commonly used in Web APIs it enables the creation of generic API clients.",
+  "http://purl.org/dc/terms/publisher": "Hydra W3C Community Group",
+  "http://purl.org/dc/terms/rights": "Copyright © 2012-2014 the Contributors to the Hydra Core Vocabulary Specification",
+  "http://purl.org/vocab/vann/preferredNamespacePrefix": "hydra",
+  "comment": "A lightweight vocabulary for hypermedia-driven Web APIs",
+  "label": "The Hydra Core Vocabulary"
+}

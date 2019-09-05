@@ -1,0 +1,216 @@
+@base <http://www.w3.org/ns/solid/terms> .
+@prefix : <#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <https://creativecommons.org/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
+<>
+    a owl:Ontology ;
+    cc:attributionURL <> ;
+    cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:issued "2015-11-16"^^xsd:date ;
+    dcterms:modified "2018-01-24"^^xsd:date ;
+    rdfs:label "Solid terms"@en ;
+	rdfs:label "Solid术语"@zh-cn.
+
+:Account
+    a rdfs:Class ;
+    rdfs:comment "A Solid account."@en ;
+	rdfs:comment "一个Solid账号。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Account"@en ;
+    rdfs:label "账号"@zh-cn	.
+
+:ListedDocument
+    a rdfs:Class ;
+    rdfs:comment "Listed Type Index is a registry of resources that are publicly discoverable by outside users and applications."@en ;
+    rdfs:comment "列出的类型索引是一个开放的、可以被外界的用户和应用发现的资源记录。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Listed Type Index"@en ;
+    rdfs:label "列出的类型索引"@zh-cn .
+
+:Patch
+    a rdfs:Class ;
+    rdfs:comment "A patch expresses conditional modifications to a resource that has an RDF-based representation."@en ;
+    rdfs:comment "补丁指对资源有条件的修改，这类资源基于RDF进行描绘。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Patch"@en ;
+    rdfs:label "补丁"@zh-cn .
+
+:Timeline
+    a rdfs:Class ;
+    rdfs:comment "A resource containing time ordered items and sub-containers.  Sub-containers may be desirable in file based systems to split the timeline into logical components e.g. /yyyy-mm-dd/ as used in ISO 8061."@en ;
+    rdfs:comment "一个包含按时间排序的项和子容器的资源。在基于文件的系统中，用子容器将时间轴拆分为逻辑组件，比如在ISO 8061中使用/yyyy-mm-dd/。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Timeline"@en ;
+    rdfs:label "时间轴"@zh-cn .
+
+:TypeIndex
+    a rdfs:Class ;
+    rdfs:comment "A index of type registries for resources. Applications can register the RDF type they use and list them in the index resource."@en ;
+    rdfs:comment "类型索引记录了资源。应用可以注册所使用的RDF类型，并在索引资源中列出来。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Type index"@en ;
+    rdfs:label "类型索引"@zh-cn .
+
+:TypeRegistration
+    a rdfs:Class ;
+    rdfs:comment "The registered types that map a RDF classes/types to their locations using either `instance` or `instanceContainer` property."@en ;
+    rdfs:comment "注册的类型会使用instance或instanceContainer属性映射一个RDF类/属性到它们的位置。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Type Registration"@en ;
+    rdfs:label "类型注册"@zh-cn .
+
+:UnlistedDocument
+    a rdfs:Class ;
+    rdfs:comment "Unlisted Type Index is a registry of resources that are private to the user and their apps, for types that are not publicly discoverable."@en ;
+    rdfs:comment "未列出的类型索引注册了对用户和软件私有的资源，这些类型无法公开搜索到。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Unlisted Type Index"@en ;
+    rdfs:label "未列出的类型索引"@zh-cn .
+
+:account
+    a rdf:Property ;
+    rdfs:comment "A solid account belonging to an Agent."@en ;
+    rdfs:comment "一个属于某代理的solid账户。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "account"@en ;
+    rdfs:label "账户"@zh-cn .
+
+:deletes
+    a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:comment "The triple patterns this patch removes from the document."@en ;
+    rdfs:comment "表示这个补丁已从文档中移除。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "deletes"@en ;
+    rdfs:label "删除"@zh-cn ;
+    rdfs:domain :Patch ;
+    rdfs:range log:Formula .
+
+:forClass
+    a rdf:Property ;
+    rdfs:comment "A class that is used to map an listed or unlisted type index."@en ;
+    rdfs:comment "用于映射（未）列出的类型索引的类。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "registry class"@en ;
+    rdfs:label "注册类"@zh-cn .
+
+:inserts
+    a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:comment "The triple patterns this patch adds to the document."@en ;
+    rdfs:comment "表示这个补丁已添加到文档中。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "inserts"@en ;
+    rdfs:label "插入"@zh-cn ;
+    rdfs:domain :Patch ;
+    rdfs:range log:Formula .
+
+:instance
+    a rdf:Property ;
+    rdfs:comment "Maps a type to an individual resource, typically an index or a directory listing resource."@en ;
+    rdfs:comment "将一个类型映射到一个个体资源，通常是一个索引或目录列表资源。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "instance"@en ;
+    rdfs:label "实例"@zh-cn .
+
+:instanceContainer
+    a rdf:Property ;
+    rdfs:comment "Maps a type to a container which the client would have to list to get the instances of that type."@en ;
+    rdfs:comment "将一个类型映射到一个容器，这个容器必须列出那个类型的所有实例。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "instance container"@en ;
+    rdfs:label "实例容器"@zh-cn .
+
+:loginEndpoint
+    a rdf:Property ;
+    rdfs:comment "The login URI of a given server."@en ;
+    rdfs:comment "给定服务器的登录URI。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "loginEndpoint"@en ;
+    rdfs:label "登录端点"@zh-cn .
+
+:logoutEndpoint
+    a rdf:Property ;
+    rdfs:comment "The logout URI of a given server."@en ;
+    rdfs:comment "给定服务器的注销URI。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "logoutEndpoint"@en ;
+    rdfs:label "注销端点"@zh-cn .
+
+:privateTypeIndex
+    a rdf:Property ;
+    rdfs:comment "Points to an unlisted type index resource."@en ;
+    rdfs:comment "指向一个未列出的类型索引资源。"@zh-cn ;
+    rdfs:range <#UnlistedDocument> ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "private type index"@en ;
+    rdfs:label "私有的类型索引"@zh-cn .
+
+:publicTypeIndex
+    a rdf:Property ;
+    rdfs:subPropertyOf :typeIndex ;
+    rdfs:comment "Points to a listed type index resource."@en ;
+    rdfs:comment "指向一个列出的类型索引资源。"@zh-cn ;
+    rdfs:range <#ListedDocument> ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "public type index"@en ;
+    rdfs:label "开放的类型索引"@zh-cn .
+
+:read
+    a rdf:Property ;
+    rdfs:comment "Indicates if a message has been read or not. This property should have a boolean datatype."@en ;
+    rdfs:comment "指明一条信息是否已读。这个属性应该有一个布尔数据类型。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:domain <http://rdfs.org/sioc/ns#Post> ;
+    rdfs:label "read"@en ;
+    rdfs:label "已读"@zh-cn .
+
+:typeIndex
+    a rdf:Property ;
+    rdfs:comment "Points to a TypeIndex resource."@en ;
+    rdfs:comment "指向一个TypeIndex资源。"@zh-cn ;
+    rdfs:range <#TypeIndex> ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "type index"@en ;
+    rdfs:label "类型索引"@zh-cn .
+
+:oidcIssuer
+    a rdf:Property ;
+    rdfs:comment "The preferred OpenID Connect issuer URI for a given Web ID."@en ;
+    rdfs:comment "给定Web ID的首选的OpenID连接器的发行机构URI。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "oidcIssuer"@en ;
+    rdfs:label "OIDC发行机构"@zh-cn ;
+    rdfs:subPropertyOf <http://openid.net/specs/connect/1.0/issuer> .
+
+:patches
+    a rdf:Property, owl:ObjectProperty ;
+    rdfs:comment "The document to which this patch applies."@en ;
+    rdfs:comment "应用该补丁的文档。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "patches"@en ;
+    rdfs:label "补丁"@zh-cn ;
+    rdfs:domain :Patch ;
+    rdfs:range rdfs:Resource .
+
+:timeline
+    a rdf:Property ;
+    rdfs:comment "Timeline for a given resource."@en ;
+    rdfs:comment "给定资源的时间轴。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "timeline"@en ;
+    rdfs:label "时间轴"@zh-cn .
+
+:where
+    a rdf:Property, owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:comment "The conditions the document and the inserted and deleted triple patterns need to satisfy in order for the patch to be applied."@en ;
+    rdfs:comment "应用补丁的条件，文档和插入与删除的三元组必须符合顺序。"@zh-cn ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "where"@en ;
+    rdfs:label "应用环境"@zh-cn ;
+    rdfs:domain :Patch ;
+    rdfs:range log:Formula .

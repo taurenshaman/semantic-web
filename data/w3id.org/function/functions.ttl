@@ -1,0 +1,1213 @@
+@prefix fno: <http://w3id.org/function/ontology/0.4/#> .
+@prefix fns: <http://users.ugent.be/~bjdmeest/function/functions.ttl#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+
+@base <http://users.ugent.be/~bjdmeest/function/functions.ttl#> .
+
+fns:void a void:DatasetDescription;
+    dcterms:title "A VoID Description of the Function Alignments Dataset";
+    dcterms:creator [
+      rdf:type foaf:Person ;
+      foaf:mbox "mailto:Ben.DeMeester@UGent.be";
+      foaf:name "Ben De Meester"@en
+    ];
+    foaf:primaryTopic fns:dataset;
+    .
+
+fns:dataset a void:Dataset ;
+  foaf:homepage <http://users.ugent.be/~bjdmeest/function/> ;
+  dcterms:title "Function Alignments"@en ;
+  dcterms:description "The alignment of XPath, SPARQL, and SPIN functions using the Function Ontology";
+  dcterms:contributor [
+    rdf:type foaf:Person ;
+    foaf:mbox "mailto:Ben.DeMeester@UGent.be";
+    foaf:name "Ben De Meester"@en
+  ];
+  dcterms:modified "2016-06-16"^^xsd:date;
+  cc:license <http://creativecommons.org/license/by/3.0/> ;
+  dcterms:issued "2016-04-30"^^xsd:date ;
+  dcterms:rights "Copyright © Ghent University – iMinds – Data Science Lab"@en ;
+  dcterms:subject <http://dbpedia.org/resource/Function_(mathematics)> ;
+  dcterms:subject <http://dbpedia.org/resource/Function_model> ;
+  void:feature <http://www.w3.org/ns/formats/Turtle> ;
+  void:exampleResource fns:prob_date ; 
+  void:vocabulary <http://www.w3.org/2004/02/skos/core#> .
+
+:prob_date a fno:Problem ;
+  dcterms:title "The date problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_timezone a fno:Problem ;
+  dcterms:title "The timezone problem"^^xsd:string ;
+  dcterms:description "Getting the timezone of a string."^^xsd:string .
+
+:fn_timezone a fno:Function ;
+  fno:solves :prob_timezone ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_duration
+  ] .
+:fn_tz a fno:Function ;
+  fno:solves :prob_timezone ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_day a fno:Problem ;
+  dcterms:title "The day problem"^^xsd:string ;
+  dcterms:description "Extracting the day from a date/time literal."^^xsd:string .
+
+:fn_day a fno:Function ;
+  fno:solves :prob_day ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_dateTime
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_month a fno:Problem ;
+  dcterms:title "The month problem"^^xsd:string ;
+  dcterms:description "Extracting the month from a date/time literal."^^xsd:string .
+
+:fn_month a fno:Function ;
+  fno:solves :prob_month ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_dateTime
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_hours a fno:Problem ;
+  dcterms:title "The hours problem"^^xsd:string ;
+  dcterms:description "Extracting the hours from a date/time literal."^^xsd:string .
+
+:fn_hours a fno:Function ;
+  fno:solves :prob_hours ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_dateTime
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_seconds a fno:Problem ;
+  dcterms:title "The seconds problem"^^xsd:string ;
+  dcterms:description "Extracting the seconds from a date/time literal."^^xsd:string .
+
+:fn_seconds a fno:Function ;
+  fno:solves :prob_seconds ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_dateTime
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_minutes a fno:Problem ;
+  dcterms:title "The minutes problem"^^xsd:string ;
+  dcterms:description "Extracting the minutes from a date/time literal."^^xsd:string .
+
+:fn_minutes a fno:Function ;
+  fno:solves :prob_minutes ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_dateTime
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_year a fno:Problem ;
+  dcterms:title "The year problem"^^xsd:string ;
+  dcterms:description "Extracting the year from a date/time literal."^^xsd:string .
+
+:fn_year a fno:Function ;
+  fno:solves :prob_year ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_dateTime
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_now a fno:Problem ;
+  dcterms:title "The now problem"^^xsd:string ;
+  dcterms:description "Getting the current date and time."^^xsd:string .
+
+:fn_now a fno:Function ;
+  fno:solves :prob_now ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_dateTime
+  ] .
+:prob_crypto a fno:Problem ;
+  dcterms:title "The crypto problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_sha1 a fno:Problem ;
+  dcterms:title "The sha1 problem"^^xsd:string ;
+  dcterms:description "Calculating the SHA1 checksum."^^xsd:string .
+
+:fn_sha1 a fno:Function ;
+  fno:solves :prob_sha1 ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_sha512 a fno:Problem ;
+  dcterms:title "The sha512 problem"^^xsd:string ;
+  dcterms:description "Calculating the SHA512 checksum."^^xsd:string .
+
+:fn_sha512 a fno:Function ;
+  fno:solves :prob_sha512 ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_sha384 a fno:Problem ;
+  dcterms:title "The sha384 problem"^^xsd:string ;
+  dcterms:description "Calculating the SHA384 checksum."^^xsd:string .
+
+:fn_sha384 a fno:Function ;
+  fno:solves :prob_sha384 ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_sha256 a fno:Problem ;
+  dcterms:title "The sha256 problem"^^xsd:string ;
+  dcterms:description "Calculating the SHA256 checksum."^^xsd:string .
+
+:fn_sha256 a fno:Function ;
+  fno:solves :prob_sha256 ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_md5 a fno:Problem ;
+  dcterms:title "The md5 problem"^^xsd:string ;
+  dcterms:description "Calculating the md5 checksum."^^xsd:string .
+
+:fn_md5 a fno:Function ;
+  fno:solves :prob_md5 ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_mathematical a fno:Problem ;
+  dcterms:title "The mathematical problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_floor a fno:Problem ;
+  dcterms:title "The floor problem"^^xsd:string ;
+  dcterms:description "Returning the largest (closest to positive infinity) number with no fractional part that is not greater than the given value."^^xsd:string .
+
+:fn_floor a fno:Function ;
+  fno:solves :prob_floor ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_result
+  ] .
+:prob_abs a fno:Problem ;
+  dcterms:title "The abs problem"^^xsd:string ;
+  dcterms:description "Returning the absolute value of the given value."^^xsd:string .
+
+:fn_abs a fno:Function ;
+  fno:solves :prob_abs ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_result
+  ] .
+:prob_add a fno:Problem ;
+  dcterms:title "The add problem"^^xsd:string ;
+  dcterms:description "Returning the sum of the given values."^^xsd:string .
+
+:fn_add a fno:Function ;
+  fno:solves :prob_add ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_unaryMinus a fno:Problem ;
+  dcterms:title "The unaryMinus problem"^^xsd:string ;
+  dcterms:description "Returning the given value with the sign reversed."^^xsd:string .
+
+:fn_unaryMinus a fno:Function ;
+  fno:solves :prob_unaryMinus ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_sub a fno:Problem ;
+  dcterms:title "The sub problem"^^xsd:string ;
+  dcterms:description "Returning the arithmetic difference of the given values."^^xsd:string .
+
+:fn_sub a fno:Function ;
+  fno:solves :prob_sub ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_mul a fno:Problem ;
+  dcterms:title "The mul problem"^^xsd:string ;
+  dcterms:description "Returning the arithmetic product of the given values."^^xsd:string .
+
+:fn_mul a fno:Function ;
+  fno:solves :prob_mul ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_max a fno:Problem ;
+  dcterms:title "The max problem"^^xsd:string ;
+  dcterms:description "Returning the largest value of the input."^^xsd:string .
+
+:fn_max a fno:Function ;
+  fno:solves :prob_max ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_min a fno:Problem ;
+  dcterms:title "The min problem"^^xsd:string ;
+  dcterms:description "Returning the smallest value of the input."^^xsd:string .
+
+:fn_min a fno:Function ;
+  fno:solves :prob_min ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_divide a fno:Problem ;
+  dcterms:title "The divide problem"^^xsd:string ;
+  dcterms:description "Returning the arithmetic quotient of the given values."^^xsd:string .
+
+:fn_divide a fno:Function ;
+  fno:solves :prob_divide ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_rand a fno:Problem ;
+  dcterms:title "The rand problem"^^xsd:string ;
+  dcterms:description "Returns a number between 0 (inclusive) and 1.0e0 (exclusive). Different numbers can be produced every time this function is invoked. Numbers should be produced with approximately equal probability."^^xsd:string .
+
+:fn_rand a fno:Function ;
+  fno:solves :prob_rand ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_round a fno:Problem ;
+  dcterms:title "The round problem"^^xsd:string ;
+  dcterms:description "Returning the number with no fractional part that is closest to the argument. If there are two such numbers, then the one that is closest to positive infinity is returned."^^xsd:string .
+
+:fn_round a fno:Function ;
+  fno:solves :prob_round ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_ceil a fno:Problem ;
+  dcterms:title "The ceil problem"^^xsd:string ;
+  dcterms:description "Returning the smallest (closest to negative infinity) number with no fractional part that is not less than the value of arg."^^xsd:string .
+
+:fn_ceil a fno:Function ;
+  fno:solves :prob_ceil ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_number
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_number
+  ] .
+:prob_composition a fno:Problem ;
+  dcterms:title "The composition problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_if a fno:Problem ;
+  dcterms:title "The if problem"^^xsd:string ;
+  dcterms:description "Doing an if-statement."^^xsd:string .
+
+:fn_if a fno:Function ;
+  fno:solves :prob_if ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_eval
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_true
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_false
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_result
+  ] .
+:prob_misc a fno:Problem ;
+  dcterms:title "The misc problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_eval a fno:Problem ;
+  dcterms:title "The eval problem"^^xsd:string ;
+  dcterms:description "Evaluating a statement"^^xsd:string .
+
+:fn_eval a fno:Function ;
+  fno:solves :prob_eval ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_result
+  ] .
+:prob_coalesce a fno:Problem ;
+  dcterms:title "The coalesce problem"^^xsd:string ;
+  dcterms:description "Returning the first bound argument."^^xsd:string .
+
+:fn_coalesce a fno:Function ;
+  fno:solves :prob_coalesce ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_list
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_result
+  ] .
+:prob_ontology a fno:Problem ;
+  dcterms:title "The ontology problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_subPropertyOf a fno:Problem ;
+  dcterms:title "The subPropertyOf problem"^^xsd:string ;
+  dcterms:description "Checking whether a given property is a (transitive) sub-property of another property."^^xsd:string .
+
+:fn_subPropertyOf a fno:Function ;
+  fno:solves :prob_subPropertyOf ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_objectCount a fno:Problem ;
+  dcterms:title "The objectCount problem"^^xsd:string ;
+  dcterms:description "Getting the number of values of a given property (?arg2) at a given subject (?arg1). The result is the number of matches of (?arg1, ?arg2, ?object)."^^xsd:string .
+
+:fn_objectCount a fno:Function ;
+  fno:solves :prob_objectCount ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_resource
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_subjectCount a fno:Problem ;
+  dcterms:title "The subjectCount problem"^^xsd:string ;
+  dcterms:description "Getting the number of values of a given property (?arg1) at a given object (?arg2). The result is the number of matches of (?subject, ?arg1, ?arg2)."^^xsd:string .
+
+:fn_subjectCount a fno:Function ;
+  fno:solves :prob_subjectCount ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_resource
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_object a fno:Problem ;
+  dcterms:title "The object problem"^^xsd:string ;
+  dcterms:description "Getting the object of a given subject (?arg1) / predicate (?arg2) combination. Note that if multiple values are present then the result might be unpredictably random."^^xsd:string .
+
+:fn_object a fno:Function ;
+  fno:solves :prob_object ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_resource
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_resource
+  ] .
+:prob_objectInGraph a fno:Problem ;
+  dcterms:title "The objectInGraph problem"^^xsd:string ;
+  dcterms:description "Gets the object of a given subject (?arg1) / predicate (?arg2) combination in a given graph ?arg3. Note that if multiple values are present then the result might be unpredictably random."^^xsd:string .
+
+:fn_objectInGraph a fno:Function ;
+  fno:solves :prob_objectInGraph ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_resource
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_graph
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_resource
+  ] .
+:prob_objectSubProp a fno:Problem ;
+  dcterms:title "The objectSubProp problem"^^xsd:string ;
+  dcterms:description "Getting the object of a given subject (?arg1) / predicate (?arg2) combination, also taking the sub-properties of ?arg2 into account. Note that if multiple values are present then the result might be unpredictably random."^^xsd:string .
+
+:fn_objectSubProp a fno:Function ;
+  fno:solves :prob_objectSubProp ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_resource
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_resource
+  ] .
+:prob_strdt a fno:Problem ;
+  dcterms:title "The strdt problem"^^xsd:string ;
+  dcterms:description "Constructing a literal with lexical form and type as specified by the arguments."^^xsd:string .
+
+:fn_strdt a fno:Function ;
+  fno:solves :prob_strdt ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_iri
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_literal
+  ] .
+:prob_bnode a fno:Problem ;
+  dcterms:title "The bnode problem"^^xsd:string ;
+  dcterms:description "Constructing a blank node that is distinct from all blank nodes in the dataset being queried and distinct from all blank nodes created by calls to this constructor for other query solutions. If the no argument form is used, every call results in a distinct blank node. If the form with a simple literal is used, every call results in distinct blank nodes for different simple literals, and the same blank node for calls with the same simple literal within expressions for one solution mapping."^^xsd:string .
+
+:fn_bnode a fno:Function ;
+  fno:solves :prob_bnode ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_literal
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_resource
+  ] .
+:prob_IRI a fno:Problem ;
+  dcterms:title "The IRI problem"^^xsd:string ;
+  dcterms:description "Creating a IRI resource (node) from a given IRI string"^^xsd:string .
+
+:fn_IRI a fno:Function ;
+  fno:solves :prob_IRI ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_resource
+  ] .
+:prob_datatype a fno:Problem ;
+  dcterms:title "The datatype problem"^^xsd:string ;
+  dcterms:description "Returning the datatype IRI of argument ?arg1; returns xsd:string if the parameter is a simple literal."^^xsd:string .
+
+:fn_datatype a fno:Function ;
+  fno:solves :prob_datatype ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_class
+  ] .
+:prob_subClassOf a fno:Problem ;
+  dcterms:title "The subClassOf problem"^^xsd:string ;
+  dcterms:description "Checks whether a given class (?arg1) is a (transitive) sub-class of another class (?arg2)."^^xsd:string .
+
+:fn_subClassOf a fno:Function ;
+  fno:solves :prob_subClassOf ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_class
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_class
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_subject a fno:Problem ;
+  dcterms:title "The subject problem"^^xsd:string ;
+  dcterms:description "Gets the 'first' subject of a given predicate (?arg1)/object (?arg2) combination. Note that if multiple values are present then the result might be unpredictably random."^^xsd:string .
+
+:fn_subject a fno:Function ;
+  fno:solves :prob_subject ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_property
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_resource
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_resource
+  ] .
+:prob_bool a fno:Problem ;
+  dcterms:title "The bool problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_lt a fno:Problem ;
+  dcterms:title "The lt problem"^^xsd:string ;
+  dcterms:description "Returning true if ?arg1 < ?arg2."^^xsd:string .
+
+:fn_lt a fno:Function ;
+  fno:solves :prob_lt ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_not a fno:Problem ;
+  dcterms:title "The not problem"^^xsd:string ;
+  dcterms:description "Returning the boolean negation of the argument."^^xsd:string .
+
+:fn_not a fno:Function ;
+  fno:solves :prob_not ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_ne a fno:Problem ;
+  dcterms:title "The ne problem"^^xsd:string ;
+  dcterms:description "Returning true if ?arg1 != ?arg2."^^xsd:string .
+
+:fn_ne a fno:Function ;
+  fno:solves :prob_ne ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_le a fno:Problem ;
+  dcterms:title "The le problem"^^xsd:string ;
+  dcterms:description "Returning true if ?arg1 <= ?arg2."^^xsd:string .
+
+:fn_le a fno:Function ;
+  fno:solves :prob_le ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_ge a fno:Problem ;
+  dcterms:title "The ge problem"^^xsd:string ;
+  dcterms:description "Returning true if ?arg1 >= ?arg2."^^xsd:string .
+
+:fn_ge a fno:Function ;
+  fno:solves :prob_ge ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_isURI a fno:Problem ;
+  dcterms:title "The isURI problem"^^xsd:string ;
+  dcterms:description "Checking whether a node is a URI."^^xsd:string .
+
+:fn_isURI a fno:Function ;
+  fno:solves :prob_isURI ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_eq a fno:Problem ;
+  dcterms:title "The eq problem"^^xsd:string ;
+  dcterms:description "Returning true if ?arg1 == ?arg2."^^xsd:string .
+
+:fn_eq a fno:Function ;
+  fno:solves :prob_eq ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_and a fno:Problem ;
+  dcterms:title "The and problem"^^xsd:string ;
+  dcterms:description "Returning the logical AND between two (boolean) operands."^^xsd:string .
+
+:fn_and a fno:Function ;
+  fno:solves :prob_and ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_or a fno:Problem ;
+  dcterms:title "The or problem"^^xsd:string ;
+  dcterms:description "Returning the logical OR between two (boolean) operands."^^xsd:string .
+
+:fn_or a fno:Function ;
+  fno:solves :prob_or ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_input
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_string a fno:Problem ;
+  dcterms:title "The string problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+:prob_encode_for_uri a fno:Problem ;
+  dcterms:title "The encode_for_uri problem"^^xsd:string ;
+  dcterms:description "encoding for a URI"^^xsd:string .
+
+:fn_encode_for_uri a fno:Function ;
+  fno:solves :prob_encode_for_uri ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_contains a fno:Problem ;
+  dcterms:title "The contains problem"^^xsd:string ;
+  dcterms:description "Whether a string contains another string"^^xsd:string .
+
+:fn_contains a fno:Function ;
+  fno:solves :prob_contains ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_strends a fno:Problem ;
+  dcterms:title "The strends problem"^^xsd:string ;
+  dcterms:description "Whether a string ends another string"^^xsd:string .
+
+:fn_strends a fno:Function ;
+  fno:solves :prob_strends ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_ucase a fno:Problem ;
+  dcterms:title "The ucase problem"^^xsd:string ;
+  dcterms:description "Converting a string to upper case characters."^^xsd:string .
+
+:fn_ucase a fno:Function ;
+  fno:solves :prob_ucase ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_lcase a fno:Problem ;
+  dcterms:title "The lcase problem"^^xsd:string ;
+  dcterms:description "Converting a string to lower case characters."^^xsd:string .
+
+:fn_lcase a fno:Function ;
+  fno:solves :prob_lcase ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_strstarts a fno:Problem ;
+  dcterms:title "The strstarts problem"^^xsd:string ;
+  dcterms:description "Whether a string starts another string"^^xsd:string .
+
+:fn_strstarts a fno:Function ;
+  fno:solves :prob_strstarts ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_substr a fno:Problem ;
+  dcterms:title "The substr problem"^^xsd:string ;
+  dcterms:description "Getting the sub-string of a given string"^^xsd:string .
+
+:fn_substr a fno:Function ;
+  fno:solves :prob_substr ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_integer
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_integer
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_strlen a fno:Problem ;
+  dcterms:title "The strlen problem"^^xsd:string ;
+  dcterms:description "Computing the length of a given input string."^^xsd:string .
+
+:fn_strlen a fno:Function ;
+  fno:solves :prob_strlen ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_integer
+  ] .
+:prob_strafter a fno:Problem ;
+  dcterms:title "The strafter problem"^^xsd:string ;
+  dcterms:description "Returning a literal of the same kind (simple literal, plain literal same language tag, xsd:string) as the first argument arg1. The lexical form of the result is the substring of the value of arg1 that proceeds in arg1 the first occurrence of the lexical form of arg2; otherwise the lexical form of the result is the empty string. If the lexical form of arg2 is the empty string, the lexical form of the result is the emprty string."^^xsd:string .
+
+:fn_strafter a fno:Function ;
+  fno:solves :prob_strafter ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_replace a fno:Problem ;
+  dcterms:title "The replace problem"^^xsd:string ;
+  dcterms:description "Replacing each non-overlapping occurrence of a regular expression pattern with a replacement string. Regular expession matching may involve modifier flags."^^xsd:string .
+
+:fn_replace a fno:Function ;
+  fno:solves :prob_replace ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_strbefore a fno:Problem ;
+  dcterms:title "The strbefore problem"^^xsd:string ;
+  dcterms:description "Returning a literal of the same kind (simple literal, plain literal same language tag, xsd:string) as the first argument arg1. The lexical form of the result is the substring of the value of arg1 that precedes in arg1 the first occurrence of the lexical form of arg2; otherwise the lexical form of the result is the empty string. If the lexical form of arg2 is the empty string, the lexical form of the result is the emprty string."^^xsd:string .
+
+:fn_strbefore a fno:Function ;
+  fno:solves :prob_strbefore ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_concat a fno:Problem ;
+  dcterms:title "The concat problem"^^xsd:string ;
+  dcterms:description "Creating a single string by concatenating all arguments from left to right. Note that if any one of the arguments is unbound (null) then the whole result string will be unbound."^^xsd:string .
+
+:fn_concat a fno:Function ;
+  fno:solves :prob_concat ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_string
+  ] .
+:prob_regex a fno:Problem ;
+  dcterms:title "The regex problem"^^xsd:string ;
+  dcterms:description "Returning true if a string (?arg1) matches the regular expression supplied as a pattern (?arg2) as influenced by the value of flags (?arg3), otherwise returns false."^^xsd:string .
+
+:fn_regex a fno:Function ;
+  fno:solves :prob_regex ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:parameter [
+    a fno:Parameter;
+    rdf:predicate :pred_string
+  ] ;
+  fno:output [
+    a fno:Output;
+    rdf:predicate :pred_bool
+  ] .
+:prob_rdf a fno:Problem ;
+  dcterms:title "The rdf problem"^^xsd:string ;
+  dcterms:description ""^^xsd:string .
+
+
+:pred_string rdfs:range xsd:string .
+:pred_date rdfs:range xsd:dateTime .
+:pred_duration rdfs:range xsd:duration .
+:pred_integer rdfs:range xsd:integer .
+:pred_list rdfs:range rdf:List .
+:pred_error rdfs:range :Error .
+:pred_bool rdfs:range xsd:boolean .
+:pred_property rdfs:range rdf:Property .
+:pred_resource rdfs:range rdf:Resource .
+:pred_class rdfs:range rdf:Class .
+
+:prob_URI skos:broader :prob_IRI .
+:fn_objectInGraph skos:broader :fn_object .
+<https://www.w3.org/TR/sparql11-query/#func-floor> skos:broader :fn_floor .
+<https://www.w3.org/TR/sparql11-query/#func-abs> skos:broader :fn_abs .
+<https://www.w3.org/TR/sparql11-query/#idp2130040> skos:broader :fn_rand .
+<https://www.w3.org/TR/sparql11-query/#func-round> skos:broader :fn_round .
+<https://www.w3.org/TR/sparql11-query/#func-ceil> skos:broader :fn_ceil .
+<https://www.w3.org/TR/sparql11-query/#func-strdt> skos:broader :fn_strdt .
+<https://www.w3.org/TR/sparql11-query/#func-bnode> skos:broader :fn_bnode .
+<https://www.w3.org/TR/sparql11-query/#func-sha1> skos:broader :fn_sha1 .
+<https://www.w3.org/TR/sparql11-query/#func-sha512> skos:broader :fn_sha512 .
+<https://www.w3.org/TR/sparql11-query/#func-sha384> skos:broader :fn_sha384 .
+<https://www.w3.org/TR/sparql11-query/#func-sha256> skos:broader :fn_sha256 .
+<https://www.w3.org/TR/sparql11-query/#func-md5> skos:broader :fn_md5 .
+<https://www.w3.org/TR/sparql11-query/#func-timezone> skos:broader :fn_timezone .
+<https://www.w3.org/TR/sparql11-query/#func-contains> skos:broader :fn_contains .
+<https://www.w3.org/TR/sparql11-query/#func-substr> skos:broader :fn_substr .
+<https://www.w3.org/TR/sparql11-query/#func-strends> skos:broader :fn_strends .
+<https://www.w3.org/TR/sparql11-query/#func-strstarts> skos:broader :fn_strstarts .
+<https://www.w3.org/TR/sparql11-query/#func-strafter> skos:broader :fn_strafter .
+<https://www.w3.org/TR/sparql11-query/#func-strbefore> skos:broader :fn_strbefore .
+<https://www.w3.org/TR/sparql11-query/#func-strlen> skos:broader :fn_strlen .
+<https://www.w3.org/TR/sparql11-query/#func-replace> skos:broader :fn_replace .
+<https://www.w3.org/TR/sparql11-query/#func-regex> skos:broader :fn_regex .
+<https://www.w3.org/TR/sparql11-query/#func-ucase> skos:broader :fn_ucase .
+<https://www.w3.org/TR/sparql11-query/#func-lcase> skos:broader :fn_lcase .
+<https://www.w3.org/TR/sparql11-query/#func-coalesce> skos:broader :fn_coalesce .
+<https://www.w3.org/TR/sparql11-query/#func-strlen> skos:broader <http://www.w3.org/TR/xpath-functions/#func-string-length> .
+:prob_timezone skos:broader :prob_date .
+:prob_day skos:broader :prob_date .
+:prob_month skos:broader :prob_date .
+:prob_hours skos:broader :prob_date .
+:prob_seconds skos:broader :prob_date .
+:prob_minutes skos:broader :prob_date .
+:prob_year skos:broader :prob_date .
+:prob_now skos:broader :prob_date .
+:prob_sha1 skos:broader :prob_crypto .
+:prob_sha512 skos:broader :prob_crypto .
+:prob_sha384 skos:broader :prob_crypto .
+:prob_sha256 skos:broader :prob_crypto .
+:prob_md5 skos:broader :prob_crypto .
+:prob_floor skos:broader :prob_mathematical .
+:prob_abs skos:broader :prob_mathematical .
+:prob_add skos:broader :prob_mathematical .
+:prob_unaryMinus skos:broader :prob_mathematical .
+:prob_sub skos:broader :prob_mathematical .
+:prob_mul skos:broader :prob_mathematical .
+:prob_max skos:broader :prob_mathematical .
+:prob_min skos:broader :prob_mathematical .
+:prob_divide skos:broader :prob_mathematical .
+:prob_rand skos:broader :prob_mathematical .
+:prob_round skos:broader :prob_mathematical .
+:prob_ceil skos:broader :prob_mathematical .
+:prob_if skos:broader :prob_composition .
+:prob_eval skos:broader :prob_misc .
+:prob_coalesce skos:broader :prob_misc .
+:prob_subPropertyOf skos:broader :prob_ontology .
+:prob_objectCount skos:broader :prob_ontology .
+:prob_subjectCount skos:broader :prob_ontology .
+:prob_object skos:broader :prob_ontology .
+:prob_objectInGraph skos:broader :prob_ontology .
+:prob_objectSubProp skos:broader :prob_ontology .
+:prob_strdt skos:broader :prob_ontology .
+:prob_bnode skos:broader :prob_ontology .
+:prob_IRI skos:broader :prob_ontology .
+:prob_datatype skos:broader :prob_ontology .
+:prob_subClassOf skos:broader :prob_ontology .
+:prob_subject skos:broader :prob_ontology .
+:prob_lt skos:broader :prob_bool .
+:prob_not skos:broader :prob_bool .
+:prob_ne skos:broader :prob_bool .
+:prob_le skos:broader :prob_bool .
+:prob_ge skos:broader :prob_bool .
+:prob_isURI skos:broader :prob_bool .
+:prob_eq skos:broader :prob_bool .
+:prob_and skos:broader :prob_bool .
+:prob_or skos:broader :prob_bool .
+:prob_encode_for_uri skos:broader :prob_string .
+:prob_contains skos:broader :prob_string .
+:prob_strends skos:broader :prob_string .
+:prob_ucase skos:broader :prob_string .
+:prob_lcase skos:broader :prob_string .
+:prob_strstarts skos:broader :prob_string .
+:prob_substr skos:broader :prob_string .
+:prob_strlen skos:broader :prob_string .
+:prob_strafter skos:broader :prob_string .
+:prob_replace skos:broader :prob_string .
+:prob_strbefore skos:broader :prob_string .
+:prob_concat skos:broader :prob_string .
+:prob_regex skos:broader :prob_string .
+<https://www.w3.org/TR/sparql11-query/#func-strlen> skos:related <http://www.w3.org/TR/xpath-functions/#func-string-length> .
+<https://www.w3.org/TR/sparql11-query/#func-substr> skos:related <http://www.w3.org/TR/xpath-functions/#func-substring> .
+<https://www.w3.org/TR/sparql11-query/#func-ucase> skos:related <http://www.w3.org/TR/xpath-functions/#func-upper-case> .
+<https://www.w3.org/TR/sparql11-query/#func-lcase> skos:related <http://www.w3.org/TR/xpath-functions/#func-lower-case> .
+<https://www.w3.org/TR/sparql11-query/#func-strstarts> skos:related <http://www.w3.org/TR/xpath-functions/#func-starts-with> .
+<https://www.w3.org/TR/sparql11-query/#func-strends> skos:related <http://www.w3.org/TR/xpath-functions/#func-ends-with> .
+<http://www.w3.org/TR/xpath-functions/#func-string-length> fno:solves :prob_strlen .
+<http://www.w3.org/TR/xpath-functions/#func-substring> fno:solves :prob_substr .
+<http://www.w3.org/TR/xpath-functions/#func-upper-case> fno:solves :prob_ucase .
+<http://www.w3.org/TR/xpath-functions/#func-lower-case> fno:solves :prob_lcase .
+<http://www.w3.org/TR/xpath-functions/#func-starts-with> fno:solves :prob_strstarts .
+<http://www.w3.org/TR/xpath-functions/#func-ends-with> fno:solves :prob_strends .

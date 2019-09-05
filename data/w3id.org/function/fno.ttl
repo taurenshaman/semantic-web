@@ -1,0 +1,500 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix max: <http://maxime-lefrancois.info/me#> .
+
+@base <https://w3id.org/function/ontology#> .
+@prefix : <https://w3id.org/function/ontology#> .
+
+<https://w3id.org/function/ontology>  rdf:type owl:Ontology ;
+
+                                      rdf:type voaf:Vocabulary;
+
+                                      vann:preferredNamespacePrefix "fno";
+
+                                      vann:preferredNamespaceUri "https://w3id.org/function/ontology#";
+
+                                      rdfs:label "The Function Ontology"@en ;
+
+                                      dct:title "The Function Ontology"@en ;
+
+                                      dct:description "The Function Ontology allows to declare and describe functions. The specification is online at https://w3id.org/function/spec"@en;
+
+                                      rdfs:comment """-Version 0.6.0: fno:ReturnMapping
+-Version 0.5.1: fno:type a ObjectProperty
+-Version 0.5.0: added Mapping and Implementation classes.
+-Version 0.4.1: wrong range definition, updated descriptions.
+-Version 0.4: added some properties
+-Version 0.3: improved comments.
+-Version 0.2: added extra metadata.
+-Version 0.1: creation."""@en ;
+
+                                      owl:versionIRI <https://w3id.org/function/ontology/0.6.0> ;
+                                      owl:versionInfo "0.6.0" ;
+                                      owl:priorVersion "https://w3id.org/function/ontology/0.5.1" ;
+
+                                      rdfs:seeAlso <https://w3id.org/function/spec> ;
+
+                                      dct:modified "2019-05-29"^^xsd:date ;
+
+                                      dct:issued "2016-03-08"^^xsd:date ;
+
+                                      dct:rights "Copyright © Ghent University – imec – IDLab"@en ;
+
+                                      cc:license <http://creativecommons.org/license/by/3.0/> ;
+
+                                      foaf:primaryTopic <https://w3id.org/function/ontology> ;
+
+                                      dct:creator <https://ben.de-meester.org/#me> ;
+
+                                      dct:creator <https://data.verborgh.org/people/anastasia_dimou> ;
+
+                                      dct:publisher <https://ben.de-meester.org/#me> ;
+
+                                      dct:contributor max: .
+
+<https://ben.de-meester.org/#me>  rdf:type foaf:Person ;
+
+                                  foaf:mbox "mailto:Ben.DeMeester@UGent.be";
+
+                                  foaf:name "Ben De Meester"@en ;
+
+                                  rdfs:label "Ben De Meester"@en .
+
+<https://data.verborgh.org/people/anastasia_dimou>  rdf:type foaf:Person ;
+
+                                                    foaf:mbox "mailto:Anastasia.dimou@UGent.be" ;
+
+                                                    foaf:name "Anastasia Dimou"@en ;
+
+                                                    rdfs:label "Anastasia Dimou"@en .
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+###  http://purl.org/dc/terms/issued
+
+dct:issued rdf:type owl:AnnotationProperty .
+
+###  http://purl.org/dc/terms/modified
+
+dct:modified rdf:type owl:AnnotationProperty .
+
+###  http://xmlns.com/foaf/0.1/primaryTopic
+
+foaf:primaryTopic rdf:type owl:AnnotationProperty .
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+
+xsd:date rdf:type rdfs:Datatype .
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+###  https://w3id.org/function/ontology#executes
+
+:executes rdf:type owl:ObjectProperty ;
+
+          rdfs:label "executes"@en ;
+
+          rdfs:comment "Connects a function to an execution definition"@en ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+          vs:term_status "testing" ;
+
+          rdfs:domain :Execution ;
+
+          rdfs:range :Function .
+
+###  https://w3id.org/function/ontology#expects
+
+:expects rdf:type owl:ObjectProperty ;
+
+         rdfs:label "expects"@en ;
+
+         rdfs:comment "Connects a function description to an ordered list of zero or more parameter descriptions"@en ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+         vs:term_status "testing" ;
+
+         rdfs:domain :Function ;
+
+         rdfs:range rdf:List .
+
+###  https://w3id.org/function/ontology#implements
+
+:implements rdf:type owl:ObjectProperty ;
+
+            rdfs:label "implements"@en ;
+
+            rdfs:comment "Connects a function to an algorithm it implements. A function can implement 0..n algorithms."@en ;
+
+            rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+            vs:term_status "testing" ;
+
+            rdfs:range :Algorithm ;
+
+            rdfs:domain :Function .
+
+###  https://w3id.org/function/ontology#returns
+
+:returns rdf:type owl:ObjectProperty ;
+
+         rdfs:label "returns"@en ;
+
+         rdfs:comment "Connects a description of a function to the description of the output"@en ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+         vs:term_status "testing" ;
+
+         rdfs:domain :Function ;
+
+         rdfs:range rdf:List .
+
+###  https://w3id.org/function/ontology#solves
+
+:solves rdf:type owl:ObjectProperty ;
+
+        rdfs:label "solves"@en ;
+
+        rdfs:comment "Connects a description of a function to the description of a problem it tries to solve."@en ;
+
+        rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+        vs:term_status "testing" ;
+
+        rdfs:domain :Function ;
+
+        rdfs:range :Problem .
+
+###  https://w3id.org/function/ontology#predicate
+
+:predicate rdf:type rdf:Property ;
+
+        rdfs:label "predicate"@en ;
+
+        rdfs:comment "Connects a parameter description to the predicate used to link executions of this function to their parameter."@en ;
+
+        rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+        vs:term_status "testing" ;
+
+        rdfs:domain :Parameter ;
+
+        rdfs:range rdf:Property .
+
+###  https://w3id.org/function/ontology#type
+
+:type rdf:type owl:ObjectProperty ;
+
+        rdfs:label "type"@en ;
+
+        rdfs:comment "Connects an output or a parameter description to the type of instances of these parameters or outputs."@en ;
+
+        rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+        vs:term_status "testing" .
+
+###  https://w3id.org/function/ontology#name
+
+:name rdf:type rdf:Property ;
+
+        rdfs:label "name"@en ;
+
+        rdfs:comment "Connects a function or a parameter to its name."@en ;
+
+        rdfs:subPropertyOf rdfs:label ;
+
+        rdfs:range xsd:string ;
+
+        rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+        vs:term_status "testing" ;
+
+        rdfs:domain :Function .
+
+###  https://w3id.org/function/ontology#required
+
+:required rdf:type rdf:Property ;
+
+        rdfs:label "required"@en ;
+
+        rdfs:comment "Defines if a parameter or an output is required."@en ;
+
+        rdfs:range xsd:boolean ;
+
+        rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+        vs:term_status "testing" .
+
+###  https://w3id.org/function/ontology#nullable
+
+:nullable rdf:type rdf:Property ;
+
+        rdfs:label "nullable"@en ;
+
+        rdfs:comment "Defines if a parameteris nullable."@en ;
+
+        rdfs:range xsd:boolean ;
+
+        rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+        vs:term_status "testing" .
+
+###  https://w3id.org/function/ontology#function
+
+:function rdf:type owl:ObjectProperty ;
+
+          rdfs:label "function"@en ;
+
+          rdfs:comment "Connects a function to a mapping definition"@en ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+          vs:term_status "testing" ;
+
+          rdfs:domain :Mapping ;
+
+          rdfs:range :Function .
+
+###  https://w3id.org/function/ontology#implementation
+
+:implementation rdf:type owl:ObjectProperty ;
+
+          rdfs:label "implementation"@en ;
+
+          rdfs:comment "Connects an implementation to a mapping definition"@en ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+          vs:term_status "testing" ;
+
+          rdfs:domain :Mapping ;
+
+          rdfs:range :Implementation .
+
+###  https://w3id.org/function/ontology#methodMapping
+
+:methodMapping rdf:type owl:ObjectProperty ;
+
+          rdfs:label "method mapping"@en ;
+
+          rdfs:comment "Connects a method mapping to a mapping definition"@en ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+          vs:term_status "testing" ;
+
+          rdfs:domain :Mapping ;
+
+          rdfs:range :MethodMapping .
+
+###  https://w3id.org/function/ontology#parameterMapping
+
+:parameterMapping rdf:type owl:ObjectProperty ;
+
+          rdfs:label "parameter mapping"@en ;
+
+          rdfs:comment "Connects a parameter mapping to a mapping definition"@en ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+          vs:term_status "testing" ;
+
+          rdfs:domain :Mapping ;
+
+          rdfs:range :ParameterMapping .
+
+###  https://w3id.org/function/ontology#returnMapping
+
+:returnMapping rdf:type owl:ObjectProperty ;
+
+          rdfs:label "return mapping"@en ;
+
+          rdfs:comment "Connects a return mapping to a mapping definition"@en ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+          vs:term_status "testing" ;
+
+          rdfs:domain :Mapping ;
+
+          rdfs:range :ReturnMapping .
+
+###  https://w3id.org/function/ontology#uses
+
+:uses rdf:type owl:ObjectProperty ;
+
+          rdfs:label "uses"@en ;
+
+          rdfs:comment "Connects an execution to a mapping definition"@en ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> ;
+
+          vs:term_status "testing" ;
+
+          rdfs:domain :Execution ;
+
+          rdfs:range :Mapping .
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+###  https://w3id.org/function/ontology#Algorithm
+
+:Algorithm rdf:type owl:Class ;
+
+           rdfs:label "Algorithm"@en ;
+
+           rdfs:comment "A declaration of an algorithm. An algorithm is a specified set of instructions, independent of its implementation. There is no one-to-one mapping between an algorithm and a problem."@en ;
+
+           vs:term_status "testing" ;
+
+           rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#Execution
+
+:Execution rdf:type owl:Class ;
+
+           rdfs:label "Execution"@en ;
+
+           rdfs:comment "An execution is the connection between a function and its input and output values."@en ;
+
+           vs:term_status "testing" ;
+
+           rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#Function
+
+:Function rdf:type owl:Class ;
+
+          rdfs:label "Function"@en ;
+
+          rdfs:comment "The declared function"@en ;
+
+          vs:term_status "testing" ;
+
+          rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#Output
+
+:Output rdf:type owl:Class ;
+
+        rdfs:label "Output"@en ;
+
+        rdfs:comment "The definition of an output of a function"@en ;
+
+        vs:term_status "testing" ;
+
+        rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#Parameter
+
+:Parameter rdf:type owl:Class ;
+
+           rdfs:label "Parameter"@en ;
+
+           rdfs:comment "The definition of a parameter to a certain function"@en ;
+
+           vs:term_status "testing" ;
+
+           rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#Problem
+
+:Problem rdf:type owl:Class ;
+
+         rdfs:label "Problem"@en ;
+
+         rdfs:comment "A certain problem that a function solves"@en ;
+
+         vs:term_status "testing" ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#Implementation
+
+:Implementation rdf:type owl:Class ;
+
+         rdfs:label "Implementation"@en ;
+
+         rdfs:comment "A certain implementation of a function"@en ;
+
+         vs:term_status "testing" ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#Mapping
+
+:Mapping rdf:type owl:Class ;
+
+         rdfs:label "Mapping"@en ;
+
+         rdfs:comment "A mapping connects a function to an implementation"@en ;
+
+         vs:term_status "testing" ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#MethodMapping
+
+:MethodMapping rdf:type owl:Class ;
+
+         rdfs:label "Method mapping"@en ;
+
+         rdfs:comment "A method mapping unambiguously specifies how the abstract function can be mapped to the implemented method. This can be, e.g., the name of the method"@en ;
+
+         vs:term_status "testing" ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#ParameterMapping
+
+:ParameterMapping rdf:type owl:Class ;
+
+         rdfs:label "Parameter mapping"@en ;
+
+         rdfs:comment "A parameter mapping unambiguously specifies how the abstract parameter can be mapped to the implemented method's argument. For example: Parameter X is mapped to the third argument of the method (a position parameter mapping, common for programming languages), or to property with name Y of the method (a property parameter mapping, common for Web APIs)"@en ;
+
+         vs:term_status "testing" ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> .
+
+###  https://w3id.org/function/ontology#ReturnMapping
+
+:ReturnMapping rdf:type owl:Class ;
+
+         rdfs:label "Return mapping"@en ;
+
+         rdfs:comment "A return mapping unambiguously specifies how the abstract output can be mapped to the implemented method's return value. For example: the return value of the method, or the thrown error of a the method"@en ;
+
+         vs:term_status "testing" ;
+
+         rdfs:isDefinedBy <https://w3id.org/function/ontology#> .

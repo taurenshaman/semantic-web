@@ -1,0 +1,563 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix art: <http://w3id.org/art/terms/1.0/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix qudt: <http://qudt.org/vocab/unit#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+art: rdf:type owl:Ontology ;
+    dcterms:title "Artivity Ontology, Version 1.0"@en ;
+	dcterms:modified "2016-06-06"^^xsd:date ;
+    dcterms:publisher <http://artivity.io/about> .
+
+nfo:VectorImage
+	rdfs:subClassOf prov:Entity.
+
+nfo:RasterImage
+	rdfs:subClassOf prov:Entity.
+
+nfo:Website
+	rdfs:subClassOf prov:Entity.
+
+art:BoundingRectangle
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf art:Rectangle ;
+    rdfs:label "BoundingRectangle"@en ;
+	rdfs:comment "An expression of the maximum extents of a 2-dimensional object (e.g. point, line, polygon) or set of objects within their 2-D coordinate system. In other words min(x), max(x), min(y), max(y)."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Minimum_bounding_rectangle> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:Canvas
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf art:Rectangle ;
+    rdfs:label "Canvas"@en ;
+	rdfs:comment "An entity that defines the 2-dimensional extents of the printable or renderable region(s) of a document."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:CartesianCoordinateSystem
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf art:CoordinateSystem ;
+    rdfs:label "CartesianCoordinateSystem"@en ;
+	rdfs:comment "A coordinate system that specifies each point uniquely using n Cartesian coordinates which specify the point in an n-dimensional Euclidean space for any dimension n. These coordinates are equal, up to sign, to distances from the point to n mutually perpendicular hyperplanes."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Cartesian_coordinate_system> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:CoordinateSystem
+	rdf:type rdfs:Class ;
+    rdfs:label "CoordinateSystem"@en ;
+	rdfs:comment "A system which uses one or more numbers (coordinates) to uniquely determine the position of a point or other geometric element on a manifold such as Euclidean space."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Coordinate_system> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:CreateFile
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "CreateFile"@en ;
+	rdfs:comment "An activity which resulted in a new file being generated."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:EditFile
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "EditFile"@en ;
+	rdfs:comment "An activity which may result in an existing file being revised and/or modified."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:DeleteFile
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "DeleteFile"@en ;
+	rdfs:comment "An activity which resulted in an existing file being deleted."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:EntityGroup
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "EntityGroup"@en ;
+	rdfs:comment "A set of entities."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:Layer
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:label "Layer"@en ;
+	rdfs:comment "Establishes a depth hierarchy amongst separate entities of a 2-dimensional digital image."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:LengthUnit
+	rdf:type rdfs:Class ;
+    rdfs:label "LengthUnit"@en ;
+	rdfs:comment "Refers to any discrete, pre-established length or distance having a constant magnitude which is used as a reference or convention to express linear dimension."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:PartialRenderingDataObject
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf art:RenderingDataObject ;
+    rdfs:label "PartialRenderingDataObject"@en ;
+	rdfs:comment "Rasterized bitmap data of a specific region of an image."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:Point
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf geo:SpatialObject ;
+    rdfs:label "Point"@en ;
+	rdfs:comment "An entity that captures the notion of a unique location in Euclidean space."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Point_(geometry)> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:Rectangle
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Entity ;
+    rdfs:subClassOf geo:Geometry ;
+    rdfs:label "Rectangle"@en ;
+	rdfs:comment "A parallelogram containing a right angle."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Rectangle> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:Redo
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:EntityInfluence ;
+    rdfs:label "Redo"@en ;
+	rdfs:comment "The re-generation of a formerly undone entity influence."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:RenderingDataObject
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf nfo:FileDataObject ;
+    rdfs:label "RenderingDataObject"@en ;
+	rdfs:comment "Rasterized bitmap data of the entire extents of an image."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:Undo
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:EntityInfluence ;
+    rdfs:label "Undo"@en ;
+	rdfs:comment "The invalidation of an existing entity influence."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:ViewFile
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "ViewFile"@en ;
+	rdfs:comment "An activity in which a file was viewed by one or more users."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:Viewport
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf art:Rectangle ;
+    rdfs:label "Viewport"@en ;
+	rdfs:comment "A rectangle that represents the visible portion of a document."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Viewport> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:WebBrowsing
+	rdf:type rdfs:Class ;
+    rdfs:subClassOf prov:Activity ;
+    rdfs:label "WebBrowsing"@en ;
+	rdfs:comment "An activity in which one or more websites were viewed by one or more users."@en ;
+    rdfs:isDefinedBy art: ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:aboveLayer
+	rdf:type rdf:Property ;
+    rdfs:label "aboveLayer"@en ;
+	rdfs:comment "Indicates that the contents of a layer are placed on top of the referenced layer."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:Layer ;
+	rdfs:range art:Layer ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:boundaries
+	rdf:type rdf:Property ;
+    rdfs:label "boundaries"@en ;
+	rdfs:comment "References a geometry that provides the minimum bounds for a geometry or group of geometries."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:Entity ;
+	rdfs:domain prov:EntityInfluence ;
+	rdfs:range art:BoundingRectangle ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:canvas
+	rdf:type rdf:Property ;
+    rdfs:label "canvas"@en ;
+	rdfs:comment "References a rectangle that defines the printable or renderable region of a document."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain nfo:VectorImage ;
+	rdfs:domain nfo:RasterImage ;
+	rdfs:range art:Canvas ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:colorCode
+	rdf:type rdf:Property ;
+    rdfs:label "colorCode"@en ;
+	rdfs:comment "An associated color encoded in a RGB or ARGB hex string."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Web_colors#Hex_triplet> ;
+	rdfs:domain prov:Entity ;
+	rdfs:range xsd:string ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:coordinateDimension
+	rdf:type rdf:Property ;
+    rdfs:label "coordinateDimension"@en ;
+	rdfs:comment "The number of coordinates that are required to uniquely identify a position in a coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:CoordinateSystem ;
+	rdfs:range xsd:integer ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:coordinateSystem
+	rdf:type rdf:Property ;
+    rdfs:label "coordinateSystem"@en ;
+	rdfs:comment "The coordinate system that is used to locate geometries in a document."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain nfo:VectorImage ;
+	rdfs:domain nfo:RasterImage ;
+	rdfs:range art:CoordinateSystem ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:depth
+	rdf:type rdf:Property ;
+    rdfs:label "depth"@en ;
+	rdfs:comment "The extents of a geometry along the z-axis of a Cartesian coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain geo:Geometry ;
+	rdfs:range xsd:double ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:executable
+	rdf:type rdf:Property ;
+    rdfs:label "executable"@en ;
+	rdfs:comment "The executable program file data object of a software agent."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:SoftwareAgent ;
+	rdfs:range nfo:FileDataObject ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:group
+	rdf:type rdf:Property ;
+    rdfs:label "group"@en ;
+	rdfs:comment "Establishes a part-of relationship between an entity a group of entities."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:Entity ;
+	rdfs:range art:EntityGroup ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:height
+	rdf:type rdf:Property ;
+    rdfs:label "height"@en ;
+	rdfs:comment "The extents of a geometry along the y-axis of a Cartesian coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain geo:Geometry ;
+	rdfs:range xsd:double ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:layer
+	rdf:type rdf:Property ;
+    rdfs:label "layer"@en ;
+	rdfs:comment "Establishes a relationship between an object an a layer."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:Entity ;
+	rdfs:range art:Layer ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:lengthUnit
+	rdf:type rdf:Property ;
+    rdfs:label "lengthUnit"@en ;
+	rdfs:comment "Specifies the length unit used for the coordinates in a coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:CoordinateSystem ;
+	rdfs:range art:LengthUnit ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:loggingEnabled
+	rdf:type rdf:Property ;
+    rdfs:label "loggingEnabled"@en ;
+	rdfs:comment "Indicates if the logging of activities is enabled for a software agent."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:SoftwareAgent ;
+	rdfs:range xsd:boolean ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:parentLayer
+	rdf:type rdf:Property ;
+    rdfs:label "parentLayer"@en ;
+	rdfs:comment "Indicates that a layer is logically contained in the referenced layer."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:Layer ;
+	rdfs:range art:Layer ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:pluginFolder
+	rdf:type rdf:Property ;
+    rdfs:label "pluginFolder"@en ;
+	rdfs:comment "The file system folder containing the program extension (plugin) of the Artivity software agent."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:SoftwareAgent ;
+	rdfs:range nfo:Folder ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:position
+	rdf:type rdf:Property ;
+    rdfs:label "position"@en ;
+	rdfs:comment "Location of a geometry in Euclidean space."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain geo:Geometry ;
+	rdfs:range art:Point ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:region
+	rdf:type rdf:Property ;
+    rdfs:label "region"@en ;
+	rdfs:comment "Specifies the shape and location of something in Euclidean space."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:range geo:Geometry ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:renderedAs
+	rdf:type rdf:Property ;
+    rdfs:label "renderedAs"@en ;
+	rdfs:comment "A rasterized portion of an image that provides bitmap data for an entity influence."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:range geo:Geometry ;
+	skos:note "Artivity may record bitmap data for every influence to a document. The bitmaps are stored in PNG files and may either contain a rendering of the whole image (art:RenderingDataObject) or only of the parts (art:PartialRenderingDataObject) that have been changed. For the latter it may be required to define along a position and the extents of the parts that have changed."@en ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:reverted
+	rdf:type rdf:Property ;
+    rdfs:label "reverted"@en ;
+	rdfs:comment "Indicates that a entity influence invalidated another."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:range prov:EntityInfluence ;
+	rdfs:domain prov:EntityInfluence ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:restored
+	rdf:type rdf:Property ;
+    rdfs:label "restored"@en ;
+	rdfs:comment "Indicates that a entity influence re-generated another."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:range prov:EntityInfluence ;
+	rdfs:domain prov:EntityInfluence ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:selectedGroup
+	rdf:type rdf:Property ;
+    rdfs:label "selectedGroup"@en ;
+	rdfs:comment "Marks a group of entities as selected within a given context."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:EntityInfluence ;
+	rdfs:range art:EntityGroup ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+	
+art:selectedLayer
+	rdf:type rdf:Property ;
+    rdfs:label "selectedLayer"@en ;
+	rdfs:comment "Marks a layer as selected within a given context."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:EntityInfluence ;
+	rdfs:range art:Layer ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:transformationMatrix
+	rdf:type rdf:Property ;
+    rdfs:label "transformationMatrix"@en ;
+	rdfs:comment "Defines the basis of a vector space or a linear transformation in form of a set of vectors which are represented by a matrix."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Change_of_basis#Matrix_of_a_set_of_vectors> ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Transformation_matrix> ;
+	rdfs:domain geo:Geometry ;
+	rdfs:domain art:CoordinateSystem ;
+	rdfs:range xsd:string ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:viewport
+	rdf:type rdf:Property ;
+    rdfs:label "viewport"@en ;
+	rdfs:comment "References a rectangle that represents the visible area of a document."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain prov:EntityInfluence ;
+	rdfs:range art:Viewport ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:width
+	rdf:type rdf:Property ;
+    rdfs:label "width"@en ;
+	rdfs:comment "The extents of a geometry along the x-axis of a Cartesian coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain geo:Geometry ;
+	rdfs:range xsd:double ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:x
+	rdf:type rdf:Property ;
+    rdfs:label "x"@en ;
+	rdfs:comment "The x-coordinate value describing the position of a point in a Cartesian coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:Point ;
+	rdfs:range xsd:double ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:y
+	rdf:type rdf:Property ;
+    rdfs:label "y"@en ;
+	rdfs:comment "The y-coordinate value describing the position of a point in a Cartesian coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:Point ;
+	rdfs:range xsd:double ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:z
+	rdf:type rdf:Property ;
+    rdfs:label "z"@en ;
+	rdfs:comment "The z-coordinate value describing the position of a point in a Cartesian coordinate system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:Point ;
+	rdfs:range xsd:double ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:zoomFactor
+	rdf:type rdf:Property ;
+    rdfs:label "zoomFactor"@en ;
+	rdfs:comment "An application specific value describing the magnification of the currently viewed geometries."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:domain art:Viewport ;
+	rdfs:range xsd:double ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+# INSTANCES 
+
+art:cm
+	rdf:type art:LengthUnit ;
+    rdfs:label "cm"@en ;
+	rdfs:comment "A unit of length in the metric system, equal to one hundredth of a metre."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Centimetre> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:ft
+	rdf:type art:LengthUnit ;
+    rdfs:label "ft"@en ;
+	rdfs:comment "A unit of length in the imperial and US customary systems of measurement. Since 1959, the international foot was defined as 0.3048 Wikipedia: meters exactly."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Foot_(unit)> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+	
+art:in
+	rdf:type art:LengthUnit ;
+    rdfs:label "in"@en ;
+	rdfs:comment "A unit of length in the imperial and US customary systems of measurement. Since 1959, the international yard was defined as 0.9144 metres exactly."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Inch> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:m
+	rdf:type art:LengthUnit ;
+    rdfs:label "m"@en ;
+	rdfs:comment "The base unit of length in the International System of Units (SI), the modern form of the metric system."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Metre> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:mm
+	rdf:type art:LengthUnit ;
+    rdfs:label "mm"@en ;
+	rdfs:comment "A unit of length in the metric system, equal to one thousandth of a metre."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Millimetre> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:pt
+	rdf:type art:LengthUnit ;
+    rdfs:label "pt"@en ;
+	rdfs:comment "The smallest unit of measure in typography. The desktop publishing point is defined as 1⁄72 of an international inch (about 0.353 mm)."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Point_(typography)> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .
+
+art:px
+	rdf:type art:LengthUnit ;
+    rdfs:label "px"@en ;
+	rdfs:comment "A physical point in a raster image, or the smallest addressable element in an all points addressable display device."@en ;
+    rdfs:isDefinedBy art: ;
+	rdfs:seeAlso <https://en.wikipedia.org/wiki/Pixel> ;
+	dcterms:issued "2016-06-06"^^xsd:date ;
+    dcterms:modified "2016-06-06"^^xsd:date .

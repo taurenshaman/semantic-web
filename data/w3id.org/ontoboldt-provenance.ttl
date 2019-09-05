@@ -1,0 +1,89 @@
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix obt: <https://w3id.org/ontoboldt/ns/ontoboldt#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix schema: <http://schema.org/>.
+@prefix void: <http://rdfs.org/ns/void#>.
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix frbr: <http://purl.org/vocab/frbr/core#>.
+@prefix obtenv: <https://w3id.org/ontoboldt/ns/engineering-vocabulary#>.
+@prefix p-plan: <http://purl.org/net/p-plan#>.
+
+<http://idlab.technology/#organization> a org:OrganizationalUnit, foaf:Organization, foaf:Group, org:Organization, foaf:Agent, dc:Agent;
+    dc:title "IDLab"@en;
+    schema:name "IDLab"@en;
+    rdfs:label "IDLab"@en;
+    foaf:name "IDLab"@en;
+    owl:sameAs <http://idlab.technology/#organization>;
+    foaf:isPrimaryTopicOf <http://idlab.ugent.be/>, <http://idlab.technology/>;
+    foaf:page <http://idlab.ugent.be/>, <http://idlab.technology/>;
+    foaf:homepage <http://idlab.ugent.be/>, <http://idlab.technology/>;
+    org:hasMember <https://sven-lieber.org/profile#me>;
+    foaf:member <https://sven-lieber.org/profile#me>;
+    org:subOrganizationOf <http://dbpedia.org/resource/IMEC>, <http://dbpedia.org/resource/Ghent_University>;
+    org:transitiveSubOrganizationOf <http://dbpedia.org/resource/IMEC>, <http://dbpedia.org/resource/Ghent_University>;
+    org:unitOf <http://dbpedia.org/resource/IMEC>, <http://dbpedia.org/resource/Ghent_University>.
+
+<http://dbpedia.org/resource/Ghent_University> a foaf:Organization, foaf:Group, <http://www.wikidata.org/entity/Q43229>, <http://www.wikidata.org/entity/Q3918>, org:Organization, org:FormalOrganization, dul:SocialPerson, schema:Organization, schema:EducationalOrganization, schema:CollegeOrUniversity, <http://dbpedia.org/ontology/University>, <http://dbpedia.org/ontology/Organisation>, <http://dbpedia.org/ontology/EducationalInstitution>, <http://dbpedia.org/ontology/College>, foaf:Agent, dul:Agent, dc:Agent, <http://dbpedia.org/ontology/Agent>;
+    dc:title "Universiteit Gent"@nl, "Ghent University"@en;
+    schema:name "Universiteit Gent"@nl, "Ghent University"@en;
+    rdfs:label "Universiteit Gent"@nl, "Ghent University"@en;
+    foaf:name "Universiteit Gent"@nl, "Ghent University"@en;
+    owl:sameAs <http://dbpedia.org/resource/Ghent_University>;
+    foaf:isPrimaryTopicOf <http://www.ugent.be/>;
+    foaf:page <http://www.ugent.be/>;
+    foaf:homepage <http://www.ugent.be/>;
+    org:hasMember <https://sven-lieber.org/profile#me>;
+    org:hasSubOrganization <http://idlab.technology/#organization>;
+    org:hasUnit <http://idlab.technology/#organization>;
+    foaf:member <https://sven-lieber.org/profile#me>.
+
+<http://dbpedia.org/resource/IMEC> a foaf:Organization, foaf:Group, org:Organization, org:FormalOrganization, foaf:Agent, dcterms:Agent;
+    dcterms:title "imec"@en;
+    schema:name "imec"@en;
+    rdfs:label "imec"@en;
+    foaf:name "imec"@en;
+    owl:sameAs <http://dbpedia.org/resource/IMEC>;
+    foaf:isPrimaryTopicOf <https://www.imec-int.com/>;
+    foaf:page <https://www.imec-int.com/>;
+    foaf:homepage <https://www.imec-int.com/>;
+    org:hasMember <https://sven-lieber.org/profile#me>;
+    org:hasSubOrganization <http://idlab.technology/#organization>;
+    org:hasUnit <http://idlab.technology/#organization>;
+    foaf:member <https://sven-lieber.org/profile#me>.
+
+obt:void a void:DatasetDescription;
+    dcterms:title "A VoID Description of the Ontoboldt Knowledge Graph";
+    dcterms:creator <https://sven-lieber.org/profile#me>;
+    foaf:primaryTopic obt:dataset;
+    .
+
+<https://sven-lieber.org/profile#me> rdf:type foaf:Person ;
+    foaf:mbox "mailto:Sven.Lieber@UGent.be" ;
+    foaf:name "Sven Lieber"@en ;
+    rdfs:label "Sven Lieber"@en .
+
+obt:dataset a void:Dataset ;
+  foaf:page <https://w3id.org/ontoboldt> ;
+  dcterms:description "A Knowledge Graph containing descriptions of Ontology Engineering processes, activities and tasks.";
+  dcterms:creator <https://sven-lieber.org/profile#me>;
+  dcterms:publisher <https://sven-lieber.org/profile#me>;
+  dcterms:contributor <http://dbpedia.org/resource/IMEC>;
+  dcterms:contributor <http://dbpedia.org/resource/Ghent_University>;
+  dcterms:contributor <http://idlab.technology/#organization>;
+  dcterms:created "2016-12-15"^^xsd:date ;
+  dcterms:issued "2016-12-15"^^xsd:date ;
+  dcterms:modified "2019-2-5"^^xsd:date;
+  vann:preferredNamespacePrefix "obt" ;
+  vann:preferredNamespaceUri "https://w3id/ontoboldt/ns/ontoboldt#" ;
+  cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+  dcterms:rights "Copyright © Ghent University – imec – IDLab"@en ;
+  void:feature <http://www.w3.org/ns/formats/Turtle> ;
+  .

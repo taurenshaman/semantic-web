@@ -1,0 +1,164 @@
+    @prefix : <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix Heade: <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/> .
+    @prefix acl: <http://www.w3.org/ns/auth/acl#> .
+    @prefix dc: <http://purl.org/dc/elements/1.1/> .
+    @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+    @prefix gen: <http://www.w3.org/2006/gen/ont#> .
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+    
+    <>     dc:title "Basic Access Control ontology";
+         :comment """Defines the class Authorization and its essential properties,
+    and also some classes of access such as read and write. """ .
+    
+    acl:Access     a :Class;
+         :comment "Any kind of access to a resource. Don't use this, use R W and RW";
+         acl:label "access"@en .
+    
+    acl:Append     a :Class;
+         :comment """Append accesses are specific write access which only add information, and do not remove information.
+    For text files, for example, append access allows bytes to be added onto the end of the file.
+    For RDF graphs, Append access allows adds triples to the graph but does not remove any.
+    Append access is useful for dropbox functionality.
+    Dropbox can be used for link notification, which the information added is a notification
+    that a some link has been made elsewhere relevant to the given resource.
+    """@en;
+         :label "append"@en;
+         :subClassOf acl:Access,
+                acl:Write .
+    
+    acl:AuthenticatedAgent     a :Class;
+         :comment """A class of agents who have been authenticated.
+In other words, anyone can access this resource, but not anonymously.
+The social expectation is that the authentication process will provide an
+identify and a name, or pseudonym.
+(A new ID should not be minted for every access: the intent is that the user
+is able to continue to use the ID for continues interactions with peers,
+and for example to develop a reputation)
+"""@en;
+         :label "Anyone authenticated";
+         :subClassOf foaf:Agent .
+    
+    acl:Authorization     a :Class;
+         :comment """An element of access control,
+    allowing agent to agents access of some kind to resources or classes of resources"""@en;
+         :label "authorization" .
+    
+    acl:Control     a :Class;
+         :comment "Allows read/write access to the ACL for the resource(s)";
+         :label "control"@en;
+         :subClassOf acl:Access .
+    
+    acl:Origin     a :Class;
+         :comment """An Origin is basically a web site
+        (Note WITHOUT the trailing slash after the domain name and port in its URI)
+        and is the basis for controlling access to data by web apps
+        in the Same Origin Model of web security.
+        All scripts from the same origin are given the same right."""@en;
+         :label "Origin";
+         :seeAlso Heade:Origin .
+    
+    acl:Read     a :Class;
+         :comment "The class of read operations";
+         :label "read"@en;
+         :subClassOf acl:Access .
+    
+    acl:Write     a :Class;
+         :label "write"@en;
+         :subClassOf acl:Access .
+    
+    acl:accessControl     a rdf:Property;
+         :comment """The Access Control file for this information resource.
+        This may of course be a virtual resource implemented by the access control system.
+        Note also HTTP's header  Link:  foo.meta ;rel=meta can be used for this."""@en;
+         :domain gen:InformationResource;
+         :label "access control";
+         :range gen:InformationResource;
+         :subPropertyOf :seeAlso .
+    
+    acl:accessTo     a rdf:Property;
+         :comment "The information resource to which access is being granted.";
+         :domain acl:Authorization;
+         :label "to";
+         :range gen:InformationResource .
+    
+    acl:accessToClass     a rdf:Property;
+         :comment "A class of information resources to which access is being granted.";
+         :domain acl:Authorization;
+         :label "to all in";
+         :range :Class .
+    
+    acl:agent     a rdf:Property;
+         :comment "A person or social entity to being given the right";
+         :domain acl:Authorization;
+         :label "agent";
+         :range foaf:Agent .
+    
+    acl:agentClass     a rdf:Property;
+         :comment "A class of persons or social entities to being given the right";
+         :domain acl:Authorization;
+         :label "agent class";
+         :range :Class .
+    
+    acl:agentGroup     a rdf:Property;
+         :comment """A group of persons or social entities to being given the right.
+          The right is given to any entity which is a vcard:member of the group,
+          as defined by the document received when the Group is dereferenced."""@en;
+         :domain acl:Authorization;
+         :label "agent group";
+         :range vcard:Group .
+    
+    acl:default     a rdf:Property;
+         :comment """If a resource has no ACL file (it is 404),
+        then access to the resource if given by the ACL of the immediately
+        containing directory, or failing that (404) the ACL of the recursively next
+        containing directory which has an ACL file.
+        Within that ACL file,
+        any Authentication which has that directory as its acl:default applies to the
+        resource. (The highest directory must have an ACL file.)
+"""@en;
+         :domain acl:Authorization;
+         :label "default access for things in this" .
+    
+    acl:defaultForNew     a rdf:Property;
+         :comment """THIS IS OBSOLETE AS OF 2017-08-01.   See 'default'.
+        Was: A directory for which this authorization is used for new files in the directory."""@en;
+         :domain acl:Authorization;
+         :label "default access for new things in the object" .
+    
+    acl:delegates     a rdf:Property;
+         :comment """Delegates a person or another agent to act on behalf of the agent.
+    For example, Alice delegates Bob to act on behalf of Alice for ACL purposes."""@en;
+         :label "delegates"@en;
+         :range foaf:Agent .
+    
+    acl:mode     a rdf:Property;
+         :comment "A mode of access such as read or write.";
+         :domain acl:Authorization;
+         :label "access mode";
+         :range :Class .
+    
+    acl:origin     a rdf:Property;
+         :comment """A web application, identified by its Origin, such as
+        <https://scripts.example.com>, being given the right.
+        When a user of the web application at a certain origin accesses the server,
+        then the browser sets the Origin: header to warn that a possibly untrusted webapp
+        is being used.
+        Then, BOTH the user AND the origin must have the required access."""@en;
+         :domain acl:Authorization;
+         :label "origin";
+         :range acl:Origin;
+         :seeAlso Heade:Origin .
+    
+    acl:owner     a rdf:Property;
+         :comment """The person or other agent which owns this.
+    For example, the owner of a file in a filesystem.
+    There is a sense of right to control.   Typically defaults to the agent who craeted
+    something but can be changed."""@en;
+         :label "owner"@en;
+         :range foaf:Agent .
+    
+    <https://github.com/solid/web-access-control-spec>     dc:describes <> .
+    
+    <https://www.w3.org/wiki/WebAccessControl>     dc:describes <> .
+    
