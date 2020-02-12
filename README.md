@@ -30,3 +30,6 @@ https://www.chuci.info
 
 ## team, cooperation, contribution
 * https://github.com/data2health/contributor-role-ontology
+
+## Model reference in non-semantic-web format
+[Model Reference](https://github.com/taurenshaman/semantic-web/blob/master/ModelReference.md)
