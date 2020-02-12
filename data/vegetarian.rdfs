@@ -1,1 +1,157 @@
-<rdf:RDF xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns="http://www.mindswap.org/2003/vegetarian.owl#" xmlns:un="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#"><owl:Class rdf:ID="Omnivore" /><owl:Class rdf:ID="Vegetarian"><rdfs:subClassOf rdf:resource="http://www.isi.edu/webscripter/person.o.daml#Person" /><rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person" /><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#eats" /><owl:allValuesFrom rdf:resource="#VegetarianFood" /></owl:Restriction></rdfs:subClassOf><rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/#Person" /></owl:Class><owl:Class rdf:ID="Vegan"><rdfs:subClassOf rdf:resource="#Vegetarian" /><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#eats" /><owl:allValuesFrom rdf:resource="#VeganFood" /></owl:Restriction></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="Ovo-LactoVegetarian"><rdfs:subClassOf rdf:resource="#Vegetarian" /><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#eats" /><owl:allValuesFrom rdf:resource="#OvoLactoVegetarianFood" /></owl:Restriction></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="OvoVegetarian"><rdfs:subClassOf rdf:resource="#Ovo-LactoVegetarian" /><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#eats" /><owl:allValuesFrom rdf:resource="#OvoVegetarianFood" /></owl:Restriction></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="LactoVegetarian"><rdfs:subClassOf rdf:resource="#Ovo-LactoVegetarian" /><rdfs:subClassOf><owl:Restriction><owl:onProperty rdf:resource="#eats" /><owl:allValuesFrom rdf:resource="#LactoVegetarianFood" /></owl:Restriction></rdfs:subClassOf></owl:Class><owl:ObjectProperty rdf:ID="eats"><rdfs:domain rdf:resource="#Vegetarian" /></owl:ObjectProperty><owl:Class rdf:ID="VegetarianFood"><rdfs:subClassOf><owl:Class><owl:intersectionOf rdf:parseType="Collection"><owl:Class><rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" /></owl:Class><owl:Class><owl:complementOf><owl:Class><rdfs:subClassOf rdf:resource="#Meat" /></owl:Class></owl:complementOf></owl:Class></owl:intersectionOf></owl:Class></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="VeganFood"><rdfs:subClassOf><owl:Class><owl:intersectionOf rdf:parseType="Collection"><owl:Class><owl:equivalentClass rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" /></owl:Class><owl:Class><owl:complementOf><owl:Class><owl:unionOf rdf:parseType="Collection"><owl:Class><rdfs:subClassOf rdf:resource="#Meat" /></owl:Class><owl:Class><rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Dairy-products-and-eggs" /></owl:Class></owl:unionOf></owl:Class></owl:complementOf></owl:Class></owl:intersectionOf></owl:Class></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="OvoLactoVegetarianFood"><owl:equivalentClass rdf:resource="#VegetarianFood" /></owl:Class><owl:Class rdf:ID="OvoVegetarianFood"><rdfs:subClassOf><owl:Class><owl:intersectionOf rdf:parseType="Collection"><owl:Class><owl:equivalentClass rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" /></owl:Class><owl:Class><owl:complementOf><owl:Class><owl:unionOf rdf:parseType="Collection"><owl:Class><rdfs:subClassOf rdf:resource="#Meat" /></owl:Class><owl:Class><rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Dairy" /></owl:Class></owl:unionOf></owl:Class></owl:complementOf></owl:Class></owl:intersectionOf></owl:Class></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="LactoVegetarianFood"><rdfs:subClassOf><owl:Class><owl:intersectionOf rdf:parseType="Collection"><owl:Class><owl:equivalentClass rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" /></owl:Class><owl:Class><owl:complementOf><owl:Class><owl:unionOf rdf:parseType="Collection"><owl:Class><rdfs:subClassOf rdf:resource="#Meat" /></owl:Class><owl:Class><rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Eggs" /></owl:Class></owl:unionOf></owl:Class></owl:complementOf></owl:Class></owl:intersectionOf></owl:Class></rdfs:subClassOf></owl:Class><owl:Class rdf:ID="Meat"><rdfs:label> Meat, including seafood</rdfs:label><owl:unionOf rdf:parseType="Collection"><owl:Class rdf:about="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Meat" /><owl:Class rdf:about="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Seafood" /></owl:unionOf></owl:Class></rdf:RDF>
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns="http://www.mindswap.org/2003/vegetarian.owl#" xmlns:un="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#">
+  <owl:Class rdf:ID="Omnivore" />
+  <owl:Class rdf:ID="Vegetarian">
+    <rdfs:subClassOf rdf:resource="http://www.isi.edu/webscripter/person.o.daml#Person" />
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom rdf:resource="#VegetarianFood" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/#Person" />
+  </owl:Class>
+  <owl:Class rdf:ID="Vegan">
+    <rdfs:subClassOf rdf:resource="#Vegetarian" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom rdf:resource="#VeganFood" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Ovo-LactoVegetarian">
+    <rdfs:subClassOf rdf:resource="#Vegetarian" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom rdf:resource="#OvoLactoVegetarianFood" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OvoVegetarian">
+    <rdfs:subClassOf rdf:resource="#Ovo-LactoVegetarian" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom rdf:resource="#OvoVegetarianFood" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LactoVegetarian">
+    <rdfs:subClassOf rdf:resource="#Ovo-LactoVegetarian" />
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#eats" />
+        <owl:allValuesFrom rdf:resource="#LactoVegetarianFood" />
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="eats">
+    <rdfs:domain rdf:resource="#Vegetarian" />
+  </owl:ObjectProperty>
+  <owl:Class rdf:ID="VegetarianFood">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" />
+          </owl:Class>
+          <owl:Class>
+            <owl:complementOf>
+              <owl:Class>
+                <rdfs:subClassOf rdf:resource="#Meat" />
+              </owl:Class>
+            </owl:complementOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="VeganFood">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:equivalentClass rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" />
+          </owl:Class>
+          <owl:Class>
+            <owl:complementOf>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class>
+                    <rdfs:subClassOf rdf:resource="#Meat" />
+                  </owl:Class>
+                  <owl:Class>
+                    <rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Dairy-products-and-eggs" />
+                  </owl:Class>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:complementOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="OvoLactoVegetarianFood">
+    <owl:equivalentClass rdf:resource="#VegetarianFood" />
+  </owl:Class>
+  <owl:Class rdf:ID="OvoVegetarianFood">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:equivalentClass rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" />
+          </owl:Class>
+          <owl:Class>
+            <owl:complementOf>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class>
+                    <rdfs:subClassOf rdf:resource="#Meat" />
+                  </owl:Class>
+                  <owl:Class>
+                    <rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Dairy" />
+                  </owl:Class>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:complementOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LactoVegetarianFood">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class>
+            <owl:equivalentClass rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Food-Beverage-and-Tobacco-Products" />
+          </owl:Class>
+          <owl:Class>
+            <owl:complementOf>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class>
+                    <rdfs:subClassOf rdf:resource="#Meat" />
+                  </owl:Class>
+                  <owl:Class>
+                    <rdfs:subClassOf rdf:resource="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Eggs" />
+                  </owl:Class>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:complementOf>
+          </owl:Class>
+        </owl:intersectionOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Meat">
+    <rdfs:label> Meat, including seafood</rdfs:label>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Meat" />
+      <owl:Class rdf:about="http://www.ksl.stanford.edu/projects/DAML/UNSPSC.daml#Seafood" />
+    </owl:unionOf>
+  </owl:Class>
+</rdf:RDF>
